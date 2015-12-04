@@ -1,19 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<script src="https://subbu1--c.na1-blitz03.visual.soma.force.com/lightning/lightning.out.js"></script>
+<script src="http://dreddy-wsl1.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
 <div id="button_goes_here"/>
-<script>
+   <script>
+   <div id="target"/>
     $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
-        $Lightning.createComponent("embeddedService:liveAgentSidebar", {
-            endpointURL : 'https://d.la-blitz03.soma.salesforce.com/chat',
-            deploymentId : '572D00000004CQK',
-            orgId : '00DD00000007yvn',
-            buttonId : '573D00000004CTO',
-            chasitorContentServerEndpointURL : 'https://d.la-blitz03.soma.salesforce.com/content',
-            chasitorSrcURL : ['https://subbu1.blitz03.blitz.salesforce.com/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','https://d.la-blitz03.soma.salesforce.com/content/g/js/36.0/chasitor.js']
-        }, "button_goes_here");
-     }, "https://subbu1.blitz03.blitz.salesforce.com");
-</script>
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+           deploymentId : '572xx0000000006',
+           orgId : '00Dxx0000001gPo',
+           buttonId : '573xx0000000006',
+           endpointURL : 'http://dreddy-wsl1.internal.salesforce.com:8096/chat',
+           chasitorContentServerEndpointUrl : 'http://dreddy-wsl1.internal.salesforce.com:8095/content',
+           chasitorSrcURL : ['resource/SfdcCore','http://dreddy-wsl1.internal.salesforce.com:8095/content/g/js/36.0/chasitor.js']
+       }, "target");
+   });
+   </script>
 </html>
     <style>
       #button_goes_here{
