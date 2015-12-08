@@ -1,6 +1,12 @@
-body {
-    margin: 60px auto;
-    width: 70%;
+imagegoeshere {
+    background-image: url("commerce.jpg");
+    background-repeat: no-repeat;   
+    background-color: green;
+    margin: 0 auto;
+    width: 1440px;
+    height: 801px;
+    position: relative;
+
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
