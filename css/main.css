@@ -48,10 +48,16 @@ ul.posts li {
     list-style: none;
 }
 
-
-
-#button_goes_here {
-
-    width: 2000px;
-    height: 100vh;
+/* To be moved back into the component files after the demo */
+.embeddedServiceLiveAgentSidebar .closeButton, .embeddedServiceLiveAgentSidebar .minimizeButton,.embeddedServiceLiveAgentSidebar .popoutButton {
+    -webkit-transition: color .7s ease;
+    transition: color .7s ease;
+    padding: 0px 20px;
 }
+
+.popoutButton {
+    margin-right: -22px;
+}
+
+
+
