@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+ <script src="http://bsarker-ltm6.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+
+<div id="button_goes_here"/>
+  <script>
+
+$Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+
+$Lightning.createComponent("embeddedService:liveAgentSidebar", {
+
+deploymentId : '572xx0000000001',
+
+orgId : '00Dxx0000001gI4',
+
+buttonId : '573xx0000000001',
+
+endpointURL : 'http://bsarker-ltm6.internal.salesforce.com:8096/chat',
+
+avatarImgURL : 'http://bsarker-ltm6.internal.salesforce.com:6109/resource/1452104835000/avatar',
+
+prechatBackgroundImgURL : 'http://bsarker-ltm6.internal.salesforce.com:6109/resource/1452104905000/background',
+
+chasitorContentServerEndpointURL : 'http://bsarker-ltm6.internal.salesforce.com:8095/content',
+
+chasitorSrcURL : ['http://bsarker-ltm6.internal.salesforce.com:6109/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://bsarker-ltm6.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js']
+}, "button_goes_here");
+}, "http://bdrsubdomain.localhost.force.com:6109/BDRprefix");
+</script>
+</html>
+    <style>
+      #button_goes_here{
+            width: 2000px;
+            height: 100vh;
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            position: relative;
+        }
+    </style>
