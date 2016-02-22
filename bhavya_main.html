@@ -1,19 +1,33 @@
 
-<script src="https://bchichilli-ltm2.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="http://localhost.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
 <div id="button_goes_here"/>
 <script>
-
 $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
     $Lightning.createComponent("embeddedService:liveAgentSidebar", {
             endpointURL : 'http://localhost:8096/chat',
             deploymentId : '572xx0000000001',
-            orgId : '00Dxx0000001gEg',
+            orgId : '00Dxx0000001gJW',
             buttonId : '573xx0000000001',
-            avatarImgURL : 'http://bchichilli-ltm2.internal.salesforce.com:6109/img/icon/t4/standard/avatar_60.png',
-            prechatBackgroundImgURL : 'http://bchichilli-ltm2.internal.salesforce.com:6109/img/milkmilklemonade-img.gif',
-            waitingStateBackgroundImgURL : 'http://i.imgur.com/Ka1Upks.png',
+            avatarImgURL : 'avatar.png',
+            prechatBackgroundImgURL : 'Prechat_image.png',
+	    waitingStateBackgroundImgURL : 'waitingStateImage.png',
             chasitorContentServerEndpointURL : 'http://localhost:8095/content',
-            chasitorSrcURL : ['http://bdrasin-ltm.internal.salesforce.com:6109/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://localhost:8095/content/g/js/36.0/chasitor.js']
+            chasitorSrcURL : ['http://bchichilli-ltm2:6109/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://localhost:8095/content/g/js/37.0/chasitor.js']
         }, "button_goes_here");
-    }, "https://bdrasin-ltm-comm.localhost.force.com:7443/t3c1");
+    }, "http://bchichilli-ltm-communities.localhost.force.com:6109/justinNapili0212");
 </script>
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            background-size: 100% 99% cover;
+            position: relative;
+      }
+</style>
