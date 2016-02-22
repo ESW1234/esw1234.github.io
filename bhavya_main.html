@@ -1,1 +1,19 @@
 
+<script src="https://bchichilli-ltm2.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+<script>
+
+$Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+    $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+            endpointURL : 'http://localhost:8096/chat',
+            deploymentId : '572xx0000000001',
+            orgId : '00Dxx0000001gEg',
+            buttonId : '573xx0000000001',
+            avatarImgURL : 'http://bchichilli-ltm2.internal.salesforce.com:6109/img/icon/t4/standard/avatar_60.png',
+            prechatBackgroundImgURL : 'http://bchichilli-ltm2.internal.salesforce.com:6109/img/milkmilklemonade-img.gif',
+            waitingStateBackgroundImgURL : 'http://i.imgur.com/Ka1Upks.png',
+            chasitorContentServerEndpointURL : 'http://localhost:8095/content',
+            chasitorSrcURL : ['http://bdrasin-ltm.internal.salesforce.com:6109/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://localhost:8095/content/g/js/36.0/chasitor.js']
+        }, "button_goes_here");
+    }, "https://bdrasin-ltm-comm.localhost.force.com:7443/t3c1");
+</script>
