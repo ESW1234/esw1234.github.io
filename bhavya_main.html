@@ -1,1 +1,31 @@
 
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="http://skrish-wsm.internal.salesforce.com:57983/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+   <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+           deploymentId : '572xx0000000001',
+           orgId : '00Dxx0000001gHf',
+           buttonId : '573xx0000000001',
+           endpointURL : 'http://skrish-wsm.internal.salesforce.com:8096/chat',
+            avatarImgURL : 'avatar.png',
+            prechatBackgroundImgURL : 'Prechat_image.png',
+           chasitorContentServerEndpointURL : 'http://skrish-wsm.internal.salesforce.com:8095/content',
+           chasitorSrcURL : ['http://skrish-wsm.internal.salesforce.com:57983/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://skrish-wsm.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js']
+       }, "button_goes_here");
+   },"http://subbu.localhost.force.com:57983/esw");
+   </script>
+</html>
+    <style>
+      #button_goes_here{
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            position: relative;
+        }
+    </style>
