@@ -1,0 +1,32 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="http://kgarg-wsm.internal.salesforce.com:57983/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+ <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+           deploymentId : '572xx0000000001',
+           orgId : '00Dxx0000001gGm',
+           buttonId : '573xx0000000001',
+           endpointURL: 'http://kgarg-wsm.internal.salesforce.com:8096/chat',
+           chasitorContentServerEndpointURL : 'http://kgarg-wsm.internal.salesforce.com:8095/content',
+           chasitorSrcURL : ['http://kgarg-wsm.internal.salesforce.com:57983/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js', 'http://kgarg-wsm.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js'],
+           prechatBackgroundImgURL : 'http://kgarg-wsm.internal.salesforce.com:57983/img/actionPlans/addComments.gif',
+           avatarImgURL : 'avatar.png',
+           waitingStateBackgroundImgURL : 'waitingStateImage.png'
+        }, "button_goes_here");
+   },"http://kgarg.localhost.force.com:57983/NapiliTemplate");
+   </script>
+</html>
+    <style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            background-size: 100% 99% cover;
+            position: relative;
+      }
+    </style>
