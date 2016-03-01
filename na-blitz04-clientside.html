@@ -71,14 +71,6 @@ $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
          }, "button_goes_here");
     }, "https://bdrasin-wsm.localhost.force.com:6101/t1c1");
 }
-
-debugger;
-var el = document.getElementById("liveAgentHelpButton");
-if (el.addEventListener) {
-  el.addEventListener("click", loadLightningOut, false);
-} else {
-  el.attachEvent('onclick', loadLightningOut);
-}
 </script>
 
 </html>
@@ -90,7 +82,6 @@ if (el.addEventListener) {
             background: url("Spotify-large.png") no-repeat;
             position: relative;
       }
-    </style>
     
     @keyframes auraPlaceholderSpin {
   from {-webkit-transform:rotate(0deg); -ms-transform:rotate(0deg); transform:rotate(0deg)}
