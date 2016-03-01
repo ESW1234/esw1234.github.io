@@ -1,0 +1,279 @@
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<div id="button_goes_here">
+    <div class="minimized modalContainer embeddedServiceLiveAgentSidebar" data-aura-rendered-by="4:4;a">
+        <div class="minimized dockableContainer" data-aura-rendered-by="6:4;a">
+            <span class="page" data-aura-rendered-by="8:4;a">
+                <div class="helpWrapper embeddedServiceLiveAgentHelpButton" data-aura-rendered-by="11:4;a">
+                    <button id="liveAgentHelpButton" class="flatButton uiButton--default uiButton" type="button" disabled="" data-aura-rendered-by="28:4;a">
+                        <!--render facet: 29:4;a--><span class="assistiveText" data-aura-rendered-by="31:4;a">Agent Offline</span><span class="icon-fallback-text help embeddedServiceIcon" aria-hidden="true" data-icon="" data-key="comment" data-aura-rendered-by="16:4;a"><span class="icon icon-key" data-aura-rendered-by="17:4;a"></span></span><span class="newAssistiveText embeddedServiceIcon" data-aura-rendered-by="18:4;a"></span>
+                        <label class="helpButtonLabel uiLabel" for="12:4;a" data-aura-rendered-by="22:4;a">
+                            <span id="liveagent_button_offline_573xx0000000001" class="" data-aura-rendered-by="23:4;a">Agent Offline</span><!--render facet: 25:4;a--><!--render facet: 26:4;a-->
+                            <span id="liveagent_button_online_573xx0000000001" class="" data-aura-rendered-by="23:4;a">Chat with an Expert</span><!--render facet: 25:4;a--><!--render facet: 26:4;a-->
+                        </label>
+                    </button>
+                </div>
+            </span>
+            <!--render facet: 175:4;a--><!--render facet: 180:4;a--><!--render facet: 185:4;a-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(
+   function(){
+      liveagent.showWhenOnline('573D00000004CWm', document.getElementById('liveagent_button_online_573D00000004CWm'));
+      liveagent.showWhenOffline('573D00000004CWm', document.getElementById('liveagent_button_offline_573D00000004CWm'));
+});</script>
+
+<script type='text/javascript' src='https://c.la-blitz04.soma.salesforce.com/content/g/js/37.0/deployment.js'></script>
+<script type='text/javascript'>
+   liveagent.init('https://d.la-blitz04.soma.salesforce.com/chat', '572D00000004CSa', '00DD00000008649');
+</script>
+
+<script type="text/javascript">
+
+var loadLightningOut = function(){
+   var scriptEl = document.createElement("script");
+   scriptEl.type = "text/javascript";
+   if (scriptEl.readyState) {
+      scriptEl.onreadystatechange = function (){
+         if(scriptEl.readyState == "complete" || scriptEl.readyState == "loaded"){
+            scriptEl.onreadystatechange = null;
+            doLightningOut();
+         }
+      }
+   } else {
+      scriptEl.onload = function () {
+         doLightningOut();
+      }
+   }
+   scriptEl.src = 'https://subbu--c.na1-blitz04.visual.soma.force.com/lightning/lightning.out.js';
+   document.getElementsByTagName("head")[0].appendChild(scriptEl);
+}
+
+var doLightningOut = function() {
+$Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+    $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+         deploymentId : '572D00000004CSa',
+         orgId : '00DD00000008649',
+         buttonId : '573D00000004CWm',
+         endpointURL : 'https://d.la-blitz04.soma.salesforce.com/chat',
+         avatarImgURL : 'avatar.png',
+         prechatBackgroundImgURL : 'Prechat_image.png',
+         waitingStateBackgroundImgURL : 'waitingStateImage.png',
+         smallCompanyLogoImgURL : 'smallCompanyLogoImg.png',
+         chasitorContentServerEndpointURL : 'https://d.la-blitz04.soma.salesforce.com/content',
+         chasitorSrcURL : ['https://na1-blitz04.soma.salesforce.com/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js']
+         }, "button_goes_here");
+    }, "https://bdrasin-wsm.localhost.force.com:6101/t1c1");
+}
+
+debugger;
+var el = document.getElementById("liveAgentHelpButton");
+if (el.addEventListener) {
+  el.addEventListener("click", loadLightningOut, false);
+} else {
+  el.attachEvent('onclick', loadLightningOut);
+}
+</script>
+
+</html>
+    <style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            position: relative;
+      }
+    </style>
+    
+    @keyframes auraPlaceholderSpin {
+  from {-webkit-transform:rotate(0deg); -ms-transform:rotate(0deg); transform:rotate(0deg)}
+  to {-webkit-transform:rotate(720deg); -ms-transform:rotate(720deg); transform:rotate(720deg)}
+}
+.auraPlaceholder.spin {display:inline-block; border:1px solid #666; background-color:#888; border-radius:16px; width:9px; height:9px; -webkit-animation-iteration-count:infinite; animation-iteration-count:infinite; -webkit-animation-name:auraPlaceholderSpin; animation-name:auraPlaceholderSpin; -webkit-animation-duration:.75s; animation-duration:.75s; -webkit-animation-timing-function:ease-in-out; animation-timing-function:ease-in-out}
+.auraPlaceholder.spin:AFTER, .auraPlaceholder.spin:BEFORE {content:""; border-radius:4px; background-color:#666; position:absolute}
+.auraPlaceholder.spin:AFTER {height:1px; width:17px; margin-top:4px; margin-left:-4px}
+.auraPlaceholder.spin:BEFORE {height:17px; width:1px; margin-left:4px; margin-top:-4px}
+.uiMenuItem a {display:block; overflow:hidden}
+.uiMenuItem a[aria-disabled=true] {pointer-events:none; cursor:default}
+div.uiPopupTarget {display:none; position:absolute; z-index:9999}
+.uiPopupTarget .popupTargetContainer, .uiPopupTarget.popupTargetContainer {position:absolute; border-radius:3px; background-color:#fff; box-shadow:0 1px 5px rgba(0, 0, 0, .75)}
+.uiPopupTarget.popupCurtain {width:100%; height:100%; position:absolute; top:0; right:0; bottom:0; left:0; background:rgba(0, 0, 0, .4)}
+div.uiPopupTarget.visible {display:block}
+.uiPopupTarget ul {list-style:none; margin:0; padding:0}
+div.uiMenuList.visible {display:block}
+.uiMenuList ul {list-style:none; margin:0; padding:0}
+.uiMenuList--default {display:none; position:absolute; border-radius:3px; background-color:#fff; box-shadow:0 1px 5px rgba(0, 0, 0, .75); z-index:1}
+.uiMenuList--default .uiMenuSeparator {border-top:1px solid #cccccc}
+.uiMenuList--default .menu__header {padding:.5rem .75rem; text-transform:uppercase; letter-spacing:.0625em; font-size:.9rem; color:#6d6d6d}
+.uiMenuList--default .uiMenuItem>a, .uiMenuList--default .uiMenuItem>span {color:#222; display:block; height:1.1em; padding:3px 9px; text-decoration:none}
+.uiMenuList--default .uiMenuItem>a:hover, .uiMenuList--default .uiMenuItem>a:focus, .uiMenuList--default .uiMenuItem>span:hover, .uiMenuList--default .uiMenuItem>span:focus {outline:none; border-radius:8px; color:#015ba7; text-decoration:underline; background-color:#cfeef8}
+.uiMenuList--default .uiMenuItem>a:active, .uiMenuList--default .uiMenuItem>span:active {outline:none; color:#222}
+.uiMenuList--default .uiMenuItem>a[aria-disabled=true], .uiMenuList--default .uiMenuItem>span[aria-disabled=true] {text-decoration:none; color:lightgray; cursor:default}
+.uiMenuList--default .uiMenuItem>a[aria-disabled=true]:hover, .uiMenuList--default .uiMenuItem>span[aria-disabled=true]:hover {background-color:transparent}
+.uiMenuList--default.menu--nubbin-top {margin-top:.5rem}
+.uiMenuList--default.menu--nubbin-top:before {width:1rem; height:1rem; position:absolute; -webkit-transform:rotate(45deg); -ms-transform:rotate(45deg); transform:rotate(45deg); content:""; background-color:white; left:50%; top:-.5rem; margin-left:-.5rem}
+.uiMenuList--default.menu--nubbin-top:after {width:1rem; height:1rem; position:absolute; -webkit-transform:rotate(45deg); -ms-transform:rotate(45deg); transform:rotate(45deg); content:""; background-color:white; left:50%; top:-.5rem; margin-left:-.5rem}
+.uiMenuList--default.menu--nubbin-top:before {background:white}
+.uiMenuList--default.menu--nubbin-top:after {background:white; box-shadow:-1px -1px 0 0 rgba(0, 0, 0, 0.16); z-index:-1}
+.uiPopupTrigger a[aria-disabled=true] {pointer-events:none; cursor:default}
+.uiMenu {position:relative}
+.uiInputDefaultError {list-style-type:none; padding:0; margin:0}
+.uiInputDefaultError .form-element__help {font-size:.75rem; margin-top:.5rem; color:rgb(194, 57, 52)}
+.uiInputDefaultError.hide {display:none}
+.uiLabel.uiLabel-top, .uiLabel.uiLabel-bottom {display:block}
+.uiTabItem {list-style:none; white-space:nowrap; display:inline-block}
+.uiTabItem a {display:block; text-decoration:none}
+.uiTabItem .close {display:inline-block; width:15px; height:15px; position:relative; text-align:center; margin-left:10px}
+.uiTabItem.hidden {display:none!important}
+.uiTabOverflowMenuItem {display:inline-block}
+.uiTabOverflowMenuItem .tabHeader .title {display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.uiTabOverflowMenuItem.hidden {display:none}
+
+.uiInput--default.has_error {border-color:red; background-color:rgba(255, 0, 0, .025)}
+.uiInput--default.errorMsg {display:block; color:red; font-size:.75em}
+.uiInput--default.hide {display:none}
+.uiInput--default:invalid {box-shadow:none}
+.uiInput--default:-moz-submit-invalid {box-shadow:none}
+.uiInput--default:-moz-ui-invalid {box-shadow:none}
+.uiInput--default::-ms-clear {width:0; height:0}
+.uiInput--lookup .lookup__menu, .uiInput--lookup.lookup__menu {border:1px solid #ccc; border-radius:4px; background-color:#fff; box-shadow:0 0 8px rgba(0, 0, 0, .25)}
+.uiInput--lookup ul {overflow-y:auto; -webkit-overflow-scrolling:touch}
+.uiInput--lookup .lookup__item a {color:#ccc; display:block; height:1.1em; padding:3px 9px; text-decoration:none}
+.uiInput--lookup .lookup__item.highlighted a {background-color:#0683c5; color:#015ba7; outline:none; text-decoration:underline; padding:3px 9px}
+.uiInput--lookup .lookup__footer.highlighted, .uiInput--lookup .lookup__header.highlighted {background-color:#0683c5}
+.uiInput--lookup .lookup__item a.mouseovered {background-color:#a9d0f5}
+.uiInput--lookup .lookup__item.default .data-match {border-radius:2px; background-color:#b5daee}
+.uiInput--datetime+.datePicker-openIcon, .uiInput--datetime .datePicker-openIcon, .uiInput--datetime+.timePicker-openIcon, .uiInput--datetime .timePicker-openIcon {position:relative; vertical-align:middle; left:-22px; width:12px; height:15px; background:url('/t1c1/auraFW/resources/aura/images/icon_openCalendar.png') no-repeat 0 0}
+.uiInput--datetime .clearIcon {position:relative; vertical-align:middle; left:-22px; width:15px; height:15px; background:url('/t1c1/auraFW/resources/aura/images/clear.png') no-repeat 0 0}
+.uiTab.scrolling {overflow:auto}
+.uiTab.tabs__content {display:none}
+.uiTab.active {display:block}
+.uiTabBar .tabs__nav {padding:0; margin:0}
+.auradevDependencyItem .error {background-color:#ff8eaf}
+.auradevDependencyItem .uid {float:right; margin-right:20px; font-family:monospace}
+@font-face {font-family:'embeddedserviceiconfont'; src:url('data:application/octet-stream;base64,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') format('woff'),url('data:application/octet-stream;base64,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') format('truetype')}
+.embeddedServiceIcon {display:inline-block}
+.embeddedServiceIcon:before {font-family:'embeddedserviceiconfont'; content:attr(data-icon); speak:none; text-rendering:auto; font-weight:normal; font-variant:normal; text-transform:none; line-height:1; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+.embeddedServiceIcon .icon-fallback-text .icon {display:none}
+.embeddedServiceIcon.newAssistiveText {position:absolute; border:0; clip:rect(1px, 1px, 1px, 1px); width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; z-index:-1000; font-size:1px}
+.uiBlock, .uiBlock .bBody {overflow:hidden; vertical-align:top}
+.uiBlock .bLeft {float:left}
+.uiBlock .bLeft img {display:block}
+.uiBlock .bRight {float:right}
+.uiBlock.overflow>.bBody {display:table-cell; vertical-align:top; width:10000px}
+.uiBlock.overflow, .uiBlock.overflow>.bBody {overflow:visible}
+.uiBlock.overflow:before, .uiBlock.overflow:after {content:""; display:table}
+.uiBlock.overflow:after {clear:both}
+.uiBlock.overflow>.bLeft {float:left}
+.uiBlock.overflow>.bRight {float:right}
+.uiButton {display:inline-block; cursor:pointer}
+.uiButton .label {display:block}
+.uiButton--default {font-weight:bold; font-size:.9em; margin:2px 3px; padding:4px 6px; text-decoration:none; text-align:center; border-radius:4px; border:0; border-top:1px solid rgba(255,255,255,.45); background:#dddfe1; background:-webkit-linear-gradient(#F8F8F9,#DDDFE1); background:linear-gradient(#F8F8F9,#DDDFE1); box-shadow:0 1px 3px rgba(0, 0, 0, 0.7),0 1px 0 rgba(0, 0, 0, 0.3); text-shadow:0 1px 1px #fff}
+.uiButton--default:hover, .uiButton--default:focus, .uiButton--default.is-selected {background:#757d8a; background:#757d8a -webkit-linear-gradient(#7F8792,#535B68); background:#757d8a linear-gradient(#7F8792,#535B68); text-shadow:0 -1px 1px rgba(0, 0, 0, 0.5)}
+.uiButton--default .label {white-space:nowrap; color:#3a3d42}
+.uiButton--default:hover .label, .uiButton--default:focus .label {color:#fff}
+.uiButton--default:disabled {cursor:default; background:#b9b9b9; box-shadow:none; text-shadow:none}
+.uiButton--default:disabled .label {color:#888}
+.uiButton--default:disabled .label:hover {color:#888}
+.uiImage.empty {background-image:url(/t1c1/auraFW/resources/aura/s.gif)}
+
+
+.uiTabset--default .tabs__nav {padding:0; margin:0}
+.uiTabset--default .tabs__item {background:#eee; border-radius:5px 5px 0 0; margin-right:2px; white-space:nowrap}
+.uiTabset--default .tabs__item>a {margin:0; color:#363c40; padding:5px 10px}
+.uiTabset--default .tabs__item.active>a {background:#dc595c; border-radius:5px 5px 0 0}
+.auraDebug.debugWindow {height:100%; width:100%}
+.auraShowDependencies {background-color:#aabebf}
+.auraShowDependencies .header {font-weight:bold}
+.auraShowDependencies ol {margin-top:0}
+.auraShowDependencies .headerline {font-weight:bold; margin-top:10px; margin-bottom:0}
+.auraShowDependencies .headerline li {list-style:none}
+.auraShowDependencies .error {background-color:#ff8eaf}
+.auraShowDependencies .uid {float:right; margin-right:20px; font-family:monospace}
+.embeddedServiceLiveAgentHelpButton {text-align:right; position:fixed; bottom:11px; right:20px; height:50px}
+.embeddedServiceLiveAgentHelpButton .flatButton {padding:0 10px; margin:0; box-shadow:none; background:#000; font-size:1rem; color:#fff; font-weight:normal; color:#fff; border-radius:8px; text-shadow:none; line-height:50px; font-family:inherit}
+.embeddedServiceLiveAgentHelpButton .flatButton:hover {background:#22bf54}
+.embeddedServiceLiveAgentHelpButton .flatButton .label {color:#fff}
+.embeddedServiceLiveAgentHelpButton .flatButton .helpButtonLabel {cursor:pointer}
+.embeddedServiceLiveAgentHelpButton .help {padding-right:10px}
+@media only screen and (min-width: 48em) {
+  .embeddedServiceLiveAgentHelpButton {position:fixed; bottom:0}
+  .embeddedServiceLiveAgentHelpButton .flatButton {border-radius:8px 8px 0 0}
+}
+.embeddedServiceLiveAgentPrechat {position:relative; width:100%; height:100%; box-shadow:0 0 20px rgba(0, 0, 0, 0.2); border-radius:8px}
+.embeddedServiceLiveAgentPrechat .startButtonWrapper {position:relative; text-align:center; margin:10px 0 16px 0}
+.embeddedServiceLiveAgentPrechat .startButton .label {color:inherit}
+.embeddedServiceLiveAgentPrechat .backgroundImg {background-repeat:no-repeat; background-position:center; background-size:cover; height:100px}
+.embeddedServiceLiveAgentPrechat .startButton {background:#000; text-shadow:none; box-shadow:none; padding:16px 60px; border-radius:34px; -webkit-transition:background .5s ease; transition:background .5s ease; color:#fff; font-size:1rem; font-weight:600; font-family:inherit}
+.embeddedServiceLiveAgentPrechat .startButton:hover {background:#1ed760}
+.embeddedServiceLiveAgentPrechat .list {padding:0 20px; margin:10px 0 0 0; height:46%}
+.embeddedServiceLiveAgentPrechat input {width:100%; height:3rem; font-size:1.13rem; font-weight:400; text-indent:15px; margin-bottom:10px; border:none; background:#dfdfdf; border-radius:0; color:#333}
+@media only screen and (min-width: 48em) {
+  .embeddedServiceLiveAgentPrechat {position:relative}
+}
+.uiMessage {color:#464646; padding:5px; margin:5px; border-width:1px; border-style:solid; border-radius:5px; font-size:13px; line-height:18px; border-color:#ccc; background-color:#eee; opacity:1; -webkit-transition:opacity .2s ease-out; transition:opacity .2s ease-out}
+.uiMessage.hide {opacity:0}
+.uiMessage .close {font-size:20px; font-weight:bold; line-height:18px; color:black; text-shadow:0 1px 0 white; opacity:.2}
+.uiMessage h4 {font-weight:bold; font-size:16px}
+.uiMessage .bBody p {margin:0}
+.uiMessage.warning {border-color:#f8e38e; background-color:#ffffdc}
+.uiMessage.error {border-color:#f2a199; background-color:#fdedea}
+.uiMessage.confirm {border-color:#9bebb3; background-color:#edfff1}
+.uiMessage.info {border-color:#bee6ff; background-color:#f5fcff}
+
+.embeddedServiceLiveAgentSidebar.modalContainer {display:block; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(51, 51, 51, 0.48); overflow:visible; z-index:999; font-family:sans-serif}
+.embeddedServiceLiveAgentSidebar.modalContainer .minimized {background:transparent; box-shadow:none}
+.embeddedServiceLiveAgentSidebar .dockableContainer.minimized {height:96%}
+.embeddedServiceLiveAgentSidebar .dockableContainer {position:fixed; width:90%; height:96%; margin:5% 5% 0 5%; left:0; right:0; background:#fff; box-shadow:0 0 20px rgba(0, 0, 0, 0.2); border-radius:8px; z-index:15; text-align:center; overflow-y:auto}
+.embeddedServiceLiveAgentSidebar .minimizedContainer {position:fixed; left:auto; bottom:0; right:26px; margin:0; height:50px; max-height:100%; border-radius:8px 8px 0 0; background-color:#000; text-align:center; padding:0 10px}
+.embeddedServiceLiveAgentSidebar .newMessage {background:#22bf54}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedText, .embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedImage, .embeddedServiceLiveAgentSidebar .minimizedContainer .miniLoadingBallContainer, .embeddedServiceLiveAgentSidebar .minimizedContainer .prechatMinimizedText {display:inline-block}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .miniLoadingBallContainer {vertical-align:top; margin-top:17px}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedText, .embeddedServiceLiveAgentSidebar .minimizedContainer .prechatMinimizedText {font-size:1rem; margin-top:19px; color:#fff; vertical-align:top}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedImage {height:25px; width:25px; background-repeat:no-repeat; background-position:center; background-size:cover; margin-right:10px; margin-top:15px}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .help {margin-top:19px; padding-right:10px; color:#fff}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .globalLoadingBall {font-size:6px; text-align:center; padding:6px; display:inline-block; -webkit-animation:ballanimate 2.25s infinite ease-in-out; animation:ballanimate 2.25s infinite ease-in-out}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .ballTwo {-webkit-animation-delay:.75s; animation-delay:.75s}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .ballThree {-webkit-animation-delay:1.5s; animation-delay:1.5s}
+@-webkit-keyframes ballanimate {
+  0% {font-size:6px}
+  16% {font-size:9px}
+  33% {font-size:6px}
+}
+@keyframes ballanimate {
+  0% {font-size:6px}
+  16% {font-size:9px}
+  33% {font-size:6px}
+}
+.embeddedServiceLiveAgentSidebar .minimizedContainer .loadingBall {position:absolute; display:inline-block; width:1em; height:1em; border-radius:1em; background-color:#22bf54}
+.embeddedServiceLiveAgentSidebar.minimized {background:transparent; box-shadow:none}
+.embeddedServiceLiveAgentSidebar .assistiveText {position:absolute!important; height:1px; width:1px; overflow:hidden; clip:rect(1px, 1px, 1px, 1px)}
+.embeddedServiceLiveAgentSidebar .menuHeader {background:#000; color:#fff; border-radius:8px 8px 0 0; line-height:3.4; text-align:center; font-weight:300; font-size:1rem; clear:both}
+.embeddedServiceLiveAgentSidebar .backgroundImg img {width:100%}
+.embeddedServiceLiveAgentSidebar .instructions {padding:10px 30px 0 30px; text-align:center; line-height:1.5; font-size:1rem}
+.embeddedServiceLiveAgentSidebar .menuAgentText {padding-left:60px}
+.embeddedServiceLiveAgentSidebar .headerItem {color:#fff; font-size:1.3rem}
+.embeddedServiceLiveAgentSidebar .closeButton {float:left}
+.embeddedServiceLiveAgentSidebar .popoutButton, .embeddedServiceLiveAgentSidebar .minimizeButton {float:right}
+.embeddedServiceLiveAgentSidebar .closeButton, .embeddedServiceLiveAgentSidebar .minimizeButton, .embeddedServiceLiveAgentSidebar .popoutButton {-webkit-transition:color .7s ease; transition:color .7s ease; padding:14px}
+.embeddedServiceLiveAgentSidebar .closeButton:hover, .embeddedServiceLiveAgentSidebar .minimizeButton:hover, .embeddedServiceLiveAgentSidebar .popoutButton:hover {color:#1ed760}
+@media only screen and (min-width: 48em) {
+  .embeddedServiceLiveAgentSidebar.modalContainer {background-color:transparent}
+  .embeddedServiceLiveAgentSidebar .dockableContainer {position:fixed; left:auto; bottom:0; right:26px; margin:0; width:320px; height:auto; max-height:100%; border-radius:8px 8px 0 0}
+}
+@media only screen and (max-width: 47.9375em) {
+  .embeddedServiceLiveAgentSidebar .minimizedContainer {border-radius:8px 8px 8px 8px; width:72px; height:72px; bottom:50%; background-color:#000}
+  .embeddedServiceLiveAgentSidebar .helpButtonMinimize {width:auto; bottom:11px; height:50px}
+  .embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedImage {margin-right:0; margin-top:12px}
+  .embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedText {font-size:.625rem; margin-top:8px; display:block}
+  .embeddedServiceLiveAgentSidebar .minimizedContainer .miniLoadingBallContainer {width:95%; margin-top:1px; display:block}
+  .embeddedServiceLiveAgentSidebar .minimizedContainer .hideMinimizeText {display:none}
+}
+    </style>
