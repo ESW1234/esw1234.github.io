@@ -3,6 +3,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js?v=2"></script>
+<div id="parent_div">
 <div id="button_goes_here"/>
  <script>
     $Lightning.use("embeddedService:liveAgentSideBarApp", function() {
@@ -11,13 +12,16 @@
         }, "button_goes_here");
    },"https://200.localhost.force.com:6101/napili");
    </script>
+</div>
 </html>
     <style>
+    #parent_div {
+       background: url("Spotify-large.png") no-repeat;
+    }
       #button_goes_here{
             width: 25%; 
             height: 100%; 
             margin: 0 auto;
-            background: url("Spotify-large.png") no-repeat;
             background-size: 100% 99% cover;
             position: relative;
       }
