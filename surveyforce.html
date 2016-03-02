@@ -4,7 +4,7 @@
 </head>
 <script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js?v=2"></script>
 <div id="button_goes_here">
-   <div class="survey-button" onclick="this.style.visibility='hidden'; document.getElementByClass('getElementsByClassName').style.visibility = 'visible'">Take Survey</div>
+   <div class="survey-button" onclick="this.style.visibility='hidden'; document.getElementsByClassName('getElementsByClassName').style.visibility = 'visible'">Take Survey</div>
  <script>
     $Lightning.use("embeddedService:liveAgentSideBarApp", function() {
        $Lightning.createComponent("embeddedService:surveyComplete", {
