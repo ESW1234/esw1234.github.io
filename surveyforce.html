@@ -3,7 +3,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js?v=2"></script>
-<div id="button_goes_here"/>
+<div id="button_goes_here">
+   <div class="survey-button" onclick="document.getElementByClass('completeSurvey').style.visibility = 'visible'">Take Survey</div>
  <script>
     $Lightning.use("embeddedService:liveAgentSideBarApp", function() {
        $Lightning.createComponent("embeddedService:surveyComplete", {
@@ -14,18 +15,39 @@
 </html>
 <style>
 
+.survey-button {
+	position: fixed;
+    bottom: 50%;
+    right: 0;
+    background-color: #000;
+    border-radius: 15px 0 0 15px;
+    display: inline-block;
+    padding: .8em 1.6em;
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 0;
+    color: #fff;
+    overflow: visible;
+    font-family: OpenSans, 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+}
+
 .completeSurvey {
     padding-left: 20px;
     width: 25%;
     float: right;
     background-color: beige;
     border: 1px solid;
+    visibility: hidden;
 }
+
    #button_goes_here {
        width: 100%;
        height: 100%;
        margin: 0 auto;
        background: url("https://esw1234.github.io/groupon1.png") no-repeat;
+       background-size: cover;
        position: relative;
    }
 </style>
