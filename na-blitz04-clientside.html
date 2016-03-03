@@ -63,6 +63,8 @@ var loadLightningOut = function(){
 var doLightningOut = function() {
 //this is just to deal with namespace issues
 window.liveagent = undefined;
+//hide the button
+document.getElementById("button_goes_here").innerHTML = "";
 $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
     $Lightning.createComponent("embeddedService:liveAgentSidebar", {
          deploymentId : '572D00000004CSa',
