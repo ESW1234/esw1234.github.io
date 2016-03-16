@@ -1,0 +1,18 @@
+<html>
+<script src="https://eswperf.blitz03.soma.force.com/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+   <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+           deploymentId : '572D00000004CQK',
+           orgId : '00DD00000007yvn',
+           buttonId : '573D00000004CTO',
+           endpointURL : 'https://d.la-blitz03.soma.salesforce.com/chat',
+            avatarImgURL : 'avatar.png',
+            prechatBackgroundImgURL : 'Prechat_image.png',
+           chasitorContentServerEndpointUrl : 'https://d.la-blitz03.soma.salesforce.com/content',
+           chasitorSrcURL : ['https://eswperf.blitz03.soma.force.com/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','https://d.la-blitz03.soma.salesforce.com/content/g/js/36.0/chasitor.js']
+        }, "button_goes_here");
+   },"https://eswperf.blitz03.soma.force.com/1117Napili");
+   </script>
+</html>
