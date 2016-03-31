@@ -2,23 +2,22 @@
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
-<script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js?v=2"></script>
+<script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js"></script>
+<a href="//www.google.com">google.com</a>
 <div id="button_goes_here"/>
  <script>
-    $Lightning.use("embeddedService:liveAgentSideBarApp", function() {
-       $Lightning.createComponent("embeddedService:surveyComplete", {
-           surveyId : '0GVxx000000001T'
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+           deploymentId : '572xx0000000001',
+           orgId : '00Dxx0000001gH6',
+           buttonId : '573xx0000000001',
+           endpointURL: 'http://vrajagopal-ltm2.internal.salesforce.com:8096/chat',
+           chasitorContentServerEndpointURL : 'http://vrajagopal-ltm2.internal.salesforce.com:8095/content',
+           chasitorSrcURL : ['https://vrajagopal-ltm2.internal.salesforce.com:6101/jslibrary/1457407923000/ui-sfdc-javascript-impl/SfdcCore.js', 'http://vrajagopal-ltm2.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js'],
+           prechatBackgroundImgURL : '',
+           avatarImgURL : '',
+           waitingStateBackgroundImgURL : ''
         }, "button_goes_here");
-   },"https://surveyz.localhost.force.com:6101/napili");
+   },"https://surveyforce.localhost.force.com:6101/napili");
    </script>
 </html>
-    <style>
-      #button_goes_here{
-            width: 25%; 
-            height: 100%; 
-            margin: 0 auto;
-            background: url("Spotify-large.png") no-repeat;
-            background-size: 100% 99% cover;
-            position: relative;
-      }
-    </style>
