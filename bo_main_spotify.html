@@ -16,7 +16,7 @@
 [window, document, document.body].forEach(function(node) {
   ['beforeunload', 'pagehide'].forEach(function(event) {
     node.addEventListener(event, function() {
-      console.log(node, event);
+      console.log(node + ' ' + event);
     });
   });
 });
