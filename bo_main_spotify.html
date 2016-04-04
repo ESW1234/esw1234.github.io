@@ -13,19 +13,12 @@
 <a href="javascript:window.location.reload()">Refresh</a>
 <a href="bo_main_spotify.html">Navigate to this page</a>
 <script>
-window.addEventListener('pagehide', function() {
-  console.log('window.pagehide');
-  alert('window.pagehide');
-});
-window.addEventListener('beforeunload', function() {
-  console.log('window.beforeunload');
-  alert('window.beforeunload');
-});
-document.addEventListener('pagehide', function() {
-  console.log('document.pagehide');
-});
-document.addEventListener('beforeunload', function() {
-  console.log('document.beforeunload');
+[window, document, document.body].forEach(function(node) {
+  ['beforeunload', 'pagehide'].forEach(function(event) {
+    node.addEventListener(event, function() {
+      console.log(node, event);
+    });
+  });
 });
 </script>
 <!-- -->
