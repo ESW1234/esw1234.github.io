@@ -9,35 +9,25 @@
 <script src="js/bo_main.js"></script>
 <div id="button_goes_here"/>
 
+<!-- W-3000482 -->
 <a href="javascript:window.location.reload()">Refresh</a>
 <a href="bo_main_spotify.html">Navigate to this page</a>
-
-<!-- W-2960730 -->
-<p>top</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>W-2960730</p>
-<p>bottom</p>
+<script>
+window.addEventListener('pagehide', function() {
+  console.log('window.pagehide');
+  alert('window.pagehide');
+});
+window.addEventListener('beforeunload', function() {
+  console.log('window.beforeunload');
+  alert('window.beforeunload');
+});
+document.addEventListener('pagehide', function() {
+  console.log('document.pagehide');
+});
+document.addEventListener('beforeunload', function() {
+  console.log('document.beforeunload');
+});
+</script>
 <!-- -->
 
 <style>
@@ -47,9 +37,6 @@ body {
 }
 a {
   display: block;
-}
-p {
-  color: red;
 }
 </style>
 
