@@ -14,7 +14,7 @@
 <a href="bo202.html">Navigate to this page</a>
 <script>
 [window, document, document.body].forEach(function(node) {
-  ['beforeunload', 'pagehide'].forEach(function(event) {
+  ['beforeunload', 'pagehide', 'popstate'].forEach(function(event) {
     node.addEventListener(event, function() {
       console.log(node + ' ' + event);
     });
