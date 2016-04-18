@@ -1,8 +1,8 @@
    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
        $Lightning.createComponent("embeddedService:liveAgentSidebar", {
          deploymentId : '572D00000004CSa',
-         orgId : '573D00000004CXk',
-         buttonId : '573D00000004CY9',
+         orgId : '00DD00000008649',
+         buttonId : '573D00000004CXk',
          endpointURL : 'https://d.la-blitz02.soma.salesforce.com/chat',
          avatarImgURL : 'avatar.png',
          prechatBackgroundImgURL : 'Prechat_image.png',
