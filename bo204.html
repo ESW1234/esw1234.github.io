@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<script src="http://bochean-ltm2.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+<script src="js/bo204.js"></script>
+<div id="button_goes_here"/>
+
+<!-- W-3000482 -->
+<a href="javascript:window.location.reload()">Refresh</a>
+<a href="bo204.html">Navigate to this page</a>
+<script>
+[window, document, document.body].forEach(function(node) {
+  ['beforeunload', 'pagehide'].forEach(function(event) {
+    node.addEventListener(event, function() {
+      console.log(node + ' ' + event);
+    });
+  });
+});
+</script>
+<!-- -->
+
+<style>
+body {
+  margin: 0;
+  background: url("Spotify-large.png") no-repeat;
+}
+a {
+  display: block;
+}
+</style>
+
+</html>
