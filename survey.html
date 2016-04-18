@@ -2,8 +2,7 @@
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
-<script src="https://vrajagopal-ltm2.internal.salesforce.com:6101/lightning/lightning.out.js"></script>
-<a href="//www.google.com">google.com</a>
+<script src="http://vrajagopal-ltm2.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
 <div id="button_goes_here"/>
  <script>
     $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
@@ -13,11 +12,81 @@
            buttonId : '573xx0000000001',
            endpointURL: 'http://vrajagopal-ltm2.internal.salesforce.com:8096/chat',
            chasitorContentServerEndpointURL : 'http://vrajagopal-ltm2.internal.salesforce.com:8095/content',
-           chasitorSrcURL : ['https://vrajagopal-ltm2.internal.salesforce.com:6101/jslibrary/1457407923000/ui-sfdc-javascript-impl/SfdcCore.js', 'http://vrajagopal-ltm2.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js'],
+           chasitorSrcURL : ['http://vrajagopal-ltm2.internal.salesforce.com:6109/jslibrary/1457407923000/ui-sfdc-javascript-impl/SfdcCore.js', 'http://vrajagopal-ltm2.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js'],
            prechatBackgroundImgURL : '',
-           avatarImgURL : '',
+           avatarImgURL : '/avatar.png',
            waitingStateBackgroundImgURL : ''
         }, "button_goes_here");
-   },"https://surveyforce.localhost.force.com:6101/napili");
+   },"http://surveyforce.localhost.force.com:6109/napili");
    </script>
 </html>
+
+<style>
+#button_goes_here {
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
+   background: url("https://esw1234.github.io/tesla.png") no-repeat;
+   background-size: cover;
+   position: relative;
+}
+
+.embeddedServiceLiveAgentChatMessage .agentAvatar {
+    background-color: #000;
+    background: url(avatar.png) no-repeat;
+}
+
+.embeddedServiceLiveAgentChatMessage .visitorContent {
+  border-radius: 8px;
+  background-color: #cd0500;
+}
+
+.embeddedServiceLiveAgentChatMessage .agentContent {
+  border-radius: 8px;
+  background-color: #dfdfdf;    
+}
+
+.embeddedServiceLiveAgentChatWindow .infoModal .infoModalButtonContainer button:last-child {
+    background-color: #cd0500;
+}
+
+.embeddedServiceLiveAgentChatWindow .infoModal .infoModalButtonContainer button:first-child {
+    background-color: #000;
+}
+
+.embeddedServiceLiveAgentChatWindow .infoModal .infoModalButtonContainer button:first-child span, 
+.embeddedServiceLiveAgentChatWindow .infoModal .infoModalButtonContainer button:first-child:hover span {
+   color: #ffffff;
+}
+
+.postChatButtonContainer button {
+    text-shadow: none;
+    box-shadow: none;
+    padding: 10px 33px;
+    border-radius: 34px;
+    margin: 2px 3px;
+    width: 216px;
+    height: 43px;
+    color: #ffffff;
+    background-image:none;
+    font-weight: 400;
+}
+
+.postChatButtonContainer button:first-child,
+.postChatButtonContainer button:first-child:hover {
+  background-color: #cd0500;
+}
+
+.postChatButtonContainer button:last-child,
+.postChatButtonContainer button:last-child:hover {
+  background-color: #000000;
+}
+
+.postChatButtonContainer button:first-child span, 
+.postChatButtonContainer button:last-child span, 
+.postChatButtonContainer button:first-child:hover span,
+.postChatButtonContainer button:last-child:hover span {
+  color: #fff;
+  font-weight: 400;
+}
+</style>
