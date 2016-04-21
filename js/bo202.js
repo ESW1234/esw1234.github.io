@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+  var buttonDiv = document.createElement('div');
+  buttonDiv.setAttribute('id', 'button_goes_2here');
+  document.body.appendChild(buttonDiv);
+});
 // esw@bo.org
 $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
   $Lightning.createComponent("embeddedService:liveAgentSidebar", {
