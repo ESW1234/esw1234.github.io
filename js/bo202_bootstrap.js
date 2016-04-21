@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
   document.body.appendChild(ltngOutScript);
   
   var widgetScript = document.createElement('script');
-  widgetScript.setAttribute('src', '/js/bo202.js');
+  widgetScript.setAttribute('src', '/js/bo202_widget.js');
   document.body.appendChild(widgetScript);
 });
