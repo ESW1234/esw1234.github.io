@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
   var buttonDiv = document.createElement('div');
-  var buttonDivId = 'button_goes_here';
-  buttonDiv.setAttribute('id', buttonDivId);
+  buttonDiv.setAttribute('id', 'button_goes_here');
   document.body.appendChild(buttonDiv);
   
   var ltngOutScript = document.createElement('script');
