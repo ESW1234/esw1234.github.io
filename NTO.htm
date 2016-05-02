@@ -1,0 +1,30 @@
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="https://gus.salesforce.com/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+   <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+         deploymentId : '572B000000008ZM',
+         orgId : '00DB00000002V3P',
+         buttonId : '573B00000000AEg',
+         endpointURL : 'https://d.la.gus.salesforce.com/chat',
+         prechatBackgroundImgURL : 'Background.png',
+         avatarImgURL : 'avatar.png',
+         waitingStateBackgroundImgURL : 'waitingStateImage.png',
+         smallCompanyLogoImgURL : 'SFDCLogo.png',
+         chasitorContentServerEndpointURL : 'https://d.la.gus.salesforce.com/content',
+         chasitorSrcURL : ['https://gus.salesforce.com/jslibrary/1457334052000/ui-sfdc-javascript-impl/SfdcCore.js','https://d.la.gus.salesforce.com/content/g/js/37.0/chasitor.js']
+        }, "button_goes_here");
+   },"https://servicepm.force.com/nto");
+   </script>
+   <body>
+   <img src="Eventspage.png" width="1440" height="828" alt="Comcast"
+usemap="#links">
+
+<map name="links">
+  <area shape="rect" coords="479,507,707,733" href="WorldTour.htm" alt="Account">
+</map>
+</body>
