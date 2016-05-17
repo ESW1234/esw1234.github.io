@@ -1,0 +1,59 @@
+d>
+   <!-- TODO: Add this dynamically? -->  
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<div id="button_goes_here">
+    <div id="embeddedServiceLiveAgentChatButton" class="embeddedServiceLiveAgentChatButton">
+        <div class="helpButton">
+            <button id="esw_button_offline" style="display: none" class="uiButton" type="button">
+                <span class="assistiveText">Agent Offline</span>
+                <span class="embeddedServiceIcon" aria-hidden="true" data-icon="&#59402;"></span>
+                <span class="helpButtonLabel">Agent Offline</span>
+            </button>
+            <button id="esw_button_online" style="display: none" onclick="initInteraction()" class="uiButton" type="button">
+                <span class="assistiveText">Chat with an Expert</span>
+                <span class="embeddedServiceIcon" aria-hidden="true" data-icon="&#59402;"></span>
+                <span class="helpButtonLabel">Chat with an Expert</span>
+            </button>                   
+        </div>
+    </div>
+</div>
+<script src="http://service.force.com/lightning/lightning.out.js" charset="utf-8"></script>
+<script src="http://service.force.com/embeddedservice/204.0/esw.js" charset="utf-8"></script>
+<script>
+	var initESW = function() {
+        embedded_svc.settings.avatarImgURL = 'avatar.png';
+        embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+
+    	// TODO: API design? 
+        embedded_svc.settings.chasitorContentServerEndpointURL = 'http://avijayant-wsl.internal.salesforce.com:8095/content';
+        embedded_svc.settings.communityEndpointURL = 'http://nwk00dxx0000001ghb.localhost.force.com:6109/Napili0401';
+        embedded_svc.settings.targetElement = "button_goes_here";
+	    embedded_svc.init('http://avijayant-wsl.internal.salesforce.com:6109', 'http://avijayant-wsl.internal.salesforce.com:8096/chat', '572xx0000000001', '00Dxx0000001gHB', '573xx0000000001', document.getElementById('esw_button_online'), document.getElementById('esw_button_offline'));
+	}
+    if (!window.embedded_svc) { 
+    	document.write('<script src="http://avijayant-wsl.internal.salesforce.com:6109/embeddedservice/204.0/esw.js"></sc' + 'ript>');
+    	// TODO: Timeout ugliness 
+	    setTimeout(initESW, 100);
+    } else {
+	    initESW();
+    }
+	var initInteraction = function(){
+		embedded_svc.initInteraction();
+	}
+</script>
+
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+
+</style>
+
