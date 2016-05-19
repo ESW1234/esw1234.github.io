@@ -1,0 +1,32 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="https://subbu--c.na1-blitz01.visual.soma.force.com/lightning/lightning.out.js"></script>
+<div id="button_goes_here"/>
+   <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+         endpointURL : 'https://d.la-blitz01.soma.salesforce.com/chat',
+         deploymentId : '572D00000004CTs',
+         orgId : '00DD00000008DCT',
+         buttonId : '573D00000004CZl',
+         avatarImgURL : 'avatar.png',
+         prechatBackgroundImgURL : 'Prechat_image.png',
+	 waitingStateBackgroundImgURL : 'waitingStateImage.png',
+	 smallCompanyLogoImgURL : 'smallCompanyLogoImg.png',
+         chasitorContentServerEndpointURL : 'https://d.la-blitz01.soma.salesforce.com/content',
+         chasitorSrcURL : ['https://na1-blitz01.soma.salesforce.com/jslibrary/1457334052000/ui-sfdc-javascript-impl/SfdcCore.js','https://d.la-blitz01.soma.salesforce.com/content/g/js/37.0/chasitor.js']
+        }, "button_goes_here");
+   },"https://jazmin0519.blitz01.soma.force.com/na1blitz01");
+   </script>
+</html>
+    <style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("Spotify-large.png") no-repeat;
+            position: relative;
+      }
+    </style>
