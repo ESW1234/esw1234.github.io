@@ -1,0 +1,38 @@
+
+<html>
+	<body>
+		<h3>Hi there, this is a simple page for ESW testing</h3>
+	    <a href="204_main.html">Navigate to default styled widget</a>
+		<br/>
+		<br/>
+	    <a href="204_main_custom.html">Navigate to custom styled widget</a>
+		<br/>
+		<br/>
+		<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+	</body>
+	
+	<script src="https://service.force.com/lightning/lightning.out.js"></script>
+	<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+	<script>
+		var initESW = function() {
+	        embedded_svc.settings.avatarImgURL = 'avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+	        embedded_svc.settings.displayHelpButton = false;
+	        
+		    embedded_svc.init('http://avijayant-wsl.internal.salesforce.com:6109', 'http://avijayant-wsl.internal.salesforce.com:8096/chat', 'http://avijayant-wsl.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001ghb.localhost.force.com:6109/Napili0401',
+		    	'572xx0000000001', '00Dxx0000001gHB', '573xx0000000001', '204.0');
+		}
+	    if (!window.embedded_svc) { 
+	    	var s = document.createElement('script');
+			s.setAttribute('src', 'http://avijayant-wsl.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
+			s.onload=initESW; 
+			document.body.appendChild(s);
+	    } else {
+		    initESW();
+	    }
+	</script>
+
+</html>
+
