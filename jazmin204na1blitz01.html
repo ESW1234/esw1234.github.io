@@ -2,24 +2,29 @@
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
-<script src="https://subbu--c.na1-blitz01.visual.soma.force.com/lightning/lightning.out.js"></script>
+
 <div id="button_goes_here"/>
-   <script>
-    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
-       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
-         endpointURL : 'https://d.la-blitz01.soma.salesforce.com/chat',
-         deploymentId : '572D00000004CTs',
-         orgId : '00DD00000008DCT',
-         buttonId : '573D00000004CZl',
-         avatarImgURL : 'avatar.png',
-         prechatBackgroundImgURL : 'Prechat_image.png',
-	 waitingStateBackgroundImgURL : 'waitingStateImage.png',
-	 smallCompanyLogoImgURL : 'smallCompanyLogoImg.png',
-         chasitorContentServerEndpointURL : 'https://d.la-blitz01.soma.salesforce.com/content',
-         chasitorSrcURL : ['https://na1-blitz01.soma.salesforce.com/jslibrary/1457334052000/ui-sfdc-javascript-impl/SfdcCore.js','https://d.la-blitz01.soma.salesforce.com/content/g/js/37.0/chasitor.js']
-        }, "button_goes_here");
-   },"https://jazmin0519.blitz01.soma.force.com/na1blitz01");
-   </script>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.min.js"></script>
+<script>
+	var initESW = function() {
+        embedded_svc.settings.avatarImgURL = 'avatar.png';
+        embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+        
+        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://na1-blitz01.soma.salesforce.com/chat', 'https://na1-blitz01.soma.salesforce.com/content', 'https://jazmin0519.blitz01.soma.force.com/na1blitz01',
+	    	'572D00000004CTs', '00DD00000008DCT', '573D00000004CZl', ‘204.0’);
+	}
+    if (!window.embedded_svc) { 
+    	var s = document.createElement('script');
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.min.js');
+		s.onload=initESW; 
+		document.body.appendChild(s);
+    } else {
+	    initESW();
+    }
+</script>
 </html>
     <style>
       #button_goes_here{
@@ -30,3 +35,4 @@
             position: relative;
       }
     </style>
+    
