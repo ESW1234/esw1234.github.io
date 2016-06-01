@@ -1,32 +1,36 @@
 <html>
-<head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-<script src="https://esw204.na1-blitz01.visual.soma.force.com/lightning/lightning.out.js"></script>
-<div id="button_goes_here"/>
-   <script>
-    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
-       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
-         endpointURL : 'https://d.la-blitz01.soma.salesforce.com/chat',
-         deploymentId : '572D00000004CTx',
-         orgId : '00DD00000008DCx',
-         buttonId : '573D00000004CZq',
-         avatarImgURL : 'avatar.png',
-         prechatBackgroundImgURL : 'Prechat_image.png',
-	 waitingStateBackgroundImgURL : 'waitingStateImage.png',
-	 smallCompanyLogoImgURL : 'smallCompanyLogoImg.png',
-         chasitorContentServerEndpointURL : 'https://d.la-blitz01.soma.salesforce.com/content',
-         chasitorSrcURL : ['https://na1-blitz01.soma.salesforce.com/jslibrary/1457334052000/ui-sfdc-javascript-impl/SfdcCore.js','https://d.la-blitz01.soma.salesforce.com/content/g/js/38.0/chasitor.js']
-        }, "button_goes_here");
-   },"https://esw204.blitz01.soma.force.com/napili0428");
-   </script>
+<div id="button_goes_here">
+</div>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+	var initESW = function(gslbMiss) {
+        embedded_svc.settings.avatarImgURL = '../avatar.png';
+        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+        
+        embedded_svc.init('http://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428',
+	    	'572D00000004CTx', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbMiss);
+	}
+    if (!window.embedded_svc) { 
+    	var s = document.createElement('script');
+		s.setAttribute('src', 'http://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+		s.onload=function(){ initESW(true) }; 
+		document.body.appendChild(s);
+    } else {
+	    initESW(false);
+    }
+</script>
+
 </html>
-    <style>
+<style>
       #button_goes_here{
             width: 100%; 
             height: 100%; 
+            top: 60px;
             margin: 0 auto;
-            background: url("../Spotify-large.png") no-repeat;
+            background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
             position: relative;
       }
-    </style>
+</style>
