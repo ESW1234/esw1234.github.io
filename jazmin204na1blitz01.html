@@ -1,8 +1,10 @@
+
+
 <html>
 <div id="button_goes_here">
 </div>
-<script src="https://na1-blitz01.soma.salesforce.com/lightning/lightning.out.js"></script>
-<script src="https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js"></script>
+<script src="https://na1-blitz01./lightning/lightning.out.js"></script>
+<script src="https://do-not-work/embeddedservice/204.0/esw.js"></script>
 <script>
 	var initESW = function(gslbMiss) {
         embedded_svc.settings.avatarImgURL = 'avatar.png';
@@ -15,7 +17,7 @@
 	}
     if (!window.embedded_svc) { 
     	var s = document.createElement('script');
-		s.setAttribute('src', 'http://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
 		s.onload=function(){ initESW(true) }; 
 		document.body.appendChild(s);
     } else {
