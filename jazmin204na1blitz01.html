@@ -1,8 +1,8 @@
 <html>
 <div id="button_goes_here">
 </div>
-<script src="https://service.force.com/lightning/lightning.out.js"></script>
-<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script src="https://na1-blitz01.soma.salesforce.com'/lightning/lightning.out.js"></script>
+<script src="https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js"></script>
 <script>
 	var initESW = function(gslbMiss) {
         embedded_svc.settings.avatarImgURL = 'avatar.png';
@@ -10,7 +10,7 @@
         embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
         embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
         
-        embedded_svc.init('http://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://jazmin0519.blitz01.soma.force.com/na1blitz01',
+        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://jazmin0519.blitz01.soma.force.com/na1blitz01',
 	    	'572D00000004CTs', '00DD00000008DCT', '573D00000004CZl', '204.0', gslbMiss);
 	}
     if (!window.embedded_svc) { 
