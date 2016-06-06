@@ -11,7 +11,7 @@
 	</div>
 
 	<script src="https://service.force.com/lightning/lightning.out.js"></script>
-	<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+	<script src="broken link"></script>
 	<script>
 		var initESW = function(gslbBaseUrl) {
 	        embedded_svc.settings.avatarImgURL = '../avatar.png';
@@ -19,12 +19,12 @@
 	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 	        
-	        embedded_svc.init('http://pganesh-ltm9.internal.salesforce.com:6109', 'http://pganesh-ltm9.internal.salesforce.com:8096/chat', 'http://pganesh-ltm9.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001ghb.localhost.force.com:6109/Napili0401',
+	        embedded_svc.init('http://pganesh-ltm9.internal.salesforce.com:6109', 'http://pganesh-ltm9.internal.salesforce.com:8096/chat', 'http://pganesh-ltm9.internal.salesforce.com:8095/content', 'http://pganeshcommunity.localhost.force.com:6109/Napili05272016',
 		    	'572xx0000000001', '00Dxx0000001gG4', '573xx0000000001', '204.0', gslbBaseUrl);
 		}
 	    if (!window.embedded_svc) { 
 	    	var s = document.createElement('script');
-			s.setAttribute('src', 'http://pganesh-ltm9.internal.salesforce.com:8095/content/g/js/38.0/deployment.js');
+			s.setAttribute('src', 'http://pganesh-ltm9.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
 			s.onload=function(){ initESW(null) }; 
 			document.body.appendChild(s);
 	    } else {
