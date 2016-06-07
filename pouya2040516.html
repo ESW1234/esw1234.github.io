@@ -2,7 +2,7 @@
 <div id="button_goes_here">
 </div>
 <script src="https://service.force.com/lightning/lightning.out.js"></script>
-<script src="not gonna work"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js></script>
 <script>
 	var initESW = function(gslbMiss) {
         embedded_svc.settings.avatarImgURL = '../avatar.png';
@@ -19,7 +19,7 @@
 		s.onload=function(){ initESW(true) }; 
 		document.body.appendChild(s);
     } else {
-	    initESW(false);
+	    initESW('https://service.force.com');
     }
 </script>
 
