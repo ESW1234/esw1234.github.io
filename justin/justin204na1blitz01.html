@@ -4,22 +4,22 @@
 <script src="https://service.force.com/lightning/lightning.out.js"></script>
 <script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
 <script>
-	var initESW = function(gslbMiss) {
+	var initESW = function(gslbBaseUrl) {
         embedded_svc.settings.avatarImgURL = '../avatar.png';
         embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
         embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
         embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
         
         embedded_svc.init('http://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428',
-	    	'572D00000004CTx', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbMiss);
+	    	'572D00000004CTx', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbBaseUrl);
 	}
     if (!window.embedded_svc) { 
     	var s = document.createElement('script');
 		s.setAttribute('src', 'http://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(true) }; 
+		s.onload=function(){ initESW(null) }; 
 		document.body.appendChild(s);
     } else {
-	    initESW(false);
+	    initESW('https://service.force.com');
     }
 </script>
 
