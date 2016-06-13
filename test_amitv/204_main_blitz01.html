@@ -1,0 +1,48 @@
+
+<html>
+
+    <h1>Dummy ESW page</h1>
+    <a href="204_main_custom.html">Navigate to custom styled widget</a>
+	<br/>
+	<br/>
+    <a href="204_main_hidden.html">Navigate to page with hidden widget</a>
+
+	<div id="button_goes_here">
+	</div>
+
+	<script src="https://service.force.com/lightning/lightning.out.js"></script>
+	<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+	<script>
+		var initESW = function(gslbBaseUrl) {
+	        embedded_svc.settings.avatarImgURL = '../avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428',
+	    	'572D00000004CTx', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbBaseUrl);
+	}	        
+	       
+	    if (!window.embedded_svc) { 
+	    	var s = document.createElement('script');
+			s.setAttribute('src', 'http://avijayant-wsl.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
+			s.onload=function(){ initESW(null) }; 
+			document.body.appendChild(s);
+	    } else {
+		    initESW('https://service.force.com');
+	    }
+	</script>
+
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            top: 60px;
+            margin: 0 auto;
+            background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+
+</style>
+
