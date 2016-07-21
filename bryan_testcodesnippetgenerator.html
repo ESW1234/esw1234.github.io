@@ -22,8 +22,7 @@ To change the background image on the pre-chat form, specify an image URL in emb
 
 To change the background image that appears when the customer is waiting for an agent to join the chat, specify an image URL in embedded_svc.settings.waitingStateBackgroundImgURL = '';
 
-To show your company logo in the chat button when the button is minimized, specify an image URL in embedded_svc.settings.smallCompanyLogoImgURL = '';*/
-		embedded_svc.settings.avatarImgURL = '';
+To show your company logo in the chat button when the button is minimized, specify an image URL in embedded_svc.settings.smallCompanyLogoImgURL = '';*/embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
@@ -35,10 +34,12 @@ To specify whether the pre-chat form appears when a customer initiates a chat, s
 
 To customize the text that appears in the chat button when agents are online, set the parameter onlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Chat with an Expert”. 
 
-To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline”.*/
-		embedded_svc.settings.displayHelpButton = true; //Or falseembedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://liveagentpage.localhost.force.com:6109/', '572xx000000000BAAQ', '00Dxx0000001gV3', '573xx000000000BAAQ', '204.0', gslbBaseUrl);
+To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline”.*/embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'null', '572xx000000000BAAQ', '00Dxx0000001gV3', '573xx000000000BAAQ', '204.0', gslbBaseUrl);
 } if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://service.force.com/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>
-
 </body>
 
 
