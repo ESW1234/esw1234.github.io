@@ -1,6 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
 
-kanan-wsm-main-204
-<a href="http://esw1234.github.io/kanan_204_main.html">Page 1 </a>
+
+<body>
+This is a page.
+
+<div id="button_goes_here"></div>
 
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
@@ -25,14 +33,16 @@ To show the default chat button that connects your customers to the chat widget,
 
 To specify whether the pre-chat form appears when a customer initiates a chat, set initialInteractionState = "PRECHAT";. Valid parameters are PRECHAT|WAITING. By default, the parameter is set to show the pre-chat form. If you set it to “Waiting,” then the chat widget doesn’t show the pre-chat form and immediately opens a chat window.
 
-To customize the text that appears in the chat button when agents are online, set the parameter onlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Chat with an Expert."
+To customize the text that appears in the chat button when agents are online, set the parameter onlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Chat with an Expert”. 
 
-To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline."
-
-To customize the text that appears in the chat button when the chat window is loading, set the parameter onlineLoadingText = "..." to whatever text you want to show. If you don't specify this parameter, the default text shown is "Loading."*/
+To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline”.*/
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://embeddedservice204.blitz01.soma.force.com', '572D00000004CX6', '00DD00000008DCx', '573D00000004Cin', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'null', '572xx000000000BAAQ', '00Dxx0000001gV3', '573xx000000000BAAQ', '204.0', gslbBaseUrl);
+} if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>
+</body>
+
+
+</html>
