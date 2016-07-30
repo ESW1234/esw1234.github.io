@@ -1,0 +1,34 @@
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+/*Optionally specify the embedded_svc.settings to customize the images used in the snap-in chat widget. 
+
+To change the chat avatar, specify an image URL in embedded_svc.settings.avatarImgURL = '';
+
+To change the background image on the pre-chat form, specify an image URL in embedded_svc.settings.prechatBackgroundImgURL = '';
+
+To change the background image that appears when the customer is waiting for an agent to join the chat, specify an image URL in embedded_svc.settings.waitingStateBackgroundImgURL = '';
+
+To show your company logo in the chat button when the button is minimized, specify an image URL in embedded_svc.settings.smallCompanyLogoImgURL = '';*/
+embedded_svc.settings.avatarImgURL = '../avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+/*Optionally specify the embedded_svc.settings to customize the appearance and behavior of the snap-in chat widget. 
+
+To show the default chat button that connects your customers to the chat widget, set the displayHelpButton = true;. Valid parameters are true|false.
+
+To specify whether the pre-chat form appears when a customer initiates a chat, set initialInteractionState = "PRECHAT";. Valid parameters are PRECHAT|WAITING. By default, the parameter is set to show the pre-chat form. If you set it to “Waiting,” then the chat widget doesn’t show the pre-chat form and immediately opens a chat window.
+
+To customize the text that appears in the chat button when agents are online, set the parameter onlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Chat with an Expert."
+
+To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline."
+
+To customize the text that appears in the chat button when the chat window is loading, set the parameter onlineLoadingText = "..." to whatever text you want to show. If you don't specify this parameter, the default text shown is "Loading."*/
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jmacmillin-ltm.internal.salesforce.com:6109', 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat', 'http://jmacmillin-ltm.internal.salesforce.com:8095/content', 'http://sites.localhost.force.com:6109/', '572xx000000004T', '00Dxx0000001gKA', '573xx000000004T', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jmacmillin-ltm.internal.salesforce.com:6109'); }</script>
