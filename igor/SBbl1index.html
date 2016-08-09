@@ -31,17 +31,14 @@
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 	        
         
-        embedded_svc.init('https://ap1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://c.ap1-blitz01.visual.soma.force.com/apex/SBPageName',
-	    	'572990000004CDf', '00D990000000NmR', '573990000004CDk', '204.0', gslbBaseUrl);
+        embedded_svc.init('https://ap1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://sb.blitz01.soma.force.com', '572990000004CDf', '00D990000000NmR', '573990000004CDk', '204.0', gslbBaseUrl);
 	}
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'https://ap1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-	} else {
-		    initESW('https://service.force.com');
-	    }
+    if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://ap1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); };
+ document.body.appendChild(s);
+}
+ else {
+ initESW('https://ap1-blitz01.soma.salesforce.com'); 
+}
 </script>
 
    </body>
