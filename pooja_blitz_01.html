@@ -1,0 +1,160 @@
+<html>
+<head>
+   <title>Tesla for Kids: Model S Battery Powered Ride-On Car | Radio Flyer</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+    
+<div id="button_goes_here">
+</div>
+
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+    var initESW = function(gslbBaseUrl) {
+        embedded_svc.settings.avatarImgURL = '../Taylor-Swift.png';
+        embedded_svc.settings.prechatBackgroundImgURL = '../prechat_tesla.png';
+        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = '../small_tesla_logo.png';
+        
+        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428',
+            '572D00000004CUv', '00DD00000008FQY', '573D00000004Cix', '204.0', gslbBaseUrl);
+    }
+
+   if (!window.embedded_svc) { 
+      var s = document.createElement('script');
+        s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+        s.onload=function(){ initESW(null) }; 
+        document.body.appendChild(s);
+    } else {
+        initESW('https://service.force.com');
+    }
+</script>
+<style>
+         #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            top: 60px;
+            margin: 0 auto;
+            background: url("http://esw1234.github.io/tesla-large.png") no-repeat;
+            position: relative;
+      }
+      
+         .embeddedServiceLiveAgentHelpButton .flatButton {
+    border-top: none ;
+    padding: 0 12px ;
+    margin: 0 ;
+    box-shadow: none ;
+    background: #c71c2d ;
+    font-size: 14px ;
+    color: #000 ;
+    font-weight: 600 ;
+    border-radius: 8px 8px 0px 0px;
+    text-shadow: none ;
+    line-height: 50px ;
+    font-family: inherit;
+}
+
+.embeddedServiceLiveAgentPrechat .startButton {
+    background: #c71c2d;
+    text-shadow: none;
+    box-shadow: none;
+    border-radius: 34px;
+    -webkit-transition: background .5s ease;
+    transition: background .5s ease;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: inherit;
+    width: 216px;
+    height: 42px;
+}
+
+.embeddedServiceLiveAgentChatWindow .chasitorSendBtn {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    height: 30px;
+    width: 25px;
+    box-shadow: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #e64a59;
+    -webkit-transition: color .8s ease;
+    transition: color .8s ease;
+}
+
+.embeddedServiceLiveAgentSidebar .minimizedContainer {
+    position: fixed;
+    left: auto;
+    bottom: 0;
+    right: 16px;
+    margin: 0;
+    height: 50px;
+    max-height: 100%;
+    border-radius: 8px 8px 0 0;
+    background: #c71c2d;
+    text-align: center;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+.embeddedServiceLiveAgentSidebar .minimizedContainer .minimizedText, .embeddedServiceLiveAgentSidebar .minimizedContainer .prechatMinimizedText {
+    font-size: 1rem;
+    margin-top: 19px;
+    color: #FFFFFF;
+    vertical-align: top;
+}
+
+.embeddedServiceLiveAgentChatWindow .infoModal .infoModalButtonContainer button:last-child {
+    background: #c71c2d;
+}
+
+.embeddedServiceLiveAgentChatMessage .visitorContent {
+    float: right;
+    background: #c71c2d;
+    border-radius: 10px 10px 0 10px;
+    color: #FFFFFF;
+    line-height: 1.3;
+    max-width: 95%;
+    padding: 12px;
+    text-align: left;
+    font-size: .875rem;
+    font-weight: 400;
+}
+
+
+.embeddedServiceLiveAgentChatWindow .endchatContainer .endchatButton {
+    text-shadow: none;
+    box-shadow: none;
+    padding: 10px 68px;
+    border-radius: 34px;
+    background: #c71c2d;
+    width: 216px;
+    height: 42px;
+}
+
+.embeddedServiceLiveAgentChatWindow .waitingStateContainer .loadingBall {
+    background-color: #c71c2d ;
+}
+
+.embeddedServiceLiveAgentChatWindow .waitingStateContainer .waitingCancelChat .label {
+    color:#000;
+}
+
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage {
+    background: ##1cc761;
+}
+
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+    background: #c71c2d;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover, .uiButton.agentOnline:focus, .uiButton.agentOnline.is-selected {
+    background: #c71c2d;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
+}
+</style>
+</html>
