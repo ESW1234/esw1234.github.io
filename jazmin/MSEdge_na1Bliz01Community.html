@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0"></head>
+<title> Title </title>
+</head>
+<div id="button_goes_here"> </div>
+
+
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '../avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1551214e2ba.blitz01.soma.force.com/napili060216', '572D00000004CV5', '00DD00000008FV4', '573D00000004Cbr', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            top: 60px;
+            margin: 0 auto;
+            background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+</style>
