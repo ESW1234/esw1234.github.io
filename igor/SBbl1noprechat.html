@@ -2,12 +2,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
    <head>
-   <title>CUSTOM WIDGET</title>
-   <link rel="stylesheet" type="text/css" href="override.css">
+   
+   <title>NO PRECHAT PAGE</title>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">PAGE TWO SB CUSTOM WIDGET</font></p>
+  <p align="center"><font color ="red">PAGE SIX WITHOUT PRECHAT</font></p>
   <br/>
   <br/>
   <p align="center"><font color = "red"><a href="SBbl1index.html">Link to PAGE ONE SB DEFAULT WIDGET</font></p></a>
@@ -15,6 +15,9 @@
   <p align="center"><font color = "red"><a href="SBbl1hidden.html">Link to PAGE THREE SB BUTTON AS A LINK</font></p></a>
   <p align="center"><font color = "red"><a href="SBbl1nobutton.html">Link to PAGE FOUR SB NO BUTTON</font></p></a>
   <p align="center"><font color = "red"><a href="SBbl1nosnippet.html">Link to PAGE FIVE SB WITHOUT SNIPPET</font></p></a>
+  <p align="center"><font color = "red"><a href="SBbl1noprechat.html">Link to PAGE SIX SB WITHOUT PRECHAT</font></p></a>
+  <br>
+  <p align="center"><font color = "red"><a href="SBbl1chatB2.html">Link to PAGE WITH SB CHAT BUTTON 2</font></p></a>
 
 
 <div id="button_goes_here">
@@ -27,18 +30,17 @@
 	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
 	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+	        embedded_svc.settings.initialInteractionState = 'WAITING';
+	        
         
-        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1550a73a5d9.blitz01.soma.force.com/igorKokua',
-	    	'572D00000004CUv', '00DD00000008FQY', '573D00000004Cbm', '204.0', gslbBaseUrl);
+        embedded_svc.init('https://ap1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://sb.blitz01.soma.force.com', '572990000004CDf', '00D990000000NmR', '573990000004CDk', '204.0', gslbBaseUrl);
 	}
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-	} else {
-		    initESW('https://service.force.com');
-	    }
+    if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://ap1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); };
+ document.body.appendChild(s);
+}
+ else {
+ initESW('https://ap1-blitz01.soma.salesforce.com'); 
+}
 </script>
 
    </body>
