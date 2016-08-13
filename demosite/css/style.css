@@ -4478,3 +4478,25 @@ ul.project-detail-block, .project-detail-block ul {
     right: 0px;
     z-index: 99999;
 }
+
+
+/* Counter bootstrap */
+
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton {
+    letter-spacing: 0px;
+}
+
+
+.embeddedServiceLiveAgentSidebar.modalContainer {
+    line-height: 0px;
+    letter-spacing: 0px;
+}
+
+.embeddedServiceLiveAgentPrechat input {
+    padding: 0px 0px;
+    margin-bottom: 0px;
+}
+
+.embeddedServiceLiveAgentSidebar .minimizedContainer .prechatMinimizedText {
+    font-size: .9rem;
+}
