@@ -1,0 +1,30 @@
+<html>
+   <title>Events</title>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+   <body>
+
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<!-- <script type='text/javascript' src="https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js"> </script> -->
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'SFDCTower.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo-small.png';
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://gs0.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://stanleyhcdf15-14fa5059341.secure.force.com', '572B000000008ZM', '00DB00000002V3P', '573B00000000EkY', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://gs0.salesforce.com'); }</script>
+   <img src="Eventspage.png" width="1440" height="828" alt="Comcast"
+usemap="#links">
+
+<map name="links">
+  <area shape="rect" coords="479,507,707,733" href="WorldTour.htm" alt="Account">
+</map>
+</body>
+Contact GitHub API Training Shop Blog About
