@@ -2,22 +2,24 @@
    <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
-<script src="http://skrish-wsm.internal.salesforce.com:57983/lightning/lightning.out.js"></script>
-<div id="button_goes_here"/>
-   <script>
-    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
-       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
-           deploymentId : '572xx0000000001',
-           orgId : '00Dxx0000001gHf',
-           buttonId : '573xx0000000001',
-           endpointURL : 'http://skrish-wsm.internal.salesforce.com:8096/chat',
-            avatarImgURL : 'avatar.png',
-            prechatBackgroundImgURL : 'Prechat_image.png',
-           chasitorContentServerEndpointURL : 'http://skrish-wsm.internal.salesforce.com:8095/content',
-           chasitorSrcURL : ['http://skrish-wsm.internal.salesforce.com:57983/jslibrary/1446053165000/ui-sfdc-javascript/debug/SfdcCore.js','http://skrish-wsm.internal.salesforce.com:8095/content/g/js/37.0/chasitor.js']
-       }, "button_goes_here");
-   },"http://subbu.localhost.force.com:57983/esw");
-   </script>
+need some text here
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://skrish-wsm.internal.salesforce.com:57983', 'http://skrish-wsm.internal.salesforce.com:8096/chat', 'http://skrish-wsm.internal.salesforce.com:8095/content', 'http://subbu.localhost.force.com:57983/', '572xx0000000001', '00Dxx0000001gHf', '573xx0000000001', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://skrish-wsm.internal.salesforce.com:57983'); }</script>
 </html>
     <style>
       #button_goes_here{
