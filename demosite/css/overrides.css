@@ -1,0 +1,28 @@
+.embeddedServiceLiveAgentSidebar {
+    z-index: 99999;
+}
+
+.embeddedServiceLiveAgentSidebar * {
+   font-family: "Salesforce Sans" !important;
+}
+
+.embeddedServiceLiveAgentChatWindow .chasitorSendBtn {
+    bottom: 25px;
+}
+
+.messageOverlayTopButton,
+.messageOverlayBottomButton {
+    font-size: 1.0rem;
+}
+
+.chasitorText {
+    margin-bottom: 0;
+}
+
+.embeddedServiceLiveAgentChatWindowItem .clearfix {
+    padding: 0 16px;
+}
+
+.minimizedContainer {
+color: #fff;
+}
