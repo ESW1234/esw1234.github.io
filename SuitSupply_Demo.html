@@ -20,8 +20,8 @@ embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo-small.png';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+embedded_svc.settings.onlineText = 'Chat with a Stylist'; (defaults to Chat with an Expert, localized)
+embedded_svc.settings.offlineText = 'Stylists Offline'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 embedded_svc.init('https://gs0.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://stanleyhcdf15-14fa5059341.secure.force.com', '572B000000008ZM', '00DB00000002V3P', '573B00000000AEg', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://gs0.salesforce.com'); }</script>
 
