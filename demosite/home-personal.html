@@ -23,7 +23,7 @@
     <link href="css/plugin/animate.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="http://gs0.salesforce.com/embeddedservice/204.0/esw.css" rel="stylesheet" type="text/css">
-    <link href="css/overrides.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="css/overrides.css" rel="stylesheet" type="text/css" /> -->
 
 </head>
 
@@ -948,7 +948,34 @@
     <div class="iframeContainer">
         <!-- <iframe frameBorder="0" style="background: transparent;" allowTransparency="true" width="850px" height="500px" src="http://etan_berkowitz.bitbucket.org/widget.html"></iframe> -->
     </div>
+.embeddedServiceLiveAgentSidebar {
+    z-index: 99999;
+}
 
+.embeddedServiceLiveAgentSidebar * {
+    font-family: "Salesforce Sans" !important;
+}
+
+.embeddedServiceLiveAgentChatWindow .chasitorSendBtn {
+    bottom: 25px;
+}
+
+.messageOverlayTopButton,
+.messageOverlayBottomButton {
+    font-size: 1.0rem;
+}
+
+.chasitorText {
+    margin-bottom: 0;
+}
+
+.embeddedServiceLiveAgentChatWindowItem .clearfix {
+    padding: 0 16px;
+}
+
+.minimizedContainer {
+    color: #fff;
+}
         <div id="button_goes_here">
         </div>
 
