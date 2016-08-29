@@ -1,0 +1,25 @@
+ <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<script src="https://gus.salesforce.com/lightning/lightning.out.js"></script>
+
+
+<body>
+<div id="button_goes_here"/>
+   <script>
+    $Lightning.use("embeddedService:liveAgentSidebarApp", function() {
+       $Lightning.createComponent("embeddedService:liveAgentSidebar", {
+         deploymentId : '5724E0000000048',
+         orgId : '00D4E0000008mlA',
+         buttonId : '5734E000000004D',
+         endpointURL : 'https://d.la1-c2cs-frf.salesforceliveagent.com/chat',
+        // prechatBackgroundImgURL : '',
+        // avatarImgURL : '',
+         // waitingStateBackgroundImgURL : '',
+         // smallCompanyLogoImgURL : '',
+         chasitorContentServerEndpointURL : 'https://c.la1-c2cs-frf.salesforceliveagent.com/content',
+         chasitorSrcURL : ['https://cs83.salesforce.com/jslibrary/1457334052000/ui-sfdc-javascript-impl/SfdcCore.js','https://c.la1-c2cs-frf.salesforceliveagent.com/content/g/js/37.0/chasitor.js']
+        }, "button_goes_here");
+   },"http://dev20-suitsupply.cs83.force.com/Chat");
+   </script>
+</body>
