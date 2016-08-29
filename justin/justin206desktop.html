@@ -1,0 +1,37 @@
+<html>
+<div id="button_goes_here">
+</div>
+
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+        embedded_svc.settings.avatarImgURL = '../avatar.png';
+        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+        
+        embedded_svc.init('http://jmacmillin-wsm.internal.salesforce.com:6109', 'http://jmacmillin-wsm.internal.salesforce.com:8096/chat', 'http://jmacmillin-wsm.internal.salesforce.com:8095/content', 'http://justin204desktop.localhost.force.com:6109/napili0518',
+	    	'572xx0000000069', '00Dxx0000001geo', '573xx000000006s', '204.0', gslbBaseUrl);
+	}
+    if (!window.embedded_svc) { 
+    	var s = document.createElement('script');
+		s.setAttribute('src', 'http://jmacmillin-wsm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
+		s.onload=function(){ initESW(null) }; 
+		document.body.appendChild(s);
+    } else {
+	    initESW('https://service.force.com');
+    }
+</script>
+</html>
+
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            top: 60px;
+            margin: 0 auto;
+            background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+</style>
