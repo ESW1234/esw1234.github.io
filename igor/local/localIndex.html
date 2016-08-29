@@ -1,14 +1,14 @@
-
+<!DOCTYPE HTML>
 <html>
    <head>
-   <title>LOCAL DEFAULT PAGE</title>
+   <title> DEFAULT PAGE</title>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
   <p align="center"><font color ="red">LOCAL PAGE ONE DEFAULT WIDGET</font></p>
   <br/>
   <br/>
-<p align="center"><font color = "red"><a href="localIndex.html">Link to PAGE ONE LOCAL DEFAULT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="localIndex.html">Link to PAGE ONE DEFAULT WIDGET</font></p></a>
   <p align="center"><font color = "red"><a href="localcustom.html">Link to PAGE TWO CUSTOM WIDGET</font></p></a>
   <p align="center"><font color = "red"><a href="localhidden.html">Link to PAGE THREE BUTTON AS A LINK</font></p></a>
   <p align="center"><font color = "red"><a href="localnobutton.html">Link to PAGE FOUR NO BUTTON</font></p></a>
@@ -17,16 +17,31 @@
 
 <div id="button_goes_here">
 </div>
-<script src="https://service.force.com/lightning/lightning.out.js"></script>
-<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+
 <script>
 	var initESW = function(gslbBaseUrl) {
-	        embedded_svc.settings.avatarImgURL = '../../avatar.png';
-	        embedded_svc.settings.prechatBackgroundImgURL = '../../Prechat_image.png';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '../../waitingStateImage.png';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '../../smallCompanyLogoImg.png';
+	        embedded_svc.settings.avatarImgURL = '../avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+	        
         
-embedded_svc.init('http://igor-156d37b6b47.localhost.internal.salesforce.com:6109', 'http://ikhorev-ltm1.internal.salesforce.com:8096/chat', 'http://ikhorev-ltm1.internal.salesforce.com:8095/content', 'http://fitbit-1475b6fa058-1550a73a5-156d37b6b4d.localhost.force.com:6109/igorKokua/s/', '572xx0000000049', '00Dxx0000001gGt', '573xx0000000049', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://igor-156d37b6b47.localhost.internal.salesforce.com:6109/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://igor-156d37b6b47.localhost.internal.salesforce.com:6109'); }</script>
+        embedded_svc.init('http://igor-156d37b6b47.localhost.internal.salesforce.com:6109', 'http://ikhorev-ltm1.internal.salesforce.com:8096/chat', 'http://ikhorev-ltm1.internal.salesforce.com:8095/content', 'https://fitbit-1475b6fa058-1550a73a5-156d37b6b4d.localhost.force.com:6109/igorKokua/s/',
+	    	'572xx0000000049', '00Dxx0000001gGt', '573xx000000004A', '204.0', gslbBaseUrl);
+	}
+    if (!window.embedded_svc) { 
+    	var s = document.createElement('script');
+		s.setAttribute('src', 'http://igor-156d37b6b47.localhost.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
+		s.onload=function(){ initESW(null) }; 
+		document.body.appendChild(s);
+	} else {
+		    initESW('https://service.force.com');
+	    }
+</script>
+	        
+        
 
    </body>
 </html>
