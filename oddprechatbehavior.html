@@ -1,0 +1,36 @@
+<html>
+   <head>
+   <title>NO PRECHAT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+
+<div id="button_goes_here">
+</div>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+		embedded_svc.settings.initialInteractionState = 'WAITING';
+	        embedded_svc.settings.avatarImgURL = '../avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+	       
+	        
+        
+        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1550a73a5d9.blitz01.soma.force.com/igorKokua',
+	    	'572D00000004CUv', '00DD00000008FQY', '573D00000004Cbm', '204.0', gslbBaseUrl);
+	}
+    if (!window.embedded_svc) { 
+    	var s = document.createElement('script');
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+		s.onload=function(){ initESW(null) }; 
+		document.body.appendChild(s);
+	} else {
+		    initESW('https://service.force.com');
+	    }
+</script>
+
+   </body>
+</html>
