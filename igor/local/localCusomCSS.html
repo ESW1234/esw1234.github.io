@@ -1,4 +1,4 @@
-
+<!DOCTYPE HTML>
 <html>
    <head>
    <title> CUSTOM PAGE</title>
@@ -9,11 +9,14 @@
   <p align="center"><font color ="red">LOCAL PAGE TWO CUSTOM WIDGET</font></p>
   <br/>
   <br/>
-  <p align="center"><font color = "red"><a href="localIndex.html">Link to PAGE ONE DEFAULT WIDGET</font></p></a>
-  <p align="center"><font color = "red"><a href="localcustom.html">Link to PAGE TWO CUSTOM WIDGET</font></p></a>
-  <p align="center"><font color = "red"><a href="localhidden.html">Link to PAGE THREE BUTTON AS A LINK</font></p></a>
-  <p align="center"><font color = "red"><a href="localnobutton.html">Link to PAGE FOUR NO BUTTON</font></p></a>
-  <p align="center"><font color = "red"><a href="localnosnippet.html">Link to FIVE WITHOUT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="localIndex.html">Link to PAGE ONE DEFAULT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="localNoPrechat.html">Link to PAGE TWO NO PRECHAT</font></p></a>
+<p align="center"><font color = "red"><a href="localHidden.html">Link to PAGE THREE HIDDEN BUTTON</font></p></a>
+<p align="center"><font color = "red"><a href="localNoWidget.html">Link to PAGE FOUR NO WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="localCustomText.html">Link to PAGE FIVE CUSTOM BUTTON TEXT</font></p></a>
+<p align="center"><font color = "red"><a href="localCustomCSS.html">Link to PAGE SIX CUSTOM STYLING</font></p></a>
+<p align="center"><font color = "red"><a href="localButton2.html">Link to PAGE SEVEN BUTTON 2</font></p></a>
+<p align="center"><font color = "red"><a href="localLink.html">Link to PAGE EIGHT BUTTON AS A LINK</font></p></a>
 
 
 <div id="button_goes_here">
@@ -22,10 +25,10 @@
 <script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
 <script>
 	var initESW = function(gslbBaseUrl) {
-	        embedded_svc.settings.avatarImgURL = '../../avatar.png';
-	        embedded_svc.settings.prechatBackgroundImgURL = '../../Prechat_image.png';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '../../waitingStateImage.png';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '../../smallCompanyLogoImg.png';
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'prechatBackground.jpg';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateBackgroundImg.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
         
         embedded_svc.init('http://ikhorev-ltm1.internal.salesforce.com:6109/', 'http://ikhorev-ltm1.internal.salesforce.com:8096/chat', 'http://ikhorev-ltm1.internal.salesforce.com:8095/content', 'http://fitbit-1475b6fa058-1550a73a5-1556f5938b2.localhost.force.com:6109/igorKokua',
 	    	'572xx0000000001', '00Dxx0000001gGX', '573xx0000000001', '204.0', gslbBaseUrl);
