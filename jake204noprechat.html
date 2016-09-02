@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jake 204</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+Jake 204 patch Aug. 2016
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'small_tesla_logo.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'SFDCTower.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo.png';
+//embedded_svc['settings'].extraPrechatFormDetails = [{'label':'FirstName','value':'Peter','transcriptFields':[],'displayToAgent':false}];
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'WAITING'; //Or 'WAITING'
+embedded_svc.settings.onlineText = 'Help Button State'; // (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:6109', 'http://jakerouss-wsm1.internal.salesforce.com:8096/chat', 'http://jakerouss-wsm1.internal.salesforce.com:8095/content', 'http://sites-developer-edition.localhost.force.com:6109/', '572xx0000000001', '00Dxx0000001gEq', '573xx0000000001', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-wsm1.internal.salesforce.com:6109'); }</script>
+</body>
+</html>
