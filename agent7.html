@@ -4,8 +4,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
+   abakdfd
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -20,7 +21,7 @@ embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://blitzsite-156522f79cc.blitz01.soma.force.com', '572D00000004CXG', '00DD00000008M3i', '573D00000004Cj2', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('http://skrish-wsm.internal.salesforce.com:57983', 'http://skrish-wsm.internal.salesforce.com:8096/chat', 'http://skrish-wsm.internal.salesforce.com:8095/content', 'http://subbu.localhost.force.com:57983/', '572xx0000000001', '00Dxx0000001gHf', '573xx0000000001', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://skrish-wsm.internal.salesforce.com:57983'); }</script>
 </body>
 </html>
     <style>
