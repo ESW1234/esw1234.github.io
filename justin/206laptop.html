@@ -31,11 +31,11 @@
                 
         if (!window.embedded_svc) { 
                 var s = document.createElement('script'); 
-                s.setAttribute('src', 'http://jmacmillin-wsm.internal.salesforce.com:6109/embeddedservice/204.0/esw.min.js'); 
+                s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.min.js'); 
                 s.onload = function() { initESW(null); }; 
                 document.body.appendChild(s);
         } else { 
-                //initESW('http://jmacmillin-wsm.internal.salesforce.com:6109'); 
+                //initESW('http://jmacmillin-ltm.internal.salesforce.com:6109'); 
                 initESW('https://service.force.com');
         }
 </script>
