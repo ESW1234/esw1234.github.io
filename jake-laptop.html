@@ -6,6 +6,8 @@
 <body>
 Jake (laptop) main Aug. 2016
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -17,8 +19,9 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.yonlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://jakerouss-ltm1.internal.salesforce.com:6109', 'http://jakerouss-ltm1.internal.salesforce.com:8096/chat', 'http://jakerouss-ltm1.internal.salesforce.com:8095/content', 'http://communities.localhost.force.com:6109/eswcom', '572x00000008RUy', '00Dx00000035zsl', '573x00000004F5y', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-ltm1.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-ltm1.internal.salesforce.com:6109'); }</script></body>
+embedded_svc.init('http://jakerouss-ltm1.internal.salesforce.com:6109', 'http://jakerouss-ltm1.internal.salesforce.com:8096/chat', 'http://jakerouss-ltm1.internal.salesforce.com:8095/content', 'http://sites.localhost.force.com:6109/', '572xx0000000001', '00Dxx0000001gGh', '573xx0000000001', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-ltm1.internal.salesforce.com:6109/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-ltm1.internal.salesforce.com:6109'); }</script>
+</body>
 </html>
