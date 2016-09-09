@@ -4,30 +4,25 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
-	<div id="button_goes_here">
-	</div>
+<div id="button_goes_here">
+</div>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
 
-	<script src="https://service.force.com/lightning/lightning.out.js"></script>
-	<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
-	<script>
-		var initESW = function(gslbBaseUrl) {
 	        embedded_svc.settings.avatarImgURL = '../avatar.png';
 	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
 	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-	        
-	        embedded_svc.init('https://jazminorti-wsm3.internal.salesforce.com:6109/', 'https://jazminorti-wsm3.internal.salesforce.com:8096/chat', 'https://jazminorti-wsm3.internal.salesforce.com:8095/content', 'https://nwk00dxx0000001glc.localhost.force.com:6109/hello',
-		    	'572xx000000002R', '00Dxx0000001gLc', '573xx000000002R', '204.0', gslbBaseUrl);
-		}
-	    if (!window.embedded_svc) { 
-	    	var s = document.createElement('script');
-			s.setAttribute('src', 'https://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
-			s.onload=function(){ initESW(null) }; 
-			document.body.appendChild(s);
-	    } else {
-		    initESW('https://service.force.com');
-	    }
-	</script>
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001glc.localhost.force.com:6109/hello', '572xx000000002R', '00Dxx0000001gLc', '573xx000000002R', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); }</script>
 
 </html>
 <style>
