@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
@@ -6,8 +7,8 @@
 	<div id="button_goes_here">
 	</div>
 
-	<script src="br-https://service.force.com/lightning/lightning.out.js"></script>
-	<script src="br-https://service.force.com/embeddedservice/204.0/esw.js"></script>
+	<script src="https://service.force.com/lightning/lightning.out.js"></script>
+	<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
 	<script>
 		var initESW = function(gslbBaseUrl) {
 	        embedded_svc.settings.avatarImgURL = '../avatar.png';
@@ -15,12 +16,12 @@
 	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 	        
-	        embedded_svc.init('http://localhost:6109', 'http://localhost:6109/chat', 'http://localhost:6109/content', 'http://jazmin204communities.localhost.force.com:6109/jazmin0513',
-		    	'572xx0000000001', '00Dxx0000001gH1', '573xx0000000001', '204.0', gslbBaseUrl);
+	        embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109/', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1551214e2ba.blitz01.soma.force.com/napili060216',
+		    	'572xx000000002R', '00Dxx0000001gLc', '573xx000000002R', '204.0', gslbBaseUrl);
 		}
 	    if (!window.embedded_svc) { 
 	    	var s = document.createElement('script');
-			s.setAttribute('src', 'http://localhost:6109/embeddedservice/204.0/esw.js');
+			s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
 			s.onload=function(){ initESW(null) }; 
 			document.body.appendChild(s);
 	    } else {
@@ -30,6 +31,10 @@
 
 </html>
 <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
       #button_goes_here{
             width: 100%; 
             height: 100%; 
