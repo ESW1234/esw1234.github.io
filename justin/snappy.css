@@ -6,9 +6,9 @@
 }
 
 .uiTabset--default .tabs__item {
-	background: #fff !important;
+	background: #fff;
 }
 
 .uiTabset--default .tabs__item.active>a {
-	background: #fff !important;
+	background: #fff;
 }
