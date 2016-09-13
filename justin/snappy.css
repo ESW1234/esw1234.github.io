@@ -5,8 +5,7 @@
 	position: relative;        
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > 
-div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 	background: #fff; /* red background on active tab*/
 }
 
