@@ -1,11 +1,3 @@
-.uiTabset--default .tabs__item {
-	background: #fff;
-}
-
-.uiTabset--default .tabs__item.active>a {
-	background: #fff;
-}
-
 #button_goes_here{
 	width: 100%; 
 	height: 100%; 
@@ -13,6 +5,7 @@
 	position: relative;        
 }
 
-.uiTabBar {
-	border-bottom-color: #000;
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > 
+div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
+	background: #fff;
 }
