@@ -7,6 +7,7 @@
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 	background: #fff; /* red background on featured tab*/
+	border-bottom: 4px solid #000;
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
@@ -19,5 +20,5 @@
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li/*.tabs__item.uiTabItem*/ {
-	background: #fff; /* grey padding */
+	/*background: #fff; /* grey padding */
 }
