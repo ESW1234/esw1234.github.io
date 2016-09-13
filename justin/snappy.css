@@ -4,3 +4,7 @@
 	margin: 0 auto;
 	position: relative;        
 }
+
+.uiTabset--default .tabs__item.active>a {
+	background: rgb(255, 255, 255);
+}
