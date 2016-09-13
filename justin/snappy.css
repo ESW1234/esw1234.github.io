@@ -15,7 +15,7 @@
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active > a {
-	border-bottom: 4px solid #a95e25; /* brown for active tab */
+	/*border-bottom: 4px solid #a95e25; /* brown for active tab */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.uiTabItem {
