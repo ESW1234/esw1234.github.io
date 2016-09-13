@@ -9,12 +9,12 @@
 	background: #fff; /* red background on active tab*/
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
 	background: #fff; /* gray backgrounds */
 	border-bottom: 4px solid #000; /* black bottom line */
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active > a {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active {
 	border-bottom: 4px solid #a95e25 !important; /* brown for active tab */
 }
 
