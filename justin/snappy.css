@@ -1,3 +1,8 @@
+.siteforceNapiliBody .uiTabset--default>.uiTabBar .uiTabItem.active .tabHeader, .siteforceNapiliBody 
+.uiTabset--default>.uiTabBar .uiTabItem .tabHeader:active {
+	border-bottom: 4px solid #a95e25;
+}
+
 #button_goes_here{
 	width: 100%; 
 	height: 100%; 
@@ -13,9 +18,4 @@ div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
 	background: #fff;
 	border-bottom: 4px solid #000;
-}
-
-.siteforceNapiliBody .uiTabset--default>.uiTabBar .uiTabItem.active .tabHeader, .siteforceNapiliBody 
-.uiTabset--default>.uiTabBar .uiTabItem .tabHeader:active {
-	border-bottom: 4px solid #a95e25;
 }
