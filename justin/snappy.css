@@ -10,7 +10,7 @@ div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 	background: #fff; /* red background on active tab*/
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
 	background: #fff; /* gray backgrounds */
 	border-bottom-color: #000;
 }
