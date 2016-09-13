@@ -11,6 +11,7 @@
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
 	background: #fff; /* gray backgrounds */
+	border-bottom: 4px solid #000; /* black bottom line */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active > a {
@@ -19,5 +20,4 @@
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.uiTabItem {
 	/* background: #fff; */
-	border-bottom: 4px solid #000; /* black bottom line */
 }
