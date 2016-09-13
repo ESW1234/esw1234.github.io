@@ -12,9 +12,9 @@ div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
 	background: #fff; /* gray backgrounds */
-	border-bottom: 4px solid #000;
+	border-bottom: 4px solid #000; /* black line */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active > a {
-	border-bottom: 4px solid #a95e25;
+	border-bottom: 4px solid #a95e25; /* brown for active tab */
 }
