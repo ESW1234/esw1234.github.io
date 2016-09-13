@@ -8,3 +8,7 @@
 .uiTabset--default .tabs__item {
 	background: #fff;
 }
+
+.uiTabset--default .tabs__item.active>a {
+	background: #fff;
+}
