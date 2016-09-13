@@ -18,7 +18,7 @@
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 	background: #fff; /* red background on anchor featured tab */
-	border-bottom: 4px solid #000;
+	/*border-bottom: 4px solid #000;*/
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
