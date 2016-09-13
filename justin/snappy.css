@@ -21,9 +21,9 @@
 	/*border-bottom: 4px solid #000;*/
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
 	background: #fff; /* gray backgrounds */
-	/*border-bottom: 4px solid #000; /* black bottom line */
+	border-bottom: 4px solid #000; /* black bottom line */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.active.uiTabItem > a {
