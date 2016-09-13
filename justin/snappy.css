@@ -14,7 +14,7 @@
 	border-bottom: 4px solid #000; /* black bottom line */
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active {
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.active > a {
 	/*border-bottom: 4px solid #a95e25 !important; /* brown for active tab */
 }
 
