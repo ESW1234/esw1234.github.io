@@ -5,14 +5,10 @@
 	position: relative;        
 }
 
-.uiTabBar {
-	padding-bottom: #000;
-}
-
 .uiTabset--default .tabs__item {
-	background: #fff;
+	background: #fff !important;
 }
 
 .uiTabset--default .tabs__item.active>a {
-	background: #fff;
+	background: #fff !important;
 }
