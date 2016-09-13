@@ -5,6 +5,10 @@
 	position: relative;        
 }
 
+.uiTabBar {
+	padding-bottom: #000;
+}
+
 .uiTabset--default .tabs__item {
 	background: #fff;
 }
