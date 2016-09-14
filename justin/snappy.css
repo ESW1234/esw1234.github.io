@@ -34,3 +34,6 @@
 	/*background: #fff; /* grey padding */
 }
 
+.uiTabset--default .tabs__item {
+	background: #fff;
+}
