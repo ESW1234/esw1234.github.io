@@ -4,23 +4,22 @@
 	margin: 0 auto;
 	position: relative;        
 }
-/*
+
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
-	background: #fff; /* red background on anchor featured tab
-	/*border-bottom: 4px solid #000;
+	background: #fff; /* red background on anchor featured tab */
+	/*border-bottom: 4px solid #000;*/
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
-	background: #fff; /* gray backgrounds 
-	border-bottom: 4px solid #000; /* black bottom line 
+	background: #fff; /* gray backgrounds */
+	border-bottom: 4px solid #000; /* black bottom line */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.active.uiTabItem > a {
-	border-bottom: 4px solid #a95e25; /* brown for active tab *
+	border-bottom: 4px solid #a95e25; /* brown for active tab */
 }
 
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
-	background: #fff; /* grey padding 
-	border-bottom-color: black;
+	background: #fff; /* grey padding */
+	border-bottom-color: black !important;
 }
-*/
