@@ -30,10 +30,7 @@
 	border-bottom: 4px solid #a95e25; /* brown for active tab */ 
 }
 
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li/*.tabs__item.uiTabItem*/ {
-	/*background: #fff; /* grey padding */
-}
-
-.uiTabset--default .tabs__item {
-	background: #fff;
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
+	background: #fff; /* grey padding */
+	border-bottom-color: black;
 }
