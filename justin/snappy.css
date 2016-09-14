@@ -5,17 +5,6 @@
 	position: relative;        
 }
 
-/*
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
-	background: #fff; /* red anchor background
-}
-
-#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.uiTabItem > a {
-	background: #fff; /* gray li background
-	border-bottom: 4px solid #000; /* black bottom line
-} 
-*/
-
 #NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
 	background: #fff; /* red background on anchor featured tab */
 	/*border-bottom: 4px solid #000;*/
