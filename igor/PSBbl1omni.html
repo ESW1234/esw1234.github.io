@@ -1,0 +1,54 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">PSB PAGE ONE DEFAULT WIDGET</font></p>
+  <br/>
+  <br/>
+<p align="center"><font color = "red"><a href="PSBbl1index.html">Link to PAGE ONE DEFAULT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1NoPrechat.html">Link to PAGE TWO NO PRECHAT</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1Hidden.html">Link to PAGE THREE HIDDEN BUTTON</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1NoWidget.html">Link to PAGE FOUR NO WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1CustomText.html">Link to PAGE FIVE CUSTOM BUTTON TEXT</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1CustomCSS.html">Link to PAGE SIX CUSTOM STYLING</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1Button2.html">Link to PAGE SEVEN BUTTON 2</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1Link.html">Link to PAGE EIGHT BUTTON AS A LINK</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1NoPrechatWithExtraPrechatFormDetails.html">Link to PAGE NINE NO PRECHAT  WITH EXTRA PRECHAT FORM DETAILS</font></p></a>
+<p align="center"><font color = "red"><a href="PSBbl1mni.html">Link to PAGE TEN OMNI BUTTON</font></p></a>
+
+
+<div id="button_goes_here">
+</div>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+	        embedded_svc.settings.avatarImgURL = 'avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = 'prechatBackground.jpg';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateBackgroundImg.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+	        
+	        
+        
+      embedded_svc.init('https://na7-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://psb.blitz01.soma.force.com', '572R0000000003o', '00DR00000008jPQ', '573R0000000007b', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na7-blitz01.soma.salesforce.com'); }</script>
+
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+         background-attachment:fixed;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
