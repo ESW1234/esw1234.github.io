@@ -9,13 +9,14 @@
 <p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/main.html">Edit this page</a></p>
   <p><a href="#" onclick="startBlink()">start blink</a></p>
   <p><a href="#" onclick="stopBlink()">stop blink</a></p>
+  <p>blinking -&gt; <span id=blinking>0</span></p>
   
   <script>
     var blinkIntervalId;
     function startBlink() {
       if (!blinkIntervalId) {
         blinkIntervalId = setInterval(function() {
-          document.getElementById('helpButtonSpan').innerHTML = Math.round(Math.random()*100).toString(16);
+          document.getElementById('blinking').innerHTML = Math.round(Math.random()*100).toString(16);
         }, 3000);
       }
     }
