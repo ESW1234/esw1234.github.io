@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>Bo Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+<h1>Bo a11y</h1>
+<p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/a11y.html">Edit this page</a></p>
+
+<div>
+<span id=changing>0</span>
+</div>
+
+</body>
+
+<script>
+var changingInterval = setInterval(function() {
+  $('#changing').innerHTML = Math.round(Math.random()*100).toString(16);
+}, 5000);
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
+}
+h1 {
+  font-size: 3rem;
+}
+a {
+  color: red;
+}
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
+}
+</style>
+</html>
