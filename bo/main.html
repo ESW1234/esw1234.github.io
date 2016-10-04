@@ -7,6 +7,8 @@
 <body>
 <h1>Bo Main</h1>
 <p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/main.html">Edit this page</a></p>
+  
+<div id="blinkingContainer">
   <p><a href="#" onclick="startBlink()">start blink</a></p>
   <p><a href="#" onclick="stopBlink()">stop blink</a></p>
   <p>blinking -&gt; <span id="blinking" aria-live="polite">0</span></p>
@@ -25,6 +27,7 @@
       blinkIntervalId = undefined;
     }
   </script>
+</div>
 
 <!-- snippet start -->
 
@@ -58,6 +61,9 @@ embedded_svc.init('http://bochean-ltm2.internal.salesforce.com:6109', 'http://bo
 body {
   background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
   color: red;
+}
+div:not(:first-child) {
+  margin-top: .5rem;
 }
 h1 {
   font-size: 3rem;
