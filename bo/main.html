@@ -8,26 +8,17 @@
 <h1>Bo Main</h1>
 <p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/main.html">Edit this page</a></p>
   
-<div id="blinkingContainer">
-  <p><a href="#" onclick="startBlink()">start blink</a></p>
-  <p><a href="#" onclick="stopBlink()">stop blink</a></p>
-  <p>blinking -&gt; <a href="#"><span id="blinking" aria-live="polite">0</span></a></p>
-  
-  <script>
-    var blinkIntervalId;
-    function startBlink() {
-      if (!blinkIntervalId) {
-        blinkIntervalId = setInterval(function() {
-          document.getElementById('blinking').innerHTML = Math.round(Math.random()*100).toString(16);
-        }, 3000);
-      }
+  <div id="dialogDiv" role="dialog" aria-labelledby="labelId" aria-describedby="descId">
+    <span id="labelId">dialog label</span>
+    <span>unrelated</span>
+    <span id="descId">dialog description</span>
+  </div>
+  <style>
+    #dialogDiv {
+      padding: .5rem;
+      border: 1px solid lightgrey;
     }
-    function stopBlink() {
-      clearInterval(blinkIntervalId);
-      blinkIntervalId = undefined;
-    }
-  </script>
-</div>
+  </style>
 
 <!-- snippet start -->
 
