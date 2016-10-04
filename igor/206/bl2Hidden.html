@@ -1,0 +1,63 @@
+
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>Hidden Button</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">206 PAGE THREE HIDDEN BUTTON</font></p>
+  <br/>
+  <br/>
+<p align="center"><font color = "red"><a href="bl2index.html">Link to PAGE ONE DEFAULT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="bl2NoPrechat.html">Link to PAGE TWO NO PRECHAT</font></p></a>
+<p align="center"><font color = "red"><a href="bl2Hidden.html">Link to PAGE THREE HIDDEN BUTTON</font></p></a>
+<p align="center"><font color = "red"><a href="bl2NoWidget.html">Link to PAGE FOUR NO WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="bl2CustomText.html">Link to PAGE FIVE CUSTOM BUTTON TEXT</font></p></a>
+<p align="center"><font color = "red"><a href="bl2CustomCSS.html">Link to PAGE SIX CUSTOM STYLING</font></p></a>
+<p align="center"><font color = "red"><a href="bl2Button2.html">Link to PAGE SEVEN BUTTON 2</font></p></a>
+<p align="center"><font color = "red"><a href="bl2Link.html">Link to PAGE EIGHT BUTTON AS A LINK</font></p></a>
+<p align="center"><font color = "red"><a href="bl2NoPrechatWithExtraPrechatFormDetails.html">Link to PAGE NINE NO PRECHAT  WITH EXTRA PRECHAT FORM DETAILS</font></p></a>
+
+
+<div id="button_goes_here">
+</div>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+          embedded_svc.settings.displayHelpButton = false;
+	        embedded_svc.settings.avatarImgURL = '../avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+	        
+        
+     embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
+      'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura'
+      , '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '1.0', gslbBaseUrl, '39.0'); 
+      };
+      if (!window.embedded_svc) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js');
+      s.onload = function() { initESW(null); };
+      document.body.appendChild(s);
+      } else {
+      initESW('https://na1-blitz02.soma.salesforce.com');
+      }</script>
+
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
