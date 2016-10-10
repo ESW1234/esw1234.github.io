@@ -12,6 +12,7 @@
     <h3 id="labelId">regular dialog label</h3>
     <span>unrelated</span>
     <span id="descId">description</span>
+    <span class="hidden">Invisible - end of dialog</span>
   </div>
   <style>
     #dialogDiv {
@@ -20,6 +21,14 @@
     }
     #dialogDiv > * {
       display: block;
+    }
+    .hidden {
+      position:absolute; 
+      left:0;
+      top:-500px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
     }
   </style>
   
