@@ -1,0 +1,63 @@
+
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>BUTTON AS A LINK</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">AWS CANADA PAGE EIGHT BUTTON AS A LINK</font></p>
+  <br/>
+  <br/>
+<p align="center"><font color = "red"><a href="index.html">Link to AWS CANADA PAGE ONE DEFAULT WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="NoPrechat.html">Link to AWS CANADA PAGE TWO NO PRECHAT</font></p></a>
+<p align="center"><font color = "red"><a href="Hidden.html">Link to AWS CANADA PAGE THREE HIDDEN BUTTON</font></p></a>
+<p align="center"><font color = "red"><a href="NoWidget.html">Link to AWS CANADA PAGE FOUR NO WIDGET</font></p></a>
+<p align="center"><font color = "red"><a href="CustomText.html">Link to AWS CANADA PAGE FIVE CUSTOM BUTTON TEXT</font></p></a>
+<p align="center"><font color = "red"><a href="CustomCSS.html">Link to AWS CANADA PAGE SIX CUSTOM STYLING</font></p></a>
+<p align="center"><font color = "red"><a href="Button2.html">Link to AWS CANADA PAGE SEVEN BUTTON 2</font></p></a>
+<p align="center"><font color = "red"><a href="Link.html">Link to AWS CANADA PAGE EIGHT BUTTON AS A LINK</font></p></a>
+<p align="center"><font color = "red"><a href="NoPrechatWithExtraPrechatFormDetails.html">Link to PAGE NINE NO PRECHAT  WITH EXTRA PRECHAT FORM DETAILS</font></p></a>
+<br>
+<br>
+<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+
+
+<div id="button_goes_here">
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '../avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '../prechatBackground.jpg';
+embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateBackgroundImg.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+
+
+embedded_svc.settings.displayHelpButton = false;
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na36.salesforce.com', 'https://d.la1-c1-pdx.salesforceliveagent.com/chat', 'https://c.la1-c1-pdx.salesforceliveagent.com/content', 'https://liveagenteu3-140e5d5f57c-141-15742d9ef26.secure.force.com/esw', '5721Z000000001E', '00D1Z0000008aHv', '5731Z000000001T', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na36.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na36.salesforce.com'); }</script>
+
+</div>
+
+
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+         background-attachment:fixed;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
