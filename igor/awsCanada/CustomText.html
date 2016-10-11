@@ -34,9 +34,9 @@ embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-//embedded_svc.settings.onlineText = 'Custon Online'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = 'Custom Offline'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = 'Wait!'; (defaults to Loading, localized)
+embedded_svc.settings.onlineText = 'Custon Online'; 
+embedded_svc.settings.offlineText = 'Custom Offline'; 
+embedded_svc.settings.onlineLoadingText = 'Wait!'; 
 embedded_svc.init('https://na36.salesforce.com', 'https://d.la1-c1-pdx.salesforceliveagent.com/chat', 'https://c.la1-c1-pdx.salesforceliveagent.com/content', 'https://liveagenteu3-140e5d5f57c-141-15742d9ef26.secure.force.com/esw', '5721Z000000001E', '00D1Z0000008aHv', '5731Z000000001T', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na36.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na36.salesforce.com'); }</script>
 
 </div>
