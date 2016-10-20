@@ -1,0 +1,14 @@
+
+body {          
+    background: url("https://esw1234.github.io/igor/salesforce-dark.png") no-repeat;
+    background-attachment:fixed;
+}
+#button_goes_here{
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    position: relative;	              
+}
+#text {
+    width: 65%;
+}
