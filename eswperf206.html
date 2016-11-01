@@ -7,7 +7,7 @@
 </div>
 
 <script src="https://service.force.com/lightning/lightning.out.js"></script>
-<script src="https://service.force.com/embeddedservice/embeddedservice/1.0/esw.js"></script>
+<script src="https://ist11.soma.salesforce.com/embeddedservice/1.0/esw.js"></script>
 <script>
 	var initESW = function(gslbBaseUrl) {
         embedded_svc.settings.avatarImgURL = '../avatar.png';
@@ -21,7 +21,7 @@
 	}
     if (!window.embedded_svc) { 
     	var s = document.createElement('script');
-		s.setAttribute('src', 'https://service.force.com/embeddedservice/embeddedservice/1.0/esw.js');
+		s.setAttribute('src', 'https://ist11.soma.salesforce.com/embeddedservice/1.0/esw.js');
 		s.onload=function(){ initESW(null) }; 
 		document.body.appendChild(s);
     } else {
