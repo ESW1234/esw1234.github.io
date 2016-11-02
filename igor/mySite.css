@@ -23,7 +23,7 @@ body {
     
 }
 
-#menuButton a :hover, .offcanvas :focus{
+#menuButton a:hover, .offcanvas :focus{
     color: #0074bd;
    
     
