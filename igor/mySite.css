@@ -23,7 +23,7 @@ body {
     transition: 0.4s
 }
 
-#menuButton a:hover, .offcanvas :focus{
+#menuButton a:hover, .offcanvas a:focus{
     color: #0074bd;
    
     
@@ -74,6 +74,11 @@ body {
     right: 5px;
     font-size: 25px;
     margin-right: 5px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 
