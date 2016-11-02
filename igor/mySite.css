@@ -41,9 +41,9 @@ body {
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 35px;
+    right: 10px;
     font-size: 25px;
-    margin-right: 1px;
+    margin-right: 15px;
 }
 
 
