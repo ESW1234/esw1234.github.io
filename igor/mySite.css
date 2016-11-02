@@ -14,6 +14,15 @@ body {
     font-size: 30px;
 }
 
+#menuButton a {
+    padding: 3px 0px 0px 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #0074bd;
+    display: block;
+    transition: 0.4s
+}
+
 #menuButton a:hover, .offcanvas a:focus{
     color: #0074bd;
 }
