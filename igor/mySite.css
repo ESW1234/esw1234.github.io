@@ -14,7 +14,7 @@ body {
     font-size: 30px;
 }
 
-#menuButton :hover, .offcanvas :focus{
+#menuButton a :hover, .offcanvas :focus{
     color: #0074bd;
      display: block;
     color: white;
