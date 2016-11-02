@@ -38,7 +38,6 @@ body {
 #text {
     width: 50%;
     transition: margin-left .5s;
-    margin: 50px;
     background: lavender;
     
 }
