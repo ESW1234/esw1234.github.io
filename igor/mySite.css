@@ -12,15 +12,7 @@ body {
     color: white;
     cursor: pointer;
     font-size: 30px;
-}
-
-#menuButton a {
-    display: block;
-    cursor: pointer;
-    font-size: 30px;
-    transition: 0.4s
-    text-decoration: none;    
-    
+    text-decoration: none;
 }
 
 #menuButton a:hover, .offcanvas :focus{
