@@ -21,9 +21,9 @@ body {
 }
 
 #text {
-    width: 65%;
+    width: 50%;
     transition: margin-left .5s;
-    padding: 16px;
+    
 }
 .sidenav {
     height: 100%;
@@ -31,7 +31,7 @@ body {
     position: fixed;
     opacity: 0.9;
     z-index: 1;
-    top: 0;
+    top: 80px;
     left: 0;
     background-color: #111;
     overflow-x: hidden;
