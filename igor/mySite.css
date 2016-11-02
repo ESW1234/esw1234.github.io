@@ -11,8 +11,12 @@ body {
     display: block;
     color: white;
     cursor: pointer;
+    font-size: 30px;
 }
 
+#menuButton a:hover, .offcanvas a:focus{
+    color: #0074bd;
+}
 #button_goes_here{
     width: 100%; 
     height: 100%; 
