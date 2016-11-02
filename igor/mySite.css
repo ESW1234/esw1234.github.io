@@ -14,14 +14,18 @@ body {
     font-size: 30px;
 }
 
-#menuButton a :hover, .offcanvas :focus{
-    color: #0074bd;
-     display: block;
-    color: white;
+#menuButton a {
+    display: block;
     cursor: pointer;
     font-size: 30px;
     transition: 0.4s
     text-decoration: none;    
+    
+}
+
+#menuButton a :hover, .offcanvas :focus{
+    color: #0074bd;
+   
     
 }
 #button_goes_here{
