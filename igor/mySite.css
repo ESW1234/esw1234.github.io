@@ -10,6 +10,7 @@ body {
 #menuButton {
     display: block;
     color: white;
+    cursor: pointer;
 }
 
 #button_goes_here{
