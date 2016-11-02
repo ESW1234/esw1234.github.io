@@ -15,6 +15,14 @@ body {
     text-decoration: none;
 }
 
+#menuButton a {
+    display: block;
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+}
+
 #menuButton a:hover, .offcanvas :focus{
     color: #0074bd;
    
