@@ -16,11 +16,11 @@ body {
 }
 
 #menuButton a {
-    display: block;
     color: white;
     cursor: pointer;
     font-size: 30px;
     text-decoration: none;
+    transition: 0.4s
 }
 
 #menuButton a:hover, .offcanvas :focus{
