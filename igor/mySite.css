@@ -35,12 +35,6 @@ body {
     position: relative;	              
 }
 
-#text {
-    width: 50%;
-    transition: margin-left .5s;
-    background: lavender;
-    
-}
 .sidenav {
     height: 60%;
     width: 0;
@@ -83,6 +77,12 @@ body {
 
 #menuLinks {
     width: 200px;
+}
+
+#text {
+    width: 50%;
+    transition: margin-left .5s;
+    background: lavender;
 }
 
 
