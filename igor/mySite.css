@@ -61,8 +61,7 @@ body {
     font-size: 14px;
     color: #0074bd;
     display: block;
-    transition: 0.4s
-    width: 200px;    
+    transition: 0.4s    
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -72,7 +71,7 @@ body {
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: -175px;
+    right: 0px;
     font-size: 25px;
     
 }
