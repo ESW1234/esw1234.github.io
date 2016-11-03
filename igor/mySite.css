@@ -81,4 +81,8 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
+#menuLinks {
+    width: 200px;
+}
+
 
