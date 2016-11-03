@@ -85,4 +85,8 @@ body {
     width: 200px;
 }
 
+#close {
+    top: -2px
+    right: 10px;
+}
 
