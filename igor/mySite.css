@@ -47,7 +47,8 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    border-radius: 10px;	
+    border-radius: 10px;
+    margin-left: 5px;	
 }
 
 .sidenav a {
