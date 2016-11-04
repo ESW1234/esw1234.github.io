@@ -7,7 +7,7 @@ body {
     background: black;
 }
 
-#menuButton ,#helpButtonLink {
+#menuButton {
     display: block;
     color: white;
     cursor: pointer;
@@ -15,7 +15,7 @@ body {
     text-decoration: none;
 }
 
-#menuButton, #helpButtonLink a {
+#menuButton a {
     color: white;
     cursor: pointer;
     font-size: 30px;
@@ -116,7 +116,21 @@ body {
     }
 
 #helpButtonLink {
-	display: block;
-	text-align: right;
+	color: white;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+    transition: 0.4s
 }
 
+#helpButtonLink a {
+	color: white;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+    transition: 0.4s
+}
+
+#helpButtonLink a:hover, .offcanvas a:focus{
+    color: #0074bd;
+}
