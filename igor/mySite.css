@@ -47,6 +47,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    border-radius: 10px;	
 }
 
 .sidenav a {
@@ -83,8 +84,7 @@ body {
     width: 50%;
     transition: margin-left .5s;
     background: lavender;
-    border-radius: 20px;
-    text-indent: 10px;
+    border-radius: 10px;
 }
 
 	#embeddedServiceLiveAgentButton .embeddedServiceLiveAgentHelpButton {
