@@ -82,10 +82,12 @@ body {
 }
 
 #text {
+    margin-top:21px;
     width: 50%;
     transition: margin-left .5s;
     background: lavender;
     border-radius: 10px;
+    padding: 20px;
 }
 
 	#embeddedServiceLiveAgentButton .embeddedServiceLiveAgentHelpButton {
