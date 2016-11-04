@@ -116,7 +116,7 @@ body {
     }
 
 #helpButtonLink {
-	color: white;
+	color: black;
     cursor: pointer;
     font-size: 30px;
     text-decoration: none;
@@ -124,7 +124,7 @@ body {
 }
 
 #helpButtonLink a {
-	color: white;
+	color: black;
     cursor: pointer;
     font-size: 30px;
     text-decoration: none;
