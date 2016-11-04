@@ -115,4 +115,7 @@ body {
     	height: 20px;
     }
 
+#helpButtonLink
+display: block;
+text-align: right;
 
