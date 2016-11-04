@@ -7,7 +7,7 @@ body {
     background: black;
 }
 
-#menuButton #helpButtonLink {
+#menuButton ,#helpButtonLink {
     display: block;
     color: white;
     cursor: pointer;
@@ -15,7 +15,7 @@ body {
     text-decoration: none;
 }
 
-#menuButton #helpButtonLink a {
+#menuButton, #helpButtonLink a {
     color: white;
     cursor: pointer;
     font-size: 30px;
