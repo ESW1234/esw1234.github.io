@@ -2,7 +2,7 @@ var links = ['<a href="bl2index.html">DEFAULT WIDGET</a>', '<a href="bl2NoPrecha
 
 function openNav() {
     document.getElementById("sideNav").style.width = "195px";
-    document.getElementById("text").style.marginLeft = "197px";
+    document.getElementById("text").style.marginLeft = "198px";
     document.getElementById("link1").innerHTML = links[0];
     document.getElementById("link2").innerHTML = links[1];
     document.getElementById("link3").innerHTML = links[2];
