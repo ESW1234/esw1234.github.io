@@ -1,4 +1,4 @@
-var links = ['<a href="bl2index.html">DEFAULT WIDGET</a>', '<a href="bl2NoPrechat.html">NO PRECHAT</a>', '<a href="bl2Hidden.html">HIDDEN BUTTON</a>', '<a href="bl2NoWidget.html">NO WIDGET</a>', '<a href="bl2CustomText.html">CUSTOM BUTTON TEXT</a>', '<a href="bl2CustomCSS.html">CUSTOM STYLING</a>', '<a href="bl2Button2.html">BUTTON 2</a>', '<a href="bl2Link.html">BUTTON AS A LINK</a>', '<a href="bl2NoPrechatWithExtraPrechatFormDetails.html">NO PRECHAT WITH EXTRA PRECHAT FORM DETAILS</a>'];
+var links = ['<a href="index.html">DEFAULT WIDGET</a>', '<a href="noPrechat.html">NO PRECHAT</a>', '<a href="hidden.html">HIDDEN BUTTON</a>', '<a href="noWidget.html">NO WIDGET</a>', '<a href="customText.html">CUSTOM BUTTON TEXT</a>', '<a href="customCSS.html">CUSTOM STYLING</a>', '<a href="button2.html">BUTTON 2</a>', '<a href="link.html">BUTTON AS A LINK</a>', '<a href="noPrechatWithExtraPrechatFormDetails.html">NO PRECHAT WITH EXTRA PRECHAT FORM DETAILS</a>'];
 
 function openNav() {
     document.getElementById("sideNav").style.width = "195px";
