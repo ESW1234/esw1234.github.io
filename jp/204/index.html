@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">AGENT 1 PAGE ONE DEFAULT WIDGET</font></p>
+  <br/>
+  <br/>
+ <p align="center"><font color = "red"><a href="ltmindex.html">LTM - Link to PAGE ONE DEFAULT WIDGET</font></p></a>
+  <p align="center"><font color = "red"><a href="ltmcustom.html">LTM - Link to PAGE TWO CUSTOM WIDGET</font></p></a>
+  <p align="center"><font color = "red"><a href="ltmhidden.html">LTM - Link to PAGE THREE BUTTON AS A LINK</font></p></a>
+  <p align="center"><font color = "red"><a href="ltmnobutton.html">LTM - Link to PAGE FOUR NO BUTTON</font></p></a>
+
+
+<div id="button_goes_here">
+</div>
+
+	<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+    var initESW = function(gslbBaseUrl) {
+    embedded_svc.settings.avatarImgURL = '';
+    embedded_svc.settings.prechatBackgroundImgURL = '';
+    embedded_svc.settings.waitingStateBackgroundImgURL = '';
+    embedded_svc.settings.smallCompanyLogoImgURL = '';
+    embedded_svc.settings.displayHelpButton = true; //Or false
+    embedded_svc.settings.initialInteractionState = 'PRECHAT';
+    //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+    //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+    //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+    embedded_svc.init('http://snimmagadda-ltm.internal.salesforce.com:6109', 
+        'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
+        'http://snimmagadda-ltm.internal.salesforce.com:8095/content', 
+        'http://sitesdomain-158332bc2e3.localhost.force.com:6109/', 
+        '572xx00000000Pg', '00Dxx0000001jQk', '573xx00000000R8', '204.0', gslbBaseUrl); }; 
+    if (!window.embedded_svc) { 
+        var s = document.createElement('script'); 
+        s.setAttribute('src', 'http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); 
+        s.onload = function() { 
+            initESW(null); 
+        }; 
+        document.body.appendChild(s);
+    } else { 
+        initESW('http://snimmagadda-ltm.internal.salesforce.com:6109'); 
+    }
+</script>
+
+
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
