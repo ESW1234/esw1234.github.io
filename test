@@ -1,0 +1,52 @@
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+window.onload = function() {
+   var initESW = function(gslbBaseUrl) {
+  
+   embedded_svc.settings.avatarImgURL = '';
+   embedded_svc.settings.prechatBackgroundImgURL = '';
+   embedded_svc.settings.waitingStateBackgroundImgURL = '';
+   embedded_svc.settings.smallCompanyLogoImgURL = '';
+   embedded_svc.settings.displayHelpButton = false;
+   embedded_svc.settings.initialInteractionState = 'WAITING';
+   embedded_svc.settings.elementForOnlineDisplay = document.getElementById('onlinebtn');
+   embedded_svc.settings.elementForOfflineDisplay = document.getElementById('offlinebtn');
+   embedded_svc.settings.targetElement = document.getElementById('chatcont');
+   embedded_svc.init('https://suitsupply--chat.cs81.my.salesforce.com', 'https://d.la1-c2cs-lon.salesforceliveagent.com/chat', 'https://c.la1-c2cs-lon.salesforceliveagent.com/content', 'https://chat-suitsupply.cs81.force.com/', '57224000000Kywu', '00D260000008oNh', '57324000000Kz1d', '204.0', gslbBaseUrl);
+   
+   };
+   if (!window.embedded_svc) {
+       var s = document.createElement('script');
+       s.setAttribute('src', 'https://suitsupply--chat.cs81.my.salesforce.com/embeddedservice/204.0/esw.min.js');
+       s.onload = function() { initESW(null); };
+       document.body.appendChild(s);
+   }
+       else {
+           initESW('https://suitsupply--chat.cs81.my.salesforce.com');
+   }
+  
+   // create an observer instance
+   var observer = new MutationObserver(function(mutations) {
+     mutations.forEach(function(mutation) {
+       if(mutation.removedNodes.length > 0 && mutation.removedNodes[0].className.indexOf("embeddedServiceLiveAgentSidebar") > -1){
+           console.log('display btn again');
+       }
+     });   
+   }); 
+   
+   var config = { attributes: true, childList: true, characterData: true };
+  
+   // 'button_goes_here' is the same as the  embedded_svc.settings.targetElement
+   var target = document.getElementById('chatcont');
+   observer.observe(target, config);
+};
+</script>
+ 
+ 
+<style>.agentbtn{position:fixed;bottom: 15px;right : 15px;}</style>   
+<div id="onlinebtn">
+  <img class="agentbtn" width="72" height="72" style="border: 0px none; cursor: pointer;" onclick="javascript:embedded_svc.initInteraction()" src="//statics.suitsupply.com/images/general/chat_button_v2.png" />
+</div>
+<div id="offlinebtn"></div>
+<div id="chatcont"></div>
