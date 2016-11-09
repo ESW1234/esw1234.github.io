@@ -1,0 +1,48 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+	
+<div id="button_goes_here">
+</div>
+
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/embeddedservice/1.0/esw.js"></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+
+      embedded_svc.settings.avatarImgURL = '';
+      embedded_svc.settings.prechatBackgroundImgURL = '';
+      embedded_svc.settings.waitingStateBackgroundImgURL = '';
+      embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+      embedded_svc.settings.displayHelpButton = true; //Or false
+      embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+      //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+      //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+      //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+      embedded_svc.init('https://na7-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
+      'https://c.la-blitz02.soma.salesforce.com/content', 'https://communitiesdomain-1584a79de3b.blitz02.soma.force.com/napili0826', 
+      '572R0000000002g', '00DR00000008kAC', '573R0000000005a', '1.0', gslbBaseUrl, '39.0'); }; 
+      
+      if (!window.embedded_svc) { 
+        var s = document.createElement('script'); 
+        s.setAttribute('src', 'https://na7-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); 
+        s.onload = function() { initESW(null); }; 
+        document.body.appendChild(s);} 
+      else { 
+        initESW('https://na7-blitz02.soma.salesforce.com');
+      }
+</script>
+
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+</style>
