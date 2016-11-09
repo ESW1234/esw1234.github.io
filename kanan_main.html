@@ -35,4 +35,19 @@ embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', '	http://eswcomm-1582b6a7aee.localhost.force.com:6109/napiliAura', '572xx0000000043', '00Dxx0000001jkB', '573xx000000003y', '206.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://kgarg-wsm.internal.salesforce.com:6109/embeddedservice/206.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('http://kgarg-wsm.internal.salesforce.com:6109', 
+		  'http://kgarg-wsm.internal.salesforce.com:8096/chat', 
+		  'http://kgarg-wsm.internal.salesforce.com:8095/content', 
+		  'http://snapins206-157442b0ff8-15846119c55.localhost.force.com:57983/', 
+		  '572xx0000000043', '00Dxx0000001jkB', '573xx000000003y', 'subbu1', 
+		  'EmbeddedServiceLiveAgent_Parent04Ixx000000000GEAQ_15846721671', '1.0', gslbBaseUrl, '39.0'); }; 
+	
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script');
+		s.setAttribute('src', 
+						  
+			       'http://kgarg-wsm.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s);} 
+	else { initESW('http://kgarg-wsm.internal.salesforce.com:6109'); }
+	</script>
