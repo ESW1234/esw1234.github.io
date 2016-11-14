@@ -18,5 +18,3 @@ function closeNav() {
     document.getElementById("sideNav").style.width = "0";
     document.getElementById("text").style.marginLeft = "0";
 }
-
-function is
