@@ -15,23 +15,22 @@
       }
     </style>
     <body>
-      <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-      <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
-      <script type='text/javascript'>
-      var initESW = function(gslbBaseUrl) {
+    <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
 
-      embedded_svc.settings.avatarImgURL = 'https://materiell.com/wp-content/uploads/2015/03/john-small.png';
-      embedded_svc.settings.prechatBackgroundImgURL = '';
-      embedded_svc.settings.waitingStateBackgroundImgURL = '';
-      embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 
-      embedded_svc.settings.displayHelpButton = true; //Or false
-      embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-      //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-      //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-      //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-      embedded_svc.init('http://yatlaw-wsm2.internal.salesforce.com:6109', 'http://yatlaw-wsm2.internal.salesforce.com:8096/chat', 'http://yatlaw-wsm2.internal.salesforce.com:8095/content', 'http://glaw.localhost.force.com:6109/communityone', '572xx0000000001', '00Dxx0000001gGm', '573xx0000000001', '1.0', gslbBaseUrl, '39.0'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://yatlaw-wsm2.internal.salesforce.com:6109'); }</script>    
-     </body>
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://yatlaw-wsm2.internal.salesforce.com:6109', 'http://yatlaw-wsm2.internal.salesforce.com:8096/chat', 'http://yatlaw-wsm2.internal.salesforce.com:8095/content', 'http://glaw.localhost.force.com:6109/communityone', '572xx0000000001', '00Dxx0000001gGm', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'Deployment_One', 'EmbeddedServiceLiveAgent_Parent04Ixx000000002HEAQ_157df3a7aec'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://yatlaw-wsm2.internal.salesforce.com:6109'); }</script>
+    </body>
 </html>
 Contact GitHub API Training Shop Blog About
