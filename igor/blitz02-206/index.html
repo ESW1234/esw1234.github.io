@@ -37,21 +37,12 @@
 	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
 	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-	        
-	        
-        
-      embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
-      'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura'
-      , '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '1.0', gslbBaseUrl, '39.0'); 
-      };
-      if (!window.embedded_svc) {
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js');
-      s.onload = function() { initESW(null); };
-      document.body.appendChild(s);
-      } else {
-      initESW('https://na1-blitz02.soma.salesforce.com');
-      }</script>
+	        	           
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+		//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+		//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+		embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '1.0', gslbBaseUrl, '39.0', 'Nov15Deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CA1MAM_1586966c380'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 </div>
 <div id="text"><h3>SAFE LISTENING</h3>
 Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
