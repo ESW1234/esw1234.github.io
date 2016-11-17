@@ -6,8 +6,6 @@
 
 <div id="button_goes_here">
 </div>
-
-
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -20,22 +18,10 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
-'https://c.la-blitz02.soma.salesforce.com/content', 'https://jazmin.blitz02.soma.force.com', 
-'572D00000004Crk', '00DD00000008Usy', '573D00000004D3W', '1.0', gslbBaseUrl, '39.0'); 
-};
-  if (!window.embedded_svc) { 
-    var s = document.createElement('script'); 
-    s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); 
-    s.onload = function() { initESW(null); }; document.body.appendChild(s);
-  } else { 
-    initESW('https://na1-blitz02.soma.salesforce.com'); 
-  }
-</script>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://jazminblitz02.blitz02.soma.force.com/koaOct12', '572D00000004Crk', '00DD00000008Usy', '573D00000004D3W', '1.0', gslbBaseUrl, '39.0', 'githubblitz02', 'EmbeddedServiceLiveAgent_Parent04ID0000000005zMAA_158745bf982'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 </html>
 <style>
        body {
