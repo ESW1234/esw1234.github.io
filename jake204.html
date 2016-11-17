@@ -24,6 +24,17 @@ embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 embedded_svc.settings.onlineText = 'Help Button State'; // (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:6109', 'http://jakerouss-wsm1.internal.salesforce.com:8096/chat', 'http://jakerouss-wsm1.internal.salesforce.com:8095/content', 'http://sites-developer-edition.localhost.force.com:6109/', '572xx0000000001', '00Dxx0000001gEq', '573xx0000000001', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-wsm1.internal.salesforce.com:6109'); }</script>
+  embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:6109',
+    'http://jakerouss-wsm1.internal.salesforce.com:8096/chat',
+    'http://jakerouss-wsm1.internal.salesforce.com:8095/content',
+    'http://sites-developer-edition.localhost.force.com:6109/',
+    '572xx0000000001', '00Dxx0000001gEq', '573xx0000000001', '204.0', gslbBaseUrl); };
+    if (!window.embedded_svc)
+        { var s = document.createElement('script');
+          s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.min.js');
+          s.onload = function() { initESW(null); };
+    document.body.appendChild(s);}
+    else { initESW('https://na1-blitz01.soma.salesforce.com'); }
+</script>
 </body>
 </html>
