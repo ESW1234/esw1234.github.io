@@ -24,16 +24,31 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
+
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.extraPrechatFormDetails = [{'label':'extraField', 'value': 'Test', 'transcriptFields': [], 'displayToAgent': false},];
+
+
 embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 'http://snapins206-157442b0ff8-15846119c55.localhost.force.com:57983/', '572xx0000000006', '00Dxx0000001jFX', '573xx0000000006', '1.0', gslbBaseUrl, '39.0', 'feature_freeze', 'EmbeddedServiceLiveAgent_Parent04Ixx000000002WEAQ_15873cce821'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
+		  'https://c.la-blitz02.soma.salesforce.com/content', 
+		  'https://snapins206-157442b0ff8-158932f3e30.blitz02.soma.force.com', 
+		  '572D000000001to', '00DD00000008WZH', '573D000000002Au', '1.0', gslbBaseUrl, '39.0', 
+		  'SnapinsDeployment1', 'EmbeddedServiceLiveAgent_Parent04ID00000004C93MAE_1574ec66f3d'); }; 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js');
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s);
+	} else { 
+		initESW('https://na1-blitz02.soma.salesforce.com'); 
+	}
+	</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
