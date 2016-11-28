@@ -29,6 +29,8 @@
 <div id="button_goes_here">
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -39,12 +41,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na7-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-1584a91ab28.blitz02.soma.force.com', '572R0000000006o', '00DR00000008kAb', '573R0000000009i', '1.0', gslbBaseUrl, '39.0'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na7-blitz02.soma.salesforce.com'); }</script>
-</div>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-158325b74ff.blitz02.soma.force.com', '572D000000001Us', '00DD00000008Vw4', '573D000000001ls', '1.0', gslbBaseUrl, '39.0', 'MyFirstSnapinDeployment', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15725721062'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+	</div>
 <div id="text">
 	<span id ="article1"><h2>SAFE LISTENING</h2>
 Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
