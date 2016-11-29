@@ -3,6 +3,7 @@ body {
   background-size: 100%;
  }
 
-#esw_button_online:focus {
+.uiButton.agentOnline.is-selected,
+.uiButton.agentOnline:focus {
     background-color: #38c061;
 }
