@@ -5,5 +5,5 @@ body {
 
 .uiButton.agentOnline.is-selected,
 .uiButton.agentOnline:focus {
-    background-color: #38c061;
+    background-color: #38c061 !important;
 }
