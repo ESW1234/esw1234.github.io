@@ -4,6 +4,7 @@ body {
  }
 
 .uiButton.agentOnline.is-selected,
-.uiButton.agentOnline:focus {
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline:hover {
     background-color: #38c061 !important;
 }
