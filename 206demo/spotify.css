@@ -1,4 +1,8 @@
-    body {
-      background-image: url("background.png");
-      background-size: 100%;
-     }
+body {
+  background-image: url("background.png");
+  background-size: 100%;
+ }
+
+#esw_button_online:focus {
+    background-color: #38c061;
+}
