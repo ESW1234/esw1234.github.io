@@ -15,17 +15,7 @@
         embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
         embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
         
-        embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://d.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428',
-	    	'572D00000004CTx', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbBaseUrl);
-	}
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-    } else {
-	    initESW('https://service.force.com');
-    }
+        embedded_svc.init('https://jmac204.blitz01.blitz.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://esw204.blitz01.soma.force.com/napili0428', '572D00000004CX6', '00DD00000008DCx', '573D00000004CZq', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://jmac204.blitz01.blitz.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://jmac204.blitz01.blitz.salesforce.com'); }
 </script>
 
 </html>
