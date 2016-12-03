@@ -1,12 +1,18 @@
 <html>
 <head>
-  <title>Bo na1blitz02 esw2@bo.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
 <body>
-<h1>Bo na1blitz02 esw2@bo.org</h1>
-<p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/n1b2.html">Edit this page</a></p>
+<h1 id="titleHeader">Bo na1blitz02 esw2@bo.org</h1>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit">Edit this page</a></p>
+<script>
+  var pagePath = document.URL.substring(document.URL.lastIndexOf('/master'));
+  document.getElementById('editThisPageLink').href += pagePath;
+  var headerEl = document.getElementById('titleHeader');
+  headerEl.innerHTML += ' - ' + pagePath;
+  document.title = headerEl.innerHTML;
+</script>
 
 <!-- snippet start -->
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
