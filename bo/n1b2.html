@@ -5,9 +5,9 @@
 
 <body>
 <h1 id="titleHeader">Bo na1blitz02 esw2@bo.org</h1>
-<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit">Edit this page</a></p>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
 <script>
-  var pagePath = document.URL.substring(document.URL.lastIndexOf('/master'));
+  var pagePath = document.URL.substring(document.URL.indexOf('/'));
   document.getElementById('editThisPageLink').href += pagePath;
   var headerEl = document.getElementById('titleHeader');
   headerEl.innerHTML += ' - ' + pagePath;
