@@ -12,22 +12,26 @@ This is a page.
 <div id="button_goes_here"></div>
 <a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
 </body>
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://comm.localhost.force.com:6109/koav34', '572xx0000000006', '00Dxx0000001pGl', '573xx0000000006', '206.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/206.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>
-
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/204.0/esw.js"></script>
+<script>
+    var initESW = function(gslbBaseUrl) {
+            embedded_svc.settings.avatarImgURL = '../avatar.png';
+            embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+            embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+            embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+            
+        
+        embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura',
+            '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '204.0', gslbBaseUrl);
+    }
+    if (!window.embedded_svc) { 
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+        s.onload=function(){ initESW(null) }; 
+        document.body.appendChild(s);
+    } else {
+            initESW('https://service.force.com');
+        }
+</script>
 </html>
