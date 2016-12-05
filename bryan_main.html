@@ -22,12 +22,12 @@ This is a page.
             embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
             
         
-        embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura',
-            '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '204.0', gslbBaseUrl);
+        embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://comm.localhost.force.com:6109/koav34',
+            '572xx0000000006', '00Dxx0000001pGl', '573xx0000000006', '204.0', gslbBaseUrl);
     }
     if (!window.embedded_svc) { 
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js');
+        s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/206.0/esw.min.js');
         s.onload=function(){ initESW(null) }; 
         document.body.appendChild(s);
     } else {
