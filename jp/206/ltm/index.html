@@ -31,8 +31,8 @@
     embedded_svc.settings.extraPrechatFormDetails = [{'label':'Industry', 'value': 'manufacturing', 
 						      'transcriptFields': [], 'displayToAgent': true}];
     embedded_svc.settings.extraPrechatInfo = [{'entityName':'Lead','showOnCreate':true,'saveToTranscript':'Lead',
-				'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Industry','doCreate':false,
-						    'doFind':false,'label':'Industry'}]}];
+				'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Industry','doCreate':true,
+						    'doFind':true,'label':'Industry'}]}];
 	    
     embedded_svc.init('http://snimmagadda-ltm.internal.salesforce.com:6109', 
         'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
