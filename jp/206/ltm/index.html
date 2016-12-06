@@ -28,6 +28,12 @@
     //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
     //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
     //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+    embedded_svc.settings.extraPrechatFormDetails = [{'label':'Industry', 'value': 'manufacturing', 
+						      'transcriptFields': [], 'displayToAgent': true}];
+    embedded_svc.settings.extraPrechatInfo = [{'entityName':'Lead','showOnCreate':true,'saveToTranscript':'Lead',
+				'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Industry','doCreate':false,
+						    'doFind':false,'label':'Industry'}]}];
+	    
     embedded_svc.init('http://snimmagadda-ltm.internal.salesforce.com:6109', 
         'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
         'http://snimmagadda-ltm.internal.salesforce.com:8095/content', 
