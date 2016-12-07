@@ -22,8 +22,8 @@ embedded_svc.settings.avatarImgURL = 'small_tesla_logo.png';
 embedded_svc.settings.prechatBackgroundImgURL = 'defaultprechat.png';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo.png';
-embedded_svc.settings.extraPrechatFormDetails = [{'label':'Title', 'value': 'title title title', 'transcriptFields': [], 'displayToAgent': true}];
-embedded_svc.settings.extraPrechatInfo = [{'entityName':'Contact','showOnCreate':true,'saveToTranscript':'Contact','entityFieldMaps':[{'isExactMatch':true,'fieldName':'Title','doCreate':true,'doFind':true,'label':'Title'}]}];
+embedded_svc.settings.extraPrechatFormDetails = [{'label':'Last Name', 'value': 'my name', 'transcriptFields': [], 'displayToAgent': true}, {'label':'Title', 'value': 'title title title', 'transcriptFields': [], 'displayToAgent': true}];
+embedded_svc.settings.extraPrechatInfo = [{'entityName':'Contact','showOnCreate':true,'saveToTranscript':'Contact','entityFieldMaps':[{'isExactMatch':true,'fieldName':'Title','doCreate':true,'doFind':true,'label':'Title'}, {'isExactMatch':true,'fieldName':'LastName','doCreate':true,'doFind':true,'label':'Last Name'}]}];
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = 'Chat with an Expert Button';// (defaults to Chat with an Expert, localized)
