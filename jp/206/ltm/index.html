@@ -28,13 +28,13 @@
     //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
     //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
     //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-    /*
+    
     embedded_svc.settings.extraPrechatFormDetails = [{'label':'Industry', 'value': 'manufacturing', 
 						      'transcriptFields': [], 'displayToAgent': true}];
     embedded_svc.settings.extraPrechatInfo = [{'entityName':'Lead','showOnCreate':true,'saveToTranscript':'Lead',
 				'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Industry','doCreate':true,
 						    'doFind':true,'label':'Industry'}]}];
-    */
+    
 	    
     embedded_svc.init('http://snimmagadda-ltm.internal.salesforce.com:6109', 
         'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
@@ -46,15 +46,15 @@
 	//'jpesw1', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000N5EAI_15850dbbcbb');
 	//'jpesw2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000NAEAY_158556f1106');
 	//'jpeswbasic', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SKEAY_15874e67a5c');
-	//'jpeswsales', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SPEAY_15874e7c938');
+	'jpeswsales', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SPEAY_15874e7c938');
 	//'jpeswservice', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SUEAY_15874e8a281');
 
 	//'jpeswbasiccustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SZEAY_15874ea8077');
 	//'jpeswsalescustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SeEAI_15874ebbfca');
 	//'jpeswservicecustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SjEAI_15874ed2898');
-	//'newtest1', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000ezEAA_158d54b60d5'); //Junction BPO records inserted in the following order (Case, Contatc)  
-	//'newTest2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000gREAQ_158fa91dc64'); // Add all the fields availabel for Case object
-	'newTest3', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000jLEAQ_158fefca40a'); // All the Case fields are deleted
+	//'newtest1', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000ezEAA_158d54b60d5'); // Service Scenario: Junction BPO records inserted in the following order (Case, Contact)  
+	//'newTest2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000gREAQ_158fa91dc64'); // Service Scenario: Add all the fields availabel for Case object
+	//'newTest3', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000jLEAQ_158fefca40a'); // Service Scenario: All the Case fields are deleted
     }; 
 	//572xx00000000Pg  00Dxx0000001jQk 573xx00000000R8
     if (!window.embedded_svc) { 
