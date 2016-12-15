@@ -30,10 +30,14 @@ embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.extraPrechatFormDetails = [
-  {'label':'Home Department', 'value': 'manufacturing', 'transcriptFields': [], 'displayToAgent': true}
+  {'label':'Home Department', 'value': 'manufacturing', 'transcriptFields': [], 'displayToAgent': true},
+	{'label':'ExtraField1', 'value': 'extra extra hear all about it', 'transcriptFields': [], 'displayToAgent': true}
 ];
 embedded_svc.settings.extraPrechatInfo = [{'entityName':'Contact','showOnCreate':true,'saveToTranscript':'Contact',
-                'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Department','doCreate':true, 'doFind':true,'label':'Home Department'}]}];
+                'entityFieldMaps':[{'isExactMatch':true,'fieldName':'Department','doCreate':true, 'doFind':true,'label':'Home Department'}]},
+		{'entityName':'Contact','showOnCreate':true,'saveToTranscript':'Contact',
+                'entityFieldMaps':[{'isExactMatch':true,'fieldName':'ExtraField1__c','doCreate':true, 'doFind':true,'label':'ExtraField1'}]}
+					 ];
 
 
 embedded_svc.settings.displayHelpButton = true; //Or false
