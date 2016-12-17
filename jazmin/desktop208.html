@@ -13,42 +13,35 @@
 
 
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #3498E0; font-family: "Palatino Linotype", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #3498E0}
 </style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
+embedded_svc.settings.avatarImgURL = '../avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 
-'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 'http://jazmin208.localhost.force.com:6109/default', 
-'572x000000002u7', '00Dx0000003Eecq', '573x00000008QsL', '1.0', gslbBaseUrl, '40.0', 'githubPage', 
-'EmbeddedServiceLiveAgent_Parent04Ix00000004CAzEAM_1590a4ea74e'); }; 
-  if (!window.embedded_svc) { 
-    var s = document.createElement('script'); 
-    s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); 
-    s.onload = function() { initESW(null); }; document.body.appendChild(s);
-  } else { 
-    initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); 
-  }
-  </script>
-
+                  'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 'http://jazmin208.localhost.force.com:6109/default', 
+                  '572x000000002u7', '00Dx0000003Eecq', '573x00000008QsL', '1.0', gslbBaseUrl, '40.0', 'githubPage', 
+                  'EmbeddedServiceLiveAgent_Parent04Ix00000004CAzEAM_1590a4ea74e'); }; 
+   if (!window.embedded_svc) { 
+         var s = document.createElement('script'); 
+         s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); 
+         s.onload = function() { initESW(null); }; document.body.appendChild(s);
+   } else { 
+         initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); 
+   }
+</script>
 
 
 
