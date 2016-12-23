@@ -23,7 +23,18 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-
+  
+embedded_svc.settings.extraPrechatFormDetails = [
+  {'label':'Last Name', 'value': 'my n3ame', 'transcriptFields': [], 'displayToAgent': true}, 
+  {'label':'Title', 'value': 'title title title4', 'transcriptFields': [], 'displayToAgent': true},
+];
+embedded_svc.settings.extraPrechatInfo = [
+  {'entityName':'Contact','showOnCreate':true,'saveToTranscript':'Contact',
+   'entityFieldMaps':[
+     {'isExactMatch':true,'fieldName':'Title','doCreate':true,'doFind':false,'label':'Title'}, 
+     {'isExactMatch':true,'fieldName':'LastName','doCreate':true,'doFind':true,'label':'Last Name'},
+   ]
+  }];
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
