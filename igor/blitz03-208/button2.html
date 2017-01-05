@@ -3,12 +3,12 @@
 <html>
    <head>
    <title>BUTTON 2</title>
-  	 <link rel = "stylesheet" type = "text/css" href = "../mySite.css">
+  	 <link rel = "stylesheet" type = "text/css" href = "mySite.css">
 	   
  	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
    <body>
-	<script type='text/javascript' src='../mySite.js'></script>
+	<script type='text/javascript' src='mySite.js'></script>
  	 <span id ="pageTitle">206 PAGE SEVEN BUTTON 2</span>
 	 <span id ="menuButton"><a href="javascript:void(0)" onclick="openNav()">&#9776;</a></span>
 	<div id = "sideNav" class = "sidenav">	
@@ -28,20 +28,6 @@
 			<span id ="link10">OMNI-CHANNEL</span>
 		</div>
 	</div>
-<div id="button_goes_here">
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseUrl) {	        
-	        embedded_svc.settings.avatarImgURL = '../avatar.png';
-	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-	        
-	        
-        
- embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000002Ae', '1.0', gslbBaseUrl, '39.0', 'Button2Deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CBjMAM_1588e1c7734'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
-      </div>
 	   <div id="text"><h3>SAFE LISTENING</h3>
 Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
 
@@ -132,5 +118,32 @@ Quickly press three times to skip back
 Hold on the third press to scan
 Note: The cable included with our headphones is fully compatible with the iOS family. Functionality may vary by device.</span>
 </div>
+	   <div id="button_goes_here">
+	<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+		embedded_svc.settings.avatarImgURL = 'avatar.png';
+	        embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+	        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+	        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://snapins206-157442b0ff8-15846-1596f5b6cdc.blitz03.soma.force.com', '572D00000004Dkx', '00DD00000008WrP', '573D00000004Dxs', '2.0', gslbBaseUrl, '40.0', 'Default', 'EmbeddedServiceLiveAgent_Parent04ID0000000007qMAA_15970c7d7ad'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>
+ </div>
    </body>
 </html>
