@@ -12,7 +12,8 @@ This is a page.
 <div id="button_goes_here"></div>
 <a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
 </body>
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+
+    <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
@@ -28,5 +29,6 @@ embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na3.salesforce.com', 'https://d.la1-c2-phx.salesforceliveagent.com/chat', 'https://c.la1-c2-phx.salesforceliveagent.com/content', 'https://liveagentna3.secure.force.com', '57250000000Gmsu', '00D500000008Kal', '57350000000Gmwx', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na3.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na3.salesforce.com'); }</script>
+embedded_svc.init('https://na3.salesforce.com', 'https://d.la1-c2-phx.salesforceliveagent.com/chat', 'https://c.la1-c2-phx.salesforceliveagent.com/content', 'https://liveagentna3.secure.force.com', '57250000000GpiC', '00D500000008Kal', '57350000000GptM', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na3.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na3.salesforce.com'); }</script>
+    
 </html>
