@@ -11,20 +11,28 @@
 
 <div id="button_goes_here">
 </div>
+
+ <style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #09F4D9; font-family: "Comic Sans MS", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #09F4D9}
+</style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
+
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1550a73a5d9.blitz01.soma.force.com/0218', '572D00000004CUv', '00DD00000008FQY', '573D00000004CgD', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://jazminblitz02.blitz02.soma.force.com/koaOct12', '572D00000004DYK', '00DD00000008Usy', '573D00000004D3W', '1.0', gslbBaseUrl, '39.0', 'e', 'EmbeddedServiceLiveAgent_Parent04ID0000000006JMAQ_15879bcca42'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+   
+   
    </body>
 </html>
     <style>
