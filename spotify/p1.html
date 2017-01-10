@@ -51,7 +51,7 @@ window.onBeforeUnload = function (){
 window.onLoad = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
 	var dataToLoad = storageIframe.getData("CHASITOR_SERIALIZED_KEY");
-	sessionStorage.setItem("ESW_CHASITOR_KEY", dataToLoad);
+	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
 }
 </script>
 
