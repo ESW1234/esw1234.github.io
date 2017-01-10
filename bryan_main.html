@@ -22,9 +22,8 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 }
 </style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
-    window["$$safe-eval$$"] = true
 var initESW = function(gslbBaseUrl) {
 
 embedded_svc.settings.avatarImgURL = '';
@@ -37,8 +36,7 @@ embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://comm.localhost.force.com:6109/napiliguestspanish', '572xx0000000006', '00Dxx0000001pGl', '573xx0000000006', '1.0', gslbBaseUrl, '40.0', 'testlanguage', 'EmbeddedServiceLiveAgent_Parent04Ixx000000008oEAA_15970a65cd9'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>
-
+embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://comm.localhost.force.com:6109/napiliguestspanish', '572xx0000000006', '00Dxx0000001pGl', '573xx0000000006', '2.0', gslbBaseUrl, '40.0', 'doesbrandingworknow', 'EmbeddedServiceLiveAgent_Parent04Ixx000000008yEAA_15985be658c'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>
 
 
 
