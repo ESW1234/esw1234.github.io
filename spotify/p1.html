@@ -39,14 +39,14 @@ embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz
 // Code Added for iFrame based session continuity
 document.domain="github.io";
 
-window.onBeforeUnload = function (){
+window.onbeforeunload = function (){
 	var dataToSave = liveagent.chasitor.serialize();
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
 	storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", dataToSave);
 	//also save minimized state, unread msg, etc.
 }
 
-window.onLoad = function (){
+window.onload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
 	var dataToLoad = storageIframe.getData("CHASITOR_SERIALIZED_KEY");
 	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
