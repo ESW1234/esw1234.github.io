@@ -40,8 +40,6 @@ iframe.src = 'http://esw1234.github.io/spotify/storage.html';
 iframe.id = 'storage_iframe';
 iframe.style.display = 'none';
 document.body.appendChild(iframe);
-document.domain="github.io";
-
 window.onbeforeunload = function (){
 	var dataToSave = liveagent.chasitor.serialize();
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
