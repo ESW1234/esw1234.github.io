@@ -49,7 +49,7 @@ window.onbeforeunload = function (){
 
 window.onload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
-	var dataToLoad = storageIframe.getData("CHASITOR_SERIALIZED_KEY");
+	var dataToLoad = storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY");
 	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
 }
 </script>
