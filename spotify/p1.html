@@ -40,6 +40,20 @@ iframe.src = 'http://esw1234.github.io/spotify/storage.html';
 iframe.id = 'storage_iframe';
 iframe.style.display = 'none';
 document.body.appendChild(iframe);
+document.domain="github.io";
+
+window.onbeforeunload = function (){
+	var dataToSave = liveagent.chasitor.serialize();
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", dataToSave);
+	//also save minimized state, unread msg, etc.
+}
+
+window.onload = function (){
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	var dataToLoad = storageIframe.getData("CHASITOR_SERIALIZED_KEY");
+	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
+}
 </script>
 </div>
 </body>
