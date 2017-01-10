@@ -9,8 +9,9 @@
 <body>
 This is Page1 <br>
 <a href="http://esw1234.github.io/spotify/p2.html">Go to Page2</a>
-<div id="button_goes_here">
+<iframe src="http://esw1234.github.io/spotify/storage.html" id="storage_iframe" />
 
+<div id="button_goes_here">
 <style type='text/css'>
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
@@ -35,7 +36,24 @@ embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm-1598a5bbd91.blitz02.soma.force.com/napiliAura', '572D00000004Dq3', '00DD00000008Xh7', '573D00000004E35', '1.0', gslbBaseUrl, '39.0', 'a', 'EmbeddedServiceLiveAgent_Parent04ID000000000AGMAY_1598a61d030'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm-1598a5bbd91.blitz02.soma.force.com/napiliAura', '572D00000004Dq3', '00DD00000008Xh7', '573D00000004E35', '1.0', gslbBaseUrl, '39.0', 'a', 'EmbeddedServiceLiveAgent_Parent04ID000000000AGMAY_1598a61d030'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }
+
+// Code Added for iFrame based session continuity
+document.domain="github.io";
+
+window.onBeforeUnload = function (){
+	var dataToSave = liveagent.chasitor.serialize();
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", dataToSave);
+	//also save minimized state, unread msg, etc.
+}
+
+window.onLoad = function (){
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	var dataToLoad = storageIframe.getData("CHASITOR_SERIALIZED_KEY");
+	sessionStorage.setItem("ESW_CHASITOR_KEY", dataToLoad);
+}
+</script>
 
 </div>
 </body>
