@@ -37,6 +37,29 @@ embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm-1598a5bbd91.blitz02.soma.force.com/napiliAura', '572D00000004Dq3', '00DD00000008Xh7', '573D00000004E35', '1.0', gslbBaseUrl, '39.0', 'a', 'EmbeddedServiceLiveAgent_Parent04ID000000000AGMAY_1598a61d030'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 
+<script type='text/javascript'>
+var iframe;
+iframe = document.createElement('iframe');
+iframe.src = 'http://esw1234.github.io/spotify/storage.html';
+iframe.id = 'storage_iframe';
+iframe.style.display = 'none';
+document.body.appendChild(iframe);
+	
+window.onbeforeunload = function (){
+	var dataToSave = liveagent.chasitor.serialize();
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", dataToSave);
+	//also save minimized state, unread msg, etc.
+}
+
+window.onload = function (){
+    var storageIframe = document.getElementById("storage_iframe").contentWindow;
+	if (storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY")){
+	var dataToLoad = storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY");
+	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
+	}
+}
+</script>
 </div>
 </body>
 </html>
