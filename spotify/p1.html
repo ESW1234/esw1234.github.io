@@ -42,17 +42,22 @@ iframe.style.display = 'none';
 document.body.appendChild(iframe);
 	
 window.onbeforeunload = function (){
-	var dataToSave = liveagent.chasitor.serialize();
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
-	storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", dataToSave);
-	//also save minimized state, unread msg, etc.
+    storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", liveagent.chasitor.serialize());
+    storageIframe.storeSessionData("ESW_MINIMIZED_WIDTH", window.sessionStorage.getItem("ESW_MINIMIZED_WIDTH"));
+    storageIframe.storeSessionData("LA_ESW_MINIMIZED", window.sessionStorage.getItem('LA_ESW_MINIMIZED'));
+    storageIframe.storeSessionData("LA_ESW_UNREAD_NOTIFS", window.sessionStorage.getItem('LA_ESW_UNREAD_NOTIFS'));
+    storageIframe.storeSessionData("LA_ESW_MINIMIZED_TEXT", window.sessionStorage.getItem('LA_ESW_MINIMIZED_TEXT'));
 }
 
 window.onload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
 	if (storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY")){
-	var dataToLoad = storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY");
-	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", dataToLoad);
+	sessionStorage.setItem("CHASITOR_SERIALIZED_KEY", storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY"));
+	sessionStorage.setItem("ESW_MINIMIZED_WIDTH", storageIframe.getSessionData("ESW_MINIMIZED_WIDTH"));
+	sessionStorage.setItem("LA_ESW_MINIMIZED", storageIframe.getSessionData("LA_ESW_MINIMIZED"));
+	sessionStorage.setItem("LA_ESW_UNREAD_NOTIFS", storageIframe.getSessionData("LA_ESW_UNREAD_NOTIFS"));
+	sessionStorage.setItem("LA_ESW_MINIMIZED_TEXT", storageIframe.getSessionData("LA_ESW_MINIMIZED_TEXT"));
 	}
 }
 </script>
