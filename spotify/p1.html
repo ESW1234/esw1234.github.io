@@ -50,10 +50,7 @@ window.onbeforeunload = function (){
     storageIframe.storeSessionData("LA_ESW_MINIMIZED_TEXT", window.sessionStorage.getItem('LA_ESW_MINIMIZED_TEXT'));
     
     // temp code - removes window session storage data to make sure data is loaded from the iframe 
-    keys = ["CHASITOR_SERIALIZED_KEY", "ESW_MINIMIZED_WIDTH", "LA_ESW_MINIMIZED", "LA_ESW_UNREAD_NOTIFS", "LA_ESW_MINIMIZED_TEXT"]
-    keys.forEach(function(key){
-       sessionStorage.removeItem(key);
-    });
+    window.sessionStorage.clear();
 }
 window.onload = function (){
     var storageIframe = document.getElementById("storage_iframe").contentWindow;
