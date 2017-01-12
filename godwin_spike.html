@@ -6,8 +6,10 @@
 
   <body>
     <!-- Lightning out app 1 -->
-    <script type="text/javascript" src="https://service.force.com/lightning/lightning.out.js">
+    <script type="text/javascript" src="https://service.force.com/lightning/lightning.out.js"></script>
+    
     <div id="feed"/>
+    <script>
     debugger;
     $Lightning.use("embeddedService:spikeLOOne", function() {
         $Lightning.createComponent("forceChatter:feed", { 
