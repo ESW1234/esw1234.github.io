@@ -1,25 +1,9 @@
-kanan-ltm-main
-
-<div id="button_goes_here">
+<html>
+<head>
+</head>
+	
+<body> 
+<div id="">
 </div>
-<script src=""></script>
-<script src=""></script>
-<script>
-	var initESW = function(gslbBaseUrl) {
-	        embedded_svc.settings.avatarImgURL = '';
-	        embedded_svc.settings.prechatBackgroundImgURL = '';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '';
-        
-        embedded_svc.init('http://kgarg-ltm.internal.salesforce.com:6109', 'http://kgarg-ltm.internal.salesforce.com:8096/chat', 'http://kgarg-ltm.internal.salesforce.com:8096/content', 'http://nwk00dxx0000001gff.localhost.force.com:6109/napili0205',
-	    	'572xx0000000001', '00Dxx0000001gFF', '573xx0000000001', '204.0', gslbBaseUrl);
-	}
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'http://kgarg-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-	} else {
-		    initESW('https://service.force.com');
-	    }
-</script>
+</body>
+</html>
