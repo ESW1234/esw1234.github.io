@@ -4,5 +4,25 @@
 	
 <body> 
  <div id="button_goes_here"> </div>
+	<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #C4AC26; font-family: "Times New Roman", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #C4AC26}
+</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://servicecloudpm.my.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://stanleyhcdf15-14fa5059341.secure.force.com', '572B00000000Ksw', '00DB00000002V3P', '573B00000000S6c', '1.0', gslbBaseUrl, '39.0', 'Developer_preview', 'EmbeddedServiceLiveAgent_Parent04IB00000004CEmMAM_1599842cf47'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://servicecloudpm.my.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://servicecloudpm.my.salesforce.com'); }</script>
 </body>
 </html>
