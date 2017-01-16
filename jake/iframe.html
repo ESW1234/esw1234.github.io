@@ -15,5 +15,19 @@
 Iframe 2.0 hurray
 <button>Test</button>
 <iframe id="content" src="http://esw1234.github.io/jake/iframe_contents.html"/>
+<script type="text/javascript">
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  var contentDiv = document.querySelector("#content");
+  var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+  if(event.data.type === "esw_resize") {
+    contentDiv.style.left = event.data.left;
+    contentDiv.style.top = event.data.top;
+    contentDiv.style.width = event.data.width;
+    contentDiv.style.height = event.data.widt;
+  }
+}  
+</script>
 </body>
 </html>
