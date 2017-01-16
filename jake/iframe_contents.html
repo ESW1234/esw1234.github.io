@@ -7,6 +7,16 @@
 <body>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript'> 
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+  if(event.data.type === "esw_window_size") {
+    document.body.style.width = event.data.width + "px";
+    document.body.style.height = event.data.height + "px";
+  }
+}  
+  
 var initESW = function(gslbBaseUrl) {
 
 embedded_svc.settings.avatarImgURL = 'small_tesla_logo.png';
