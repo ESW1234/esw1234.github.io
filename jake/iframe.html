@@ -19,6 +19,7 @@ Iframe 2.0 hurray
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
+  console.log(event);
   var contentDiv = document.querySelector("#content");
   var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
   if(event.data.type === "esw_resize") {
