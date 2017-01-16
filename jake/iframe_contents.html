@@ -10,6 +10,7 @@
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
+  debugger;
   var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
   if(event.data.type === "esw_window_size") {
     document.body.style.width = event.data.width + "px";
