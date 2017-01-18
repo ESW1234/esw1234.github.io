@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+<script src="http://b-chu-ltm.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+    <script src="something"></script>
+<script type="text/javascript">window["$$safe-eval$$"] = true;</script>
+
+<body>
+This is a page.
+
+<div id="button_goes_here"></div>
+<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+</body>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://dev1--REFORGDEV1.cs6.my.salesforce.com', 'https://d.la10cs.salesforceliveagent.com/chat', 'https://c.la10cs.salesforceliveagent.com/content', 'https://reforgdev1-mlliveagent.cs6.force.com/snapins', '572N000000000Cw', '00DN0000000AjsI', '573N000000000Jd', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dev1--REFORGDEV1.cs6.my.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://dev1--REFORGDEV1.cs6.my.salesforce.com'); }</script> 
+    
+    
+    
+    
+    
+    
+    
+    
+</html>
