@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+	
+<div id="button_goes_here">
+</div>
+
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="https://service.force.com/embeddedservice/embeddedservice/1.0/esw.js"></script>
+<script>
+	var initESW = function(gslbBaseUrl) {
+        embedded_svc.settings.avatarImgURL = 'https://scontent-sjc2-1.xx.fbcdn.net/t31.0-8/278751_10100789057539180_4584399_o.jpg';
+        embedded_svc.settings.prechatBackgroundImgURL = 'https://heavyeditorial.files.wordpress.com/2016/11/gettyimages-621090710.jpg?quality=65&strip=all&w=780';
+        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+        
+        /*
+        embedded_svc.settings.extraPrechatFormDetails = [
+          {"label":"firstName",
+           "value":"Usain",
+           "transcriptFields":[],
+           "displayToAgent":true},
+          {"label":"LastName",
+           "value":"Bolt",
+           "transcriptFields":[],
+           "displayToAgent":false},
+          {"label":"Email",
+           "value":"bolt@gmail.com",
+           "transcriptFields":[],
+           "displayToAgent":true},
+          {"label":"textCustomContact",
+           "value":"text from extra prechat field",
+           "transcriptFields":[],
+           "displayToAgent":true},
+          {"label":"Fax",
+           "value":"000-000-0000",
+           "transcriptFields":[],
+           "displayToAgent":true},
+          {"label":"issue",
+           "value":"Laptop broken",
+           "transcriptFields":[],
+           "displayToAgent":true}
+        ]; 
+
+        embedded_svc.settings.extraPrechatInfo = [
+          {"entityName":"Contact",
+            "showOnCreate":true,
+            "linkToEntityName":"Case",
+            "linkToEntityField":"ContactId",
+            "saveToTranscript":"Contact",
+            "entityFieldMaps":[
+              {"isExactMatch":true,
+               "fieldName":"FirstName",
+               "doCreate":true,
+               "doFind":true,
+               "label":"firstName"},
+              {"isExactMatch":true,
+               "fieldName":"LastName",
+               "doCreate":true,
+               "doFind":true,
+               "label":"LastName"},
+              {"isExactMatch":true,
+               "fieldName":"Email",
+               "doCreate":true,
+               "doFind":true,
+               "label":"Email"}]
+           },
+           {"entityName":"Case",
+            "showOnCreate":true,
+            "entityFieldMaps":[
+              {"isExactMatch":false,
+               "fieldName":"Subject",
+               "doCreate":true,
+               "doFind":false,
+               "label":"issue"},
+              {"isExactMatch":false,
+               "fieldName":"Status",
+               "doCreate":true,
+               "doFind":false,
+               "label":"Status"},
+              {"isExactMatch":false,
+               "fieldName":"Origin",
+               "doCreate":true,
+               "doFind":false,
+               "label":"Origin"}
+            ]
+           }
+        ];*/
+		
+        embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://justin208blitz.blitz03.soma.force.com/laSite', '572D00000000224', '00DD00000008WpU', '573D000000002JA', '2.0', gslbBaseUrl, '40.0', 'justin_s_deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }
+</script>
+
+</html>
+<style>
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            background-image: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+</style>

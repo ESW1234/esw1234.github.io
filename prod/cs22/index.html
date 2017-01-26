@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="something"></script>
+
+<body>
+This is a page.
+
+<div id="button_goes_here"></div>
+<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+</body>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://cs22.salesforce.com', 'https://d.la3-c2cs-was.salesforceliveagent.com/chat', 'https://c.la3-c2cs-was.salesforceliveagent.com/content', 'https://sandbox-liveagenteu3-140e5d5f57c-141-145ebae47c5.cs22.force.com/', '572170000004CAz', '00D170000008aHz', '573170000004CIA', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://cs22.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://cs22.salesforce.com'); }</script>
+
+</html>

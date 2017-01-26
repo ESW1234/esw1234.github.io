@@ -1,0 +1,27 @@
+<html>
+<body>
+kanan-wsm-main-204
+<a href="http://esw1234.github.io/kanan_204_main.html">Page 1 </a>
+<div id="button_goes_here"> </div>
+	
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://kgarg-wsm.internal.salesforce.com:6109', 'http://kgarg-wsm.internal.salesforce.com:8096/chat', 'http://kgarg-wsm.internal.salesforce.com:8095/content', 'http://snapins206-157442b0ff8-1582b6a7aee.localhost.force.com:6109/', '572xx0000000043', '00Dxx0000001jkB', '573xx000000003y', '1.0', gslbBaseUrl, '39.0', 'feature_freeze_deployment', 'EmbeddedServiceLiveAgent_Parent04Ixx000000006YEAQ_15873f43b8c'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://kgarg-wsm.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://kgarg-wsm.internal.salesforce.com:6109'); }</script>
+	
+	
+	
+</body>
+</html>

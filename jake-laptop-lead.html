@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+Jake (laptop) main Aug. 2016
+<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #0074BD; font-family: "Salesforce Sans", sans-serif;}@font-face {font-family: 'Salesforce Sans';src: url(https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff)}</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.extraPrechatFormDetails = [{'label':'Industry', 'value': 'Manufacturing', 'transcriptFields': [], 'displayToAgent': true}];
+//embedded_svc.settings.extraPrechatInfo = [{'entityName':'Lead','showOnCreate':true,'saveToTranscript':'Lead','entityFieldMaps':[{'isExactMatch':true,'fieldName':'Industry','doCreate':true, 'doFind':true,'label':'Industry'}]}];
+              
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jakerouss-ltm1.internal.salesforce.com:6109', 'http://jakerouss-ltm1.internal.salesforce.com:8096/chat', 'http://jakerouss-ltm1.internal.salesforce.com:8095/content', 'http://communities-developer-edition.localhost.force.com:6109/napili', '572xx000000003K', '00Dxx0000001gEH', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'lead2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000E8EAI_158e46455fe'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-ltm1.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-ltm1.internal.salesforce.com:6109'); }</script>
+  </body>
+</html>

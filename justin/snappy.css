@@ -5,10 +5,21 @@
 	position: relative;        
 }
 
-.uiTabset--default .tabs__item {
-	background: #fff;
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.featuredTab.tabs__item.active.uiTabItem > a {
+	background: #fff; /* red background on anchor featured tab */
+	/*border-bottom: 4px solid #000;*/
 }
 
-.uiTabset--default .tabs__item.active>a {
-	background: #fff;
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li > a {
+	background: #fff; /* gray backgrounds */
+	border-bottom: 4px solid #000; /* black bottom line */
+}
+
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li.tabs__item.active.uiTabItem > a {
+	border-bottom: 4px solid #a95e25; /* brown for active tab */
+}
+
+#NapiliCommunityTemplate > div.cCenterPanel > div > div.row.contentPanel > div.col-lg-8 > div > div > div > div > ul > li {
+	/*background: #fff; /* grey padding */
+	/*border-bottom-color: black !important;*/
 }

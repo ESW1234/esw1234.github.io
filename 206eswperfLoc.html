@@ -1,0 +1,49 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+	
+<body>
+
+<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #0074BD; font-family: "Salesforce Sans", sans-serif;}</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://sxie-wsm.internal.salesforce.com:6109', 'https://d.la-ist.soma.salesforce.com/chat', 'https://c.la-ist.soma.salesforce.com/content', 'http://nwk00dx000000091dd.localhost.force.com:6109/206eswperf', '572x00000004DOR', '00Dx000000091DD', '573x00000004F6D', '1.0', gslbBaseUrl, '39.0', 'MyTestingDeployment', 'EmbeddedServiceLiveAgent_Parent04Ix00000008OIAEA2_158aa12160b'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://ist11.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://sxie-wsm.internal.salesforce.com:6109'); }</script>
+</body>
+
+<style>
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+}
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
+}
+</style>
+</html>

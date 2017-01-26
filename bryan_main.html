@@ -3,8 +3,9 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
     </head>
-<script src="https://service.force.com/lightning/lightning.out.js"></script>
-<script src="something"></script>
+<script src="http://b-chu-ltm.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+    <script src="something"></script>
+<script type="text/javascript">window["$$safe-eval$$"] = true;</script>
 
 <body>
 This is a page.
@@ -12,30 +13,36 @@ This is a page.
 <div id="button_goes_here"></div>
 <a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
 </body>
-<script>
-
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
-        embedded_svc.settings.avatarImgURL = '../avatar.png';
-        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
-        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
-        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-        
-        embedded_svc.settings.displayHelpButton = false;
-        
-        embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://fitbit-1508677ca09-152612ecdc0.localhost.internal.salesforce.com:8095/content', 
-        	// 'http://fitbit-1475b6fa058-14df87572-152612ecdc0.localhost.force.com:6109/help',
-        	'http://liveagentpage.localhost.force.com:6109/',
-	    	'572xx0000000006', '00Dxx0000001gLD', '573xx0000000006', '204.0', gslbBaseUrl);
-	};
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'http://fitbit-1508677ca09-152612ecdc0.localhost.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-    } else {
-	    initESW('https://service.force.com');
-    }
 
-</script>
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
 
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://b-chu-ltm.internal.salesforce.com:6101', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'https://justin208blitz-159d1c74212.localhost.force.com:6101/laSite', '572xx0000000001', '00Dxx0000001gGj', '573xx0000000001', '1.0', gslbBaseUrl, '40.0', 'justin_s_deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://b-chu-ltm.internal.salesforce.com:6101/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://b-chu-ltm.internal.salesforce.com:6101'); }</script>
+    
+    
+    
+    
+    
+    
+    
+    
 </html>

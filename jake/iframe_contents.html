@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Widget Main</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript'> 
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  debugger;
+  var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+  if(event.data.type === "esw_window_size") {
+    document.body.style.width = event.data.width + "px";
+    document.body.style.height = event.data.height + "px";
+  }
+}  
+  
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'small_tesla_logo.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'defaultprechat.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo.png';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:57983', 'http://jakerouss-wsm1.internal.salesforce.com:7443/chat', 'http://jakerouss-wsm1.internal.salesforce.com:8080/content', 'http://communities-developer-edition.jakerouss-wsm1.t.force.com:57983/napili', '572xx0000000001', '00Dxx0000001gFF', '573xx0000000001', '2.0', gslbBaseUrl, '40.0', 'X7654321', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15970992447'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:57983/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-wsm1.internal.salesforce.com:57983'); }</script>
+</body>
+</html>
