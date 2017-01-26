@@ -1,0 +1,51 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @ESW1234
+ Unwatch 1
+  Star 0
+ Fork 5 ESW1234/esw1234.github.io
+ Code  Issues 0  Pull requests 2  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathesw1234.github.io/prod/cs22/index.html
+188815a  on Dec 10, 2016
+@ESW1234 ESW1234 Update index.html
+1 contributor
+RawBlameHistory     
+34 lines (27 sloc)  1.94 KB
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://cs46.salesforce.com', 'https://d.la4-c1cs-chi.salesforceliveagent.com/chat', 'https://c.la4-c1cs-chi.salesforceliveagent.com/content', 'https://sandbox-liveagenteu3-140e5d5f57c-141-14d90611802.cs46.force.com/', '5729A000000000z', '00D9A0000008aIE', '5739A000000000u', '1.0', gslbBaseUrl, '39.0', 'ESWDeployment1', 'EmbeddedServiceLiveAgent_Parent04I9A0000000001UAA_159996740cc'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://cs46.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://cs46.salesforce.com'); }</script>
+
+</html>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help

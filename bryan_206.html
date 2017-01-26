@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+<script src="something"></script>
+
+<body>
+This is a page.
+
+<div id="button_goes_here"></div>
+<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = 'https://image.freepik.com/free-vector/modern-abstract-background_1048-1003.jpg';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://b-chu-ltm.internal.salesforce.com:6109', 'http://b-chu-ltm.internal.salesforce.com:8096/chat', 'http://b-chu-ltm.internal.salesforce.com:8095/content', 'http://comm.localhost.force.com:6109/126', '572xx0000000006', '00Dxx0000001pGl', '573xx0000000006', '1.0', gslbBaseUrl, '39.0', 'two', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000048EAA_158bbb81993'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://b-chu-ltm.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://b-chu-ltm.internal.salesforce.com:6109'); }</script>   
+    
+</body>
+
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <title>Go Premium - Spotify</title>
+  <link rel=stylesheet type='text/css' href='spotify.css'/>
+</head>
+<body>
+<!--
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+-->
+  <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-1584189b7ec.blitz02.soma.force.com', '572D00000004DLm', '00DD00000008Vzc', '573D00000004DYj', '1.0', gslbBaseUrl, '39.0', 'SpotifyPremium', 'EmbeddedServiceLiveAgent_Parent04ID0000000007MMAQ_158b1ca4037'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+</body>
+</html> 

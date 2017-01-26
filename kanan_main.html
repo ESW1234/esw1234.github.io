@@ -1,9 +1,10 @@
-
+<html>
+<body>
 kanan-wsm-main-204
 <a href="http://esw1234.github.io/kanan_204_main.html">Page 1 </a>
 
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/204.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/1.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 /*Optionally specify the embedded_svc.settings to customize the images used in the snap-in chat widget. 
@@ -19,6 +20,7 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.targetElement = document.getElementById('button_goes_here');
 /*Optionally specify the embedded_svc.settings to customize the appearance and behavior of the snap-in chat widget. 
 
 To show the default chat button that connects your customers to the chat widget, set the displayHelpButton = true;. Valid parameters are true|false.
@@ -31,8 +33,29 @@ To customize the text that appears in the chat button when agents are offline, s
 
 To customize the text that appears in the chat button when the chat window is loading, set the parameter onlineLoadingText = "..." to whatever text you want to show. If you don't specify this parameter, the default text shown is "Loading."*/
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+//embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://d.la-blitz01.soma.salesforce.com/chat', 'https://c.la-blitz01.soma.salesforce.com/content', 'https://embeddedservice204.blitz01.soma.force.com', '572D00000004CX6', '00DD00000008DCx', '573D00000004Cin', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('http://kgarg-wsm.internal.salesforce.com:6109', 
+		  'http://kgarg-wsm.internal.salesforce.com:8096/chat', 
+		  'http://kgarg-wsm.internal.salesforce.com:8095/content', 
+		  'http://kgarg-main-wsm.localhost.force.com:6109/Napili0720', 
+		  '572xx000000003P', '00Dxx0000001gFv', '573xx0000000001','1.0', gslbBaseUrl, '39.0', 'Test', 
+		  'EmbeddedServiceLiveAgent_Parent04Ixx000000005pEAA_157c5d147a8'); }; 
+	
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script');
+		s.setAttribute('src', 
+						  
+			       'http://kgarg-wsm.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s);} 
+	else { initESW('http://kgarg-wsm.internal.salesforce.com:6109'); }
+	</script>
+
+	<div id="button_goes_here"> </div>
+	
+	
+	</body>
+</html>

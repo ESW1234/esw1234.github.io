@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+<h1 id="titleHeader">Bo na1blitz02 esw2@bo.org</h1>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<script>
+  var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
+  document.getElementById('editThisPageLink').href += pagePath;
+  var headerEl = document.getElementById('titleHeader');
+  headerEl.innerHTML += ' - ' + pagePath;
+  document.title = headerEl.innerHTML;
+</script>
+
+<!-- snippet start -->
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+  /*
+  embedded_svc.init(
+  'https://na1-blitz02.soma.salesforce.com', 
+  'https://d.la-blitz02.soma.salesforce.com/chat',
+  'https://c.la-blitz02.soma.salesforce.com/content', 
+  'https://eswcomm-15869e97343.blitz02.soma.force.com/napiliAura', 
+  '572D000000001hG', '00DD00000008WG4', '573D000000001yG', '1.0', gslbBaseUrl, '39.0', 'Deployment2', 'EmbeddedServiceLiveAgent_Parent04ID00000004CA8MAM_15869f5be6f'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }
+  
+  */
+  
+  
+  embedded_svc.init(
+//       'http://bochean-ltm2.internal.salesforce.com:6109', 
+//   'http://bochean-ltm2.internal.salesforce.com:8096/chat', 
+//   'http://bochean-ltm2.internal.salesforce.com:8095/content', 
+//   'http://subbu-153c1e39e36.localhost.force.com:6109/esw0108', 
+
+  'https://na1-blitz02.soma.salesforce.com', 
+  'https://d.la-blitz02.soma.salesforce.com/chat', // this is our outdated LA chat server url
+  'https://c.la-blitz02.soma.salesforce.com/content', 
+  'https://eswcomm-15869e97343.blitz02.soma.force.com/napiliAura', // had to change this to http
+  '572D000000001hG', 
+    '00DD00000008WG4', 
+    '573D000000001yG', 
+    '1.0', 
+    gslbBaseUrl, 
+    '39.0', 
+    'Deployment2', 
+    'EmbeddedServiceLiveAgent_Parent04ID00000004CA8MAM_15869f5be6f'); 
+}; 
+  if (!window.embedded_svc) { 
+    var s = document.createElement('script'); 
+    s.setAttribute('src', 'http://bochean-ltm2.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); 
+    s.onload = function() { initESW(null); }; 
+    document.body.appendChild(s);
+  } else { initESW('https://na1-blitz02.soma.salesforce.com'); }
+
+  
+  </script>
+
+<!-- snippet end -->
+
+</body>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
+}
+div:not(:first-child) {
+  margin-top: .5rem;
+}
+h1 {
+  font-size: 3rem;
+}
+a {
+  color: red;
+}
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
+}
+</style>
+</html>

@@ -1,11 +1,12 @@
 <html>
 <head>
-  <title>204 Spotify</title>
+  <title>Bo 204</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
 <body>
-<h1>Bo 204</h1>
+<h1 id="titleHeader"></h1>
+<script>document.getElementById('titleHeader').innerHTML = document.title;</script>
 <p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/204.html">Edit this page</a></p>
 
 <!-- snippet start -->
@@ -24,8 +25,48 @@ embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://bochean-ltm2.internal.salesforce.com:6109', 'http://bochean-ltm2.internal.salesforce.com:8096/chat', 'http://bochean-ltm2.internal.salesforce.com:8095/content', 'http://204.localhost.force.com:6109/napili', '572xx000000005z', '00Dxx0000001hHq', '573xx000000006V', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://bochean-ltm2.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://bochean-ltm2.internal.salesforce.com:6109'); }</script>
-<!-- snippet end -->
+  
+  /*
+    embedded_svc.settings.extraPrechatFormDetails = [
+  {"label":"First Name","value":"1122",displayToAgent: "true"},
+  {"label":"Last Name","value":"2",  displayToAgent: "true"},
+  {"label":"Email", value: "a@b.com",  displayToAgent: "true"},
+  {"label":"Subject","value":"Subject", displayToAgent: "true"},
+  {label: "my extra",value: "value for my extra", displayToAgent: "true"}
+      ];
+      */
+
+  
+  embedded_svc.settings.extraPrechatFormDetails = [
+  {"label":"First Name","value":"1122",transcriptFields:["test1__c", "test2_penny__c"], displayToAgent: "true"},
+  {"label":"Last Name","value":"2", transcriptFields:["test3__c"], displayToAgent: "true"},
+  {"label":"Email", value: "a@b.com", transcriptFields:[], displayToAgent: "true"},
+  {"label":"Subject","value":"Subject", displayToAgent: "true"},
+  {label: "my extra",value: "value for my extra", displayToAgent: "true", transcriptFields: ["test1__c"]}
+];
+
+embedded_svc.init(
+  'http://bochean-ltm2.internal.salesforce.com:6109', 
+  'http://bochean-ltm2.internal.salesforce.com:8096/chat', 
+  'http://bochean-ltm2.internal.salesforce.com:8095/content', 
+  'http://204.localhost.force.com:6109/napili', 
+  '572xx000000005z', 
+  '00Dxx0000001hHq', 
+  '573xx000000006V', 
+  '204.0', 
+  gslbBaseUrl); 
+}; 
+if (!window.embedded_svc) { 
+  var s = document.createElement('script'); 
+  s.setAttribute('src', 'http://bochean-ltm2.internal.salesforce.com:6109/embeddedservice/204.0/esw.js'); 
+  s.onload = function() { initESW(null); }; 
+  document.body.appendChild(s);
+} else { 
+  initESW('http://bochean-ltm2.internal.salesforce.com:6109'); 
+}
+</script>
+
+  <!-- snippet end -->
 
 </body>
 

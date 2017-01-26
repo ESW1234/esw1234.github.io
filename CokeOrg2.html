@@ -1,0 +1,79 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</meta>
+<style type="text/css">
+    body {
+        background:transparent;
+    }
+</style>
+</head>
+
+<body>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/204.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+//embedded_svc.settings.avatarImgURL = '{!$Resource.agent}';
+//embedded_svc.settings.prechatBackgroundImgURL = '{!$Resource.prechat}';
+//embedded_svc.settings.waitingStateBackgroundImgURL = '{!$Resource.waitingstate}';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'WAITING'; //Or 'WAITING'
+
+embedded_svc.settings.extraPrechatInfo = [{'entityName':'Contact','showOnCreate':true,'linkToEntityName':'Case','linkToEntityField':'ContactId','saveToTranscript':'Contact','entityFieldMaps':[{'isExactMatch':true,'fieldName':'FirstName','doCreate':true,'doFind':true,'label':'firstName'},{'isExactMatch':true,'fieldName':'LastName','doCreate':true,'doFind':true,'label':'LastName'},{'isExactMatch':true,'fieldName':'Email','doCreate':true,'doFind':true,'label':'Email'}]},{'entityName':'Case','showOnCreate':true,'entityFieldMaps':[{'isExactMatch':false,'fieldName':'Subject','doCreate':true,'doFind':false,'label':'issue'},{'isExactMatch':false,'fieldName':'Status','doCreate':true,'doFind':false,'label':'Status'},{'isExactMatch':false,'fieldName':'Origin','doCreate':true,'doFind':false,'label':'Origin'}]}];
+embedded_svc.settings.extraPrechatFormDetails = [{'label':'firstName','value':'Jen','transcriptFields':[],'displayToAgent':false},{'label':'LastName','value':'Johnson','transcriptFields':[],'displayToAgent':false},{'label':'Email','value':'lnelson@gmail.com','transcriptFields':[],'displayToAgent':false},{'label':'issue','value':'Chat: Moving Cooler','transcriptFields':[],'displayToAgent':false}];
+
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+
+embedded_svc.init('https://gs0.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://sdodemo-main-15406daeb04-154-15777c7ffb4.force.com/myCoke', '572B00000004Sqm', '00DB0000000Hq1v', '573B00000004cTn', '204.0', gslbBaseUrl); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/204.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://gs0.salesforce.com'); }
+function hasParent(element, classname) {
+   if(!element.className) return element.parentNode && hasParent(element.parentNode, classname)
+    if(element.className.split(' ').indexOf(classname) >= 0) return true;
+    return element.parentNode && hasParent(element.parentNode, classname);
+}
+
+addEventListener('click', function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    console.log(target.className, target.id);
+    if(target.id !== "esw_button_online" && !hasParent(target, "embeddedServiceLiveAgentChatButton") && !hasParent(target, "embeddedServiceLiveAgentSidebar")) {
+       parent.postMessage({ 'type': 'esw-click', 'position': [e.clientX, e.clientY] }, '*');
+       console.log('Non-element click');
+    }
+}, false);
+
+</script>
+
+
+</body>
+
+<style>
+    .embeddedServiceLiveAgentPrechat .startButton {
+    background: #fe001a;
+}
+
+.embeddedServiceLiveAgentChatMessage .visitorContent {
+    background: #fe001a;
+}
+
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+    background: #fe001a;
+}
+
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover, .uiButton.agentOnline:focus, .uiButton.agentOnline.is-selected {background:#fe001a;}
+
+.embeddedServiceLiveAgentChatWindow .waitingStateContainer .loadingBall {
+    background-color: #fe001a;
+    }
+    
+    .embeddedServiceLiveAgentChatWindow .waitingStateContainer .waitingCancelChat .label {
+    color: #fe001a;
+}
+
+
+</style>

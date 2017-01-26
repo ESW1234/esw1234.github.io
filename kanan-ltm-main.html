@@ -1,25 +1,33 @@
-kanan-ltm-main
+<html>
+<head>
+</head>
+	
+<body> 
+ <div id="button_goes_here"> </div>
+	<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #D7AB29; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #D7AB29}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
 
-<div id="button_goes_here">
-</div>
-<script src=""></script>
-<script src=""></script>
-<script>
-	var initESW = function(gslbBaseUrl) {
-	        embedded_svc.settings.avatarImgURL = '';
-	        embedded_svc.settings.prechatBackgroundImgURL = '';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '';
-        
-        embedded_svc.init('http://kgarg-ltm.internal.salesforce.com:6109', 'http://kgarg-ltm.internal.salesforce.com:8096/chat', 'http://kgarg-ltm.internal.salesforce.com:8096/content', 'http://nwk00dxx0000001gff.localhost.force.com:6109/napili0205',
-	    	'572xx0000000001', '00Dxx0000001gFF', '573xx0000000001', '204.0', gslbBaseUrl);
-	}
-    if (!window.embedded_svc) { 
-    	var s = document.createElement('script');
-		s.setAttribute('src', 'http://kgarg-ltm.internal.salesforce.com:6109/embeddedservice/204.0/esw.js');
-		s.onload=function(){ initESW(null) }; 
-		document.body.appendChild(s);
-	} else {
-		    initESW('https://service.force.com');
-	    }
-</script>
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://servicecloudpm.my.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://stanleyhcdf15-14fa5059341.secure.force.com', '572B00000000Ksw', '00DB00000002V3P', '573B00000000S6c', '1.0', gslbBaseUrl, '39.0', 'Suit_Supply_Deployment_Release_Readiness', 'EmbeddedServiceLiveAgent_Parent04IB00000004CFBMA2_159af36e180'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://servicecloudpm.my.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://servicecloudpm.my.salesforce.com'); }</script>
+</body>
+</html>

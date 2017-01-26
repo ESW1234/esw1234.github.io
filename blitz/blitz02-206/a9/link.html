@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>Button as link</title>
+   <link rel = "stylesheet" type = "text/css" href = "mySite.css">	   
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+	<script type='text/javascript' src='mySite.js'></script>
+  	<span id ="pageTitle">206 PAGE EIGHT BUTTON AS A LINK</span>
+ 	<span id ="menuButton"><a href="javascript:void(0)" onclick="openNav()">&#9776;</a></span>
+<div id = "sideNav" class = "sidenav">	
+	<span id ="close">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	</span>
+		<div id ="menuLinks">
+			<span id ="link1">DEFAULT WIDGET</span>
+			<span id ="link2">NO PRECHAT</span>
+			<span id ="link3">HIDDEN BUTTON</span>
+			<span id ="link4">NO WIDGET</span>
+			<span id ="link5">CUSTON BUTTON TEXT</span>
+			<span id ="link6">CUSTOM STYLING</span>
+			<span id ="link7">BUTTON 2T</span>
+			<span id ="link8">BUTTON AS A LINK</span>
+			<span id ="link9">NO PRECHAT WITH EXSTRA PRECHAT FORM DETAILS</span>
+		</div>		
+</div>
+<div id="button_goes_here">
+<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #005290; font-family: "Salesforce Sans", sans-serif;}@font-face {font-family: 'Salesforce Sans';src: url(https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff)}</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-158325b74ff.blitz02.soma.force.com', '572D000000001Us', '00DD00000008Vw4', '573D000000001ls', '1.0', gslbBaseUrl, '39.0', 'Bryan', 'EmbeddedServiceLiveAgent_Parent04ID00000004CDLMA2_158f525c0ff'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+</div>
+<div id="text">
+ 	<h2><span id = "helpButtonLink">
+		<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+	</span></h2>
+</div>
+   </body>
+</html>

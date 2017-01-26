@@ -1,0 +1,10 @@
+body {
+  background-image: url("background.png");
+  background-size: 100%;
+ }
+
+.uiButton.agentOnline.is-selected,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline:hover {
+    background-color: #38c061 !important;
+}
