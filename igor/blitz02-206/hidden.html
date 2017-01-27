@@ -117,19 +117,32 @@ Backward
 Quickly press three times to skip back
 Hold on the third press to scan
 Note: The cable included with our headphones is fully compatible with the iOS family. Functionality may vary by device.</span>
-</div>
 <div id="button_goes_here">
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #72411C; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #72411C}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
-<script>
-	var initESW = function(gslbBaseUrl) {
-          	embedded_svc.settings.displayHelpButton = false;
-	        embedded_svc.settings.avatarImgURL = 'avatar.png';
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+			embedded_svc.settings.avatarImgURL = 'avatar.png';
 	        embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
 	        embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
 	        embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
-	        embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000002Jj', '1.0', gslbBaseUrl, '39.0', 'Jan9LAButton', 'EmbeddedServiceLiveAgent_Parent04ID00000004CDaMAM_159853cb350'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 
+
+embedded_svc.settings.displayHelpButton = false; //Or true
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000002Jj', '1.0', gslbBaseUrl, '39.0', 'Jan9LAButton', 'EmbeddedServiceLiveAgent_Parent04ID00000004CDaMAM_159853cb350'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 </div>
    </body>
 </html>
