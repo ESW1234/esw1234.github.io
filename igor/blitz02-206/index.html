@@ -129,7 +129,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 }
 </style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -143,7 +143,7 @@ embedded_svc.settings.displayHelpButton = true; //Or false
 //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000002Jj', '2.0', gslbBaseUrl, '39.0', 'Jan9LAButton', 'EmbeddedServiceLiveAgent_Parent04ID00000004CDaMAM_159853cb350'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura', '572D000000001MS', '00DD00000008Ulx', '573D000000002Jj', '2.0', gslbBaseUrl, '39.0', 'Jan9LAButton', 'EmbeddedServiceLiveAgent_Parent04ID00000004CDaMAM_159853cb350'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
 </div>
    </body>
 </html>
