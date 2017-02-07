@@ -1,4 +1,4 @@
-var links = ['<a href="index.html">DEFAULT WIDGET</a>', '<a href="noPrechat.html"> Page 2 in dreddy_mySiteJs</a>', '<a href="hidden.html">HIDDEN BUTTON</a>', '<a href="noWidget.html">NO WIDGET</a>', '<a href="customText.html">CUSTOM BUTTON TEXT</a>', '<a href="customCSS.html">CUSTOM STYLING</a>', '<a href="button2.html">BUTTON 2</a>', '<a href="link.html">BUTTON AS A LINK</a>', '<a href="noPrechatWithExtraPrechatFormDetails.html">NO PRECHAT WITH EXTRA PRECHAT FORM DETAILS</a>'];
+var links = ['<a href="index.html">DEFAULT WIDGET</a>', '<a href="http://esw4321.github.io/igor/blitz03-208/subdomain.html"> SUB DOMAIN</a>', '<a href="hidden.html">HIDDEN BUTTON</a>', '<a href="page3.html"> PAGE 3 </a>', '<a href="customText.html"> PAGE 2</a>', '<a href="customCSS.html">CUSTOM STYLING</a>', '<a href="button2.html">BUTTON 2</a>', '<a href="link.html">BUTTON AS A LINK</a>', '<a href="noPrechatWithExtraPrechatFormDetails.html">NO PRECHAT WITH EXTRA PRECHAT FORM DETAILS</a>', '<a href="omni-channel.html">OMNI-CHANNEL</a>'];
 
 function openNav() {
     document.getElementById("sideNav").style.width = "195px";
@@ -12,6 +12,7 @@ function openNav() {
     document.getElementById("link7").innerHTML = links[6];
     document.getElementById("link8").innerHTML = links[7];
     document.getElementById("link9").innerHTML = links[8];
+    document.getElementById("link10").innerHTML = links[9];
 }
 
 function closeNav() {
