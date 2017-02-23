@@ -24,15 +24,15 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #0074BD; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #0074BD}
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -43,21 +43,21 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.devMode = true;
 //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://skrish-wsm.internal.salesforce.com:57983', 'http://skrish-wsm.internal.salesforce.com:8096/chat', 
-'http://skrish-wsm.internal.salesforce.com:8095/content', 'http://snapins206-157442b0ff8-1584bb8d163.localhost.force.com:57983/',
-'572xx00000000Dt', '00Dxx0000002CMr', '573xx00000000DP', '2.0', gslbBaseUrl, '40.0', 'esw_deployment_1',
-'EmbeddedServiceLiveAgent_Parent04Ixx00000000N0EAI_15a3b1df994'); }; 
-if (!window.embedded_svc) 
-{ var s = document.createElement('script');
-s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/2.0/esw.js');
-s.onload = function() { initESW(null); }; 
-document.body.appendChild(s);}
-else { initESW('http://skrish-wsm.internal.salesforce.com:57983'); }
-</script>
+embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 
+		  'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 
+		  'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 
+		  'http://snapins206-157442b0ff8-15846119c55.localhost.force.com:57983/', 
+		  '572xx0000000006', '00Dxx0000001jFX', '573xx0000000006', '2.0', gslbBaseUrl, '40.0', 'subbu1', 
+		  'EmbeddedServiceLiveAgent_Parent04Ixx000000000GEAQ_15846721671'); }; 
+	if (!window.embedded_svc) { var s = document.createElement('script'); 
+				   s.setAttribute('src', 
+						  'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/2.0/esw.min.js');
+				   s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
+	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }
+	</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
