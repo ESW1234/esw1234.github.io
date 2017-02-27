@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+<script src="http://b-chu-ltm.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
+    <script src="something"></script>
+<script type="text/javascript">window["$$safe-eval$$"] = true;</script>
+
+<body>
+This is a page.
+
+<div id="button_goes_here"></div>
+<a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
+</body>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #0074BD; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #0074BD}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = '';
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+
+embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://fitbit-1475b6fa058-1550a73a5d9.blitz03.soma.force.com/0218', '572D00000004CWD', '00DD00000008FQY', '573D00000004CgD', '2.0', gslbBaseUrl, '40.0', 'teset', 'EmbeddedServiceLiveAgent_Parent04ID00000000064MAA_158747e2a75'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>  
+    
+    
+    
+    
+</html>
