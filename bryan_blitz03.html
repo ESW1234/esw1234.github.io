@@ -6,15 +6,19 @@
 <script src="http://b-chu-ltm.internal.salesforce.com:6109/lightning/lightning.out.js"></script>
     <script src="something"></script>
 <script type="text/javascript">window["$$safe-eval$$"] = true;</script>
-
+    
+    <style type="text/css">
+        body {
+            background-image: url("31demo/screencapture-spotify-us-account-overview-1488319484107.png");
+            width: 100%;
+            height: 100%;
+        }
 <body>
 This is a page.
 
 <div id="button_goes_here"></div>
 <a href="javascript:embedded_svc.initInteraction()">Start ESW Session</a>
 </body>
-    
-    
     
     
     
@@ -31,11 +35,13 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 </style>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
-
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
+    
+embedded_svc.settings.avatarImgURL = '206demo/avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '31demo/pre-chat_image_360.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '31demo/agent_pic_360.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '206demo/smallCompanyLogoImg.png';
+embedded_svc.settings.headerBackgroundURL = "jake/mappattern.png";
+  
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = 'es';
