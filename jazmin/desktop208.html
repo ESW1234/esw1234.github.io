@@ -13,8 +13,8 @@
 
 
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #02BCEB; font-family: "Comic Sans MS", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #02BCEB}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #FEBE02; font-family: "Palatino Linotype", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #FEBE02}
 </style>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -25,31 +25,26 @@ embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-
 embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = '';
+
 //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:57983', 
-    'http://jazminorti-wsm3.internal.salesforce.com:7443/chat', 
-    'http://jazminorti-wsm3.internal.salesforce.com:8080/content', 
-    'http://jazmin0223.localhost.force.com:57983/napili0224home',
-    '572x000000002u7', '00Dx0000003Eecq', '573x00000008QsV', '2.0', 
-    gslbBaseUrl, '40.0', 'VFPage', 
-    'EmbeddedServiceLiveAgent_Parent04Ix00000004CB4EAM_15a66fdbb91'); }; 
-    
-    if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
-        s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:57983/embeddedservice/2.0/esw.min.js'); 
-        s.onload = function() { initESW(null); }; 
-        document.body.appendChild(s);
-    } else { 
-        initESW('http://jazminorti-wsm3.internal.salesforce.com:57983'); 
-    }
-</script>
 
-
-
+embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 
+                  'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 
+                  'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 
+                  'http://jazmin0223.localhost.force.com:6109/homenapili0223', 
+                  '572x000000002u7', '00Dx0000003Eecq', '573x00000008QsQ', '2.0', 
+                  gslbBaseUrl, '40.0', 'githubPage', 'EmbeddedServiceLiveAgent_Parent04Ix00000004CAzEAM_1590a4ea74e'); 
+   }; 
+      if (!window.embedded_svc) { 
+         var s = document.createElement('script'); 
+         s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); 
+         s.onload = function() { initESW(null); }; document.body.appendChild(s);
+      } else { initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); }
+   </script>
    </body>
 </html>
     <style>
