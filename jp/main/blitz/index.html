@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">AGENT 1 PAGE ONE DEFAULT WIDGET</font></p>
+  <br/>
+  <br/>
+ <p align="center"><font color = "red"><a href="index.html">Link to PAGE ONE DEFAULT WIDGET </a></font></p>
+  <p align="center"><font color = "red"><a href="bl1custom.html">Link to PAGE TWO CUSTOM WIDGET</a></font></p>
+  <p align="center"><font color = "red"><a href="bl1hidden.html">Link to PAGE THREE BUTTON AS A LINK</a></font></p>
+  <p align="center"><font color = "red"><a href="bl1nobutton.html">Link to PAGE FOUR NO BUTTON</a></font></p>
+
+
+<div id="button_goes_here">
+</div>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
+<script type='text/javascript'>
+    var initESW = function(gslbBaseUrl) {
+    embedded_svc.settings.devMode = true;
+    embedded_svc.settings.avatarImgURL = '';
+    embedded_svc.settings.prechatBackgroundImgURL = '';
+    embedded_svc.settings.waitingStateBackgroundImgURL = '';
+    embedded_svc.settings.smallCompanyLogoImgURL = '';
+    embedded_svc.settings.displayHelpButton = true; //Or false
+    embedded_svc.settings.language = '';
+    //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+    //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+    //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+	    
+    embedded_svc.init('http://snimmagadda-ltm.internal.salesforce.com:6109', 
+        'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
+        'http://snimmagadda-ltm.internal.salesforce.com:8095/content', 
+        'http://sitesdomain-158332bc2e3.localhost.force.com:6109/', 
+        '572xx00000000Pg', '00Dxx0000001jQk', '573xx00000000R8', 
+        '2.0', gslbBaseUrl, '40.0', 
+	//'esw', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000CbEAI_156d81535c5');
+	//'jpesw1', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000N5EAI_15850dbbcbb');
+	//'jpesw2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000NAEAY_158556f1106');
+	//'jpeswbasic', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SKEAY_15874e67a5c');
+	//'jpeswsales', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SPEAY_15874e7c938');
+	'jpeswservice', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SUEAY_15874e8a281');
+	//'jpeswbasiccustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SZEAY_15874ea8077');
+	//'jpeswsalescustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SeEAI_15874ebbfca');
+	//'jpeswservicecustom', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000SjEAI_15874ed2898');
+	//'jpprechatoff', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000moEAA_15903785df9');
+	//'newtest1', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000ezEAA_158d54b60d5'); // Service Scenario: Junction BPO records inserted in the following order (Case, Contact)  
+	//'newTest2', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000gREAQ_158fa91dc64'); // Service Scenario: Add all the fields availabel for Case object
+	//'newTest3', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000jLEAQ_158fefca40a'); // Service Scenario: All the Case fields are deleted
+    }; 
+	//572xx00000000Pg  00Dxx0000001jQk 573xx00000000R8
+    if (!window.embedded_svc) { 
+        var s = document.createElement('script'); 
+        s.setAttribute('src', 'http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.js'); 
+        s.onload = function() { 
+            initESW(null); 
+        }; 
+        document.body.appendChild(s);
+    } else { 
+        initESW('http://snimmagadda-ltm.internal.salesforce.com:6109'); 
+    }
+</script>
+
+<!-- <iframe src="http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/2.0/eswDev.html"></iframe> -->
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
+Contact GitHub API Training Shop Blog About
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
