@@ -1,51 +1,436 @@
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://c.la1-c1cs-frf.salesforceliveagent.com/content/js/core/jslibrary/SfdcCore.js"></script>
+<script type="text/javascript" src="https://spotifycs--devErnst.cs84.my.salesforce.com/embeddedservice/1.0/esw.js"></script>
+<link href="https://spotifycs--devErnst.cs84.my.salesforce.com/embeddedservice/1.0/esw.css" type="text/css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- embedded CSS for development purposes should be stored as resource -->
+<style type="text/css">
+    .file_transfer_selected .liveAgentFileNameLabel {
+    margin-left: 10px;
+    line-height: 40px;
+    border: 1px solid #E2E8ED;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #E8E8E8;
+    padding: 0px 10px 3px 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    height: 40px;
+    word-wrap: normal;
+    max-width: calc(100% - 60px);
+    margin-top: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    }
+
+    .messageArea.dynamicResizeTextOneRow.file_upload_requested {
+      height: calc(100% - 170px);
+    }
+
+    .file_transfer_selected .liveAgentFileDragArea {
+      text-align: left;
+      background-color: #D0D0D0;
+      height: 60px;
+      margin-right: -67px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .liveAgentFileDragArea {
+      position: absolute;
+      background-color: #DDF1C9;
+      height: 60px;
+      left: 0;
+      right: -6px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 14px;
+    }
+
+    .file_transfer_selected .liveAgentFileCancelButton {
+      position: absolute;
+      left: 0px;
+      margin-top: 11.4px;
+      margin-left: 16px;
+      z-index: 999;
+      /* background-image: url(../images/icon_close.png); */
+      background-image: url(https://4bs.la1-c1-frf.salesforceliveagent.com/content/images/icon_close.png);
+      background-color: #E8E8E8;
+      background-position: 0 0;
+      width: 17px;
+      height: 17px;
+      border: none;
+      color: transparent;
+      cursor: pointer;
+      padding-right: 12px;
+    }
+
+    .liveAgentFileCancelButton {
+      margin-left: 20px;
+      background-image: url(https://4bs.la1-c1-frf.salesforceliveagent.com/content/images/icon_close.png);
+      background-color: #E8E8E8;
+      height: 17px;
+      border: none;
+      cursor: pointer;
+      padding-right: 12px;
+    }
+
+    .file_transfer_selected .liveAgentFileSendButton:before {
+      font-family: 'embeddedserviceiconfont';
+      content: '\E90B';
+      speak: none;
+      -webkit-font-smoothing: antialiased;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    #saveTranscript:hover {
+      cursor: hand;
+    }
+
+    #fileSendButton {
+      position: absolute;
+      top: 18px;
+      border: none;
+      background: transparent;
+      right: 14px;
+      float: right;
+    }
+
+    .wrapper.chatMessage .chatContent.fileUploadMsg {
+      background: #009000;
+      color: white;
+    }
+
+    .liveAgentFileCancelButton:hover {
+      background-position: -30px 0;
+    }
+
+    .uiButton:focus {
+      outline-style: none!important;
+    }
+
+    .uiButton--default.uiButton {
+      border: 2px solid #0074bd;
+    }
+
+    .headerItem.saveTranscriptButton {
+    /* padding: 22px; */
+    line-height: 0;
+    padding-left: 0px;
+    padding-top: 23px;
+    float: left;
+    font-size: 1rem;
+}
+</style>
+<script type="text/javascript">
+window.onpageshow = function(event) {
+    console.log("Event persisted = " + event.persisted);
+    if (event.persisted) {
+        window.location.reload()  
+    }
+};
+
+  console.log("begin script pg 2");
+  // seems water tight to identify Safari on Mobile devices
+  var isSafari = /iP(ad|od|hone)/i.test(window.navigator.userAgent) && /WebKit/i.test(window.navigator.userAgent)
+                && !(/(CriOS|FxiOS|OPiOS|mercury)/i.test(window.navigator.userAgent));
+
+  var unloadEvt = isSafari ? "pagehide" : "beforeunload";
+  var onloadEvt = isSafari ? "pageshow" : "load";
+	
+  //load
+  window.addEventListener(onloadEvt, function (event) {
+    console.log("[storageHandler] Init");
+    var iframe;
+    iframe = document.createElement('iframe');
+    iframe.src = 'http://websnapins.com/spotify-storage.html';
+    iframe.id = 'storage_iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    document.domain = 'websnapins.com';
+
+    //unload
+    window.addEventListener(unloadEvt, function (event) {
+
+      console.log("[window.onBeforeunload]");
+
+      if (typeof liveagent !== "undefined" && !liveagent.chasitor.isChatEstablished()) {
+        console.log("[window.onBeforeunload] isChatEstablished? No, cancelling chat");
+        liveagent.chasitor.cancelChat();
+    	};
+
+      var storageIframe = document.getElementById("storage_iframe").contentWindow;
+      // the iFrame decides based on isSafari wether to use sessionStorage or localStorage
+      
+      if(typeof liveagent !== "undefined"){
+	  liveagent.chasitor.abortConnection();
+          storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", liveagent.chasitor.serialize());
+          storageIframe.storeSessionData("ESW_MINIMIZED_WIDTH", window.sessionStorage.getItem("ESW_MINIMIZED_WIDTH"));
+          storageIframe.storeSessionData("LA_ESW_MINIMIZED", window.sessionStorage.getItem('LA_ESW_MINIMIZED'));
+          storageIframe.storeSessionData("LA_ESW_UNREAD_NOTIFS", window.sessionStorage.getItem('LA_ESW_UNREAD_NOTIFS'));
+          storageIframe.storeSessionData("LA_ESW_MINIMIZED_TEXT", window.sessionStorage.getItem('LA_ESW_MINIMIZED_TEXT'));
+      }
+    });
+
+    var initESW = function(gslbBaseUrl) {
+      embedded_svc.settings.avatarImgURL = '';
+      embedded_svc.settings.prechatBackgroundImgURL = '';
+      embedded_svc.settings.waitingStateBackgroundImgURL = '';
+      embedded_svc.settings.smallCompanyLogoImgURL = '';
+      embedded_svc.settings.displayHelpButton = true; //Or false
+      embedded_svc.settings.initialInteractionState = 'WAITING'; //Or 'PRECHAT'
+      embedded_svc.settings.targetElement = document.getElementById('snapinplaceholder');
+      //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+      //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+      //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+      console.log("[initESW] initializing");
+      embedded_svc.init('http://bdrasin-ltm2.internal.salesforce.com:6109', 'http://bdrasin-ltm2.internal.salesforce.com:8096/chat', 'http://bdrasin-ltm2.internal.salesforce.com:8095/content', 'http://eswcomm-158b6daf594.localhost.force.com:6109/koa3', '572xx000000008H', '00Dxx0000001gHV', '573xx000000008H', '1.0', gslbBaseUrl, '39.0', 'xyz', 'EmbeddedServiceLiveAgent_Parent04Ixx000000000VEAQ_15a9123fdaf'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com');
+    };
+
+    // adding listner, listening for message from storage iFrame
+    window.addEventListener('message', function (event) {
+
+      // Check for specific event: 'storage_iframe_initialize'
+      if (event.data == 'storage_iframe_initialized') {
+        console.log("[storage_iframe_initialized] message received from iFrame, done loading");
+        var storageIframe = document.getElementById("storage_iframe").contentWindow;
+        var storageAvailable = isSafari ?
+            storageIframe.localStorage.getItem("CHASITOR_SERIALIZED_KEY") :
+            storageIframe.sessionStorage.getItem("CHASITOR_SERIALIZED_KEY");
+
+        if (storageAvailable) {
+          console.log("[storageHandler] retrieving keys...");
+          keys = ["CHASITOR_SERIALIZED_KEY", "ESW_MINIMIZED_WIDTH", "LA_ESW_MINIMIZED", "LA_ESW_UNREAD_NOTIFS", "LA_ESW_MINIMIZED_TEXT"];
+
+          keys.forEach(function(key) {
+            // for Safari - revert to using localStorage, otherwise sessionStorage
+            if (!isSafari)
+              window.sessionStorage.setItem(key, storageIframe.sessionStorage.getItem(key));
+            else
+              window.sessionStorage.setItem(key, storageIframe.localStorage.getItem(key));
+          });
+
+          console.log("[storageHandler] retrieved from previous session");
+          initESW('http://bdrasin-ltm2.internal.salesforce.com:6109');
+          waitForLiveAgent();
+        }
+        else {
+          console.log("[storageHandler] no previous session, regular init");
+          initESW('http://bdrasin-ltm2.internal.salesforce.com:6109');
+          waitForOnline();
+        }
+      }
+    }, false);
+
+
+    function waitForOnline() {
+      if ($("#esw_button_online").length) {
+        console.log("[waitForOnline] Liveagent Online");
+        $("#esw_button_online").prop('onclick', null).off('click'); //removes all existin event handlers
+        $("#esw_button_online").on("click", function() {
+  	       embedded_svc.initInteraction();
+           waitForLiveAgent();
+         });
+      }
+      else {
+  	     setTimeout(waitForOnline, 1000);
+      }
+    }
+
+    function waitForLiveAgent() {
+      if (typeof liveagent !== "undefined" && liveagent.isRunning()) {
+   	    console.log("[waitForLiveAgent] Liveagent Available");
+        initializeWorkaround();
+      }
+      else {
+        setTimeout(waitForLiveAgent, 100);
+      }
+    }
+
+function initializeWorkaround() {
+
+  // fix style of any previously uploaded files - hack
+  $('.wrapper.chatMessage .chatContent:contains("<dup_msg>")').addClass("fileUploadMsg");
+  $('.wrapper.chatMessage .chatContent.fileUploadMsg span').each(function () {$(this).text($(this).text().replace("<dup_msg>", ""))});
+
+  // adding save transcript
+  var htmlSaveTranscript = '<a id="saveTranscript" class="headerItem saveTranscriptButton fa fa-download"/>';
+  $(".minimizeButton.headerItem").after(htmlSaveTranscript);
+
+  // save transcript
+  $("#saveTranscript").on("click", function() {
+    liveagent.chasitor.saveChat();
+  });
+
+  //workaround - set target = '' instead of '_blank' (= standard Href in Spring '17 are set to '_blank')
+  //run it initial time
+  $("a[href*='live-agent']").attr('target','');
+  //and add event when chat changes
+  liveagent.addEventListener("chasitorAgentChatMessage", function(message) {
+    setTimeout(function () {
+      $("a[href*='live-agent']").attr('target','');
+    }, 0);
+  });
+
+  liveagent.addEventListener("fileTransferRequested", function(message) {
+
+    var htmlFileTransfer = '\
+     <form enctype="multipart/form-data" id="fileTransferForm" method="POST" target="fileTransferIframe"> \
+      <div class="liveAgentChatElement liveAgentChatFileTransfer" id="liveAgentChatFileTransfer" style="z-index: 20;"> \
+        <div class="liveAgentChatElement liveAgentFileDragArea" id="fileDragArea" data-uidsfdc="10"> \
+          <input id="fileSelectInput" name="file" type="file" data-uidsfdc="11" style="display: none;"> \
+          <input id="fileNameInput" name="filename" type="hidden"> \
+          <div id="fileTransferProgress" style="display: none; width: 0px;"></div> \
+            <span id="fileDragLabel"> \
+              <a href="#" id="fileDragLink">Upload your file here</a> \
+            </span> \
+            <span id="fileDropLabel" style="display: none;">Drop here.</span> \
+            <span class="liveAgentFileNameLabel" id="fileNameLabel" style="display: none;"> \
+              <button class="liveAgentChatElement liveAgentFileCancelButton" id="fileCancelButton" title="Cancel"/> \
+            <span id="fileName"/> \
+            </span> \
+           <button class="liveAgentChatElement liveAgentFileSendButton" id="fileSendButton" title="Upload"/> \
+         </div> \
+         </div> \
+     </form> \
+     <iframe id="fileTransferIframe" name="fileTransferIframe" title="fileTransferIframe" style="display: none;"/> \
+     ';
+
+     var saveTranscriptBtn = '<a class="saveTranscriptButton headerItem"><span class="embeddedServiceIcon"/></a>';
+     $(".menuHeader .minimizeButton.headerItem").before(saveTranscriptBtn);
+
+     var elDockCont = $(".dockableContainer");
+     /* temporary means to pass CmdUrl, UploadUrl and Token */
+     elDockCont.attr("fileTransferUploadUrl", message.uploadServletUrl);
+     elDockCont.attr("fileTransferCmdUrl", message.cdmServletUrl);
+     elDockCont.attr("fileTransferToken", message.fileToken);
+     var elMsgArea = $(".messageArea");
+     //elMsgArea.css("height", parseInt(elMsgArea.css("height")) - 60 + "px");
+     elMsgArea.addClass("file_upload_requested");
+     $(".chasitorMessage").css("position", "relative");
+     $(".chasitorMessage").after(htmlFileTransfer);
+
+     $("#fileTransferProgress").css("display", "");
+     $("#fileNameLabel").css("display", "");
+     $("#fileSendButton").css("display", "");
+
+     //handle file selection
+     $("#fileDragLink").on("click", function(event) {
+        $("#fileSelectInput").trigger("click");
+     });
+
+     $("#fileSelectInput").bind("change", function() {
+      var fileName = $("#fileSelectInput")[0].files[0].name;
+      $("#fileName").text(fileName);
+      $("#fileDragLink").hide();
+      $("#fileTransferForm").addClass("file_transfer_selected");
+     });
+
+     //handle user-initiated cancel
+     $("#fileCancelButton").on("click", function(event) {
+      if ($("#fileName").text().length > 0) {
+        $("#fileName").text("");
+        $("#fileDragLink").show();
+        $("#fileTransferForm").removeClass("file_transfer_selected");
+      }
+      else {
+        liveagent.chasitor.cancelFileTransfer();
+        liveagent.dispatchEvent("fileTransferCanceled");
+      }
+      event.preventDefault();
+     });
+
+     //handle upload
+     $("#fileSendButton").on("click", function(event) {
+       var fileTransferForm = Sfdc.get('fileTransferForm');
+       var fileTransferUploadUrl = $(".dockableContainer").attr("fileTransferUploadUrl");
+       var fileTransferCmdUrl = $(".dockableContainer").attr("fileTransferCmdUrl");
+       var fileTransferToken = $(".dockableContainer").attr("fileTransferToken");
+       var url = fileTransferUploadUrl;
+       url += "?orgId=" + encodeURIComponent(liveagent.chasitor.getOrgId());
+       url += "&chatKey=" + encodeURIComponent(liveagent.chasitor.getChatKey());
+       url += "&fileToken=" + encodeURIComponent(fileTransferToken);
+       url += "&encoding=UTF-8";
+       fileTransferForm.setAttribute('action', url);
+       fileTransferForm.submit();
+       event.preventDefault();
+       event.stopPropagation();
+     });
+    });
+
+    // handling user or agent initiated cancel of file transfer
+    liveagent.addEventListener("fileTransferCanceled", function(message) {
+      $(".messageArea").removeClass("file_upload_requested");
+      $(".chasitorMessage").css("position", "absolute");
+      $("#fileTransferForm").remove();
+    });
+
+    // handle successful file transfer
+    liveagent.addEventListener("fileTransferSuccess", function(message) {
+      var fileName = $("#fileName").text();
+      // adding <dup_msg> as sequence will be removed on chasitor, but will be stored in session storage
+      // <dup_msg> used during x-domain or re-initiate existing session to add appropriate class 'fileUploadMsg'
+      liveagent.chasitor.sendMessage(fileName + " uploaded succesfully.<dup_msg>");
+      $(".wrapper.chatMessage .chatContent").last().addClass("fileUploadMsg");
+      //stripping out again <dup_msg> from chat
+      $(".wrapper.chatMessage .chatContent.fileUploadMsg span").last().text(fileName + " uploaded succesfully.");
+      // removes href - acknowledge bug in 206 related with clickable urls
+      $(".wrapper.chatMessage .chatContent span a").last().removeAttr("href");
+      $("#fileTransferForm").removeClass("file_transfer_selected");
+      $(".messageArea").removeClass("file_upload_requested");
+      $(".chasitorMessage").css("position", "absolute");
+      $("#fileTransferForm").remove();
+    });
+
+    // if the agent cancels the chat, the survey option will be presented
+    liveagent.addEventListener("chasitorAgentChatEnded", function(message) {
+    	setTimeout(function() {
+        var postChatUrl = liveagent.chasitor.getPostChatUrl();
+      	$(".endchatButton > span").text("Take Survey");
+        $(".endchatButton").on("click", function (event) {
+          liveagent.chasitor.cancelChat();
+	        window.open(postChatUrl, '_blank');
+        });
+      });
+    });
+
+    // handling postChat
+    liveagent.addEventListener("postChat", function(message) {
+			var isChasitorCancelled =  $(".messageOverlayHeaderText").length;
+      var postChatUrl = message.getUrl();
+
+      if (!isChasitorCancelled) {
+				 liveagent.dispatchEvent("chasitorAgentChatEnded");
+      }
+      else {
+      	$(".messageOverlayHeaderText").text("Want to take a survey?");
+      	$("#messageOverlayBody").hide(); //hide text 'transcript will not be saved'
+        $(".messageOverlayTopButton > span").text("Take Survey");
+      	$(".messageOverlayBottomButton > span").text("No Thanks");
+      	$(".messageOverlayBottomButton").on("click", function () {
+	        liveagent.chasitor.cancelChat();
+  	    });
+
+				$(".messageOverlayTopButton").on("click", function (event) {
+      	  liveagent.chasitor.cancelChat();
+	        event.preventDefault();
+	        event.stopPropagation();
+	        window.open(postChatUrl, '_blank');
+  	    });
+       }
+    }); // postChat
+  } // initializeWorkaround
+}); // onload
+</script>
 </head>
 <body>
-  <p align="center"><font color ="red">PAGE ONE</font></p>
-  <p align="center"><font color = "red"><a href="igor204bl1_p2.html">Link to PAGE TWO</font></p></a>
-
-
-<div id="button_goes_here">
-</div>
-
-<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #005290; font-family: "Salesforce Sans", sans-serif;}@font-face {font-family: 'Salesforce Sans';src: url(https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff)}</style>
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-
-embedded_svc.settings.displayHelpButton = true; //Or false
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://bdrasin-ltm2.internal.salesforce.com:6109', 'http://bdrasin-ltm2.internal.salesforce.com:8096/chat', 'http://bdrasin-ltm2.internal.salesforce.com:8095/content', 'http://eswcomm-158b6daf594.localhost.force.com:6109/koa3', '572xx000000008H', '00Dxx0000001gHV', '573xx000000008H', '1.0', gslbBaseUrl, '39.0', 'xyz', 'EmbeddedServiceLiveAgent_Parent04Ixx000000000VEAQ_15a9123fdaf'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://bdrasin-ltm2.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://bdrasin-ltm2.internal.salesforce.com:6109'); }
-</script>
-
-   </body>
+  <p id="snapinplaceholder"/>
+	<a href="http://websnapins.com/ashah/spotify.html" target="_self" >Main</a>
+</body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-            
-      }
-    </style>
-
-
-
