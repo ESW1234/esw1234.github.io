@@ -47,10 +47,10 @@ document.addEventListener('visibilitychange', function() {
   // fires when user switches tabs, apps, goes to homescreen, etc.
   console.log("VISIBILITY STATE", document.visibilityState == 'hidden');
 });
-document.addEventListener('beforeunload', function() {
+window.addEventListener('beforeunload', function() {
   console.log("BEFORE UNLOAD");
 });
-document.addEventListener('pagehide', function() {
+window.addEventListener('pagehide', function() {
   console.log("PAGE HIDE");
 });
   </script>
