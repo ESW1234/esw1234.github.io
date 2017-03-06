@@ -1,0 +1,177 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">PAGE ONE</font></p>
+  <p align="center"><font color = "red"><a href="igor204bl1_p2.html">Link to PAGE TWO</font></p></a>
+
+
+<div id="button_goes_here">
+</div>
+
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.js'></script>
+<script type='text/javascript'>
+   
+window.addEventListener("beforeunload", function(event){
+   console.log("WINDOWEVENT: BEFOREUNLOAD");
+});
+
+window.addEventListener("pagehide", function(event){
+   console.log("SPOTIFY: WINDOWEVENT: PAGEHIDE");
+});
+   
+window.addEventListener("pageshow", function(event){
+   console.log("SPOTIFY: WINDOWEVENT: PAGESHOW");
+});
+   
+window.addEventListener("load", function(event){
+   console.log("SPOTIFY: WINDOWEVENT: LOAD");
+});
+   
+window.addEventListener("popstate", function(event){
+   console.log("SPOTIFY: WINDOWEVENT: POPSTATE");
+});
+   
+//got this from stack overflow.  YMMV
+var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent && !navigator.userAgent.match('CriOS');
+
+//set browser-specific handlers   
+document.domain = 'websnapins.com';
+var unloadEvt = isSafari ? "pagehide" : "beforeunload";
+var onloadEvt = isSafari ? "pageshow" : "load";   
+
+//load
+var onPageLoad = function (event) {
+   var iframe;
+   iframe = document.createElement('iframe');
+   iframe.src = 'http://websnapins.com/spotify-storage-ben.html';
+   iframe.id = 'storage_iframe';
+   iframe.style.display = 'none';
+   document.body.appendChild(iframe);
+};
+window.addEventListener(onloadEvt, onPageLoad);
+//For back-forward cache
+if(isSafari){
+   window.addEventListener("popstate", function(event){
+      if(event.state === "ESW_STATE_KEY" + document.location){
+         onPageLoad(event);
+      }
+   });
+}
+                        
+//unload
+window.addEventListener(unloadEvt, function (event) {
+   //For back-forward cache
+   if(isSafari){
+      history.pushState("SPOTIFY: ESW_STATE_KEY" + document.location);
+   }
+   var storageIframe = document.getElementById("storage_iframe").contentWindow;
+   // the iFrame decides based on isSafari wether to use sessionStorage or localStorage
+   if(typeof liveagent !== "undefined"){
+      var localChasitorData = liveagent.chasitor.serialize();
+      console.log("SPOTIFY: SETTING IFRAME DATA W/POLLCOUNT: " + window.chasitorPollCount(localChasitorData));
+      storageIframe.storeSessionData("CHASITOR_SERIALIZED_KEY", liveagent.chasitor.serialize());
+   }else{
+      storageIframe.removeSessionData("CHASITOR_SERIALIZED_KEY");
+   }
+   storageIframe.storeSessionData("ESW_MINIMIZED_WIDTH", window.sessionStorage.getItem("ESW_MINIMIZED_WIDTH"));
+   storageIframe.storeSessionData("LA_ESW_MINIMIZED", window.sessionStorage.getItem('LA_ESW_MINIMIZED'));
+   storageIframe.storeSessionData("LA_ESW_UNREAD_NOTIFS", window.sessionStorage.getItem('LA_ESW_UNREAD_NOTIFS'));
+   storageIframe.storeSessionData("LA_ESW_MINIMIZED_TEXT", window.sessionStorage.getItem('LA_ESW_MINIMIZED_TEXT'));
+});
+
+//storage loaded
+window.addEventListener('message', function (event) {
+   // Check for specific event: 'storage_iframe_initialize'
+   if (event.data == 'storage_iframe_initialized') {
+      var storageIframe = document.getElementById("storage_iframe").contentWindow;
+      var storageAvailable = storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY");
+      if (storageAvailable) {
+         //get data, put into local sessionStorage
+         keys = ["ESW_MINIMIZED_WIDTH", "LA_ESW_MINIMIZED", "LA_ESW_UNREAD_NOTIFS", "LA_ESW_MINIMIZED_TEXT"];
+         keys.forEach(function(key) {
+            // for Safari - revert to using localStorage, otherwise sessionStorage            
+            window.sessionStorage.setItem(key, storageIframe.getSessionData(key));
+          });
+         var iFrameChasitorStr = storageIframe.getSessionData("CHASITOR_SERIALIZED_KEY");
+         var iFramePollCount = window.chasitorPollCount(iFrameChasitorStr);
+         var localPollCount = window.getLocalPollCount();
+         console.log("SPOTIFY: LOCAL POLL COUNT: " + localPollCount + ", SETTING TO IFRAME POLL COUNT: " +  iFramePollCount);
+      }
+      //this is the normal init stuff
+      if (!window.embedded_svc) { 
+         var s = document.createElement('script'); 
+         s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.js'); 
+         s.onload = function() { 
+            initESW(null); 
+         }; 
+         document.body.appendChild(s);
+      } else { 
+         initESW('https://na1-blitz02.soma.salesforce.com');
+      }
+   }
+});
+
+window.getLocalPollCount = function(){
+   var chasitorStr = window.sessionStorage.getItem("CHASITOR_SERIALIZED_KEY");
+   return chasitorPollCount(chasitorStr);
+}
+window.chasitorPollCount = function(chasitorStr){
+   if(chasitorStr){
+      var jsonObj=JSON.parse(chasitorStr);
+      return jSONPollCount(jsonObj);
+   }
+   return null;
+}
+window.jSONPollCount = function(jsonObj){
+   if(jsonObj && jsonObj.connectionData){
+      return jsonObj.connectionData.pollCount;
+   }
+   return null;
+}
+   
+var initESW = function(gslbBaseUrl) {
+
+   embedded_svc.settings.avatarImgURL = '';
+   embedded_svc.settings.prechatBackgroundImgURL = '';
+   embedded_svc.settings.waitingStateBackgroundImgURL = '';
+   embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+   embedded_svc.settings.displayHelpButton = true; //Or false
+   //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+   //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+   //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:57983', 'http://jakerouss-wsm1.internal.salesforce.com:7443/chat', 'http://jakerouss-wsm1.internal.salesforce.com:8080/content', 'http://communities-developer-edition.jakerouss-wsm1.t.force.com:57983/napili2', '572xx000000003K', '00Dxx0000001gEH', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'X7654321', 'EmbeddedServiceLiveAgent_Parent04Ixx00000000ClEAI_1586999c3b5'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:57983/embeddedservice/1.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jakerouss-wsm1.internal.salesforce.com:57983'); }
+
+</script>
+   
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
