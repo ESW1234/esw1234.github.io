@@ -13,8 +13,8 @@
 
 
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #02BCEB; font-family: "Comic Sans MS", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #02BCEB}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #188FE4; font-family: "Comic Sans MS", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #188FE4}
 </style>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -32,20 +32,18 @@ embedded_svc.settings.language = '';
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 
-embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:57983', 
-    'http://jazminorti-wsm3.internal.salesforce.com:7443/chat', 
-    'http://jazminorti-wsm3.internal.salesforce.com:8080/content', 
-    'http://jazmin0223.jazminorti-wsm3.t.force.com:57983/homenapili0223', 
-    '572x000000002u7', '00Dx0000003Eecq', '573x00000008QsV', '2.0', gslbBaseUrl,
-    '40.0', 'VFPage', 'EmbeddedServiceLiveAgent_Parent04Ix00000004CB4EAM_15a66fdbb91'); }; 
-    if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
-        s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:57983/embeddedservice/2.0/esw.min.js'); 
-        s.onload = function() { initESW(null); }; 
-        document.body.appendChild(s);
-    } else { 
-        initESW('http://jazminorti-wsm3.internal.salesforce.com:57983'); }
-</script>
+embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:57983',
+                  'http://jazminorti-wsm3.internal.salesforce.com:7443/chat', 
+                  'http://jazminorti-wsm3.internal.salesforce.com:8080/content', 
+                  'http://nwk00dxx0000001ggc.jazminorti-wsm3.t.force.com:57983/napili0308',
+                  '572xx0000000001', '00Dxx0000001gGc', '573xx0000000001', '2.0', gslbBaseUrl, '40.0',
+                  'github', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15ab48f2c39'); }; 
+   if (!window.embedded_svc) { 
+      var s = document.createElement('script'); 
+      s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:57983/embeddedservice/2.0/esw.min.js');
+      s.onload = function() { initESW(null); }; document.body.appendChild(s);
+  } else { initESW('http://jazminorti-wsm3.internal.salesforce.com:57983'); }
+   </script>
    </body>
 </html>
     <style>
