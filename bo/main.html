@@ -1,13 +1,19 @@
 <html>
 <head>
-  <title>Bo Main</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
 <body>
 <h1 id="titleHeader"></h1>
-<script>document.getElementById('titleHeader').innerHTML = document.title;</script>
-<p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master/bo/main.html">Edit this page</a></p>
+<p><a target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+
+<script>
+var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
+document.getElementById('editThisPageLink').href += pagePath;
+var headerEl = document.getElementById('titleHeader');
+headerEl.innerHTML += ' - ' + pagePath;
+document.title = headerEl.innerHTML;
+</script>
 
 <!-- snippet start -->
 <style type='text/css'>
