@@ -11,7 +11,10 @@
 var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
 document.getElementById('editThisPageLink').href += pagePath;
 var headerEl = document.getElementById('titleHeader');
-headerEl.innerHTML += ' - ' + pagePath;
+if (headerEl.innerHTML.length) {
+  headerEl.innerHTML += ' - ';
+}
+headerEl.innerHTML += pagePath;
 document.title = headerEl.innerHTML;
 </script>
 
