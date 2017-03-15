@@ -32,7 +32,7 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -55,7 +55,7 @@ embedded_svc.init('http://skrish-wsm.internal.salesforce.com:57983', 'http://skr
 		  'EmbeddedServiceLiveAgent_Parent04Ixx00000000N5EAI_15ad2fb7b18'); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/2.0/esw.min.js'); 
+		s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/2.0/esw.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s);
 	} else { initESW('http://skrish-wsm.internal.salesforce.com:57983'); }
 	</script>
