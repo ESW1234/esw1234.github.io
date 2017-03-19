@@ -26,11 +26,16 @@
 </div>
 	
 <div id="button_goes_here">
-      <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #DA0606; font-family: "Comic Sans MS", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #DA0606}
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #25E114; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #25E114}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -39,12 +44,14 @@ embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-
 embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = '';
+
 //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://dreddy-ltm3.internal.salesforce.com:6109', 'http://dreddy-ltm3.internal.salesforce.com:8096/chat', 'http://dreddy-ltm3.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001ggm.localhost.force.com:6109/p1486680946911', '572xx0000000001', '00Dxx0000001gGm', '573xx0000000001', '2.0', gslbBaseUrl, '40.0', 'deployment1', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15a26df79f8'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://dreddy-ltm3.internal.salesforce.com:6109/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://dreddy-ltm3.internal.salesforce.com:6109'); }</script>
+
+embedded_svc.init('http://dreddy-ltm3.internal.salesforce.com:6109', 'http://dreddy-ltm3.internal.salesforce.com:8096/chat', 'http://dreddy-ltm3.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001ggm.localhost.soma.force.com:6109/p1486680946911', '572xx0000000001', '00Dxx0000001gGm', '573xx0000000001', '2.0', gslbBaseUrl, '40.0', 'dep2', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000027EAA_15ae8c2c2a7'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://dreddy-ltm3.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://dreddy-ltm3.internal.salesforce.com:6109'); }</script>
 	<div id="text">
 	<span id ="article1"><h2>SAFE LISTENING</h2>
 Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
