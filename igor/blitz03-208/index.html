@@ -124,7 +124,7 @@ Note: The cable included with our headphones is fully compatible with the iOS fa
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #3A83B8; font-family: "Comic Sans MS", sans-serif; }
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #3A83B8}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -140,7 +140,7 @@ embedded_svc.settings.language = '';
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 
-embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://eswcomm-15846119c54-1596f5b6cd4.blitz03.soma.force.com/napMacch13', '572D00000004Dkx', '00DD00000008WrP', '573D00000004Dxs', '2.0', gslbBaseUrl, '40.0', 'March13', 'EmbeddedServiceLiveAgent_Parent04ID0000000009hMAA_15ac9aeee3a'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://eswcomm-15846119c54-1596f5b6cd4.blitz03.soma.force.com/napMacch13', '572D00000004Dkx', '00DD00000008WrP', '573D00000004Dxs', '2.0', gslbBaseUrl, '40.0', 'March13', 'EmbeddedServiceLiveAgent_Parent04ID0000000009hMAA_15ac9aeee3a'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>
 </div>
    </body>
 </html>
