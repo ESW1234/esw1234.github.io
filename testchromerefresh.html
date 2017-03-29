@@ -4,10 +4,10 @@
     <title>Parent Frame</title>
     <script>
       window.addEventListener('beforeunload', function(event) {
-        debugger;
+        return "before unload";
       });
       window.addEventListener('unload', function(event) {
-        debugger;
+        return "unload";
       });
     </script>
   </head>
