@@ -27,34 +27,34 @@
 			<span id ="link10">OMNI-CHANNEL</span>
 		</div>
 	</div>
-<div id="button_goes_here">
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+	   <div id="button_goes_here">
+		   <style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseUrl) {	        
-	        embedded_svc.settings.avatarImgURL = '../avatar.png';
-	        embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
-	        embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
-	        embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-          embedded_svc.settings.onlineText = 'Start Chatting';
-          embedded_svc.settings.offlineText = 'Agent Not Available';
-          embedded_svc.settings.onlineLoadingText = 'Wait!';
-	        
-	        
-        
-      embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 
-      'https://c.la-blitz02.soma.salesforce.com/content', 'https://eswcomm.blitz02.soma.force.com/napiliAura'
-      , '572D000000001MS', '00DD00000008Ulx', '573D000000001ch', '1.0', gslbBaseUrl, '39.0'); 
-      };
-      if (!window.embedded_svc) {
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js');
-      s.onload = function() { initESW(null); };
-      document.body.appendChild(s);
-      } else {
-      initESW('https://na1-blitz02.soma.salesforce.com');
-      }</script>
-	</div>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = '';
+
+embedded_svc.settings.defaultMinimizedText = 'I am Minimized'; (defaults to Chat with an Expert, localized)
+embedded_svc.settings.offlineText = 'I am Off'; (defaults to Agent Offline, localized)
+embedded_svc.settings.onlineLoadingText = 'I am Loadind'; (defaults to Loading, localized)
+
+embedded_svc.init('https://na7-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://eswcomm-15846119c54-15a1a4a13fb.blitz03.soma.force.com/napiliAura', '572R000000000Jg', '00DR00000008lCY', '573R000000000P8', '2.0', gslbBaseUrl, '40.0', 'March29', 'EmbeddedServiceLiveAgent_Parent04IR0000000003UMAQ_15b1b45fe3f'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na7-blitz03.soma.salesforce.com'); }</script>
+</div>
 <div id="text"><h3>SAFE LISTENING</h3>
 Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
 
