@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parent Frame</title>
+    <script>
+      window.addEventListener('beforeunload', function(event) {
+        alert('I am the 1st one.');
+      });
+      window.addEventListener('unload', function(event) {
+        alert('I am the 3rd one.');
+      });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
