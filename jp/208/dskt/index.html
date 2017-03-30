@@ -41,13 +41,20 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
         //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
         //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
         //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-
+	/*
         embedded_svc.init('http://snimmaga-wsm4.internal.salesforce.com:6109', 
             'http://snimmaga-wsm4.internal.salesforce.com:8096/chat', 
             'http://snimmaga-wsm4.internal.salesforce.com:8095/content', 
             'http://jporg001.localhost.soma.force.com:6109/', 
             '572xx000000000L', '00Dxx0000001gHQ', '573xx000000000L', '2.0', gslbBaseUrl, '40.0', 
             'eswService', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15acf367193');
+	    */
+	embedded_svc.init('http://snimmaga-wsm4.internal.salesforce.com:6109', 
+			  'http://snimmaga-wsm4.internal.salesforce.com:8096/chat', 
+			  'http://snimmaga-wsm4.internal.salesforce.com:8095/content', 
+			  'http://napili001.localhost.soma.force.com:6109/napili2', 
+			  '572xx000000000L', '00Dxx0000001gHQ', '573xx000000000L', '2.0', gslbBaseUrl, '40.0', 
+			  'eswNoPreChat', 'EmbeddedServiceLiveAgent_Parent04Ixx000000000LEAQ_15b2111e56b');
         }; 
     if (!window.embedded_svc) { 
         var s = document.createElement('script'); 
@@ -60,15 +67,6 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
         initESW('http://snimmaga-wsm4.internal.salesforce.com:6109'); 
     }
 </script>
-
-
-	embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 
-			  'https://d.la-blitz03.soma.salesforce.com/chat', 
-			  'https://c.la-blitz03.soma.salesforce.com/content', 
-			  'https://justin208blitz-15a86168b06.blitz03.soma.force.com/laSite', 
-			  '572D00000004E9y', '00DD00000008XSz', '573D00000004EPR', '2.0', gslbBaseUrl, '40.0', 
-			  'JpEsw01', 'EmbeddedServiceLiveAgent_Parent04ID0000000008yMAA_15a862c50da');
-    }; 
    </body>
 </html>
     <style>
