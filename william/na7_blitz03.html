@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+    Hello World
+
+
+    <style type='text/css'>
+        .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+        .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+        @font-face {
+        font-family: 'Salesforce Sans';
+        src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+        url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+        }
+    </style>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        var initESW = function(gslbBaseUrl) {
+
+        embedded_svc.settings.avatarImgURL = '';
+        embedded_svc.settings.prechatBackgroundImgURL = '';
+        embedded_svc.settings.waitingStateBackgroundImgURL = '';
+        embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+        embedded_svc.settings.displayHelpButton = true; //Or false
+        embedded_svc.settings.language = '';
+
+        //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
+        //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+        //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+
+        embedded_svc.init('https://na7-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://snapins206-157442b0ff8-15846-15b208303d9.blitz03.soma.force.com', '572R000000000U2', '00DR00000008mKY', '573R000000000ah', '2.0', gslbBaseUrl, '40.0', 'feature_freeze', 'EmbeddedServiceLiveAgent_Parent04Ixx000000002WEAQ_15873cce821'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na7-blitz03.soma.salesforce.com'); }
+    </script>
+</body>
+</html>
