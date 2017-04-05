@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<title> Coca Cola </title>
+<body>
+<div id ='empty'> </div>
+
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'avatar3.png';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'WaitingState2.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo-small.png';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://eswcomm-15846119c54-1596f5b6-15b16ad34ed.blitz03.soma.force.com/napiliAura', '572D00000004F28', '00DD00000008YC6', '573D00000004FHt', '2.0', gslbBaseUrl, '40.0', 'March22', 'EmbeddedServiceLiveAgent_Parent04ID000000000ABMAY_15af8441eb1'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>
+</body>
+
+<!--
+embedded_svc.settings.avatarImgURL = 'avatar3.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'SuitSupplyPC.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'WaitingState2.png';
+embedded_svc.settings.smallCompanyLogoImgURL = 'SFDCLogo-small.png';
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+embedded_svc.settings.onlineText = 'Chat with a Stylist'; //(defaults to Chat with an Expert, localized)
+embedded_svc.settings.offlineText = 'Stylists Offline'; //(defaults to Agent Offline, localized)
+-->
+
+</html>
