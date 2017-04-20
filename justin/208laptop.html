@@ -42,7 +42,9 @@
 
                 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-                embedded_svc.init('http://jmacmillin-ltm.internal.salesforce.com:6109', 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat', 'http://jmacmillin-ltm.internal.salesforce.com:8095/content', 'http://justincommunitessubdomain-159728a03d7.localhost.soma.force.com:6109/napili010317', '572xx0000000001', '00Dxx0000001gIE', '573xx0000000001', '2.0', gslbBaseUrl, '40.0', 'justin_s_deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jmacmillin-ltm.internal.salesforce.com:6109'); }
+                embedded_svc.settings.devMode = true;
+
+                embedded_svc.init('http://jmacmillin-ltm.internal.salesforce.com:6109', 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat', 'http://jmacmillin-ltm.internal.salesforce.com:8095/content', 'http://justincommunitessubdomain-159728a03d7.localhost.soma.force.com:6109/napili010317', '572xx0000000001', '00Dxx0000001gIE', '573xx0000000001', '2.0', gslbBaseUrl, '40.0', 'justin_s_deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jmacmillin-ltm.internal.salesforce.com:6109'); }
 </script>
 
 </html>
