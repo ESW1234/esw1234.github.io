@@ -121,7 +121,7 @@ Note: The cable included with our headphones is fully compatible with the iOS fa
 	   <div id="button_goes_here">
 		   <style type='text/css'>
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -138,11 +138,13 @@ embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
 embedded_svc.settings.smallCompanyLogoImgURL = 'smallCompanyLogoImg.png';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = '';
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-//embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 embedded_svc.init('https://na7-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://eswcomm-15846119c54-15a1a4a13fb.blitz03.soma.force.com/napiliAura', '572R000000000Jg', '00DR00000008lCY', '573R000000000P8', '2.0', gslbBaseUrl, '40.0', 'March29', 'EmbeddedServiceLiveAgent_Parent04IR0000000003UMAQ_15b1b45fe3f'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na7-blitz03.soma.salesforce.com'); }</script>
 </div>
