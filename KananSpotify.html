@@ -29,7 +29,7 @@ embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
 //embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
 
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.settings.storageDomain = 'http://esw1234.github.io/'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 embedded_svc.init('https://servicecloudpm.my.salesforce.com', 'https://d.la.gus.salesforce.com/chat', 'https://c.la.gus.salesforce.com/content', 'https://stanleyhcdf15-14fa5059341.secure.force.com', '572B00000000Ksw', '00DB00000002V3P', '573B00000000S6c', '2.0', gslbBaseUrl, '40.0', 'Suit_Supply_Deployment_Release_Readiness', 'EmbeddedServiceLiveAgent_Parent04IB00000004CFBMA2_159af36e180'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://servicecloudpm.my.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://servicecloudpm.my.salesforce.com'); }</script>
 </html>
