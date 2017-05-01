@@ -10,8 +10,6 @@
 
 <div id="button_goes_here">
 </div>
-
-
 <style type='text/css'>
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #03E785; font-family: "Comic Sans MS", sans-serif; }
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #03E785}
@@ -19,12 +17,11 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
-   
-embedded_svc.settings.avatarImgURL = '../avatar.png';
-embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
-embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
-embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-embedded_svc.settings.devMode = true;
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -36,6 +33,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 'https://c.la-blitz03.soma.salesforce.com/content', 'https://justincommunitessubdomain-15a1f227602.blitz03.soma.force.com/napili010317', '572D0000000026M', '00DD00000008XF2', '573D000000002NX', '2.0', gslbBaseUrl, '40.0', 'githumPage', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz03.soma.salesforce.com'); }</script>
+
 </body>
 </html>
     <style>
