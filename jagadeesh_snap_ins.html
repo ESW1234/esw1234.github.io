@@ -1,58 +1,35 @@
 <html>
 <body>
-kanan-wsm-main-204
-<a href="http://esw1234.github.io/kanan_204_main.html">Page 1 </a>
-
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/1.0/esw.js'></script>
+	Snap ins
+	
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
-/*Optionally specify the embedded_svc.settings to customize the images used in the snap-in chat widget. 
 
-To change the chat avatar, specify an image URL in embedded_svc.settings.avatarImgURL = '';
-
-To change the background image on the pre-chat form, specify an image URL in embedded_svc.settings.prechatBackgroundImgURL = '';
-
-To change the background image that appears when the customer is waiting for an agent to join the chat, specify an image URL in embedded_svc.settings.waitingStateBackgroundImgURL = '';
-
-To show your company logo in the chat button when the button is minimized, specify an image URL in embedded_svc.settings.smallCompanyLogoImgURL = '';*/
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.targetElement = document.getElementById('button_goes_here');
-/*Optionally specify the embedded_svc.settings to customize the appearance and behavior of the snap-in chat widget. 
 
-To show the default chat button that connects your customers to the chat widget, set the displayHelpButton = true;. Valid parameters are true|false.
-
-To specify whether the pre-chat form appears when a customer initiates a chat, set initialInteractionState = "PRECHAT";. Valid parameters are PRECHAT|WAITING. By default, the parameter is set to show the pre-chat form. If you set it to “Waiting,” then the chat widget doesn’t show the pre-chat form and immediately opens a chat window.
-
-To customize the text that appears in the chat button when agents are online, set the parameter onlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Chat with an Expert."
-
-To customize the text that appears in the chat button when agents are offline, set the parameter offlineText = "..." to whatever text you want to show. If you don’t specify this parameter, the default text shown is “Agent Offline."
-
-To customize the text that appears in the chat button when the chat window is loading, set the parameter onlineLoadingText = "..." to whatever text you want to show. If you don't specify this parameter, the default text shown is "Loading."*/
 embedded_svc.settings.displayHelpButton = true; //Or false
-//embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://kgarg-wsm.internal.salesforce.com:6109', 
-		  'http://kgarg-wsm.internal.salesforce.com:8096/chat', 
-		  'http://kgarg-wsm.internal.salesforce.com:8095/content', 
-		  'http://kgarg-main-wsm.localhost.force.com:6109/Napili0720', 
-		  '572xx000000003P', '00Dxx0000001gFv', '573xx0000000001','1.0', gslbBaseUrl, '39.0', 'Test', 
-		  'EmbeddedServiceLiveAgent_Parent04Ixx000000005pEAA_157c5d147a8'); }; 
-	
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script');
-		s.setAttribute('src', 
-						  
-			       'http://kgarg-wsm.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s);} 
-	else { initESW('http://kgarg-wsm.internal.salesforce.com:6109'); }
-	</script>
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init('http://jgajula-wsm.internal.salesforce.com:6109', 'http://jgajula-wsm.internal.salesforce.com:8096/chat', 'http://jgajula-wsm.internal.salesforce.com:8095/content', 'http://nwk00dxx0000001ggc.localhost.soma.force.com:6109/', '572xx0000000001', '00Dxx0000001gGc', '573xx0000000001', '2.0', gslbBaseUrl, '41.0', 'firstone', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c37378e23'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jgajula-wsm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jgajula-wsm.internal.salesforce.com:6109'); }</script>
 
 	<div id="button_goes_here"> </div>
 	
