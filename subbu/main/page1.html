@@ -49,16 +49,16 @@ embedded_svc.settings.language = '';
 //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 
-embedded_svc.init('http://skrish-wsm.internal.salesforce.com:57983', 'http://skrish-wsm.internal.salesforce.com:8096/chat',
-		  'http://skrish-wsm.internal.salesforce.com:8095/content', 
+embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 'http://skrish-wsm2.internal.salesforce.com:8096/chat',
+		  'http://skrish-wsm2.internal.salesforce.com:8095/content', 
 		  'http://snapins206-157442b0ff8-1584bb8d163.localhost.soma.force.com:57983/', '572xx00000000Dt', '00Dxx0000002CMr',
 		  '573xx00000000DP', '2.0', gslbBaseUrl, '40.0', 'X031517',
 		  'EmbeddedServiceLiveAgent_Parent04Ixx00000000N5EAI_15ad2fb7b18'); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrish-wsm.internal.salesforce.com:57983/embeddedservice/2.0/esw.js'); 
+		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/2.0/esw.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s);
-	} else { initESW('http://skrish-wsm.internal.salesforce.com:57983'); }
+	} else { initESW('http://skrish-wsm2.internal.salesforce.com:57983'); }
 	</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
