@@ -1,13 +1,18 @@
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-  </head>
-  <body>
-    <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<div id="button_goes_here">
+</div>
+
+   <style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #05F7E6; font-family: "Lucida Console", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #05F7E6}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 embedded_svc.settings.avatarImgURL = '';
@@ -15,24 +20,27 @@ embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
-//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
-//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
 embedded_svc.init('http://kthapar-ltm.internal.salesforce.com:6109',
                   'http://kthapar-ltm.internal.salesforce.com:8096/chat',
                   'http://kthapar-ltm.internal.salesforce.com:8095/content',
                   'http://nwk00dxx0000001ggw.localhost.soma.force.com:6109/',
-                  '572xx0000000001', '00Dxx0000001gGw', '573xx0000000001', '2.0',
-                  gslbBaseUrl, '41.0', 'githubPage', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c42730321'); };
-   if (!window.embedded_svc) {
-      var s = document.createElement('script');
-      s.setAttribute('src', 'http://kthapar-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js');
-      s.onload = function() { initESW(null); };
-      document.body.appendChild(s);
-   } else { initESW('http://kthapar-ltm.internal.salesforce.com:6109'); }
-   
- </script>
-  </body>
+                  '572xx0000000001', '00Dxx0000001gGw', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'h', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c42730321'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://kthapar-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://kthapar-ltm.internal.salesforce.com:6109'); }</script>
+
 </html>
+<style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            top: 60px;
+            margin: 0 auto;
+            background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+            position: relative;
+      }
+</style>
