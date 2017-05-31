@@ -39,9 +39,9 @@ embedded_svc.settings.defaultMinimizedText = 'hella online';
 embedded_svc.settings.offlineText = 'hella OFFline';
 embedded_svc.settings.onlineLoadingText = 'hella loading?';
 embedded_svc.init(
-  'http://bochean-ltm4.internal.salesforce.com:6109',
-  'http://bochean-ltm4.internal.salesforce.com:8096/chat',
-  'http://bochean-ltm4.internal.salesforce.com:8095/content',
+  'http://bochean-wsm1.internal.salesforce.com:6109',
+  'http://bochean-wsm1.internal.salesforce.com:8096/chat',
+  'http://bochean-wsm1.internal.salesforce.com:8095/content',
   'http://justin208blitz-15a250fddfb.localhost.soma.force.com:6109/laSite',
   '572xx0000000001',
   '00Dxx0000001gFc',
@@ -55,11 +55,11 @@ embedded_svc.init(
 };
 if (!window.embedded_svc) {
   var s = document.createElement('script');
-  s.setAttribute('src', 'http://bochean-ltm4.internal.salesforce.com:6109/embeddedservice/1.0/esw.js');
+  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:6109/embeddedservice/1.0/esw.js');
   s.onload = function() { initESW(null); };
   document.body.appendChild(s);
 } else {
-  initESW('http://bochean-ltm4.internal.salesforce.com:6109');
+  initESW('http://bochean-wsm1.internal.salesforce.com:6109');
 }
 </script>
 <!-- snippet end -->
