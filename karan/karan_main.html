@@ -12,7 +12,9 @@
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #05F7E6}
 </style>
 <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<!--
+   <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+-->
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 embedded_svc.settings.avatarImgURL = '';
@@ -28,7 +30,7 @@ embedded_svc.init('http://kthapar-ltm.internal.salesforce.com:6109',
                   'http://kthapar-ltm.internal.salesforce.com:8096/chat',
                   'http://kthapar-ltm.internal.salesforce.com:8095/content',
                   'http://nwk00dxx0000001ggw.localhost.soma.force.com:6109/',
-                  '572xx0000000001', '00Dxx0000001gGw', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'h', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c42730321'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://kthapar-ltm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://kthapar-ltm.internal.salesforce.com:6109'); }</script>
+                  '572xx0000000001', '00Dxx0000001gGw', '573xx0000000001', '1.0', gslbBaseUrl, '39.0', 'h', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c42730321'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://kthapar-ltm.internal.salesforce.com:6109/embeddedservice/1.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://kthapar-ltm.internal.salesforce.com:6109'); }</script>
 
 </html>
 <style>
