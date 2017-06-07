@@ -54,8 +54,12 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justin208blitz-15a250fddfb-15c3c79d62b.blitz04.soma.force.com/laSite', gslbBaseURL, '00DD00000008Z8f', '3.0', 'justin_s_deployment', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004FB7', buttonId: '573D00000004FRK', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }
+		
+		//3.0
+		//embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justin208blitz-15a250fddfb-15c3c79d62b.blitz04.soma.force.com/laSite', gslbBaseURL, '00DD00000008Z8f', '3.0', 'justin_s_deployment', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004FB7', buttonId: '573D00000004FRK', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }
+		
+		//2.0
+		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://d.la-blitz04.soma.salesforce.com/chat', 'https://c.la-blitz04.soma.salesforce.com/content', 'https://justin208blitz-15a250fddfb-15c3c79d62b.blitz04.soma.force.com/laSite', '572D00000004FB7', '00DD00000008Z8f', '573D00000004FRK', '2.0', gslbBaseUrl, '40.0', 'justin_s_deployment', 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/2.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
 </script>
 </body>
 </html>
