@@ -32,6 +32,18 @@
 	
 		targetDiv.innerHTML = '';
 		targetDiv.appendChild(iddiv);	
+		
+		// Custom Logout Link.
+		var link = document.createElement("a");
+		link.className = "sfid-link";
+		link.innerHTML = "Logout";
+		link.id = "sfid-logout";
+		link.setAttribute("href","");
+		link.setAttribute("onclick", "SFIDWidget.logout()");
+
+		targetDiv.innerHTML = '';
+		targetDiv.appendChild(iddiv);
+		targetDiv.appendChild(link); 
 	}
 	
 	function onLogout() {
