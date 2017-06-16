@@ -12,7 +12,7 @@
     <script src="http://justincommunitessubdomain-159d1c74212.localhost.soma.force.com:6109/napili2/servlet/servlet.loginwidgetcontroller?type=javascript_widget" async defer></script>
 	<script>
 	function onLogin(identity) {
-		alert('called');
+		debugger;
 		var targetDiv = document.querySelector(SFIDWidget.config.target);	
 		var img = document.createElement('img'); 
 	 	img.src = identity.photos.thumbnail; 
