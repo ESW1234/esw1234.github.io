@@ -19,8 +19,16 @@
 
 
 <div id="button_goes_here">
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
 
@@ -28,19 +36,17 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.extraPrechatFormDetails = [{'label':'First Name', 'transcriptFields': ['extraField1__c'], 
-						  'displayToAgent': false},
-						{'label':'extraField2', 'value': 'null', 'transcriptFields': ['extraField2__c'], 
-						  'displayToAgent': true},
-						{'label':'extraField3', 'value': 'http://abcd.com', 'transcriptFields': ['extraFieldURL__c'], 
-						  'displayToAgent': false},];
-
 
 embedded_svc.settings.displayHelpButton = true; //Or false
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 'http://snapins206-157442b0ff8-15846119c55.localhost.force.com:57983/', '572xx0000000006', '00Dxx0000001jFX', '573xx0000000006', '1.0', gslbBaseUrl, '39.0', 'feature_freeze', 'EmbeddedServiceLiveAgent_Parent04Ixx000000002WEAQ_15873cce821'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init('https://corsa04-laperfeng2db-2015140303.vpod.t.force.com', 'https://la-corsa04-LAPerfEng2DB-303.vpod.t.force.com:443/chat', 'https://la-corsa04-LAPerfEng2DB-303.vpod.t.force.com:443/content', 'https://subbu-corsa04-laperfeng2db-2015140303.vpod.t.salesforce-communities.com/210062017', '572x000000008Xz', '00Dx0000000BZZ8', '573x000000008Y4', '2.0', gslbBaseUrl, '40.0', 'Vpod1', 'EmbeddedServiceLiveAgent_Parent04Ix00000000001EAA_15cc67bd67d'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://corsa04-laperfeng2db-2015140303.vpod.t.force.com/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://corsa04-laperfeng2db-2015140303.vpod.t.force.com'); }</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
