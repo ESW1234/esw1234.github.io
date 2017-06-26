@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	
+</head>	
+<body>
+	<div id="salesforce-login" data-login-event="onLogin"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<button onClick="SFIDWidget.logout()">Log out</button>
+</body>
+
+	
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #2ebd59; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #2ebd59; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Field Service
+embedded_svc.settings.fieldServiceHomeImgURL = '';
+embedded_svc.settings.fieldServiceLogoImgURL = '';
+embedded_svc.settings.loginClientId = '3MVG9PhR6g6B7ps4lJzyW1IuoOZ0xBek7Ws0D8rnlT.mrxVJXdao4Y.e3kDWyRTxXQTT.4zGVsje4yk9pdTOP';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/callback_blitz04.html';
+embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+embedded_svc.settings.fieldServiceStartLabel = 'It's time to start up field service boys.';
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.enabledFeatures = ['FieldService', 'LiveAgent'];
+embedded_svc.settings.entryFeature = 'FieldService';
+
+embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justin208blitz-15a81f12a99.blitz04.soma.force.com/laSite', gslbBaseURL, '00DD00000008XSL', '3.0', 'justin_s_deployment', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004E5q', buttonId: '573D00000004ELJ', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
+
+
+
+</html>
