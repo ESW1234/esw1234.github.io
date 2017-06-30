@@ -2,7 +2,7 @@
 <head>
 <!--Responsive code here-->
 </head>
-<body>
+<body onload="triggerChat()">
 
   <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
@@ -15,6 +15,11 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 </style>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
 <script type='text/javascript'>
+  
+  function triggerChat(){
+   document.getElementById('helpButtonSpan').click();
+    console.log("help button clicked");
+  }
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
