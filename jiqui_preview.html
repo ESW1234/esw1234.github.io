@@ -4,7 +4,7 @@
 </head>
 <body>
 
-  <style type='text/css'>
+ <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -13,13 +13,8 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
-  
-  function triggerChat(){
-   document.getElementById('helpButtonSpan').click();
-    console.log("help button clicked");
-  }
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -39,8 +34,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('http://jiaqiwu-wsm.internal.salesforce.com:6109', 'http://nwk00dxx0000001ggc.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gGc', '3.0', 'firstone', { baseLiveAgentContentURL: 'http://jiaqiwu-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', chasitorVersion: '41.0', baseLiveAgentURL: 'http://jiaqiwu-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15c37378e23'}); };if (!window.embedded_svc) { console.log("no embedded svc defined"); var s = document.createElement('script'); s.setAttribute('src', 'http://jiaqiwu-wsm.internal.salesforce.com:6109/embeddedservice/3.0/esw.js'); s.onload = function() { initESW(null); setTimeout(function(){ triggerChat(); }, 3000); }; document.body.appendChild(s); } else { console.log("there is a window embedded svc"); initESW('http://jiaqiwu-wsm.internal.salesforce.com:6109'); }
-  
+embedded_svc.init('http://jiaqiwu-wsm.internal.salesforce.com:6109', 'http://nwk00dx0000003rsvo.localhost.soma.force.com:6109/chatbots', gslbBaseURL, '00Dx0000003RsvO', '3.0', 'Chatbot_Deploy', { baseLiveAgentContentURL: 'http://jiaqiwu-wsm.internal.salesforce.com:8095/content', deploymentId: '572x00000004EWE', buttonId: '573x0000000023x', chasitorVersion: '41.0', baseLiveAgentURL: 'http://jiaqiwu-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000CaRCEA0_15cf620746b'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jiaqiwu-wsm.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://jiaqiwu-wsm.internal.salesforce.com:6109'); }
   </script>
 
 </html>
