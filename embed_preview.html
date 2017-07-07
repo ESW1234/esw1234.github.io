@@ -1,0 +1,95 @@
+<html>
+<head>
+<!--Responsive code here-->
+
+
+<!-- 
+preview_wrapper.html?chatbotVersion=42&site_url=sitename&snapin_name=snapname&org_id=orgid&snapin_version=asdf&esw_liveagent_devname=eswdevname&chasitor_version=41.0&button_id=573xx0000000001&deployment_id=572xx0000000001&core_host=http://jiaqiwu-wsm.internal.salesforce.com:6109&liveagent_host=http://jiaqiwu-wsm.internal.salesforce.com:8095&
+-->
+</head>
+<body>
+
+  <style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
+<script type='text/javascript'>
+
+function parse_query_string(query) {
+  var vars = query.split("&");
+  var query_string = {};
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = decodeURIComponent(pair[1]);
+      // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+      query_string[pair[0]] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+    }
+  }
+  return query_string;
+}
+
+// dynamic configs retried from iframe url
+
+var url_query = window.location.search.substring(1);
+var qs = parse_query_string(url_query);
+
+
+var coreHost = qs.core_host;
+var liveagentHost = qs.liveagent_host;
+var deploymentId = qs.deployment_id;
+var buttonId = qs.button_id;
+var chasitorVersion = qs.chasitor_version;
+var eswLiveAgentDevName = qs.esw_liveagent_devname;
+var snapInVersion = qs.snapin_version;
+var OrgId =  qs.org_id;
+var snapInName = qs.snapin_name;
+var site_url = qs.site_url;
+var chabotVersion = qs.chatbot_version;
+
+
+
+
+var eswURL = coreHost+"/embeddedservice/3.0/esw.js";
+var baseLiveAgentURL = liveagentHost+"/chat";
+var baseLiveAgentContentURL = liveagentHost+"/content"; 
+
+embedded_svc.settings.avatarImgURL = '';
+
+
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init(coreHost, site_url, gslbBaseURL, OrgId, snapInVersion, snapInName, { chatbotVersion: chabotVersion, baseLiveAgentContentURL: baseLiveAgentContentURL, deploymentId: deploymentId, buttonId: buttonId, chasitorVersion: chasitorVersion, baseLiveAgentURL: baseLiveAgentURL, eswLiveAgentDevName: eswLiveAgentDevName}); };if (!window.embedded_svc) {  var s = document.createElement('script'); s.setAttribute('src', eswURL); s.onload = function() { initESW(null); document.body.appendChild(s); } else { initESW(coreHost); }
+  
+  </script>
+
+</html>
