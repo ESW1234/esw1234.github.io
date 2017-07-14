@@ -67,5 +67,81 @@ Hello World
   }
 </script>
 
+<script>
+      /* Start Code for attachedRecord fix */
+         (function() {
+            window.addEventListener("message", function(message) {
+                if(!isSnapinsPostChatEventMessage(message)) {
+                    return;
+                }
+            
+                embedded_svc.tempPostChatUrl = message.data.data.params.getUrl;
+                embedded_svc.tempAttachedRecords = message.data.data.params.getAttachedRecords;
+            
+                window.requestAnimationFrame(function() {
+                    window.requestAnimationFrame(function() {
+                        var originalPostChatButton;
+                        var customPostChatButton;
+            
+                        originalPostChatButton = document.querySelector(".postChatButton");
+                        if(!originalPostChatButton) {
+                            return;
+                        }
+            
+                        customPostChatButton = originalPostChatButton.cloneNode(true);
+                        customPostChatButton.onclick = function() {
+                            navigateToPostChatUrl(embedded_svc.tempPostChatUrl, embedded_svc.tempAttachedRecords);
+                        };
+            
+                        originalPostChatButton.parentNode.replaceChild(customPostChatButton, originalPostChatButton);
+                    });
+                });
+            }, false);
+            
+            function isSnapinsPostChatEventMessage(message) {
+                var payload = message.data;
+            
+                if(message.origin.toLowerCase() !== embedded_svc.settings.gslbBaseUrl.toLowerCase()) {
+                    return false;
+                }
+                if(!payload) {
+                    return false;
+                }
+                if(!payload.method || payload.method !== "eswChasitorEvent") {
+                    return false;
+                }
+                if(!payload.data || !payload.data.event || payload.data.event !== "postChat") {
+                    return false;
+                }
+                if(!payload.data.params || !payload.data.params.getUrl || !payload.data.params.getAttachedRecords) {
+                    return false;
+                }
+            
+                return true;
+            }
+            
+            function navigateToPostChatUrl(postChatUrl, attachedRecords) {
+                var form;
+                var attachedRecordsInput;
+            
+                form = document.createElement("form");
+                form.style.display = "none";
+                form.method = "POST";
+                form.action = postChatUrl;
+                form.target = "_blank";
+            
+                attachedRecordsInput = document.createElement("input");
+                attachedRecordsInput.type = "hidden";
+                attachedRecordsInput.name = "attachedRecords";
+                attachedRecordsInput.value = JSON.stringify(attachedRecords);
+                form.appendChild(attachedRecordsInput);
+            
+                document.body.appendChild(form);
+                form.submit();
+            }
+            })();
+         /* End Code for attachedRecord fix */ 
+</script>
+
 </body>
 </html>
