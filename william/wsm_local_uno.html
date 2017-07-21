@@ -35,7 +35,29 @@
 
             embedded_svc.settings.extraPrechatInfo = [{
                 "entityName": "Contact",
-                "saveToTranscript": ""
+                "showOnCreate": true,
+                "linkToEntityName": "Case",
+                "linkToEntityField": "ContactId",
+                "saveToTranscript": "",
+                "entityFieldMaps": [{
+                    "isExactMatch": true,
+                    "fieldName": "FirstName",
+                    "doCreate": true,
+                    "doFind": true,
+                    "label": "First Name"
+                }, {
+                    "isExactMatch": true,
+                    "fieldName": "LastName",
+                    "doCreate": true,
+                    "doFind": true,
+                    "label": "Last Name"
+                }, {
+                    "isExactMatch": true,
+                    "fieldName": "Email",
+                    "doCreate": true,
+                    "doFind": true,
+                    "label": "Email"
+                }]
             }]
 
 
