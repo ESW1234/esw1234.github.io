@@ -130,7 +130,7 @@
             function isSnapinsPostChatEventMessage(message) {
                 var payload = message.data;
 
-                if (message.origin.toLowerCase() !== embedded_svc.settings.gslbBaseUrl.toLowerCase()) {
+                if (message.origin.toLowerCase() !== embedded_svc.settings.gslbBaseURL.toLowerCase()) {
                     return false;
                 }
                 if (!payload) {
