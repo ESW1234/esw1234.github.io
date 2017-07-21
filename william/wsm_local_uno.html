@@ -33,8 +33,67 @@
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-            embedded_svc.settings.extraPrechatInfo = [{"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"Contact","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":true,"label":"firstName"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":true,"label":"LastName"},{"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},{"entityName":"Case","showOnCreate":true,"entityFieldMaps":[{"isExactMatch":false,"fieldName":"Subject","doCreate":true,"doFind":false,"label":"issue"},{"isExactMatch":false,"fieldName":"Status","doCreate":true,"doFind":false,"label":"Status"},{"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Origin"}]},
-{"entityName":"Account","showOnCreate":true,"entityFieldMaps":[{"isExactMatch":true,"fieldName":"Name","doCreate":true,"doFind":true,"label":"LastName"}]}];
+            embedded_svc.settings.extraPrechatInfo = [{
+                    "entityName": "Contact",
+                    "showOnCreate": true,
+                    "linkToEntityName": "Case",
+                    "linkToEntityField": "ContactId",
+                    "saveToTranscript": "ContactId",
+                    "entityFieldMaps": [{
+                        "isExactMatch": true,
+                        "fieldName": "FirstName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "firstName"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "LastName",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "LastName"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "Email",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "Email"
+                    }]
+                }, {
+                    "entityName": "Case",
+                    "showOnCreate": true,
+                    "entityFieldMaps": [{
+                        "isExactMatch": false,
+                        "fieldName": "Subject",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "issue"
+                    }, {
+                        "isExactMatch": false,
+                        "fieldName": "Status",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Status"
+                    }, {
+                        "isExactMatch": false,
+                        "fieldName": "Origin",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Origin"
+                    }]
+                },
+                {
+                    "entityName": "Account",
+                    "showOnCreate": true,
+                    "saveToTranscript": "AccountId",
+                    "entityFieldMaps": [{
+                        "isExactMatch": true,
+                        "fieldName": "Name",
+                        "doCreate": true,
+                        "doFind": true,
+                        "label": "LastName"
+                    }]
+                }
+            ];
 
 
 
