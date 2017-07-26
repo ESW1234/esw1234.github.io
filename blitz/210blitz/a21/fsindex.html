@@ -50,8 +50,8 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 // Settings for Field Service
 embedded_svc.settings.fieldServiceHomeImgURL = '';
 embedded_svc.settings.fieldServiceLogoImgURL = '';
-embedded_svc.settings.loginClientId = '3MVG9bQj9SNXVd5uKYvlAXcHw13HnFRdZ0YE9IbCCnjfwHVH6bcfdbo1D97TccDH8qsyQm5LiiuzzFVAS9hAp';
-embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/210/blitz/callback.html';
+embedded_svc.settings.loginClientId = '3MVG9bQj9SNXVd5s3ALBNOgsjEWUdjJj2LGzCv5Vt7AEYCYI7N9V3lXWFfwc2YwJDkere4IriI17K6OXfmvSG';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/blitz/210blitz/a21/callback.html';
 embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
 //embedded_svc.settings.loginClientId = '';
@@ -61,15 +61,17 @@ embedded_svc.settings.entryFeature = 'FieldService';
 
 embedded_svc.init(
 			'https://ap1-blitz04.soma.salesforce.com', 
-			'https://justincommunitessubdomain-15-15d677219d2.blitz04.soma.force.com/napili2', 
-			gslbBaseURL, '00D990000000Nqd', 'EswFs01', 
+			'https://justincommunitessubdomain-15-15d7ffba932.blitz04.soma.force.com/napili2', 
+			gslbBaseURL, '00D990000000NrN', 'EswFs01', 
 			{ }
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
 		s.setAttribute('src', 'https://ap1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
 		document.body.appendChild(s); 
 	} else { 
 		initESW('https://ap1-blitz04.soma.salesforce.com'); 
