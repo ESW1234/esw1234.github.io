@@ -37,52 +37,47 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.devMode = true;
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.defaultMinimizedText = 'custom Online'; //(Defaults to Chat with an Expert)
-embedded_svc.settings.disabledMinimizedText = 'custom Offline'; //(Defaults to Agent Offline)
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
+	embedded_svc.settings.devMode = true;
+	embedded_svc.settings.displayHelpButton = true; //Or false
+	embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+	embedded_svc.settings.defaultMinimizedText = 'custom Online'; //(Defaults to Chat with an Expert)
+	embedded_svc.settings.disabledMinimizedText = 'custom Offline'; //(Defaults to Agent Offline)
+	//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+	//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+	// Settings for Live Agent
+	embedded_svc.settings.avatarImgURL = '';
+	embedded_svc.settings.prechatBackgroundImgURL = '';
+	embedded_svc.settings.waitingStateBackgroundImgURL = '';
+	embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-// Settings for Field Service
-embedded_svc.settings.fieldServiceHomeImgURL = '';
-embedded_svc.settings.fieldServiceLogoImgURL = '';
-embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLnXEX_fetDabHmxO9adsDTP3jyGZrKaKF1jab52XQBE0Vg2klzkouQ.GyZ.VuFGtt8i2AM';
-embedded_svc.settings.loginRedirectURL = 'http://esw1234.github.io/jp/210/ltm/callback.html';
-embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
+	// Settings for Field Service
+	embedded_svc.settings.fieldServiceHomeImgURL = '';
+	embedded_svc.settings.fieldServiceLogoImgURL = '';
+	embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOKMkM1RbWqrxr6wZRIbzKkBznq_RzFKtJ0HN3i3Q_H47T5rVqE9GToXD1HmTgJ5bm8vIIxM';
+	embedded_svc.settings.loginRedirectURL = 'http://esw1234.github.io/jp/210/ltm/006/callback.html';
+	embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+	embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent', 'FieldService'];
-embedded_svc.settings.entryFeature = 'FieldService';
+	embedded_svc.settings.enabledFeatures = ['LiveAgent', 'FieldService'];
+	embedded_svc.settings.entryFeature = 'FieldService';
 
-embedded_svc.init(
-					'http://jp201701.localhost.internal.salesforce.com:6109', 
-					'http://justincommunitessubdomain-15-15cfa64737e.localhost.soma.force.com:6109/napili2', 
-					gslbBaseURL, '00Dxx0000001mps', '3.0', 'FSSnapins', 
-					{ 
-						baseLiveAgentContentURL: 'http://snimmagadda-ltm.internal.salesforce.com:8095/content', 
-						deploymentId: '572xx00000000hI', 
-						buttonId: '573xx00000000iB', 
-						chasitorVersion: '41.0', 
-						baseLiveAgentURL: 'http://snimmagadda-ltm.internal.salesforce.com:8096/chat', 
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000xDEAQ_15d15185c4d'
-					}
-				); 
+	embedded_svc.init(
+		'http://snimmagadda-ltm.internal.salesforce.com:6109', 
+		'http://justincommunitessubdomain-15-15d7fba3cad.localhost.soma.force.com:6109/napili2', 
+		gslbBaseURL, '00Dxx0000001gEb', 'EswFs01', { }
+	); 
 };
 if (!window.embedded_svc) { 
 	var s = document.createElement('script'); 
-	s.setAttribute('src', 'http://jp201701.localhost.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); 
-	s.onload = function() { initESW(null); }; 
+	s.setAttribute('src', 'http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); 
+	s.onload = function() { 
+		initESW(null); 
+	}; 
 	document.body.appendChild(s); 
 } else { 
-	initESW('http://jp201701.localhost.internal.salesforce.com:6109'); 
-}</script>
+	initESW('http://snimmagadda-ltm.internal.salesforce.com:6109'); 
+}
+</script>
 	
 <!-- <iframe src="http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/2.0/eswDev.html"></iframe> -->
    </body>
