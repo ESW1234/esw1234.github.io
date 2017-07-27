@@ -27,43 +27,42 @@ document.title = headerEl.innerHTML;
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-  embedded_svc.settings.devMode = true;
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+    embedded_svc.settings.displayHelpButton = true; //Or false
+    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+    //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+    //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+    //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+    //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
+    // Settings for Live Agent
+    embedded_svc.settings.avatarImgURL = '';
+    embedded_svc.settings.prechatBackgroundImgURL = '';
+    embedded_svc.settings.waitingStateBackgroundImgURL = '';
+    embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
+    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+    embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('http://bochean-wsm1.internal.salesforce.com:6109', 'http://justincommunitessubdomain-15a250fddfb.localhost.soma.force.com:6109/napili010317', gslbBaseURL, '00Dxx0000001gFc', 'W_4037078_case_origin', {
-    baseLiveAgentContentURL: 'http://bochean-wsm1.internal.salesforce.com:8095/content',
-    deploymentId: '572xx0000000001',
-    buttonId: '573xx0000000001',
-    chasitorVersion: '41.0',
-    baseLiveAgentURL: 'http://bochean-wsm1.internal.salesforce.com:8096/chat',
-    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000001dEAA_15d3d8a9fc7'
-});
-};
+    embedded_svc.init('http://bochean-wsm1.internal.salesforce.com:6109', 'http://justin208blitz-15a250fddfb.localhost.soma.force.com:6109/laSite', gslbBaseURL, '00Dxx0000001gFc', 'justin_s_deployment', {
+      baseLiveAgentContentURL: 'http://bochean-wsm1.internal.salesforce.com:8095/content',
+      deploymentId: '572xx0000000001',
+      buttonId: '573xx0000000001',
+      chasitorVersion: '41.0',
+      baseLiveAgentURL: 'http://bochean-wsm1.internal.salesforce.com:8096/chat',
+      eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+    });
+  };
 if (!window.embedded_svc) {
-    var s = document.createElement('script');
-    s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js');
-    s.onload = function() {
-        initESW(null);
-    };
-    document.body.appendChild(s);
+  var s = document.createElement('script');
+  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js');
+  s.onload = function() {
+    initESW(null);
+  };
+  document.body.appendChild(s);
 } else {
-    initESW('http://bochean-wsm1.internal.salesforce.com:6109');
+  initESW('http://bochean-wsm1.internal.salesforce.com:6109');
 }
 </script>
 <!-- snippet end -->
