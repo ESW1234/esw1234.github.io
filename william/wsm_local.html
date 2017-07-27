@@ -47,7 +47,6 @@
                     "showOnCreate": true,
                     "linkToEntityName": "Account",
                     "linkToEntityField": "ContactId",
-                    "saveToTranscript": "ContactId",
                     "entityFieldMaps": [{
                         "isExactMatch": true,
                         "fieldName": "FirstName",
@@ -70,7 +69,8 @@
                 }, {
                     "entityName": "Case",
                     "showOnCreate": true,
-                    "saveToTranscript": "CaseId",
+                    "linkToEntityName": "Account",
+                    "linkToEntityField": "CaseId",
                     "entityFieldMaps": [{
                         "isExactMatch": false,
                         "fieldName": "Subject",
