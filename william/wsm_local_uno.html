@@ -43,7 +43,7 @@
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
 
-            embedded_svc.init('http://nwk00dxx0000001gj7.localhost.internal.salesforce.com:57983',
+            embedded_svc.init('http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983',
                 'http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983/', gslbBaseURL, '00Dxx0000001gJ7',
                 'My_New_Snap_in', {
                     baseLiveAgentContentURL: 'http://williamc-wsm.internal.salesforce.com:8080/content',
@@ -57,13 +57,13 @@
         if (!window.embedded_svc) {
             var s = document.createElement('script');
             s.setAttribute('src',
-                'http://nwk00dxx0000001gj7.localhost.internal.salesforce.com:57983/embeddedservice/3.0/esw.min.js');
+                'http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983/embeddedservice/3.0/esw.min.js');
             s.onload = function () {
                 initESW(null);
             };
             document.body.appendChild(s);
         } else {
-            initESW('http://nwk00dxx0000001gj7.localhost.internal.salesforce.com:57983');
+            initESW('http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983');
         }
     </script>
 
