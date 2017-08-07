@@ -14,6 +14,53 @@
   <br>
 
 <div id="button_goes_here">
+	<!-- bo added -->
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #9200B7; font-family: "Impact", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #9200B7}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js.uselocalinstead'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.devMode = true;
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.onlineText = 'v1 hella online';
+embedded_svc.settings.offlineText = 'v1 hella OFFline';
+embedded_svc.settings.onlineLoadingText = 'v1 hella loading?';
+embedded_svc.init(
+  'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com',
+  'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/chat',
+  'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content',
+  'https://eswsites-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/admin',
+  '572x000000008Y4',
+  '00Dx0000000BZZc',
+  '573x000000008Yi',
+  '1.0',
+  gslbBaseUrl,
+  '39.0',
+  'esw9_sites_sales',
+  'EmbeddedServiceLiveAgent_Parent04Ix0000000000fEAA_15da59f5194'
+);
+};
+if (!window.embedded_svc) {
+  var s = document.createElement('script');
+  s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/1.0/esw.js');
+  s.onload = function() { initESW(null); };
+  document.body.appendChild(s);
+} else {
+  initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com');
+}
+</script>
+	
+	<!-- bo end -->
+	
+	<!-- old stuff 
 <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -58,6 +105,8 @@ embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com',
 		document.body.appendChild(s); } 
 	else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }
 </script>
+	
+	 -->
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
