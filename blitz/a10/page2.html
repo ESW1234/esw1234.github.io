@@ -16,36 +16,48 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = true; //Or false
-//embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz03.soma.salesforce.com', 'https://d.la-blitz03.soma.salesforce.com/chat', 
-		  'https://c.la-blitz03.soma.salesforce.com/content',
-		  'https://snapins206-157442b0ff8-15846-1594bfc5903.blitz03.soma.force.com/208site', 
-		  '572D000000001xw', '00DD00000008Wou', '573D000000002F2', '2.0', gslbBaseUrl, '40.0', 
-		  'subbu_2_0_020817', 'EmbeddedServiceLiveAgent_Parent04ID00000004CD1MAM_15a1f3cd761'); }; 
-	if (!window.embedded_svc) { var s = document.createElement('script'); 
-				   s.setAttribute('src', 
-						  'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); 
-				   s.onload = function() { initESW(null); }; 
-				   document.body.appendChild(s);} 
-	else { initESW('https://na1-blitz03.soma.salesforce.com'); }
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com', 
+		  'https://eswcommunities-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/210080217', 
+		  gslbBaseURL, '00Dx0000000BZZc', 'esw10_community_basic', 
+		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content',
+		   deploymentId: '572x000000008Y4', buttonId: '573x000000008Yn', chasitorVersion: '41.0',
+		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000000kEAA_15da5a026de'}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/3.0/esw.min.js');
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); } 
+	else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }
 </script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
