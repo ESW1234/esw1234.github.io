@@ -44,18 +44,19 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com', 
-		  'https://eswcommunities-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/210080217',
-		  gslbBaseURL, '00Dx0000000BZZc', 'esw4_community_noPreChat',
-		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content', 
-		   deploymentId: '572x000000008Y4', buttonId: '573x000000008YT', chasitorVersion: '41.0',
-		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/chat', 
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000000QEAQ_15da599ad97'}); };
+embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com', 
+		  'https://eswblitzsites-corsa04-liveagentpoc-2015144877.vpod.t.salesforce-communities.com/eswblitz',
+		  gslbBaseURL, '00Dx0000000BZZm', 'user4_sites_service', 
+		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/content', 
+		   deploymentId: '572x000000008YE', buttonId: '573x000000008ZM', chasitorVersion: '41.0',
+		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/chat',
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000001iEAA_15dc3d74939'}); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
-	else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }
+		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144877.vpod.t.force.com/embeddedservice/3.0/esw.min.js');
+		s.onload = function() { initESW(null); };
+		document.body.appendChild(s); } 
+	else { initESW('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com'); }
 </script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
