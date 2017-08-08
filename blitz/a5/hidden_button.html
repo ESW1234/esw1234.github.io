@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -6,12 +5,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
+  <p align="center"><font color ="red">PAGE WITH HIDDEN BUTTON</font></p>
   <br/>
   <br/>
+	<p align="center"><font color = "red"><a href="index.html">Link to PAGE ONE DEFAULT WIDGET</a></font></p>
 	<p align="center"><font color = "red"><a href="page2.html">Link to PAGE TWO DEFAULT WIDGET</a></font></p>
 	<p align="center"><font color = "red"><a href="no_button.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
-	<p align="center"><font color = "red"><a href="hidden_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
   <br>
 
 <div id="button_goes_here">
@@ -27,37 +26,62 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.displayHelpButton = false; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '../../../avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '../../../Prechat_image.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '../../../waitingStateImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '../../../smallCompanyLogoImg.png';
 
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
+// for 3.0 snippets only.
+//embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+//embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-
-embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com', 
-		  'https://eswsites-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/admin',
-		  gslbBaseURL, '00Dx0000000BZZc', 'esw1_site_service', 
-		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content',
-		   deploymentId: '572x000000008Y4', buttonId: '573x000000008YE', chasitorVersion: '41.0',
+// 3.0 snippet
+/*embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com', 
+		  'https://eswsites-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/admin', 
+		  gslbBaseURL, '00Dx0000000BZZc', 'esw5_sites_service', 
+		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content', 
+		   deploymentId: '572x000000008Y4', buttonId: '573x000000008YY', chasitorVersion: '41.0', 
 		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/chat', 
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000000BEAQ_15da5946de2'}); };
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000000MEAQ_15da59afda7'}); };
 	if (!window.embedded_svc) { 
-		var s = document.createElement('script');
+		var s = document.createElement('script'); 
 		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/3.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
-	else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }
-	</script>
+	else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }*/
+	
+// 2.0 snippet
+embedded_svc.init('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com', 
+		  'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/chat', 
+		  'https://la-corsa04-LiveAgentPOC-4614.vpod.t.force.com:443/content', 
+		  'https://eswsites-corsa04-liveagentpoc-2015144614.vpod.t.salesforce-communities.com/admin', 
+		  '572x000000008Y4', 
+		  '00Dx0000000BZZc', 
+		  '573x000000008YY', 
+		  '2.0', 
+		  gslbBaseURL, 
+		  '40.0', 
+		  'esw5_sites_service', 
+		  'EmbeddedServiceLiveAgent_Parent04Ix0000000000MEAQ_15da59afda7'); 
+}; 
+if (!window.embedded_svc) { 
+	var s = document.createElement('script'); 
+	s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/2.0/esw.min.js'); 
+	s.onload = function() { 
+		initESW(null); 
+	}; 
+	document.body.appendChild(s);
+} else { initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com'); }
+// end 2.0 snippet
+
+</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
@@ -99,3 +123,5 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 		    width: 65%;
 	    }
     </style>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
