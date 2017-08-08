@@ -1,0 +1,50 @@
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #9200B7; font-family: "Impact", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #9200B7}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js.uselocalinstead'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.devMode = true;
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.onlineText = 'v1 hella online';
+embedded_svc.settings.offlineText = 'v1 hella OFFline';
+embedded_svc.settings.onlineLoadingText = 'v1 hella loading?';
+embedded_svc.init(
+  'http://jakerouss-wsm1.internal.salesforce.com:57983',
+  'http://jakerouss-wsm1.internal.salesforce.com:7443/chat',
+  'http://jakerouss-wsm1.internal.salesforce.com:8080/content',
+  'http://communities-developer-edition.localhost.soma.force.com:57983/napili6',
+  '572xx0000000001',
+  '00Dxx0000001gFF',
+  '573xx0000000001',
+  '1.0',
+  gslbBaseUrl,
+  '39.0',
+  'new_LA',
+  'EmbeddedServiceLiveAgent_Parent04Ixx00000000KuEAI_15dbef51dcd'
+);
+};
+if (!window.embedded_svc) {
+  var s = document.createElement('script');
+  s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144614.vpod.t.force.com/embeddedservice/1.0/esw.js');
+  s.onload = function() { initESW(null); };
+  document.body.appendChild(s);
+} else {
+  initESW('https://corsa04-liveagentpoc-2015144614.vpod.t.force.com');
+}
+</script>
+</body>
+</html>
