@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+    Welcome
+    <style type='text/css'>
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #E1C423;
+            font-family: "Verdana", sans-serif;
+        }
+
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #E1C423;
+        }
+    </style>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        var initESW = function (gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+            // Settings for Live Agent
+            embedded_svc.settings.avatarImgURL = '';
+            embedded_svc.settings.prechatBackgroundImgURL = '';
+            embedded_svc.settings.waitingStateBackgroundImgURL = '';
+            embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.init('https://na1-upg03.soma.salesforce.com',
+                'https://snapins206-157442b0ff8-15846-15dc0a92e6e.upg03.soma.force.com', gslbBaseURL,
+                '00D300000000Mru', 'feature_freeze', {
+                    baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content',
+                    deploymentId: '57230000000004d',
+                    buttonId: '5733000000000D3',
+                    chasitorVersion: '41.0',
+                    baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000002WEAQ_15873cce821'
+                });
+        };
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://na1-upg03.soma.salesforce.com/embeddedservice/3.0/esw.min.js');
+            s.onload = function () {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://na1-upg03.soma.salesforce.com');
+        }
+    </script>
+
+</body>
+
+</html>
