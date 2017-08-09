@@ -45,6 +45,8 @@ embedded_svc.settings.displayHelpButton = false;
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
+// 3.0 snippet
+/*
 embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com', 
 		  'https://eswblitzsites-corsa04-liveagentpoc-2015144877.vpod.t.salesforce-communities.com/eswblitz', 
 		  gslbBaseURL, '00Dx0000000BZZm', 'user1_sites_sales',
@@ -58,6 +60,33 @@ embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com',
 		s.onload = function() { initESW(null); };
 		document.body.appendChild(s); } 
 	else { initESW('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com'); }
+*/
+// end 3.0 snippet
+
+// 2.0 snippet
+embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com', 
+		  'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/chat', 
+		  'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/content', 
+		  'https://eswblitzsites-corsa04-liveagentpoc-2015144877.vpod.t.salesforce-communities.com/eswblitz', 
+		  '572x000000008YE', 
+		  '00Dx0000000BZZm', 
+		  '573x000000008Z7', 
+		  '2.0', 
+		  gslbBaseURL, 
+		  '40.0', 
+		  'user1_sites_sales', 
+		  'EmbeddedServiceLiveAgent_Parent04Ix0000000001TEAQ_15dc3c26a64'); 
+}; 
+if (!window.embedded_svc) { 
+	var s = document.createElement('script'); 
+	s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144877.vpod.t.force.com/embeddedservice/2.0/esw.js'); 
+	s.onload = function() { 
+		initESW(null); 
+	}; 
+	document.body.appendChild(s);
+} else { initESW('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com'); }
+// end 2.0 snippet
+
 </script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
