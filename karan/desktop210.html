@@ -4,7 +4,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="white">210 Desktop WIDGET</font></p>
   <br/>
   <br/>
 
@@ -12,11 +11,11 @@
 </div>
 
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #9200B7; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #9200B7; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #222222; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #222222; }
        body {
           
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+         background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
       }
       #button_goes_here{
             width: 100%; 
@@ -31,16 +30,16 @@ var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+embedded_svc.settings.defaultMinimizedText = 'Help Center'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/avatar.png';
 embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'https://esw1234.github.io/waitingStateImage.png';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];

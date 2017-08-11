@@ -24,8 +24,15 @@
 
 <div id="button_goes_here">
 </div>
-
-<style type='text/css'>
+	
+	
+	
+	
+	
+	
+	
+	
+	<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -37,7 +44,6 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-//embedded_svc.settings.devMode = true;
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -47,34 +53,30 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
 // Settings for Field Service
 embedded_svc.settings.fieldServiceHomeImgURL = '';
 embedded_svc.settings.fieldServiceLogoImgURL = '';
-embedded_svc.settings.loginClientId = '3MVG9bQj9SNXVd5uKYvlAXcHw13HnFRdZ0YE9IbCCnjfwHVH6bcfdbo1D97TccDH8qsyQm5LiiuzzFVAS9hAp';
-embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/210/blitz/callback.html';
+embedded_svc.settings.loginClientId = '3MVG9bQj9SNXVd5s3ALBNOgsjEWUdjJj2LGzCv5Vt7AEYCYI7N9V3lXWFfwc2YwJDkere4IriI17K6OXfmvSG';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/blitz/210blitz/a21/callback.html';
 embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
-//embedded_svc.settings.loginClientId = '';
 
-embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.enabledFeatures = ['LiveAgent', 'FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
 
-embedded_svc.init(
-			'https://ap1-blitz04.soma.salesforce.com', 
-			'https://justincommunitessubdomain-15-15d677219d2.blitz04.soma.force.com/napili2', 
-			gslbBaseURL, '00D990000000Nqd', 'EswFs01', 
-			{ }
-		); 
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://ap1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-	} else { 
-		initESW('https://ap1-blitz04.soma.salesforce.com'); 
-	}
-</script>
+embedded_svc.init('https://ap1-blitz04.soma.salesforce.com', 'https://justincommunitessubdomain-15-15d7ffba932.blitz04.soma.force.com/napili2', gslbBaseURL, '00D990000000NrN', 'august9', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572990000004CHn', buttonId: '573990000004CHs', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I99000000000kEAA_15dc81437dd'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://ap1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://ap1-blitz04.soma.salesforce.com'); }</script>
+
+	
+	
+	
+	
+
 	
 <!-- <iframe src="http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/2.0/eswDev.html"></iframe> -->
    </body>
