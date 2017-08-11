@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    Welcome
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #005290;
@@ -33,88 +34,6 @@
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-            embedded_svc.settings.extraPrechatInfo = [{
-                    "entityName": "Contact",
-                    "showOnCreate": true,
-                    "linkToEntityName": "Case",
-                    "linkToEntityField": "ContactId",
-                    "saveToTranscript": "ContactId",
-                    "entityFieldMaps": [{
-                        "isExactMatch": true,
-                        "fieldName": "FirstName",
-                        "doCreate": true,
-                        "doFind": true,
-                        "label": "firstName"
-                    }, {
-                        "isExactMatch": true,
-                        "fieldName": "LastName",
-                        "doCreate": true,
-                        "doFind": true,
-                        "label": "LastName"
-                    }, {
-                        "isExactMatch": true,
-                        "fieldName": "Email",
-                        "doCreate": true,
-                        "doFind": true,
-                        "label": "Email"
-                    }]
-                }, {
-                    "entityName": "Case",
-                    "showOnCreate": true,
-                    "entityFieldMaps": [{
-                        "isExactMatch": false,
-                        "fieldName": "Subject",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "issue"
-                    }, {
-                        "isExactMatch": false,
-                        "fieldName": "Status",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Status"
-                    }, {
-                        "isExactMatch": false,
-                        "fieldName": "Origin",
-                        "doCreate": true,
-                        "doFind": false,
-                        "label": "Origin"
-                    }]
-                },
-                {
-                    "entityName": "Account",
-                    "showOnCreate": true,
-                    "entityFieldMaps": [{
-                        "isExactMatch": true,
-                        "fieldName": "Name",
-                        "doCreate": true,
-                        "doFind": true,
-                        "label": "LastName"
-                    }]
-                }
-            ];
-
-            embedded_svc.settings.extraPrechatFormDetails = [{
-                "label": "firstName",
-                "value": "Usain",
-                "displayToAgent": true
-            }, {
-                "label": "LastName",
-                "value": "Bolt",
-                "displayToAgent": false
-            }, {
-                "label": "Email",
-                "value": "bolt@gmail.com",
-                "displayToAgent": true
-            }, {
-                "label": "issue",
-                "value": "Laptop broken",
-                "displayToAgent": true
-            }];
-
-
-
-
             // Settings for Live Agent
             embedded_svc.settings.avatarImgURL = '';
             embedded_svc.settings.prechatBackgroundImgURL = '';
@@ -125,7 +44,7 @@
             embedded_svc.settings.entryFeature = 'LiveAgent';
 
             embedded_svc.init('http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983',
-                'http://samplesite.williamc-wsm.t.force.com:57983/', gslbBaseURL, '00Dxx0000001gJ7', '3.0',
+                'http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983/', gslbBaseURL, '00Dxx0000001gJ7',
                 'My_New_Snap_in', {
                     baseLiveAgentContentURL: 'http://williamc-wsm.internal.salesforce.com:8080/content',
                     deploymentId: '572xx0000000001',
@@ -146,84 +65,6 @@
         } else {
             initESW('http://nwk00dxx0000001gj7.williamc-wsm.t.force.com:57983');
         }
-    </script>
-
-    <script>
-        /* Start Code for attachedRecord fix */
-        (function () {
-            window.addEventListener("message", function (message) {
-                if (!isSnapinsPostChatEventMessage(message)) {
-                    return;
-                }
-
-                embedded_svc.tempPostChatUrl = message.data.data.params.getUrl;
-                embedded_svc.tempAttachedRecords = message.data.data.params.getAttachedRecords;
-
-                window.requestAnimationFrame(function () {
-                    window.requestAnimationFrame(function () {
-                        var originalPostChatButton;
-                        var customPostChatButton;
-
-                        originalPostChatButton = document.querySelector(".postChatButton");
-                        if (!originalPostChatButton) {
-                            return;
-                        }
-
-                        customPostChatButton = originalPostChatButton.cloneNode(true);
-                        customPostChatButton.onclick = function () {
-                            navigateToPostChatUrl(embedded_svc.tempPostChatUrl,
-                                embedded_svc.tempAttachedRecords);
-                        };
-
-                        originalPostChatButton.parentNode.replaceChild(customPostChatButton,
-                            originalPostChatButton);
-                    });
-                });
-            }, false);
-
-            function isSnapinsPostChatEventMessage(message) {
-                var payload = message.data;
-
-                if (message.origin.toLowerCase() !== embedded_svc.settings.gslbBaseURL.toLowerCase()) {
-                    return false;
-                }
-                if (!payload) {
-                    return false;
-                }
-                if (!payload.method || payload.method !== "eswChasitorEvent") {
-                    return false;
-                }
-                if (!payload.data || !payload.data.event || payload.data.event !== "postChat") {
-                    return false;
-                }
-                if (!payload.data.params || !payload.data.params.getUrl || !payload.data.params.getAttachedRecords) {
-                    return false;
-                }
-
-                return true;
-            }
-
-            function navigateToPostChatUrl(postChatUrl, attachedRecords) {
-                var form;
-                var attachedRecordsInput;
-
-                form = document.createElement("form");
-                form.style.display = "none";
-                form.method = "POST";
-                form.action = postChatUrl;
-                form.target = "_blank";
-
-                attachedRecordsInput = document.createElement("input");
-                attachedRecordsInput.type = "hidden";
-                attachedRecordsInput.name = "attachedRecords";
-                attachedRecordsInput.value = JSON.stringify(attachedRecords);
-                form.appendChild(attachedRecordsInput);
-
-                document.body.appendChild(form);
-                form.submit();
-            }
-        })();
-        /* End Code for attachedRecord fix */
     </script>
 
 </body>

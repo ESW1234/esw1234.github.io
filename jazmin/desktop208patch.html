@@ -8,9 +8,8 @@
   <br/>
   <br/>
    
-<div id="button_goes_here"> </div>
 <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #6CCDF0; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
 @font-face {
 font-family: 'Salesforce Sans';
@@ -21,33 +20,26 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseUrl) {
+
 embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = 'prechat.png';
+embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
 //embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
 //embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109',
-                  'http://jazminorti-wsm3.internal.salesforce.com:8096/chat',
-                  'http://jazminorti-wsm3.internal.salesforce.com:8095/content',
-                  '	http://jazmin0404.jazminorti-wsm3.t.force.com:6109/napili0404',
-                  '572xx0000000001', '00Dxx0000001gH1', '573xx0000000001', '2.0',
-                  gslbBaseUrl, '40.0', 'githubPage',
-                  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15b3b55771b'); };
-   if (!window.embedded_svc) {
-      var s = document.createElement('script');
-      s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js');
-      s.onload = function() { initESW(null); }; document.body.appendChild(s);
-   } else {
-      initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); }
-   </script>   
+
+embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 'http://eswcomm-15846119c54-15d8b192197.jazminorti-wsm3.t.force.com:6109/newNapili0728', '572xx000000002v', '00Dxx0000001gOW', '573xx000000002v', '2.0', gslbBaseUrl, '40.0', 'investigation3', 'EmbeddedServiceLiveAgent_Parent04Ixx0000000093EAA_15d8b4b67cb'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); }</script>
    </body>
-</html>
-    <style>
+   </html> 
+   
+<style>
        body {
           
          background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
@@ -59,3 +51,4 @@ embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109',
             position: relative;
             
       }
+   </style>
