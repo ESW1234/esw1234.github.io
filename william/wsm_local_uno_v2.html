@@ -22,7 +22,7 @@
             url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
         }
     </style>
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/2.1/esw.min.js'></script>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function (gslbBaseUrl) {
 
@@ -44,12 +44,12 @@
                 'http://williamc-wsm.internal.salesforce.com:7443/chat',
                 'http://williamc-wsm.internal.salesforce.com:8080/content',
                 'http://samplesite.williamc-wsm.t.force.com:57983/', '572xx0000000001', '00Dxx0000001gJ7',
-                '573xx0000000001', '2.1', gslbBaseUrl, '40.0', 'My_New_Snap_in',
+                '573xx0000000001', '2.2', gslbBaseUrl, '40.0', 'My_New_Snap_in',
                 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15a72881a12');
         };
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src', 'http://williamc-wsm.internal.salesforce.com:57983/embeddedservice/2.1/esw.min.js');
+            s.setAttribute('src', 'http://williamc-wsm.internal.salesforce.com:57983/embeddedservice/2.2/esw.min.js');
             s.onload = function () {
                 initESW(null);
             };
