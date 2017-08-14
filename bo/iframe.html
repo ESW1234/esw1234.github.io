@@ -32,6 +32,6 @@ function submitForm() {
 </iframe>
 <script>
 function submitFormIframe() {
-  document.getElementById("myIframe").postMessage({method: "bo_submit"});
+  document.getElementById("myIframe").contentWindow.postMessage({method: "bo_submit"});
 }
 </script>
