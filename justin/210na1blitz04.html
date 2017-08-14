@@ -34,7 +34,7 @@
         }
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -58,8 +58,80 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
-		// 3.0 snippet
 		/*
+		embedded_svc.settings.extraPrechatFormDetails = [
+		  {"label":"firstName",
+		   "value":"Usain",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"LastName",
+		   "value":"Bolt",
+		   "transcriptFields":[],
+		   "displayToAgent":false},
+		  {"label":"Email",
+		   "value":"bolt@gmail.com",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"textCustomContact",
+		   "value":"text from extra prechat field",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"Fax",
+		   "value":"000-000-0000",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"issue",
+		   "value":"Laptop broken",
+		   "transcriptFields":[],
+		   "displayToAgent":true}
+		]; 
+		embedded_svc.settings.extraPrechatInfo = [
+		  {"entityName":"Contact",
+		    "showOnCreate":true,
+		    "linkToEntityName":"Case",
+		    "linkToEntityField":"ContactId",
+		    "saveToTranscript":"Contact",
+		    "entityFieldMaps":[
+		      {"isExactMatch":true,
+		       "fieldName":"FirstName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"firstName"},
+		      {"isExactMatch":true,
+		       "fieldName":"LastName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"LastName"},
+		      {"isExactMatch":true,
+		       "fieldName":"Email",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"Email"}]
+		   },
+		   {"entityName":"Case",
+		    "showOnCreate":true,
+		    "entityFieldMaps":[
+		      {"isExactMatch":false,
+		       "fieldName":"Subject",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"issue"},
+		      {"isExactMatch":false,
+		       "fieldName":"Status",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Status"},
+		      {"isExactMatch":false,
+		       "fieldName":"Origin",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Origin"}
+		    ]
+		   }
+		];
+		*/
+		
+		// 3.0 snippet
 		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
 				  'https://justin208blitz-15a250fddfb-15c3c79d62b.blitz04.soma.force.com/laSite', 
 				  gslbBaseURL, 
@@ -80,10 +152,10 @@
 			}; 
 			document.body.appendChild(s); 
 		} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
-		*/
 		// end 3.0 snippet
 
 		// 2.0 snippet
+		/*
 		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
 				  'https://d.la-blitz04.soma.salesforce.com/chat', 
 				  'https://c.la-blitz04.soma.salesforce.com/content', 
@@ -106,7 +178,7 @@
 			document.body.appendChild(s);
 		} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
 		// end 2.0 snippet
-
+		*/
 </script>
 </body>
 </html>

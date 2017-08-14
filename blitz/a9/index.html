@@ -15,8 +15,8 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #42B71F; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #42B71F; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -44,19 +44,18 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com', 
-		  'https://eswblitzsites-corsa04-liveagentpoc-2015144877.vpod.t.salesforce-communities.com/eswblitz', 
-		  gslbBaseURL, '00Dx0000000BZZm', 'user9_sites_sales', 
-		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/content',
-		   deploymentId: '572x000000008YE', buttonId: '573x000000008Zb', chasitorVersion: '41.0',
-		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/chat',
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix00000000027EAA_15dc477d68e'}); };
-	if (!window.embedded_svc) {
+embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://eswblitz.blitz04.soma.force.com/site1', 
+		  gslbBaseURL, '00DD00000008aJ4', 'esw9_sites_sales',
+		  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', 
+		   deploymentId: '572D00000004H2o', buttonId: '573D00000004HSo', chasitorVersion: '41.0',
+		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000FmMAI_15dd893fcdd'}); };
+	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144877.vpod.t.force.com/embeddedservice/3.0/esw.min.js');
-		s.onload = function() { initESW(null); };
-		document.body.appendChild(s); }
-	else { initESW('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com'); }
+		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); } 
+	else { initESW('https://na1-blitz04.soma.salesforce.com'); }
 </script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal

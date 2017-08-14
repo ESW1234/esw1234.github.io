@@ -16,8 +16,8 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #18A71D; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #18A71D; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -27,7 +27,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.displayHelpButton = false; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
@@ -41,23 +41,22 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = false;
+
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com',
-		  'https://eswblitzsites-corsa04-liveagentpoc-2015144877.vpod.t.salesforce-communities.com/eswblitz',
-		  gslbBaseURL, '00Dx0000000BZZm', 'user3_sites_noPreChat', 
-		  { baseLiveAgentContentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/content',
-		   deploymentId: '572x000000008YE', buttonId: '573x000000008ZH', chasitorVersion: '41.0',
-		   baseLiveAgentURL: 'https://la-corsa04-LiveAgentPOC-4877.vpod.t.force.com:443/chat',
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000001dEAA_15dc3d025f9'}); };
+embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://eswblitz.blitz04.soma.force.com/site1', 
+		  gslbBaseURL, '00DD00000008aJ4', 'esw3_sites_noPreChat', 
+		  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', 
+		   deploymentId: '572D00000004H2o', buttonId: '573D00000004HSK', chasitorVersion: '41.0', 
+		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000FNMAY_15dd88b3d3c'}); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://corsa04-liveagentpoc-2015144877.vpod.t.force.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); };
+		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); } 
-	else { initESW('https://corsa04-liveagentpoc-2015144877.vpod.t.force.com'); }
+	else { initESW('https://na1-blitz04.soma.salesforce.com'); }
 </script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
