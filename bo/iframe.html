@@ -12,7 +12,7 @@ function submitForm() {
 </script>
 
 <button onclick="submitFormIframe()">click to submit - iframe</button>
-<iframe id="myIframe">
+<iframe id="myIframe" style="display:none">
 <script>
 window.onmessage = function(message) {
   if (message.method === "bo_submit") {
@@ -32,6 +32,6 @@ function submitForm() {
 </iframe>
 <script>
 function submitFormIframe() {
-  document.getElementById("myIframe").contentWindow.postMessage({method: "bo_submit"});
+  document.getElementById("myIframe").contentWindow.postMessage({method: "bo_submit"}, "*");
 }
 </script>
