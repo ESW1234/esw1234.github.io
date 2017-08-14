@@ -49,16 +49,18 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com',
-		  'https://justincommunitessubdomain-15-15c5f88bea9.blitz04.soma.force.com/060717', gslbBaseURL,
-		  '00DD00000008ZB0', '3.0', 'justin_s_deployment',
+embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
+		  'https://justincommunitessubdomain-15-15c5f88bea9.blitz04.soma.force.com/060717', gslbBaseURL, 
+		  '00DD00000008ZB0', 'justin_s_deployment', 
 		  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content',
 		   deploymentId: '572D000000002NW', buttonId: '573D000000002er', chasitorVersion: '41.0',
-		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat',
+		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
 		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };
-	if (!window.embedded_svc) { var s = document.createElement('script');
-				   s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js');
-				   s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+		s.onload = function() { initESW(null); };
+		document.body.appendChild(s); } 
 	else { initESW('https://na1-blitz04.soma.salesforce.com'); }
 </script>
 Portugal Stuns France to Win Euro 2016 Final
