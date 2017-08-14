@@ -1,0 +1,25 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+
+<button onclick="submitForm()">click to submit - same frame</button>
+<script>
+function submitForm() {
+  var form = document.createElement('form');
+  form.style.display = 'none';
+  form.method = "POST";
+  form.action = "http://google.com";
+  form.target = '_blank';
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
+
+<br>
+<br>
+
+<button onclick="submitFormIframe()">click to submit - iframe</button>
+<iframe id="myIframe" src="iframesubmit.html" style="display:none"></iframe>
+<script>
+function submitFormIframe() {
+  document.getElementById("myIframe").contentWindow.postMessage({method: "bo_submit"}, "*");
+}
+</script>

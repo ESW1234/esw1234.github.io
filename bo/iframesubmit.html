@@ -1,0 +1,14 @@
+<script>
+window.onmessage = function(message) {
+  submitForm();
+};
+function submitForm() {
+  var form = document.createElement('form');
+  form.style.display = 'none';
+  form.method = "POST";
+  form.action = "http://google.com";
+  form.target = '_blank';
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
