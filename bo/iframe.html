@@ -12,24 +12,7 @@ function submitForm() {
 </script>
 
 <button onclick="submitFormIframe()">click to submit - iframe</button>
-<iframe id="myIframe" style="display:none">
-<script>
-window.onmessage = function(message) {
-  if (message.method === "bo_submit") {
-    submitForm();
-  }
-};
-function submitForm() {
-  var form = document.createElement('form');
-  form.style.display = 'none';
-  form.method = "POST";
-  form.action = "http://google.com";
-  form.target = '_blank';
-  document.body.appendChild(form);
-  form.submit();
-}
-</script>
-</iframe>
+<iframe id="myIframe" src="iframesubmit.html" style="display:none"></iframe>
 <script>
 function submitFormIframe() {
   document.getElementById("myIframe").contentWindow.postMessage({method: "bo_submit"}, "*");
