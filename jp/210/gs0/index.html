@@ -38,5 +38,77 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+        <div id="salesforce-login" data-login-event="onLogin"></div>
+        	<br>
+	        <br>
+        	<br>
+        	<br>    
+        	<br>
+        	<br>
+        <button onClick="SFIDWidget.logout()">Log out</button>	
+
+        <div id="button_goes_here">
+        </div>
+        
+        <style type='text/css'>
+            .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+            .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+            @font-face {
+                font-family: 'Salesforce Sans';
+                src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+                url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+            }
+        </style>
+        <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+        <script type='text/javascript'>
+            var initESW = function(gslbBaseURL) {
+                embedded_svc.settings.displayHelpButton = true; //Or false
+                embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+                //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+                //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+                //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+                //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+                // Settings for Field Service
+                embedded_svc.settings.fieldServiceHomeImgURL = '';
+                embedded_svc.settings.fieldServiceLogoImgURL = '';
+                embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
+                embedded_svc.settings.loginClientId = '3MVG9SemV5D80oBfokpnjkMEio8qKFQZ9phE.ANrbVIOPgegiSdK7x8ibW7Lvci5YGkq.J4elRA7fmzeGEInr';
+                embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/210/gs0/callback.html';
+                embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+                embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
+
+                embedded_svc.settings.enabledFeatures = ['FieldService'];
+                embedded_svc.settings.entryFeature = 'FieldService';
+
+                embedded_svc.init(
+                    'https://urigs0-15de82fa4eb.my.salesforce.com', 
+                    'https://pressuresystems-15de82fa4ec.force.com/SelfService', 
+                    gslbBaseURL, '00DB00000005FOU', 'Snap_insFSDemo', { }
+                ); 
+            };
+            if (!window.embedded_svc) { 
+                var s = document.createElement('script'); 
+                s.setAttribute('src', 'https://urigs0-15de82fa4eb.my.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+                s.onload = function() { 
+                    initESW(null); 
+                }; 
+                document.body.appendChild(s); 
+            } else { 
+                initESW('https://urigs0-15de82fa4eb.my.salesforce.com'); 
+            }
+        </script>
     </body>
 </html>
+
+<style>
+      #salesforce-login{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
