@@ -1,0 +1,325 @@
+html, body {
+  margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  font-size: 16px;
+  background-color: #f8f7fa;
+  font-family: "Tahoma", sans-serif;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  width: 100%;
+  padding: 0 80px;
+  background-color: #fff;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.header-logo {
+  background-image: url("images/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100%;
+  margin-right: 50px;
+}
+.header-item {
+  display: flex;
+  height: 100%;
+  padding: 0 20px;
+  margin-left: 20px;
+  font-size: 1.25rem;
+  align-items: center;
+  color: #3b3b3b;
+  box-sizing: border-box;
+}
+
+.header-item.active {
+  border-bottom: 4px solid #3f22a4;
+}
+
+.hero {
+  position: relative;
+  background-color: #8c55d9;
+  height: 500px;
+  width: 100%;
+  z-index: 0;
+}
+
+.hero-search {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translate(-50%, 0);
+  width: 550px;
+  height: 55px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.hero-search::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 16px);
+  width: 32px;
+  height: 32px;
+  background-image: url("images/spyglass.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 80px;
+  top: 160px;
+  box-sizing: border-box;
+}
+
+.hero-text {
+  font-size: 4em;
+  color: #fff;
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero-button {
+  display: inline-block;
+  border: 2px solid #fff;
+  color: #fff;
+  height: 30px;
+  padding: 10px 30px;
+  border-radius: 40px;
+  line-height: 30px;
+  margin-top: 50px;	
+}
+
+.featured-products {
+  padding: 0 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-products-title {
+  padding: 40px 0;
+  text-align: center;
+  color: #4b4655;
+  font-size: 2.5rem;
+}
+
+.featured-products-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.featured-product-item {
+  flex-grow: 1;
+  align-self: stretch;
+}
+
+.featured-product-item-image {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.featured-product-item-text {
+  margin-top: 20px;
+  text-align: center;
+  color: #935fdb;
+}
+
+.offshore-box-wireless .featured-product-item-image {
+  background-image: url("images/offshore-box.png");
+}
+
+.backshore-box-2 .featured-product-item-image {
+  background-image: url("images/backshore-box.png");
+}
+
+.shoreline-router .featured-product-item-image {
+  background-image: url("images/shoreline-router.png");
+}
+
+.share {
+  width: 100%;
+  padding: 100px 80px 40px;
+  box-sizing: border-box;
+}
+
+.share-title {
+  font-size: 4rem;
+  color: #0f032d;
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+
+.share-items {
+  display: flex;
+  flex-direction: row;
+  height: 800px;
+}
+
+.share-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.share-column:not(:last-child) {
+  margin-right: 20px;
+}
+
+.share-left {
+  flex-grow: 2;
+  flex-basis: 66%;
+}
+
+.share-right {
+  flex-grow: 1;
+  flex-basis: 33%;
+}
+
+.share-item {
+  position: relative;
+  width: 100%;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);	
+  overflow: hidden;
+}
+
+.share-item:not(:last-child) {
+  margin-bottom: 20px;	
+}
+
+.game-of-thrones {
+  position: relative;
+  background-image: url("images/game-of-thrones.jpg");
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+.game-of-thrones-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(to right, rgba(15,3,45,1) 0%,rgba(15,3,45,1) 50%,rgba(15,3,45,0) 100%);
+}
+
+.game-of-thrones-text {
+  position: absolute;
+  width: 400px;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  left: 20px;
+  top: 20px;
+}
+
+.get-connected-image {
+  position: relative;
+  background-image: url("images/talking-on-phone.jpg");
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: top right;
+}
+
+.get-connected-image::after {
+  content: "";  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(137,83,213,0) 0%,rgba(137,83,213,1) 95%, rgba(137,83,213,1) 100%); 
+  z-index: 1;
+}
+
+.get-connected-title {
+  padding: 0 20px;
+  margin-top: 20px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f032d;
+}
+
+.get-connected-subtitle {
+  padding: 0 20px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #7d7984;
+}
+
+.share-item-action {
+  background-color: #8c55d9;
+  color: #fff;
+  padding: 10px 30px;
+  height: 30px;
+  border-radius: 40px;
+  line-height: 30px;
+  display: inline-block;
+  margin: 20px 0 0 20px;
+}
+
+.map-image {
+  position: absolute;
+  width: 500px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("images/map.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  padding: 0 80px;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.footer-logo {
+  width: 80px;
+  background-image: url("images/logo-footer.png");
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  margin-right: 80px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 30px;	
+}
+
+.footer-column-header {
+  color: #373737;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.footer-column-link {
+  color: #373737;
+  margin: 5px 0;
+}
