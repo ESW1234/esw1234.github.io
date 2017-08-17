@@ -4,9 +4,9 @@
 </head>
 
 <body>
-<h1 id="titleHeader"></h1>
-<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
-<p><a href="http://google.com">google.com</a></p>
+<h1 class="bo" id="titleHeader"></h1>
+<p><a class="bo" id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<p><a class="bo" href="http://google.com">google.com</a></p>
 
 <script>
 var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
@@ -80,13 +80,11 @@ body {
   background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
   color: red;
 }
-div:not(:first-child) {
-  margin-top: .5rem;
-}
-h1 {
+h1.bo {
+  background: rgba(0, 0, 0, 0.6);
   font-size: 3rem;
 }
-a {
+a.bo {
   color: red;
 }
 #button_goes_here {
