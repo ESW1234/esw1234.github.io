@@ -102,6 +102,17 @@ html, body {
   margin-top: 50px;	
 }
 
+.sfid-button {
+  display: inline-block;
+  border: 2px solid #fff;
+  color: #fff;
+  height: 30px;
+  padding: 10px 30px;
+  border-radius: 40px;
+  line-height: 30px;
+  margin-top: 50px;	
+}
+
 .featured-products {
   padding: 0 80px;
   width: 100%;
