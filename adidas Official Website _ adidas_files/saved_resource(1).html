@@ -1,0 +1,44 @@
+
+<!-- saved from url=(0026)https://www.adidas.com/us/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="referrer" content="no-referrer"></head><body style="margin:0;"><!-- Facebook Pixel Code -->
+<script src="./1420556241555304" async=""></script><script async="" src="./fbevents.js"></script><script>
+! function(f, b, e, v, n, t, s) {
+  if (f.fbq) return;
+  n = f.fbq = function() {
+    n.callMethod ?
+      n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+  };
+  if (!f._fbq) f._fbq = n;
+  n.push = n;
+  n.loaded = !0;
+  n.version = '2.0';
+  n.queue = [];
+  t = b.createElement(e);
+  t.async = !0;
+  t.src = v;
+  s = b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t, s)
+}(window,
+  document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');  
+  fbq('init', '1420556241555304'); // Insert your pixel ID here.
+
+(function() {
+  if (fbq) {
+    var lsSegs = parent.Krux('get', 'user_segments') || Krux('get', 'user_segments') || []; // Segs in LS -> It is in an iframe so that parent.Krux
+    var targetSegIds = 'rwvdyp78f,rwvedryk2,rwvdr4hof,rwvd3m1hb,rwvd767yj,rwu96hp9q,rvrcohzq2,rwu94r61e,rvr3fetjr,rwu92etei,rvr3ht2nk,rwu9z5iwg,rvntox4qw,rwu9ww9ki,rvr3tq6ft,rwu9ua2hr,rvr3wutxp,rvkaffjw2,rwvcqq30b,rv7j3t06s,rrgzt493d,rwvcmbhkm,rts7kc1c3,rrgzpo1e3,rvkaffjw2'.split(','); // Segs to target
+      
+    // console.log('krux segments retrieved: ' + lsSegs);
+    
+    targetSegIds.map(function(seg) {
+      if (lsSegs.indexOf(seg) !== -1) {
+        fbq('track', 'ViewContent', {
+          segment_id: seg
+        });
+      }
+    });
+  }
+})();
+</script>
+
+
+</body></html>
