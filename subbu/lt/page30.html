@@ -53,7 +53,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 embedded_svc.settings.getButtonId = function(prechatForm) {
-  throw 500;
+ if(prechatForm[0].value === "Subbu") return "573xx000000005q";
 };
 embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 		  'http://eswcomm-15846119c54.localhost.soma.force.com:57983/210072617', 
