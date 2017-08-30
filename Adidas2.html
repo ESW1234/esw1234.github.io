@@ -58,9 +58,7 @@
 .embeddedServiceSidebarHeader {
     border-radius: 0 !important;
 }
-
-
- </style>
+</style>
  
  <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #ffb500; font-family: "Salesforce Sans", sans-serif; }
@@ -84,16 +82,15 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = 'avatar.png';
-embedded_svc.settings.prechatBackgroundImgURL = 'adidas-prechat-300x100.png';
-embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
-embedded_svc.settings.smallCompanyLogoImgURL = 'nto-small-logo.png';
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
 embedded_svc.init('https://gs0.salesforce.com', 'https://snapins.force.com', gslbBaseURL, '00DB0000000IUUN', 'Adidas', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000004j7u', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000Cab3MAC_15e30c7ddca'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://gs0.salesforce.com'); }</script>
-    
     
  </body>
 </html>
