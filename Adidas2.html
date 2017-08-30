@@ -13,6 +13,28 @@
             margin: 0 auto;
             position: relative;
       }
+        
+        .minimizeButton svg {
+    display: none;
+}
+
+.minimizeButton {
+    display: block;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.minimizeButton::before {
+    content: "-";
+    position: absolute;
+    top: 21px;
+    left: 17px;
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+}
     </style>
 <style type='text/css'>
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #6CCDF0 ; font-family: "Salesforce Sans", sans-serif; }
