@@ -13,8 +13,7 @@
             margin: 0 auto;
             position: relative;
       }
-        
-        .minimizeButton svg {
+ .minimizeButton svg {
     display: none;
 }
 
@@ -35,6 +34,29 @@
     height: 2px;
     background-color: #fff;
 }
+
+.embeddedServiceLoadingBalls .second,
+.embeddedServiceLoadingBalls .third {
+    display: none;
+}
+
+.embeddedServiceLoadingBalls.animated .first {
+    animation: none;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    background-image: url("loading_io.gif");
+    background-position: center;
+    background-size: cover;
+
+}
+
+.embeddedServiceSidebar.layout-docked .dockableContainer {
+    border-radius: 0;
+}
+
+
     </style>
 <style type='text/css'>
 .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #6CCDF0 ; font-family: "Salesforce Sans", sans-serif; }
