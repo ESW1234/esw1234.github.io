@@ -37,20 +37,21 @@ embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://j
 var prepopulateForm = setInterval(function() {
    embedded_svc.sidebarInstanceMap[Object.keys(embedded_svc.sidebarInstanceMap)[0]].getActiveState(function(state) {
     var prechatFields = state.get("v.prechatFields");
-   if (prechatFields) { 
+    if (prechatFields) { 
       console.log("Exists!");
       clearInterval(prepopulateForm);
       prechatFields.forEach(function (prechatField) { 
-    if (prechatField.label === "First Name" ){
-      prechatField.value = "First Name"
+        if (prechatField.label === "First Name" ){
+        prechatField.value = "First Name"
+        }
+        else if (prechatField.label === "Last Name"){
+        prechatField.value = "Last Name"
+        }
+      });
+    state.set("v.prechatFields", prechatFields);
     }
-    else if (prechatField.label === "Last Name"){
-      prechatField.value = "Last Name"
-    }
-    });
-    state.set("v.prechatFields", prechatFields);}
-   }
-}, 100);
+    })
+ }, 100);
    
 </div>
 </body>
