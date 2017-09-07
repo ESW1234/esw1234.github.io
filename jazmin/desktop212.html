@@ -11,10 +11,15 @@
 <div id="button_goes_here">
 </div>
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #EA0CB3; font-family: "Georgia", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #EA0CB3; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -34,23 +39,23 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-   
-embedded_svc.settings.devMode = true;
 
 embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 
-  'http://jazminsubdomain.localhost.soma.force.com:6109/jazmin0829napiili', 
-  gslbBaseURL, '00Dx0000X00bsce', 'githubPage', 
-  { baseLiveAgentContentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 
-    deploymentId: '572x000000000D0', buttonId: '573x00000000069', 
-    baseLiveAgentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 
-    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix0000000000VEAQ_15e2f395dee'}); };
-  if (!window.embedded_svc) { 
-    var s = document.createElement('script'); 
-    s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/3.0/esw.js'); 
-    s.onload = function() { initESW(null); }; 
-    document.body.appendChild(s); 
-  } else { initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); }
-  </script>
+                  'http://jazminsubdomain.localhost.soma.force.com:6109/napili0907',
+                  gslbBaseURL, '00Dxx0000001gER', 'githubPage', 
+                  { baseLiveAgentContentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 
+                   deploymentId: '572xx0000000001', buttonId: '573xx0000000001', 
+                   baseLiveAgentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 
+                   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e5d7bcf5d'}); };
+   if (!window.embedded_svc) { 
+      var s = document.createElement('script'); 
+      s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
+      s.onload = function() { initESW(null); }; document.body.appendChild(s); 
+   } else { 
+      initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); 
+   }
+
+ </script>
 
 </body>
 </html>
