@@ -52,7 +52,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.getButtonId = function(prechatForm) {
+embedded_svc.settings.dynamicRouting = function(prechatFormData) {
  if(prechatForm[0].value === "Subbu") return "573xx000000005q";
 	else return "abcd";
 };
