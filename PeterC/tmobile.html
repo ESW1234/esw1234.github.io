@@ -1829,7 +1829,50 @@ window.errorHandlerMessage = "An error occurred:";
   
           window.editor = new jive.ext.y.HashTable();
           
+<script type="text/javascript" src="https://service.force.com/embeddedservice/3.0/esw.min.js"></script>
+		<script type="text/javascript">
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ""; //For example, enter 'en' or 'en-US'
+				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+				// Settings for Field Service
+				embedded_svc.settings.appendHelpButton = false;
 
+				embedded_svc.settings.fieldServiceHomeImgURL = "images/Kabletown_welcome_image.png";
+				embedded_svc.settings.fieldServiceLogoImgURL = "images/kabletown-logo.png";
+				embedded_svc.settings.fieldServiceConfirmationCardImgURL = "images/Kabletown-comf-new.png";
+
+				embedded_svc.settings.loginClientId = "3MVG9SemV5D80oBfokpnjkMEio8qKFQZ9phE.ANrbVIOPgegiSdK7x8ibW7Lvci5YGkq.J4elRA7fmzeGEInr";
+				embedded_svc.settings.loginRedirectURL = "http://esw1234.github.io/jp/210/gs0/callback.html";
+				embedded_svc.settings.loginTargetQuerySelector = "#login";
+				embedded_svc.settings.fieldServiceStartLabel = "Let's Try It";
+
+				embedded_svc.settings.enabledFeatures = ["FieldService"];
+				embedded_svc.settings.entryFeature = "FieldService";
+				embedded_svc.init(
+					"https://urigs0-15de82fa4eb.my.salesforce.com", 
+					"https://pressuresystems-15de82fa4ec.force.com/SelfService", 
+					gslbBaseURL,
+					"00DB00000005FOU",
+					"Snap_insFSDemo",
+					{}
+				); 
+			};
+			if (!window.embedded_svc) { 
+				var s = document.createElement("script"); 
+
+				s.setAttribute("src", "https://urigs0-15de82fa4eb.my.salesforce.com/embeddedservice/3.0/esw.min.js"); 
+				s.onload = function() { 
+					initESW(null); 
+				}; 
+				document.body.appendChild(s); 
+			} else { 
+				initESW("https://urigs0-15de82fa4eb.my.salesforce.com"); 
+			}
+		</script>
 
 jive.rte.macros.push(new jive.rte.Macro("color","","TEXT", true, false, [], [{name: "0",value: ""},{name: "__default_attr",value: ""}], true,false));
 jive.rte.macros.push(new jive.rte.Macro("size","","TEXT", true, false, [], [{name: "0",value: ""},{name: "__default_attr",value: ""}], true,false));
