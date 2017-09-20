@@ -82,48 +82,54 @@
 		
 		// 3.0 snippet
 		/*
-		embedded_svc.init('http://jmacmillin-wsm2.internal.salesforce.com:6109', 
-				  'http://justincommunitessubdomain-15-15d3d39c201.force.com:6109/napili0713', 
+		embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 
+				  'https://justincommunitessubdomain-15-15c3c79d62b.blitz01.soma.force.com/napili092017', 
 				  gslbBaseURL, 
-				  '00Dxx0000001gER', 
-				  'snapins', 
+				  '00DD00000008Z8f', 
+				  'justin_s_deployment', 
 				  { 
-					baseLiveAgentContentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
-				   	deploymentId: '572xx0000000001', 
-				   	buttonId: '573xx0000000001', 
-				   	baseLiveAgentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
-				   	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}
+					baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', 
+					deploymentId: '572D00000004FB7', 
+					buttonId: '573D00000004FRK', 
+					baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', 
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 		); 
    	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/3.0/esw.js'); 
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); 
 		s.onload = function() { 
 			initESW(null); 
 		}; 
 		document.body.appendChild(s); 
-	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
+	} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
 		*/
 		// end 3.0 snippet
 		
 		// 2.0 snippet
 		/*
-		embedded_svc.init('http://jmacmillin-wsm2.internal.salesforce.com:6109', 
-				  'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
-				  'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
-				  'http://justin208blitz-15a250fddfb-15d3d39c201.localhost.soma.force.com:6109/laSite', 
-				  '572xx0000000001', '00Dxx0000001gER', '573xx0000000001', 
-				  '2.0', gslbBaseURL, '40.0', 
+		embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 
+				  'https://d.la-blitz01.soma.salesforce.com/chat', 
+				  'https://c.la-blitz01.soma.salesforce.com/content', 
+				  'https://justincommunitessubdomain-15-15c3c79d62b.blitz01.soma.force.com/napili092017', 
+				  '572D00000004FB7', 
+				  '00DD00000008Z8f', 
+				  '573D00000004FRK', 
+				  '2.0', 
+				  gslbBaseURL, 
+				  '40.0', 
 				  'justin_s_deployment', 
 				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/2.0/esw.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s);
-	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s); 
+	} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
 		*/
 		// end 2.0 snippet 
 </script>
