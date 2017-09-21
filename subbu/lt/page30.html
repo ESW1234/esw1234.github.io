@@ -55,6 +55,8 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 embedded_svc.settings.dynamicRouting = function(prechatFormData) {
  if(prechatFormData[0].value === "Subbu") return "573xx000000005q";
 	else if(prechatFormData[0].value === "error")  throw "Error";
+	else if(prechatFormData[0].value === "null")  return null;
+	else if(prechatFormData[0].value === "undefined")  return undefined;
 	else return prechatFormData[0].value;
 };
 embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
