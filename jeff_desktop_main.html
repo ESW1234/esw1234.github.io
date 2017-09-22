@@ -8,20 +8,18 @@
 	<body>
 		<!--Snippet Code Here-->
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
 
-<!--
-commented out to prevent 404 error from showing
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
-...doesn't matter in test env
--->
 
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -45,16 +43,16 @@ commented out to prevent 404 error from showing
 
 		embedded_svc.init(
 			'http://jbeeghly-wsm0.internal.salesforce.com:6109',
-			'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/',
+			'http://myfirstlocalsite.localhost.soma.force.com:6109/',
 			gslbBaseURL,
 			'00Dxx0000001gER',
-			'My_Snap_in_Deployment',
+			'MyNewSnapInDeployment',
 			{
-				baseLiveAgentContentURL: 'http://jbeeghly-ltm0.internal.salesforce.com:8095/content',
+				baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000000001',
 				buttonId: '573xx0000000001',
 				baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e9bb145ed'
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15eaba40756'
 			}
 		);
 	};
@@ -64,13 +62,14 @@ commented out to prevent 404 error from showing
 		
 		s.setAttribute(
 			'src',
-			'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js');
+			'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'
+		);
 		
-		s.onload = function() { 
+		s.onload = function() {
 			initESW(null);
 		};
 		
-		document.body.appendChild(s);	
+		document.body.appendChild(s);
 	}
 	else {
 		initESW('http://jbeeghly-wsm0.internal.salesforce.com:6109');
