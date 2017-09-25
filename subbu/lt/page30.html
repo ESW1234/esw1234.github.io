@@ -52,13 +52,13 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.dynamicRouting = function(prechatFormData) {
- if(prechatFormData[0].value === "Subbu") return "573xx000000005q";
-	else if(prechatFormData[0].value === "error")  throw "Error";
-	else if(prechatFormData[0].value === "null")  return null;
-	else if(prechatFormData[0].value === "undefined")  return undefined;
-	else return prechatFormData[0].value;
-};
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// if(prechatFormData[0].value === "Subbu") return "573xx000000005q";
+//	else if(prechatFormData[0].value === "error")  throw "Error";
+//	else if(prechatFormData[0].value === "null")  return null;
+//	else if(prechatFormData[0].value === "undefined")  return undefined;
+//	else return prechatFormData[0].value;
+//};
 embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 		  'http://eswcomm-15846119c54.localhost.soma.force.com:57983/210072617', 
 		  gslbBaseURL, '00Dxx0000001jFX', 'X210_072617',
