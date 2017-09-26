@@ -132,28 +132,60 @@
 		*/
 		
 		// 3.0 snippet
+		/*
 		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
 				  'https://justincommunitessubdomain-15-15c3c79d62b.blitz04.soma.force.com/napili081517', 
 				  gslbBaseURL, 
 				  '00DD00000008Z8f', 
 				  'justin_s_deployment', 
-				  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', 
-				   deploymentId: '572D00000004FB7', 
-				   buttonId: '573D00000004FRK', 
-				   chasitorVersion: '41.0', 
-				   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
-				   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); 
-		};
-		if (!window.embedded_svc) { 
-			var s = document.createElement('script'); 
-			s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
-			s.onload = function() { 
-				initESW(null); 
-			}; 
-			document.body.appendChild(s); 
-		} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
+				  {
+					baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', 
+					deploymentId: '572D00000004FB7', 
+					buttonId: '573D00000004FRK', 
+					chasitorVersion: '41.0', 
+					baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+				  }
+		); 
+	};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s); 
+	} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
+		*/
 		// end 3.0 snippet
 
+	
+		// 2.2 snippet
+		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
+				  'https://d.la-blitz04.soma.salesforce.com/chat', 
+				  'https://c.la-blitz04.soma.salesforce.com/content', 
+				  'https://justincommunitessubdomain-15-15c3c79d62b.blitz04.soma.force.com/napili081517', 
+				  '572D00000004FB7', 
+				  '00DD00000008Z8f', 
+				  '573D00000004FRK', 
+				  '2.2', 
+				  gslbBaseURL, 
+				  '40.0', 
+				  'justin_s_deployment', 
+				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+		 ); 
+	}; 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s);
+	} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
+		// end 2.2 snippet
+	
+	
 		// 2.0 snippet
 		/*
 		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
