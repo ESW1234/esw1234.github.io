@@ -16,8 +16,8 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script> -->
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script> -->
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
-	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script> -->
+	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script> -->
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 	  
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
@@ -113,7 +113,7 @@ var initESW = function(gslbBaseURL) {
   // START 2.2 SNIPPET
   // =================
 	
-	embedded_svc.init(
+	/* embedded_svc.init(
 		'http://tiffanytso-wsm.internal.salesforce.com:6109',
 		'http://tiffanytso-wsm.internal.salesforce.com:8096/chat',
 		'http://tiffanytso-wsm.internal.salesforce.com:8095/content',
@@ -135,7 +135,7 @@ var initESW = function(gslbBaseURL) {
 		document.body.appendChild(s);
 	} else { 
 		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); 
-	}
+	} */
   
   // =================
   // END 2.2 SNIPPET 
@@ -146,7 +146,7 @@ var initESW = function(gslbBaseURL) {
   // =================
   
   
-		/* embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
+		embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
 				  'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', 
 				  'http://tiffanytso-wsm.internal.salesforce.com:8095/content', 
 				  'http://nwk00dxx0000001ger.localhost.soma.force.com:6109', 
@@ -161,7 +161,7 @@ var initESW = function(gslbBaseURL) {
 		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s);
-	} else { initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); } */
+	} else { initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); }
 		
   
   // =================
