@@ -14,8 +14,8 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 }
 </style>
 
-	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script> -->
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script> -->
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script> -->
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script> -->
 	  
@@ -36,6 +36,12 @@ var initESW = function(gslbBaseURL) {
   embedded_svc.settings.waitingStateBackgroundImgURL = '';
   embedded_svc.settings.smallCompanyLogoImgURL = '';
 
+// For 4.0 Snippets only
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//}; 
+
   // For 3.0+ Snippets Only
   embedded_svc.settings.enabledFeatures = ['LiveAgent'];
   embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -46,29 +52,26 @@ var initESW = function(gslbBaseURL) {
   // START 4.0 SNIPPET
   // =================
 
-/* embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
-    'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/', 
-    gslbBaseURL, 
-    '00Dxx0000001gER', 
-    'MySnapInDeploymentName', 
-    { 
-        baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', 
-        deploymentId: '572xx0000000001', 
-        buttonId: '573xx0000000001', 
-        baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', 
-        eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e2f79507e'}
-        ); 
-    };
-    if (!window.embedded_svc) { 
-      var s = document.createElement('script'); 
-      s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
-      s.onload = function() { 
-        initESW(null); 
-      }; 
-      document.body.appendChild(s); 
-     } else { 
-      initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); 
-     } */
+embedded_svc.init(
+	'http://tiffanytso-wsm.internal.salesforce.com:6109', 
+	'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/', 
+	gslbBaseURL, 
+	'00Dxx0000001gER', 
+	'MySnapInDeploymentName', 
+	{ baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', 
+	 deploymentId: '572xx0000000001', 
+	 buttonId: '573xx0000000001', 
+	 baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', 
+	 eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e2f79507e'}
+	); 
+};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); 
+	} else { 
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); }
   
   // =================
   // END 4.0 SNIPPET
@@ -79,7 +82,7 @@ var initESW = function(gslbBaseURL) {
   // =================
   
   
-		embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
+	/* 	embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
 				  'http://nwk00dxx0000001ger.localhost.soma.force.com:6109', 
 				  gslbBaseURL, 
 				  '00Dxx0000001gER', 
@@ -99,7 +102,7 @@ var initESW = function(gslbBaseURL) {
 			initESW(null); 
 		}; 
 		document.body.appendChild(s); 
-	} else { initESW('c'); }
+	} else { initESW('c'); } */
 		
   
   // =================
