@@ -14,8 +14,8 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 }
 </style>
 
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
-	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script> -->
+	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script> -->
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script> -->
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script> -->
 	  
@@ -52,7 +52,7 @@ var initESW = function(gslbBaseURL) {
   // START 4.0 SNIPPET
   // =================
 
-	embedded_svc.init(
+	/* embedded_svc.init(
 	'http://tiffanytso-wsm.internal.salesforce.com:6109', 
 	'http://nwk00dxx0000001ger.localhost.soma.force.com:6109', 
 	gslbBaseURL, 
@@ -71,7 +71,7 @@ var initESW = function(gslbBaseURL) {
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { 
-		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); } 
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); } */
   
   // =================
   // END 4.0 SNIPPET
@@ -82,7 +82,7 @@ var initESW = function(gslbBaseURL) {
   // =================
   
   
-	/* embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
+	embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 
 				  'http://nwk00dxx0000001ger.localhost.soma.force.com:6109', 
 				  gslbBaseURL, 
 				  '00Dxx0000001gER', 
@@ -102,7 +102,7 @@ var initESW = function(gslbBaseURL) {
 			initESW(null); 
 		}; 
 		document.body.appendChild(s); 
-	} else { initESW('c'); } */
+	} else { initESW('c'); }
 		
   
   // =================
