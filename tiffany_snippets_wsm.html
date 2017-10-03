@@ -106,7 +106,29 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109',
   // START 2.2 SNIPPET 
   // =================
   
-  // TODO: find this
+	/* 
+		embedded_svc.init(
+			'https://na1-blitz03.soma.salesforce.com', 
+			'https://d.la-blitz03.soma.salesforce.com/chat', 
+			'https://c.la-blitz03.soma.salesforce.com/content', 
+			'https://justincommunitessubdomain-15-15ede70bb16.blitz03.soma.force.com/test', 
+			'572D000000002NW', 
+			'000DD00000008b2r', 
+			'573D000000002er', 
+			'2.2', 
+			gslbBaseUrl, 
+			'40.0', 
+			'yk208', 
+			'EmbeddedServiceLiveAgent_Parent04ID000000000H3MAI_15ede7eca00'
+		); 
+	}; 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz03.soma.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s);
+	} else { 
+		initESW('https://na1-blitz03.soma.salesforce.com'); }*/
   
   // =================
   // END 2.2 SNIPPET 
