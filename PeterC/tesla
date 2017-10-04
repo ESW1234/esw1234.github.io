@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html class="no-js page-has-full-footer">
+	<head>
+		<!--
+		Copyright (C) 2011-2016 Hoefler & Co.
+		This software is the property of Hoefler & Co. (H&Co). Your right to
+		access and use this software is subject to the applicable License
+		Agreement, or Terms of Service, that exists between you and H&Co. If no
+		such agreement exists, you may not access or use this software for any
+		purpose. This software may only be hosted at the locations specified in
+		the applicable License Agreement or Terms of Service, and only for the
+		purposes expressly set forth therein. You may not copy, modify, convert,
+		create derivative works from or distribute this software in any way, or
+		make it accessible to any third party, without first obtaining the
+		written permission of H&Co. For more information, please visit us at:
+		http://typography.com. 283682-104959-20160422
+		-->
+		<meta charset="utf-8" />
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link rel="alternate" hreflang="en-us" href="support.html" />
+
+		<link rel="alternate" hreflang="en-ae" href="https://www.tesla.com/en_AE/support" />
+
+		<link rel="alternate" hreflang="fi-fi" href="https://www.tesla.com/fi_FI/support" />
+
+		<link rel="alternate" hreflang="fr-ca" href="https://www.tesla.com/fr_CA/support" />
+
+		<link rel="alternate" hreflang="fr-fr" href="https://www.tesla.com/fr_FR/support" />
+
+		<link rel="alternate" hreflang="en-nz" href="https://www.tesla.com/en_NZ/support" />
+
+		<link rel="alternate" hreflang="fr-be" href="https://www.tesla.com/fr_BE/support" />
+
+		<link rel="alternate" hreflang="en-mo" href="https://www.tesla.com/en_MO/support" />
+
+		<link rel="alternate" hreflang="en-gb" href="https://www.tesla.com/en_GB/support" />
+
+		<link rel="alternate" hreflang="en-ca" href="https://www.tesla.com/en_CA/support" />
+
+		<link rel="alternate" hreflang="en-hk" href="https://www.tesla.com/en_HK/support" />
+
+		<link rel="alternate" hreflang="en-ie" href="https://www.tesla.com/en_IE/support" />
+
+		<link rel="alternate" hreflang="en-jo" href="https://www.tesla.com/en_JO/support" />
+
+		<link rel="alternate" hreflang="fr-lu" href="https://www.tesla.com/fr_LU/support" />
+
+		<link rel="alternate" hreflang="fr-ch" href="https://www.tesla.com/fr_CH/support" />
+
+		<link rel="alternate" hreflang="no-no" href="https://www.tesla.com/no_NO/support" />
+
+		<link rel="alternate" hreflang="ko-kr" href="https://www.tesla.com/ko_KR/support" />
+
+		<link rel="alternate" hreflang="pt-pt" href="https://www.tesla.com/pt_PT/support" />
+
+		<link rel="alternate" hreflang="es-mx" href="https://www.tesla.com/es_MX/support" />
+
+		<link rel="alternate" hreflang="sv-se" href="https://www.tesla.com/sv_SE/support" />
+
+		<link rel="alternate" hreflang="es-es" href="https://www.tesla.com/es_ES/support" />
+
+		<link rel="alternate" hreflang="ja-jp" href="https://www.tesla.com/jp/support" />
+
+		<link rel="alternate" hreflang="it-ch" href="https://www.tesla.com/it_CH/support" />
+
+		<link rel="alternate" hreflang="de-de" href="https://www.tesla.com/de_DE/support" />
+
+		<link rel="alternate" hreflang="de-at" href="https://www.tesla.com/de_AT/support" />
+
+		<link rel="alternate" hreflang="de-lu" href="https://www.tesla.com/de_LU/support" />
+
+		<link rel="alternate" hreflang="de-ch" href="https://www.tesla.com/de_CH/support" />
+
+		<link rel="alternate" hreflang="it-it" href="https://www.tesla.com/it_IT/support" />
+
+		<link rel="alternate" hreflang="en-au" href="https://www.tesla.com/en_AU/support" />
+
+		<link rel="alternate" hreflang="nl-nl" href="https://www.tesla.com/nl_NL/support" />
+
+		<link rel="preconnect" href="https://rumcollector.teslamotors.com" crossorigin="anonymous" />
+
+		<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+
+		<link rel="preconnect" href="https://ssl.google-analytics.com" crossorigin="anonymous" />
+
+		<link rel="alternate" hreflang="nl-be" href="https://www.tesla.com/nl_BE/support" />
+
+		<link rel="preconnect" href="https://munchkin.marketo.net" crossorigin="anonymous" />
+
+		<link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+
+		<meta id="viewport-tag" name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="preconnect" href="https://f.vimeocdn.com" crossorigin="anonymous" />
+
+		<link rel="preconnect" href="https://location.teslamotors.com" crossorigin="anonymous" />
+
+		<link rel="alternate" hreflang="zh-mo" href="https://www.tesla.com/zh_MO/support" />
+
+		<link rel="alternate" hreflang="zh-tw" href="https://www.tesla.com/zh_TW/support" />
+
+		<link rel="preconnect" href="https://player.vimeo.com" crossorigin="anonymous" />
+
+		<link rel="alternate" hreflang="zh-hk" href="https://www.tesla.com/zh_HK/support" />
+
+		<link rel="alternate" hreflang="da-dk" href="https://www.tesla.com/da_DK/support" />
+
+		<link rel="preconnect" href="https://auth.tesla.com" crossorigin="anonymous" />
+
+		<link rel="alternate" hreflang="x-default" href="support.html" />
+
+		<link rel="alternate" hreflang="zh-cn" href="http://www.tesla.cn/support" />
+
+		<meta name="description" content="Learn more about owning or purchasing a Model S." />
+
+		<meta name="keywords" content="Tesla, Motors, Help, Support, Articles, Forums, Information, Tutorial, Manual, Walkthrough, Service, Model S, Roadster" />
+
+		<link rel="image_src" href="https://www.teslamotors.com/sites/default/files/red-tesla-model-s.jpg" />
+
+		<link rel="canonical" href="support.html" />
+
+		<link rel="shortlink" href="support.html" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<meta name="twitter:site" content="@teslamotors" />
+
+		<meta name="twitter:site:id" content="13298072" />
+
+		<meta name="twitter:creator" content="@teslamotors" />
+
+		<meta name="twitter:creator:id" content="13298072" />
+
+		<title>Support | Tesla</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<link rel="apple-touch-icon" sizes="57x57" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-57x57.png?2" />
+
+		<link rel="apple-touch-icon" sizes="114x114" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-114x114.png?2" />
+
+		<link rel="apple-touch-icon" sizes="72x72" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-72x72.png?2" />
+
+		<link rel="apple-touch-icon" sizes="144x144" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-144x144.png?2" />
+
+		<link rel="apple-touch-icon" sizes="60x60" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-60x60.png?2" />
+
+		<link rel="apple-touch-icon" sizes="120x120" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-120x120.png?2" />
+
+		<link rel="apple-touch-icon" sizes="76x76" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-76x76.png?2" />
+
+		<link rel="apple-touch-icon" sizes="152x152" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/apple-touch-icon-152x152.png?2" />
+
+		<link rel="icon" type="image/png" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/favicon-196x196.png" sizes="196x196?2" />
+
+		<link rel="icon" type="image/png" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/favicon-160x160.png" sizes="160x160?2" />
+
+		<link rel="icon" type="image/png" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/favicon-96x96.png" sizes="96x96?2" />
+
+		<link rel="icon" type="image/png" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/favicon-16x16.png" sizes="16x16?2" />
+
+		<link rel="icon" type="image/png" href="https://www.tesla.com/sites/all/themes/custom/tesla_theme/assets/img/icons/favicon-32x32.png" sizes="32x32?2" />
+
+		<meta name="msapplication-TileColor" content="#cc0000" />
+
+		<meta name="msapplication-TileImage" content="/sites/all/themes/custom/tesla_theme/assets/img/icons/mstile-144x144.png?2" />
+
+		<meta name="google-site-verification" content="i5a8kvoVqHf4cpVJcW4JL90t7Jy7ZDXYyAWj9RaYC84" />
+
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/css/css_-FIYLY8NoDHotYeb7DnO5_bHGEQHU0ZB3ynCYORQbAM.css" media="all" />
+
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/css/css_WR2kdehGlmdKhfS6P434wJ5Gp4TmLPTluFNqpBpvyZM.css" media="all" />
+
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/css/css_GH2qreLX9EZyiATAOzxDO2KNHTTwrwN8gwCQ3YCnmRc.css" media="all" />
+
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" media="all" />
+
+		<link type="text/css" rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/css/css_EKgl-4cXmsQTZaoFU16cs2Pbg4SjpTtISa575OPk7lc.css" media="all" />
+
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+    (function(d, s) {
+       var js = d.createElement(s),
+           sc = d.getElementsByTagName(s)[0];
+       js.src = "/libraries/boomerang/boomerang-0.9.1466026245.js";
+       sc.parentNode.insertBefore(js, sc);
+    }(document, "script"));
+//--><!/*]]>*/
+
+		</script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_UUnrTzaJE48QSyMoCS-uD4eeqTPw0iXWxUTlJbnc4yA.js"></script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_BLxotNs2yt7YGlf9QRI9L9AMfdnkQfnN-_ADBTW3SiE.js"></script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+document.createElement( "picture" );
+//--><!/*]]>*/
+
+		</script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_zBB4TqndKawjwFcHi111dCLAtzc3ROwgl3Xc4YhyOag.js"></script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_Gbbf-O15hLW82P5632JcpUNhrZxRhvevqM_Sc83-iiw.js"></script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+var Tesla = Tesla || {};
+Tesla.Smartling = Tesla.Smartling || {};
+
+//--><!/*]]>*/
+
+		</script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_RiPGoyORxN7UFZj9WmHLCK4I8nwdwwsmtTIwe1kzZwc.js"></script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+var server_protocol = 'https://';
+//--><!/*]]>*/
+
+		</script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+var store_translate = /*<sl:translate>*/"Store"/*</sl:translate>*/;
+                          var service_translate = /*<sl:translate>*/"Service Center"/*</sl:translate>*/;
+                          var gallery_translate = /*<sl:translate>*/"Gallery"/*</sl:translate>*/;
+                          var your_closest_translate = /*<sl:translate>*/"Your closest"/*</sl:translate>*/;
+                          var is_translate = /*<sl:translate>*/"is"/*</sl:translate>*/;
+                          var and_translate = /*<sl:translate>*/"and"/*</sl:translate>*/;
+                          var supercharger_translate = /*<sl:translate>*/"Supercharger"/*</sl:translate>*/;
+//--><!/*]]>*/
+
+		</script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_XDdoKeXF2UqxhfD1p6YcrP99MoxDyMViJc7lp-56ef8.js"></script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_tRoLsuEkkTLnwFSO7YmqYVOEtx89CpJmA_hQI-PILts.js"></script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tesla_theme","theme_token":"DoyWP9zTUqRgz0MfG2zEO5YiE9FjySDAPOb6GZVxmlw","jquery_version":"1.8","js":{"sites\/all\/themes\/custom\/tesla_theme\/js\/script.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/ip_lookup_script\/ip_lookup.js":1,"sites\/all\/modules\/contrib\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/contrib\/picture\/picture.min.js":1,"0":1,"1":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/modernizr-2.6.2-respond-1.1.0.min.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/selectivizr-min.js":1,"sites\/all\/libraries\/underscore\/underscore-min.js":1,"sites\/all\/libraries\/fitvids\/jquery.fitvids.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/common_functions.js":1,"sites\/all\/libraries\/tesla_lib\/geoip\/geoip.min.js":1,"sites\/all\/libraries\/tesla_lib\/js\/utils.js":1,"sites\/all\/libraries\/accounting\/accounting.min.js":1,"sites\/all\/libraries\/tesla_lib\/js\/localize.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/footer.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/retina_tesla.js":1,"sites\/all\/libraries\/ba-debug\/ba-debug.min.js":1,"sites\/all\/modules\/custom\/tesla_configurator\/js\/tesla\/local_storage.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/template.js":1,"sites\/all\/libraries\/browser_detect\/browser_detect.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/common.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/analytics\/analytics.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/scripts-for-header.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"2":1,"sites\/all\/modules\/contrib\/fitvids\/fitvids.js":1,"sites\/all\/modules\/custom\/tesla_modal\/js\/bootstrap-modals.js":1,"sites\/all\/modules\/custom\/tesla_charging_partner_form\/js\/charging_partner.js":1,"sites\/all\/modules\/custom\/cache_buster\/cache_buster.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/user\/tesla-user-common.js":1,"3":1,"misc\/progress.js":1,"sites\/all\/modules\/custom\/tesla_config_forms\/js\/parsley\/parsley.min.js":1,"4":1,"5":1,"sites\/all\/modules\/custom\/tesla_closest_location\/scripts\/closest_location.js":1,"sites\/all\/modules\/custom\/tesla_closest_location\/scripts\/jquery.tmpl.min.js":1,"sites\/all\/modules\/custom\/tesla_config_forms\/js\/parsley\/parsley.notequalto.js":1,"sites\/all\/modules\/custom\/tesla_config_forms\/js\/parsley\/parsley.minint.js":1,"sites\/all\/modules\/custom\/tesla_insider\/js\/tesla_insider_scripts.js":1,"sites\/all\/libraries\/handlebars\/handlebars-v2.0.0.js":1,"sites\/all\/libraries\/jquery-plugins\/jquery.placeholder.js":1,"sites\/all\/themes\/custom\/tesla_theme\/js\/support\/support.js":1},"css":{"sites\/all\/themes\/custom\/tesla_theme\/css\/styles.css":1,"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/fitvids\/fitvids.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/contrib\/picture\/picture_wysiwyg.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/themes\/custom\/tesla_theme\/plugins\/layouts\/article_template_fullwidth\/article_template_fullwidth.css":1,"sites\/default\/files\/honeypot\/honeypot.css":1,"public:\/\/ctools\/css\/aeb59ed012c85ce47ead3bed81c97543.css":1,"sites\/all\/themes\/custom\/tesla_theme\/plugins\/layouts\/default_template_full_footer\/default_template_full_footer.css":1,"sites\/all\/themes\/custom\/tesla_theme\/css\/modals\/tesla_insider.css":1,"sites\/all\/themes\/custom\/tesla_theme\/system.menus.css":1,"sites\/all\/themes\/custom\/tesla_theme\/system.theme.css":1,"sites\/all\/themes\/custom\/tesla_theme\/flexslider.css":1,"sites\/all\/themes\/custom\/tesla_theme\/flexslider_img.css":1,"sites\/all\/themes\/custom\/tesla_theme\/field.css":1,"sites\/all\/themes\/custom\/tesla_theme\/css\/support\/support.css":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"urlIsAjaxTrusted":{"\/support":true,"\/tesla\/login":true},"fitvids":{"custom_domains":[],"selectors":[".file-video"],"simplifymarkup":1},"ajax":{"edit-submit-ti-ajax":{"callback":"_ajax_tesla_insider_callback","wrapper":"tesla_insider_form","event":"submit_form","progress":{"type":"none"},"url":"\/support","submit":{"_triggering_element_name":"ajax-submit","_triggering_element_value":"Sign Up"}}},"Gatekeeper":{"host":"https:\/\/us.auth.teslamotors.com","region":"NA","locale":"","redirect_url":"\/sites\/all\/modules\/custom\/tesla_login\/sso\/auth.php","token":"Q8pVbuIOfMBWwjLIGZX-vSfxtExRH3lMedyyME5KYcc","regions":{"NA":"https:\/\/www.tesla.com","CN":"https:\/\/www.tesla.cn"}},"js":{"tokens":[]},"tesla":{"country":"US","region":"US","superRegion":"north america","localePrefix":"","baseUrl":"https:\/\/www.tesla.com","pathAlias":"support","isFront":false,"isProduction":true,"locale":"en_US"},"SharingCookies":{"AcrossDomain":".tesla.com"}});
+//--><!/*]]>*/
+
+		</script>
+		<!-- Google Optimize -->
+		<style>.async-hide { opacity: 0 !important}</style>
+		<script>
+                (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;
+                h.end=i=function(){ s.className=s.className.replace(RegExp(' ?'+y),'')};
+                (a[n]=a[n]||[]).hide=h; setTimeout(function(){i();h.end=null},c);
+                })(window,document.documentElement, 'async-hide','dataLayer',2000,{'GTM-59463CP':true,});
+            
+		</script>
+		<!-- End Google Optimize -->
+		<!-- Google Analytics/Optimize -->
+		<script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-9152935-1', 'auto');
+                ga('require', 'GTM-59463CP');
+            
+		</script>
+		<!-- End Google Analytics/Optimize -->
+		<!-- Google Tag Manager -->
+		<script>
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+                {'gtm.start': new Date().getTime(),event:'gtm.js'}
+                );var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-KMG5DM');
+            
+		</script>
+		<!-- End Google Tag Manager -->
+		<style type="text/css">
+  .i18n-ja_JP .hide-for-i18n-ja_JP,
+  .i18n-en_AU .hide-for-non-jp,
+  .i18n-en_HK .hide-for-non-jp,
+  .i18n-zh_HK .hide-for-non-jp,
+  .i18n-en_MO .hide-for-non-jp,
+  .i18n-zh_MO .hide-for-non-jp,
+  .i18n-zh_TW .hide-for-non-jp,
+  .i18n-ko_KR .hide-for-non-jp { display:none; }
+
+		</style>
+		<style>
+    #article_content {
+        margin-bottom: 0;
+    }
+    .support-walkthrough {
+        text-align: center;
+    }
+    .support-walkthrough .section-title {
+        font-size: 22px;
+        font-size: 1.375rem;
+    }
+    [class*="walkthroughs--"] {
+        background: #fff;
+        border: 1px solid #ccc;
+
+        width: 325px;
+        width: 20.3125rem;
+
+        display: inline-block;
+        margin: 15px 25px;
+        margin: 0.9375rem 1.5625rem;
+    }
+    .walkthrough-info {
+        padding-top: 20px;
+        padding-top: 1.25rem;
+    }
+    .walkthrough-title {
+        font-weight: 400;
+    }
+    .walkthrough-number {
+        margin-top: 0;
+        opacity: 0.5;
+
+        font-size: 12px;
+        font-size: 0.75rem;
+
+    }
+    .arrow {
+        vertical-align: middle;
+    }
+    @media(max-width: 640px) {
+        .support-walkthrough .section-title {
+            font-size: 20px;
+            font-size: 1.25rem;
+        }
+        [class*="walkthroughs--"] {
+            width: 320px;
+            width: 20rem;
+            height: auto;
+        }
+    }
+
+		</style>
+	</head>
+	<body id="page-support" class="html not-front not-logged-in no-sidebars page-support  with-wrapper inventory_match_enabled i18n-en superregion-north-america">
+		<!-- Google Tag Manager (no script) -->
+		<noscript>
+			<iframe src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.googletagmanager.com/ns.html%3Fid=GTM-KMG5DM.html" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (no script) -->
+		<!--BEGIN QUALTRICS SITE INTERCEPT-->
+		<script type="text/javascript">
+            (function(){var g=function(e,h,f,g){
+            this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+            this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+            this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};
+            this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g+ "&t=" + (new Date()).getTime();document.body&&document.body.appendChild(a)}};
+            this.start=function(){var a=this;window.addEventListener?window.addEventListener("load",function(){a.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){a.go()})}};
+            try{(new g(100,"r","QSI_S_SI_56IEc0BQlEzdUYl","//znedscsenlrql0rxd-teslamotors.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_SIID=SI_56IEc0BQlEzdUYl&Q_LOC="+encodeURIComponent(window.location.href))).start()}catch(i){}})();
+        
+		</script>
+		<div id="SI_56IEc0BQlEzdUYl">
+			<!--DO NOT REMOVE-CONTENTS PLACED HERE-->
+
+		</div>
+		<!--END SITE INTERCEPT-->
+		<div id="page">
+			<div class="content-constrain">
+				<input type="checkbox" id="tsla-header-nav--secondary_show" class="tsla-header-checkbox" />
+
+				<header id="tsla-header-main" class="tsla-header-main">
+					<div class="tsla-header-main--container">
+						<div class="container">
+							<h1 id="tesla-logo" class="tsla-header-main--logo_container">
+								<a href="https://www.tesla.com/" class="tsla-header-main--logo" title="Tesla, Inc">Tesla, Inc</a>
+							</h1>
+							<input type="checkbox" id="tsla-header-main--trigger" class="tsla-header-checkbox" />
+
+							<label for="tsla-header-main--trigger">
+								<span class="tsla-header-main--trigger_icon">
+									<i class="tsla-header-main--cross_hatch">Ã—</i>
+								</span>
+							</label>
+							<nav class="tsla-header-nav">
+								<div class="tsla-header-nav--primary">
+									<ol class="tsla-header-nav--list">
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/models" class="tsla-header-nav--list_link">Model S</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/modelx" class="tsla-header-nav--list_link">Model X</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/model3" class="tsla-header-nav--list_link">Model 3</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/energy" class="main-nav-energy tsla-header-nav--list_link">Energy</a>
+										</li>
+										<li class="tsla-header-nav--list_item tsla-header-nav--list_item_last">
+											<a href="https://www.tesla.com/mytesla" class="tsla-link_for-logout tsla-header-nav--list_link">My Account</a>
+										</li>
+										<li class="tsla-header-nav--list_item tsla-header-nav--list_item_last">
+											<a href="https://www.tesla.com/mytesla" class="tsla-link_for-login tsla-header-nav--list_link">Sign In</a>
+										</li>
+									</ol>
+								</div>
+								<div class="tsla-header-nav--secondary">
+									<label for="tsla-header-nav--secondary_show" class="tsla-header-nav--list_link">
+										More
+
+										<span class="tsla-header--more_caret">â€º</span>
+									</label>
+									<ol class="tsla-header-nav--list tsla-header-nav--parent_nav">
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/blog" class="tsla-header-nav--list_link">News</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/new" class="tsla-header-nav--list_link">New Inventory</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/used" class="tsla-header-nav--list_link">Used Inventory</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/corporate" class="hide-for-region-apac hide-for-region-na hide-corporate-for-not-enabled  hide-for-region-eu hide-for-region-me tsla-header-nav--list_link">Corporate</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/Enterprise" class="hide-for-region-apac hide-for-region-na hide-enterprise-for-not-enabled tsla-header-nav--list_link">Enterprise</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/supercharger" class="nav-supercharging-link tsla-header-nav--list_link">Supercharger</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/charging" class="nav-charging-link tsla-header-nav--list_link">Charging</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/findus" class="tsla-header-nav--list_link">Find Us</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/events" class="hide-for-region-na hide-for-region-apac tsla-header-nav--list_link">Events</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://shop.tesla.com/us/en.html" target="_blank" class="nav-shop-link hide-for-i18n-en_CA hide-for-i18n-fr_CA tsla-header-nav--list_link">Shop</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://shop.tesla.com/ca/en.html" class="nav-shop-link hide-for-i18n-en tsla-header-nav--list_link">Shop</a>
+										</li>
+										<li class="tsla-header-nav--list_item">
+											<a href="https://www.tesla.com/carbonimpact" class="tsla-header-nav--list_link">Carbon Impact</a>
+										</li>
+										<li class="tsla-header-nav--list_item tsla-header-nav--selected">
+											<a href="support.html" class="tsla-header-nav--list_link active">Support</a>
+										</li>
+									</ol>
+								</div>
+								<div class="tsla-header-nav--meta_info">
+									<div class="tsla-header-nav--account_links">
+										<a href="https://www.tesla.com/mytesla" title="Sign in to your account" class="tsla-header-nav--meta_link tsla-link_for-login">Sign In</a>
+										<a href="https://www.tesla.com/mytesla" title="View your account details" class="tsla-header-nav--meta_link tsla-link_for-logout">My Account</a>
+										<a href="https://www.tesla.com/user/logout" title="Log out of your account" class="tsla-header-nav--meta_link tsla-subdued tsla-link_for-logout">Log Out</a>
+									</div>
+								</div>
+							</nav>
+							<span id="tsla-header-mask"></span>
+						</div>
+					</div>
+				</header>
+				<div>
+					<div>
+						<aside id="system_messages" class="panel-panel">
+							<div class="container">
+								<div class="panel-pane pane-pane-messages">
+									<div class="pane-content">
+										<div class="tabs"></div>
+									</div>
+								</div>
+							</div>
+						</aside>
+						<main role="main">
+							<div class="panel-panel">
+								<div class="panel-pane pane-page-content">
+									<div class="pane-content">
+										<div class="panel-display">
+											<section id="article_content" class="panel-panel">
+												<div class="panel-pane pane-apachesolr-form search-box">
+													<h2 class="pane-title">Support</h2>
+													<div class="pane-content">
+														<form action="support.html" method="post" id="apachesolr-panels-search-form" accept-charset="UTF-8">
+															<div>
+																<div class="form-item form-type-textfield form-item-apachesolr-panels-search-form">
+																	<label class="form-label label-text" for="edit-apachesolr-panels-search-form--2">Search</label>
+																	<input title="Enter the terms you wish to search for." class="input-rounded form-text" placeholder="Search Support" type="text" id="edit-apachesolr-panels-search-form--2" name="apachesolr_panels_search_form" value="" size="15" maxlength="128" />
+
+																</div>
+																<input type="hidden" name="form_build_id" value="form-3RW22N41lvV8kggXiNClUIHJEuwMfDRjRzlzFtzkrBk" />
+
+																<input type="hidden" name="form_id" value="apachesolr_panels_search_form" />
+
+																<div class="form-actions form-wrapper" id="edit-actions">
+																	<input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" />
+
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+												<div class="panel-separator"></div>
+												<div class="panel-pane pane-custom pane-1">
+													<div class="pane-content">
+														<section class="support-phone">
+															<div class="container">
+																<div class="phone-numbers">
+																	<div class="phone-number-container">
+																		<span class="phone-number">(888) 518-3752</span>
+																		<span class="call-us">
+																			<a href="http://my.teslamotors.com/findus/assistance">Call us</a>
+																		</span>
+																		<p class="phone-title">Sales</p>
+																	</div>
+																	<div class="phone-number-container">
+																		<span class="phone-number">(888) 771-2505</span>
+																		<span class="call-us">
+																			<a href="http://my.teslamotors.com/findus/assistance">Call us</a>
+																		</span>
+																		<p class="phone-title">Delivery</p>
+																	</div>
+																	<div class="phone-number-container">
+																		<span class="phone-number">(877) 798-3752</span>
+																		<span class="call-us">
+																			<a href="http://my.teslamotors.com/findus/assistance">Call us</a>
+																		</span>
+																		<p class="phone-title">Customer Support
+																			<br />
+Body Shop Support
+																		</p>
+																	</div>
+																</div>
+																<div class="support-image">
+																	<img src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/model-s-red@2x-png8.png" />
+
+																</div>
+															</div>
+														</section>
+														<section class="support-articles">
+															<div class="container">
+																<div class="support-articles-learning">
+																	<h2 class="section-subtitle">Ordering</h2>
+																	<ol class="article-list">
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/how-ordering-works">How ordering works</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/test-drive">Test drive</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/incentives">Incentives</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/vehicle-upgrades-accessories">Vehicle Accessories</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/modifying-your-order">Modifying your order</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/home-charging-installation">Home charging installation</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/find-electrician">Find an electrician</a>
+																		</li>
+																	</ol>
+																</div>
+																<div class="support-articles-ordering">
+																	<h2 class="section-subtitle">Delivery</h2>
+																	<ol class="article-list">
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/estimating-your-delivery-date">Estimating your delivery date</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/registration">Registration and insurance</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/SUPPORT/TESLA-leasing">Tesla Leasing</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/tesla-lending">Tesla Lending</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/trade-ins">Trade ins</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/final-payment">Final payment</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/taking-delivery">Taking delivery</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/frequently-asked-delivery-questions">Frequently Asked Delivery Questions</a>
+																		</li>
+																	</ol>
+																</div>
+																<div class="support-articles-driving">
+																	<h2 class="section-subtitle">Owners</h2>
+																	<ol class="article-list">
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/customer-support-roadside-assistance">Customer Support &amp; Roadside Assistance</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/body-shop-support">Body Shop Support</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/maintenance-plans">Maintenance Plans</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/vehicle-warranty">Vehicle Warranty</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/charging">Charging</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/software-updates">Software updates</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/annual-and-recall-service%20">Recall information</a>
+																		</li>
+																		<li class="article-link">
+																			<a href="https://www.tesla.com/support/Powerwall">Powerwall Support</a>
+																		</li>
+																	</ol>
+																</div>
+															</div>
+														</section>
+														<section class="support-walkthrough has-chapters" id="video-walkthrough">
+															<div class="container">
+																<h1 class="section-title">Video Walkthroughs</h1>
+																<div class="walkthroughs">
+																	<a href="https://www.tesla.com/support/models-walkthrough">
+																		<div class="walkthroughs--models">
+																			<img class="walkthrough-image" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/models_walkthrough_bg.jpg%3F20160601" />
+
+																			<div class="walkthrough-info">
+																				<h4 class="walkthrough-title">ModelÂ S
+																					<img class="arrow" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/arrow.svg" />
+
+																				</h4>
+																				<p class="walkthrough-number">12 Videos</p>
+																			</div>
+																		</div>
+																	</a>
+																	<a href="https://www.tesla.com/support/modelx-walkthrough">
+																		<div class="walkthroughs--modelx">
+																			<img class="walkthrough-image" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/modelx_walkthrough_bg.jpg%3F20160601" />
+
+																			<div class="walkthrough-info">
+																				<h4 class="walkthrough-title">ModelÂ X
+																					<img class="arrow" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/arrow.svg" />
+
+																				</h4>
+																				<p class="walkthrough-number">12 Videos</p>
+																			</div>
+																		</div>
+																	</a>
+																	<a href="https://www.tesla.com/support/touchscreen-overview">
+																		<div class="walkthroughs--touchscreen">
+																			<img class="walkthrough-image" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/touchscreen_walkthrough_bg.jpg%3F20160601" />
+
+																			<div class="walkthrough-info">
+																				<h4 class="walkthrough-title">Touchscreen
+																					<img class="arrow" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/arrow.svg" />
+
+																				</h4>
+																				<p class="walkthrough-number">10 Videos</p>
+																			</div>
+																		</div>
+																	</a>
+																	<a href="https://www.tesla.com/support/delivery-walkthrough">
+																		<div class="walkthroughs--delivery">
+																			<img class="walkthrough-image" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/delivery_walkthrough_bg.jpg" />
+
+																			<div class="walkthrough-info">
+																				<h4 class="walkthrough-title">Delivery
+																					<img class="arrow" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/images/support/arrow.svg" />
+
+																				</h4>
+																				<p class="walkthrough-number">6 Videos</p>
+																			</div>
+																		</div>
+																	</a>
+																</div>
+															</div>
+														</section>
+													</div>
+												</div>
+											</section>
+										</div>
+									</div>
+								</div>
+								<div class="panel-pane pane-block pane-user-login">
+									<h2 class="pane-title">User login</h2>
+									<div class="pane-content">
+										<form action="https://www.tesla.com/tesla/login" method="post" id="user-login-form" accept-charset="UTF-8">
+											<div>
+												<div class="form-item form-type-textfield form-item-name">
+													<label for="edit-name" class="form-label label-text">Username</label>
+													<input type="text" id="edit-name" name="name" value="" size="15" maxlength="60" class="form-text required" />
+
+												</div>
+												<div class="form-item form-type-password form-item-pass">
+													<label for="edit-pass" class="form-label">Password</label>
+													<input type="password" id="edit-pass" name="pass" size="15" maxlength="128" class="form-text required" />
+
+												</div>
+												<div class="item-list">
+													<ul>
+														<li class="first">
+															<a href="https://www.tesla.com/user/register" title="Create a new user account.">Create new account</a>
+														</li>
+														<li class="last">
+															<a href="https://www.tesla.com/user/password" title="Request new password via e-mail.">Request new password</a>
+														</li>
+													</ul>
+												</div>
+												<input type="hidden" name="form_build_id" value="form-2CH_Lce9iZnxvBXaqyX9eJE3vkEY2T8iiuF06xu8Yww" />
+
+												<input type="hidden" name="form_id" value="user_login_block" />
+
+												<div class="form-actions form-wrapper" id="edit-actions--2">
+													<input type="submit" id="edit-submit--2" name="op" value="Log in" class="form-submit" />
+
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</main>
+					</div>
+				</div>
+				<div class="panel-pane pane-panels-mini pane-full-footer">
+					<footer class="main">
+						<div class="container">
+							<div class="wrapper">
+								<div class="navigation panel-panel">
+									<div class="footer-links-column">
+										<div class="wrapper">
+											<ul>
+												<li>
+													<a href="https://www.tesla.com/models">Model S</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/modelx">Model X</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/model3">Model 3</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/energy">Energy</a>
+												</li>
+											</ul>
+											<ul>
+												<li>
+													<a href="https://www.tesla.com/about">About</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/careers">Careers</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/contact">Contact</a>
+												</li>
+												<li>
+													<a href="https://www.tesla.com/mytesla">My Tesla</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="footer-links-column">
+										<ul>
+											<li>
+												<a href="https://www.tesla.com/models/design">Order a Tesla</a>
+											</li>
+											<li>
+												<a href="https://www.tesla.com/incentives">Incentives</a>
+											</li>
+											<li>
+												<a href="https://www.tesla.com/events">Test drive events</a>
+											</li>
+											<li>
+												<a href="https://forums.tesla.com/" target="_blank" rel="noopener noreferrer">Forums</a>
+											</li>
+											<li>
+												<a href="https://shop.tesla.com/us/en.html" target="_blank" rel="noopener noreferrer">Accessories &amp; apparel</a>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<a href="http://ir.teslamotors.com" target="_blank" rel="noopener noreferrer">Investors</a>
+											</li>
+											<li>
+												<a href="https://suppliers.teslamotors.com" target="_blank" rel="noopener noreferrer">Suppliers</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="locations panel-panel">
+									<script id="locationTemplate" type="text/x-jQuery-tmpl"><div class="location-img-wrapper ${position}" data-span="${span}"><a href="https://www.tesla.com/${alias}">${title}</a><a href="https://www.tesla.com/${alias}" ><img src="support.html" width="${width}"/></a></div></script>
+									<div class="locations-map-images"></div>
+								</div>
+							</div>
+							<div class="social_locale">
+								<div id="follow_us" class="panel-panel">
+									<div class="footer-copy">
+										<p class="colophon">
+											<a href="https://www.tesla.com/about">
+												<span class="copyright">Tesla Â© 2017</span>
+											</a>
+											<a href="https://www.tesla.com/about/legal" title="Legal" class="vertical-separator">Legal</a>
+										</p>
+									</div>
+									<nav class="social-icons">
+										<a href="https://www.facebook.com/tesla" target="_blank" rel="noopener noreferrer" class="tsla-icon-facebook"></a>
+										<a href="https://twitter.com/TeslaMotors" target="_blank" rel="noopener noreferrer" class="tsla-icon-twitter"></a>
+										<a href="https://plus.google.com/+TeslaMotors" target="_blank" rel="noopener noreferrer" class="tsla-icon-gplus"></a>
+									</nav>
+								</div>
+								<div class="localization panel-panel">
+									<div id="locale-selector-d7" class="localization-modal">
+										<span class="modal-link locale notranslate" data-toggle="modal" data-target="#locale-modal">
+											<i class="icon-caret">â–¾</i>
+										</span>
+										<div id="locale-modal" class="modal fade locale-selector">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-throbber hidden"></div>
+													<button type="button" class="btn-close modal-close" data-dismiss="modal">
+														<span class="sr-only">Close</span>
+													</button>
+													<div class="modal-body">
+														<div class="region-northamerica">
+															<h4 class="locale-header notranslate">North America</h4>
+															<ul class="language-list">
+																<li class="language">
+																	<a href="https://www.tesla.com/support?redirect=no" rel="en_US" title="" class="flag-us notranslate">USA</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_CA/support?redirect=no" rel="en_CA" title="" class="flag-canada notranslate">Canada (En)</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/fr_CA/support?redirect=no" rel="fr_CA" title="" class="flag-canada notranslate">Canada (Fr)</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/es_MX/support?redirect=no" rel="es_MX" title="" class="flag-mexico notranslate">MÃ©xico</a>
+																</li>
+															</ul>
+														</div>
+														<div class="region-europe">
+															<h4 class="locale-header notranslate">Europe</h4>
+															<ul class="language-list">
+																<li class="language">
+																	<a href="https://www.tesla.com/fr_BE/support?redirect=no" rel="fr_BE" title="" class="flag-belgium notranslate">Belgique</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/nl_BE/support?redirect=no" rel="nl_BE" title="" class="flag-belgium notranslate">BelgiÃ«</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/da_DK/support?redirect=no" rel="da_DK" title="" class="flag-denmark notranslate">Danmark</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/de_DE/support?redirect=no" rel="de_DE" title="" class="flag-germany notranslate">Deutschland</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/es_ES/support?redirect=no" rel="es_ES" title="" class="flag-spain notranslate">EspaÃ±a</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/fr_FR/support?redirect=no" rel="fr_FR" title="" class="flag-france notranslate">France</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_GB/support?redirect=no" rel="en_GB" title="" class="flag-uk notranslate">Great Britain</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_IE/support?redirect=no" rel="en_IE" title="" class="flag-ireland notranslate">Ireland</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/it_IT/support?redirect=no" rel="it_IT" title="" class="flag-italy notranslate">Italia</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/fr_LU/support?redirect=no" rel="fr_LU" title="" class="flag-luxembourg notranslate">Luxembourg</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/de_LU/support?redirect=no" rel="de_LU" title="" class="flag-luxembourg notranslate">Luxemburg</a>
+																</li>
+															</ul>
+															<ul class="language-list">
+																<li class="language">
+																	<a href="https://www.tesla.com/nl_NL/support?redirect=no" rel="nl_NL" title="" class="flag-netherlands notranslate">Nederland</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/no_NO/support?redirect=no" rel="no_NO" title="" class="flag-norway notranslate">Norge</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/de_AT/support?redirect=no" rel="de_AT" title="" class="flag-austria notranslate">Ã–sterreich</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/pt_PT/support?redirect=no" rel="pt_PT" title="" class="flag-portugal notranslate">Portugal</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/de_CH/support?redirect=no" rel="de_CH" title="" class="flag-switzerland notranslate">Schweiz</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/fr_CH/support?redirect=no" rel="fr_CH" title="" class="flag-switzerland notranslate">Suisse</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/it_CH/support?redirect=no" rel="it_CH" title="" class="flag-switzerland notranslate">Svizzera</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/sv_SE/support?redirect=no" rel="sv_SE" title="" class="flag-sweden notranslate">Sverige</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/fi_FI/support?redirect=no" rel="fi_FI" title="" class="flag-finland notranslate">Suomi</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_EU/support?redirect=no" rel="en_EU" title="" class="flag-eu notranslate">Other Europe</a>
+																</li>
+															</ul>
+														</div>
+														<div class="region-middle-east">
+															<h4 class="locale-header notranslate">Middle-East</h4>
+															<ul class="language-list">
+																<li class="language">
+																	<a href="https://www.tesla.com/en_AE/support?redirect=no" rel="en_AE" title="" class="flag-uae notranslate">UAE</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_JO/support?redirect=no" rel="en_JO" title="" class="flag-jordan notranslate">Jordan</a>
+																</li>
+															</ul>
+														</div>
+														<div class="region-apac">
+															<h4 class="locale-header notranslate">Asia/Pacific</h4>
+															<ul class="language-list">
+																<li class="language">
+																	<a href="https://www.tesla.cn/support?redirect=no" rel="zh_CN" title="" class="flag-china notranslate">ä¸­å›½</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_HK/support?redirect=no" rel="en_HK" title="" class="flag-hongkong notranslate">Hong Kong</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/zh_HK/support?redirect=no" rel="zh_HK" title="" class="flag-hongkong notranslate">é¦™æ¸¯</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/jp/support?redirect=no" rel="ja_JP" title="" class="flag-japan notranslate">æ—¥æœ¬</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_MO/support?redirect=no" rel="en_MO" title="" class="flag-macau notranslate">Macau</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/zh_MO/support?redirect=no" rel="zh_MO" title="" class="flag-macau notranslate">æ¾³é–€</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/zh_TW/support?redirect=no" rel="zh_TW" title="" class="flag-taiwan notranslate">å°ç£</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/ko_KR/support?redirect=no" rel="ko_KR" title="" class="flag-south-korea notranslate">ëŒ€í•œë¯¼êµ­</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_AU/support?redirect=no" rel="en_AU" title="" class="flag-australia notranslate">Australia</a>
+																</li>
+																<li class="language">
+																	<a href="https://www.tesla.com/en_NZ/support?redirect=no" rel="en_NZ" title="" class="flag-new_zealand notranslate">New Zealand</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<div id="tesla-insider-modal" class="modal fade modal-alternate">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-throbber hidden"></div>
+					<button type="button" class="btn-close modal-close" data-dismiss="modal">
+						<span class="sr-only">Close</span>
+					</button>
+					<div class="modal-header">
+						<h4 class="modal-title">Become a Tesla Insider</h4>
+					</div>
+					<div class="modal-body">
+						<div id="tesla_insider_form">
+							<form id="tesla-insider-form" class="config-form" action="support.html" method="post" accept-charset="UTF-8">
+								<div>
+									<div id="tesla-insider-details">
+										<div id="message-error"></div>
+										<div class="form-item form-type-textfield form-item-usermail">
+											<label for="edit-usermail" class="form-label label-text">Get Newsletter</label>
+											<input placeholder="example@email.com" data-parsley-required="true" data-parsley-required-message="required" class="translate form-text required" data-parsley-trigger="focusout" data-parsley-type="email" data-parsley-type-message="not a valid email" type="text" id="edit-usermail" name="usermail" value="" size="60" maxlength="50" />
+
+										</div>
+									</div>
+									<input type="hidden" name="model" value="models" />
+
+									<input type="hidden" name="country_code" />
+
+									<input type="hidden" name="crm_event" />
+
+									<input type="hidden" name="form_type" />
+
+									<input type="hidden" name="vin" />
+
+									<input type="hidden" name="refer" value="" />
+
+									<input type="hidden" name="referral_code" value="" />
+
+									<input type="hidden" name="ad_word_td" value="" />
+
+									<input type="hidden" name="form_identifier" />
+
+									<div class="separator"></div>
+									<div class="submit-area">
+										<input class="translate btn-primary btn-ajax form-submit" type="submit" id="edit-submit-ti-ajax" name="ajax-submit" value="Sign Up" />
+
+									</div>
+									<div class="notice">
+										<p></p>
+									</div>
+								</div>
+								<input type="hidden" name="form_build_id" value="form-3FNm0gM8aH4QGoirroSQ3KA8Vh_lGhkbqKtxTwnajNg" />
+
+								<input type="hidden" name="form_id" value="tesla_insider_form" />
+
+								<div class="preference-textfield">
+									<div class="form-item form-type-textfield form-item-preference">
+										<label for="edit-preference" class="form-label label-text">Leave this field blank</label>
+										<input autocomplete="off" type="text" id="edit-preference" name="preference" value="" size="20" maxlength="128" class="form-text" />
+
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_NYW8vvGk9-dzf47t1LVAjiTxj8D2Lqe0ck-Xk5ykbF4.js"></script>
+		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_7Ukqb3ierdBEL0eowfOKzTkNu-Le97OPm-UqTS5NENU.js"></script>
+		<script type="text/javascript">
+
+<!--//-->/*<![CDATA[*///><!--
+                $.ajax({
+                    url: '//munchkin.marketo.net/munchkin.js',
+                    dataType: 'script',
+                    cache: true,
+                    success: function() { Munchkin.init('929-KIG-197');  }
+                });
+//--><!/*]]>*/
+
+		</script>
+		<!-- LB.102 -->
+		<!-- www.tesla.com -->
+		<!-- [BUILD_TAG_rc_201709281921_rel_r_201709_8_beta.r1] -->
+		<!-- You are viewing the D7 website. :boom: -->
+	</body>
+</html>
