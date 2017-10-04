@@ -35,7 +35,7 @@
 </style>
 
 <!-- start 3.0 snippet -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -154,12 +154,12 @@
 		}; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
-</script> -->
+</script>
 <!-- end 3.0 snippet -->
 
 
 <!-- start 2.2 snippet -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseUrl) {
 
@@ -177,6 +177,7 @@
 
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+		// TODO change 2.0 to 2.2 after bug fix
 		embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 
 				  'https://d.la-blitz04.soma.salesforce.com/chat', 
 				  'https://c.la-blitz04.soma.salesforce.com/content', 
@@ -184,7 +185,7 @@
 				  '572D00000004FB7', 
 				  '00DD00000008Z8f', 
 				  '573D00000004FRK', 
-				  '2.2', 
+				  '2.0', 
 				  gslbBaseUrl, 
 				  '40.0', 
 				  'justin_s_deployment', 
@@ -199,7 +200,7 @@
 		}; 
 		document.body.appendChild(s);
 	} else { initESW('https://na1-blitz04.soma.salesforce.com'); }
-</script>
+</script> -->
 <!-- end 2.2 snippet -->
 	
 
