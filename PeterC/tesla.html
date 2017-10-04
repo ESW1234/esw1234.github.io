@@ -480,6 +480,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 											<section id="article_content" class="panel-panel">
 												<div class="panel-pane pane-apachesolr-form search-box">
 													<h2 class="pane-title">Support</h2>
+													<input type="button" name="#login: value="Book Appointment"></input>
 													<div class="pane-content">
 														<form action="support.html" method="post" id="apachesolr-panels-search-form" accept-charset="UTF-8">
 															<div>
@@ -1041,6 +1042,50 @@ Body Shop Support
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src="https://service.force.com/embeddedservice/3.0/esw.min.js"></script>
+		<script type="text/javascript">
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ""; //For example, enter 'en' or 'en-US'
+				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+				// Settings for Field Service
+				embedded_svc.settings.appendHelpButton = false;
+
+				embedded_svc.settings.fieldServiceHomeImgURL = "images/Kabletown_welcome_image.png";
+				embedded_svc.settings.fieldServiceLogoImgURL = "images/kabletown-logo.png";
+				embedded_svc.settings.fieldServiceConfirmationCardImgURL = "images/Kabletown-comf-new.png";
+
+				embedded_svc.settings.loginClientId = "3MVG9SemV5D80oBfokpnjkMEio8qKFQZ9phE.ANrbVIOPgegiSdK7x8ibW7Lvci5YGkq.J4elRA7fmzeGEInr";
+				embedded_svc.settings.loginRedirectURL = "http://esw1234.github.io/jp/210/gs0/callback.html";
+				embedded_svc.settings.loginTargetQuerySelector = "#login";
+				embedded_svc.settings.fieldServiceStartLabel = "Let's Try It";
+
+				embedded_svc.settings.enabledFeatures = ["FieldService"];
+				embedded_svc.settings.entryFeature = "FieldService";
+				embedded_svc.init(
+					"https://urigs0-15de82fa4eb.my.salesforce.com", 
+					"https://pressuresystems-15de82fa4ec.force.com/SelfService", 
+					gslbBaseURL,
+					"00DB00000005FOU",
+					"Snap_insFSDemo",
+					{}
+				); 
+			};
+			if (!window.embedded_svc) { 
+				var s = document.createElement("script"); 
+
+				s.setAttribute("src", "https://urigs0-15de82fa4eb.my.salesforce.com/embeddedservice/3.0/esw.min.js"); 
+				s.onload = function() { 
+					initESW(null); 
+				}; 
+				document.body.appendChild(s); 
+			} else { 
+				initESW("https://urigs0-15de82fa4eb.my.salesforce.com"); 
+			}
+		</script>
 		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_NYW8vvGk9-dzf47t1LVAjiTxj8D2Lqe0ck-Xk5ykbF4.js"></script>
 		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_7Ukqb3ierdBEL0eowfOKzTkNu-Le97OPm-UqTS5NENU.js"></script>
 		<script type="text/javascript">
