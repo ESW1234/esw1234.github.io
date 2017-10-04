@@ -336,6 +336,24 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
             height: auto;
         }
     }
+			
+	.fieldServiceStart,
+.sfid-button {
+	display: inline-block;
+	border: 2px solid #fff;
+	color: #fff;
+	height: 30px;
+	padding: 10px 30px;
+	border-radius: 40px;
+	line-height: 30px;
+	margin-top: 50px;
+	background-color: transparent;
+	font-size: 1.25rem;
+	font-family: "Salesforce Sans", sans-serif;
+	box-sizing: content-box;
+	transition: background-color 200ms ease-in, color 200ms ease-in;
+	cursor: pointer;
+}
 
 		</style>
 	</head>
@@ -480,7 +498,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 											<section id="article_content" class="panel-panel">
 												<div class="panel-pane pane-apachesolr-form search-box">
 													<h2 class="pane-title">Support</h2>
-													<div id="login"><button>Book Appointment</button></div>
+													<div id="login"><button class="fieldServiceStart" disabled>Book Appointment</button></div>
 													<div class="pane-content">
 														<form action="support.html" method="post" id="apachesolr-panels-search-form" accept-charset="UTF-8">
 															<div>
