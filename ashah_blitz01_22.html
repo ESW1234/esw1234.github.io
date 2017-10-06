@@ -30,11 +30,12 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 embedded_svc.settings.dynamicRouting = function(prechatFormData) {
 //Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-var buttonId; 
-   prechatFormData.forEach(function (prechatData){
-      if(prechatData.value.indexOf("Sales")>=0){ buttonId = "573xxxxxxxxxxxx";} 
-   } )
-   return buttonId;
+//var buttonId; 
+//   prechatFormData.forEach(function (prechatData){
+//      if(prechatData.value.indexOf("Sales")>=0){ buttonId = "573xxxxxxxxxxxx";} 
+//   } )
+//   return buttonId;
+   return "573D000000002jZ";
 };
 
 embedded_svc.init(
