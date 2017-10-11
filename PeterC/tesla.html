@@ -1102,26 +1102,7 @@ Body Shop Support
 
 				embedded_svc.settings.enabledFeatures = ["FieldService"];
 				embedded_svc.settings.entryFeature = "FieldService";
-				embedded_svc.init(
-					"https://fslincwinter18.my.salesforce.com", 
-					"https://sdodemo-main-15dafd7f162-15ec0118ab2.force.com/consumer", 
-					gslbBaseURL,
-					"00DB0000000JBEc",
-					"Tesla_Field_Service",
-					{}
-				); 
-			};
-			if (!window.embedded_svc) { 
-				var s = document.createElement("script"); 
-
-				s.setAttribute("src", "https://fslincwinter18.my.salesforce.com/embeddedservice/3.0/esw.min.js"); 
-				s.onload = function() { 
-					initESW(null); 
-				}; 
-				document.body.appendChild(s); 
-			} else { 
-				initESW("https://fslincwinter18.my.salesforce.com"); 
-			}
+				embedded_svc.init('https://fslincwinter18.my.salesforce.com', 'https://sdodemo-main-15dafd7f162-15ec0118ab2.force.com/consumer', gslbBaseURL, '00DB0000000JBEc', 'Tesla_Field_Service', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://fslincwinter18.my.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://fslincwinter18.my.salesforce.com'); }
 		</script>
 		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_NYW8vvGk9-dzf47t1LVAjiTxj8D2Lqe0ck-Xk5ykbF4.js"></script>
 		<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/ambient-salesforce/v2/TeslaMotors1507156294/www.tesla.com/sites/default/files/js/js_7Ukqb3ierdBEL0eowfOKzTkNu-Le97OPm-UqTS5NENU.js"></script>
