@@ -38,7 +38,7 @@
 
 
 <!-- start 4.0 snippet -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -154,12 +154,12 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na44.stmfa.stm.salesforce.com'); }
-</script> -->
+</script>
 <!-- end 4.0 snippet -->
 
 
 <!-- start 3.0 snippet -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -179,6 +179,7 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		/*
 		embedded_svc.settings.extraPrechatFormDetails = [
 		  {"label":"First Name",
 		   "value":"Usain",
@@ -249,6 +250,7 @@
 		    ]
 		   }
 		];
+		*/
 
 		embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
 						  'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', 
@@ -270,7 +272,7 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na44.stmfa.stm.salesforce.com'); }
-</script>
+</script> -->
 <!-- end 3.0 snippet -->
 
 
