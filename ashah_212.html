@@ -58,11 +58,13 @@ embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://s
   <button type="button" id="exit">Close </button>
 </div>  
    <script type='text/javascript'>
-   (function() {  
-    var invite = document.getElementById('snapins_invite');   
+   (function() {   
     document.getElementById('exit').onclick = function() {  
-        invite.style.display = "none";  
-    };  
+        embedded_svc.rejectInvite();
+    };
+    document.getElementById('startChat').onclick = function() {  
+        embedded_svc.acceptInvite();
+    };
 })();  
       </script>
 </div>
