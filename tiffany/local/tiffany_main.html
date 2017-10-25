@@ -1,9 +1,11 @@
 <html>
   <head>
+    <title>Laptop - Local (212)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   </head>
   <body>
-    <style type='text/css'>
+    <i>4.0 snippet</i>
+<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -12,29 +14,75 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+	  
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-
-embedded_svc.init('http://tiffanytso-ltm.internal.salesforce.com:6109', 'http://tiffanytso.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gER', 'MySnapInDeploymentName', { baseLiveAgentContentURL: 'http://tiffanytso-ltm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', chasitorVersion: '41.0', baseLiveAgentURL: 'http://tiffanytso-ltm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15d8a668733'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-ltm.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://tiffanytso-ltm.internal.salesforce.com:6109'); }</script>
-    <a href="http://esw1234.github.io/tiffany_hiddenbutton.html">Page with hidden button!</a>
+  embedded_svc.settings.displayHelpButton = true; //Or false
+  embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+  //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+  //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+  //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+  //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+  // Settings for Live Agent
+  embedded_svc.settings.avatarImgURL = '';
+  embedded_svc.settings.prechatBackgroundImgURL = '';
+  embedded_svc.settings.waitingStateBackgroundImgURL = '';
+  embedded_svc.settings.smallCompanyLogoImgURL = '';
+// For 4.0 Snippets only
+// embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//}; 
+  // For 3.0+ Snippets Only
+  embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+  embedded_svc.settings.entryFeature = 'LiveAgent';
+  //embedded_svc.settings.devMode = true;
+  // =================
+  // START 4.0 SNIPPET
+  // =================
+	embedded_svc.init(
+	'http://tiffanytso-ltm.internal.salesforce.com:6109', 
+	'http://tiffanytso.localhost.soma.force.com:6109/', 
+	gslbBaseURL, 
+	'00Dxx0000001gER', 
+	'MySnapInDeploymentName', 
+	{ baseLiveAgentContentURL: 'http://tiffanytso-ltm.internal.salesforce.com:8095/content', 
+	 deploymentId: '572xx0000000001', 
+	 buttonId: '573xx0000000001', 
+	 baseLiveAgentURL: 'http://tiffanytso-ltm.internal.salesforce.com:8096/chat', 
+	 eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15d8a668733'}
+	); 
+};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); 
+	} else { 
+		initESW('http://tiffanytso-ltm.internal.salesforce.com:6109'); } 
+    </script>
+    
+    <div id="snapins_invite">  
+      <div id = "header" role="header">
+        <h2>Need a little help !</h2>
+      </div> 
+      <p>If you need help, just tap here and you will be able to chat with us</p>  
+      <button type="button" id="startChat">Start Chat</button>
+      <button type="button" id="exit">Close </button>
+    </div>
+    
+    <script type='text/javascript'>
+    (function() {   
+      document.getElementById('exit').onclick = function() {  
+          embedded_svc.rejectInvite();
+      };
+      document.getElementById('startChat').onclick = function() {  
+          embedded_svc.acceptInvite();
+      };
+    })();  
+    </script>
   </body>
- </html>
-  
+</html> 
+
