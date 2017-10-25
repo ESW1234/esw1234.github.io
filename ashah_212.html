@@ -60,10 +60,10 @@ embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://s
    <script type='text/javascript'>
    (function() {   
     document.getElementById('exit').onclick = function() {  
-        embedded_svc.rejectInvite();
+        embedded_svc.inviteAPI.inviteButton.rejectInvite();
     };
     document.getElementById('startChat').onclick = function() {  
-        embedded_svc.acceptInvite();
+        embedded_svc.inviteAPI.inviteButton.acceptInvite();
     };
 })();  
       </script>
