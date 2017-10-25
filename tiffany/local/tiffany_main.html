@@ -14,8 +14,26 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+    <div id="snapins_invite">  
+      <div id = "header" role="header">
+        <h2>Need a little help !</h2>
+      </div> 
+      <p>If you need help, just tap here and you will be able to chat with us</p>  
+      <button type="button" id="startChat">Start Chat</button>
+      <button type="button" id="exit">Close </button>
+    </div>
+    
+    <script type='text/javascript'>
+    (function() {   
+      document.getElementById('exit').onclick = function() {  
+          embedded_svc.rejectInvite();
+      };
+      document.getElementById('startChat').onclick = function() {  
+          embedded_svc.acceptInvite();
+      };
+    })();  
+    </script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 	  
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
@@ -62,26 +80,6 @@ var initESW = function(gslbBaseURL) {
 		document.body.appendChild(s); 
 	} else { 
 		initESW('http://tiffanytso-ltm.internal.salesforce.com:6109'); } 
-    </script>
-    
-    <div id="snapins_invite">  
-      <div id = "header" role="header">
-        <h2>Need a little help !</h2>
-      </div> 
-      <p>If you need help, just tap here and you will be able to chat with us</p>  
-      <button type="button" id="startChat">Start Chat</button>
-      <button type="button" id="exit">Close </button>
-    </div>
-    
-    <script type='text/javascript'>
-    (function() {   
-      document.getElementById('exit').onclick = function() {  
-          embedded_svc.rejectInvite();
-      };
-      document.getElementById('startChat').onclick = function() {  
-          embedded_svc.acceptInvite();
-      };
-    })();  
     </script>
   </body>
 </html> 
