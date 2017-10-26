@@ -1,13 +1,11 @@
 <html>
   <head>
-    <title>normal page #2 with button</title>
+    <title>normal page (local)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   </head>
   <body>
-    <a href="http://esw1234.github.io/tiff_blitz01.html">normal page</a>
-    <a href="http://esw1234.github.io/tiffany_hiddenbutton.html">hidden button page</a>
-    <a href="http://esw1234.github.io/tiffany_nobutton.html">no button</a>
-    <style type='text/css'>
+    la2_index.html
+  <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -16,31 +14,24 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
-// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-//Returns a valid button ID.
-//};
-
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-
-embedded_svc.init('https://na7-blitz01.soma.salesforce.com', 'https://nwk00dr00000008n4l.blitz01.soma.force.com/tiffdev123', gslbBaseURL, '00DR00000008n4l', 'MyCommunityDeployment', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572R000000000TT', buttonId: '573R000000000Zt', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR0000000003UMAQ_15ea5a1e6b2'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na7-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.settings.widgetFontSize = '30px';
+embedded_svc.init('http://yatlaw-wsm2.internal.salesforce.com:6109', 'http://justincommunitessubdomain-15-15f50daf724.localhost.soma.force.com:6109/communityone', gslbBaseURL, '00Dxx0000001jUX', 'X210_Deployment_One', { baseLiveAgentContentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8095/content', deploymentId: '572xx000000001Y', buttonId: '573xx000000001Y', baseLiveAgentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000006EEAQ_15f50e30e72'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://yatlaw-wsm2.internal.salesforce.com:6109'); }</script>
+  
   </body>
 </html>

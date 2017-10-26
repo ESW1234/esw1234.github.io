@@ -13,6 +13,10 @@
 var initESW = function(gslbBaseUrl) {
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":true,"doFind":true,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},{"doCreate":true,"doFind":true,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},{"doCreate":true,"doFind":true,"fieldName":"Email","isExactMatch":true,"label":"Email"}],"entityName":"Contact", "linkToEntityName": "" }]; 
+ 
+embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":true,"doFind":true,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},{"doCreate":true,"doFind":true,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},{"doCreate":true,"doFind":true,"fieldName":"Email","isExactMatch":true,"label":"Email"}],"entityName":"Contact", "saveToTranscript": "customContact__c" }];     
+    
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 

@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title>blitz01 (212) org - normal page</title>
+    <title>normal page #2 with button</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   </head>
   <body>
-    <a href="http://esw1234.github.io/tiffany_pagetwo.html">page two with button</a>
-    <a href="http://esw1234.github.io/tiffany_nobutton.html">page with no snippet</a>
-    <a href="http://esw1234.github.io/tiffany_hiddenbutton.html">hidden button page</a>
+    <a href="http://esw1234.github.io/tiffany/212/tiff_blitz01.html">normal page</a>
+    <a href="http://esw1234.github.io/tiffany/212/tiffany_hiddenbutton.html">hidden button page</a>
+    <a href="http://esw1234.github.io/tiffany/212/tiffany_nobutton.html">no button</a>
     <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -20,7 +20,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -33,6 +33,10 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';

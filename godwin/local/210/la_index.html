@@ -1,12 +1,14 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-   <div id="button_goes_here"> </div>
-  
-   <style type='text/css'>
+  <head>
+    <title>normal page (local)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  </head>
+  <body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    Some Random Text
+  <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -15,7 +17,7 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -36,19 +38,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Test', { baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000004j7u', baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CezMAE_15f30cd5901'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://gs0.salesforce.com'); }</script>
-   
-   
+embedded_svc.init('http://yatlaw-wsm2.internal.salesforce.com:6109', 'http://justincommunitessubdomain-15-15f50daf724.localhost.soma.force.com:6109/communityone', gslbBaseURL, '00Dxx0000001jUX', 'X210_Deployment_One', { baseLiveAgentContentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8095/content', deploymentId: '572xx000000001Y', buttonId: '573xx000000001Y', baseLiveAgentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000006EEAQ_15f50e30e72'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://yatlaw-wsm2.internal.salesforce.com:6109'); }</script>
+  
+  </body>
 </html>
-    <style>
-       body {
-         background: url("Fitbit.png") no-repeat;
-         background-size: 99%;
-      }
-      #button_goes_here{
-            width: 70%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }
-    </style>
