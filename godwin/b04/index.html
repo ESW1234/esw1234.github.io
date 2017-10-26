@@ -7,41 +7,37 @@
 <body>
     Hello World
     <style type='text/css'>
-    .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-    .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-    @font-face {
-    font-family: 'Salesforce Sans';
-    src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-    url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-    }
-    @font-face {
-    font-family: 'CustomFont';
-    src: url('https://justincommunitessubdomain-15-15c5b4bd643.blitz04.soma.force.com/sfsites/c/resource/CustomFont') format('truetype');
-    }
-    </style>
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.js'></script>
-    <script type='text/javascript'>
-    var initESW = function(gslbBaseURL) {
-    embedded_svc.settings.displayHelpButton = true; //Or false
-    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-    //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-    //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-    //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-    //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-    // Settings for Live Agent
-    embedded_svc.settings.avatarImgURL = '';
-    embedded_svc.settings.prechatBackgroundImgURL = '';
-    embedded_svc.settings.waitingStateBackgroundImgURL = '';
-    embedded_svc.settings.smallCompanyLogoImgURL = '';
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-    embedded_svc.settings.entryFeature = 'LiveAgent';
-    embedded_svc.settings.devMode = true;
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
 
-    embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justincommunitessubdomain-15-15c5b4bd643.blitz04.soma.force.com/commtwo', gslbBaseURL, '00DD00000008ZAl', 'Deployment_Three', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004FFF', buttonId: '573D00000004FVS', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000GGMAY_15de2f12f60'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
-</body>
+embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://snapins206-157442b0ff8-15869e97343.blitz04.soma.force.com/bonewsite', gslbBaseURL, '00DD00000008WG4', 'godwin_s_snapin', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D000000001hG', buttonId: '573D000000001yG', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CE9MAM_15f59d1f0aa'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
+
+    </body>
 
 </html>
