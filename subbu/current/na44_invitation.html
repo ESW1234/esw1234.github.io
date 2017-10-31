@@ -93,18 +93,15 @@ else { initESW('https://na44.stmfa.stm.salesforce.com'); }
         </div>
     </div>
 </div>
-<script>
-(function() {
-    document.getElementById('exit').onclick = function() {
-      // embedded_svc.rejectInvite();
-      console.log("Invite Rejected.");
+<script type='text/javascript'>
+   (function() {   
+    document.getElementById('exit').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.rejectInvite();
     };
-    
-  document.getElementById('startChat').onclick = function() {  
-      // embedded_svc.acceptInvite();
-      console.log("Invite Accepted.");
+    document.getElementById('startChat').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.acceptInvite();
     };
-  })()
+})();  
 </script>
 
 Portugal Stuns France to Win Euro 2016 Final
