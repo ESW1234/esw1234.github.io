@@ -97,9 +97,11 @@ else { initESW('https://na44.stmfa.stm.salesforce.com'); }
    (function() {   
     document.getElementById('exit').onclick = function() {  
         embedded_svc.inviteAPI.inviteButton.rejectInvite();
+	console.log("Invite Rejected.");
     };
     document.getElementById('startChat').onclick = function() {  
         embedded_svc.inviteAPI.inviteButton.acceptInvite();
+	console.log("Invite Accepted.");
     };
 })();  
 </script>
