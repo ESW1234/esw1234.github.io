@@ -17,8 +17,14 @@
 		{
 			"taskName": "ESW Sidebar",
 			"type": "shell",
-			"command": "bash ~/blt/app/main/core/ui-embedded-service-components/components/embeddedService/.vscode/componentTest.sh sidebar",
+			"command": "bash ~/blt/app/main/core/ui-embedded-service-components/components/embeddedService/.vscode/runComponentTests.sh sidebar",
 			"problemMatcher": []
-		}
+		},
+		{
+			"taskName": "Run Component Tests",
+			"type": "shell",
+			"command": "bash ~/blt/app/main/core/ui-embedded-service-components/components/embeddedService/.vscode/runComponentTests.sh ${fileDirname}",
+			"problemMatcher": []
+		},
 	]
 }
