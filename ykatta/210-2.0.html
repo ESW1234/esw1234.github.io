@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+  <p align="center">
+    <font color="white">208 Desktop WIDGET</font>
+  </p>
+  <br/>
+  <br/>
+
+  <div id="button_goes_here">
+  </div>
+  <style type='text/css'>
+    .embeddedServiceLiveAgentChatButton .helpButton .uiButton {
+      background-color: #188FE4;
+      font-family: "Comic Sans MS", sans-serif;
+    }
+
+    .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {
+      outline: 2px solid #188FE4
+    }
+  </style>
+  <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+  <script type='text/javascript'>
+    var initESW = function (gslbBaseUrl) {
+      embedded_svc.settings.avatarImgURL = '../avatar.png';
+      embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+      embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+      embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+      embedded_svc.settings.storageDomain = "esw1234.github.io";
+      embedded_svc.settings.devMode = true;
+      embedded_svc.settings.displayHelpButton = true; //Or false
+      embedded_svc.settings.language = '';
+      //embedded_svc.settings.defaultMinimizedText = '...'; (defaults to Chat with an Expert, localized)
+      //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+      //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+      embedded_svc.init('https://na7-blitz04.soma.salesforce.com',
+        'https://d.la-blitz04.soma.salesforce.com/chat',
+        'https://c.la-blitz04.soma.salesforce.com/content',
+        'https://yktest.blitz04.soma.force.com/yk1',
+        '572R000000000Z2', '00DR00000008qQn', '573R000000000gB', '2.0', gslbBaseUrl,
+        '40.0', 'ykesw1', 'EmbeddedServiceLiveAgent_Parent04IR0000000003kMAA_15e7f101201');
+    };
+    if (!window.embedded_svc) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://na7-blitz04.soma.salesforce.com/embeddedservice/2.0/esw.min.js');
+      s.onload = function () {
+        initESW(null);
+      };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://na7-blitz04.soma.salesforce.com');
+    }
+  </script>
+
+</body>
+
+</html>
