@@ -12,8 +12,13 @@
 </div>
 
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0DF118; font-family: "Arial", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0DF118; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #07CBED; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #07CBED; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
 </style>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -36,22 +41,8 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('http://jazminorti-wsm3.internal.salesforce.com:6109', 
-                  'http://justincommunitessubdomain-15-15da02710a3.localhost.soma.force.com:6109/napili0815', 
-                  gslbBaseURL, '00Dxx0000001gF5', 'githubPage', 
-                  { baseLiveAgentContentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8095/content', 
-                   deploymentId: '572xx000000008M', buttonId: '573xx000000008M', chasitorVersion: '41.0', 
-                   baseLiveAgentURL: 'http://jazminorti-wsm3.internal.salesforce.com:8096/chat', 
-                   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000GEAQ_15de7032d02'}); };
-   if (!window.embedded_svc) { 
-      var s = document.createElement('script'); 
-      s.setAttribute('src', 'http://jazminorti-wsm3.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); 
-      s.onload = function() { initESW(null); }; document.body.appendChild(s); 
-   } else { 
-      initESW('http://jazminorti-wsm3.internal.salesforce.com:6109'); 
-   }
-</script>
-
+embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109', 'http://justincommunitessubdomain-15-15f2b66e65e.localhost.soma.force.com:6109/napili1017', gslbBaseURL, '00Dxx0000001gER', 'githubPage', { baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15f318a16c7'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://jazortiz-wsm3.internal.salesforce.com:6109'); }</script>
+   
 </body>
 </html>
     <style>
