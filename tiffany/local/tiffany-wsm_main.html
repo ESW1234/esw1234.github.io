@@ -60,7 +60,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/avatar.png';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
@@ -79,8 +79,8 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
 <div id="snapins_invite" aria-role="assertive" role="dialog">
     <div class="card">
         <div id="header" role="header">
-            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
-            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+<!--             <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic"> -->
+            <img src="embedded_svc.settings.avatarImgURL" id="profilepic"> 
             <div id="invitation_title">Need a little help?</div>                        <button type="button" class="close" id="close"/>
 
         </div>
@@ -192,6 +192,25 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
   padding: 5px;
 }
     </style>
+    
+    <script type='text/javascript'>
+      
+  (function() {
+    document.getElementById('exit').onclick = function() {
+      embedded_svc.rejectInvite();
+      console.log("Invite Rejected.");
+    };
+      document.getElementById('close').onclick = function() {
+      embedded_svc.rejectInvite();
+      console.log("Invite Rejected.");
+    };
+    
+  document.getElementById('startChat').onclick = function() {  
+      embedded_svc.acceptInvite();
+      console.log("Invite Accepted.");
+    };
+  })()  
+    </script>
     
   </body>
 </html>
