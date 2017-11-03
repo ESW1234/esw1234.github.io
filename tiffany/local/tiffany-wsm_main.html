@@ -60,7 +60,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/avatar.png';
+embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/avatar.png';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
@@ -79,7 +79,7 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
 <div id="snapins_invite" aria-role="assertive" role="dialog">
     <div class="card">
         <div id="header" role="header">
-            <img src="embedded_svc.settings.avatarImgURL" id="profilepic"> 
+            <img src="http://esw1234.github.io/avatar.png" id="profilepic"> 
             <div id="invitation_title">Need a little help?</div>                        
             <button type="button" class="close" id="close"/>
 
@@ -197,16 +197,16 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
   (function() {
     document.getElementById('exit').onclick = function() {
       embedded_svc.rejectInvite();
-      console.log("Invite Rejected.");
+      console.warn("Invite Rejected.");
     };
       document.getElementById('close').onclick = function() {
       embedded_svc.rejectInvite();
-      console.log("Invite Rejected.");
+      console.warn("Invite Rejected.");
     };
     
   document.getElementById('startChat').onclick = function() {  
       embedded_svc.acceptInvite();
-      console.log("Invite Accepted.");
+      console.warn("Invite Accepted.");
     };
   })()  
     </script>
