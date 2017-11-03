@@ -79,9 +79,9 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
 <div id="snapins_invite" aria-role="assertive" role="dialog">
     <div class="card">
         <div id="header" role="header">
-<!--             <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic"> -->
             <img src="embedded_svc.settings.avatarImgURL" id="profilepic"> 
-            <div id="invitation_title">Need a little help?</div>                        <button type="button" class="close" id="close"/>
+            <div id="invitation_title">Need a little help?</div>                        
+            <button type="button" class="close" id="close"/>
 
         </div>
         <div id="invitation_body"><p>If you need help, just tap here and you will be able to chat with us!</p>
@@ -193,8 +193,7 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
 }
     </style>
     
-    <script type='text/javascript'>
-      
+<script type='text/javascript'>     
   (function() {
     document.getElementById('exit').onclick = function() {
       embedded_svc.rejectInvite();
