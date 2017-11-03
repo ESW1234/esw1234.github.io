@@ -201,16 +201,16 @@ embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://
 <script type='text/javascript'>     
   (function() {
     document.getElementById('exit').onclick = function() {
-      embedded_svc.rejectInvite();
+      embedded_svc.inviteAPI.inviteButton.rejectInvite();
       console.warn("Invite Rejected.");
     };
       document.getElementById('close').onclick = function() {
-      embedded_svc.rejectInvite();
+      embedded_svc.inviteAPI.inviteButton.rejectInvite();
       console.warn("Invite Rejected.");
     };
     
   document.getElementById('startChat').onclick = function() {  
-      embedded_svc.acceptInvite();
+      embedded_svc.inviteAPI.inviteButton.acceptInvite();
       console.warn("Invite Accepted.");
     };
   })()  
