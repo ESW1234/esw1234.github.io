@@ -16,7 +16,7 @@
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #07EDDE; font-family: "Comic Sans MS", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #07EDDE; }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -50,7 +50,7 @@ embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109',
                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15f129c2a60'}); };
    if (!window.embedded_svc) { 
       var s = document.createElement('script'); 
-      s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
+      s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); 
       s.onload = function() { initESW(null); };
       document.body.appendChild(s); 
    } else { initESW('http://jazortiz-wsm3.internal.salesforce.com:6109'); }
