@@ -34,7 +34,7 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -51,12 +51,16 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justincommunitessubdomain-15a81f12a99.blitz04.soma.force.com/p1498517772401', gslbBaseURL, '00DD00000008XSL', 'afterdevnamechange', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004E5q', buttonId: '573D00000004ELJ', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000E3MAI_15d8b1f9142'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>  
-    
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://justincommunitessubdomain-15-15c3c79d62b.blitz01.soma.force.com/napili100517', gslbBaseURL, '00DD00000008Z8f', 'test_for_bryan', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572D00000004FB7', buttonId: '573D00000004FRK', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000E3MAI_15f9a3d2b95'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
     
     
     
