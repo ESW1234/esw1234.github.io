@@ -84,7 +84,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15ee
     <!-- Creates the callback function used for the Live Agent chat invitation to present it or not based on availability and the customers interaction with it -->
     function buttonCallback(e) {
      
-        <!-- When the chat invitation is online (i.e. at least one available, skilled agent), display it at position top 200px and left 300px -->
+        <!-- When the chat invitation is online (i.e. at least one available, skilled agent), display it at position top  and left  -->
         if (e == liveagent.BUTTON_EVENT.BUTTON_AVAILABLE) {
         document.getElementById('liveagent_invite_button_573D01234567890').style.display = '';
         document.getElementById('liveagent_invite_button_573D01234567890').style.left = '300px';
