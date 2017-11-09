@@ -3,7 +3,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 	<body>
-<style type='text/css'>
+
+		<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -12,6 +13,7 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
+
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog">
 <div class="embeddedServiceInvitationHeader">
 <span class="embeddedServiceTitleText">Need a little help?</span>
@@ -35,7 +37,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 .embeddedServiceInvitationHeader > .embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
 .embeddedServiceInvitationHeader .embededdServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: clip; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
 .embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
-.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: inherit; opacity: 0.8; }
+.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: inherit; opacity: 0.6; }
 .embeddedServiceInvitation > .embeddedServiceInvitationBody { background-color: #FFFFFF; max-height: 110px; margin: 0 8px; font-size: 14px; line-height: 20px; overflow: auto; }
 .embeddedServiceInvitationBody > p { padding: 8px; }
 .embeddedServiceInvitation > .embeddedServiceInvitationFooter { width: inherit; color: #FFFFFF; text-align: right; background-color: #FFFFFF; padding: 10px; max-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
@@ -51,7 +53,9 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 	document.getElementById('acceptInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); };
 	document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { document.getElementById('snapins_invite'.remove())}})
 })();
-</script><script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+</script>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
