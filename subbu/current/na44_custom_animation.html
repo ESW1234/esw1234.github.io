@@ -108,7 +108,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15ee
     }
  
     <!-- Registers the function buttonCallback() above as the callback for the chat invitation whose id is 573D01234567890 -->
-    liveagent.addButtonEventHandler('573RM0000004CU8', buttonCallback);
+    embedded_svc.liveAgentAPI.addButtonEventHandler('573RM0000004CU8', buttonCallback);
 </script>
 
 <script type='text/javascript'>
