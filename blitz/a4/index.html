@@ -49,6 +49,9 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
 
+// pre-populated pre-chat
+embedded_svc.settings.prePopulatedPreChatFields = '[{name: "firstName", value: "yamini"}, {name: "lastName", value: "katta"}, {name: "email", value: "yamini.katta@salesforce.com (mailto:yamini.katta@salesforce.com)"}]';
+
 embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iAS', 'LAInvitation4', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004D18', buttonId: '573RM0000004D5r', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002l2AA_15fa67a284c'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 	</div>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
