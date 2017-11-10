@@ -15,47 +15,42 @@
   <br>
 
 <div id="button_goes_here">
-<!--
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #2BB12F; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #2BB12F; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = false; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.language = 'eo';
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://eswblitzcomm.blitz04.soma.force.com/081217', 
-		  gslbBaseURL, '00DD00000008aJ4', 'esw10_community_basic', 
-		  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content',
-		   deploymentId: '572D00000004H2o', buttonId: '573D00000004HSf', chasitorVersion: '41.0',
-		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat',
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000FrMAI_15dd8955acc'}); };
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); } 
-	else { initESW('https://na1-blitz04.soma.salesforce.com'); }
-</script>
--->
+//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
+
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iAS', 'OmniInvitation10', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004D18', buttonId: '573RM0000004D6L', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000003F2AQ_15fa69a4b56'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 	</div>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="invitation.css">
