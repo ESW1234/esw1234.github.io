@@ -6,6 +6,7 @@
  <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #6CCDF0; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #6CCDF0; }
+.embeddedServiceLiveAgentStateChat .unseenMessageBanner {display: none; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -17,6 +18,9 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+    
+embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":true,"doFind":false,"fieldName":"Subject","isExactMatch":false,"label":"Subject"}],"entityName":"Case", "showOnCreate": false }]; 
+
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)

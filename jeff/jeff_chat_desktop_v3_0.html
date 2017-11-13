@@ -43,6 +43,27 @@
 
 				embedded_svc.settings.devMode = false;
 				//embedded_svc.settings.devMode = true;
+				
+				embedded_svc.settings.prePopulatedPreChatFields = [
+					{
+						"fieldName": "FirstName",
+						"fieldValue": "John"/*,
+						"isVisible": true,
+						"isEnabled": true*/
+					},
+					{
+						"fieldName": "LastName",
+						"fieldValue": "Doe"
+					},
+					{
+						"fieldName": "Email",
+						"fieldValue": "john@gmail.com"
+					},
+					{
+						"fieldName": "Subject",
+						"fieldValue": "Hello"
+					}
+				];
 
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',

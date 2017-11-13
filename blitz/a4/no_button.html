@@ -14,7 +14,41 @@
   <br>
 
 <div id="button_goes_here">
+</div>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="invitation.css">
 
+<div id="snapins_invite">
+    <div class="card">
+        <div id="header" role="header">
+            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
+            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+            <div id="invitation_title">Need a little help?</div>
+            <button type="button" class="actionbutton close" id="x">╳</button>
+        </div>
+        <div id="invitation_body">
+            <p>If you need help, just tap here and you will be able to chat with us!</p>
+        </div>    
+        <div id="footer" role="footer">
+            <div id="invitation_actionbar">
+                <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+   (function() {   
+    document.getElementById('exit').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.rejectInvite();
+	console.log("Invite Rejected.");
+    };
+    document.getElementById('startChat').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.acceptInvite();
+	console.log("Invite Accepted.");
+    };
+})();  
+</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
@@ -37,8 +71,7 @@ But in those nervous closing stages of Sunday night’s game, perhaps for the fi
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
 For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
-	204
-	</div>
+
    </body>
 </html>
     <style>
@@ -56,5 +89,3 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 		    width: 65%;
 	    }
     </style>
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
