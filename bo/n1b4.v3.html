@@ -71,6 +71,51 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 		   "transcriptFields":[],
 		   "displayToAgent":true}
 		]; 
+			embedded_svc.settings.extraPrechatInfo = [
+		  {"entityName":"Contact",
+		    "showOnCreate":true,
+		    "linkToEntityName":"Case",
+		    "linkToEntityField":"ContactId",
+		    "saveToTranscript":"Contact",
+		    "entityFieldMaps":[
+		      {"isExactMatch":true,
+		       "fieldName":"FirstName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"firstName"},
+		      {"isExactMatch":true,
+		       "fieldName":"LastName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"LastName"},
+		      {"isExactMatch":true,
+		       "fieldName":"Email",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"Email"}]
+		   },
+		   {"entityName":"Case",
+		    "showOnCreate":true,
+		    "entityFieldMaps":[
+		      {"isExactMatch":false,
+		       "fieldName":"Subject",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"issue"},
+		      {"isExactMatch":false,
+		       "fieldName":"Status",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Status"},
+		      {"isExactMatch":false,
+		       "fieldName":"Origin",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Origin"}
+		    ]
+		   }
+		];
+
 
   
   
