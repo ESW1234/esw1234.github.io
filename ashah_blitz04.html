@@ -20,7 +20,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = 'fr'; //For example, enter 'en' or 'en-US'
+embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -37,98 +37,81 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
+embedded_svc.settings.extraPrechatFormDetails = [{
+    label: "First Name",
+    value: "A",
+    transcriptFields: [],
+    displayToAgent: true
+}, {
+    label: "Last Name",
+    value: "B",
+    transcriptFields: [],
+    displayToAgent: true
+}, {
+    label: "Email",
+    value: "a@b.com",
+    transcriptFields: [],
+    displayToAgent: true
+}, {
+    label: "Origin",
+    value: "Phone",
+    transcriptFields: [],
+    displayToAgent: true
+}, {
+    label: "CaseType",
+    value: "Problem",
+    transcriptFields: [],
+    displayToAgent: false
+}];
+
+embedded_svc.settings.extraPrechatInfo = [{
+    entityName: "Case",
+    showOnCreate: true,
+    saveToTranscript: "CaseId",
+    entityFieldMaps: [{
+        isExactMatch: false,
+        fieldName: "origin",
+        doCreate: true,
+        doFind: false,
+        label: "Origin"
+    }, {
+        isExactMatch: true,
+        fieldName: "Type",
+        doCreate: true,
+        doFind: false,
+        label: "CaseType"
+    }]
+}, {
+    entityName: "Contact",
+    showOnCreate: true,
+    saveToTranscript: "ContactId",
+    linkToEntityName: "Case",
+    linkToEntityField: "ContactId",
+    entityFieldMaps: [{
+        isExactMatch: true,
+        fieldName: "FirstName",
+        doCreate: false,
+        doFind: false,
+        label: "First Name"
+    }, {
+        isExactMatch: true,
+        fieldName: "LastName",
+        doCreate: false,
+        doFind: false,
+        label: "Last Name"
+    }, {
+        isExactMatch: true,
+        fieldName: "Email",
+        doCreate: false,
+        doFind: true,
+        label: "Email"
+    }]
+}];
+//embedded_svc.settings.extraPrechatFormDetails = [{"label":"First Name","value":"Marc","transcriptFields":[],"displayToAgent":true},{"label":"Last Name","value":"Benioff","transcriptFields":[],"displayToAgent":false},{"label":"Email","value":"benioff@salesforce.com","transcriptFields":[],"displayToAgent":true},{"label":"issue","value":"Sales forecasts","transcriptFields":[],"displayToAgent":true}] ; 
+//embedded_svc.settings.extraPrechatInfo = 
+//[{"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"Contact","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":true,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":true,"label":"Last Name"},{"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},{"entityName":"Case","showOnCreate":true, "saveToTranscript":"Case", "entityFieldMaps":[{"isExactMatch":false,"fieldName":"Subject","doCreate":true,"doFind":false,"label":"issue"},{"isExactMatch":false,"fieldName":"Status","doCreate":true,"doFind":false,"label":"Status"},{"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Origin"}]}]
+
 embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://justincommunitessubdomain-15-15d0a73a584.blitz04.soma.force.com/snapins', gslbBaseURL, '00DD00000008ZqC', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572D00000004Fe6', buttonId: '573D00000004Fux', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000GzMAI_15e7d2fbf7d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
-</div>
-	<div id="text">
-	<span id ="article1"><h2>SAFE LISTENING</h2>
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
- 
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
- 
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.</span>
-	<span id ="article2"><h2>iPhone 6S 3D Touch.The next generation of Multi‑Touch.</h2>DETAILS
-iPhone 6s introduces an entirely new way to interact with your phone. For the ﬁrst time, iPhone senses how much pressure you apply to the display. In addition to familiar Multi‑Touch gestures like Tap, Swipe, and Pinch, 3D Touch introduces Peek and Pop. This brings a new dimension of functionality to the iPhone experience. And when you use 3D Touch, your iPhone responds with subtle taps. So not only will you see what a press can do — you’ll feel it.
-User-added image</span>
-	<span id ="article3"><h2>SOUND TROUBLESHOOTING–HEADPHONES AND EARPHONES</h2>LOSS OF AUDIO ON ONE SIDE OR DISTORTED SOUND
-If you’re experiencing snapping, crackling, popping, or no audio on one side, try this:
-
-Make sure the 3.5mm audio jack is fully plugged in.
-The L-shaped input connects to your audio device.
-The straight input must be completely inserted into your headset.
-Check that your audio source is on and working.
-If your audio source is a computer or laptop, try adjusting the configuration settings.
-If problems persist, try a different audio source or an alternate cable.
-
-
-VOLUME TOO HIGH
-Turn the source volume down. Yes, it’s really that easy.
-
-PHONE NOT RESPONDING TO BUTTON PRESSES
-Check the headset plug to ensure that it is securely connected. For multi-press functions, vary the speed of presses when using the remote/mic.
-
-COMPATIBILITY ISSUES
-Remember to install the latest software updates on your device. The inline remote/mic may have limited functionality with devices that don’t run iOS.
-
-MICROPHONE NOT PICKING UP SOUND
-Make sure the headset plug is securely connected and that the socket is clean and clear
-Check that the microphone—located on the back of the remote—isn’t blocked or covered
-Make sure the straight-end of the plug is connected to the headphones and the angled L-shaped plug is connected to the audio source
-If your issue isn’t listed, or these troubleshooting tips didn’t help, please call Beats Consumer Support to speak with an agent.</span>
-	<span id ="article4"><h2>REMOTETALK AUDIO CABLE</h2>VOLUME
-Press the top button to increase
-Press the bottom button to decrease
-CALLS
-HELLO, GOODBYE
-Press and release the center button once to answer
-Press again to end the call
-MAYBE LATER
-Press and hold the center button for two seconds
-Release
-Two beeps indicate the call has been declined
-HOLD PLEASE
-To switch or switch back, press and release the center button
-To switch and end an in-progress call, press and hold the center button for two seconds. Two low beeps will indicate it worked.
-TALK TO ME—VOICE COMMAND
-Press and hold the center button until voice activation starts up (functionality varies by device)
-MEDIA
-Play or pause song or video
-
-Press and release the center button
-Repeat to resume
-MOVE IT, MOVE IT
-Forward
-
-Quickly press the center button twice to skip forward
-Hold on the second press to scan
-Backward
-
-Quickly press three times to skip back
-Hold on the third press to scan
-Note: The cable included with our headphones is fully compatible with the iOS family. Functionality may vary by device.</span>
 </div>
    </body>
 </html>

@@ -6,7 +6,7 @@
 
 <body>
 
-  <p align="center"><font color = "red"><a href="http://esw1234.github.io/justin/210desktopPage2.html">Link to desktop page 2.</a></font></p>
+<!--   <p align="center"><font color = "red"><a href="http://esw1234.github.io/justin/210desktopPage2.html">Link to desktop page 2.</a></font></p> -->
   
 <div id="button_goes_here">
 </div>
@@ -14,9 +14,9 @@
 <h1>
 	desktop | 212 | justin
 </h1>
-	<p align="left">
+<!-- 	<p align="left">
 		1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>10<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>20<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>30<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>40<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>50<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>60<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>70<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>80<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>90<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>100
-	</p>
+	</p> -->
 	
 <style type='text/css'>
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
@@ -59,6 +59,9 @@
 		// Settings for Live Agent
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin"};
+		embedded_svc.settings.prepopulatedPrechatFields = ["Array is not a valid input here"];
 
 		embedded_svc.settings.devMode = true;
 		
@@ -168,8 +171,8 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = 'chat 3.0'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = 'offline 3.0'; //(Defaults to Agent Offline)
+		embedded_svc.settings.defaultMinimizedText = 'chat 3.0'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'offline 3.0'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)

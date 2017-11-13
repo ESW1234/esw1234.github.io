@@ -155,7 +155,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.displayHelpButton = false; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.defaultMinimizedText = 'chat 3.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline 3.0'; //(Defaults to Agent Offline)
@@ -266,9 +266,8 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
     
     
     
-<!-- START 2.2 SNIPPET --> 
-    
-<!-- 
+<!-- START 2.2 SNIPPET -->
+	  <!-- 
 <b> 2.2 SNIPPET </b>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
 <script type='text/javascript'>
@@ -358,7 +357,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
 				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
 				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins-15f360270c0.stmfa.stm.force.com/napili'', 
+				  'https://snapins-15f360270c0.stmfa.stm.force.com/napili', 
 				  '572RM00000000Cz', 
 				  '00DRM0000005eso', 
 				  '573RM00000000DL', 
@@ -375,8 +374,8 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na44.stmfa.stm.salesforce.com'); }
-</script> -->
-    
+</script> 
+    --> 
 <!-- END 2.2 SNIPPET -->
 
 
@@ -384,8 +383,8 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
     
     
 <!-- START 2.0 SNIPPET -->
-<!--     
-<b>2.0 snippet</b>
+   
+<!-- <b>2.0 snippet</b>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseUrl) {
@@ -393,13 +392,14 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
 		embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
 		embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
-		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.displayHelpButton = false; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.defaultMinimizedText = 'chat 2.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.offlineText = 'offline 2.0'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.onlineLoadingText = '...'; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-		embedded_svc.settings.extraPrechatFormDetails = [
+		
+		/* embedded_svc.settings.extraPrechatFormDetails = [
 		  {"label":"First Name",
 		   "value":"Usain",
 		   "transcriptFields":[],
@@ -468,7 +468,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		       "label":"Origin"}
 		    ]
 		   }
-		];
+		];*/
 		
 		embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
 				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
@@ -490,7 +490,8 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na44.stmfa.stm.salesforce.com'); }
-</script> -->
+</script>
+-->
 <!-- END 2.0 SNIPPET --> 
     
     

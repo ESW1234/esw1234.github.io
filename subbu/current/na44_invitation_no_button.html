@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">PAGE WITH HIDDEN BUTTON</font></p>
+  <br/>
+  <br/>
+	<p align="center"><font color = "red"><a href="https://esw4321.github.io/subbu/na1_blitz03.html">Link to PAGE IN ANOTHER SUBDOMAIN</a></font></p>
+	<p align="center"><font color = "red"><a href="na44_invitation.html">Link to PAGE ONE DEFAULT WIDGET</a></font></p>
+	<p align="center"><font color = "red"><a href="na44_invitation_page2.html">Link to PAGE TWO DEFAULT WIDGET</a></font></p>
+	<p align="center"><font color = "red"><a href="na44_invitation_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
+	<p align="center"><font color = "red"><a href="na44_invitation_second_deployment.html">Link to PAGE WITH SECOND DEPLOYMENT</a></font></p>
+	<!--
+  <p align="center"><font color = "red"><a href="bl1custom.html">Link to PAGE TWO CUSTOM WIDGET</a></font></p>
+  <p align="center"><font color = "red"><a href="bl1hidden.html">Link to PAGE THREE BUTTON AS A LINK</a></font></p>
+  <p align="center"><font color = "red"><a href="bl1nosnippet.html">Link to PAGE FIVE WITHOUT SNIPPET</a></font></p>
+  <p align="center"><font color = "red"><a href="bl1noprechat.html">Link to PAGE SIX WITHOUT PRECHAT</a></font></p>
+-->
+  <br>
+  <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
+
+
+<div id="button_goes_here">
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = false; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.devMode=true;
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15eee7b817c.stmfa.stm.force.com/212100517',
+		  gslbBaseURL, '00DRM0000005cdE', 'invitation1', 
+		  { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+		   deploymentId: '572RM0000004C9N', buttonId: '573RM0000004CU8', 
+		   baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002C2AQ_15f7eb6eff5'}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else 
+		{ initESW('https://na44.stmfa.stm.salesforce.com'); }
+</script>
+</div>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="invitation.css">
+
+<div id="snapins_invite">
+    <div class="card">
+        <div id="header" role="header">
+            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
+            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+            <div id="invitation_title">Need a little help?</div>
+            <button type="button" class="actionbutton close" id="x">╳</button>
+        </div>
+        <div id="invitation_body">
+            <p>If you need help, just tap here and you will be able to chat with us!</p>
+        </div>    
+        <div id="footer" role="footer">
+            <div id="invitation_actionbar">
+                <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+   (function() {   
+    document.getElementById('exit').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.rejectInvite();
+	console.log("Invite Rejected.");
+    };
+    document.getElementById('startChat').onclick = function() {  
+        embedded_svc.inviteAPI.inviteButton.acceptInvite();
+	console.log("Invite Accepted.");
+    };
+})();  
+</script>
+
+Portugal Stuns France to Win Euro 2016 Final
+Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
+Jul 11, 2016•Fitbit Help
+
+HELP
+Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
+But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
+“We lost our main man, the man who could score a goal at any moment,” Portugal defender Pepe said of Ronaldo, who left the game in the 25th minute. “But we were warriors on the pitch. We said that we’d win it for him.”
+Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
+Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
+For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
+	Portugal Stuns France to Win Euro 2016 Final
+Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
+Jul 11, 2016•Fitbit Help
+
+HELP
+Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
+But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
+“We lost our main man, the man who could score a goal at any moment,” Portugal defender Pepe said of Ronaldo, who left the game in the 25th minute. “But we were warriors on the pitch. We said that we’d win it for him.”
+Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
+Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
+For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;            
+      }
+	    #myText {
+		    width: 65%;
+	    }
+    </style>

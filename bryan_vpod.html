@@ -20,9 +20,7 @@
   
   
   
-  
-  
-<style type='text/css'>
+ <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -31,11 +29,11 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -43,27 +41,21 @@ embedded_svc.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-// Settings for Field Service
-embedded_svc.settings.fieldServiceHomeImgURL = '';
-embedded_svc.settings.fieldServiceLogoImgURL = '';
-embedded_svc.settings.loginClientId = '';
-embedded_svc.settings.loginRedirectURL = '';
-embedded_svc.settings.loginTargetQuerySelector = '';
-embedded_svc.settings.fieldServiceStartLabel = '';
-embedded_svc.settings.loginClientId = '';
-
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
-embedded_svc.settings.enabledFeatures = ['FieldService', 'LiveAgent'];
-embedded_svc.settings.entryFeature = 'FieldService';
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://corsa04-laperfeng2db-2015143313.vpod.t.force.com', 'https://snapins-corsa04-laperfeng2db-2015143313.vpod.t.salesforce-communities.com/vcommunityone', gslbBaseURL, '00Dx0000000BZYo', 'VPOD_Deployment_One', { baseLiveAgentContentURL: 'https://la-corsa04-LAPerfEng2DB-3313.vpod.t.force.com:443/content', deploymentId: '572x000000008Xz', buttonId: '573x000000008Y4', chasitorVersion: '41.0', baseLiveAgentURL: 'https://la-corsa04-LAPerfEng2DB-3313.vpod.t.force.com:443/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix00000000001EAA_15c1d763043'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://corsa04-laperfeng2db-2015143313.vpod.t.force.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://corsa04-laperfeng2db-2015143313.vpod.t.force.com'); }</script>
-	
-	
+embedded_svc.init('https://corsa04-laperfeng2db-2015153883.vpod.t.force.com', 'https://snapins-corsa04-laperfeng2db-2015153883.vpod.t.salesforce-communities.com/vcommunityone', gslbBaseURL, '00Dx0000000BZYo', 'VPOD_Deployment_One', { baseLiveAgentContentURL: 'https://la-corsa04-LAPerfEng2DB-3883.vpod.t.force.com:443/content', deploymentId: '572x000000008Xz', buttonId: '573x000000008Y4', baseLiveAgentURL: 'https://la-corsa04-LAPerfEng2DB-3883.vpod.t.force.com:443/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ix00000000001EAA_15c1d763043'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://corsa04-laperfeng2db-2015153883.vpod.t.force.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://corsa04-laperfeng2db-2015153883.vpod.t.force.com'); }</script>
 	
 	
 	

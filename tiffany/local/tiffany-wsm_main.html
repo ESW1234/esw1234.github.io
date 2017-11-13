@@ -5,7 +5,7 @@
   </head>
   <body>
     <a href="http://esw1234.github.io/tiffany/local/tiffany_localhiddenbutton.html">hidden button page</a>
-<style type='text/css'>
+<!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
@@ -27,8 +27,8 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = 'https://orig10.deviantart.net/7ddd/f/2015/202/d/6/social_media___twitch_description_banner_by_imthatbananaeuw-d92avjr.png';
+embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 
@@ -36,5 +36,185 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
 embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gER', 'MySnapInDeploymentName', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e2f79507e'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); }</script>
+--> 
+    Invitation Snippet
+    <style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gER', 'MySnapInDeploymentName', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx000000003F', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e2f79507e'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://tiffanytso-wsm.internal.salesforce.com:6109'); }</script>
+    
+   
+
+<div id="snapins_invite" aria-role="assertive" role="dialog">
+    <div class="card">
+        <div id="header" role="header">
+            <img src="http://esw1234.github.io/avatar.png" id="profilepic"> 
+            <div id="invitation_title">Need a little help?</div>                        
+            <button type="button" class="close" id="close"/>
+
+        </div>
+        <div id="invitation_body"><p>If you need help, just tap here and you will be able to chat with us!</p>
+        </div>    
+        <div id="footer" role="footer">
+            <div id="invitation_actionbar">
+                <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <style type='text/css'>
+#snapins_invite {
+  max-width: 312px;
+  max-height: 210px;
+  background-color: transparent;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+}
+      
+.disabled {
+    display: none;
+}
+
+.card {
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#header {
+  width: inherit;
+  max-width: 312px;
+  max-height: 32px;
+  background-color: #263238; /* @pbc */
+  color: #FFFFFF;
+  padding: 9px;
+  line-height: 32px;
+}
+
+#profilepic {
+    width: 32px;
+    height: 32px;
+    text-align: left;
+    display: inline-block;
+}
+
+#invitation_title {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0px 10px;
+}
+
+.close {
+  background-color: transparent;
+  position: relative;
+  float: right;
+  line-height: 32px;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+    background-size: 12px;
+    height: 12px;
+    width: 12px;
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEycHgiIGhlaWdodD0iMTJweCIgdmlld0JveD0iMCAwIDEyIDEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0Ny4xICg0NTQyMikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+U2hhcGU8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iRVNXLTIxMi1Qcm9hY3RpdmUtSW52aXRhdGlvbnMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMzYwLjAwMDAwMCwgLTQzOC4wMDAwMDApIiBmaWxsPSIjRkZGRkZGIj4KICAgICAgICAgICAgPGcgaWQ9IlByb2FjdGl2ZS1jaGF0LTFsaW5lcy1Db3B5LTIzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDc1LjAwMDAwMCwgNDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IlgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4MS4wMDAwMDAsIDExLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMS42MTg3NjgzLDE0Ljc4MDM4MDcgTDE1Ljg0MTY0MjIsMTAuNTYzNjg5NiBDMTYuMDUyNzg1OSwxMC4zNTI4NTUxIDE2LjA1Mjc4NTksMTAuMDcxNzQyMyAxNS44NDE2NDIyLDkuODYwOTA3NzYgTDE1LjIwODIxMTEsOS4xNTgxMjU5MiBDMTQuOTk3MDY3NCw5LjAxNzU2OTU1IDE0LjcxNTU0MjUsOS4wMTc1Njk1NSAxNC41MDQzOTg4LDkuMTU4MTI1OTIgTDEwLjI4MTUyNDksMTMuNDQ1MDk1MiBDMTAuMTQwNzYyNSwxMy41ODU2NTE1IDkuOTI5NjE4NzcsMTMuNTg1NjUxNSA5Ljc4ODg1NjMsMTMuNDQ1MDk1MiBMNS41NjU5ODI0LDkuMTU4MTI1OTIgQzUuMzU0ODM4NzEsOC45NDcyOTEzNiA1LjA3MzMxMzc4LDguOTQ3MjkxMzYgNC44NjIxNzAwOSw5LjE1ODEyNTkyIEw0LjE1ODM1Nzc3LDkuODYwOTA3NzYgQzQuMDE3NTk1MzEsMTAuMDAxNDY0MSA0LjAxNzU5NTMxLDEwLjM1Mjg1NTEgNC4xNTgzNTc3NywxMC40OTM0MTE0IEw4LjQ1MTYxMjksMTQuNzgwMzgwNyBDOC41OTIzNzUzNywxNC45MjA5MzcgOC41OTIzNzUzNywxNS4wNjE0OTM0IDguNDUxNjEyOSwxNS4yMDIwNDk4IEw0LjE1ODM1Nzc3LDE5LjQ4OTAxOSBDMy45NDcyMTQwOCwxOS42OTk4NTM2IDMuOTQ3MjE0MDgsMTkuOTgwOTY2MyA0LjE1ODM1Nzc3LDIwLjE5MTgwMDkgTDQuODYyMTcwMDksMjAuODk0NTgyNyBDNS4wMDI5MzI1NSwyMS4wMzUxMzkxIDUuMzU0ODM4NzEsMjEuMDM1MTM5MSA1LjQ5NTYwMTE3LDIwLjg5NDU4MjcgTDkuNzg4ODU2MywxNi42MDc2MTM1IEM5LjkyOTYxODc3LDE2LjQ2NzA1NzEgMTAuMDcwMzgxMiwxNi40NjcwNTcxIDEwLjIxMTE0MzcsMTYuNjA3NjEzNSBMMTQuNTA0Mzk4OCwyMC44OTQ1ODI3IEMxNC42NDUxNjEzLDIxLjAzNTEzOTEgMTQuOTk3MDY3NCwyMS4wMzUxMzkxIDE1LjEzNzgyOTksMjAuODk0NTgyNyBMMTUuODQxNjQyMiwyMC4xOTE4MDA5IEMxNi4wNTI3ODU5LDE5Ljk4MDk2NjMgMTYuMDUyNzg1OSwxOS42OTk4NTM2IDE1Ljg0MTY0MjIsMTkuNDg5MDE5IEwxMS42MTg3NjgzLDE1LjI3MjMyOCBDMTEuNDc4MDA1OSwxNS4xMzE3NzE2IDExLjQ3ODAwNTksMTQuOTIwOTM3IDExLjYxODc2ODMsMTQuNzgwMzgwNyBMMTEuNjE4NzY4MywxNC43ODAzODA3IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=");
+}
+
+#invitation_body {
+  background-color: #BBDEFB;
+  max-height: 100px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: auto;
+}
+
+#invitation_actionbar {
+    background-color: #E3F2FD; 
+}
+
+.actionbutton {
+    font-size: 14px;
+    max-height: 32px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary {
+    background-color: #1565C0; 
+    color: #FFFFFF;
+}
+
+.secondary {
+    background-color: transparent; 
+    color: #1565C0;
+}
+
+#footer {
+  width: inherit;
+  color: white;
+  text-align: right;
+  background-color: #E3F2FD;
+  padding: 5px;
+}
+    </style>
+    
+<script type='text/javascript'>     
+  (function() {
+    document.getElementById('exit').onclick = function() {
+      embedded_svc.inviteAPI.inviteButton.rejectInvite();
+      console.warn("Invite Rejected.");
+    };
+      document.getElementById('close').onclick = function() {
+      embedded_svc.inviteAPI.inviteButton.rejectInvite();
+      console.warn("Invite Rejected.");
+    };
+    
+  document.getElementById('startChat').onclick = function() {  
+      embedded_svc.inviteAPI.inviteButton.acceptInvite();
+      console.warn("Invite Accepted.");
+    };
+  })()  
+    </script>
+    
   </body>
 </html>

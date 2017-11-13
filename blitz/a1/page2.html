@@ -15,116 +15,43 @@
   <br>
 
 <div id="button_goes_here">
-<!--
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #25AD30; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #25AD30; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://eswblitz.blitz04.soma.force.com/site1', 
-		  gslbBaseURL, '00DD00000008aJ4', 'esw1_sites_sales', 
-		  { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', 
-		   deploymentId: '572D00000004H2o', buttonId: '573D00000004HSA', chasitorVersion: '41.0', 
-		   baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000FDMAY_15dd8870752'}); };
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); };
-		document.body.appendChild(s); } 
-	else { initESW('https://na1-blitz04.soma.salesforce.com'); }
-</script>
--->
-	<!-- ********************2.2 snippet****************************** -->
+//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
 
-<style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>	
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
-//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
-//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://d.la-blitz04.soma.salesforce.com/chat', 
-		  'https://c.la-blitz04.soma.salesforce.com/content', 
-		  'https://eswblitz.blitz04.soma.force.com/site1', '572D00000004H2o', 
-		  '00DD00000008aJ4', '573D00000004HSA', '2.2', gslbBaseUrl, '40.0', 'esw1_sites_sales', 
-		  'EmbeddedServiceLiveAgent_Parent04ID000000000FDMAY_15dd8870752'); };
-	if (!window.embedded_svc) {
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/2.2/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
-	else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
-
-	<!-- ********************2.0 snippet****************************** -->
-<!--
-<style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>	
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
-//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
-//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com', 'https://d.la-blitz04.soma.salesforce.com/chat', 
-		  'https://c.la-blitz04.soma.salesforce.com/content', 
-		  'https://eswblitz.blitz04.soma.force.com/site1', '572D00000004H2o', 
-		  '00DD00000008aJ4', '573D00000004HSA', '2.2', gslbBaseUrl, '40.0', 'esw1_sites_sales', 
-		  'EmbeddedServiceLiveAgent_Parent04ID000000000FDMAY_15dd8870752'); };
-	if (!window.embedded_svc) {
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
-	else { initESW('https://na1-blitz04.soma.salesforce.com'); }</script>
--->
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iAS', 'LAButton1', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004D18', buttonId: '573RM0000004D5c', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002W2AQ_15fa39e0e78'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+</div>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
@@ -147,9 +74,7 @@ But in those nervous closing stages of Sunday night’s game, perhaps for the fi
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
 For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
-	204
-	</div>
-   </body>
+</body>
 </html>
     <style>
        body {

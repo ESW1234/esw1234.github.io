@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div id="salesforce-login" data-login-event="onLogin"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<button onClick="SFIDWidget.logout()">Log out</button>
+
+
+
+
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Field Service
+embedded_svc.settings.fieldServiceHomeImgURL = '';
+embedded_svc.settings.fieldServiceLogoImgURL = '';
+embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
+embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbtlj1GY65OfnOCz6R6NZJ8_lwHGu6DzlMgc9MxH2uAHfGxXU7EA9CdVYBJYpGpthR379_nc';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/callback_steam.html';
+embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+embedded_svc.settings.fieldServiceStartLabel = 'logged in';
+
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService';
+//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
+
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f082fb956.stmfa.stm.force.com/napili2', gslbBaseURL, '00DRM0000005dak', 'bryan', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+
+
+
+
+
+
+
+</body>
+</html>

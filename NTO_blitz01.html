@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<body>
+<div id="button_goes_here"> 
+    
+ <style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+#snapins_invite {
+  max-width: 312px;
+  max-height: 210px;
+  background-color: transparent;
+  box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+}
+.card {
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
+#header {
+  width: inherit;
+  max-width: 312px;
+  max-height: 32px;
+  background-color: #263238; /* @pbc */
+  color: #FFFFFF;
+  padding: 9px;
+}
+#profilepic {
+    width: 32px;
+    height: 32px;
+    text-align: left;
+    padding: 0px 10px;
+    display: inline-block;
+}
+#invitation_title {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 30px;
+}
+.actionbutton.close {
+  background-color: transparent;
+  height: 12px;
+  width: 12px;
+  border: none;
+  color: white;
+  position: relative;
+    float: right;
+  text-decoration: none;
+  display: inline-block;
+}
+#invitation_body {
+  background-color: #BBDEFB;
+  max-height: 100px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+#invitation_actionbar {
+    background-color: #E3F2FD; 
+}
+.actionbutton {
+    font-size: 12px;
+    max-height: 32px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.primary {
+    background-color: #1565C0; 
+    color: #FFFFFF;
+}
+.secondary {
+    background-color: transparent; 
+    color: #1565C0;
+}
+#footer {
+  width: inherit;
+  color: white;
+  text-align: right;
+  background-color: #E3F2FD;
+  padding: 5px;
+}
+
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.dynamicRouting = function(prechatFormData){ 
+   return "573D000000002jZIAQ";
+};
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.settings.devMode = true;
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://snapins-15eca4b57d3.blitz01.soma.force.com/napili', gslbBaseURL, '00DD00000008aGQ', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572D000000002Rx', buttonId: '573D000000002jY', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+</div>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<div id="snapins_invite">
+    <div class="card">
+        <div id="header" role="header">
+            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
+            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+            <div id="invitation_title">Need a little help?</div>
+            <button type="button" class="actionbutton close" id="x">╳</button>
+        </div>
+        <div id="invitation_body">
+            <p>If you need help, just tap here and you will be able to chat with us!</p>
+        </div>    
+        <div id="footer" role="footer">
+            <div id="invitation_actionbar">
+                <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+(function() {
+    document.getElementById('exit').onclick = function() {
+      console.log("Invite Rejected.");
+       embedded_svc.inviteAPI.inviteButton.rejectInvite();      
+    };
+    
+  document.getElementById('startChat').onclick = function() {  
+           console.log("Invite Accepted."); 
+           embedded_svc.inviteAPI.inviteButton.acceptInvite();
+    };
+  })()
+ </script>
+</body>
+</html>
+    <style>
+       body {
+         background: url("NTO-home.png") no-repeat;
+         background-size: 100%;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+      }
+    </style>

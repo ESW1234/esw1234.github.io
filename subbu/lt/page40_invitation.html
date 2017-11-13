@@ -71,23 +71,39 @@ s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embe
 s.onload = function() { initESW(null); }; 
 document.body.appendChild(s); } else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
 
-<div id="snapins_invite">  
-    <div id = "header" role="header">
-    <h2>Need a little help !</h2>
-   </div> 
-    <p>If you need help, just tap here and you will be able to chat with us</p>  
-  <button type="button" id="startChat">Start Chat</button>
-  <button type="button" id="exit">Close </button>
-</div>  
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="invitation.css">
+<div id="snapins_invite">
+    <div class="card">
+        <div id="header" role="header">
+            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
+            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+            <div id="invitation_title">Need a little help?</div>
+            <button type="button" class="actionbutton close" id="x">╳</button>
+        </div>
+        <div id="invitation_body">
+            <p>If you need help, just tap here and you will be able to chat with us!</p>
+        </div>    
+        <div id="footer" role="footer">
+            <div id="invitation_actionbar">
+                <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type='text/javascript'>
-   (function() {   
-    document.getElementById('exit').onclick = function() {  
-        embedded_svc.rejectInvite();
+(function() {
+    document.getElementById('exit').onclick = function() {
+      console.log("Invite Rejected.");
+       embedded_svc.inviteAPI.inviteButton.rejectInvite();      
     };
-    document.getElementById('startChat').onclick = function() {  
-        embedded_svc.acceptInvite();
+    
+  document.getElementById('startChat').onclick = function() {  
+           console.log("Invite Accepted."); 
+           embedded_svc.inviteAPI.inviteButton.acceptInvite();
     };
-})();  
+  })();
 </script>
       
 Portugal Stuns France to Win Euro 2016 Final
