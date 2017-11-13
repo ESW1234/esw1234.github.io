@@ -1,10 +1,4 @@
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-	</head>
-	<body>
-
-	<style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
@@ -17,11 +11,11 @@
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog">
 	<div class="embeddedServiceInvitationHeader">
 		<img id="embeddedServiceAvatar">
-		<span class="embeddedServiceTitleText">Need a little help?</span>
+		<span class="embeddedServiceTitleText">Need help?</span>
 		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
 	</div>
 	<div class="embeddedServiceInvitationBody">
-		<p>If you have any questions, just tap here and you will be able to chat with us!</p>
+		<p>We’re happy to answer your questions!</p>
 	</div>
 	<div class="embeddedServiceInvitationFooter">
 		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
@@ -47,6 +41,15 @@
 	.embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #005290; }
 </style>
 
+<script type='text/javascript'>
+	(function() {
+		document.getElementById('closeInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
+		document.getElementById('rejectInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
+		document.getElementById('acceptInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); };
+		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
+	})();
+</script>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
@@ -60,7 +63,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = 'https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png';
+embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/Taylor-Swift.png';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
@@ -71,18 +74,6 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.devMode = true;
-//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //__MISSING LABEL__ PropertyFile - val PrePopulatedPreChatFieldsComment not found in section SnapinsSetup_CodeSnippet
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //__MISSING LABEL__ PropertyFile - val PrepopulatedPrechatFieldsComment not found in section SnapinsSetup_CodeSnippet
 
 embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://nwk00dxx0000001ger.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gER', 'MySnapInDeploymentName', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx000000003F', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15e2f79507e'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-
-<script type='text/javascript'>
-	(function() {
-		document.getElementById('closeInvite').onclick = function() { window.embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
-		document.getElementById('rejectInvite').onclick = function() { window.embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
-		document.getElementById('acceptInvite').onclick = function() { window.embedded_svc.inviteAPI.inviteButton.acceptInvite(); };
-		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})		
-	})();
-</script	
-	</body>
-</html>
