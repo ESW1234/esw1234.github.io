@@ -38,7 +38,7 @@
 
 
 <!-- start 4.0 snippet -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -163,12 +163,12 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script>
+</script> -->
 <!-- end 4.0 snippet -->
 
 
 <!-- start 3.0 snippet -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -187,6 +187,8 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
 		/*
 		embedded_svc.settings.extraPrechatFormDetails = [
@@ -281,7 +283,7 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script> -->
+</script>
 <!-- end 3.0 snippet -->
 
 
@@ -302,6 +304,8 @@
 		embedded_svc.settings.defaultMinimizedText = 'chat 2.2'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.offlineText = 'offline 2.2'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.onlineLoadingText = '...'; //(Defaults to Loading)
+
+		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
@@ -419,6 +423,8 @@
 		embedded_svc.settings.defaultMinimizedText = 'chat 2.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.offlineText = 'offline 2.0'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.onlineLoadingText = '...'; //(Defaults to Loading)
+
+		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
