@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+    <div id="button">
+        <style type='text/css'>
+            .embeddedServiceHelpButton .helpButton .uiButton {
+                background-color: #005290;
+                font-family: "Salesforce Sans", sans-serif;
+            }
+
+            .embeddedServiceHelpButton .helpButton .uiButton:focus {
+                outline: 1px solid #005290;
+            }
+
+            @font-face {
+                font-family: 'Salesforce Sans';
+                src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+                url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+            }
+        </style>
+        <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+        <script type='text/javascript'>
+            var initESW = function (gslbBaseURL) {
+                embedded_svc.settings.displayHelpButton = true; //Or false
+                embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+                //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+                //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+                //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+                //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+                // Settings for Live Agent
+                embedded_svc.settings.avatarImgURL = '';
+                embedded_svc.settings.prechatBackgroundImgURL = '';
+                embedded_svc.settings.waitingStateBackgroundImgURL = '';
+                embedded_svc.settings.smallCompanyLogoImgURL = '';
+                //embedded_svc.settings.dynamicRouting = function(prechatFormData) {
+                // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+                //Returns a valid button ID.
+                //};
+
+                embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+                embedded_svc.settings.entryFeature = 'LiveAgent';
+                //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+
+                embedded_svc.init('https://na1-blitz01.soma.salesforce.com',
+                    'https://snapins-15fb74f90c0.blitz01.soma.force.com/napili', gslbBaseURL, '00DD00000008azN',
+                    'invite', {
+                        baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content',
+                        deploymentId: '572D00000004GEN',
+                        buttonId: '573D00000004Gby',
+                        baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat',
+                        eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000EvMAI_15fb78eea17'
+                    });
+            };
+            if (!window.embedded_svc) {
+                var s = document.createElement('script');
+                s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js');
+                s.onload = function () {
+                    initESW(null);
+                };
+                document.body.appendChild(s);
+            } else {
+                initESW('https://service.force.com');
+            }
+        </script>
+    </div>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="invitation.css">
+    
+    <div id="snapins_invite">
+        <div class="card">
+            <div id="header" role="header">
+                <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
+                <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
+                <div id="invitation_title">Need a little help?</div>
+                <button type="button" class="actionbutton close" id="x">╳</button>
+            </div>
+            <div id="invitation_body">
+                <p>If you need help, just tap here and you will be able to chat with us!</p>
+            </div>    
+            <div id="footer" role="footer">
+                <div id="invitation_actionbar">
+                    <button type="button" class="actionbutton secondary" id="exit">Close </button>
+                    <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
