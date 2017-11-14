@@ -38,7 +38,7 @@
 
 
 <!-- start 4.0 snippet -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -58,6 +58,8 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		
 		embedded_svc.settings.devMode = true;
 
@@ -83,8 +85,58 @@
 		}; 
 		document.body.appendChild(s); 
 	} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
-</script>
+</script> -->
 <!-- end 4.0 snippet -->
+
+
+<!-- start 3.1 snippet -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		embedded_svc.settings.avatarImgURL = '';
+		embedded_svc.settings.prechatBackgroundImgURL = '';
+		embedded_svc.settings.waitingStateBackgroundImgURL = '';
+		embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+
+		embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 
+				  'https://justincommunitessubdomain-15-15c3c79d62b.blitz01.soma.force.com/napili092017', 
+				  gslbBaseURL, 
+				  '00DD00000008Z8f', 
+				  'justin_s_deployment', 
+				  { 
+					baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', 
+					deploymentId: '572D00000004FB7', 
+					buttonId: '573D00000004FRK', 
+					baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', 
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+				  }
+		); 
+	};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s); 
+	} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
+</script>
+<!-- end 3.1 snippet -->
 
 
 <!-- start 3.0 snippet -->
