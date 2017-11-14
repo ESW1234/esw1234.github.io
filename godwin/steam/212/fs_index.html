@@ -29,17 +29,18 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Field Service
-embedded_svc.settings.fieldServiceHomeImgURL = 'http://www.salesforcetower.com/files/3114/3084/2229/salesforce-tower-skyline-golden-gate-767.jpg';
-embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
-embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
+//embedded_svc.settings.fieldServiceHomeImgURL = 'http://www.salesforcetower.com/files/3114/3084/2229/salesforce-tower-skyline-golden-gate-767.jpg';
+//embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
+//embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
 embedded_svc.settings.loginClientId = '3MVG9PhR6g6B7ps5Zl7CSnM2Iqdv5MHIm431RLUOfq7x9ln5GT11OhFxFncJHRxcMGIZnzMO8dV.Xhql.0GWm';
 embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/godwin/b01/callback.html';
 embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-embedded_svc.settings.fieldServiceStartLabel = 'Authenticated!';
+embedded_svc.settings.fieldServiceStartLabel = 'Logged in!';
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://nwk00dxx0000001ger-15e9630312e.blitz01.soma.force.com/napili1', gslbBaseURL, '00DD00000008aA3', 'FS_Two', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f082fb956-15fbbd722ce.stmfa.stm.force.com/napili2', gslbBaseURL, '00DRM0000005ix0', 'FS_One', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
   </body>
 </html>
