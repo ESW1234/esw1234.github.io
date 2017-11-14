@@ -3,10 +3,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 
-<body class="bo">
-<h1 class="bo" id="titleHeader"></h1>
-<p><a class="bo" id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
-<p><a class="bo" href="http://google.com">google.com</a></p>
+<body>
+<h1 id="titleHeader"></h1>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<p><a href="http://google.com">google.com</a></p>
 
 <script>
 var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
@@ -21,19 +21,19 @@ document.title = headerEl.innerHTML;
 
 <!-- snippet start -->
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #D15DC1; font-family: "Impact", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #D15DC1; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #9200B7; font-family: "Impact", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #9200B7; }
 </style>
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-embedded_svc.settings.defaultMinimizedText = 'hella online'; //(Defaults to Chat with an Expert)
-embedded_svc.settings.disabledMinimizedText = 'hella offline'; //(Defaults to Agent Offline)
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-embedded_svc.settings.loadingText = 'hella loading'; //(Defaults to Loading)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
@@ -44,8 +44,9 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-
-	
+  
+  
+	/*
   		embedded_svc.settings.extraPrechatFormDetails = [
 		  {"label":"First Name",
 		   "value":"Usain",
@@ -117,33 +118,10 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 		    ]
 		   }
 		];
+	*/
 
 
-  
-  
-embedded_svc.init('https://na1-blitz04.soma.salesforce.com',
-'https://snapins206-157442b0ff8-15869e97343.blitz04.soma.force.com/bonewsite',
-gslbBaseURL,
-'00DD00000008WG4',
-'jake_s_snapin',
-{ baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content',
-deploymentId: '572D000000001hG',
-buttonId: '573D000000001yG',
-chasitorVersion: '41.0',
-baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat',
-eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CDVMA2_15c0d4ef066'});
-};
-
-if (!window.embedded_svc) {
-var s = document.createElement('script');
-s.setAttribute('src', 'https://na1-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js');
-s.onload = function() { initESW(null); };
-document.body.appendChild(s);
-} else {
-initESW('https://na1-blitz04.soma.salesforce.com');
-}
-</script>
-<!-- snippet end -->
+embedded_svc.init('http://bochean-wsm1.internal.salesforce.com:57983', 'http://justincommunitessubdomain-15a250fddfb.bochean-wsm1.t.force.com:57983/napili', gslbBaseURL, '00Dxx0000001gFc', 'justin_s_deployment', { baseLiveAgentContentURL: 'http://bochean-wsm1.internal.salesforce.com:8080/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://bochean-wsm1.internal.salesforce.com:7443/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://bochean-wsm1.internal.salesforce.com:57983'); }</script><!-- snippet end -->
 
 </body>
 
@@ -152,19 +130,35 @@ initESW('https://na1-blitz04.soma.salesforce.com');
   margin: 0;
   padding: 0;
 }
-body.bo {
+body {
   background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
 }
-h1.bo {
-  background: rgba(0, 0, 0, 0.6);
+div:not(:first-child) {
+  margin-top: .5rem;
+}
+h1 {
   font-size: 3rem;
+}
+a {
   color: red;
 }
-a.bo {
-  color: red;
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
 }
 .embeddedServiceLiveAgentChatWindowItem .agentAvatar {
   background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
 }
 </style>
 </html>
