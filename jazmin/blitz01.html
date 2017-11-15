@@ -10,7 +10,7 @@
 
 <div id="button_goes_here">
 </div>   
-   <!------------------------------------  4.0 SNIPPPET ---------------------------------------------->
+<!------------------------------------  4.0 SNIPPPET ---------------------------------------------->
    <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0AE06B; font-family: "Comic Sans MS", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0AE06B; }
@@ -60,8 +60,8 @@ embedded_svc.init('https://jazminscustomdomain.blitz01.blitz.salesforce.com',
 <!------------------------------------------------ 3.1 SNIPPET ------------------------------------------------------>
 <!--
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0AE06B; font-family: "Comic Sans MS", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0AE06B; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -120,8 +120,8 @@ document.body.appendChild(s);
 <!------------------------------------------------ 3.0 SNIPPET ------------------------------------------------------>
  <!--
  <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0AE06B; font-family: "Comic Sans MS", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0AE06B; }
 @font-face {
 font-family: 'Salesforce Sans';
 src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -178,6 +178,54 @@ document.body.appendChild(s);
 <!------------------------------------------------ 3.0 SNIPPET END -------------------------------------------------->
    
 <!------------------------------------------------ 2.2 SNIPPET ------------------------------------------------------>
+ <!--
+ <style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #0AE06B; font-family: "Comic Sans MS", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0AE06B; }
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init(
+'https://jazminscustomdomain.blitz01.blitz.salesforce.com', 
+'https://d.la-blitz01.soma.salesforce.com/chat', 
+'https://c.la-blitz01.soma.salesforce.com/content',
+'https://snapins-15f54d4ef2f.blitz01.soma.force.com/napili1025', 
+'572D00000004G1T', 
+'00DD00000008agF', 
+'573D00000004GJ8', 
+'2.2', 
+gslbBaseUrl, 
+'40.0', 
+'githubPage', 
+'EmbeddedServiceLiveAgent_Parent04ID000000000DjMAI_15f54e10ee1'
+); 
+}; 
+if (!window.embedded_svc) { 
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://jazminscustomdomain.blitz01.blitz.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+s.onload = function() { 
+initESW(null); 
+}; 
+document.body.appendChild(s);
+} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
+</script>
+-->
 <!------------------------------------------------ 2.2 SNIPPET END -------------------------------------------------->
    
 <!------------------------------------------------ 2.0 SNIPPET ------------------------------------------------------>
