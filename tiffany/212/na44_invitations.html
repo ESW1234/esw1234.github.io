@@ -32,7 +32,7 @@
 	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
 	.embeddedServiceInvitationHeader .embededdServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: clip; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
 	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
-	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: inherit; opacity: 0.7; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; }
 	.embeddedServiceInvitation > .embeddedServiceInvitationBody { background-color: #FFFFFF; max-height: 110px; margin: 0 8px; font-size: 14px; line-height: 20px; overflow: auto; }
 	.embeddedServiceInvitationBody p { padding: 8px; }
 	.embeddedServiceInvitation > .embeddedServiceInvitationFooter { width: inherit; color: #FFFFFF; text-align: right; background-color: #FFFFFF; padding: 10px; max-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
@@ -63,7 +63,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = 'https://is4-ssl.mzstatic.com/image/thumb/Purple128/v4/20/fb/b9/20fbb90a-b63b-f92e-efae-a52b7c5d6d43/source/1200x630bb.jpg';
+embedded_svc.settings.avatarImgURL = 'https://cdn2.iconfinder.com/data/icons/business-209/512/Businesswoman-512.png';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
@@ -74,6 +74,6 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //__MISSING LABEL__ PropertyFile - val PrepopulatedPrechatFieldsComment not found in section SnapinsSetup_CodeSnippet
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://tiffanytso.secure.force.com:6109', gslbBaseURL, '00Dxx0000001gER', 'BrandNewDeployment', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx000000004X', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000ZkEAI_15fbe9ead6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f360270c0.stmfa.stm.force.com/napili', gslbBaseURL, '00DRM0000005eso', 'a', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM00000000Cz', buttonId: '573RM00000000HT', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
