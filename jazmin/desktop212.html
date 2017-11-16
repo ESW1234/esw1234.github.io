@@ -22,7 +22,7 @@
 
 <!-- Invitations - Static HTML/CSS/JS -->
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-label="Chat invitation">
-	<div id= "embeddedServiceContent" aria-live="assertive">
+<!-- 	<div id= "embeddedServiceContent" aria-live="assertive"> -->
 		<div class="embeddedServiceInvitationHeader">
 			<img id="embeddedServiceAvatar">
 			<span class="embeddedServiceTitleText">Need help?</span>
@@ -35,14 +35,13 @@
 			<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
 			<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
 		</div>
-	</div>
 </div>
 
 <style type='text/css'>
-	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
+	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; display: none; }
 	.embeddedServiceInvitation { background-color: transparent; max-width: 312px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
 	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
-	#embeddedServiceContent { display: none; }
+/* 	#embeddedServiceContent { display: none; } */
 	.embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #222222; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
 	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
 	.embeddedServiceInvitationHeader .embededdServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: clip; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
