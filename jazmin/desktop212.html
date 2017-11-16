@@ -22,23 +22,22 @@
 
 <!-- Invitations - Static HTML/CSS/JS -->
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-label="Chat invitation">
-<!-- 	<div id= "embeddedServiceContent" aria-live="assertive"> -->
-		<div class="embeddedServiceInvitationHeader">
-			<img id="embeddedServiceAvatar">
-			<span class="embeddedServiceTitleText">Need help?</span>
-			<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
-		</div>
-		<div class="embeddedServiceInvitationBody">
-			<p>We're happy to answer your questions!</p>
-		</div>
-		<div class="embeddedServiceInvitationFooter">
-			<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
-			<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
-		</div>
+	<div class="embeddedServiceInvitationHeader">
+		<img id="embeddedServiceAvatar">
+		<span class="embeddedServiceTitleText">Need help?</span>
+		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
+	</div>
+	<div class="embeddedServiceInvitationBody">
+		<p>We're happy to answer your questions!</p>
+	</div>
+	<div class="embeddedServiceInvitationFooter">
+		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
+		<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
+	</div>
 </div>
 
 <style type='text/css'>
-	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; display: none; }
+	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
 	.embeddedServiceInvitation { background-color: transparent; max-width: 312px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
 	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
 /* 	#embeddedServiceContent { display: none; } */
