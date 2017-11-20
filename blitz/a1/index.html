@@ -19,12 +19,14 @@
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -49,7 +51,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 	
-
+/*
 embedded_svc.settings.prepopulatedPrechatFields = {
 	"firstName": "yamini",
 	"lastName": "katta",
@@ -63,7 +65,7 @@ embedded_svc.settings.prepopulatedPrechatFields = {
 	Type: "Question",
 	Subject: "Laptop issues."
 };
-		
+*/		
 	
 embedded_svc.init(
 	'https://na44.stmfa.stm.salesforce.com',
