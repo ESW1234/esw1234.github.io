@@ -19,12 +19,14 @@
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 @font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -48,39 +50,22 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
-
-/*
-embedded_svc.settings.prePopulatedPreChatFields0 = [
-	{
-		name: "firstName", value: "yamini"
-	},
-	{
-		name: "lastName", value: "katta"
-	},
-	{
-		name: "email", value: "yamini.katta@salesforce.com (mailto:yamini.katta@salesforce.com)"
-	}
-];
-*/
 	
 /*
-embedded_svc.settings.prePopulatedPreChatFields = {
-	"firstName": "yamini",
-	"lastName": "katta",
-	"email": "yamini.katta@salesforce.com"
-};
-*/
-
-	
 embedded_svc.settings.prepopulatedPrechatFields = {
 	"firstName": "yamini",
 	"lastName": "katta",
-	"email": "yamini.katta@salesforce.com"
+	"email": "yamini.katta@salesforce.com",
+	
+	FirstName: "Yamini",
+	LastName: "Katta",
+	Email: "test@salesforce.com",
+	Priority: "Medium",
+	Phone: "123-456-7890",
+	Type: "Question",
+	Subject: "Laptop issues."
 };
-
-	
-	
+*/		
 	
 embedded_svc.init(
 	'https://na44.stmfa.stm.salesforce.com',
@@ -101,7 +86,7 @@ embedded_svc.init(
 	
 if (!window.embedded_svc) {
 	var s = document.createElement('script');
-	s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js');
+	s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js');
 	s.onload = function() {
 		initESW(null);
 	};
