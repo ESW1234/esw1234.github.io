@@ -29,6 +29,7 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+embedded_svc.settings.prepopulatedPreChatFields = [{name: "firstName", value: "yamini"}, {name: "lastName", value: "katta"}, {name: "email", value: "yamini.katta@salesforce.com (mailto:yamini.katta@salesforce.com)"}];
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
