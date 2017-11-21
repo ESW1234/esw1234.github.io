@@ -38,31 +38,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
-embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":false,"doFind":false,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},{"doCreate":false,"doFind":false,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},{"doCreate":false,"doFind":false,"fieldName":"Email","isExactMatch":true,"label":"Email"}],"entityName":"Contact"}]; 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
 
 embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFP', 'c', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000093EAA_15f987d45ff'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://analshah-wsm9.internal.salesforce.com:6109'); }</script>
    </div>
-   <!--div id="snapins_invite">  
-    <div id = "header" role="header">
-    <h2>Need a little help !</h2>
-   </div> 
-    <p>If you need help, just tap here and you will be able to chat with us</p>  
-  <button type="button" id="startChat">Start Chat</button>
-  <button type="button" id="exit">Close </button>
-</div>  
-   <script type='text/javascript'>
-   (function() {   
-    document.getElementById('exit').onclick = function() {  
-        embedded_svc.inviteAPI.inviteButton.rejectInvite();
-    };
-    document.getElementById('startChat').onclick = function() {  
-        embedded_svc.inviteAPI.inviteButton.acceptInvite();
-    };
-})();  
-      </script>
-</div-->
 </body>
 </html>
