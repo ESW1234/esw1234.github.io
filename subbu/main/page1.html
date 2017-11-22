@@ -52,9 +52,9 @@ embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.direct2ButtonRouting = function(prechatFormData) {
-if (prechatFormData[0].value == "other")
+if (prechatFormData[0].value === "other")
 	return "573xx000000006n";
-else if (prechatFormData[0].value == "null")
+else if (prechatFormData[0].value === "null")
 	return null;
 };
 
