@@ -2,6 +2,15 @@
 <html>
 <head></head>
 <body>
+  
+  <div id="salesforce-login" data-login-event="onLogin"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<button onClick="SFIDWidget.logout()">Log out</button>
 
 <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
@@ -28,10 +37,10 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 embedded_svc.settings.fieldServiceHomeImgURL = '';
 embedded_svc.settings.fieldServiceLogoImgURL = '';
 embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
-embedded_svc.settings.loginClientId = '';
-embedded_svc.settings.loginRedirectURL = '';
-embedded_svc.settings.loginTargetQuerySelector = '';
-embedded_svc.settings.fieldServiceStartLabel = '';
+embedded_svc.settings.loginClientId = '3MVG9kV2EzIiYBBR53ja9Pa.ThqDJt5bthZ5yfKlHvYivcVc9nhCQtInhtE.95lFIMDxamzvvGaGo6ypF1SZy';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/callback_bryan_na40.html';
+embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+embedded_svc.settings.fieldServiceStartLabel = 'logged in';
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
