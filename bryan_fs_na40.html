@@ -12,15 +12,22 @@
 	<br>
 	<button onClick="SFIDWidget.logout()">Log out</button>
 
+	
+	
+	
+	
+	
+	
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
@@ -44,9 +51,11 @@ embedded_svc.settings.fieldServiceStartLabel = 'logged in';
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
-//embedded_svc.settings.prePopulatedPreChatFields = '[]'; //Sets the auto-population of pre-chat form fields
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('http://bchu-wsm1.internal.salesforce.com:6109', 'http://nwk00dxx00-15f118735d6-developer-edition.localhost.soma.force.com:6109/poojaMainCommunity', gslbBaseURL, '00Dxx0000001gGI', 'newDeploymentFS', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://bchu-wsm1.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('https://na40.stmfa.stm.salesforce.com', 'https://snapins-15f082fb956-15fdfdeb73f.stmfa.stm.force.com/napili2', gslbBaseURL, '00DS30000000MRB', 'bryan', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na40.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+	
+	
 
 </body>
 </html>
