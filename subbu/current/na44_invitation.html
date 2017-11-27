@@ -24,6 +24,8 @@
 
 
 	<div id="button_goes_here"></div>
+	<!--****************************** 4.0 Inivtation ****************************-->
+<!--
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #2CC78B; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #2CC78B; }
@@ -34,7 +36,6 @@
 	}
 </style>
 
-<!-- Invitations - Static HTML/CSS/JS -->
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog" aria-label="Chat invitation">
 	<div class="embeddedServiceInvitationHeader">
 		<img id="embeddedServiceAvatar">
@@ -102,7 +103,60 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15eee7b817c.stmfa.stm.force.com/212100517', gslbBaseURL, '00DRM0000005cdE', 'invitation1', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004C9N', buttonId: '573RM0000004CU8', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002C2AQ_15f7eb6eff5'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15eee7b817c.stmfa.stm.force.com/212100517',
+		  gslbBaseURL, '00DRM0000005cdE', 'invitation1', 
+		  { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+		   deploymentId: '572RM0000004C9N', buttonId: '573RM0000004CU8', 
+		   baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002C2AQ_15f7eb6eff5'}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+			initESW('https://service.force.com'); }</script>
+-->
+
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init('https://na44.stmua.stm.salesforce.com', '
+https://justincommunitessubdomain-15-15fff20c92d.stmua.stm.force.com/210112717', gslbBaseURL, '00DRM0000005Ufc', 'omni', 
+{ baseLiveAgentContentURL: 'https://c.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/content', 
+deploymentId: '572RM0000004CHJ', buttonId: '573RM0000004CHJ', 
+baseLiveAgentURL: 'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', 
+eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000Q2AQ_15fff56f046'}); };
+if (!window.embedded_svc) {
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://na44.stmua.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+initESW('https://na44.stmua.stm.salesforce.com'); }</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
