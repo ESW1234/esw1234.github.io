@@ -61,15 +61,16 @@
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
 
-		embedded_svc.init(
-			'https://na1-blitz01.soma.salesforce.com', 
-			'https://snapins-15f082fb956-15fbc2ac0c7.blitz01.soma.force.com/napili3', 
-			gslbBaseURL, '00DD00000008b0f', 'EswFS', { }
-		); 
+		embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 
+				  'https://snapins-15f082fb956-15fbc2ad4a7.blitz01.soma.force.com/napili2', 
+				  gslbBaseURL, '00DD00000008b14', 
+				  'EswFS', { }
+				 ); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.setAttribute('src', 
+			       'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); 
 		s.onload = function() { 
 			initESW(null); 
 		}; 
@@ -77,6 +78,7 @@
 	} else { 
 		initESW('https://service.force.com'); 
 	}
+	</script>
 </script>
 
 	
