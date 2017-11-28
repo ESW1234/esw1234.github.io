@@ -28,25 +28,43 @@
 </div>
 <div id="button_goes_here">
 	
-	<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #653838; font-family: "Salesforce Sans", sans-serif;}@font-face {font-family: 'Salesforce Sans';src: url(https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff)}</style>
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src=''></script>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-
+var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
-//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
-//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
-embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-1582bb64c2f.blitz02.soma.force.com', '572D00000004D18', '00DD00000008Vqk', '573D00000004DE5', '1.0', gslbBaseUrl, '39.0', 'Kanan_Test', 'EmbeddedServiceLiveAgent_Parent04ID0000000005QMAQ_1586b337703'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
-	
-	
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Field Service
+embedded_svc.settings.fieldServiceHomeImgURL = '';
+embedded_svc.settings.fieldServiceLogoImgURL = '';
+embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
+embedded_svc.settings.loginClientId = '';
+embedded_svc.settings.loginRedirectURL = '';
+embedded_svc.settings.loginTargetQuerySelector = '';
+embedded_svc.settings.fieldServiceStartLabel = '';
+
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://snapins-15f082fb956-15fbc2ad4a7.blitz01.soma.force.com/napili2', gslbBaseURL, '00DD00000008b14', 'EswFS', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
+</script>
 	
 	
 	<!--<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #5CAB4A; font-family: "Comic Sans MS", sans-serif;}</style>
