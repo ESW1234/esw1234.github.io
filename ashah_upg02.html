@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -13,7 +10,8 @@
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #9200B7; font-family: "Impact", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #9200B7; }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<!-- start 3.1 snippet -->
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -34,7 +32,121 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/p1483488811497', gslbBaseURL, '00D300000000McJ', 'justin_s_deployment', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '57230000000004T', buttonId: '5733000000000Cn', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-upg02.soma.salesforce.com'); }</script>
+embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/p1483488811497', gslbBaseURL, '00D300000000McJ', 'justin_s_deployment', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '57230000000004T', buttonId: '5733000000000Cn', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-upg02.soma.salesforce.com'); }</script> -->
+<!-- End of 3.1 snippet -->
+
+<!-- start 2.2 snippet -->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseUrl) {
+		embedded_svc.settings.avatarImgURL = '../avatar.png';
+		embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+		embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+		embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.defaultMinimizedText = 'chat 2.2'; // (Defaults to Chat with an Expert)
+		embedded_svc.settings.offlineText = 'offline 2.2'; // (Defaults to Agent Offline)
+		//embedded_svc.settings.onlineLoadingText = '...'; // (Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		// TODO change 2.0 to 2.2 after bug fix
+		embedded_svc.init('https://na1-upg02.soma.salesforce.com', 
+				  'https://d.la-blitz01.soma.salesforce.com/chat', 
+				  'https://c.la-blitz01.soma.salesforce.com/content', 
+				  'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/p1483488811497', 
+				  '57230000000004T', 
+				  '00D300000000McJ', 
+				  '5733000000000Cn', 
+				  '2.0', 
+				  gslbBaseUrl, 
+				  '40.0', 
+				  'justin_s_deployment', 
+				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+ 		);   
+	}; 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s);
+	} else { initESW('https://na1-upg02.soma.salesforce.com'); }
+</script> -->
+<!-- end 2.2 snippet -->
+
+<!-- start 2.0 snippet -->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseUrl) {
+		embedded_svc.settings.avatarImgURL = '../avatar.png';
+		embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+		embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+		embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.defaultMinimizedText = 'chat 2.0'; // (Defaults to Chat with an Expert)
+		embedded_svc.settings.offlineText = 'offline 2.0'; // (Defaults to Agent Offline)
+		//embedded_svc.settings.onlineLoadingText = '...'; // (Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		embedded_svc.init('https://na1-upg02.soma.salesforce.com', 
+				  'https://d.la-blitz01.soma.salesforce.com/chat', 
+				  'https://c.la-blitz01.soma.salesforce.com/content', 
+				  'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/p1483488811497', 
+				  '57230000000004T', 
+				  '00D300000000McJ', 
+				  '5733000000000Cn', 
+				  '2.0', 
+				  gslbBaseUrl, 
+				  '40.0', 
+				  'justin_s_deployment', 
+				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+		 ); 
+	}; 
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); 
+		s.onload = function() { 
+			initESW(null); 
+		}; 
+		document.body.appendChild(s);
+	} else { initESW('https://na1-upg02.soma.salesforce.com'); }
+</script> -->
+<!-- end 2.0 snippet -->
+
+<!-- start 1.0 snippet -->
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.js'></script>
+<script type='text/javascript'>
+        var initESW = function(gslbBaseUrl) {
+                embedded_svc.settings.avatarImgURL = '../avatar.png';
+                embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
+                embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+                embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
+                
+                embedded_svc.settings.displayHelpButton = true; //Or false
+                embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
+                //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+                //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+                //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+                embedded_svc.init('https://na1-upg02.soma.salesforce.com', 
+                        'https://d.la-blitz01.soma.salesforce.com/chat', 
+                        'https://c.la-blitz01.soma.salesforce.com/content', 
+                        'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/p1483488811497', 
+                        '57230000000004T', '00D300000000McJ', '5733000000000Cn', 
+                        '1.0', gslbBaseUrl, '39.0'); 
+        }; 
+                
+        if (!window.embedded_svc) { 
+                var s = document.createElement('script'); 
+                s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); 
+                s.onload = function() { initESW(null); }; 
+                document.body.appendChild(s);
+        } else { 
+                initESW('https://na1-upg02.soma.salesforce.com');
+        }
+</script>
+<!-- end 1.0 snippet -->
 </div>
 </body>
 </html>
