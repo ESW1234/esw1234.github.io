@@ -1,16 +1,15 @@
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<title>Simple Chat (Desktop - Main - v4.0 Snippet)</title>
-		<!--Responsive code here-->
 	</head>
 
+	
+	
 	<body>
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-
 			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-
 			@font-face {
 				font-family: 'Salesforce Sans';
 				src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -18,10 +17,12 @@
 			}
 		</style>
 
+		
 <!-- commented out to prevent 404 error from showing
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 ...doesn't matter in test env -->
 
+		
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -38,55 +39,40 @@
 				embedded_svc.settings.prechatBackgroundImgURL = '';
 				embedded_svc.settings.waitingStateBackgroundImgURL = '';
 				embedded_svc.settings.smallCompanyLogoImgURL = '';
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+				// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+				//Returns a valid button ID.
+				//};
 
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 				
-				//embedded_svc.settings.devMode = false;
+				embedded_svc.settings.prepopulatedPrechatFields = {
+					"FirstName": "John",
+					"LastName": "Doe"
+				};
+
 				embedded_svc.settings.devMode = true;
-				
-				embedded_svc.settings.prePopulatedPreChatFields = [
-					{
-						"fieldName": "FirstName",
-						"fieldValue": "John"/*,
-						"isVisible": true,
-						"isEnabled": true*/
-					},
-					{
-						"fieldName": "LastName",
-						"fieldValue": "Doe"
-					},
-					{
-						"fieldName": "Email",
-						"fieldValue": "john@gmail.com"
-					},
-					{
-						"fieldName": "Subject",
-						"fieldValue": "Hello"
-					}
-				];
 
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
-					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
+					'http://nwk00dxx0000000001.localhost.soma.force.com:6109/',
 					gslbBaseURL,
-					'00Dxx0000001gER',
-					'MyNewSnapInDeployment',
+					'00Dxx0000000001',
+					'MyFirstSnapInDeployment',
 					{
 						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
 						deploymentId: '572xx0000000001',
 						buttonId: '573xx0000000001',
 						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15eaba40756'
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_16009b17117'
 					}
 				);
 			};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-
 				s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/4.0/esw.js');
-
 				s.onload = function() {
 					initESW(null);
 				};
@@ -94,7 +80,7 @@
 				document.body.appendChild(s);
 			}
 			else {
-				initESW('http://jbeeghly-wsm0.internal.salesforce.com:6109');
+				initESW('https://service.force.com');
 			}
 		</script>
 	</body>
