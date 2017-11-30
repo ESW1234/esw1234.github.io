@@ -23,17 +23,18 @@
   <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
 
 
-<div id="button_goes_here">
+<div id="button_goes_here"></div>
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -50,20 +51,16 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na7-blitz04.soma.salesforce.com', 'https://nwk00dr00000008mlt.blitz04.soma.force.com/210070217',
-gslbBaseURL, '00DR00000008mlt', '3.0', 'deployment1', 
-{ baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572R000000000T9', 
-buttonId: '573R000000000ZP', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', 
-eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR00000000035MAA_15d148cd92e'}); };
-if (!window.embedded_svc) { var s = document.createElement('script');
-s.setAttribute('src', 'https://na7-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js');
-s.onload = function() { initESW(null); }; 
-document.body.appendChild(s); } else { initESW('https://na7-blitz04.soma.salesforce.com'); }
-</script>
+embedded_svc.init('https://na9-blitz01.soma.salesforce.com', 'https://snapins-160043610b2.blitz01.soma.force.com/napili', gslbBaseURL, '00DRR0000000Ndd', 'config1', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572RR000000000f', buttonId: '573RR000000000k', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRR0000004C982AE_1600e6b3ce7'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na9-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
@@ -86,8 +83,6 @@ But in those nervous closing stages of Sunday night’s game, perhaps for the fi
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
 Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
 For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
-	204
-	</div>
    </body>
 </html>
     <style>
