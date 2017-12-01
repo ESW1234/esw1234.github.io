@@ -13,8 +13,7 @@
 	<p align="center"><font color = "red"><a href="hidden_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
   <br>
 
-<div id="button_goes_here">
-<!--
+	<div id="button_goes_here"></div>
 <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -24,66 +23,29 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 
-		  'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617', gslbBaseURL, '00Dxx0000001gER',
-		  'X210_07_26_17', { baseLiveAgentContentURL: 'http://skrish-wsm2.internal.salesforce.com:8095/content', 
-				    deploymentId: '572xx0000000001', buttonId: '573xx0000000001', chasitorVersion: '41.0',
-				    baseLiveAgentURL: 'http://skrish-wsm2.internal.salesforce.com:8096/chat',
-				    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15d80d32dc2'}); };
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script');
-		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/3.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); } else { initESW('http://skrish-wsm2.internal.salesforce.com:57983'); }</script>
--->
-<style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>	-->
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
-//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
-//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 'http://skrish-wsm2.internal.salesforce.com:8096/chat', 
-		  'http://skrish-wsm2.internal.salesforce.com:8095/content', 
-		  'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617', '572xx0000000001', 
-		  '00Dxx0000001gER', '573xx0000000001', '2.2', gslbBaseUrl, '40.0', 'X210_07_26_17', 
-		  'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15d80d32dc2'); };
-	if (!window.embedded_svc) {
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/2.2/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
-	else { initESW('http://skrish-wsm2.internal.salesforce.com:57983'); }</script>
+
+embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommunitessubdomain-15-160141d6110.upg02.soma.force.com/p1483488811497', gslbBaseURL, '00D300000000Mb1', 'liveagent', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '57230000000000G', buttonId: '5733000000000Gq', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I30000000000BEAQ_160145928a4'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-upg02.soma.salesforce.com'); }</script>
+
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
@@ -125,4 +87,3 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 		    width: 65%;
 	    }
     </style>
-Contact GitHub API Training Shop Blog About
