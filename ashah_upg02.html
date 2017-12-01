@@ -10,6 +10,35 @@
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #9200B7; font-family: "Impact", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #9200B7; }
 </style>
+<!-- Start of 4.0 snippet -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+embedded_svc.settings.defaultMinimizedText = 'chat 4.0'; //(Defaults to Chat with an Expert)
+embedded_svc.settings.disabledMinimizedText = 'offline 4.0'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+
+embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommunitessubdomain-15-16009494ade.upg02.soma.force.com/snapin', gslbBaseURL, '00D300000000McJ', 'a212', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '57230000000004T', buttonId: '5733000000000Cn', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I30000000000aEAA_1600fbc7671'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+<!-- End of 4.0 snippet -->
 <!-- start 3.1 snippet -->
 <!--script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
@@ -36,6 +65,7 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
 <!-- End of 3.1 snippet -->
 
 <!-- start 2.2 snippet -->
+<!--
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseUrl) {
@@ -72,7 +102,7 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
 		}; 
 		document.body.appendChild(s);
 	} else { initESW('https://na1-upg02.soma.salesforce.com'); }
-</script> 
+</script> -->
 <!-- end 2.2 snippet -->
 
 <!-- start 2.0 snippet -->
