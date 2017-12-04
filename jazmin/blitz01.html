@@ -170,7 +170,7 @@ document.body.appendChild(s);
 <!------------------------------------------------ 3.0 SNIPPET END -------------------------------------------------->
    
 <!------------------------------------------------ 2.2 SNIPPET ------------------------------------------------------>
-
+<!--
  <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0AE06B; font-family: "Comic Sans MS", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0AE06B; }
@@ -217,7 +217,7 @@ initESW(null);
 document.body.appendChild(s);
 } else { initESW('https://na1-blitz01.soma.salesforce.com'); }
 </script>
-
+-->
 <!------------------------------------------------ 2.2 SNIPPET END -------------------------------------------------->
    
 <!------------------------------------------------ 2.0 SNIPPET ------------------------------------------------------>
@@ -263,8 +263,42 @@ document.body.appendChild(s);
 </script>
 -->
 <!------------------------------------------------ 2.0 SNIPPET END -------------------------------------------------->  
-   
-   
+<!------------------------------------------------ 1.0 SNIPPET ------------------------------------------------------>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.init(
+'https://jazminscustomdomain.blitz01.blitz.salesforce.com', 
+'https://d.la-blitz01.soma.salesforce.com/chat', 
+'https://c.la-blitz01.soma.salesforce.com/content',
+'https://snapins-15f54d4ef2f.blitz01.soma.force.com/napili1025', 
+'572D00000004G1T', 
+'00DD00000008agF', 
+'573D00000004GJ8', 
+'1.0', 
+gslbBaseUrl, 
+'39.0', 
+'githubPage', 
+'EmbeddedServiceLiveAgent_Parent04ID000000000DjMAI_15f54e10ee1'
+); 
+}; 
+if (!window.embedded_svc) { 
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); 
+s.onload = function() { 
+initESW(null); 
+}; 
+document.body.appendChild(s);
+} else { initESW('https://na1-blitz01.soma.salesforce.com'); }
+</script>
+
+<!------------------------------------------------ 1.0 SNIPPET END -------------------------------------------------->
 </body>
 </html>
     <style>
