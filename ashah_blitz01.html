@@ -13,7 +13,7 @@ var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = 'ja'; //For example, enter 'en' or 'en-US'
 
-embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":true,"doFind":true,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},{"doCreate":true,"doFind":true,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},{"doCreate":true,"doFind":true,"fieldName":"Email","isExactMatch":true,"label":"Email"}],"entityName":"Contact"}];
+embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":true,"doFind":false,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},{"doCreate":true,"doFind":false,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},{"doCreate":true,"doFind":true,"fieldName":"Email","isExactMatch":true,"label":"Email"}],"entityName":"Contact"}];
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
