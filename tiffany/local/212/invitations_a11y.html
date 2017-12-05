@@ -14,7 +14,7 @@
 </style>
 
 <!-- Invitations - Static HTML/CSS/JS -->
-<div class="embeddedServiceInvitation" id="snapins_invite" role="dialog">
+<div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog">
 	<div class="embeddedServiceInvitationHeader">
 		<img id="embeddedServiceAvatar">
 		<span class="embeddedServiceTitleText">Need help?</span>
@@ -77,7 +77,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 //Returns a valid button ID.
 //};
 	
-
+embedded_svc.settings.devMode = true;
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
