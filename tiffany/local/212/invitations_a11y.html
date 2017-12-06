@@ -15,13 +15,13 @@
 
 <!-- Invitations - Static HTML/CSS/JS -->
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
-	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext">
+	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
 		<img id="embeddedServiceAvatar">
 		<span class="embeddedServiceTitleText" id="snapsins_titletext">Need help?</span>
 		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
 	</div>
 	<div class="embeddedServiceInvitationBody">
-		<p>We're happy to answer your questions!</p>
+		<p id="snapins_bodytext">We're happy to answer your questions!</p>
 	</div>
 	<div class="embeddedServiceInvitationFooter">
 		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
