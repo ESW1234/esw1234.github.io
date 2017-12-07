@@ -49,6 +49,7 @@
 	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
 	.embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
 	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus { outline: none; }
 	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; outline: none; }
 	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus::before {
 		content: " ";
@@ -58,7 +59,6 @@
 		width: 60%;
 		height: 60%;
 		background-color: rgba(255, 255, 255, 0.2);
-		opacity: 0.2;
 		border-radius: 4px;
 		pointer-events: none;
 	}
