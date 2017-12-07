@@ -66,7 +66,7 @@
             s.onload = function () {
                 initESW(null);
             };
-            document.body.appendChild(s);
+            document.body.prepend(s);
         } else {
             initESW('https://service.force.com');
         }
@@ -74,6 +74,5 @@
 
     <h1>Below Button</h1>
 </body>
-<div>hey</div>
 
 </html>
