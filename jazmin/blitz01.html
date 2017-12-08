@@ -40,26 +40,28 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 	
 embedded_svc.settings.extraPrechatInfo = [{
   "entityFieldMaps": [{
-    "doCreate":false,
+    "doCreate":true,
     "doFind":true,
     "fieldName":"LastName",
     "isExactMatch":true,
     "label":"Last Name"
   }, {
-    "doCreate":false,
+    "doCreate":true,
     "doFind":true,
     "fieldName":"FirstName",
     "isExactMatch":true,
     "label":"First Name"
   }, {
-    "doCreate":false,
+    "doCreate":true,
     "doFind":true,
     "fieldName":"Email",
     "isExactMatch":true,
     "label":"Email"
   }],
-  "entityName":"Contact"
+  "entityName":"Contact", 
+  "saveToTranscript": "" 
 }]; 
+
 
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
