@@ -101,7 +101,14 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-embedded_svc.settings.devMode = true;
+embedded_svc.settings.prepopulatedPreChatFields = {
+FirstName: “John”,
+LastName: “Doe”,
+Email: “john.doe@salesforce.com”,
+Subject: “Hello”
+};
+
+//embedded_svc.settings.devMode = true;
 
 embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-15fe5b0b0e3.stmfb.stm.force.com/212112217', gslbBaseURL, '00DRM0000005iqb', 'Invitation1', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004CTr', buttonId: '573RM0000004DPu', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002L2AQ_16014d40ce0'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>Portugal Stuns France to Win Euro 2016 Final
 
