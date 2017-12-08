@@ -7,12 +7,18 @@
 <body>
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
-            background-color: #9200B7;
-            font-family: "Impact", sans-serif;
+            background-color: #C12E2E;
+            font-family: "Salesforce Sans", sans-serif;
         }
 
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
-            outline: 1px solid #9200B7;
+            outline: 1px solid #C12E2E;
+        }
+
+        @font-face {
+            font-family: 'Salesforce Sans';
+            src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+            url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
         }
     </style>
 
@@ -42,21 +48,19 @@
             embedded_svc.settings.entryFeature = 'LiveAgent';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-            embedded_svc.init('https://justin208blitz-15a250fddfb-15cb3237173.blitz01.blitz.salesforce.com',
-                'https://justin208blitz-15a250fddfb-15cb3237173.blitz01.soma.force.com/laSite', gslbBaseURL,
-                '00DR00000008mUi', 'justin_s_deployment', {
+            embedded_svc.init('https://na1-blitz01.soma.salesforce.com',
+                'https://mysamplesitena1blitz01212.blitz01.soma.force.com', gslbBaseURL, '00DD00000008azN',
+                'will', {
                     baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content',
-                    deploymentId: '572R000000000Oc',
-                    buttonId: '573R000000000UT',
+                    deploymentId: '572D00000004GEN',
+                    buttonId: '573D00000004GXq',
                     baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat',
-                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID000000000EqMAI_15fb75b0b9a'
                 });
         };
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src',
-                'https://justin208blitz-15a250fddfb-15cb3237173.blitz01.blitz.salesforce.com/embeddedservice/4.0/esw.min.js'
-            );
+            s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.0/esw.min.js');
             s.onload = function () {
                 initESW(null);
             };
