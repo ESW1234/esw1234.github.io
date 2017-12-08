@@ -42,6 +42,33 @@
 </div>
 
 <style type='text/css'>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<!-- Invitations - Static HTML/CSS/JS -->
+<div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog" aria-label="Chat invitation">
+	<div class="embeddedServiceInvitationHeader">
+		<img id="embeddedServiceAvatar">
+		<span class="embeddedServiceTitleText">Need help?</span>
+		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
+	</div>
+	<div class="embeddedServiceInvitationBody">
+		<p>We're happy to answer your questions!</p>
+	</div>
+	<div class="embeddedServiceInvitationFooter">
+		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
+		<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
+	</div>
+</div>
+
+<style type='text/css'>
 	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
 	.embeddedServiceInvitation { background-color: transparent; max-width: 312px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
 	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
@@ -66,6 +93,7 @@
 		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
 	})();
 </script>
+<!-- End of Invitations - Static HTML/CSS/JS -->
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -94,11 +122,6 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
 embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iqj', 'LAInvitation3', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004CXz', buttonId: '573RM0000004CY7', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002g2AA_15fa678c61c'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-<style type='text/css'>
-.embeddedServiceSidebar.modalContainer {
-  transform: none;
-}
-</style>
 	
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
