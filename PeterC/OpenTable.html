@@ -8,21 +8,17 @@
 </head> 
 <body>
 <div><img src="https://esw1234.github.io/PeterC/images/OT_Dining_Rewards.png" height="1200" width="1920"/>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #db3948; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #db3948; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
 
-<style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Trebuchet MS", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-</style>
-<style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #db3948; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #db3948; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -39,11 +35,16 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://servicecloudpm.my.salesforce.com', 'https://stanleyhcdf15-14fa5059341.secure.force.com', gslbBaseURL, '00DB00000002V3P', 'peter_chung_deployment', { baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content', deploymentId: '572B00000000Ksw', buttonId: '573B00000000S6c', baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CFVMA2_15a06137cef'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://servicecloudpm.my.salesforce.com/embeddedservice/3.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://servicecloudpm.my.salesforce.com'); }</script>
-
+embedded_svc.init('https://servicecloudpm.my.salesforce.com', 'https://servicepm.force.com/Community3', gslbBaseURL, '00DB00000002V3P', 'peter_chung_deployment', { baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content', deploymentId: '572B00000000Ksw', buttonId: '573B00000000S6c', baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CFVMA2_15a06137cef'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://servicecloudpm.my.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+	
 </body>
 </html>
