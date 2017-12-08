@@ -20,17 +20,17 @@
 	}
 </style>
 
-<!-- Invitations -->
-<div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog" aria-label="Chat invitation">
-	<div class="embeddedServiceInvitationHeader">
+<!-- Invitations - Static HTML/CSS/JS -->
+<div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
+	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
 		<img id="embeddedServiceAvatar">
-		<span class="embeddedServiceTitleText">Need help?</span>
+		<span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
 		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
 	</div>
 	<div class="embeddedServiceInvitationBody">
-		<p>We're happy to answer your questions!</p>
+		<p id="snapins_bodytext">We're happy to answer your questions!</p>
 	</div>
-	<div class="embeddedServiceInvitationFooter">
+	<div class="embeddedServiceInvitationFooter" aria-describedby="snapins_bodytext">
 		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
 		<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
 	</div>
@@ -61,7 +61,7 @@
 		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
 	})();
 </script>
-<!-- End of Invitations -->
+<!-- End of Invitations - Static HTML/CSS/JS -->
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
