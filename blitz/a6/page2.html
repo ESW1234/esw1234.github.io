@@ -15,105 +15,42 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
 
-
-<!-- start 3.1 snippet -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'online 3.1'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'offline 3.1'; //(Defaults to Agent Offline)
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
-		embedded_svc.settings.avatarImgURL = '';
-		embedded_svc.settings.prechatBackgroundImgURL = '';
-		embedded_svc.settings.waitingStateBackgroundImgURL = '';
-		embedded_svc.settings.smallCompanyLogoImgURL = '';
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-		embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
-				  'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', 
-				  gslbBaseURL, 
-				  '00DRM0000005iAS', 
-				  'OmniButton6', 
-				  { 
-					baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-					deploymentId: '572RM0000004D18', 
-					buttonId: '573RM0000004D61', 
-					baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002v2AA_15fa685d9e2'
-				  }
-		); 
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
-</script> -->
-<!-- end 3.1 snippet -->
-
-
-<!-- start 2.2 snippet -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseUrl) {
-
-		embedded_svc.settings.avatarImgURL = '';
-		embedded_svc.settings.prechatBackgroundImgURL = '';
-		embedded_svc.settings.waitingStateBackgroundImgURL = '';
-		embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.settings.defaultMinimizedText = 'chat 2.2'; // (Defaults to Chat with an Expert)
-		embedded_svc.settings.offlineText = 'offline 2.2'; // (Defaults to Agent Offline)
-		//embedded_svc.settings.onlineLoadingText = '...'; // (Defaults to Loading)
-
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
-				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', 
-				  '572RM0000004D18', 
-				  '00DRM0000005iAS', 
-				  '573RM0000004D61', 
-				  '2.2', 
-				  gslbBaseUrl, 
-				  '40.0', 
-				  'OmniButton6', 
-				  'EmbeddedServiceLiveAgent_Parent04IRM000000002v2AA_15fa685d9e2'
-		 ); 
-	}; 
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/2.2/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
-</script>
-<!-- end 2.2 snippet -->
-
-
+embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iqj', 'OmniButton6', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004CXz', buttonId: '573RM0000004CYA', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002v2AA_15fa685d9e2'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 </div>
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
