@@ -37,51 +37,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
-	
+
 embedded_svc.settings.extraPrechatInfo = [{
-  "entityName": "Contact",
-  "entityFieldMaps": [{
-    "isExactMatch": true,
-    "fieldName": "FirstName",
-    "doCreate": true,
-    "doFind": true,
-    "label": "firstName"
-  }, {
-    "isExactMatch": true,
-    "fieldName": "LastName",
-    "doCreate": true,
-    "doFind": true,
-    "label": "LastName"
-  }, {
-    "isExactMatch": true,
-    "fieldName": "Email",
-    "doCreate": true,
-    "doFind": true,
-    "label": "Email"
-  }]
-}, {
-  "entityName": "Case",
-  "entityFieldMaps": [{
-    "isExactMatch": false,
-    "fieldName": "Subject",
-    "doCreate": true,
-    "doFind": false,
-    "label": "issue"
-  }, {
-    "isExactMatch": false,
-    "fieldName": "Status",
-    "doCreate": true,
-    "doFind": false,
-    "label": "Status"
-  }, {
-    "isExactMatch": false,
-    "fieldName": "Origin",
-    "doCreate": true,
-    "doFind": false,
-    "label": "Origin"
-  }]
-}, {
   "entityName": "Account",
+  "linkToEntityName": "Case",
+  "linkToEntityField": "AccountId",
   "entityFieldMaps": [{
     "isExactMatch": true,
     "fieldName": "Name",
@@ -92,7 +52,7 @@ embedded_svc.settings.extraPrechatInfo = [{
 }];
 embedded_svc.settings.extraPrechatFormDetails = [{
   "label": "firstName",
-  "value": "John",
+  "value": "Jane",
   "displayToAgent": true
 }, {
   "label": "LastName",
@@ -100,14 +60,13 @@ embedded_svc.settings.extraPrechatFormDetails = [{
   "displayToAgent": false
 }, {
   "label": "Email",
-  "value": "john.doe@salesforce.com",
+  "value": "jane.doe@gmail.com",
   "displayToAgent": true
 }, {
   "label": "issue",
   "value": "Do the work",
   "displayToAgent": true
 }];
-
 
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
