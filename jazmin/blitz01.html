@@ -38,42 +38,20 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 //Returns a valid button ID.
 //};
 	
-embedded_svc.settings.extraPrechatFormDetails = [{
-  "label": "First Name",
-  "value": "John",
-  "displayToAgent": true
-}, {
-  "label": "Last Name",
-  "value": "Doe",
-  "displayToAgent": true
-}, {
-  "label": "Email",
-  "value": "john.doe@salesforce.com",
-  "displayToAgent": true
-}, {
-  "label": "issue",
-  "value": "Overriding your setup",
-  "displayToAgent": true
-}];
-
 embedded_svc.settings.extraPrechatInfo = [{
   "entityName": "Contact",
-  "showOnCreate": true,
-  "linkToEntityName": "Case",
-  "linkToEntityField": "ContactId",
-  "saveToTranscript": "ContactId",
   "entityFieldMaps": [{
     "isExactMatch": true,
     "fieldName": "FirstName",
     "doCreate": true,
     "doFind": true,
-    "label": "First Name"
+    "label": "firstName"
   }, {
     "isExactMatch": true,
     "fieldName": "LastName",
     "doCreate": true,
     "doFind": true,
-    "label": "Last Name"
+    "label": "LastName"
   }, {
     "isExactMatch": true,
     "fieldName": "Email",
@@ -83,8 +61,6 @@ embedded_svc.settings.extraPrechatInfo = [{
   }]
 }, {
   "entityName": "Case",
-  "showOnCreate": true,
-  "saveToTranscript": "CaseId",
   "entityFieldMaps": [{
     "isExactMatch": false,
     "fieldName": "Subject",
@@ -104,7 +80,34 @@ embedded_svc.settings.extraPrechatInfo = [{
     "doFind": false,
     "label": "Origin"
   }]
-}]
+}, {
+  "entityName": "Account",
+  "entityFieldMaps": [{
+    "isExactMatch": true,
+    "fieldName": "Name",
+    "doCreate": true,
+    "doFind": true,
+    "label": "LastName"
+  }]
+}];
+embedded_svc.settings.extraPrechatFormDetails = [{
+  "label": "firstName",
+  "value": "John",
+  "displayToAgent": true
+}, {
+  "label": "LastName",
+  "value": "Doe",
+  "displayToAgent": false
+}, {
+  "label": "Email",
+  "value": "john.doe@salesforce.com",
+  "displayToAgent": true
+}, {
+  "label": "issue",
+  "value": "Do the work",
+  "displayToAgent": true
+}];
+
 
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
