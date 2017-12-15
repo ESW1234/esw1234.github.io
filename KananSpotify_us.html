@@ -6,16 +6,13 @@
 <body>
    <div id="button_goes_here"> </div>
  <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #6CCDF0; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #6CCDF0; }
 	@font-face {
 	font-family: 'Salesforce Sans';
 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
-   .embeddedServiceSidebar.modalContainer {
-  transform: none;
-}
 </style>
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
@@ -44,9 +41,9 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Omni_Deployment', { baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000000qpD', baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CiIMAU_15fbc80e961'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script></script>
-   </body>
-   </html>
+embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Kanan_212_Deployment', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000000qpD', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CseMAE_1605b5c352d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script></body>
+</body>  
+</html>
     
    
    <style>
