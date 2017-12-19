@@ -9,7 +9,7 @@
 
 	function loadLightningApp() {
 		$Lightning.use(
-			"oauthTestApp",
+			"c:oauthTestApp",
 			function() {
 				console.log("Lightning app loaded!");
 			}.bind(this),
