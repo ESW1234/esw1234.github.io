@@ -14,7 +14,7 @@
 				console.log("Lightning app loaded!");
 			}.bind(this),
 			COMMUNITY_ENDPOINT_URL,
-			embedded_sv.auth.oauthToken,
+			embedded_svc.auth.oauthToken,
 			undefined
 		);
 	}
