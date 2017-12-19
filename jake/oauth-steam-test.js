@@ -13,7 +13,7 @@
 			function() {
 				console.log("Lightning app loaded!");
 				$Lightning.createComponent(
-					"c:oauthTestApp",
+					"c:oauthTest",
 					{},
 					document.querySelector("#appContainer"),
 					function(newCmp) {
