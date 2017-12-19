@@ -15,7 +15,7 @@
 				$A.createComponent(
 					"c:oauthTestApp",
 					{},
-					"#appContainer",
+					document.querySelector("#appContainer"),
 					function(newCmp) {
 						console.log(arguments);
 					}
