@@ -12,7 +12,7 @@
 			"c:oauthTestApp",
 			function() {
 				console.log("Lightning app loaded!");
-				$A.createComponent(
+				$Lightning.createComponent(
 					"c:oauthTestApp",
 					{},
 					document.querySelector("#appContainer"),
