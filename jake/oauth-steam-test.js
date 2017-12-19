@@ -41,7 +41,7 @@
 			return oauthToken;
 		},
 		set: function(value) {
-			oauthToken = value();
+			oauthToken = value;
 			onAuthSet();
 		}
 	});
