@@ -45,7 +45,32 @@ embedded_svc.settings.fieldServiceStartLabel = "Authenticated!";
 //embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
 
 embedded_svc.init('http://jakerouss-ltm1.internal.salesforce.com:6109', 'http://communities-developer-edition.localhost.soma.force.com:6109/ltm2', gslbBaseURL, '00Dxx0000001gFF', 'fs_main', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-ltm1.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://jakerouss-ltm1.internal.salesforce.com:6109'); }</script>
-  <div id="salesforce-login"></div>
+<div class="login-panel">
+  <h3>Super Insecure Login!</h3>
+  <input id="login-name" type="text" placeholder="Username"/>
+  <input id="login-pass" type="password" placeholder="Password"/>
+  <button id="login-button">Login</button>
+</div>
 test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>  
+<script type="text/javascript">
+(function() {
+	const OAUTH_CLIENT_ID = "3MVG9AOp4kbriZOLiNgBjx.ukyB1nkyyeMSqElIwjT_cJg7P6FjIxyKYcvPFoubYhwesNHl6zUJdugbDETJMe";
+  const OAUTH_CLIENT_SECRET = "15410901038364326";
+  document.querySelector("#login-button").onclick = () => {
+    const username = document.querySelector("#login-name").value;
+    const password = document.querySelector("#login-pass").value;
+
+		const request = new XMLHttpRequest();
+
+    request.onload = function(e) {
+      const response = oReq.responseText; // not responseText
+			console.log(response)
+    }
+    request.open("POST", `http://jakerouss-ltm1.internal.salesforce.com:6109/services/oauth2/token?grant_type=password&client_id=${OAUTH_CLIENT_ID}&client_secret=${OAUTH_CLIENT_SECRET}&username=${username}&password=${password}`);
+		request.send();
+
+  };
+})()
+</script>
 </body>
 </html>
