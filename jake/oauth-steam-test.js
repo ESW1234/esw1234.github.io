@@ -34,14 +34,19 @@
 		} else {
 			loadLightningApp();
 		}
+	}
 
-		Object.defineProperty(embedded_svc.auth, "oauthToken", {
-			get: function() {
-				return oauthToken;
-			},
-			set: function(value) {
-				oauthToken = value();
-				onAuthSet();
-			}
-		});
-	}) ();
+	Object.defineProperty(embedded_svc.auth, "oauthToken", {
+		get: function() {
+			return oauthToken;
+		},
+		set: function(value) {
+			oauthToken = value();
+			onAuthSet();
+		}
+	});
+
+	document.querySelector("#authSubmit").onclick = function() {
+		embedded_svc.auth.oauthToken = document.querySelector("#authToken").value;
+	};
+})();
