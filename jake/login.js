@@ -60,6 +60,7 @@
       
       if(request.status === 200) {
         embedded_svc.auth.oauthToken = responseData.access_token;
+        console.log("[Login] Login successful!");
       } else {
         console.log(`[Login] Unable to login: ${responseData.error} - ${responseData.error_description}.`);
       }
