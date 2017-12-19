@@ -12,6 +12,15 @@
 			"c:oauthTestApp",
 			function() {
 				console.log("Lightning app loaded!");
+				$A.createComponent(
+					"c:oauthTestApp",
+					{},
+					"#appContainer",
+					function(newCmp) {
+						console.log(arguments);
+					}
+				);
+
 			}.bind(this),
 			COMMUNITY_ENDPOINT_URL,
 			embedded_svc.auth.oauthToken,
