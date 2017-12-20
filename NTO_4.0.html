@@ -1,11 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-   <div id="button_goes_here"> </div>
-  <body>
-     <style type='text/css'>
+<body>
+<div id="button_goes_here"> </div>
+
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #6CCDF0; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #6CCDF0; }
 	@font-face {
@@ -71,10 +69,11 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.avatarImgURL = 'avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = 'nto-prechat.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'WaitingState2.png';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+
 //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
@@ -85,14 +84,13 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
 embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Kanan_212_Deployment', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000000qpD', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CseMAE_1605b5c352d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-  </body>   
 
-
-
+</body>
 </html>
     <style>
        body {
-         background: url("Spotify-large.png") no-repeat;
+         background: url("NTO-home.png") no-repeat;
+         background-size: 100%;
       }
       #button_goes_here{
             width: 100%; 
