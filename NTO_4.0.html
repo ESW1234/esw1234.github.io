@@ -81,7 +81,12 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+embedded_svc.settings.prepopulatedPrechatFields = {
+FirstName: “Kanan”,
+LastName: “Garg”,
+Email: “kgarg@gmail.com”
+};
+
 
 embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Kanan_212_Deployment', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000000qpD', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CseMAE_1605b5c352d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 
