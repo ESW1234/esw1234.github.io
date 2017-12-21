@@ -51,21 +51,23 @@
   const OAUTH_CLIENT_SECRET = "15410901038364326";
   document.querySelector("#login-button").onclick = () => {
     const username = document.querySelector("#login-name").value;
-    const password = document.querySelector("#login-pass").value;
+    //const password = document.querySelector("#login-pass").value;
 
     const request = new XMLHttpRequest();
 
     request.onload = function(e) {
-      const responseData = JSON.parse(request.responseText);
+      //const responseData = JSON.parse(request.responseText);
       
       if(request.status === 200) {
-        embedded_svc.auth.oauthToken = responseData.access_token;
+        //embedded_svc.auth.oauthToken = responseData.access_token;
+        embedded_svc.auth.oauthToken = request.responseText;
         console.log("[Login] Login successful!");
       } else {
         console.log(`[Login] Unable to login: ${responseData.error} - ${responseData.error_description}.`);
       }
     }
-    request.open("POST", `http://jakerouss-ltm1.internal.salesforce.com:6109/services/oauth2/token?grant_type=password&client_id=${OAUTH_CLIENT_ID}&client_secret=${OAUTH_CLIENT_SECRET}&username=${username}&password=${password}`);
+    //request.open("POST", `http://jakerouss-ltm1.internal.salesforce.com:6109/services/oauth2/token?grant_type=password&client_id=${OAUTH_CLIENT_ID}&client_secret=${OAUTH_CLIENT_SECRET}&username=${username}&password=${password}`);
+    request.open("POST", `http://sites-developer-edition.localhost.soma.force.com:6109/services/apexrest/JWT?username=${username}`;
     request.send();
   };
 })()
