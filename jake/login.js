@@ -67,7 +67,7 @@
       }
     }
     //request.open("POST", `http://jakerouss-ltm1.internal.salesforce.com:6109/services/oauth2/token?grant_type=password&client_id=${OAUTH_CLIENT_ID}&client_secret=${OAUTH_CLIENT_SECRET}&username=${username}&password=${password}`);
-    request.open("POST", `http://sites-developer-edition.localhost.soma.force.com:6109/services/apexrest/JWT?username=${username}`;
+    request.open("POST", `http://sites-developer-edition.localhost.soma.force.com:6109/services/apexrest/JWT?username=${username}`);
     request.send();
   };
 })()
