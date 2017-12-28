@@ -57,7 +57,7 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.buttonOverrides = []; //HEY COLLEEN I NEED A LABEL
 
 		embedded_svc.settings.devMode = true;
@@ -87,7 +87,6 @@
 <!-- end 5.0 snippet -->
 
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
 <!-- start 4.0 snippet -->
 <!-- <style type='text/css'>
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
@@ -207,30 +206,32 @@
 		   }
 		];
 		*/
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  gslbBaseURL, 
-				  '00DRM0000005cyu', 
-				  'a', 
-				  { 
-					baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-					deploymentId: '572RM0000004CDV', 
-					buttonId: '573RM0000004CDc', 
-					baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		
+		embedded_svc.init(
+			'http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+			'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317', 
+			gslbBaseURL, 
+			'00Dxx0000001gER', 
+			'snapins', 
+			{ 
+				baseLiveAgentContentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+				deploymentId: '572xx0000000001', 
+				buttonId: '573xx0000000001', 
+				baseLiveAgentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+			}
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 4.0 snippet -->
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
+
 <!-- start 3.1 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
@@ -259,30 +260,32 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  gslbBaseURL, 
-				  '00DRM0000005cyu', 
-				  'a', 
-				  { 
-					baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-					deploymentId: '572RM0000004CDV', 
-					buttonId: '573RM0000004CDc', 
-					baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		
+		embedded_svc.init(
+			'http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+			'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317', 
+			gslbBaseURL, 
+			'00Dxx0000001gER', 
+			'snapins', 
+			{ 
+				baseLiveAgentContentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+				deploymentId: '572xx0000000001', 
+				buttonId: '573xx0000000001', 
+				baseLiveAgentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+			}
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/3.1/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 3.1 snippet -->
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
+
 <!-- start 3.0 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
@@ -382,30 +385,32 @@
 		   }
 		];
 		*/
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  gslbBaseURL, 
-				  '00DRM0000005cyu', 
-				  'a', 
-				  { 
-					baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-					deploymentId: '572RM0000004CDV', 
-					buttonId: '573RM0000004CDc', 
-					baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		
+		embedded_svc.init(
+			'http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+			'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317', 
+			gslbBaseURL, 
+			'00Dxx0000001gER', 
+			'snapins', 
+			{ 
+				baseLiveAgentContentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+				deploymentId: '572xx0000000001', 
+				buttonId: '573xx0000000001', 
+				baseLiveAgentURL: 'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+			}
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/3.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/3.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 3.0 snippet -->
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
+
 <!-- start 2.2 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
@@ -503,30 +508,30 @@
 		];
 		*/
 		
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  '572RM0000004CDV', 
-				  '00DRM0000005cyu', 
-				  '573RM0000004CDc', 
+		embedded_svc.init('http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+				  'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+				  'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+				  'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317', 
+				  '572xx0000000001', 
+				  '00Dxx0000001gER', 
+				  '573xx0000000001', 
 				  '2.2', 
 				  gslbBaseUrl, 
 				  '40.0', 
 				  'a', 
-				  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/2.2/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('https://http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 2.2 snippet -->
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
+
 <!-- start 2.0 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
@@ -622,30 +627,30 @@
 		   }
 		];
 		
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  '572RM0000004CDV', 
-				  '00DRM0000005cyu', 
-				  '573RM0000004CDc', 
+		embedded_svc.init('http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+				  'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+				  'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+				  'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317', 
+				  '572xx0000000001', 
+				  '00Dxx0000001gER', 
+				  '573xx0000000001', 
 				  '2.0', 
 				  gslbBaseUrl, 
 				  '40.0', 
 				  'a', 
-				  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/2.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/2.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('https://http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 2.0 snippet -->
 
-<!-- TODO UPDATE WITH NEW ORG'S INFO -->
+
 <!-- start 1.0 snippet -->
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -654,26 +659,26 @@
 		embedded_svc.settings.prechatBackgroundImgURL = '';
 		embedded_svc.settings.waitingStateBackgroundImgURL = '';
 		embedded_svc.settings.smallCompanyLogoImgURL = '';
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-			  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-			  'https://snapins.stmfa.stm.force.com/test',  
-			  '572RM0000004CDV', 
-			  '00DRM0000005cyu', 
-			  '573RM0000004CDc', 
+		embedded_svc.init('http://jmacmillin-wsm2.internal.salesforce.com:6109', 
+			  'http://jmacmillin-wsm2.internal.salesforce.com:8096/chat', 
+			  'http://jmacmillin-wsm2.internal.salesforce.com:8095/content', 
+			  'http://justincommunitessubdomain-15-15d3d39c201.localhost.soma.force.com:6109/napili092317',  
+			  '572xx0000000001', 
+			  '00Dxx0000001gER', 
+			  '573xx0000000001', 
 			  '1.0', 
 			  gslbBaseUrl, 
 			  '39.0', 
 			  'a', 
-			  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+			  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/1.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/1.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
 </script> -->
 <!-- end 1.0 snippet -->
 
