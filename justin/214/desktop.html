@@ -66,15 +66,13 @@
 		// 573xx0000000001 sys admin button
 		// 573xx000000000B standard user button
 		embedded_svc.settings.fallbackRouting = ["005xx000000000f", "005xx000000000p_573xx000000000B"]; // agent1, agent2_standardUserButton
-		//embedded_svc.settings.fallbackRouting = []; // 
-		//embedded_svc.settings.fallbackRouting = []; // 
-		//embedded_svc.settings.fallbackRouting = []; // 
-		//embedded_svc.settings.fallbackRouting = []; // 
-		//embedded_svc.settings.fallbackRouting = []; // 
+		//embedded_svc.settings.fallbackRouting = ["005xx000000000p_573xx000000000B"]; // agent2_standardUserButton
+		//embedded_svc.settings.fallbackRouting = ["should go to agent 2", "005xx000000000p"]; // invalid entry, agent2
+		//embedded_svc.settings.fallbackRouting = ["should", "go", "to", "default", "button"]; // all invalid
+		//embedded_svc.settings.fallbackRouting = []; // empty
 
 		embedded_svc.settings.devMode = true;
-		
-		
+
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109', 
 			'http://communities.localhost.soma.force.com:6109/customerService010518', 
