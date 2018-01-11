@@ -75,25 +75,7 @@
 
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109', 
-			'http://communities.localhost.soma.force.com:6109/customerService010518', 
-			gslbBaseURL, 
-			'00Dxx0000000001', 
-			'chatButton', 
-			{ 
-				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content', 
-				deploymentId: '572xx0000000001', 
-				buttonId: '573xx0000000001', 
-				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_160c85cd64f'
-			}
-		); 
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+			'http://justincommunitessubdomain-15-15d3d39c201.force.com:6109/napili092317', gslbBaseURL, '00Dxx0000001gER', 'snapins', { baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
 </script>
 <!-- end 5.0 snippet -->
 
@@ -221,30 +203,30 @@
 		
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109', 
-			'http://communities.localhost.soma.force.com:6109/customerService010518', 
+			'http://justincommunitessubdomain-15-15d3d39c201.force.com:6109/napili092317', 
 			gslbBaseURL, 
-			'00Dxx0000000001', 
-			'chatButton', 
+			'00Dxx0000001gER', 
+			'snapins', 
 			{ 
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content', 
 				deploymentId: '572xx0000000001', 
 				buttonId: '573xx0000000001', 
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_160c85cd64f'
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
 			}
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jmacmillin-wsm2.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); 
+		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('http://jmacmillin-wsm2.internal.salesforce.com:6109'); }
+	} else { initESW('https://service.force.com'); }
 </script> -->
 <!-- end 4.0 snippet -->
 
 
-
+<!-- UPDATE AFTER NEW MACHINE -->
 <!-- start 3.1 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
@@ -299,7 +281,7 @@
 <!-- end 3.1 snippet -->
 
 
-
+<!-- UPDATE AFTER NEW MACHINE -->
 <!-- start 3.0 snippet -->
 <!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
