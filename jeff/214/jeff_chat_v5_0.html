@@ -2,9 +2,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<title>Simple Chat (214 - v5.0) Snippet</title>		
-	</head>
-
-	<body>		
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -18,8 +15,9 @@
 				background-color: #5dbafd;
 			}
 		</style>
-		
-		
+	</head>
+
+	<body>		
 		<h1>Simple Chat (214 - v5.0) Snippet</h1>
 		
 <!-- commented out to prevent 404 error from showing
@@ -49,8 +47,6 @@
 
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
-				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-				// Sets chats to route to the first available user or button in the array
 
 				embedded_svc.settings.prepopulatedPrechatFields = {
 					"FirstName": "John",
@@ -64,14 +60,14 @@
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
 					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
 					gslbBaseURL,
-					'00Dxx00000000AB',
-					'MyNewSnapInDployment',
+					'00Dxx0000000001',
+					'NewSnapInDeployment',
 					{
 						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
-						deploymentId: '572xx000000000B',
-						buttonId: '573xx000000000B',
+						deploymentId: '572xx0000000001',
+						buttonId: '573xx0000000001',
 						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000LEAQ_160e30bc551'
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_160eb2ebfd9'
 					}
 				);
 			};
