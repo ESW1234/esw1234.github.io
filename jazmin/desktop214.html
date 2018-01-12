@@ -4,10 +4,15 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-   <div id="button_goes_here"> </div>
- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #6CCDF0; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #6CCDF0; }
+  <p align="center"><font color ="white">210 Desktop WIDGET</font></p>
+  <br/>
+  <br/>
+
+<div id="button_goes_here">
+</div>
+<style type='text/css'>
+   .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
 	font-family: 'Salesforce Sans';
 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -40,15 +45,34 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+	
+//embedded_svc.settings.buttonOverrides = ['573xx00000000Ib'];
 
-embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.com', gslbBaseURL, '00DB0000000IUUN', 'Kanan_212_Deployment', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004XuU', buttonId: '573B00000000qpD', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000004CseMAE_1605b5c352d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script></body>
-</body>  
+embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109', 
+                  'http://jazminsubdomain.localhost.soma.force.com:6109/CustomerService0102',
+                  gslbBaseURL, '00Dxx0000001pqF', 'githubPage', 
+                  { 
+                   baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content', 
+                   deploymentId: '572xx00000000IG', 
+                   buttonId: '573xx00000000IV', 
+                   baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', 
+                   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000HgEAI_160b8f7f492'
+                   }); 
+   };
+   if (!window.embedded_svc) { 
+      var s = document.createElement('script'); 
+      s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
+      s.onload = function() { initESW(null); }; 
+      document.body.appendChild(s); 
+   } else { initESW('https://service.force.com'); }
+</script>
+
+</body>
 </html>
-    
-   
-   <style>
+    <style>
        body {
-         background: url("Spotify-large.png") no-repeat;
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
       }
       #button_goes_here{
             width: 100%; 
@@ -56,4 +80,3 @@ embedded_svc.init('https://gs0.salesforce.com', 'https://kgarg-gs0.secure.force.
             margin: 0 auto;
             position: relative;
       }
-    </style>

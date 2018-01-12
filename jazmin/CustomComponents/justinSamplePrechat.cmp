@@ -1,0 +1,29 @@
+<aura:component implements="lightningsnapin:prechatUI" description="Sample custom prechat component for Snapins. Implemented using Aura.">
+    <!-- You must implement "lightningsnapin:prechatUI" for this component to appear in the "Prechat Component" customization dropdown in the Snapins setup. -->
+
+    <!-- Prechat field components to render. -->
+    <aura:attribute name="prechatFieldComponents" type="List" description="An array of objects representing the prechat fields specified in prechat setup."/>
+    
+    <!-- Handler for when this component is initialized. -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <!-- For Aura performance. -->
+    <aura:locator target="startButton" description="Prechat form submit button."/>
+    
+    <!-- Contains methods for getting prechat fields, starting a chat, and validating fields. -->
+    <lightningsnapin:prechatAPI aura:id="prechatAPI"/>
+    
+    <h2>Prechat form.</h2>
+    <div class="prechatUI">
+        <div class="prechatContent">
+            <ul class="fieldsList">
+                <!-- Look in the controller's onInit function. This component dynamically creates the prechat field components. -->
+                {!v.prechatFieldComponents}
+            </ul>
+        </div>
+        <div class="startButtonWrapper">
+            <ui:button aura:id="startButton" class="startButton" label="{!$Label.LiveAgentPrechat.StartChat}" press="{!c.handleStartButtonClick}"/>
+        </div>
+    </div>
+
+</aura:component>
