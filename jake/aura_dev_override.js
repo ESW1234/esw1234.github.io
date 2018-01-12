@@ -13551,6 +13551,11 @@ Aura.$Context$.$AuraContext$.prototype.$encodeForServer$ = function(includeDynam
   if(this.$useCompatSource$) {
     contextToSend["c"] = 1
   }
+
+  if(this.$lightningOut$) {
+    contextToSend["lightningOut"] = 1
+  }
+  
   return $A["util"].$json$.$encode$(contextToSend)
 };
 Aura.$Context$.$AuraContext$.prototype.$merge$ = function(otherContext) {
