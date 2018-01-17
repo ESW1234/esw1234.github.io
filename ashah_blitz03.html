@@ -26,15 +26,16 @@
 </div>
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -51,102 +52,15 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na7-blitz04.soma.salesforce.com', 'https://yktest.blitz04.soma.force.com/yk1', gslbBaseURL, '00DR00000008qQn', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz04.soma.salesforce.com/content', deploymentId: '572R000000000Z2', buttonId: '573R000000000gB', baseLiveAgentURL: 'https://d.la-blitz04.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR0000000003pMAA_15e96b92de7'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na7-blitz04.soma.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na7-blitz04.soma.salesforce.com'); }</script>
-	</div>
-	<div id="text">
-	<span id ="article1"><h2>SAFE LISTENING</h2>
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
- 
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
- 
-Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
-
-But with great bass comes great responsibility.
-
-LISTEN SAFELY
-After placing the headphones on or in your ears, gradually turn up the volume
-Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
-Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
-Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.</span>
-	<span id ="article2"><h2>iPhone 6S 3D Touch.The next generation of Multi‑Touch.</h2>DETAILS
-iPhone 6s introduces an entirely new way to interact with your phone. For the ﬁrst time, iPhone senses how much pressure you apply to the display. In addition to familiar Multi‑Touch gestures like Tap, Swipe, and Pinch, 3D Touch introduces Peek and Pop. This brings a new dimension of functionality to the iPhone experience. And when you use 3D Touch, your iPhone responds with subtle taps. So not only will you see what a press can do — you’ll feel it.
-User-added image</span>
-	<span id ="article3"><h2>SOUND TROUBLESHOOTING–HEADPHONES AND EARPHONES</h2>LOSS OF AUDIO ON ONE SIDE OR DISTORTED SOUND
-If you’re experiencing snapping, crackling, popping, or no audio on one side, try this:
-
-Make sure the 3.5mm audio jack is fully plugged in.
-The L-shaped input connects to your audio device.
-The straight input must be completely inserted into your headset.
-Check that your audio source is on and working.
-If your audio source is a computer or laptop, try adjusting the configuration settings.
-If problems persist, try a different audio source or an alternate cable.
-
-
-VOLUME TOO HIGH
-Turn the source volume down. Yes, it’s really that easy.
-
-PHONE NOT RESPONDING TO BUTTON PRESSES
-Check the headset plug to ensure that it is securely connected. For multi-press functions, vary the speed of presses when using the remote/mic.
-
-COMPATIBILITY ISSUES
-Remember to install the latest software updates on your device. The inline remote/mic may have limited functionality with devices that don’t run iOS.
-
-MICROPHONE NOT PICKING UP SOUND
-Make sure the headset plug is securely connected and that the socket is clean and clear
-Check that the microphone—located on the back of the remote—isn’t blocked or covered
-Make sure the straight-end of the plug is connected to the headphones and the angled L-shaped plug is connected to the audio source
-If your issue isn’t listed, or these troubleshooting tips didn’t help, please call Beats Consumer Support to speak with an agent.</span>
-	<span id ="article4"><h2>REMOTETALK AUDIO CABLE</h2>VOLUME
-Press the top button to increase
-Press the bottom button to decrease
-CALLS
-HELLO, GOODBYE
-Press and release the center button once to answer
-Press again to end the call
-MAYBE LATER
-Press and hold the center button for two seconds
-Release
-Two beeps indicate the call has been declined
-HOLD PLEASE
-To switch or switch back, press and release the center button
-To switch and end an in-progress call, press and hold the center button for two seconds. Two low beeps will indicate it worked.
-TALK TO ME—VOICE COMMAND
-Press and hold the center button until voice activation starts up (functionality varies by device)
-MEDIA
-Play or pause song or video
-
-Press and release the center button
-Repeat to resume
-MOVE IT, MOVE IT
-Forward
-
-Quickly press the center button twice to skip forward
-Hold on the second press to scan
-Backward
-
-Quickly press three times to skip back
-Hold on the third press to scan
-Note: The cable included with our headphones is fully compatible with the iOS family. Functionality may vary by device.</span>
-</div>
+embedded_svc.init('https://gs0.salesforce.com', 'https://demo-hao-developer-edition.gus.force.com/demosite', gslbBaseURL, '00DB0000000LgOe', 'Demo_Snap_ins_Chat', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B0000000513C', buttonId: '573B00000005Bo7', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB000000000q7MAA_160e213a96d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script></div>
    </body>
 </html>
