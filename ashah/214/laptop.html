@@ -16,7 +16,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -41,8 +41,10 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+// Sets chats to route to the first available user or button in the array
 
-embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFZ', 'a', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx0000000006', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('http://analshah-ltm9.internal.salesforce.com:6109', 'http://snapins-160dd562dc2.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gER', 'a', { baseLiveAgentContentURL: 'http://analshah-ltm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://analshah-ltm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-ltm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 </div>
 </body>
 </html>
