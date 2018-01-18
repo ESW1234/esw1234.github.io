@@ -49,10 +49,12 @@
 		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 		//Returns a valid button ID.
 		//};
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+		// Sets chats to route to the first available user or button in the array
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
