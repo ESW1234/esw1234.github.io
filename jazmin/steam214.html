@@ -14,7 +14,6 @@
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	.embeddedServiceSidebar.layout-docked .dockableContainer { width: 320px; }
 	@font-face {
 	font-family: 'Salesforce Sans';
 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -33,7 +32,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
- 
+
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
@@ -43,12 +42,12 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+// Sets chats to route to the first available user or button in the array
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-embedded_svc.settings.fallbackRouting = ['005RM000001c3z', '005RM000001c3zg1', '005RM000001c3zg11', '005RM000001c3zg1111', '005RM000001c3zg128731827361278361278631827361827631872368127638126312638712638716236128736128736127836817245761254671254763125763152376512736512761235176253127653172653176253172652176521765321276353127653217653721653127653']; //An array of button IDs, user IDs, or userId_buttonId 
-//Sets chats to route to the first available user or button in the array
 
 embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 
 		  'https://snapins-15f7e6db324.stmfa.stm.force.com/napili111217', 
@@ -62,7 +61,9 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+	} else { 
+		initESW('https://service.force.com'); 
+	}
 </script>
 <!------------------------------------------------------------------------------------------------------------------->
 <!------------------------------------------------ 4.0 SNIPPPET ----------------------------------------------------->
