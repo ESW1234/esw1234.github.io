@@ -45,6 +45,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+  /*
   embedded_svc.settings.extraPrechatFormDetails = [
     //need name:"FirstName" else waiting state says hello guest
   {"label":"First Name","name": "FirstName","value":"mike",transcriptFields:["test1__c", "test2_penny__c"], displayToAgent: "true"},
@@ -53,6 +54,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
   {"label":"Subject","value":"hello mike here", displayToAgent: "true"},
   {label: "my extra",value: "value for my extra", displayToAgent: "true", transcriptFields: ["test1__c"]}
 ];
+*/
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -93,6 +95,11 @@ a {
 .embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
 .embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
   background: #1ed760;
+}
+  
+  /* 1/22/18 temp workaround */
+  .embeddedServiceSidebar.layout-docked .dockableContainer {
+   width: 320px;
 }
 </style>
 </html>

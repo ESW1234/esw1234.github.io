@@ -1,18 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
    <head>
+   <title>DEFAULT PAGE</title>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="white">210 Desktop WIDGET</font></p>
-  <br/>
-  <br/>
-
-<div id="button_goes_here">
-</div>
+<div id="button_goes_here"> 
 <style type='text/css'>
-   	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	.embeddedServiceSidebar.layout-docked .dockableContainer {
+ 	  width: 320px;
+	}
 	@font-face {
 	font-family: 'Salesforce Sans';
 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
@@ -20,7 +19,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -45,38 +44,10 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-	
-//embedded_svc.settings.buttonOverrides = ['573xx00000000Ib'];
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+// Sets chats to route to the first available user or button in the array
 
-embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109', 
-                  'http://jazminsubdomain.localhost.soma.force.com:6109/CustomerService0102',
-                  gslbBaseURL, '00Dxx0000001pqF', 'githubPage', 
-                  { 
-                   baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content', 
-                   deploymentId: '572xx00000000IG', 
-                   buttonId: '573xx00000000IV', 
-                   baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', 
-                   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000HgEAI_160b8f7f492'
-                   }); 
-   };
-   if (!window.embedded_svc) { 
-      var s = document.createElement('script'); 
-      s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/4.0/esw.min.js'); 
-      s.onload = function() { initESW(null); }; 
-      document.body.appendChild(s); 
-   } else { initESW('https://service.force.com'); }
-</script>
-
+embedded_svc.init('http://analshah-ltm9.internal.salesforce.com:6109', 'http://snapins-160dd562dc2.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gER', 'a', { baseLiveAgentContentURL: 'http://analshah-ltm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://analshah-ltm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-ltm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+</div>
 </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }
