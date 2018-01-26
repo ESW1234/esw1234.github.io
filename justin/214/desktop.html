@@ -45,7 +45,7 @@
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'chat 5.0'; //(Defaults to Agent Offline)
+		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -62,7 +62,7 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", textCustomContact__c: "custom field", picklistCustomContact__c: "here", Priority: "Low"}; //Sets the auto-population of pre-chat form fields
 		
 		// 005xx0000000001 sys admin
 		// 005xx000000000f agent 1
@@ -76,8 +76,11 @@
 		//embedded_svc.settings.fallbackRouting = ["should", "go", "to", "default", "button"]; // all invalid
 		//embedded_svc.settings.fallbackRouting = []; // empty
 		//embedded_svc.settings.fallbackRouting = ["005xx0000000001AAA_573xx0000000001AAA", "005xx0000000002_573xx0000000002AAA", "005xx0000000003AAA_573xx0000000003", "005xx0000000004_573xx0000000004", "573xx000000000B", "005xx000000000p"];
-		embedded_svc.settings.fallbackRouting = [[], 123445, {}, "005xx0000000001AAA_573xx0000000001AAA", false];
+		//embedded_svc.settings.fallbackRouting = [[], 123445, {}, "005xx0000000001AAA_573xx0000000001AAA", false];
 
+		embedded_svc.settings.externalScripts = ["log", "log2", {}, 12,,[]];
+		embedded_svc.settings.externalStyles = ["invalidName", "redHeader", "greenMessage"];
+	
 		embedded_svc.settings.devMode = true;
 
 		embedded_svc.init(
