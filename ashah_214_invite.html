@@ -60,7 +60,7 @@
 </script>
 <!-- End of Invitations - Static HTML/CSS/JS -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -90,7 +90,7 @@ embedded_svc.settings.devMode = true;
 //embedded_svc.settings.extraPrechatInfo = 
 //[{"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"ContactId","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":true,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":true,"label":"Last Name"},{"isExactMatch":true,"fieldName":"textCustomContact__c","doCreate":true,"doFind":false,"label":"textCustomContact"}, {"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},{"entityName":"Case","showOnCreate":true, "saveToTranscript":"CaseId", "entityFieldMaps":[{"isExactMatch":false,"fieldName":"Subject","doCreate":true,"doFind":false,"label":"issue"},{"isExactMatch":false,"fieldName":"Status","doCreate":true,"doFind":false,"label":"Status"},{"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Origin"}]}]
 
-embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFZ', 'a', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx0000000006', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFZ', 'a', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx0000000006', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 </div>
 </body>
 </html>
