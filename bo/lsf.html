@@ -1,0 +1,102 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+<h1 id="titleHeader"></h1>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<p><a href="http://google.com">google.com</a></p>
+
+<script>
+var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
+document.getElementById('editThisPageLink').href += pagePath;
+var headerEl = document.getElementById('titleHeader');
+if (headerEl.innerHTML.length) {
+  headerEl.innerHTML += ' - ';
+}
+headerEl.innerHTML += pagePath;
+document.title = headerEl.innerHTML;
+</script>
+
+<!-- snippet start -->
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+// Sets chats to route to the first available user or button in the array
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+
+<!-- snippet end -->
+
+</body>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
+}
+h1 {
+  font-size: 3rem;
+}
+a {
+  color: red;
+}
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
+}
+  
+  /* 1/22/18 temp workaround */
+  .embeddedServiceSidebar.layout-docked .dockableContainer {
+   width: 320px;
+}
+</style>
+</html>
