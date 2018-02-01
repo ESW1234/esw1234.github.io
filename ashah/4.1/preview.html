@@ -1,0 +1,79 @@
+<html>
+<head>
+<!--Responsive code here-->
+</head>
+<body>
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+.embeddedServiceHelpButton .helpButton{position: fixed; bottom:430px !important; right:76px !important; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript'>
+
+  localStorage.clear();
+  sessionStorage.clear();
+
+ function parse_query_string(query) {
+  var vars = query.split("&");
+  var query_string = {};
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    // If first entry with this name
+    if (typeof query_string[pair[0]] === "undefined") {
+      query_string[pair[0]] = decodeURIComponent(pair[1]);
+      // If second entry with this name
+    } else if (typeof query_string[pair[0]] === "string") {
+      var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+      query_string[pair[0]] = arr;
+      // If third or later entry with this name
+    } else {
+      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+    }
+  }
+  return query_string;
+}
+// dynamic configs retried from iframe url
+var url_query = window.location.search.substring(1);
+var qs = parse_query_string(url_query);
+var coreHost = window.location.origin;
+var deploymentId = qs.deployment_id;
+var buttonId = qs.button_id;
+var chasitorVersion = qs.chasitor_version;
+var eswLiveAgentDevName = qs.esw_liveagent_devname;
+var snapInVersion = qs.snapin_version;
+var OrgId =  qs.org_id;
+var snapInName = qs.snapin_name;
+var chabotVersion = qs.chatbot_version;
+var eswURL = coreHost+"/embeddedservice/" + snapInVersion + "/esw.js";
+var baseLiveAgentURL = qs.chat_url;
+var baseLiveAgentContentURL = qs.content_url;
+
+
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '/img/avatar-bot.png';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init(coreHost, coreHost, gslbBaseURL, OrgId, snapInName, { chatbotVersion: chabotVersion, baseLiveAgentContentURL: baseLiveAgentContentURL, deploymentId: deploymentId, buttonId: buttonId, baseLiveAgentURL: baseLiveAgentURL, eswLiveAgentDevName: eswLiveAgentDevName}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', eswURL); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW(coreHost); }</script>
+
+</html>
