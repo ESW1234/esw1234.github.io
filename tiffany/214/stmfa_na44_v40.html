@@ -10,7 +10,7 @@
 	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -52,7 +52,7 @@ eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CEk2AM_161581b4
 };
 if (!window.embedded_svc) { 
 var s = document.createElement('script'); 
-s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
+s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
 s.onload = function() { initESW(null); }; 
 document.body.appendChild(s); 
 } else { initESW('https://service.force.com'); }
