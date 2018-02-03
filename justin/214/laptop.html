@@ -13,27 +13,18 @@
 <!-- 	<p align="left">
 		1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>10<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>20<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>30<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>40<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>50<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>60<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>70<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>80<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>90<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>100
 	</p> -->
-	
-<style type='text/css'>
-        .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-        .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
-        
-        @font-face {
-                font-family: 'Salesforce Sans';
-                src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-                url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-        }
-        #button_goes_here{
-                width: 100%; 
-                height: 100%; 
-                margin: 0 auto;
-                background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
-                position: relative;
-        }
-</style>
 
 
 <!-- start 5.0 snippet -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1db954; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1db954; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -64,15 +55,8 @@
 		// admin buttonId: 573xx000000004J
 		// button1: 573xx000000008l
 		// button2: 573xx000000008v
-
-		//embedded_svc.settings.fallbackRouting = ["005D01234567890_573D01234567890", "005D01234567890", "573D01234567890", "573D01234567890000"];
-		//embedded_svc.settings.fallbackRouting = ["005D01234567890_573D01234567890", "005D01234567890", "573D01234567890", "573D01234567890000", "hey"];
 		//embedded_svc.settings.fallbackRouting = ["005xx000001SykN"]; // agent 1
 		//embedded_svc.settings.fallbackRouting = ["005xx000001SykS"]; // agent 2
-		//embedded_svc.settings.fallbackRouting = ["only", "invalid"]; // should route to admin (default button)
-		embedded_svc.settings.fallbackRouting = ["573xx000000008l"]; // button 1
-		//embedded_svc.settings.fallbackRouting = ["005xx000001SykN", "005xx000001SykN_573xx000000008l"]; // agent1, agent1_agentButton
-		//embedded_svc.settings.fallbackRouting = ["005xx000001SykN_573xx000000008l"]; // agent1_agentButton
 		//embedded_svc.settings.fallbackRouting = ["005xx000001SykSAAS"]; // agent2 18 char
 		
 		embedded_svc.settings.devMode = true;
@@ -150,28 +134,8 @@
 		];
 		*/
 		
-		embedded_svc.init('http://jmacmillin-ltm.internal.salesforce.com:6109', 
-				  'http://justincommunitessubdomain-15-15c658fa2c6.localhost.soma.force.com:6109/napili010317', 
-				  gslbBaseURL, 
-				  '00Dxx0000001jHi', 
-				  'justin_s_deployment', 
-				  { 
-					baseLiveAgentContentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8095/content', 
-					deploymentId: '572xx000000004J', 
-					buttonId: '573xx000000004J', 
-					baseLiveAgentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat', 
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
-				  }
-		 ); 
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); 
-		s.onload = function() { 
-			initESW(null); 
-		}; 
-		document.body.appendChild(s); 
-	} else { initESW('http://jmacmillin-ltm.internal.salesforce.com:6109'); }
+		
+		embedded_svc.init('http://jmacmillin-ltm.internal.salesforce.com:6109', 'http://justin208blitz-15a250fddfb-15c658fa2c5.localhost.soma.force.com:6109/laSite', gslbBaseURL, '00Dxx0000001jHi', 'justin_s_deployment', { baseLiveAgentContentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8095/content', deploymentId: '572xx000000004J', buttonId: '573xx000000004J', baseLiveAgentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jmacmillin-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
 </script>
 <!-- end 5.0 snippet -->
 
