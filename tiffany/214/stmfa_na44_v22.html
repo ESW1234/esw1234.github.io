@@ -1,0 +1,52 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Arial", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init(
+'https://na44.stmfa.stm.salesforce.com', 
+'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+'https://snapins-16153ab7ee9.stmfa.stm.force.com/napili', 
+'572RM00000001ca', 
+'00DRM0000005q3H', 
+'573RM00000001eH', 
+'2.2', 
+gslbBaseUrl, 
+'40.0', 
+'new', 
+'EmbeddedServiceLiveAgent_Parent04IRM0000004CEk2AM_161581b4e50'
+); 
+}; 
+if (!window.embedded_svc) { 
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+s.onload = function() { 
+initESW(null); 
+}; 
+document.body.appendChild(s);
+} else { initESW('https://service.force.com'); }
+</script>
+
+  </body>
+</html>
