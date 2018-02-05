@@ -17,17 +17,17 @@
 	}
 </style>
 
-<!-- Invitations - Static HTML/CSS/JS -->
-<div class="embeddedServiceInvitation" id="snapins_invite" aria-role="assertive" role="dialog" aria-label="Chat invitation">
-	<div class="embeddedServiceInvitationHeader">
+<!-- Start of Invitations -->
+<div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
+	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
 		<img id="embeddedServiceAvatar">
-		<span class="embeddedServiceTitleText">Need help?</span>
+		<span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
 		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
 	</div>
 	<div class="embeddedServiceInvitationBody">
-		<p>We're happy to answer your questions!</p>
+		<p id="snapins_bodytext">How can we help you?</p>
 	</div>
-	<div class="embeddedServiceInvitationFooter">
+	<div class="embeddedServiceInvitationFooter" aria-describedby="snapins_bodytext">
 		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
 		<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
 	</div>
@@ -35,17 +35,19 @@
 
 <style type='text/css'>
 	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
-	.embeddedServiceInvitation { background-color: transparent; max-width: 312px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
+	.embeddedServiceInvitation { background-color: transparent; max-width: 290px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
 	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
 	.embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #222222; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
 	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
-	.embeddedServiceInvitationHeader .embededdServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: clip; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
-	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
-	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embededdServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; }
-	.embeddedServiceInvitation > .embeddedServiceInvitationBody { background-color: #FFFFFF; max-height: 110px; margin: 0 8px; font-size: 14px; line-height: 20px; overflow: auto; }
-	.embeddedServiceInvitationBody p { padding: 8px; }
+	.embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; position: relative; bottom: 3%; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus { outline: none; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus::before { content: " "; position: absolute; top: 11%; left: 7%; width: 85%; height: 85%; background-color: rgba(255, 255, 255, 0.2); border-radius: 4px; pointer-events: none; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embeddedServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; }
+	.embeddedServiceInvitation > .embeddedServiceInvitationBody { background-color: #FFFFFF; max-height: 110px; min-width: 260px; margin: 0 8px; font-size: 14px; line-height: 20px; overflow: auto; }
+	.embeddedServiceInvitationBody p { color: #333333; padding: 8px; margin: 12px 0; }
 	.embeddedServiceInvitation > .embeddedServiceInvitationFooter { width: inherit; color: #FFFFFF; text-align: right; background-color: #FFFFFF; padding: 10px; max-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
-	.embeddedServiceInvitationFooter > .embeddedServiceActionButton { font-size: 14px; max-height: 32px; border: none; border-radius: 4px; padding: 8px; margin: 4px; text-align: center; text-decoration: none; display: inline-block; cursor: pointer; }
+	.embeddedServiceInvitationFooter > .embeddedServiceActionButton { font-size: 14px; max-height: 40px; border: none; border-radius: 4px; padding: 10px; margin: 4px; text-align: center; text-decoration: none; display: inline-block; cursor: pointer; }
 	.embeddedServiceInvitationFooter > #acceptInvite { background-color: #005290; color: #FFFFFF; }
 	.embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #005290; }
 </style>
@@ -58,9 +60,9 @@
 		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
 	})();
 </script>
-<!-- End of Invitations - Static HTML/CSS/JS -->
+<!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -81,16 +83,14 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+// Sets chats to route to the first available user or button in the array
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.devMode = true;
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-//embedded_svc.settings.extraPrechatFormDetails = [{"label":"First Name","value":"A","displayToAgent":true},{"label":"Last Name","value":"P","displayToAgent":true, "transcriptFields":["LastName__c"]},{"label":"Email","value":"pac@salesforce.com","displayToAgent":true},{"label":"issue","value":"Sales forecasts","displayToAgent":true}, {"label":"textCustomContact","value":"Custom text field on contact","displayToAgent":true}] ; 
-//embedded_svc.settings.extraPrechatInfo = 
-//[{"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"ContactId","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":true,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":true,"label":"Last Name"},{"isExactMatch":true,"fieldName":"textCustomContact__c","doCreate":true,"doFind":false,"label":"textCustomContact"}, {"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},{"entityName":"Case","showOnCreate":true, "saveToTranscript":"CaseId", "entityFieldMaps":[{"isExactMatch":false,"fieldName":"Subject","doCreate":true,"doFind":false,"label":"issue"},{"isExactMatch":false,"fieldName":"Status","doCreate":true,"doFind":false,"label":"Status"},{"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Origin"}]}]
 
-embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFZ', 'a', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx0000000006', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/4.1/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://snapins.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001gFZ', 'c', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx000000000V', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000pEAA_1616805b583'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 </div>
 </body>
 </html>
