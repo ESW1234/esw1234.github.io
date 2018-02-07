@@ -25,184 +25,90 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-#snapins_invite {
-  max-width: 312px;
-  max-height: 210px;
-  background-color: transparent;
-  box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-  -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-  -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-}
-.card {
-  border-radius: 8px;
-  font-family: 'Open Sans', sans-serif;
-}
-#header {
-  width: inherit;
-  max-width: 312px;
-  max-height: 32px;
-  background-color: #263238; /* @pbc */
-  color: #FFFFFF;
-  padding: 9px;
-}
-#profilepic {
-    width: 32px;
-    height: 32px;
-    text-align: left;
-    padding: 0px 10px;
-    display: inline-block;
-}
-#invitation_title {
-    position: absolute;
-    text-align: center;
-    display: inline-block;
-    font-size: 18px;
-    line-height: 30px;
-}
-.actionbutton.close {
-  background-color: transparent;
-  height: 12px;
-  width: 12px;
-  border: none;
-  color: white;
-  position: relative;
-    float: right;
-  text-decoration: none;
-  display: inline-block;
-}
-#invitation_body {
-  background-color: #BBDEFB;
-  max-height: 100px;
-  padding: 8px;
-  font-size: 14px;
-  line-height: 20px;
-}
-#invitation_actionbar {
-    background-color: #E3F2FD; 
-}
-.actionbutton {
-    font-size: 12px;
-    max-height: 32px;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-.primary {
-    background-color: #1565C0; 
-    color: #FFFFFF;
-}
-.secondary {
-    background-color: transparent; 
-    color: #1565C0;
-}
-#footer {
-  width: inherit;
-  color: white;
-  text-align: right;
-  background-color: #E3F2FD;
-  padding: 5px;
-}
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
+
+<!-- Start of Invitations -->
+<div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
+	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
+		<img id="embeddedServiceAvatar">
+		<span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
+		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
+	</div>
+	<div class="embeddedServiceInvitationBody">
+		<p id="snapins_bodytext">How can we help you?</p>
+	</div>
+	<div class="embeddedServiceInvitationFooter" aria-describedby="snapins_bodytext">
+		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
+		<button type="button" class="embeddedServiceActionButton" id="acceptInvite">Start Chat</button>
+	</div>
+</div>
+
+<style type='text/css'>
+	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
+	.embeddedServiceInvitation { background-color: transparent; max-width: 290px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
+	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
+	.embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #222222; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
+	.embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; position: relative; bottom: 3%; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus { outline: none; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:focus::before { content: " "; position: absolute; top: 11%; left: 7%; width: 85%; height: 85%; background-color: rgba(255, 255, 255, 0.2); border-radius: 4px; pointer-events: none; }
+	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon:active, .embeddedServiceCloseIcon:hover { background-color: #FFFFFF; color: rgba(0,0,0,0.7); opacity: 0.7; }
+	.embeddedServiceInvitation > .embeddedServiceInvitationBody { background-color: #FFFFFF; max-height: 110px; min-width: 260px; margin: 0 8px; font-size: 14px; line-height: 20px; overflow: auto; }
+	.embeddedServiceInvitationBody p { color: #333333; padding: 8px; margin: 12px 0; }
+	.embeddedServiceInvitation > .embeddedServiceInvitationFooter { width: inherit; color: #FFFFFF; text-align: right; background-color: #FFFFFF; padding: 10px; max-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+	.embeddedServiceInvitationFooter > .embeddedServiceActionButton { font-size: 14px; max-height: 40px; border: none; border-radius: 4px; padding: 10px; margin: 4px; text-align: center; text-decoration: none; display: inline-block; cursor: pointer; }
+	.embeddedServiceInvitationFooter > #acceptInvite { background-color: #005290; color: #FFFFFF; }
+	.embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #005290; }
+</style>
+
+<script type='text/javascript'>
+	(function() {
+		document.getElementById('closeInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
+		document.getElementById('rejectInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }; // use this API call to reject invitations
+		document.getElementById('acceptInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); }; // use this API call to start chat from invitations
+		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
+	})();
+</script>
+<!-- End of Invitations -->
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.dynamicRouting = function(prechatFormData){ 
-   return "573D000000002jZIAQ";
-};
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.devMode = true;
-// embedded_svc.settings.devMode = true;
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://snapins-15eca4b57d3.blitz01.soma.force.com/napili', gslbBaseURL, '00DD00000008aGQ', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572D000000002Rx', buttonId: '573D000000002jY', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.1/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://na1-blitz01.soma.salesforce.com'); }</script>
-</div>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<div id="snapins_invite">
-    <div class="card">
-        <div id="header" role="header">
-            <img src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png" id="profilepic">
-            <!-- <img src="snippet?../../avatarImgUrl.png" id="profilepic"> --> 
-            <div id="invitation_title">Need a little help?</div>
-            <button type="button" class="actionbutton close" id="x">╳</button>
-        </div>
-        <div id="invitation_body">
-            <p>If you need help, just tap here and you will be able to chat with us!</p>
-        </div>    
-        <div id="footer" role="footer">
-            <div id="invitation_actionbar">
-                <button type="button" class="actionbutton secondary" id="exit">Close </button>
-                <button type="button" class="actionbutton primary" id="startChat">Start Chat</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script type='text/javascript'>
-(function() {
-    document.getElementById('exit').onclick = function() {
-      console.log("Invite Rejected.");
-       embedded_svc.inviteAPI.inviteButton.rejectInvite();      
-    };
-    
-  document.getElementById('startChat').onclick = function() {  
-           console.log("Invite Accepted."); 
-           embedded_svc.inviteAPI.inviteButton.acceptInvite();
-    };
-  })()
- </script>
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-Portugal Stuns France to Win Euro 2016 Final
-Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
-Jul 11, 2016•Fitbit Help
+embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://snapins-15eca4b57d3.blitz01.soma.force.com/napili', gslbBaseURL, '00DD00000008aGQ', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572D000000002Rx', buttonId: '573D000000002jY', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+	</div>
 
-HELP
-Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
-But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
-“We lost our main man, the man who could score a goal at any moment,” Portugal defender Pepe said of Ronaldo, who left the game in the 25th minute. “But we were warriors on the pitch. We said that we’d win it for him.”
-Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
-Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
-For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
-	Portugal Stuns France to Win Euro 2016 Final
-Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
-Jul 11, 2016•Fitbit Help
 
-HELP
-Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
-But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
-“We lost our main man, the man who could score a goal at any moment,” Portugal defender Pepe said of Ronaldo, who left the game in the 25th minute. “But we were warriors on the pitch. We said that we’d win it for him.”
-Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. ENLARGE
-Renato Sanches (top) and Portugal’s players celebrate Eder’s winning goal during extra time of the Euro 2016 final against France. The win gave Portugal its first major-tournament trophy. PHOTO: FRANCK FIFE/AGENCE FRANCE-PRESSE/GETTY IMAGES
-For France, the defeat bordered on unthinkable. Les Bleus had convinced themselves that history was within their grasp at the Stade de France. On the same field where they won the 1998 World Cup, on the home soil where they hadn’t lost any of their previous 18 major-tournament matches, they felt the trophy was theirs for the taking.
-	204
    </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;            
-      }
-	    #myText {
-		    width: 65%;
-	    }
-    </style>
+    
