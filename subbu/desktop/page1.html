@@ -143,9 +143,9 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
 //embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-//embedded_svc.settings.extraPrechatFormDetails = [{"label":"First Name","name":"FirstName","displayToAgent":false, "transcriptFields": ["custom1__c", "custom2__c"]},
-//						{"label":"Last Name","value":"Benioff","displayToAgent":true},
-//						{"label":"Email","value":"benioff@salesforce.com","displayToAgent":false, "transcriptFields": ["email__c"]}] ;
+embedded_svc.settings.extraPrechatFormDetails = [{"label":"First Name","name":"FirstName","value":"Marc","displayToAgent":false, "transcriptFields": ["custom1__c", "custom2__c"]},
+						{"label":"Last Name","value":"Benioff","displayToAgent":true},
+						{"label":"Email","value":"benioff@salesforce.com","displayToAgent":true, "transcriptFields": ["email__c"]}] ;
 	
 embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 'http://skrish-wsm2.internal.salesforce.com:8096/chat',
                   'http://skrish-wsm2.internal.salesforce.com:8095/content',
