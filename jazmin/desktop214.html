@@ -55,7 +55,7 @@ embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109',
 		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000HgEAI_160b8f7f492'}); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { 
