@@ -1,30 +1,7 @@
-<!DOCTYPE HTML>
 <html>
-   <head>
-   <title>DEFAULT PAGE</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-<body>
-  <p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
-  <br/>
-  <br/>
-	<p align="center"><font color = "red"><a href="https://esw4321.github.io/subbu/na1_blitz03.html">Link to PAGE IN ANOTHER SUBDOMAIN</a></font></p>
-	<p align="center"><font color = "red"><a href="na44_invitation_page2.html">Link to PAGE TWO DEFAULT WIDGET</a></font></p>
-	<p align="center"><font color = "red"><a href="na44_invitation_no_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
-	<p align="center"><font color = "red"><a href="na44_invitation_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
-	<p align="center"><font color = "red"><a href="na44_invitation_second_deployment.html">Link to PAGE WITH SECOND DEPLOYMENT</a></font></p>
-	<!--
-  <p align="center"><font color = "red"><a href="bl1custom.html">Link to PAGE TWO CUSTOM WIDGET</a></font></p>
-  <p align="center"><font color = "red"><a href="bl1hidden.html">Link to PAGE THREE BUTTON AS A LINK</a></font></p>
-  <p align="center"><font color = "red"><a href="bl1nosnippet.html">Link to PAGE FIVE WITHOUT SNIPPET</a></font></p>
-  <p align="center"><font color = "red"><a href="bl1noprechat.html">Link to PAGE SIX WITHOUT PRECHAT</a></font></p>
--->
-  <br>
-  <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
-
-
-<div id="button_goes_here">
-<style type='text/css'>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
@@ -54,7 +31,7 @@
 	#snapins_invite { background-color: #FFFFFF; font-family: "Salesforce Sans", sans-serif; overflow: visible; border-radius: 8px; visibility: hidden; }
 	.embeddedServiceInvitation { background-color: transparent; max-width: 290px; max-height: 210px; -webkit-box-shadow: 0 7px 12px rgba(0,0,0,0.28); -moz-box-shadow: 0 7px 12px rgba(0,0,0,0.28); box-shadow: 0 7px 12px rgba(0,0,0,0.28); }
 	@media only screen and (min-width: 48em) { /*mobile*/ .embeddedServiceInvitation { max-width: 332px; max-height: 210px; } }
-	.embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #222222; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+	.embeddedServiceInvitation > .embeddedServiceInvitationHeader { width: inherit; height: 32px; line-height: 32px; padding: 10px; color: #FFFFFF; background-color: #911C1C; overflow: initial; display: flex; justify-content: space-between; align-items: stretch; border-top-left-radius: 8px; border-top-right-radius: 8px; }
 	.embeddedServiceInvitationHeader #embeddedServiceAvatar { width: 32px; height: 32px; border-radius: 50%; }
 	.embeddedServiceInvitationHeader .embeddedServiceTitleText { font-size: 18px; color: #FFFFFF; overflow: hidden; word-wrap: normal; white-space: nowrap; text-overflow: ellipsis; align-self: stretch; flex-grow: 1; max-width: 100%; margin: 0 12px; }
 	.embeddedServiceInvitationHeader .embeddedServiceCloseIcon { border: none; border-radius: 3px; cursor: pointer; position: relative; bottom: 3%; background-color: transparent; width: 32px; height: 32px; font-size: 23px; color: #FFFFFF; }
@@ -79,7 +56,7 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -96,23 +73,18 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":false,"doFind":true,"fieldName":"LastName","isExactMatch":true,"label":"Last Name"},
-                                  {"doCreate":false,"doFind":true,"fieldName":"FirstName","isExactMatch":true,"label":"First Name"},
-                                  {"doCreate":false,"doFind":true,"fieldName":"Email","isExactMatch":true,"label":"Email"}],
-                       "entityName":"Contact"}];
+//embedded_svc.settings.devMode = true;
 //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+// Sets chats to route to the first available user or button in the array
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na1-blitz01.soma.salesforce.com', 'https://snapins-15eca4b57d3.blitz01.soma.force.com/napili', gslbBaseURL, '00DD00000008aGQ', 'a', { baseLiveAgentContentURL: 'https://c.la-blitz01.soma.salesforce.com/content', deploymentId: '572D000000002Rx', buttonId: '573D000000002jY', baseLiveAgentURL: 'https://d.la-blitz01.soma.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz01.soma.salesforce.com/embeddedservice/4.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-	</div>
-
-
-   </body>
+embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://tiffanyesw.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000001gEb', 'a', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx000000004E', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+  </body>
 </html>
-    
