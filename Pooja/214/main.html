@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="salesforce-use-min-js" content="false"/>
+</head> 
+<body>
+Jake main Jan. 2017
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Trebuchet MS", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+</style>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.devMode = true;
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'garbage.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+  
+/*embedded_svc.settings.fieldServiceHomeImgURL = 'images/fieldservice/hero-2.png';
+embedded_svc.settings.fieldServiceLogoImgURL = 'images/fieldservice/logo.png';
+embedded_svc.settings.fieldServiceConfirmationCardImgURL = 'images/fieldservice/confirmation.png';*/
+  
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService'; 
+  
+embedded_svc.settings.loginClientId = "3MVG9AOp4kbriZOLLy_fRgxLirGMvtcBEFHpw6lbAoWKCIX8FKjRwnO0u55W0f1LJPjXuNVA_KbJq_1ETGaug";
+embedded_svc.settings.loginRedirectURL = "http://esw1234.github.io/Pooja/214/Oauth.html";
+embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
+embedded_svc.settings.fieldServiceStartLabel = "Authenticated!";
+//embedded_svc.settings.fieldServiceHomeImgURL = 'http://www.salesforcetower.com/files/3114/3084/2229/salesforce-tower-skyline-golden-gate-767.jpg';
+//embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
+embedded_svc.init('http://poojaganesh-wsm.internal.salesforce.com:6109', 'http://snapins-subdomain-161676efadb.localhost.soma.force.com:6109/community2', gslbBaseURL, '00Dxx0000001gXY', 'pgdeployment2', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://poojaganesh-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+  <div class="login-panel">
+    <h3>Login</h3>
+    <input id="login-name" type="text" placeholder="Username" value="admin@jakeroussel.com"/>
+    <button id="login-button">Login</button>
+  </div>
+  <div id="salesforce-login"></div>
+  <script type="text/javascript" src="login-wsm.js"></script>
+
+</body>
+</html>

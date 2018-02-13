@@ -21,6 +21,10 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
+embedded_svc.settings.devMode = true;
+	
+	
+
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
@@ -48,10 +52,11 @@ embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109',
 		   deploymentId: '572xx00000000IG', 
 		   buttonId: '573xx00000000IV', 
 		   baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', 
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000HgEAI_160b8f7f492'}); };
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000HgEAI_160b8f7f492',
+		   offlineCasesEnabled: true}); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { 

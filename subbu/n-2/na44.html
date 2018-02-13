@@ -11,8 +11,8 @@
 	<p align="center"><font color = "red"><a href="https://esw4321.github.io/subbu/na1_blitz03.html">Link to PAGE IN ANOTHER SUBDOMAIN</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_page2.html">Link to PAGE ONE DEFAULT WIDGET</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_no_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
-	<p align="center"><font color = "red"><a href="../na1_blitz03_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
-	<p align="center"><font color = "red"><a href="page2.html">Link to PAGE2</a></font></p>
+	<p align="center"><font color = "red"><a href="na1_blitz03_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
+	<p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH SECOND DEPLOYMENT</a></font></p>
 	<!--
   <p align="center"><font color = "red"><a href="bl1custom.html">Link to PAGE TWO CUSTOM WIDGET</a></font></p>
   <p align="center"><font color = "red"><a href="bl1hidden.html">Link to PAGE THREE BUTTON AS A LINK</a></font></p>
@@ -25,15 +25,16 @@
 
 <div id="button_goes_here">
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -50,23 +51,66 @@ embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
 embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
 
+embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[],"entityName":"Contact", "saveToTranscript": "customContact__c" }];
+	
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983',
-'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617', gslbBaseURL, '00Dxx0000001gER', 
-'X210_07_26_17', { baseLiveAgentContentURL: 'http://skrish-wsm2.internal.salesforce.com:8095/content', 
-deploymentId: '572xx0000000001', buttonId: '573xx0000000001',
-baseLiveAgentURL: 'http://skrish-wsm2.internal.salesforce.com:8096/chat',
-eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15d80d32dc2'}); };
-if (!window.embedded_svc) { 
+embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-15fe5b0b0e3.stmfb.stm.force.com/212112217', 
+gslbBaseURL, '00DRM0000005iqb', 'X212120117', 
+{ baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+deploymentId: '572RM0000004CTr', buttonId: '573RM0000004CTw',
+baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000262AA_16013b997d6'}); };
+if (!window.embedded_svc) {
 var s = document.createElement('script'); 
-s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/4.0/esw.js'); 
-s.onload = function() { initESW(null); }; 
-document.body.appendChild(s); } else { 
-initESW('http://skrish-wsm2.internal.salesforce.com:57983'); }
-</script>
+s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js');
+s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+initESW('https://service.force.com'); }</script>
+<!--
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #71C757; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #71C757; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15eee7b817c.stmfa.stm.force.com/212100517', 
+		  gslbBaseURL, '00DRM0000005cdE', 'X212100517', 
+		  { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+		   deploymentId: '572RM0000004C9N', buttonId: '573RM0000004C9U',
+		   baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000062AA_15eeebade67'}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+			initESW('https://na44.stmfa.stm.salesforce.com'); }</script>
+-->
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
