@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sprint Review!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="salesforce-use-min-js" content="false"/>
+</head> 
+<body>
+Jake main Jan. 2017
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Trebuchet MS", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+</style>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.settings.loginClientId = '';
+embedded_svc.settings.loginRedirectURL = '';
+embedded_svc.settings.loginTargetQuerySelector = '';
+embedded_svc.settings.fieldServiceStartLabel = '';
+
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService';
+embedded_svc.settings.useCustomAuthentication = false;
+
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-subdomain-161923d1a21.stmfa.stm.force.com/snapinscomm2', gslbBaseURL, '00DRM0000005r6L', 'FS_214_Sprint_Reviews', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+<div id="salesforce-login"></div>
+</body>
+</html>
