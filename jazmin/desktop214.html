@@ -19,10 +19,10 @@
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.devMode = true;
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-embedded_svc.settings.offlineCasesMinimizedText = 'Contact Us'; 
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
@@ -35,6 +35,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+//embedded_svc.settings.offlineCasesMinimizedText = '...'; //(Defaults to Contact Us)
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 // Sets chats to route to the first available user or button in the array
 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
@@ -44,14 +45,16 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 
 embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109', 
 		  'http://snapins-1619ac6e064.localhost.soma.force.com:6109/CustomerService0215', 
-		  gslbBaseURL, '00Dxx0000001gER', 'githubPage', 
+		  gslbBaseURL, '00Dxx0000001gER', 
+		  'githubPage', 
 		  { 
 			baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content', 
 			deploymentId: '572xx0000000001', 
 			buttonId: '573xx0000000001', 
+			offlineCasesEnabled: true, 
 			baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', 
-			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_1619affdcba'
-		}); };
+			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_1619affdcba'}); 
+			};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
 		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
