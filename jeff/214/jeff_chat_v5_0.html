@@ -60,13 +60,15 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+	
+		
+		embedded_svc.settings.externalScripts = ['CustomEventsTest'];
+		embedded_svc.settings.debug = true; 
+		embedded_svc.debug = true;
+	
 
 embedded_svc.init('http://jbeeghly-wsm0.internal.salesforce.com:6109', 'http://myfirstlocalsite.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000000001', 'NewSnapInDeployment', { baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1614c9fdb7f'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 		
-		
-		embedded_svc.settings.externalScripts = ['CustomEventsTest.js'];
-		embedded_svc.settings.debug = true; 
-		embedded_svc.debug = true;
 
 	</body>
 </html>
