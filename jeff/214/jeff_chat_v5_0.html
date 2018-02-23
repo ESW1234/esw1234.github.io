@@ -14,7 +14,7 @@
 
 			body {
 				x-background-color: #a26eaf;
-				background-color: green;
+				background-color: blue;
 			}
 		</style>
 	</head>
@@ -64,9 +64,7 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 		embedded_svc.settings.externalScripts = ['CustomEventsTest'];
 		embedded_svc.settings.devMode = true;
-		embedded_svc.liveAgentAPI.getCustomEvents(function(data) {
-			console.log("LiveAgent custom events received: " + data);
-		});
+		
 
 	
 
