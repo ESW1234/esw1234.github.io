@@ -18,11 +18,11 @@
 <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
 	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
 		<img id="embeddedServiceAvatar">
-		<span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
+		<span class="embeddedServiceTitleText" id="snapins_titletext">Looking for help?</span>
 		<button type="button" id="closeInvite" class="embeddedServiceCloseIcon" aria-label="Exit invitation">&times;</button>
 	</div>
 	<div class="embeddedServiceInvitationBody">
-		<p id="snapins_bodytext">How can we help you?</p>
+		<p id="snapins_bodytext">What you need? </p>
 	</div>
 	<div class="embeddedServiceInvitationFooter" aria-describedby="snapins_bodytext">
 		<button type="button" class="embeddedServiceActionButton" id="rejectInvite">Close</button>
@@ -59,7 +59,7 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -85,7 +85,7 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-16121dd49b1.stmfb.stm.force.com/0122', gslbBaseURL, '00DRM0000005mvd', 'InvitationsLA', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004DYo', buttonId: '573RM0000004Dez', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000004C2AQ_1616d9229e0'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-16121dd49b1.stmfb.stm.force.com/0122', gslbBaseURL, '00DRM0000005mvd', 'InvitationsLA', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004DYo', buttonId: '573RM0000004Dez', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000004C2AQ_1616d9229e0'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 
 </body>
 </html>
