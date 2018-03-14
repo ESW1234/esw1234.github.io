@@ -34,7 +34,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 //};
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-embedded_svc.settings.offlineCasesMinimizedText = 'Offline Cases State Yay'; //(Defaults to Contact Us)
+embedded_svc.settings.offlineSupportMinimizedText = 'Offline Cases State Yay'; //(Defaults to Contact Us)
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -46,7 +46,7 @@ embedded_svc.init('http://jazortiz-wsm3.internal.salesforce.com:6109',
 		  { baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content', 
 		   deploymentId: '572xx0000000001', 
 		   buttonId: '573xx0000000001', 
-		   offlineCasesEnabled: true, 
+		   isOfflineSupportEnabled: true, 
 		   baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat', 
 		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_1619affdcba'}
 		 ); };
