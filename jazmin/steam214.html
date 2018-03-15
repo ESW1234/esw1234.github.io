@@ -29,6 +29,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+embedded_svc.settings.offlineCasesMinimizedText = 'Offline Cases State Yay'; //(Defaults to Contact Us)
 
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -53,7 +54,8 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
 		  'https://snapins-15f7e6db324.stmfa.stm.force.com/napili111217', 
 		  gslbBaseURL, '00DRM0000005hL0', 'githubPage', 
 		  { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-		   deploymentId: '572RM0000004Csn', buttonId: '573RM0000004Ct5', 
+		   deploymentId: '572RM0000004Csn', buttonId: '573RM0000004Ct5',
+		   offlineCasesEnabled: true,
 		   baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
 		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006S2AQ_161062f736b'}); };
 	if (!window.embedded_svc) { 
