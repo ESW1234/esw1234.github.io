@@ -9,12 +9,17 @@
 <body>
 Jake main Jan. 2017
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Trebuchet MS", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.devMode = true;
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -24,27 +29,21 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-  
-embedded_svc.settings.fieldServiceHomeImgURL = 'images/fieldservice/hero-2.png';
-embedded_svc.settings.fieldServiceLogoImgURL = 'images/fieldservice/logo.png';
-
 embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
+
+embedded_svc.settings.useCustomAuthentication = false;
   
-embedded_svc.settings.loginClientId = "3MVG9AOp4kbriZOLiNgBjx.ukyB1nkyyeMSqElIwjT_cJg7P6FjIxyKYcvPFoubYhwesNHl6zUJdugbDETJMe";
-embedded_svc.settings.loginRedirectURL = "http://esw1234.github.io/jake/oauth.html";
+embedded_svc.settings.loginClientId = "3MVG9qKMKuRGRcbtApW3_qkD3ITVTcUDpL3p87CKmzx5fsw6cH7Z_WKJXEKiyIHE_kTYs46uymFvAXgfhc9tv";
+embedded_svc.settings.loginRedirectURL = "https://esw1234.github.io/jp/214/steam/callback.html";
 embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
 embedded_svc.settings.fieldServiceStartLabel = "Authenticated!";
 //embedded_svc.settings.fieldServiceHomeImgURL = 'http://www.salesforcetower.com/files/3114/3084/2229/salesforce-tower-skyline-golden-gate-767.jpg';
 //embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
 
-embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:57983', 'http://communities-developer-edition.localhost.soma.force.com:57983/napili6', gslbBaseURL, '00Dxx0000001gFF', 'X7654321', { baseLiveAgentContentURL: 'http://jakerouss-wsm1.internal.salesforce.com:8080/content', deploymentId: '572xx0000000001', buttonId: '573xx0000000001', chasitorVersion: '41.0', baseLiveAgentURL: 'http://jakerouss-wsm1.internal.salesforce.com:7443/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15970992447'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:57983/embeddedservice/3.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('http://jakerouss-wsm1.internal.salesforce.com:57983'); }</script>
-  <div id="salesforce-login"><button>Begin Authentication</button></div>
+
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f082fb956-15fa2f3e7d6.stmfa.stm.force.com/napili2', gslbBaseURL, '00DRM0000005iLr', 'EswFS', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+<div id="salesforce-login"><button>Begin Authentication</button></div>
 test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>  
 </body>
 </html>
