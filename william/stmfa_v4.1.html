@@ -45,8 +45,13 @@
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
             
-            embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
-                'https://snapins-15f27b267a1.stmfa.stm.force.com/napili', gslbBaseURL, '00DRM0000005e2E', 'a', {
+            embedded_svc.init(
+                'https://na44.stmfa.stm.salesforce.com', // baseCoreUrl
+                'https://snapins-15f27b267a1.stmfa.stm.force.com/napili', // communityEndpointUrl
+                gslbBaseUrl, // gslbBaseUrl
+                '00DRM0000005e2E', // org id
+                'a', // eswConfigDevName
+                {
                     baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
                     deploymentId: '572RM000000008r',
                     buttonId: '573RM000000009D',
