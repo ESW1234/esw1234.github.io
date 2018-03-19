@@ -33,18 +33,18 @@
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
             embedded_svc.init(
-                'https://na44.stmfa.stm.salesforce.com',
-                'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-                'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-                'https://snapins-15f27b267a1.stmfa.stm.force.com/napili',
-                '00DRM0000005e2E',
-                '572RM000000008r',
-                '573RM000000009D',
-                '2.0',
-                gslbBaseUrl,
-                '40.0',
-                'a',
-                'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+                'https://na44.stmfa.stm.salesforce.com', // baseCoreUrl
+                'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', // baseLiveAgentUrl
+                'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', // baseLiveAgentContentUrl
+                'https://snapins-15f27b267a1.stmfa.stm.force.com/napili', // communityEndpointUrl
+                '572RM000000008r', // deployment ID
+                '00DRM0000005e2E', // org ID
+                '573RM000000009D', // button ID
+                '2.0', // releaseVersion
+                gslbBaseUrl, // gslbBaseUrl
+                '40.0', // chasitorJsVersion
+                'a', // eswConfigDevName
+                'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971' // eswLiveAgentDevName
             );
         };
         if (!window.embedded_svc) {
