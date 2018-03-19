@@ -43,7 +43,7 @@ embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
 embedded_svc.settings.fieldServiceStartLabel = "Authenticated!";
 //embedded_svc.settings.fieldServiceHomeImgURL = 'http://www.salesforcetower.com/files/3114/3084/2229/salesforce-tower-skyline-golden-gate-767.jpg';
 //embedded_svc.settings.fieldServiceLogoImgURL = 'http://www.underconsideration.com/brandnew/archives/salesforce_logo_detail.png';
-
+embedded_svc.settings.useCustomAuthentication = true;
 embedded_svc.init('http://jakerouss-wsm1.internal.salesforce.com:57983', 'http://communities-developer-edition.localhost.soma.force.com:57983/wsm2', gslbBaseURL, '00Dxx0000001gFF', 'fs_main', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jakerouss-wsm1.internal.salesforce.com:57983/embeddedservice/5.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
   <div class="login-panel">
     <h3>Login</h3>
