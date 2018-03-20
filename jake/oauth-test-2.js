@@ -4,7 +4,7 @@
 	var oauthToken;
 
 	embedded_svc = {
-		auth: {}
+		auth: {} 
 	};
 
 	function loadLightningApp() {
