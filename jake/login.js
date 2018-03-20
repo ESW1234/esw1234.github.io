@@ -12,7 +12,7 @@
         console.log(`[Login] Unable to login: ${responseData.error} - ${responseData.error_description}.`);
       }
     }
-    request.open("POST", `http://sites-developer-edition.localhost.soma.force.com:6109/services/apexrest/JWT?username=${username}`);
+    request.open("POST", `http://communities-developer-edition.localhost.soma.force.com:6109/wsm5/services/apexrest/JWT?username=${username}`);
     request.send();
   };
 })()
