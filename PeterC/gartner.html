@@ -18,6 +18,23 @@
 		left: 0;
 		z-index: -5000;
 	}
+	.fieldServiceStart,
+		.sfid-button {
+		display: inline-block;
+		border: 2px solid #fff;
+		color: #fff;
+		height: 30px;
+		padding: 10px 30px;
+		border-radius: 40px;
+		line-height: 30px;
+		margin-top: 50px;
+		background-color: transparent;
+		font-size: 1.25rem;
+		font-family: "Salesforce Sans", sans-serif;
+		box-sizing: content-box;
+		transition: background-color 200ms ease-in, color 200ms ease-in;
+		cursor: pointer;
+	}
 </style>
 	
 <!--<div><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" height="1200" width="1920"/> -->
@@ -63,6 +80,6 @@ if (!window.embedded_svc) {
 }
 </script>
 <div align="center"><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" class="bg"></div>
-<div id="salesforce-login"><button>Schedule Appointment</button></div>
+<div id="salesforce-login"><button class="fieldServiceStart" disabled>Schedule Appointment</button></div>
 </body>
 </html>
