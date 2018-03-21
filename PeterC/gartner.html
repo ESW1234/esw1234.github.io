@@ -5,25 +5,19 @@
   <title>Widget Main</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   <meta name="salesforce-use-min-js" content="false"/>
-<style>
-.bg {
-	background: url("https://esw1234.github.io/PeterC/images/hitachi_background.png");
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-</style>
 </head> 
 <body>
 Jake main Jan. 2017
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	.bg {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -5000;
 	}
 </style>
 	
@@ -69,7 +63,7 @@ if (!window.embedded_svc) {
     initESW('https://service.force.com'); 
 }
 </script>
-<div class="bg"></div>
+<div align="center"><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" class="bg"></div>
 <div id="salesforce-login"><button>Begin Authentication</button></div>
 </body>
 </html>
