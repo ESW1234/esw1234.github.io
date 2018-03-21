@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="salesforce-use-min-js" content="false"/>
+</head> 
+<body>
+Jake main Jan. 2017
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Field Service
+embedded_svc.settings.loginClientId = "3MVG9CEn_O3jvv0xR84UYLj3ntJDHg1EKVrh8D15VpnhcV4PLB6Fgt__FBsHeCl1ZChShfoLSjpao7bm1YmPo";
+embedded_svc.settings.loginRedirectURL = "https://sdodemo-main-1622bd4f397.force.com/consumer/Scheduling_Callback";
+embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
+embedded_svc.settings.fieldServiceStartLabel = "Schedule Appointment";
+
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+
+embedded_svc.init(
+    'https://fslrockincgb.my.salesforce.com', 
+    'https://sdodemo-main-1622bd4f397.force.com/consumer', 
+    gslbBaseURL, 
+    '00D6A000002iQeX', 
+    'Gartner_Demo', 
+    { }); 
+};
+if (!window.embedded_svc) { 
+    var s = document.createElement('script'); 
+    s.setAttribute('src', 'https://fslrockincgb.my.salesforce.com/embeddedservice/4.1/esw.min.js'); 
+    s.onload = function() { 
+        initESW(null); 
+    }; 
+    document.body.appendChild(s); 
+} else { 
+    initESW('https://service.force.com'); 
+}
+</script>
+<div id="salesforce-login"><button>Begin Authentication</button></div>
+test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>  
+</body>
+</html>
