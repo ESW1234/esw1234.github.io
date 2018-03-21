@@ -2,28 +2,48 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Widget Main</title>
+  <title>Hitachi Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   <meta name="salesforce-use-min-js" content="false"/>
 </head> 
 <body>
-Jake main Jan. 2017
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	.bg {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -5000;
+	}
+	.fieldServiceStart,
+		.sfid-button {
+		display: inline-block;
+		border: 2px solid #fff;
+		color: #fff;
+		height: 30px;
+		padding: 10px 30px;
+		border-radius: 40px;
+		line-height: 30px;
+		margin-top: 50px;
+		background-color: #e40c2f;
+		font-size: 1.25rem;
+		font-family: "Salesforce Sans", sans-serif;
+		box-sizing: content-box;
+		transition: background-color 200ms ease-in, color 200ms ease-in;
+		cursor: pointer;
 	}
 </style>
-<div><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" height="1200" width="1920"/>
+	
+<!--<div><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" height="1200" width="1920"/> -->
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.displayHelpButton = false; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+embedded_svc.settings.appendHelpButton = false;
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -33,7 +53,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 // Settings for Field Service
 embedded_svc.settings.loginClientId = "3MVG9CEn_O3jvv0xR84UYLj3ntJDHg1EKVrh8D15VpnhcV4PLB6Fgt__FBsHeCl1ZChShfoLSjpao7bm1YmPo";
 embedded_svc.settings.loginRedirectURL = "https://esw1234.github.io/PeterC/gartner_callback.html";
-embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
+embedded_svc.settings.loginTargetQuerySelector = "#login";
 embedded_svc.settings.fieldServiceStartLabel = "Schedule Appointment";
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
@@ -59,7 +79,7 @@ if (!window.embedded_svc) {
     initESW('https://service.force.com'); 
 }
 </script>
-<div id="salesforce-login"><button>Begin Authentication</button></div>
-test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>  
+<div align="center"><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" class="bg"></div>
+<div id="login"><button class="fieldServiceStart" disabled>Schedule Appointment</button></div>
 </body>
 </html>
