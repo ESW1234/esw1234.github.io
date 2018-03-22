@@ -106,17 +106,6 @@
 		</div>
 
 
-
-		<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-</style>
-
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -140,21 +129,17 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Field Service
-embedded_svc.settings.loginClientId = '';
-embedded_svc.settings.loginRedirectURL = '';
-embedded_svc.settings.loginTargetQuerySelector = '';
-embedded_svc.settings.authenticationStartLabel = '';
+embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbv7keux1QlcCEyQMOs_Z76gB1kLFdamsbWLWlDmCUk4oG7TFoT2xXVUSEHiWAnIVwTdwu00';
+embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/ben/callback-na44-1.html';
+embedded_svc.settings.loginTargetQuerySelector = '#login';
+embedded_svc.settings.fieldServiceStartLabel = 'Launch!';
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
 
 embedded_svc.settings.useCustomAuthentication = false;
-embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbs_btbc1NfKvwUqaz.omH3UeHnxOHpVV851Fb23nnsJ6pi4qMlqKcjUrEzx8TrlsaqYgVZx';
-embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/ben/callback-na44-1.html';
-embedded_svc.settings.loginTargetQuerySelector = '#login';
-embedded_svc.settings.fieldServiceStartLabel = 'Launch!';
 
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', '	https://snapins-1624a37f8d7.stmfa.stm.force.com/cs1', gslbBaseURL, '00DRM0000005r6L', 'FS_214_Sprint_Reviews', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-subdomain-1624a54b497.stmfa.stm.force.com/cs1', gslbBaseURL, '00DRM0000005v50', 'snap1', { }); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
 		
 </script>
 		
