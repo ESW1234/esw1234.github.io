@@ -8,8 +8,7 @@
   <p align="center"><font color ="white">Admin 3 Page</font></p>
    
 <div id="button_goes_here">
-</div>
-   <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
@@ -38,14 +37,15 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //};
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
 
 
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-1624548e47f.stmfa.stm.force.com/napili', gslbBaseURL, '00DRM0000005uuh', 'githubPage', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM00000001zg', buttonId: '573RM000000028W', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CRF2A2_1624b26ce2f'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-</body>
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-1624548e47f.stmfa.stm.force.com/napili', gslbBaseURL, '00DRM0000005uuh', 'a', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM00000001zg', buttonId: '573RM000000028W', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16099d43e6d', isOfflineSupportEnabled: true}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+	</div></body>
 
 </html>
     <style>
