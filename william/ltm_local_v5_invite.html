@@ -23,7 +23,7 @@
     </style>
 
     <!-- Start of Invitations -->
-    <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true">
+    <div class="embeddedServiceInvitation" id="snapins_invite" aria-live="assertive" role="dialog" aria-atomic="true" inert>
         <div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
             <img id="embeddedServiceAvatar">
             <span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
@@ -183,10 +183,15 @@
             background-color: #FFFFFF;
             color: #005290;
         }
+
+        [inert] {
+            opacity: 0.5;
+        }
     </style>
 
     <script type='text/javascript'>
         (function () {
+            import('https://esw1234.github.io/william/inert.js');
             document.getElementById('closeInvite').onclick = function () {
                 embedded_svc.inviteAPI.inviteButton.rejectInvite();
             };
@@ -208,7 +213,8 @@
     <h1>Welcome</h1>
     <a href="esw1234.github.io/william/ltm_local_v3.html" id="v3">V3 Snippet!</a>
     <a href="zombo.com" id="zombocom">zombocom</a>
-    
+    <a href="google.com" id="google" inert>Google - inert</a>
+
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function (gslbBaseURL) {
