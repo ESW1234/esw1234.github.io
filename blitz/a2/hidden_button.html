@@ -15,6 +15,7 @@
   <br>
 
 <div id="button_goes_here"></div>
+<!--
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -52,6 +53,43 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 
 
 embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iAS', 'LAButton2', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004D18', buttonId: '573RM0000004D5h', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002b2AA_15fa6720c6c', isOfflineSupportEnabled: true}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+-->
+<style type='text/css'>
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #71C757; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #71C757; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = false; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917', 
+gslbBaseURL, '00DRM0000005iAS', 'LAButton2',
+{ baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+deploymentId: '572RM0000004D18', buttonId: '573RM0000004D5h',
+baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002b2AA_15fa6720c6c'}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+			initESW('https://na44.stmfa.stm.salesforce.com'); }</script>
 
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
