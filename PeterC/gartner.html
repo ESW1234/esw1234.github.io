@@ -36,6 +36,21 @@
 		transition: background-color 200ms ease-in, color 200ms ease-in;
 		cursor: pointer;
 	}
+	.fieldServiceStart:not(:disabled):hover,
+		.sfid-button:not(:disabled):hover {
+		background-color: #fff;
+		color: #935fdb;
+	}
+
+	.fieldServiceStart:disabled {
+		opacity: 0.6;
+		cursor: default;
+	}
+
+	.sfid-button:first-child:not(:only-child),
+	.fieldServiceStart:first-child:not(:only-child) {
+		display: none;
+	}
 </style>
 <style>	
 	#salesforce-login button{
