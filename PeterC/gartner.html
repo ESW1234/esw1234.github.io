@@ -36,7 +36,36 @@
 		transition: background-color 200ms ease-in, color 200ms ease-in;
 		cursor: pointer;
 	}
+	.fieldServiceStart:not(:disabled):hover,
+		.sfid-button:not(:disabled):hover {
+		background-color: #fff;
+		color: #935fdb;
+	}
+
+	.fieldServiceStart:disabled {
+		opacity: 0.6;
+		cursor: default;
+		display: none;
+	}
+
+	.sfid-button:first-child:not(:only-child),
+	.fieldServiceStart:first-child:not(:only-child) {
+		display: none;
+	}
 </style>
+<style>	
+	#salesforce-login button{
+		display:none;
+	}
+
+	#salesforce-login button.fieldServiceStart{
+		display:block;
+	}
+	#salesforce-login button#sfid-login-button{
+		display:block;
+	}
+</style>	
+	
 	
 <!--<div><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" height="1200" width="1920"/> -->
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
@@ -54,7 +83,7 @@ embedded_svc.settings.appendHelpButton = false;
 // Settings for Field Service
 embedded_svc.settings.loginClientId = "3MVG9CEn_O3jvv0xR84UYLj3ntJDHg1EKVrh8D15VpnhcV4PLB6Fgt__FBsHeCl1ZChShfoLSjpao7bm1YmPo";
 embedded_svc.settings.loginRedirectURL = "https://esw1234.github.io/PeterC/gartner_callback.html";
-embedded_svc.settings.loginTargetQuerySelector = "#login";
+embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
 embedded_svc.settings.fieldServiceStartLabel = "Schedule Appointment";
 
 embedded_svc.settings.enabledFeatures = ['FieldService'];
@@ -81,6 +110,6 @@ if (!window.embedded_svc) {
 }
 </script>
 <div align="center"><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" class="bg"></div>
-<div id="login"><button class="fieldServiceStart" disabled>Schedule Appointment</button></div>
+<div id="salesforce-login"><button class="fieldServiceStart" disabled>Schedule Appointment</button></div>
 </body>
 </html>

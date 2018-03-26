@@ -5,17 +5,16 @@
 
 <body>
 <h1 id="titleHeader"></h1>
-<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<p><a id="editThisPageLink" target="_blank">Edit this page</a></p>
 <p><a href="http://google.com">google.com</a></p>
 
 <script>
-var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
-document.getElementById('editThisPageLink').href += pagePath;
+document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 var headerEl = document.getElementById('titleHeader');
 if (headerEl.innerHTML.length) {
   headerEl.innerHTML += ' - ';
 }
-headerEl.innerHTML += pagePath;
+headerEl.innerHTML += window.location.pathname;
 document.title = headerEl.innerHTML;
 </script>
 
