@@ -46,23 +46,18 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
 //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-//Returns a valid button ID.
+// Returns a valid button ID.
 //};
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-// Sets chats to route to the first available user or button in the array
 //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-1618b1a0add.stmfa.stm.force.com/napili1', gslbBaseURL, '00DRM0000005qkP', 'LA_Deployment_One', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004Dlv', buttonId: '573RM0000004Dp1', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000008Y2AQ_1619123c9e6'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-
+embedded_svc.init('http://yatlaw-wsm2.internal.salesforce.com:6109', 'http://snapins-1626df3a3ee.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx0000001rRq', 'LA_Deployment_One', { baseLiveAgentContentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8095/content', deploymentId: '572xx00000000VW', buttonId: '573xx00000000VR', baseLiveAgentURL: 'http://yatlaw-wsm2.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000j6EAA_1626e04204c'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+	
 <!---------------------------------------------------------------->
     </body>
 </html>

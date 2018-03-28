@@ -7,6 +7,7 @@
   <meta name="salesforce-use-min-js" content="false"/>
 </head> 
 <body>
+	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -36,20 +37,7 @@
 		transition: background-color 200ms ease-in, color 200ms ease-in;
 		cursor: pointer;
 	}
-	.fieldServiceStart:not(:disabled):hover,
-		.sfid-button:not(:disabled):hover {
-		background-color: #fff;
-		color: #935fdb;
-	}
-
 	.fieldServiceStart:disabled {
-		opacity: 0.6;
-		cursor: default;
-		display: none;
-	}
-
-	.sfid-button:first-child:not(:only-child),
-	.fieldServiceStart:first-child:not(:only-child) {
 		display: none;
 	}
 </style>
@@ -65,7 +53,6 @@
 		display:block;
 	}
 </style>	
-	
 	
 <!--<div><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" height="1200" width="1920"/> -->
 <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
@@ -110,6 +97,6 @@ if (!window.embedded_svc) {
 }
 </script>
 <div align="center"><img src="https://esw1234.github.io/PeterC/images/hitachi_background.png" class="bg"></div>
-<div id="salesforce-login"><button class="fieldServiceStart" disabled>Schedule Appointment</button></div>
+<div id="salesforce-login"><button>Schedule Appointment</button></div>
 </body>
 </html>
