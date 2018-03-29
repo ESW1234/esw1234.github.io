@@ -1,0 +1,85 @@
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+<h1 id="titleHeader"></h1>
+<p><a id="editThisPageLink" target="_blank">Edit this page</a></p>
+<p><a href="http://google.com">google.com</a></p>
+
+<script>
+document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+var headerEl = document.getElementById('titleHeader');
+if (headerEl.innerHTML.length) {
+  headerEl.innerHTML += ' - ';
+}
+headerEl.innerHTML += window.location.pathname;
+document.title = headerEl.innerHTML;
+</script>
+
+
+  <a href="javascript:void(0)"><span>no aria label</span></a>
+  <a href="javascript:void(0)"><span aria-label>aria label has no value</span></a>
+  <a href="javascript:void(0)"><span aria-label="">aria label is empty string</span></a>
+  <a href="javascript:void(0)"><span aria-label="for great justice">aria label is set</span></a>
+
+ <h4>Neighborhood News</h4>
+ <p>Seminole tax hike:  Seminole city managers are proposing a 75% increase in 
+ property taxes for the coming fiscal year.
+ <a href="taxhike.html" aria-label="Read more about Seminole tax hike">[Read more...]</a>
+ </p> 
+
+ <p>Baby Mayor:  Seminole voters elect the city's youngest mayor ever by voting in 3 year
+ old Willy "Dusty" Williams in yesterday's mayoral election.
+ <a href="babymayor.html" aria-label="Read more about Seminole's new baby mayor">[Read more...]</a>
+ </p>
+  <p>
+     <a href="babymayor.html"><span aria-label="Read more about Seminole's new baby mayor">[Read more...]</span></a>
+  </p>
+  <p>
+    <a aria-label="Apple banana 8">
+      We're here 8 (without href)
+    </a>
+    
+    <a href="hello.html" aria-label="Apple banana 8">
+      We're here 8 (WITH href)
+    </a>
+  </p>
+
+</body>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
+}
+h1 {
+  font-size: 3rem;
+}
+a {
+  color: red;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  background: #1ed760;
+}
+  
+  /* 1/22/18 temp workaround */
+  .embeddedServiceSidebar.layout-docked .dockableContainer {
+   width: 320px;
+}
+</style>
+</html>
