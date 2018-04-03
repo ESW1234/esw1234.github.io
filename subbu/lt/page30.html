@@ -23,7 +23,7 @@
 
 
 <div id="button_goes_here">
-
+<!--
 <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -54,11 +54,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 embedded_svc.settings.dynamicRouting = function(prechatFormData) {
- if(prechatFormData[0].value === "Subbu") return "573xx000000005q";
-	else if(prechatFormData[0].value === "error")  throw "Error";
-	else if(prechatFormData[0].value === "null")  return null;
-	else if(prechatFormData[0].value === "undefined")  return undefined;
-	else return prechatFormData[0].value;
+// if(prechatFormData[0].value === "Subbu") return "573xx000000005q";
+//	else if(prechatFormData[0].value === "error")  throw "Error";
+//	else if(prechatFormData[0].value === "null")  return null;
+//	else if(prechatFormData[0].value === "undefined")  return undefined;
+//	else return prechatFormData[0].value;
 };
 embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 		  'http://eswcomm-15846119c54.localhost.soma.force.com:57983/210072617', 
@@ -74,7 +74,7 @@ embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 		document.body.appendChild(s); } 
 	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }
 </script>
-
+-->
 	<!--	************************1.0 snippet ***********************	-->
 <!--
  <script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
@@ -99,6 +99,54 @@ embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 'http:
 	 s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
 	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
 -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+// Settings for Live Agent
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+// Returns a valid button ID.
+//};
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+
+embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 
+		  'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617',
+		  gslbBaseURL, '00Dxx0000001gER', 'X210_07_26_17', { 
+	baseLiveAgentContentURL: 'http://skrish-wsm2.internal.salesforce.com:8095/content', 
+	deploymentId: '572xx0000000001', buttonId: '573xx0000000001', 
+	baseLiveAgentURL: 'http://skrish-wsm2.internal.salesforce.com:8096/chat', 
+	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_15d80d32dc2', 
+	isOfflineSupportEnabled: false}); };
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
+			initESW('https://service.force.com'); }</script>
+	
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
