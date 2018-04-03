@@ -70,7 +70,7 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.addEventHandler("sessionDataRetrieved", function(serializedData){ if (serializedData.CHASITOR_SERIALIZED_KEY) {console.log (serializedData.CHASITOR_SERIALIZED_KEY.get(connectionData).sessionId);} })
+		embedded_svc.addEventHandler("sessionDataRetrieved", function(serializedData){ if (serializedData.CHASITOR_SERIALIZED_KEY) {console.log (serializedData.CHASITOR_SERIALIZED_KEY[connectionData]);} })
 		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
