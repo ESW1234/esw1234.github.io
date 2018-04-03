@@ -30,7 +30,6 @@
 </style>
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'> embedded_svc.addEventHandler("sessionDataRetrieved", function(serializedData){ console.log (serializedData.CHASITOR_SERIALIZED_KEY); })</script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -71,6 +70,7 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.addEventHandler("sessionDataRetrieved", function(serializedData){ console.log (serializedData.CHASITOR_SERIALIZED_KEY); })
 		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
