@@ -72,6 +72,9 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
 		
+		embedded_svc.settings.externalScripts = ["log", "log2"];
+		embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
 			'https://snapins.stmfa.stm.force.com/test', 
