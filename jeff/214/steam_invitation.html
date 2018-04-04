@@ -10,7 +10,7 @@
 			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 			@font-face {
 				font-family: 'Salesforce Sans';
-				src:    url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+				src:	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 						url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 			}
 
@@ -82,10 +82,23 @@
 
 		<script type='text/javascript'>
 			(function() {
-				document.getElementById('closeInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };
-				document.getElementById('rejectInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }; // use this API call to reject invitations
-				document.getElementById('acceptInvite').onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); }; // use this API call to start chat from invitations
-				document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
+				document.getElementById('closeInvite').onclick = function() {
+					embedded_svc.inviteAPI.inviteButton.rejectInvite();
+				};
+				
+				document.getElementById('rejectInvite').onclick = function() {
+					embedded_svc.inviteAPI.inviteButton.rejectInvite();
+				}; // use this API call to reject invitations
+				
+				document.getElementById('acceptInvite').onclick = function() {
+					embedded_svc.inviteAPI.inviteButton.acceptInvite();
+				}; // use this API call to start chat from invitations
+				
+				document.addEventListener('keyup', function(event) {
+					if (event.keyCode == 27) {
+						embedded_svc.inviteAPI.inviteButton.rejectInvite();
+					}
+				});
 			})();
 		</script>
 		<!-- End of Invitations -->
