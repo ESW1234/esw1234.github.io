@@ -88,7 +88,29 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 'https://snapins-16013f3ee96.stmfb.stm.force.com/120117', gslbBaseURL, '00DRM0000005joG', 'githubPage', { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004DLh', buttonId: '573RM0000004DVU', baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002G2AQ_16014004d5d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
+		  'https://snapins-16013f3ee96.stmfb.stm.force.com/120117', 
+		  gslbBaseURL, 
+		  '00DRM0000005joG', 
+		  'githubPage', 
+		  { 
+			baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+			deploymentId: '572RM0000004DLh', 
+			buttonId: '573RM0000004DVU', 
+			baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002G2AQ_16014004d5d'
+		   }
+); 
+};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); 
+	} else { 
+		initESW('https://service.force.com'); 
+	}
+</script>
 	
 <!------------------------------------------------ 4.0 SNIPPPET END ------------------------------------------------->
    
