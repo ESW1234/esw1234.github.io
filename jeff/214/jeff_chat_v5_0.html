@@ -14,7 +14,7 @@
 			}
 
 			body {
-				background-color: GreenYellow;
+				background-color: red;
 			}
 		</style>
 	</head>
@@ -137,7 +137,18 @@ var initESW = function(gslbBaseURL) {
 	);
 };
 
-if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }			
+if (!window.embedded_svc) {
+	var s = document.createElement('script');
+	s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+	s.onload = function() {
+		initESW(null);
+	};
+	
+	document.body.appendChild(s);
+}
+else {
+	initESW('https://service.force.com');
+}
 			
 			
 			
