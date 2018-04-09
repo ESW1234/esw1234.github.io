@@ -43,7 +43,7 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
 		  'https://snapins-16013f3ee96.stmfb.stm.force.com/napili', 
 		  gslbBaseURL, 
-		  '00DRM0000005joG', 
+		  '00DRM0000005joG',
 		  'githubPageOfflineCases', 
 		  { 
 			baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
@@ -51,19 +51,18 @@ embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 			buttonId: '573RM0000004DLm', 
 			baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
 			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000005Z2AQ_1629c3afbf4', 
-			isOfflineSupportEnabled: true}); };
-
-if (!window.embedded_svc) { 
-	var s = document.createElement('script'); 
-	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
-	s.onload = function() { initESW(null); }; 
-	document.body.appendChild(s); 
- } else { 
-	 initESW('https://service.force.com'); 
- }
-	
+			isOfflineSupportEnabled: false
+		}); 
+};
+	if (!window.embedded_svc) { 
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.onload = function() { initESW(null); }; 
+		document.body.appendChild(s); 
+	} else { 
+		initESW('https://service.force.com'); 
+	}
 </script>
-
 <!------------------------------------------------------------------------------------------------------------------->
 <!------------------------------------------------ 4.0 SNIPPPET ----------------------------------------------------->
 <!--
