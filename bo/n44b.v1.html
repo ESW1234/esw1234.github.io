@@ -1,0 +1,112 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+<h1 id="titleHeader"></h1>
+<p><a id="editThisPageLink" target="_blank" href="https://github.com/ESW1234/esw1234.github.io/edit/master">Edit this page</a></p>
+<p><a href="http://google.com">google.com</a></p>
+
+<script>
+var pagePath = document.URL.substring(document.URL.indexOf('/bo'));
+document.getElementById('editThisPageLink').href += pagePath;
+var headerEl = document.getElementById('titleHeader');
+if (headerEl.innerHTML.length) {
+  headerEl.innerHTML += ' - ';
+}
+headerEl.innerHTML += pagePath;
+document.title = headerEl.innerHTML;
+</script>
+
+<!-- snippet start -->
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton {
+  background-color: #D15DC1;
+  font-family: "Impact", sans-serif;
+}
+
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {
+  outline: 1px solid #D15DC1
+}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+embedded_svc.settings.defaultMinimizedText = 'hella online';
+embedded_svc.settings.offlineText = 'hella offline';
+embedded_svc.settings.onlineLoadingText = 'hella loading';
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
+        'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+        'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+        'https://snapins-15fc6fb04c9.stmfa.stm.force.com/napili',
+        '572RM0000004DUC',
+        '00DRM0000005jAJ',
+        '573RM0000004DVW',
+        '1.0',
+        gslbBaseUrl,
+        '39.0',
+        'oh_mylanta',
+        'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971');
+};
+if (!window.embedded_svc) {
+  var s = document.createElement('script');
+  s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/1.0/esw.min.js');
+  s.onload = function() {
+    initESW(null);
+  };
+  document.body.appendChild(s);
+} else {
+  initESW('https://na44.stmfa.stm.salesforce.com');
+}
+</script>
+<!-- snippet end -->
+
+</body>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+  color: red;
+}
+h1 {
+  font-size: 3rem;
+}
+a {
+  color: red;
+}
+#button_goes_here {
+  width: 100%; 
+  height: 100%; 
+  margin: 0 auto;
+  position: relative;
+}
+.embeddedServiceLiveAgentChatWindowItem .agentAvatar {
+  background-color: white;
+}
+.embeddedServiceLiveAgentChatButton .uiButton.agentOnline:hover,
+.uiButton.agentOnline:focus,
+.uiButton.agentOnline.is-selected,
+.embeddedServiceLiveAgentPrechat .startButton,
+.embeddedServiceLiveAgentSidebar .minimizedContainer.newMessage,
+.embeddedServiceLiveAgentChatWindow .messageOverlay .messageOverlayTopButton {
+  /*background: #1ed760;*/
+}
+</style>
+</html>
