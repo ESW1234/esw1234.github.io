@@ -59,6 +59,71 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+embedded_svc.settings.extraPrechatFormDetails = [
+                {
+                    "label": "LeadSource",
+                    "value": "Phone Inquiry",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }, {
+                    "label": "Country",
+                    "value": "USA",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }, {
+                    "label": "RecordType",
+                    "value": "0127F000000JM71",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }, {
+                    "label": "Phone",
+                    "value": "1234567890",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }, {
+                    "label": "Last Name",
+                    "value": "Testing Last Name",
+                    "transcriptFields": [],
+                    "displayToAgent": true
+                }
+            ];
+embedded_svc.settings.extraPrechatInfo = [
+                {
+                    "entityName": "Lead",
+                    "showOnCreate": true,
+                    "saveToTranscript": "Lead",
+                    "entityFieldMaps": [{
+                        "isExactMatch": false,
+                        "fieldName": "LeadSource",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "LeadSource"
+                    },{
+                        "isExactMatch": false,
+                        "fieldName": "RecordTypeId",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "RecordType"
+                    },{
+                        "isExactMatch": false,
+                        "fieldName": "Phone",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Phone"
+                    },{
+                        "isExactMatch": false,
+                        "fieldName": "LastName",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Last Name"
+                    },{
+                        "isExactMatch": false,
+                        "fieldName": "Country",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Country"
+                    }
+				       ];
 
 embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 
 'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617', 
