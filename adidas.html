@@ -14,29 +14,26 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
-
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = 'avatar.png';
-embedded_svc.settings.prechatBackgroundImgURL = 'adidas-prechat-300x100.png';
-embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
 embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-//No case creation
-embedded_svc.settings.extraPrechatInfo = [{"entityFieldMaps":[{"doCreate":false,"doFind":false,"fieldName":"Subject","isExactMatch":true,"label":"Subject"}],"entityName":"Case"}];
-
-//Bot stuff
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-   
-embedded_svc.init('https://lightningservice.my.salesforce.com', 'https://snapinsdemo.secure.force.com', gslbBaseURL, '00DB0000000I7DG', 'Adidas', { baseLiveAgentContentURL: 'https://c.la.gus.salesforce.com/content', deploymentId: '572B00000004dcS', buttonId: '573B00000004p02', chasitorVersion: '41.0', baseLiveAgentURL: 'https://d.la.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB000000000BVMAY_15e06da55e6'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://lightningservice.my.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://lightningservice.my.salesforce.com'); }</script>
 
+embedded_svc.init('https://lightningservice.my.salesforce.com', 'https://snapinsdemo.secure.force.com', gslbBaseURL, '00DB0000000I7DG', 'Adidas', { baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content', deploymentId: '572B00000004dcS', buttonId: '573B00000004p02', baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB000000000BVMAY_15e06da55e6'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://lightningservice.my.salesforce.com/embeddedservice/3.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://lightningservice.my.salesforce.com'); }</script>
+  
 </body>
 </html>
     <style>
