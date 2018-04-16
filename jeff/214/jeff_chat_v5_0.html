@@ -9,12 +9,14 @@
 			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 			@font-face {
 				font-family: 'Salesforce Sans';
+				/*
 				src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 				url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+				*/
 			}
 
 			body {
-				background-color: blue;
+				background-color: green;
 			}
 		</style>
 	</head>
@@ -132,12 +134,12 @@ var initESW = function(gslbBaseURL) {
 			deploymentId: '572xx0000000001',
 			buttonId: '573xx0000000001',
 			baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_162a1e72697',
+			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_162cf6fafdc',
 			isOfflineSupportEnabled: false
 		}
 	);
 };
-
+			
 if (!window.embedded_svc) {
 	var s = document.createElement('script');
 	s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
