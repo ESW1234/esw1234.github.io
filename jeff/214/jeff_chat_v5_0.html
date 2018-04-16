@@ -16,7 +16,7 @@
 			}
 
 			body {
-				background-color: green;
+				background-color: aqua;
 			}
 		</style>
 	</head>
@@ -142,7 +142,7 @@ var initESW = function(gslbBaseURL) {
 			
 if (!window.embedded_svc) {
 	var s = document.createElement('script');
-	s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+	s.setAttribute('src', 'http://jbeeghly-wsm0.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 	s.onload = function() {
 		initESW(null);
 	};
