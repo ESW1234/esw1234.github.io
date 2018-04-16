@@ -1,0 +1,162 @@
+
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <link rel = "stylesheet" type = "text/css" href = "mySite.css">	   
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+	<script type='text/javascript' src='mySite.js'></script>
+  	<span id ="pageTitle">206 PAGE ONE DEFAULT WIDGET</span>
+ 	<span id ="menuButton"><a href="javascript:void(0)" onclick="openNav()">&#9776;</a></span>
+<div id = "sideNav" class = "sidenav">	
+	<span id ="close">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	</span>
+		<div id ="menuLinks">
+			<span id ="link1">DEFAULT WIDGET</span>
+			<span id ="link2">NO PRECHAT</span>
+			<span id ="link3">HIDDEN BUTTON</span>
+			<span id ="link4">NO WIDGET</span>
+			<span id ="link5">CUSTON BUTTON TEXT</span>
+			<span id ="link6">CUSTOM STYLING</span>
+			<span id ="link7">BUTTON 2T</span>
+			<span id ="link8">BUTTON AS A LINK</span>
+			<span id ="link9">NO PRECHAT WITH EXSTRA PRECHAT FORM DETAILS</span>
+		</div>		
+</div>
+<div id="button_goes_here">
+	
+	<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #653838; font-family: "Salesforce Sans", sans-serif;}@font-face {font-family: 'Salesforce Sans';src: url(https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff)}</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src=''></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-1582bb64c2f.blitz02.soma.force.com', '572D00000004D18', '00DD00000008Vqk', '573D00000004DE5', '1.0', gslbBaseUrl, '39.0', 'Kanan_Test', 'EmbeddedServiceLiveAgent_Parent04ID0000000005QMAQ_1586b337703'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script>
+	
+	
+	
+	
+	<!--<style type='text/css'>.embeddedServiceLiveAgentChatButton .helpButton .uiButton {background-color: #5CAB4A; font-family: "Comic Sans MS", sans-serif;}</style>
+<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = 'http://attractionsmagazine.com/wp-content/uploads/2015/03/WDPRBlue-Logo-Slide1.jpg';
+embedded_svc.settings.prechatBackgroundImgURL = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQoR1aeLhVEeg-rfmWln8uuNI7t0El3zNY8HHfKT1Qwd2oN8-GPQQ';
+embedded_svc.settings.waitingStateBackgroundImgURL = 'data:image/png;base64,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';
+embedded_svc.settings.smallCompanyLogoImgURL = 'data:image/png;base64,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';
+
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+//embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
+//embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+//embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
+embedded_svc.init('https://na1-blitz02.soma.salesforce.com', 'https://d.la-blitz02.soma.salesforce.com/chat', 'https://c.la-blitz02.soma.salesforce.com/content', 'https://snapins-1582bb64c2f.blitz02.soma.force.com', '572D00000004D18', '00DD00000008Vqk', '573D00000004DE5', '1.0', gslbBaseUrl, '39.0', 'aditi_test', 'EmbeddedServiceLiveAgent_Parent04ID00000000080MAA_158c164a684'); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na1-blitz02.soma.salesforce.com/embeddedservice/1.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s);} else { initESW('https://na1-blitz02.soma.salesforce.com'); }</script> -->
+</div>
+<div id="text">
+	<span id ="article1"><h2>SAFE LISTENING</h2>
+Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
+
+But with great bass comes great responsibility.
+
+LISTEN SAFELY
+After placing the headphones on or in your ears, gradually turn up the volume
+Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
+Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
+Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
+ 
+Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
+
+But with great bass comes great responsibility.
+
+LISTEN SAFELY
+After placing the headphones on or in your ears, gradually turn up the volume
+Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
+Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
+Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.
+ 
+Beats’ signature sound profile is recognized worldwide. Our headphones, earphones and stereos boast the loudest sound, deepest bass, and most impressive sound profile in the industry.
+
+But with great bass comes great responsibility.
+
+LISTEN SAFELY
+After placing the headphones on or in your ears, gradually turn up the volume
+Use common sense and monitor your listening habits—the lower the volume, the longer you can safely listen to a track.
+Don’t use headphones when you’re in a situation that requires full attention, like crossing the street or driving a car.
+Exposure to noises over 85 decibels (dB) can result in gradual hearing loss.</span>
+	<span id ="article2"><h2>iPhone 6S 3D Touch.The next generation of Multi‑Touch.</h2>DETAILS
+iPhone 6s introduces an entirely new way to interact with your phone. For the ﬁrst time, iPhone senses how much pressure you apply to the display. In addition to familiar Multi‑Touch gestures like Tap, Swipe, and Pinch, 3D Touch introduces Peek and Pop. This brings a new dimension of functionality to the iPhone experience. And when you use 3D Touch, your iPhone responds with subtle taps. So not only will you see what a press can do — you’ll feel it.
+User-added image</span>
+	<span id ="article3"><h2>SOUND TROUBLESHOOTING–HEADPHONES AND EARPHONES</h2>LOSS OF AUDIO ON ONE SIDE OR DISTORTED SOUND
+If you’re experiencing snapping, crackling, popping, or no audio on one side, try this:
+
+Make sure the 3.5mm audio jack is fully plugged in.
+The L-shaped input connects to your audio device.
+The straight input must be completely inserted into your headset.
+Check that your audio source is on and working.
+If your audio source is a computer or laptop, try adjusting the configuration settings.
+If problems persist, try a different audio source or an alternate cable.
+
+
+VOLUME TOO HIGH
+Turn the source volume down. Yes, it’s really that easy.
+
+PHONE NOT RESPONDING TO BUTTON PRESSES
+Check the headset plug to ensure that it is securely connected. For multi-press functions, vary the speed of presses when using the remote/mic.
+
+COMPATIBILITY ISSUES
+Remember to install the latest software updates on your device. The inline remote/mic may have limited functionality with devices that don’t run iOS.
+
+MICROPHONE NOT PICKING UP SOUND
+Make sure the headset plug is securely connected and that the socket is clean and clear
+Check that the microphone—located on the back of the remote—isn’t blocked or covered
+Make sure the straight-end of the plug is connected to the headphones and the angled L-shaped plug is connected to the audio source
+If your issue isn’t listed, or these troubleshooting tips didn’t help, please call Beats Consumer Support to speak with an agent.</span>
+	<span id ="article4"><h2>REMOTETALK AUDIO CABLE</h2>VOLUME
+Press the top button to increase
+Press the bottom button to decrease
+CALLS
+HELLO, GOODBYE
+Press and release the center button once to answer
+Press again to end the call
+MAYBE LATER
+Press and hold the center button for two seconds
+Release
+Two beeps indicate the call has been declined
+HOLD PLEASE
+To switch or switch back, press and release the center button
+To switch and end an in-progress call, press and hold the center button for two seconds. Two low beeps will indicate it worked.
+TALK TO ME—VOICE COMMAND
+Press and hold the center button until voice activation starts up (functionality varies by device)
+MEDIA
+Play or pause song or video
+
+Press and release the center button
+Repeat to resume
+MOVE IT, MOVE IT
+Forward
+
+Quickly press the center button twice to skip forward
+Hold on the second press to scan
+Backward
+
+Quickly press three times to skip back
+Hold on the third press to scan
+Note: The cable included with our headphones is fully compatible with the iOS family. Functionality may vary by device.</span>
+</div>
+   </body>
+</html>
