@@ -107,7 +107,6 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
 <!-- end 2.2 snippet -->
 
 <!-- start 2.0 snippet -->
-<!--
 <script type='text/javascript' src='https://service.force.com/embeddedservice/2.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseUrl) {
@@ -121,34 +120,34 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
 		embedded_svc.settings.offlineText = 'offline 2.0'; // (Defaults to Agent Offline)
 		//embedded_svc.settings.onlineLoadingText = '...'; // (Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-		embedded_svc.init('https://na1-upg02.soma.salesforce.com', 
-				  'https://d.la-blitz01.soma.salesforce.com/chat', 
-				  'https://c.la-blitz01.soma.salesforce.com/content', 
-				  'https://justincommunitessubdomain-15-16023c77b77.upg02.soma.force.com/p1483488811497', 
-				  '572300000004C9D', 
-				  '00D300000000MbL', 
-				  '573300000004C9D', 
+		embedded_svc.init('https://na44.stmua.stm.salesforce.com', 
+				  'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', 
+				  'https://c.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/content', 
+				  'https://hellofriends.stmua.stm.force.com', 
+				  '572RM0000004CHJ', 
+				  '00DRM0000005Uoa', 
+				  '573RM0000004CHJ', 
 				  '2.0', 
 				  gslbBaseUrl, 
 				  '40.0', 
-				  'justin_s_deployment', 
-				  'EmbeddedServiceLiveAgent_Parent04ID00000004CCXMA2_15966ce8000'
+				  'a', 
+				  'EmbeddedServiceLiveAgent_Parent04IRM000000000G2AQ_162d1dc78eb'
 		 ); 
 	}; 
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na1-upg02.soma.salesforce.com/embeddedservice/2.0/esw.min.js'); 
+		s.setAttribute('src', 'https://na44.stmua.stm.salesforce.com/embeddedservice/2.0/esw.min.js'); 
 		s.onload = function() { 
 			initESW(null); 
 		}; 
 		document.body.appendChild(s);
-	} else { initESW('https://na1-upg02.soma.salesforce.com'); }
-</script> -->
+	} else { initESW('https://na44.stmua.stm.salesforce.com'); }
+</script>
 <!-- end 2.0 snippet -->
 
 <!-- start 1.0 snippet -->
 <!--script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script> -->
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.js'></script>
 <script type='text/javascript'>
         var initESW = function(gslbBaseUrl) {
                 embedded_svc.settings.avatarImgURL = '../avatar.png';
@@ -158,8 +157,8 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
                 
                 embedded_svc.settings.displayHelpButton = true; //Or false
                 embedded_svc.settings.initialInteractionState = 'PRECHAT'; //Or 'WAITING'
-                //embedded_svc.settings.onlineText = '...'; (defaults to Chat with an Expert, localized)
-                //embedded_svc.settings.offlineText = '...'; (defaults to Agent Offline, localized)
+                embedded_svc.settings.onlineText = 'chat 1.0'; (defaults to Chat with an Expert, localized)
+                //embedded_svc.settings.offlineText = 'offline 1.0'; (defaults to Agent Offline, localized)
                 //embedded_svc.settings.onlineLoadingText = '...'; (defaults to Loading, localized)
                 embedded_svc.init('https://na44.stmua.stm.salesforce.com', 
                         'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', 
@@ -177,7 +176,7 @@ embedded_svc.init('https://na1-upg02.soma.salesforce.com', 'https://justincommun
         } else { 
                 initESW('https://service.force.com');
         }
-</script>
+</script> -->
 <!-- end 1.0 snippet -->
 <!--<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
