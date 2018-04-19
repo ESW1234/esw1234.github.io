@@ -24,7 +24,7 @@ document.title = headerEl.innerHTML;
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Georgia", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
   embedded_svc.settings.devMode = true;
@@ -137,7 +137,7 @@ var initESW = function(gslbBaseURL) {
   };
 if (!window.embedded_svc) {
   var s = document.createElement('script');
-  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:57983/embeddedservice/3.0/esw.min.js');
+  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js');
   s.onload = function() {
     initESW(null);
   };
