@@ -94,7 +94,7 @@
 
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
-    //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+    embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
 
     embedded_svc.init('https://na44.stmua.stm.salesforce.com', 'https://snapins.stmua.stm.force.com/customerService', gslbBaseURL, '00DRM0000005Un1', 'invitationChoice', { baseLiveAgentContentURL: 'https://c.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/content', deploymentId: '572RM000000004P', buttonId: '573RM000000004s', baseLiveAgentURL: 'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004C982AE_162dc85046a'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmua.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
 </script>
