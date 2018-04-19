@@ -69,7 +69,7 @@ embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983',
 	isOfflineSupportEnabled: true}); };
 	if (!window.embedded_svc) {
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/5.0/esw.js'); 
+		s.setAttribute('src', 'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
 			initESW('https://service.force.com'); }</script>
 	
