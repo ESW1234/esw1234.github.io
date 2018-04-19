@@ -133,6 +133,9 @@
     embedded_svc.settings.entryFeature = 'LiveAgent';
     embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Subject: "hello"}; //Sets the auto-population of pre-chat form fields
 
+    // Not part of original snippet.
+    embedded_svc.settings.fallbackRouting = ["573RM000000004d"];
+
     embedded_svc.init(
 		'https://na44.stmua.stm.salesforce.com', 
 		'https://snapins.stmua.stm.force.com/customerService', 
