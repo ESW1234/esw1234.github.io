@@ -25,19 +25,19 @@
 <div id="button_goes_here">
 </div>
 
+	
 <style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+	@font-face {
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
 </style>
 
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
-<script type='text/javascript'>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -50,33 +50,32 @@ url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Field Service
-		embedded_svc.settings.fieldServiceHomeImgURL = '';
-		embedded_svc.settings.fieldServiceLogoImgURL = '';
-		embedded_svc.settings.fieldServiceConfirmationCardImgURL = '';
 		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOKvIOehKYxQaP5Z.PJKnxdkD.vJ1SfjVkqf9kJPEvh_ThUxQLzppzmJosKaYKPgdgdmjOjJ';
-		embedded_svc.settings.loginRedirectURL = 'http://esw1234.github.io/jp/212/desk/callback.html';
+		embedded_svc.settings.loginRedirectURL = 'http://esw1234.github.io/jp/214/desk/callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.authenticationStartLabel = '';
 		embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
 
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
-
+	
+		embedded_svc.settings.useCustomAuthentication = false;
+		
 		embedded_svc.init(
 			'http://snimmaga-wsm1.internal.salesforce.com:6109', 
 			'http://snapins-15f082fb956-15f7644246a.localhost.soma.force.com:6109/napili3', 
-			gslbBaseURL, '00Dxx0000001mFB', 'EswFs01', { }); 
+			gslbBaseURL, '00Dxx0000001mFB', 'EswFs01', { });
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://snimmaga-wsm1.internal.salesforce.com:6109/embeddedservice/4.0/esw.js'); 
+		s.setAttribute('src', 'http://snimmaga-wsm1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
 		s.onload = function() { 
 			initESW(null); 
 		}; 
-			document.body.appendChild(s); 
+		document.body.appendChild(s); 
 	} else { 
-			initESW('http://snimmaga-wsm1.internal.salesforce.com:6109'); 
+		initESW('http://snimmaga-wsm1.internal.salesforce.com:6109'); 
 	}
-
 </script>
 	
 <!-- <iframe src="http://snimmagadda-ltm.internal.salesforce.com:6109/embeddedservice/2.0/eswDev.html"></iframe> -->
