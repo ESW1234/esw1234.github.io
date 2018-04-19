@@ -100,7 +100,7 @@ embedded_svc.init('https://na45.stmua.stm.salesforce.com', 'https://snapins-162d
 
 
 <!-- start 4.1 snippet -->
-<style type='text/css'>
+<!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #FD30C3; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #FD30C3; }
 	@font-face {
@@ -143,8 +143,8 @@ embedded_svc.init('https://na45.stmua.stm.salesforce.com', 'https://snapins-162d
 				deploymentId: '572S7000000000Q', 
 				buttonId: '573S7000000000R', 
 				baseLiveAgentURL: 'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000000006MAA_162d7047227', 
-				isOfflineSupportEnabled: true}
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000000006MAA_162d7047227'
+			}
 		); 
 	};
 	if (!window.embedded_svc) { 
@@ -153,12 +153,12 @@ embedded_svc.init('https://na45.stmua.stm.salesforce.com', 'https://snapins-162d
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://service.force.com'); }
-</script>
+</script> -->
 <!-- end 4.1 snippet -->
 
 
 <!-- start 3.1 snippet -->
-<!-- <style type='text/css'>
+<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
 @font-face {
@@ -186,27 +186,25 @@ embedded_svc.init('https://na45.stmua.stm.salesforce.com', 'https://snapins-162d
 		
 		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		embedded_svc.init(
-			'https://na44.stmua.stm.salesforce.com', 
-			'https://hellofriends.stmua.stm.force.com', 
-			gslbBaseURL, 
-			'00DRM0000005Uoa', 
-			'lets_chat', 
+			'https://na45.stmua.stm.salesforce.com', 
+			'https://snapins-162d6f65d1b.stmua.stm.force.com/customerService', 
+			gslbBaseURL, '00DS70000000MQO', 'chatButtonChoice', 
 			{ 
 				baseLiveAgentContentURL: 'https://c.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004CHJ', 
-				buttonId: '573RM0000004CHJ', 
+				deploymentId: '572S7000000000Q', 
+				buttonId: '573S7000000000R', 
 				baseLiveAgentURL: 'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000B2AQ_162d135b0b1'
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000000006MAA_162d7047227'
 			}
 		); 
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmua.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
+		s.setAttribute('src', 'https://na45.stmua.stm.salesforce.com/embeddedservice/3.1/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://na44.stmua.stm.salesforce.com'); }
-</script> -->
+	} else { initESW('https://na45.stmua.stm.salesforce.com'); }
+</script>
 <!-- end 3.1 snippet -->
 
 
