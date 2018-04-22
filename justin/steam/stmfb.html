@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- With no zoom -->
+	<!-- With no mobile zoom (when focusing on prechat field) -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
 	
 	<!-- From snippet generator -->
@@ -73,7 +73,7 @@
 			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
 			gslbBaseURL, 
 			'00DRM0000005jYI', 
-			'a', 
+			'chatButton', 
 			{ 
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
 				deploymentId: '572RM0000004DDM', 
@@ -136,7 +136,7 @@
 			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
 			gslbBaseURL, 
 			'00DRM0000005jYI', 
-			'a', 
+			'chatButton', 
 			{ 
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
 				deploymentId: '572RM0000004DDM', 
@@ -208,17 +208,19 @@
 
 		embedded_svc.settings.extraPrechatInfo = [{"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"ContactId","entityFieldMaps":[{"isExactMatch":true,"fieldName":"FirstName","doCreate":true,"doFind":true,"label":"First Name"},{"isExactMatch":true,"fieldName":"LastName","doCreate":true,"doFind":true,"label":"Last Name"},{"isExactMatch":true,"fieldName":"textCustomContact__c","doCreate":true,"doFind":false,"label":"textCustomContact"}, {"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},{"entityName":"Case","showOnCreate":true, "saveToTranscript":"CaseId", "entityFieldMaps":[{"isExactMatch":false,"fieldName":"Subject","doCreate":true,"doFind":false,"label":"issue"},{"isExactMatch":false,"fieldName":"Status","doCreate":true,"doFind":false,"label":"Status"},{"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Origin"}]}]
 
-		embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
-				  'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-				  gslbBaseURL, 
-				  '00DRM0000005jYI', 
-				  'a', 
-				  { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				   deploymentId: '572RM0000004DDM', 
-				   buttonId: '573RM0000004DDR', 
-				   baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com', 
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
+			gslbBaseURL, 
+			'00DRM0000005jYI', 
+			'chatButton', 
+			{ 
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+				deploymentId: '572RM0000004DDM', 
+				buttonId: '573RM0000004DDR', 
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+			}
 		 ); 
 	};
 	if (!window.embedded_svc) { 
@@ -264,17 +266,19 @@
 		
 		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
-		embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
-				  'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-				  gslbBaseURL, 
-				  '00DRM0000005jYI', 
-				  'a', 
-				  { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				   deploymentId: '572RM0000004DDM', 
-				   buttonId: '573RM0000004DDR', 
-				   baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com', 
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
+			gslbBaseURL, 
+			'00DRM0000005jYI', 
+			'chatButton', 
+			{ 
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+				deploymentId: '572RM0000004DDM', 
+				buttonId: '573RM0000004DDR', 
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+			}
 		 ); 
 	};
 	if (!window.embedded_svc) { 
@@ -392,17 +396,19 @@
 		];
 		*/
 
-		embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
-				  'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-				  gslbBaseURL, 
-				  '00DRM0000005jYI', 
-				  'a', 
-				  { baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				   deploymentId: '572RM0000004DDM', 
-				   buttonId: '573RM0000004DDR', 
-				   baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
-				  }
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com', 
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
+			gslbBaseURL, 
+			'00DRM0000005jYI', 
+			'chatButton', 
+			{ 
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+				deploymentId: '572RM0000004DDM', 
+				buttonId: '573RM0000004DDR', 
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+			}
 		 ); 
 	};
 	if (!window.embedded_svc) { 
@@ -440,18 +446,19 @@
 
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 		
-		embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
-				  'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				  'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-				  '572RM0000004DDM', 
-				  '00DRM0000005jYI', 
-				  '573RM0000004DDR', 
-				  '2.2', 
-				  gslbBaseUrl, 
-				  '40.0', 
-				  'a', 
-				  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com', 
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+			'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
+			'572RM0000004DDM', 
+			'00DRM0000005jYI', 
+			'573RM0000004DDR', 
+			'2.2', 
+			gslbBaseUrl, 
+			'40.0', 
+			'chatButton', 
+			'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
@@ -560,18 +567,19 @@
 		   }
 		];
 		
-		embedded_svc.init('https://na44.stmfb.stm.salesforce.com', 
-				  'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				  'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-				  '572RM0000004DDM', 
-				  '00DRM0000005jYI', 
-				  '573RM0000004DDR', 
-				  '2.0', 
-				  gslbBaseUrl, 
-				  '40.0', 
-				  'a', 
-				  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com', 
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+			'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
+			'572RM0000004DDM', 
+			'00DRM0000005jYI', 
+			'573RM0000004DDR', 
+			'2.0', 
+			gslbBaseUrl, 
+			'40.0', 
+			'chatButton', 
+			'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
@@ -594,18 +602,19 @@
 		embedded_svc.settings.waitingStateBackgroundImgURL = '';
 		embedded_svc.settings.smallCompanyLogoImgURL = '';
 
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-			  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-			  'https://snapins.stmfa.stm.force.com/test',  
-			  '572RM0000004CDV', 
-			  '00DRM0000005cyu', 
-			  '573RM0000004CDc', 
-			  '1.0', 
-			  gslbBaseUrl, 
-			  '39.0', 
-			  'a', 
-			  'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+		embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+			'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+			'https://snapins.stmfa.stm.force.com/test',  
+			'572RM0000004CDV', 
+			'00DRM0000005cyu', 
+			'573RM0000004CDc', 
+			'1.0', 
+			gslbBaseUrl, 
+			'39.0', 
+			'chatButton', 
+			'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
