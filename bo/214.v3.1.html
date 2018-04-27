@@ -24,7 +24,7 @@ document.title = headerEl.innerHTML;
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Georgia", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
   embedded_svc.settings.devMode = true;
@@ -38,10 +38,11 @@ var initESW = function(gslbBaseURL) {
     //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
     // Settings for Live Agent
-    embedded_svc.settings.avatarImgURL = '';
-    embedded_svc.settings.prechatBackgroundImgURL = '';
-    embedded_svc.settings.waitingStateBackgroundImgURL = '';
-    embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.avatarImgURL = '/avatar.png';
+embedded_svc.settings.prechatBackgroundImgURL = '/prechat_tesla.png';
+embedded_svc.settings.waitingStateBackgroundImgURL = '/waitingImage.png';
+embedded_svc.settings.smallCompanyLogoImgURL = '/SFDCLogo.png';
+embedded_svc.settings.chatbotAvatarImgURL = "/bot-avatar.png";
 
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -137,7 +138,7 @@ var initESW = function(gslbBaseURL) {
   };
 if (!window.embedded_svc) {
   var s = document.createElement('script');
-  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:57983/embeddedservice/3.0/esw.min.js');
+  s.setAttribute('src', 'http://bochean-wsm1.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js');
   s.onload = function() {
     initESW(null);
   };
