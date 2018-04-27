@@ -38,10 +38,13 @@ embedded_svc.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 // Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '/avatar3.png';
+embedded_svc.settings.avatarImgURL = '/avatar4.png';
 embedded_svc.settings.prechatBackgroundImgURL = '/prechat_tesla.png';
 embedded_svc.settings.waitingStateBackgroundImgURL = '/waitingImage.png';
 embedded_svc.settings.smallCompanyLogoImgURL = '/adidas_logo_white.png';
+embedded_svc.settings.chatbotAvatarImgURL = "/bot-avatar.png";
+
+	
 //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
@@ -67,8 +70,8 @@ embedded_svc.init(
     deploymentId: '572RM0000004DUC',
     buttonId: '573RM0000004DVW',
     baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
-    isOfflineSupportEnabled: true
+    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+//     isOfflineSupportEnabled: true
   });
 };
 if (!window.embedded_svc) {
