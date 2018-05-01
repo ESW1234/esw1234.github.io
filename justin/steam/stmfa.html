@@ -42,10 +42,6 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Live Agent
-		embedded_svc.settings.avatarImgURL = '../avatar.png';
-		embedded_svc.settings.prechatBackgroundImgURL = '../Prechat_image.png';
-		embedded_svc.settings.waitingStateBackgroundImgURL = 'waitingStateImage.png';
-		embedded_svc.settings.smallCompanyLogoImgURL = '../smallCompanyLogoImg.png';
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 		//Returns a valid button ID.
@@ -54,26 +50,13 @@
 		// Sets chats to route to the first available user or button in the array
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		
-		// sys admin		005xx0000000001
-		// agent 1		005xx000000000f
-		// agent 2		005xx000000000p
-		// agent 3		005RM000001c4uH
-
-		// sys admin button	573RM0000004CDc
-		// button agent 1 & 3	573RM0000004CDd
-		// button agent 2	573RM0000004DbL
-
-		//embedded_svc.settings.fallbackRouting = ["573RM0000004CDd", "573RM0000004DbL"]; // button w/ agent 1 & 3, button w/ agent 2
-		//embedded_svc.settings.fallbackRouting = ["005xx000000000f_573RM0000004CDd"]; // agent 1 w/ fallback to button w/ agent 1 & 3
-		//embedded_svc.settings.fallbackRouting = ["005xx000000000f", "005xx000000000p", "005RM000001c4uH"]; // agent 1, agent 2, agent 3
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
 		
-		embedded_svc.settings.externalScripts = ["log", "log2"];
-		embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+		//embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+		//embedded_svc.settings.externalScripts = ["log", "log2"];
+		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
