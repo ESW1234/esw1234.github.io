@@ -166,14 +166,14 @@
 					console.log("onChatEstablished event was fired");
 				});
 		
-				/*embedded_svc.addEventHandler("on", function() {
+				embedded_svc.addEventHandler("onChasitorMessage", function() {
 					debugger;
-					console.log("on event was fired");
+					console.log("onChasitorMessage event was fired");
 				});
 		
-				embedded_svc.addEventHandler("on", function() {
+				embedded_svc.addEventHandler("onAgentMessage", function() {
 					debugger;
-					console.log("on event was fired");
+					console.log("onAgentMessage event was fired");
 				});*/
 				
 				embedded_svc.addEventHandler("onChatEndedByChasitor", function() {
