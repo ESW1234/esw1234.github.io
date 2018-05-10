@@ -126,7 +126,7 @@
 				
 				
 				
-				
+				/*
 				embedded_svc.addEventHandler("chasitorChatRequestSuccessful", function() {
 					debugger;
 					console.log("chasitorChatRequestSuccessful event was fired");
@@ -151,7 +151,7 @@
 					debugger;
 					console.log("chasitorChasitorChatEnded event was fired");
 				});
-
+				*/
 
 				
 				
@@ -176,10 +176,27 @@
 					console.log("onAgentMessage event was fired");
 				});
 				
+				// reconnect
+				
+				// transfer
+				
 				embedded_svc.addEventHandler("onChatEndedByChasitor", function() {
 					debugger;
 					console.log("onChatEndedByChasitor event was fired");
 				});
+				
+				// Q: chat ended reason (client, agent, timeout, connection lost) ?
+				
+				embedded_svc.addEventHandler("onInviteAccepted", function() {
+					debugger;
+					console.log("onInviteAccepted event was fired");
+				});
+
+				embedded_svc.addEventHandler("onInviteRejected", function() {
+					debugger;
+					console.log("onInviteRejected event was fired");
+				});
+				
 		
 				
 				
