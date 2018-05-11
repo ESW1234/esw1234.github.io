@@ -155,6 +155,10 @@
 
 				
 				
+				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+					debugger;
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
+				});
 				
 				embedded_svc.addEventHandler("onChatRequestSuccess", function() {
 					debugger;
@@ -176,16 +180,22 @@
 					console.log("onAgentMessage event was fired");
 				});
 				
-				// reconnect
+				// agent or client reconnects
 				
-				// transfer
+				// transfer (any transfer (bot to agent AND agent to agent))
 				
 				embedded_svc.addEventHandler("onChatEndedByChasitor", function() {
 					debugger;
 					console.log("onChatEndedByChasitor event was fired");
 				});
 				
-				// Q: chat ended reason (client, agent, timeout, connection lost) ?
+				// chat ended by agent
+				
+				// chat ended from timeout
+				
+				// chat ended due to lost connection
+				
+				// case submitted
 				
 				embedded_svc.addEventHandler("onInviteAccepted", function() {
 					debugger;
