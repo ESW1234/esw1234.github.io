@@ -195,7 +195,10 @@
 					console.log("onChatEndedByChasitor event was fired.  data was " + JSON.stringify(data));
 				});
 				
-				// chat ended by agent
+				embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+					debugger;
+					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
+				});				
 				
 				// chat ended from timeout
 				
