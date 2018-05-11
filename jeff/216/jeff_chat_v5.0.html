@@ -22,7 +22,7 @@
 				background-color: aqua;
 				background-color: orange;
 				background-color: tan;
-				background-color: gold;
+				//background-color: gold;
 			}
 		</style>
 	</head>
@@ -166,33 +166,33 @@
 					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
 				});
 				
-				embedded_svc.addEventHandler("onChatRequestSuccess", function() {
+				embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
 					debugger;
-					console.log("onChatRequestSuccess event was fired");
+					console.log("onChatRequestSuccess event was fired.  data was " + JSON.stringify(data));
 				});
 		
-				embedded_svc.addEventHandler("onChatEstablished", function() {
+				embedded_svc.addEventHandler("onChatEstablished", function(data) {
 					debugger;
-					console.log("onChatEstablished event was fired");
+					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
 				});
 		
-				embedded_svc.addEventHandler("onChasitorMessage", function() {
+				embedded_svc.addEventHandler("onChasitorMessage", function(data) {
 					debugger;
-					console.log("onChasitorMessage event was fired");
+					console.log("onChasitorMessage event was fired.  data was " + JSON.stringify(data));
 				});
 		
-				embedded_svc.addEventHandler("onAgentMessage", function() {
+				embedded_svc.addEventHandler("onAgentMessage", function(data) {
 					debugger;
-					console.log("onAgentMessage event was fired");
+					console.log("onAgentMessage event was fired.  data was " + JSON.stringify(data));
 				});
 				
 				// agent or client reconnects
 				
 				// transfer (any transfer (bot to agent AND agent to agent))
 				
-				embedded_svc.addEventHandler("onChatEndedByChasitor", function() {
+				embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
 					debugger;
-					console.log("onChatEndedByChasitor event was fired");
+					console.log("onChatEndedByChasitor event was fired.  data was " + JSON.stringify(data));
 				});
 				
 				// chat ended by agent
@@ -203,14 +203,14 @@
 				
 				// case submitted
 				
-				embedded_svc.addEventHandler("onInviteAccepted", function() {
+				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
 					debugger;
-					console.log("onInviteAccepted event was fired");
+					console.log("onInviteAccepted event was fired.  data was " + JSON.stringify(data));
 				});
 
-				embedded_svc.addEventHandler("onInviteRejected", function() {
+				embedded_svc.addEventHandler("onInviteRejected", function(data) {
 					debugger;
-					console.log("onInviteRejected event was fired");
+					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
 				});
 				
 		
