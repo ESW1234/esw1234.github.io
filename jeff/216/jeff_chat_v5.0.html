@@ -200,7 +200,10 @@
 					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
 				});				
 				
-				// chat ended from timeout
+				embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
+					debugger;
+					console.log("onIdleTimeoutOccurred event was fired.  data was " + JSON.stringify(data));
+				});				
 				
 				// chat ended due to lost connection
 				
