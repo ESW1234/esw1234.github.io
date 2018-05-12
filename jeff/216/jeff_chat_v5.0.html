@@ -185,8 +185,11 @@
 					debugger;
 					console.log("onAgentMessage event was fired.  data was " + JSON.stringify(data));
 				});
-				
-				// agent or client reconnects
+								
+				embedded_svc.addEventHandler("onChatReconnectionSuccessful", function(data) {
+					debugger;
+					console.log("onChatReconnectionSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
 				
 				// transfer (any transfer (bot to agent AND agent to agent))
 				
@@ -198,14 +201,17 @@
 				embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
 					debugger;
 					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
-				});				
+				});
 				
 				embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
 					debugger;
 					console.log("onIdleTimeoutOccurred event was fired.  data was " + JSON.stringify(data));
-				});				
+				});
 				
-				// chat ended due to lost connection
+				embedded_svc.addEventHandler("onConnectionError", function(data) {
+					debugger;
+					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
+				});
 				
 				// case submitted
 				
