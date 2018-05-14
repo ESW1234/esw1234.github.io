@@ -21,8 +21,8 @@
 				background-color: blue;
 				background-color: aqua;
 				background-color: orange;
-				background-color: tan;
-				//background-color: gold;
+				//background-color: tan;
+				background-color: gold;
 			}
 		</style>
 	</head>
@@ -191,7 +191,10 @@
 					console.log("onChatReconnectionSuccessful event was fired.  data was " + JSON.stringify(data));
 				});
 				
-				// transfer (any transfer (bot to agent AND agent to agent))
+				embedded_svc.addEventHandler("onChatTransferSuccessful", function(data) {
+					debugger;
+					console.log("onChatTransferSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
 				
 				embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
 					debugger;
@@ -213,7 +216,11 @@
 					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
 				});
 				
-				// case submitted
+				// case submitted - use something more descriptive than onClickSubmitButton?
+				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
+					debugger;
+					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
+				});
 				
 				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
 					debugger;
@@ -224,11 +231,6 @@
 					debugger;
 					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
 				});
-				
-		
-				
-				
-				
 				
 
 				embedded_svc.init(
