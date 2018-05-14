@@ -218,10 +218,11 @@
 				
 				// onChatEstablished
 				// Event which fires when an agent goes offline and then another eligible agent picks up the chat.
-				embedded_svc.addEventHandler("onChatEstablished", function(data) {
-					debugger;
-					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
-				});
+				//embedded_svc.addEventHandler("onChatEstablished", function(data) {
+				//	debugger;
+				//	console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
+				//});
+				// conflicts with other "onChatEstablished" above
 
 				// onClickSubmitButton
 				// Click handler for the "Submit" button in the offline support UI component. Passes in
