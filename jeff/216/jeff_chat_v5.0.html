@@ -216,12 +216,22 @@
 					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
 				});
 				
-				// case submitted - use something more descriptive than onClickSubmitButton?
+				// onChatEstablished
+				// Event which fires when an agent goes offline and then another eligible agent picks up the chat.
+				embedded_svc.addEventHandler("onChatEstablished", function(data) {
+					debugger;
+					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
+				});
+
+				// onClickSubmitButton
+				// Click handler for the "Submit" button in the offline support UI component. Passes in
+				// developer name and field data to the support/quickactions endpoint and fires an event indicating whether or not case
+				// was submitted successfully to queue.
 				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
 					debugger;
 					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
 				});
-				
+								
 				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
 					debugger;
 					console.log("onInviteAccepted event was fired.  data was " + JSON.stringify(data));
