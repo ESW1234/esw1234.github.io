@@ -103,8 +103,85 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+
 	
-	embedded_svc.settings.devMode = true;
+	
+				embedded_svc.settings.devMode = true;
+	
+	
+	
+				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+					debugger;
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
+					debugger;
+					console.log("onChatRequestSuccess event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onChatEstablished", function(data) {
+					debugger;
+					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onChasitorMessage", function(data) {
+					debugger;
+					console.log("onChasitorMessage event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onAgentMessage", function(data) {
+					debugger;
+					console.log("onAgentMessage event was fired.  data was " + JSON.stringify(data));
+				});
+								
+				embedded_svc.addEventHandler("onChatReconnectionSuccessful", function(data) {
+					debugger;
+					console.log("onChatReconnectionSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatTransferSuccessful", function(data) {
+					debugger;
+					console.log("onChatTransferSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+					debugger;
+					console.log("onChatEndedByChasitor event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+					debugger;
+					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
+					debugger;
+					console.log("onIdleTimeoutOccurred event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onConnectionError", function(data) {
+					debugger;
+					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				// case submitted - use something more descriptive than onClickSubmitButton?
+				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
+					debugger;
+					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
+					debugger;
+					console.log("onInviteAccepted event was fired.  data was " + JSON.stringify(data));
+				});
+
+				embedded_svc.addEventHandler("onInviteRejected", function(data) {
+					debugger;
+					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
+				});
+	
+	
 
 embedded_svc.init(
 	'http://jbeeghly-wsm0.internal.salesforce.com:6109',
