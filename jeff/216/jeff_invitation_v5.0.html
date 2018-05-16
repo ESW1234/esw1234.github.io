@@ -172,6 +172,10 @@ embedded_svc.settings.entryFeature = 'LiveAgent';
 				//	console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
 				//});
 				// conflicts with other "onChatEstablished" above
+	
+				embedded_svc.addEventHandler("onReconnecting", function(data) {
+					console.log("onReconnecting event was fired.  data was " + JSON.stringify(data));
+				});
 
 				// onClickSubmitButton
 				// Click handler for the "Submit" button in the offline support UI component. Passes in
