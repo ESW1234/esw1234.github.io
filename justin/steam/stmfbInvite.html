@@ -12,8 +12,11 @@
 </div>
         
 <h1>
-	212 STMFB - INVITATION
+	STMFB - INVITATION
 </h1>
+	
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
 <style type='text/css'>
@@ -69,7 +72,7 @@
 </script>
 <!-- End of Invitations - Static HTML/CSS/JS -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 	embedded_svc.settings.displayHelpButton = true; //Or false
@@ -111,7 +114,7 @@ var initESW = function(gslbBaseURL) {
 };
 if (!window.embedded_svc) { 
 	var s = document.createElement('script'); 
-	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); 
+	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
 	s.onload = function() { initESW(null); }; 
 	document.body.appendChild(s); 
 } else { initESW('https://service.force.com'); }
