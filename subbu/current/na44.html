@@ -85,6 +85,83 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
 
+	embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+					debugger;
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
+					debugger;
+					console.log("onChatRequestSuccess event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onChatEstablished", function(data) {
+					debugger;
+					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onChasitorMessage", function(data) {
+					debugger;
+					console.log("onChasitorMessage event was fired.  data was " + JSON.stringify(data));
+				});
+		
+				embedded_svc.addEventHandler("onAgentMessage", function(data) {
+					debugger;
+					console.log("onAgentMessage event was fired.  data was " + JSON.stringify(data));
+				});
+								
+				embedded_svc.addEventHandler("onChatReconnectionSuccessful", function(data) {
+					debugger;
+					console.log("onChatReconnectionSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatTransferSuccessful", function(data) {
+					debugger;
+					console.log("onChatTransferSuccessful event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+					debugger;
+					console.log("onChatEndedByChasitor event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+					debugger;
+					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
+					debugger;
+					console.log("onIdleTimeoutOccurred event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				embedded_svc.addEventHandler("onConnectionError", function(data) {
+					debugger;
+					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
+				});
+
+				embedded_svc.addEventHandler("onReconnecting", function(data) {
+					console.log("onReconnecting event was fired.  data was " + JSON.stringify(data));
+				});
+				
+				// onClickSubmitButton
+				// Click handler for the "Submit" button in the offline support UI component. Passes in
+				// developer name and field data to the support/quickactions endpoint and fires an event indicating whether or not case
+				// was submitted successfully to queue.
+				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
+					debugger;
+					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
+				});
+								
+				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
+					debugger;
+					console.log("onInviteAccepted event was fired.  data was " + JSON.stringify(data));
+				});
+
+				embedded_svc.addEventHandler("onInviteRejected", function(data) {
+					debugger;
+					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
+				});
 HELP
 Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
 But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
