@@ -19,8 +19,8 @@
 				background-color: red;
 				background-color: green;
 				background-color: blue;
-				//background-color: aqua;
-				background-color: orange;
+				background-color: aqua;
+				//background-color: orange;
 				//background-color: tan;
 				//background-color: gold;
 			}
@@ -160,26 +160,7 @@
 				*/
 
 				
-
-				
-
-				embedded_svc.init(
-					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
-					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
-					gslbBaseURL,
-					'00Dxx0000000001',
-					'myFirstLocalSiteSnapInDeployment',
-					{
-						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000000001',
-						buttonId: '573xx0000000001',
-						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1633276197c',
-						isOfflineSupportEnabled: true
-					}
-				);
-				
-				debugger;
+				//debugger;
 				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
 					debugger;
 					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
@@ -264,8 +245,24 @@
 				embedded_svc.addEventHandler("onInviteRejected", function(data) {
 					debugger;
 					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
-				});				
+				});
 				
+
+				embedded_svc.init(
+					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
+					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
+					gslbBaseURL,
+					'00Dxx0000000001',
+					'myFirstLocalSiteSnapInDeployment',
+					{
+						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000000001',
+						buttonId: '573xx0000000001',
+						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1633276197c',
+						isOfflineSupportEnabled: true
+					}
+				);
 			};
 
 			if (!window.embedded_svc) {
