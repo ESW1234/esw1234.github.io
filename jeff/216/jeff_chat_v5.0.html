@@ -19,10 +19,10 @@
 				background-color: red;
 				background-color: green;
 				background-color: blue;
-				background-color: aqua;
+				//background-color: aqua;
 				//background-color: orange;
 				//background-color: tan;
-				//background-color: gold;
+				background-color: gold;
 			}
 		</style>
 	</head>
@@ -160,7 +160,7 @@
 				*/
 
 				
-				//debugger;
+				debugger;
 				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
 					debugger;
 					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
@@ -247,7 +247,6 @@
 					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
 				});
 				
-
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
 					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
@@ -277,7 +276,6 @@
 			else {
 				initESW('https://service.force.com');
 			}
-
 		</script>
 	</body>
 </html>
