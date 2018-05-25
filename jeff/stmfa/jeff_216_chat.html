@@ -134,10 +134,6 @@
 					console.log("onReconnecting event was fired.  data was " + JSON.stringify(data));
 				});
 
-				// onClickSubmitButton
-				// Click handler for the "Submit" button in the offline support UI component. Passes in
-				// developer name and field data to the support/quickactions endpoint and fires an event indicating whether or not case
-				// was submitted successfully to queue.
 				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
 					debugger;
 					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
