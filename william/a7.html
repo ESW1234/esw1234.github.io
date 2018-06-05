@@ -43,10 +43,23 @@
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
             embedded_svc.settings.extraPrechatFormDetails = [{
-                "label": "Account",
-                "value": "001RM000003UyW1",
-                "displayToAgent": true
-            }];
+                    "label": "Account",
+                    "value": "001RM000003UyW1",
+                    "displayToAgent": true
+                },
+
+                {
+                    "label": "Origin",
+                    "value": "Inbound web chat",
+                    "displayToAgent": true
+                },
+
+                {
+                    "label": "CaseStatus",
+                    "value": "In Process",
+                    "displayToAgent": true
+                }
+            ];
 
             embedded_svc.settings.extraPrechatInfo = [
                 // {
@@ -91,6 +104,58 @@
                         "doFind": false,
                         "label": "Account"
                     }]
+                }, {
+                    "entityName": "Case",
+                    "showOnCreate": true,
+                    "saveToTranscript": "CaseId",
+                    "entityFieldMaps": [{
+                            "isExactMatch": true,
+                            "fieldName": "Cat_Connect_First_Name__c",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "First Name"
+                        }, {
+                            "isExactMatch": true,
+                            "fieldName": "Cat_Connect_Last_Name__c",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "Last Name"
+                        }, {
+                            "isExactMatch": true,
+                            "fieldName": "Cat_Connect_Email__c",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "Email"
+                        },
+                        {
+                            "isExactMatch": true,
+                            "fieldName": "Cat_Connect_Phone__c",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "Phone"
+                        },
+                        {
+                            "isExactMatch": true,
+                            "fieldName": "Origin",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "Origin"
+                        },
+                        {
+                            "isExactMatch": true,
+                            "fieldName": "AccountId",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "Account"
+                        },
+                        {
+                            "isExactMatch": true,
+                            "fieldName": "Status",
+                            "doCreate": true,
+                            "doFind": false,
+                            "label": "CaseStatus"
+                        }
+                    ]
                 }
             ];
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
