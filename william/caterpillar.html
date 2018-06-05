@@ -1,0 +1,183 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+
+<body>
+    <style type='text/css'>
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #222222;
+            font-family: "Salesforce Sans", sans-serif;
+        }
+
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #222222;
+        }
+
+        @font-face {
+            font-family: 'Salesforce Sans';
+            src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+            url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+        }
+    </style>
+
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        var initESW = function (gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true;
+            embedded_svc.settings.language = '';
+
+            embedded_svc.settings.defaultMinimizedText = 'Live Chat';
+            embedded_svc.settings.disabledMinimizedText = 'Chat Unavailable';
+
+            embedded_svc.settings.loadingText =
+                "We’ll be right with you – we’re connecting you to Caterpillar Customer Care";
+            embedded_svc.settings.storageDomain = 'breakfix-cat-crmi.cs17.force.com';
+
+
+            embedded_svc.settings.extraPrechatFormDetails = [{
+                    "label": "Account",
+                    "value": "001g000001pLUg5",
+                    "displayToAgent": true
+                },
+
+                {
+                    "label": "Origin",
+                    "value": "Inbound web chat",
+                    "displayToAgent": true
+                },
+
+                {
+                    "label": "CaseStatus",
+                    "value": "In Process",
+                    "displayToAgent": true
+                }
+            ];
+            embedded_svc.settings.extraPrechatInfo = [{
+                "entityName": "Contact",
+                "showOnCreate": true,
+                "linkToEntityName": "Case",
+                "linkToEntityField": "ContactId",
+                "saveToTranscript": "ContactId",
+                "entityFieldMaps": [{
+                        "isExactMatch": true,
+                        "fieldName": "FirstName",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "First Name"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "LastName",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Last Name"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "Email",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Email"
+                    },
+                    {
+                        "isExactMatch": false,
+                        "fieldName": "Phone",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Phone"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "AccountId",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Account"
+                    }
+                ]
+            }, {
+                "entityName": "Case",
+                "showOnCreate": true,
+                "saveToTranscript": "CaseId",
+                "entityFieldMaps": [{
+                        "isExactMatch": true,
+                        "fieldName": "Cat_Connect_First_Name__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "First Name"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "Cat_Connect_Last_Name__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Last Name"
+                    }, {
+                        "isExactMatch": true,
+                        "fieldName": "Cat_Connect_Email__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Email"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "Cat_Connect_Phone__c",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Phone"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "Origin",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Origin"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "AccountId",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "Account"
+                    },
+                    {
+                        "isExactMatch": true,
+                        "fieldName": "Status",
+                        "doCreate": true,
+                        "doFind": false,
+                        "label": "CaseStatus"
+                    }
+                ]
+            }];
+            // embedded_svc.settings.prepopulatedPrechatFields = {
+            //     FirstName: "Test",
+            //     LastName: "Demo",
+            //     Phone: "8487348123",
+            //     Email: "demo@test.com"
+            // };
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.init('https://catcrm--BreakFix.cs17.my.salesforce.com',
+                'https://breakfix-cat-crmi.cs17.force.com/HelpCenter', gslbBaseURL, '00Dg0000001q8pE',
+                'MyParts', {
+                    baseLiveAgentContentURL: 'https://c.la1-c2cs-iad.salesforceliveagent.com/content',
+                    deploymentId: '572g0000000Cal6',
+                    buttonId: '573g0000000Cb1O',
+                    baseLiveAgentURL: 'https://d.la1-c2cs-iad.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ig00000004CA1EAM_16296178bf8',
+                    isOfflineSupportEnabled: true
+                });
+        };
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://catcrm--BreakFix.cs17.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function () {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://service.force.com');
+        }
+    </script>
+</body>
+
+</html>
