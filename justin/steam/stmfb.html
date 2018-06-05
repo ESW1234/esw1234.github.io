@@ -11,7 +11,10 @@
 <body>
 
 <p align="center"><font color = "red"><a href="stmfb-2.html">STMFB page 2.</a></font></p>
-  
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
 <div id="button_goes_here">
 </div>
         
@@ -56,7 +59,7 @@
 		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 		// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Priority: "Medium"}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Priority: "Medium", Company: "Salesforce"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
