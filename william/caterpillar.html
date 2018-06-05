@@ -33,7 +33,7 @@
 
             embedded_svc.settings.loadingText =
                 "We’ll be right with you – we’re connecting you to Caterpillar Customer Care";
-            embedded_svc.settings.storageDomain = 'breakfix-cat-crmi.cs17.force.com';
+            // embedded_svc.settings.storageDomain = 'breakfix-cat-crmi.cs17.force.com';
 
 
             embedded_svc.settings.extraPrechatFormDetails = [{
@@ -51,6 +51,13 @@
                 {
                     "label": "CaseStatus",
                     "value": "In Process",
+                    "displayToAgent": true
+                },
+
+                { // debug this in liveAgentSidebarFeatureHelper.js#startChat
+                    "label": "First Name",
+                    "name": "FirstName" /* NEEDED to display name */ ,
+                    "value": "Jane",
                     "displayToAgent": true
                 }
             ];
