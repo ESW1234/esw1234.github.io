@@ -54,12 +54,12 @@
                     "displayToAgent": true
                 },
 
-                { // debug this in liveAgentSidebarFeatureHelper.js#startChat
-                    "label": "First Name",
-                    "name": "FirstName" /* NEEDED to display name */ ,
-                    "value": "Jane",
-                    "displayToAgent": true
-                }
+                // { // debug this in liveAgentSidebarFeatureHelper.js#startChat
+                //     "label": "First Name",
+                //     "name": "FirstName" /* NEEDED to display name */ ,
+                //     "value": "Jane",
+                //     "displayToAgent": true
+                // }
             ];
             embedded_svc.settings.extraPrechatInfo = [{
                 "entityName": "Contact",
@@ -153,12 +153,12 @@
                     }
                 ]
             }];
-            // embedded_svc.settings.prepopulatedPrechatFields = {
-            //     FirstName: "Test",
-            //     LastName: "Demo",
-            //     Phone: "8487348123",
-            //     Email: "demo@test.com"
-            // };
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                FirstName: "Test",
+                LastName: "Demo",
+                Phone: "8487348123",
+                Email: "demo@test.com"
+            };
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
