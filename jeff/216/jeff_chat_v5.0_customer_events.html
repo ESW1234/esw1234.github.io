@@ -22,7 +22,7 @@
 				background-color: aqua;
 				//background-color: orange;
 				//background-color: tan;
-				//background-color: gold;
+				background-color: gold;
 			}
 		</style>
 	</head>
@@ -132,58 +132,57 @@
 
 				debugger;
 				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
-					debugger;
-					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data));
+					console.log("onHelpButtonClick event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
 					debugger;
-					console.log("onChatRequestSuccess event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatRequestSuccess event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatEstablished", function(data) {
 					debugger;
-					console.log("onChatEstablished event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatEstablished event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChasitorMessage", function(data) {
 					debugger;
-					console.log("onChasitorMessage event was fired.  data was " + JSON.stringify(data));
+					console.log("onChasitorMessage event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onAgentMessage", function(data) {
 					debugger;
-					console.log("onAgentMessage event was fired.  data was " + JSON.stringify(data));
+					console.log("onAgentMessage event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatReconnectionSuccessful", function(data) {
 					debugger;
-					console.log("onChatReconnectionSuccessful event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatReconnectionSuccessful event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatTransferSuccessful", function(data) {
 					debugger;
-					console.log("onChatTransferSuccessful event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatTransferSuccessful event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
 					debugger;
-					console.log("onChatEndedByChasitor event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatEndedByChasitor event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
 					debugger;
-					console.log("onChatEndedByAgent event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatEndedByAgent event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
 					debugger;
-					console.log("onIdleTimeoutOccurred event was fired.  data was " + JSON.stringify(data));
+					console.log("onIdleTimeoutOccurred event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onConnectionError", function(data) {
 					debugger;
-					console.log("onConnectionError event was fired.  data was " + JSON.stringify(data));
+					console.log("onConnectionError event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				// onChatEstablished
@@ -195,7 +194,7 @@
 				// conflicts with other "onChatEstablished" above
 
 				embedded_svc.addEventHandler("onReconnecting", function(data) {
-					console.log("onReconnecting event was fired.  data was " + JSON.stringify(data));
+					console.log("onReconnecting event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				// onClickSubmitButton
@@ -204,17 +203,17 @@
 				// was submitted successfully to queue.
 				embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
 					debugger;
-					console.log("onClickSubmitButton event was fired.  data was " + JSON.stringify(data));
+					console.log("onClickSubmitButton event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
 					debugger;
-					console.log("onInviteAccepted event was fired.  data was " + JSON.stringify(data));
+					console.log("onInviteAccepted event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 
 				embedded_svc.addEventHandler("onInviteRejected", function(data) {
 					debugger;
-					console.log("onInviteRejected event was fired.  data was " + JSON.stringify(data));
+					console.log("onInviteRejected event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 				});
 				
 				
