@@ -132,7 +132,8 @@
 
 				debugger;
 				embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
-					console.log("onHelpButtonClick event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					//console.log("onHelpButtonClick event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data);
 				});
 
 				embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
@@ -208,12 +209,15 @@
 
 				embedded_svc.addEventHandler("onInviteAccepted", function(data) {
 					debugger;
-					console.log("onInviteAccepted event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					//console.log("onInviteAccepted event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data);
 				});
 
 				embedded_svc.addEventHandler("onInviteRejected", function(data) {
 					debugger;
-					console.log("onInviteRejected event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					//console.log("onInviteRejected event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data);
+					console.log("onHelpButtonClick event was fired.  data was " + JSON.stringify(data);
 				});
 				
 				
