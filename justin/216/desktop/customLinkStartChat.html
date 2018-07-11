@@ -17,14 +17,17 @@
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<p><a id="startChat" target="_blank" style="color:red">Start a chat!</a></p>
+
 
 <!-- Custom JS to start chat via link. -->
+<p><a id="startChat" target="_blank" style="color:red">Start a chat!</a></p>
 <script type='text/javascript'>
 (function() {
-	document.getElementById("startChat").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); }; // use this API call to start chat from invitations
+	document.getElementById("startChat").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); };
 })();
 </script>
+
+
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
