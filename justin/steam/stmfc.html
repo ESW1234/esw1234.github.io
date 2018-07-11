@@ -13,6 +13,10 @@
 	STMFC
 </h1>
 
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
 <!-- start 4.1 snippet -->
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
@@ -50,27 +54,7 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-		embedded_svc.init(
-			'https://na44.stmfc.stm.salesforce.com', 
-			'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili', 
-			gslbBaseURL, 
-			'00DRM0000005lEo', 
-			'justin', 
-			{ 
-				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004CgP', 
-				buttonId: '573RM0000004CgU', 
-				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa'
-			}
-		); 
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+		embedded_svc.init('https://na44.stmfc.stm.salesforce.com', 'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili', gslbBaseURL, '00DRM0000005lEo', 'justin', { baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004CgP', buttonId: '573RM0000004CgU', baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
 </script>
 <!-- stop 4.1 snippet -->
 
