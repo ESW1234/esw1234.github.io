@@ -6,6 +6,10 @@
 
 <body>
 
+<h1>
+	STMFA - 216
+</h1>
+
 <p align="center"><font color = "red"><a href="stmfa-2.html">STMFA page 2.</a></font></p>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -14,9 +18,7 @@
 <div id="button_goes_here">
 </div>
         
-<h1>
-	STMFA - 216
-</h1>
+
 <!-- 	<p align="left">
 		1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>10<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>20<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>30<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>40<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>50<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>60<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>70<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>80<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>90<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>100
 	</p> -->
@@ -60,6 +62,112 @@
 		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+		
+		var countrySettings = {
+			
+		};
+		var defaults = {};
+		embedded_svc.settings.extraPrechatInfo = [
+			{
+				"entityName":"Contact",
+				"showOnCreate":true,
+				"linkToEntityName":"Case",
+				"linkToEntityField":"ContactId",
+				"saveToTranscript":"ContactId",
+				"entityFieldMaps":[{
+					"isExactMatch": false,
+					"fieldName": "Email",
+					"doFind": false,
+					"doCreate": true,
+					"label": "Email"
+				},{
+					"isExactMatch": false,
+					"fieldName": "FirstName",
+					"doCreate": true,
+					"doFind": false,
+					"label": countrySettings[defaults.countryCode].FirstName
+				},{
+					"isExactMatch": true,
+					"fieldName": "Id",
+					"doCreate": false,
+					"doFind": true,
+					"label": "Contact Id"
+				},{
+					"isExactMatch": false,
+					"fieldName": "LastName",
+					"doCreate": true,
+					"doFind": false,
+					"label": countrySettings[defaults.countryCode].LastName
+				}]
+			},{
+                		"entityName": "Case",
+				"showOnCreate": true,
+				"saveToTranscript":"CaseId",
+				"entityFieldMaps": [
+					{
+					    "isExactMatch": true,
+					    "fieldName": "Id",
+					    "doCreate": false,
+					    "doFind": true,
+					    "label": "Case Id"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Ecom_Language__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Language"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Subject",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Subject"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Ecom_Chat_Type__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Ecom_Chat_Type__c"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Origin",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Case Origin"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Country__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Country"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Status",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Status"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Sub_Origin__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Sub Origin"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Ecom_Brand__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Brand"
+					},{
+					    "isExactMatch": false,
+					    "fieldName": "Sub_Brand__c",
+					    "doCreate": true,
+					    "doFind": false,
+					    "label": "Sub Brand"
+					}]
+		    }];
+		
+		
 		
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
