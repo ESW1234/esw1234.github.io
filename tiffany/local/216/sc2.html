@@ -1,12 +1,8 @@
-<!DOCTYPE HTML>
-
 <html>
+  <a href="http://esw1234.github.io/tiffany/local/216/sc.html">button 1 & deployment 1</a>
+  <a href="http://esw1234.github.io/tiffany/local/216/sc2.html">button 2 & deployment 1</a>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
-
-	    <a href="http://esw1234.github.io/tiffany/local/216/sc.html">button 1 & deployment 1</a>
-  <a href="http://esw1234.github.io/tiffany/local/216/sc2.html">button 2 & deployment 1</a>
-	  
   <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -17,13 +13,11 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-	
-	embedded_svc.settings.devMode = true;
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -43,6 +37,6 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://snapins-15fc6fb04c9-16400cd6ff9.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx00000000wr', 'scataw', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx00000000Fv', buttonId: '573xx000000008p', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000001PNEAY_1644d4b4466', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
-</body>
-</html>
+embedded_svc.init('http://tiffanytso-wsm.internal.salesforce.com:6109', 'http://snapins-15fc6fb04c9-16400cd6ff9.localhost.soma.force.com:6109/napili', gslbBaseURL, '00Dxx00000000wr', 'scataw2', { baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content', deploymentId: '572xx00000000Fv', buttonId: '573xx000000008q', baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000001PXEAY_1644d4ca864', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+  </body>
+  </html>
