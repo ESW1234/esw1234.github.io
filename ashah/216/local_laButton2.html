@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -6,16 +7,19 @@
 				  imum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
 <body>
-<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/216/stmfa2.html">EDIT PAGE</a> <br>
-<a href="http://esw1234.github.io/ashah/216/stmfa.html">Page 1</a><br>
-<a href="http://esw1234.github.io/ashah/216/stmfa3.html">Page 3</a><br>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/216/local_laButton2.html">EDIT PAGE</a><br>
+<a href="http://esw1234.github.io/ashah/216/local.html">Page 1</a><br>
+<a href="http://esw1234.github.io/ashah/216/local2.html">Page 2</a><br>
+<a href="http://esw1234.github.io/ashah/216/local3.html">Page 3</a><br>
+<a href="http://esw1234.github.io/ashah/216/local_laDep2.html">Different LA Deployment and button</a><br>
+<a href="http://esw1234.github.io/ashah/216/local_laButton2.html">Same LA Deployment and different button</a><br>
 <div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #A70BA5; font-family: "Comic Sans MS", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #A70BA5; }
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script-->
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -38,8 +42,9 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
-embedded_svc.settings.devMode = true;
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15fc6fb04c9-163d2e29d90.stmfa.stm.force.com/napili', gslbBaseURL, '00DRM00000065m4', 'oh_mylanta', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM00000003BI', buttonId: '573RM00000003Q4', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971', isOfflineSupportEnabled: true}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+embedded_svc.settings.devMode=true;
+embedded_svc.settings.externalScripts = ["customEvents"];
+embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://bo-16401974fe5.localhost.soma.force.com:6109/', gslbBaseURL, '00Dxx0000000001', 'a', { baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content', deploymentId: '572xx0000000001', buttonId: '573xx00000000Hf', baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000pEAA_1641f5b0cfa', isOfflineSupportEnabled: true}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
 </div>
 </body>
 </html>
