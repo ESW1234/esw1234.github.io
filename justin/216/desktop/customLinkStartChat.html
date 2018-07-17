@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<title>Click Link to Start Chat</title>
+</head>
+
+<body>
+
+<div id="button_goes_here">
+</div>
+      
+<h1>
+	Hidden button - click link to start chat.
+</h1>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+
+
+<!-- Custom JS to start chat via link. -->
+<p><a id="startChat" target="_blank" style="color:red">Start a chat!</a></p>
+<script type='text/javascript'>
+(function() {
+	document.getElementById("startChat").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); };
+})();
+</script>
+
+
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = false; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+		// Returns a valid button ID.
+		//};
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		embedded_svc.init(
+			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109/cypress070918',
+			gslbBaseURL,
+			'00Dxx0000001gER',
+			'invitation',
+			{ baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content', deploymentId: '572xx0000000006', buttonId: '573xx000000000B', baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000008yEAA_1648697a930', isOfflineSupportEnabled: false}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+
+</body>
+</html>
