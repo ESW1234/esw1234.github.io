@@ -33,7 +33,8 @@
 	}
 </style>
 
-	<button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
+//Launch chat from button, not snap-in
+<button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
 	
 
 	
@@ -63,6 +64,7 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
+// Add field to the chat transcript record
 // embedded_svc.settings.extraPrechatFormDetails = [{
 // 	"label":"Subject", 
 // 	"transcriptFields":["Chat_Subject__c"]
