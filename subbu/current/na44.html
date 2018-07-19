@@ -69,7 +69,7 @@ embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15ee
 	isOfflineSupportEnabled: true}); };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { 
 			initESW('https://service.force.com'); }</script>
 
