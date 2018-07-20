@@ -3,8 +3,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 		<title>Simple Chat (216 - v5.0) Snippet</title>
 		<style type='text/css'>
-			.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #005290;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #005290;
+			}
+
 			@font-face {
 				font-family: 'Salesforce Sans';
 				/*
@@ -26,10 +33,15 @@
 	</head>
 
 	<body>
-		<!--
-		<h1>Simple Chat (216 - v5.0) Snippet</h1>
-		-->
+		<h1>
+			Simple Chat (216 - v5.0) Snippet
+		</h1>
 		
+		<p>
+			<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/jeff/216/jeff_chat_v5.0.html">
+				Link to editor
+			</a>
+		</p>
 		
 <!-- commented out to prevent 404 error from showing
 		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
@@ -43,6 +55,16 @@
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
+				
+				embedded_svc.settings.prepopulatedPrechatFields = {
+					"FirstName": "a",
+					"LastName": "y",
+					"Email": "abc@xyz.com", 
+					"Subject": "z" 
+					//"textCustomContact__c": "custom field", 
+					//"picklistCustomContact__c": "here", 
+					//"Priority": "Low"
+				};
 				embedded_svc.settings.devMode = true;
 				
 				/*
