@@ -16,7 +16,7 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-    		embedded_svc.settings.snippetSettingsFile = 'CustomEvents';
+    		embedded_svc.settings.snippetSettingsFile = 'directToButtonSettings';
 		embedded_svc.settings.externalStyles = ['hello2_css'];
     
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
@@ -27,6 +27,10 @@
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
+// 			    if(prechatFormData[2].value === "Subject") {
+// 	    	console.log("direct to button routing initiated.");
+// 	    	return "5733000000000Gq";
+	    }
 		//};
 // 		embedded_svc.settings.prepopulatedPrechatFields = { 
 // 		    FirstName: "Nick", 
