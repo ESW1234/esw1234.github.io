@@ -50,6 +50,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
+embedded_svc.settings.devMode = true;
 
 embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983', 
 		  'http://nwk00dxx0000001ger.localhost.soma.force.com:57983/210072617', gslbBaseURL, '00Dxx0000001gER', 
@@ -60,7 +61,7 @@ embedded_svc.init('http://skrish-wsm2.internal.salesforce.com:57983',
 				    isOfflineSupportEnabled: false}); };
 	if (!window.embedded_svc) { var s = document.createElement('script'); 
 				   s.setAttribute('src', 
-						  'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js');
+						  'http://skrish-wsm2.internal.salesforce.com:57983/embeddedservice/5.0/esw.js');
 				   s.onload = function() { initESW(null); }; document.body.appendChild(s); } else {
 					   initESW('https://service.force.com'); }</script>
 
