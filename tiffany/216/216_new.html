@@ -18,7 +18,15 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
     		embedded_svc.settings.snippetSettingsFile = 'settings2';
-		//embedded_svc.settings.externalStyles = ['hello_css'];
+	
+	embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/SFDCLogo.png';
+	embedded_svc.settings.smallCompanyLogoImgURL = 'https://esw1234.github.io/SFDCLogo.png';
+	embedded_svc.settings.prechatBackgroundImgURL = 'https://esw1234.github.io/SFDCTower.png';
+	embedded_svc.settings.waitingStateBackgroundImgURL = '';
+	embedded_svc.settings.headerBackgroundURL = 'https://esw1234.github.io/SFDCTower.png';
+		
+		embedded_svc.settings.externalScripts = [''];
+		embedded_svc.settings.externalStyles = [''];
     
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -33,15 +41,15 @@
 // 	    	return "5733000000000Gq";
 //	    }
 		//};
-// 		embedded_svc.settings.prepopulatedPrechatFields = { 
-// 		    FirstName: "Nick", 
-// 		    LastName: "Miller", 
-// 		    Email: "me@illenium.com", 
-// 		    Subject: "Is it stupid that ily?" 
-// 		}; //Sets the auto-population of pre-chat form fields
-		embedded_svc.settings.fallbackRouting = ['005RM000001d9bs', '005RM000001d9bs_573RM0000004FmH', '005RM000001cyBX'];
+		embedded_svc.settings.prepopulatedPrechatFields = { 
+		    FirstName: "Nick", 
+		    LastName: "Miller", 
+		    Email: "me@illenium.com", 
+		    Subject: "Is it stupid that ily?" 
+		}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = ['005RM000001d9bs', '005RM000001d9bs_573RM0000004FmH', '005RM000001cyBX'];
 		//embedded_svc.snippetSettingsFile.fallbackRouting = ['005RM000001d9bs', '573RM0000004FmH', '005RM000001d9bs_573RM0000004FmH', '005RM000001cyBX_573RM0000004FmG', '005RM000001cyBX', '573RM0000004FmF'];
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		embedded_svc.settings.fallbackRouting = ['']; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
