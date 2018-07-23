@@ -53,6 +53,13 @@
                 Subject: "hey"
             }; //Sets the auto-population of pre-chat form fields
 
+            embedded_svc.addEventHandler("onChatEndedByChasitor", function (data) {
+
+                debugger;
+
+                console.log("onChatEndedByChasitor event was fired. data was " + JSON.stringify(data));
+
+            });
 
             embedded_svc.init('http://williamcha-ltm.internal.salesforce.com:6109',
                 'http://snapins-1610b51c0e8.localhost.soma.force.com:6109/napili', gslbBaseURL,
