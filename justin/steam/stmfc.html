@@ -23,13 +23,13 @@
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -53,11 +53,10 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Subject: "help"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 
-		// CHAT BUTTONS
-		// 573RM0000004Cl6 - chat button, choice routing
-		// 573RM0000004CgU - chat button, omni routing
+		// DEBUGGING
+		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
 			'https://na44.stmfc.stm.salesforce.com', 
@@ -76,12 +75,13 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
+// 		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/4.1/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/4.1/esw.js');
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://service.force.com'); }
 </script>
-<!-- stop 4.1 snippet -->
+<!-- end 4.1 snippet -->
 
 </body>
 </html>
