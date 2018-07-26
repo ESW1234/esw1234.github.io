@@ -39,6 +39,7 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 	embedded_svc.settings.closeSessionWarning = function(e) {
 			var confirmationMessage = "You might lose the active chat session if you close this tab. Are you sure ?";
 			console.log("In the setting for tab master close");
+		        debugger;
 			(e || window.event).returnValue = confirmationMessage;
 			return confirmationMessage;};	
 
