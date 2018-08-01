@@ -12,22 +12,17 @@
 <div id="button_goes_here">
 </div>
 <!------------------------------------------------ 5.0 SNIPPPET ----------------------------------------------------->	
-	<style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #C58FDA;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #C58FDA;
 	}
 </style>
 
-<script type='text/javascript' src=''></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -52,17 +47,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na45.stmfa.stm.salesforce.com',
-			'https://snapins-15fc6fb04c9-164d3c07a92.stmfa.stm.force.com/napili',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins-16013f3ee96.stmfb.stm.force.com/120117',
 			gslbBaseURL,
-			'00DS70000000OLx',
-			'Jazmin_s_Deployment',
+			'00DRM0000005joG',
+			'githubPage',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572S7000000008r',
-				buttonId: '573S7000000008v',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS7000000004YMAQ_164d851015d',
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004DLh',
+				buttonId: '573RM0000004DLm',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002G2AQ_16014004d5d',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -70,13 +65,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na45.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 <!------------------------------------------------------------------------------------------------------------------->
@@ -98,22 +93,6 @@
 <!------------------------------------------------ 2.0 SNIPPET ------------------------------------------------------>
 
 <!------------------------------------------------ 2.0 SNIPPET END -------------------------------------------------->  
-   
-   
-</body>
-</html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }
-
 
 <!------------------------------------------------ 4.0 SNIPPPET ----------------------------------------------------->
 
