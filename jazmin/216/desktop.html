@@ -27,7 +27,7 @@
 	}
 </style>
 
-<script type='text/javascript' src=''></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -53,16 +53,16 @@
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://216patch.localhost.soma.force.com:6109/CustomerService0731',
+			'http://216patch.localhost.soma.force.com:6109/MonthlySprintReview',
 			gslbBaseURL,
 			'00Dxx0000001gER',
-			'Github_Page',
+			'githubPage',
 			{
 				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000000001',
-				buttonId: '573xx0000000001',
+				buttonId: '573xx000000000B',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_164f256fcae',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000GEAQ_164fcc91572',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -76,7 +76,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 <!------------------------------------------------------------------------------------------------------------------->
