@@ -42,14 +42,25 @@
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-            //embedded_svc.settings.snippetSettingsFile = "chatSettings";
-            embedded_svc.settings.chatbotAvatarImgUrl = 'https://esw1234.github.io/automation/avatar.jpg';
-            embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "hey", LastName: "dude", Email: "hey@dude.com", Subject: "hey"}; //Sets the auto-population of pre-chat form fields
+            embedded_svc.settings.snippetSettingsFile = "chatSettings";
+            //embedded_svc.settings.chatbotAvatarImgURL = 'https://esw1234.github.io/automation/BhuH5IW1_400x400.jpg';
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                FirstName: "hey",
+                LastName: "dude",
+                Email: "hey@dude.com",
+                Subject: "hey"
+            }; //Sets the auto-population of pre-chat form fields
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
-            embedded_svc.settings.chatbotAvatarImgURL = 'https://esw1234.github.io/automation/avatar.jpg';
+            //embedded_svc.settings.chatbotAvatarImgURL = 'https://esw1234.github.io/automation/avatar.jpg';
+            embedded_svc.addEventHandler("onChatEndedByChasitor", function (data) {
 
+                debugger;
+
+                console.log("onChatEndedByChasitor event was fired. data was " + JSON.stringify(data));
+
+            });
             embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
                 'https://snapins-15fc6fb04c9-163409bf568.stmfa.stm.force.com/napili', gslbBaseURL,
                 '00DRM00000061S6', 'chatbot', {
