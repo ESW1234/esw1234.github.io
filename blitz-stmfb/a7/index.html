@@ -23,69 +23,6 @@
 
 <!-- start 5.0 snippet -->
 <style type='text/css'>
-<<<<<<< HEAD
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton {
-  background-color: #D15DC1;
-  font-family: "Impact", sans-serif;
-}
-
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {
-  outline: 1px solid #D15DC1
-}
-</style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-
-embedded_svc.settings.avatarImgURL = '/avatar3.png';
-embedded_svc.settings.prechatBackgroundImgURL = '/prechat_tesla.png';
-embedded_svc.settings.waitingStateBackgroundImgURL = '/waitingImage.png';
-embedded_svc.settings.smallCompanyLogoImgURL = '/adidas_logo_white.png';
-
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-embedded_svc.settings.defaultMinimizedText = 'Agents Online';
-embedded_svc.settings.defaultAssistiveText = 'Live Chat:';
-embedded_svc.settings.offlineText = 'Agents Offline';
-embedded_svc.settings.onlineLoadingText = 'Loading';
-
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-embedded_svc.init(
-	'https://na44.stmfb.stm.salesforce.com',
-        'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-        'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-        'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/212110917',
-        '572RM0000004CXz',
-        '00DRM0000005iqj',
-        '573RM0000004CYB',
-        '2.2',
-        gslbBaseUrl,
-        '40.0',
-        'OmniButton7',
-        'EmbeddedServiceLiveAgent_Parent04IRM00000000302AA_15fa686c4fd'
-);
-};
-if (!window.embedded_svc) {
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/2.2/esw.min.js');
-  s.onload = function() {
-    initESW(null);
-  };
-  document.body.appendChild(s);
-} else {
-  initESW('https://na44.stmfb.stm.salesforce.com');
-}
-</script>
-<!-- end 2.2 snippet -->
-
-<!-- 5.0 snippet -->
-	<!--
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-=======
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -93,7 +30,6 @@ if (!window.embedded_svc) {
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
 	}
->>>>>>> 0af5820f2c2fccfc6e75437c62d5058606568833
 	@font-face {
 		font-family: 'Salesforce Sans';
 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
