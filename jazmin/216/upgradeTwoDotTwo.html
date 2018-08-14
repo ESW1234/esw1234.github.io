@@ -1,0 +1,80 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="blue">216 STMFB WIDGET 2.2 Snippet</font></p>
+  <br/>
+  <br/>
+
+<div id="button_goes_here">
+</div>
+
+<!------------------------------------------------ 2.2 SNIPPET ------------------------------------------------------>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #C58FDA; font-family: "Comic Sans MS", sans-serif;}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #C58FDA}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init(
+'https://na44.stmfb.stm.salesforce.com', 
+'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
+'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+'https://snapins-16013f3ee96.stmfb.stm.force.com/120117', 
+'572RM0000004DLh', 
+'00DRM0000005joG', 
+'573RM0000004DLm', 
+'2.2', 
+gslbBaseUrl, 
+'40.0', 
+'githubPage', 
+'EmbeddedServiceLiveAgent_Parent04IRM000000002G2AQ_16014004d5d'
+); 
+}; 
+if (!window.embedded_svc) { 
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+s.onload = function() { 
+initESW(null); 
+}; 
+document.body.appendChild(s);
+} else { initESW('https://na44.stmfb.stm.salesforce.com'); }
+</script>
+
+
+<!------------------------------------------------ 2.2 SNIPPET END -------------------------------------------------->
+
+   
+   
+</body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+      }
