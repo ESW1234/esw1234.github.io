@@ -28,6 +28,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+  
+embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+   if (prechatFormData[3].value === "other")
+      return "5733000000000Gq";
+}
 
 //embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
 //embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
