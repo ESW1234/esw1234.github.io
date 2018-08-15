@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">216 Desktop 3.1 WIDGET</font></p>
+  <p align="center"><font color ="blue">216 Desktop 3.1 WIDGET</font></p>
 	<p align="center"><font color = "pink"><a href="desktopPage2.html">Link to default widget page 2</a></font></p>
   <br/>
   <br/>
@@ -35,6 +35,37 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+embedded_svc.settings.extraPrechatInfo = [{
+"entityName": "Account",
+"linkToEntityName": "Case",
+"linkToEntityField": "AccountId",
+"entityFieldMaps": [{
+"isExactMatch": true,
+"fieldName": "Name",
+"doCreate": true,
+"doFind": true,
+"label": "LastName"
+}]
+}];
+embedded_svc.settings.extraPrechatFormDetails = [{
+"label": "firstName",
+"value": "Jane",
+"displayToAgent": true
+}, {
+"label": "LastName",
+"value": "Doe",
+"displayToAgent": false
+}, {
+"label": "Email",
+"value": "jane.doe@gmail.com",
+"displayToAgent": true
+}, {
+"label": "issue",
+"value": "Do the work",
+"displayToAgent": true
+}];
+	
+	
 // Settings for Live Agent
 embedded_svc.settings.avatarImgURL = '';
 embedded_svc.settings.prechatBackgroundImgURL = '';
