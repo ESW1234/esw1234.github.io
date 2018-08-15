@@ -21,7 +21,7 @@
             url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
         }
     </style>
-    <script data-main="js/main" src="js/require.js"></script>
+    <!-- <script data-main="js/main" src="js/require.js"></script> -->
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #005290;
@@ -38,8 +38,7 @@
             url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
         }
     </style>
-
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <script type='text/javascript'>
         var initESW = function (gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
