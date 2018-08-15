@@ -13,16 +13,11 @@
 <!------------------------------------------------ 5.0 SNIPPPET ----------------------------------------------------->	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #DE08D0;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #DE08D0;
 	}
 </style>
 
@@ -51,17 +46,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na45.stmua.stm.salesforce.com',
-			'https://thebestcommunity.stmua.stm.force.com',
+			'https://na43.stmfb.stm.salesforce.com',
+			'https://snapins-subdomain-161923d1a2-165154249bc.stmfb.stm.force.com/ESWDeploymentCommunity',
 			gslbBaseURL,
-			'00DS70000000MRu',
-			'Jazmin_Deployment',
+			'00DS60000000MYl',
+			'githubROTestingOfflineCases',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/content',
-				deploymentId: '572S7000000004Y',
-				buttonId: '573S7000000004d',
-				baseLiveAgentURL: 'https://d.la2-stmua1-0-prd.stmua.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS7000000000BMAQ_16520fe8112',
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572S6000000008v',
+				buttonId: '573S6000000008v',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS6000000000lMAA_165155e0af6',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -69,7 +64,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na45.stmua.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na43.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
