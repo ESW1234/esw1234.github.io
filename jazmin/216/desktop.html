@@ -92,47 +92,13 @@
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		//embedded_svc.settings.extraPrechatInfo = [{
-		//	"entityName": "Account",
-		//	"linkToEntityName": "Case",
-		//	"linkToEntityField": "AccountId",
-		//	"entityFieldMaps": [{
-		//	"isExactMatch": true,
-		//	"fieldName": "Name",
-		//	"doCreate": true,
-		//	"doFind": true,
-		//	"label": "LastName"
-		//	}]
-		//	}];
-		//embedded_svc.settings.extraPrechatFormDetails = [{
-		//	"label": "firstName",
-		//	"value": "Jane",
-		//	"displayToAgent": true
-		//	}, {
-		//	"label": "LastName",
-		//	"value": "Doe",
-		//	"displayToAgent": false
-		//	}, {
-		//	"label": "Email",
-		//	"value": "jane.doe@gmail.com",
-		//	"displayToAgent": true
-		//	}, {
-		//	"label": "issue",
-		//	"value": "Do the work",
-		//	"displayToAgent": true
-		//	}];
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-   		//	if (prechatFormData[3].value === "other")
-    		//	  return "573xx0000000001";
-		//}
-		//embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "Y", LastName: "K", Email: "y@s.c", Subject: "Laptop Issues"}
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://216patch.localhost.soma.force.com:6109/CustomerService0731',
+			'http://216patch.localhost.soma.force.com:6109/MonthlySprintReview',
 			gslbBaseURL,
 			'00Dxx0000001gER',
 			'githubPage',
@@ -159,57 +125,7 @@
 	}
 </script>
 <!------------------------------------------------------------------------------------------------------------------->
-<!------------------------------------------------ 4.0 SNIPPPET ----------------------------------------------------->
-<!--
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-</style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-//embedded_svc.settings.dynamicRouting = function(prechatFormData) {
-// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-//Returns a valid button ID.
-//};
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://snapins-15f7e6db324.stmfa.stm.force.com/napili111217', gslbBaseURL, '00DRM0000005hL0', 'githubPage', { baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004Csn', buttonId: '573RM0000004Ct5', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000004l2AA_15fc0deaf2d'}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/4.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>	
--->
-<!------------------------------------------------ 4.0 SNIPPPET END ------------------------------------------------->
-   
-<!------------------------------------------------ 3.1 SNIPPET ------------------------------------------------------>
 
-<!------------------------------------------------ 3.1 SNIPPET END -------------------------------------------------->   
-   
-<!------------------------------------------------ 3.0 SNIPPET ------------------------------------------------------>
-
-<!------------------------------------------------ 3.0 SNIPPET END -------------------------------------------------->
-   
-<!------------------------------------------------ 2.2 SNIPPET ------------------------------------------------------>
-
-<!------------------------------------------------ 2.2 SNIPPET END -------------------------------------------------->
-   
-<!------------------------------------------------ 2.0 SNIPPET ------------------------------------------------------>
-
-<!------------------------------------------------ 2.0 SNIPPET END -------------------------------------------------->  
    
    
 </body>
