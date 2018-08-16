@@ -43,6 +43,10 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
+embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+   if (prechatFormData[3].value === "other")
+      return "573xx0000000001";
+}
 embedded_svc.settings.externalScripts = ["upgradeTesting"];
 embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "Y", LastName: "K", Email: "y@s.c", Subject: "Laptop Issues"}
 
