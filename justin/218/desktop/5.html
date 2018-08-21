@@ -53,8 +53,9 @@
 		embedded_svc.settings.devMode = true;
 
 		// BUTTONS.
-		// 573xx0000000001 - choice, chat button, chatbot
+		// 573xx0000000001 - choice, chat button
 		// 573xx0000000002 - omni, chat button, chatbot
+		// 573xx0000000006 - choice, invitation
 		// 573xx000000000B - omni, invitation
 
 		embedded_svc.init(
@@ -66,7 +67,7 @@
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000000006',
-				buttonId: '573xx0000000001',
+				buttonId: '573xx0000000002',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000GOEAY_165400531ae',
 				isOfflineSupportEnabled: true
