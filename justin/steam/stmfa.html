@@ -31,7 +31,7 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #E10808; }
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -168,6 +168,7 @@
 		
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
+
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
 			'https://snapins.stmfa.stm.force.com/test', 
@@ -186,10 +187,11 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+// 	} else { initESW('https://service.force.com'); }
+	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
 </script>
 <!-- end 5.0 snippet -->
 
