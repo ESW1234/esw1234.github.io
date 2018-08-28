@@ -1,17 +1,14 @@
-<!DOCTYPE html>
 <html>
+
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>216 5.0 Desktop</title>
+	<title>218 5.0 Desktop - Chatbot</title>
 </head>
 
 <body>
 
-<div id="button_goes_here">
-</div>
-      
 <h1>
-	216 | desktop | justin | 5.0
+	218 | desktop | justin | 5.0 - chatbot
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -19,12 +16,17 @@
 
 <!-- Snippet -->
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #1F8749;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #1F8749;
+	}
 	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -34,16 +36,16 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'online 5.0'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
+		embedded_svc.settings.defaultMinimizedText = 'chatbot'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'offline???'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Live Agent
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-		// Returns a valid button ID.
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
 		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Company: "Salesforce", Priority: "Medium"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
@@ -51,34 +53,27 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		
-		// Non-standard snippet settings.
-		embedded_svc.settings.devMode = true;
-
-		// BUTTONS.
-		// 573xx0000000001 - choice, chat button, chatbot
-		// 573xx0000000002 - omni, chat button, chatbot
-		// 573xx000000000B - omni, invitation
 
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/cs08092018',
+			'http://nwk00dxx0000006gm7-1657d2f22a3.localhost.soma.force.com:6109/customerService082718',
 			gslbBaseURL,
-			'00Dxx0000001gER',
+			'00Dxx0000001gRQ',
 			'justin',
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000000006',
-				buttonId: '573xx0000000001',
+				deploymentId: '572xx000000003P',
+				buttonId: '573xx000000003Z',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000GOEAY_165400531ae',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
+// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);

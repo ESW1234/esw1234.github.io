@@ -1,24 +1,22 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <body>
-	  <h1>Welcome</h1>
-    <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-</style>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<title>218 5.0 Laptop</title>
+</head>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<body>
+
+<p align="center"><font color = "red"><a href="5invite.html">Laptop Omni Routed Invitation.</a></font></p>
+
+<h1>
+	218 | laptop | justin | 5.0
+</h1>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- Snippet -->
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #1F8749;
@@ -34,14 +32,14 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -51,24 +49,34 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: "justin", 
+			LastName: "macmillin", 
+			Email: "jmacmillin@salesforce.com", 
+			Subject: "help", 
+			Company: "Salesforce", 
+			Priority: "Medium"
+		}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		// Non-standard snippet settings.	
+		embedded_svc.settings.devMode = true;
+		
 		embedded_svc.init(
-			'http://nishantaga-wsm.internal.salesforce.com:6109',
-			'http://communities-1657da9f020.localhost.soma.force.com:6109/',
+			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006GKh',
+			'00Dxx0000006Gm7',
 			'justin',
 			{
-				baseLiveAgentContentURL: 'http://nishantaga-wsm.internal.salesforce.com:8095/content',
+				baseLiveAgentContentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004C92',
-				baseLiveAgentURL: 'http://nishantaga-wsm.internal.salesforce.com:8096/chat',
+				baseLiveAgentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
 				isOfflineSupportEnabled: true
 			}
@@ -77,15 +85,17 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://nishantaga-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+// 		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://nishantaga-wsm.internal.salesforce.com:6109');
+// 		initESW('https://service.force.com');
+		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0.esw.js');
 	}
 </script>
-  
-  </body>
+
+</body>
 </html>
