@@ -26,7 +26,7 @@
 				background-color: blue;
 				background-color: aqua;
 				background-color: orange;
-				background-color: tan;
+				//background-color: tan;
 				//background-color: gold;
 			}
 		</style>
@@ -86,17 +86,17 @@
 				*/
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
-					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
+					'http://mysecondlocalsite.localhost.soma.force.com:6109/',
 					gslbBaseURL,
-					'00Dxx0000000001',
-					'myFirstLocalSiteSnapInDeployment',
+					'00Dxx0000006GUN',
+					'MySnapInsChatButtonDeployment',
 					{
 						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000000001',
-						buttonId: '573xx0000000001',
+						deploymentId: '572xx0000004CAe',
+						buttonId: '573xx0000004CAe',
 						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1633276197c',
-						isOfflineSupportEnabled: true
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_164f2fd82f4',
+						isOfflineSupportEnabled: false
 					}
 				);
 			};
