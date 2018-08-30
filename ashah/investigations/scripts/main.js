@@ -1,4 +1,5 @@
-require('dompurify');
+requirejs(['dompurify'], function(util){
+});
 requirejs(["snapins"], function(util) {
     //This function is called when scripts/helper/util.js is loaded.
     //If util.js calls define(), then this function is not fired until
