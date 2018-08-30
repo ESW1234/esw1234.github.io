@@ -67,14 +67,20 @@
 		embedded_svc.settings.devMode = true;
 		
 		// Adidas 
-		embedded_svc.addEventHandler("onAgentMessage", function(){
-			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
-			var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
-			var lastMessageContent = lastMessageElement.querySelector(".chatContent");
-			
-			if(lastMessageContent.innerText.includes("adidas")) {
-				lastMessageContent.style.background = "red";
-			}
+		embedded_svc.addEventHandler("onAgentMessage", function() {
+			// Use a setTimeout to make sure the message has already rendered.
+			setTimeout(
+				function() {
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+
+					if(lastMessageContent.innerText.includes("adidas")) {
+						lastMessageContent.style.background = "red";
+					}
+			   	},
+				3000
+			);
 		});
 		
 		embedded_svc.init(
