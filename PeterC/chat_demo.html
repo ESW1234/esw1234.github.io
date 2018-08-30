@@ -36,12 +36,7 @@
 //Launch chat from button, not snap-in
 <button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
 	
-window.addEventHandler("load", function() { 
-  embedded_svc.addEventHandler("afterInit", function() {
-    embedded_svc.loginButtonPressed = true;
-    embedded_svc.checkAuthentication();
-  });
-});
+
 	
 
 	
@@ -50,6 +45,13 @@ window.addEventHandler("load", function() {
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+	
+window.addEventHandler("load", function() { 
+  embedded_svc.addEventHandler("afterInit", function() {
+    embedded_svc.loginButtonPressed = true;
+    embedded_svc.checkAuthentication();
+  });
+});
 	
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
