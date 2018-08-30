@@ -115,9 +115,24 @@
 </script>
 
 <script>
-	document.addEventListener("DOMContentLoaded", function(event) {
-		debugger;
-	});
+	var interval = setInterval(
+		function() {
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+			
+			if(nodes.length > 0) {
+				// Once the messages are loaded, clear the interval.
+				clearInterval(interval);
+				
+				// Check each message to conditionally add CSS.
+				Array.prototype.slice.call(nodes).forEach(function(element) {
+					if(element.innerText.includes("adidas")) {
+						element.style.background = "red";
+					}
+				});
+			}
+		},
+		1
+	);
 </script>
 
 </body>
