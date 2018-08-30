@@ -119,7 +119,7 @@
 	var interval = setInterval(
 		function() {
 			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
-			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
 			
 			if(nodes.length > 0) {
 				// Once the messages are loaded, clear the interval.
