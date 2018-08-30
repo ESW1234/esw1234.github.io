@@ -1,4 +1,4 @@
-requirejs(['dompurify'], function(util){
+requirejs(['purify'], function(util){
 });
 requirejs(["snapins"], function(util) {
     //This function is called when scripts/helper/util.js is loaded.
