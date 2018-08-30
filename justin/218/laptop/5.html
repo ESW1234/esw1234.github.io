@@ -71,6 +71,7 @@
 			// Use a setTimeout to make sure the message has already rendered.
 			setTimeout(
 				function() {
+					// For any new message that comes in, check if message needs special CSS applied.
 					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
 					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
 					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
@@ -117,6 +118,7 @@
 <script>
 	var interval = setInterval(
 		function() {
+			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
 			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
 			
 			if(nodes.length > 0) {
