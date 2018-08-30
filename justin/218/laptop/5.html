@@ -82,7 +82,6 @@
 				1
 			);
 		});
-		window.addEventListener("DOMContentLoaded", function(event) { debugger; });
 		
 		embedded_svc.init(
 			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
@@ -113,6 +112,12 @@
 // 		initESW('https://service.force.com');
 		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0.esw.js');
 	}
+</script>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) {
+		debugger;
+	});
 </script>
 
 </body>
