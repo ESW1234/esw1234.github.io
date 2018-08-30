@@ -46,7 +46,7 @@ var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
 embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 	
-window.addEventHandler("load", function() { 
+window.addEventListener("load", function() { 
   embedded_svc.addEventHandler("afterInit", function() {
     embedded_svc.loginButtonPressed = true;
     embedded_svc.checkAuthentication();
