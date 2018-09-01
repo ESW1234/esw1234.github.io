@@ -21,6 +21,7 @@
 			
 			body {
 				background-color: red;
+				background-color: green;
 			}
 		</style>
 
@@ -51,6 +52,7 @@
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
+				
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
 					'http://mysecondlocalsite.secure.force.com:6109',
@@ -59,13 +61,14 @@
 					'SnapInsChatTest5',
 					{
 						baseLiveAgentContentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000004CAe',
-						buttonId: '573xx0000004CAe',
+						deploymentId: '572xx0000004DaG',
+						buttonId: '573xx0000004DaG',
 						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004I6uEAE_16591523ac6',
 						isOfflineSupportEnabled: false
 					}
 				);
+
 			};
 
 			if (!window.embedded_svc) {
