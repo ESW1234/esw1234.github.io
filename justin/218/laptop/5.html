@@ -84,6 +84,171 @@
 			);
 		});
 		
+		// Adidas extra prechat info/details bot connection error.
+		embedded_svc.settings.extraPrechatFormDetails = [
+			{
+				"label": "Case Origin",
+				"value": "Chat",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Subject",
+				"value": "Chat with Visitor",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "snapins prechat hidden field contactId",
+				"transcriptFields": ["Contact_Id_created_by_Bot__c"]
+		    },{
+				"label": "snapins prechat hidden field caseId",
+				"transcriptFields": ["Case_Id_created_by_Bot__c"]
+		    },{
+				"label": "BotEnabled",
+				"value": true,
+				"transcriptFields": [],
+				"displayToAgent": false
+		    },{
+				"label": "snapinsPrechatHiddenFieldContactCreated",
+				"transcriptFields": ["Contact_Created_by_bot__c"],
+		    },{
+				"label": "First Name",
+				"transcriptFields": ["Visitor_Name__c"]
+		    },{
+				"label": "Ecom_Chat_Type__c",
+				"value": "Advisor",
+				"transcriptFields": [],
+				"displayToAgent": false
+		    },{
+				"label": "Language",
+				"value": "German",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Country",
+				"value": "Germany",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Status",
+				"value": "In Progress",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Sub Origin",
+				"value": "Reactive Chat",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Brand",
+				"value": "adidas",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Sub Brand",
+				"value": "adidas inline",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    }
+		];
+		
+		embedded_svc.settings.extraPrechatInfo = [
+		    {
+				"entityName":"Contact",
+				"showOnCreate":true,
+				"linkToEntityName":"Case",
+				"linkToEntityField":"ContactId",
+				"saveToTranscript":"ContactId",
+				"entityFieldMaps":[
+					{
+						"isExactMatch": false,
+						"fieldName": "Email",
+						"doFind": false,
+						"doCreate": false,
+						"label": "Email"
+					},{
+						"isExactMatch": false,
+						"fieldName": "FirstName",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Vorname"
+					},{
+						"isExactMatch": false,
+						"fieldName": "LastName",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Nachname"
+					}
+				]
+			},{
+				"entityName": "Case",
+				"showOnCreate": true,
+				"saveToTranscript":"CaseId",
+				"entityFieldMaps": [
+					{
+						"isExactMatch": true,
+						"fieldName": "Id",
+						"doCreate": false,
+						"doFind": true,
+						"label": "snapins prechat hidden field caseId"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Language__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Language"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Subject",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Subject"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Chat_Type__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Ecom_Chat_Type__c"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Origin",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Case Origin"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Country__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Country"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Status",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Status"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Sub_Origin__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Sub Origin"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Brand__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Brand"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Sub_Brand__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Sub Brand"
+					}
+				]
+			}
+		]; 
+		
 		embedded_svc.init(
 			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
 			'http://communities.localhost.soma.force.com:6109',
