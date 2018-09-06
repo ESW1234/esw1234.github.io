@@ -58,6 +58,7 @@
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+		embedded_svc.settings.devMode = true;
 
 
 /*embedded_svc.settings.extraPrechatFormDetails = [
@@ -150,7 +151,7 @@ embedded_svc.settings.extraPrechatInfo = [
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
