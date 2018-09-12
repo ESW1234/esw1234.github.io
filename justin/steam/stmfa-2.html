@@ -22,6 +22,28 @@
 
 <!-- SNIPPETS -->
 
+<script>
+	// Adidas
+	var interval = setInterval(
+		function() {
+			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
+			
+			if(nodes.length > 0) {
+				// Once the messages are loaded, clear the interval.
+				clearInterval(interval);
+				
+				// Check each message to conditionally add CSS.
+				Array.prototype.slice.call(nodes).forEach(function(element) {
+					if(element.innerText.includes("adidas")) {
+						element.style.background = "red";
+					}
+				});
+			}
+		},
+		1
+	);
+</script>
 
 <!-- start 5.0 snippet -->
 <style type='text/css'>
@@ -53,6 +75,23 @@
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		// Sets chats to route to the first available user or button in the array
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+
+		// Adidas coloring messages based on payload.
+		embedded_svc.addEventHandler("onAgentMessage", function() {
+			// Use a setTimeout to make sure the message has already rendered.
+			setTimeout(
+				function() {
+					// For any new message that comes in, check if message needs special CSS applied.
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+					if(lastMessageContent.innerText.includes("adidas")) {
+						lastMessageContent.style.background = "red";
+					}
+			   	},
+				1
+			);
+		});
 		
 		// sys admin		005xx0000000001
 		// agent 1		005xx000000000f
