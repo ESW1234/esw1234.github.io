@@ -45,7 +45,7 @@
 				
 				// Check each message to conditionally add CSS.
 				Array.prototype.slice.call(nodes).forEach(function(element) {
-					if(element.innerText.includes("adidas")) {
+					if(element.innerText.toLowerCase().includes("adidas")) {
 						element.style.background = "red";
 					}
 				});
@@ -92,7 +92,7 @@
 					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
 					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
 
-					if(lastMessageContent.innerText.includes("adidas")) {
+					if(lastMessageContent.innerText.toLowerCase().includes("adidas")) {
 						lastMessageContent.style.background = "red";
 					}
 			   	},
