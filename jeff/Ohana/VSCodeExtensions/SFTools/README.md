@@ -20,7 +20,7 @@ Run EswCheck<br />
 
 ## Requirements
 
-VS Code
+Viual Studio Code
 
 ## Extension Settings
 
@@ -50,8 +50,6 @@ Once opened (if not already), simply CMD-V in the input field at the top.  Not i
 Ideally, I'd like to have the text caret anywhere within a test, and then be able to launch this command.  At this time, one needs to select the name of the test and then invoke Run Current Component Test.
 
 ## Release Notes
-
-None
 
 ### 1.0.0
 
