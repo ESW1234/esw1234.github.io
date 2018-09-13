@@ -1,0 +1,213 @@
+{
+	"name": "sftools",
+	"displayName": "SF Tools",
+	"description": "SF Tools",
+	"version": "1.0.0",
+	"publisher": "Salesforce-ESW-Snap-Ins",
+	"engines": {
+		"vscode": "^1.26.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.sfTools.p4LogIn",
+		"onCommand:extension.sfTools.p4CheckOut",
+		"onCommand:extension.sfTools.p4Revert",
+		"onCommand:extension.sfTools.p4Add",
+		"onCommand:extension.sfTools.openFileInP4V",
+		"onCommand:extension.sfTools.openFileInEclipse",
+		"onCommand:extension.sfTools.openFileInIntelliJ",
+		"onCommand:extension.sfTools.openFileInSwarm",
+		"onCommand:extension.sfTools.openFileInOpenGrok",
+		"onCommand:extension.sfTools.runCurrentComponentTest",
+		"onCommand:extension.sfTools.runAllComponentTests",
+		"onCommand:extension.sfTools.runEswCheck"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.sfTools.p4LogIn",
+				"title": "P4 Log In"
+			},
+			{
+				"command": "extension.sfTools.p4CheckOut",
+				"title": "P4 Check Out"
+			},
+			{
+				"command": "extension.sfTools.p4Revert",
+				"title": "P4 Revert"
+			},
+			{
+				"command": "extension.sfTools.p4Add",
+				"title": "P4 Add"
+			},
+			{
+				"command": "extension.sfTools.openFileInP4V",
+				"title": "Open In P4V"
+			},
+			{
+				"command": "extension.sfTools.openFileInEclipse",
+				"title": "Open In Eclipse"
+			},
+			{
+				"command": "extension.sfTools.openFileInIntelliJ",
+				"title": "Open In IntelliJ"
+			},
+			{
+				"command": "extension.sfTools.openFileInSwarm",
+				"title": "Open In Swarm"
+			},
+			{
+				"command": "extension.sfTools.openFileInOpenGrok",
+				"title": "Open In OpenGrok"
+			},
+			{
+				"command": "extension.sfTools.runCurrentComponentTest",
+				"title": "Run Current Component Test"
+			},
+			{
+				"command": "extension.sfTools.runAllComponentTests",
+				"title": "Run All Component Tests"
+			},
+			{
+				"command": "extension.sfTools.runEswCheck",
+				"title": "Run ESW-Check"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "extension.sfTools.p4LogIn",
+					"group": "SFToolsGroup@01"
+				},
+				{
+					"command": "extension.sfTools.p4CheckOut",
+					"group": "SFToolsGroup@02"
+				},
+				{
+					"command": "extension.sfTools.p4Revert",
+					"group": "SFToolsGroup@03"
+				},
+				{
+					"command": "extension.sfTools.p4Add",
+					"group": "SFToolsGroup@04"
+				},
+				{
+					"command": "extension.sfTools.openFileInP4V",
+					"group": "SFToolsGroup@05"
+				},
+				{
+					"command": "extension.sfTools.openFileInEclipse",
+					"group": "SFToolsGroup@06"
+				},
+				{
+					"command": "extension.sfTools.openFileInIntelliJ",
+					"group": "SFToolsGroup@07"
+				},
+				{
+					"command": "extension.sfTools.openFileInSwarm",
+					"group": "SFToolsGroup@08"
+				},
+				{
+					"command": "extension.sfTools.openFileInOpenGrok",
+					"group": "SFToolsGroup@09"
+				},
+				{
+					"command": "extension.sfTools.runCurrentComponentTest",
+					"group": "SFToolsGroup@10"
+				},
+				{
+					"command": "extension.sfTools.runAllComponentTests",
+					"group": "SFToolsGroup@11"
+				},
+				{
+					"command": "extension.sfTools.runEswCheck",
+					"group": "SFToolsGroup@12"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "SF Tools",
+			"properties": {
+				"sftools.p4UserName": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.p4UserName Your Perforce user name."
+				},
+				"sftools.p4Password": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.p4Password Your Perforce password."
+				},
+				"sftools.filePathToP4V": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.filePathToP4V The file path to use for your local instance of P4V."
+				},
+				"sftools.filePathToEclipse": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.filePathToEclipse The file path to use for your local instance of Elipse."
+				},
+				"sftools.filePathToIntelliJ": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.filePathToIntelliJ The file path to use for your local instance of IntelliJ."
+				},
+				"sftools.filePathToBrowser": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.filePathToBrowser The file path to use for your web browser."
+				},
+				"sftools.localOrgDomain": {
+					"type": [
+						"string",
+						"null"
+					],
+					"default": null,
+					"description": "sftools.localOrgDomain The file path to use for your local Org."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/tests/integrationTests"
+	},
+	"devDependencies": {
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.21",
+		"tslint": "^5.8.0",
+		"@types/node": "^8.10.25",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"@types/lodash": "^4.14.116",
+		"clipboardy": "^1.2.3",
+		"lodash": "^4.17.10"
+	}
+}

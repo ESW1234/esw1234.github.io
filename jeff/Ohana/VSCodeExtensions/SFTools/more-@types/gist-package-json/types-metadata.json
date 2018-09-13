@@ -1,0 +1,18 @@
+{
+  "authors": "Iain Reid",
+  "definitionFilename": "package-json.d.ts",
+  "sourceRepoURL": "https://gist.github.com/iainreid820/5c1cc527fe6b5b7dba41fec7fe54bf6e",
+  "declaredModules": [
+    "IPackageJSON",
+    "IAuthor",
+    "IBinMap",
+    "IBugs",
+    "IConfig",
+    "IDependencyMap",
+    "IDirectories",
+    "IEngines",
+    "IPublishConfig",
+    "IRepository",
+    "IScriptsMap"
+  ]
+}
