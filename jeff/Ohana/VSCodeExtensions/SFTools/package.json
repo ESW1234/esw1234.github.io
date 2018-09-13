@@ -162,7 +162,7 @@
 						"null"
 					],
 					"default": null,
-					"description": "sftools.filePathToEclipse The file path to use for your local instance of Elipse."
+					"description": "sftools.filePathToEclipse The file path to use for your local instance of Eclipse."
 				},
 				"sftools.filePathToIntelliJ": {
 					"type": [
