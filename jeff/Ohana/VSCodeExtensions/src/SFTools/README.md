@@ -36,7 +36,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-* Works on OSX.  Probably Linux.  Windows will need some work (at the very least, the file path separators need to be changed from "/" to "\")
+* Works on OSX.  Probably Linux.  Windows will need some work (at the very least, the file path separators need to be changed from "/" to "\\")
 
 * Open File In P4V<br />
 Ideally, I'd like to click this command, launch P4V with the path to the file, and then have P4V navigate to the file in its Workspace tree.  At this time, P4V doesn't support AppleScript and doesn't support a parameter passed to it through the command line.  In the mean time, this command does two things:<br />
