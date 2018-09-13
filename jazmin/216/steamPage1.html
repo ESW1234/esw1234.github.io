@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="white">Steam Page 1</font></p>
+  <p align="center"><font color ="blue">Steam Page 1</font></p>
   <p align="center"><font color = "pink"><a href="steamPage2.html">Link to Steam Page 2</a></font></p>
   <br/>
   <br/>
@@ -22,7 +22,7 @@
 	}
 </style>
 
-
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -48,13 +48,13 @@
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-16013f3ee96.stmfb.stm.force.com/120117',
+			'https://snapins-16013f3ee96.stmfb.stm.force.com/napili',
 			gslbBaseURL,
 			'00DRM0000005joG',
 			'githubPage',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004DLh',
+				deploymentId: '572RM0000004Gm3',
 				buttonId: '573RM0000004DLm',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002G2AQ_16014004d5d',
@@ -71,7 +71,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://na44.stmfb.stm.salesforce.com');
+		initESW('https://service.force.com');
 	}
 </script>
 </div>

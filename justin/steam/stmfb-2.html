@@ -11,9 +11,6 @@
 <body>
 
 <p align="center"><font color = "red"><a href="stmfb.html">STMFB page 1.</a></font></p>
-  
-<div id="button_goes_here">
-</div>
         
 <h1>
 	STMFB-2
@@ -66,6 +63,9 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		// Debug mode.
+		embedded_svc.settings.devMode = true;
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com', 
@@ -85,7 +85,7 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 // 	} else { initESW('https://service.force.com'); }

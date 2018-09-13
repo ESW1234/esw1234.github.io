@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<title>218 5.0 Laptop</title>
+</head>
+
+<body>
+
+<p align="center"><font color = "red"><a href="5invite.html">Laptop Omni Routed Invitation.</a></font></p>
+
+<h1>
+	218 | laptop | justin | 5.0
+</h1>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- Snippet -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #1F8749;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #1F8749;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		/*src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+	}
+</style>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: "justin", 
+			LastName: "macmillin", 
+			Email: "jmacmillin@salesforce.com", 
+			Subject: "help", 
+			Company: "Salesforce", 
+			Priority: "Medium"
+		}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		// Non-standard snippet settings.	
+		embedded_svc.settings.devMode = true;
+		
+		// Adidas coloring messages based on payload.
+		embedded_svc.addEventHandler("onAgentMessage", function() {
+			// Use a setTimeout to make sure the message has already rendered.
+			setTimeout(
+				function() {
+					// For any new message that comes in, check if message needs special CSS applied.
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+
+					if(lastMessageContent.innerText.includes("adidas")) {
+						lastMessageContent.style.background = "red";
+					}
+			   	},
+				1
+			);
+		});
+
+// 		embedded_svc.settings.extraPrechatFormDetails = [];
+// 		embedded_svc.settings.extraPrechatInfo = [];
+
+		// My extra prechat info/details.
+		/*
+		embedded_svc.settings.extraPrechatFormDetails = [
+		  {"label":"First Name",
+		   "value":"Usain",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"Last Name",
+		   "value":"Bolt",
+		   "transcriptFields":[],
+		   "displayToAgent":false},
+		  {"label":"Email",
+		   "value":"bolt@gmail.com",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"textCustomContact",
+		   "value":"text from extra prechat field",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"Fax",
+		   "value":"000-000-0000",
+		   "transcriptFields":[],
+		   "displayToAgent":true},
+		  {"label":"issue",
+		   "value":"Laptop broken",
+		   "transcriptFields":[],
+		   "displayToAgent":true}
+		]; 
+		embedded_svc.settings.extraPrechatInfo = [
+		  {"entityName":"Contact",
+		    "showOnCreate":true,
+		    "linkToEntityName":"Case",
+		    "linkToEntityField":"ContactId",
+		    "saveToTranscript":"Contact",
+		    "entityFieldMaps":[
+		      {"isExactMatch":true,
+		       "fieldName":"FirstName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"firstName"},
+		      {"isExactMatch":true,
+		       "fieldName":"LastName",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"LastName"},
+		      {"isExactMatch":true,
+		       "fieldName":"Email",
+		       "doCreate":true,
+		       "doFind":true,
+		       "label":"Email"}]
+		   },
+		   {"entityName":"Case",
+		    "showOnCreate":true,
+		    "entityFieldMaps":[
+		      {"isExactMatch":false,
+		       "fieldName":"Subject",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"issue"},
+		      {"isExactMatch":false,
+		       "fieldName":"Status",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Status"},
+		      {"isExactMatch":false,
+		       "fieldName":"Origin",
+		       "doCreate":true,
+		       "doFind":false,
+		       "label":"Origin"}
+		    ]
+		   }
+		];
+		*/
+		
+		// Adidas extra prechat info/details bot connection error.
+		/*
+		embedded_svc.settings.extraPrechatFormDetails = [
+			{
+				"label": "Case Origin",
+				"value": "Chat",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Subject",
+				"value": "Chat with Visitor",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "snapins prechat hidden field contactId",
+				"transcriptFields": ["Contact_Id_created_by_Bot__c"]
+		    },{
+				"label": "snapins prechat hidden field caseId",
+				"transcriptFields": ["Case_Id_created_by_Bot__c"]
+		    },{
+				"label": "BotEnabled",
+				"value": true,
+				"transcriptFields": [],
+				"displayToAgent": false
+		    },{
+				"label": "snapinsPrechatHiddenFieldContactCreated",
+				"transcriptFields": ["Contact_Created_by_bot__c"],
+		    },{
+				"label": "First Name",
+				"transcriptFields": ["Visitor_Name__c"]
+		    },{
+				"label": "Ecom_Chat_Type__c",
+				"value": "Advisor",
+				"transcriptFields": [],
+				"displayToAgent": false
+		    },{
+				"label": "Language",
+				"value": "German",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Country",
+				"value": "Germany",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Status",
+				"value": "In Progress",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Sub Origin",
+				"value": "Reactive Chat",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Brand",
+				"value": "adidas",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    },{
+				"label": "Sub Brand",
+				"value": "adidas inline",
+				"transcriptFields": [],
+				"displayToAgent": true
+		    }
+		];
+		
+		embedded_svc.settings.extraPrechatInfo = [
+		    {
+				"entityName":"Contact",
+				"showOnCreate":true,
+				"linkToEntityName":"Case",
+				"linkToEntityField":"ContactId",
+				"saveToTranscript":"ContactId",
+				"entityFieldMaps":[
+					{
+						"isExactMatch": false,
+						"fieldName": "Email",
+						"doFind": false,
+						"doCreate": false,
+						"label": "Email"
+					},{
+						"isExactMatch": false,
+						"fieldName": "FirstName",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Vorname"
+					},{
+						"isExactMatch": false,
+						"fieldName": "LastName",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Nachname"
+					}
+				]
+			},{
+				"entityName": "Case",
+				"showOnCreate": true,
+				"saveToTranscript":"CaseId",
+				"entityFieldMaps": [
+					{
+						"isExactMatch": true,
+						"fieldName": "Id",
+						"doCreate": false,
+						"doFind": true,
+						"label": "snapins prechat hidden field caseId"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Language__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Language"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Subject",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Subject"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Chat_Type__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Ecom_Chat_Type__c"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Origin",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Case Origin"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Country__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Country"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Status",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Status"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Sub_Origin__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Sub Origin"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Ecom_Brand__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Brand"
+					},{
+						"isExactMatch": false,
+						"fieldName": "Sub_Brand__c",
+						"doCreate": true,
+						"doFind": false,
+						"label": "Sub Brand"
+					}
+				]
+			}
+		];
+		*/
+		
+		embedded_svc.init(
+			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109',
+			gslbBaseURL,
+			'00Dxx0000006Gm7',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
+				baseLiveAgentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0.esw.js');
+	}
+</script>
+
+<script>
+	var interval = setInterval(
+		function() {
+			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
+			
+			if(nodes.length > 0) {
+				// Once the messages are loaded, clear the interval.
+				clearInterval(interval);
+				
+				// Check each message to conditionally add CSS.
+				Array.prototype.slice.call(nodes).forEach(function(element) {
+					if(element.innerText.includes("adidas")) {
+						element.style.background = "red";
+					}
+				});
+			}
+		},
+		1
+	);
+</script>
+
+</body>
+</html>

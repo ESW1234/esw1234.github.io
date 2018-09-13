@@ -6,17 +6,14 @@
 
 <body>
 
-<h1>
-	STMFA - 216
-</h1>
-
 <p align="center"><font color = "red"><a href="stmfa-2.html">STMFA page 2.</a></font></p>
+
+<h1>
+	STMFA
+</h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-<div id="button_goes_here">
-</div>
         
 
 <!-- 	<p align="left">
@@ -26,6 +23,29 @@
 
 <!-- SNIPPETS -->
 
+<script>
+	// Adidas
+	var interval = setInterval(
+		function() {
+			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
+			
+			if(nodes.length > 0) {
+				// Once the messages are loaded, clear the interval.
+				clearInterval(interval);
+				
+				// Check each message to conditionally add CSS.
+				Array.prototype.slice.call(nodes).forEach(function(element) {
+					if(element.innerText.includes("adidas")) {
+						element.style.background = "red";
+					}
+				});
+			}
+		},
+		1
+	);
+</script>
+
 
 <!-- start 5.0 snippet -->
 
@@ -34,7 +54,7 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #E10808; }
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -62,6 +82,24 @@
 		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+		
+		// Adidas coloring messages based on payload.
+		embedded_svc.addEventHandler("onAgentMessage", function() {
+			// Use a setTimeout to make sure the message has already rendered.
+			setTimeout(
+				function() {
+					// For any new message that comes in, check if message needs special CSS applied.
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+
+					if(lastMessageContent.innerText.includes("adidas")) {
+						lastMessageContent.style.background = "red";
+					}
+			   	},
+				1
+			);
+		});
 		
 // 		var countrySettings = {
 			
@@ -171,6 +209,7 @@
 		
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
+
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
 			'https://snapins.stmfa.stm.force.com/test', 
@@ -189,10 +228,11 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+// 	} else { initESW('https://service.force.com'); }
+	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
 </script>
 <!-- end 5.0 snippet -->
 
