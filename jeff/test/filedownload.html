@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+
+	<body>
+		<form id="theform" action="http://esw1234.github.io/jeff/test/testfile.zip" method="get">
+			<button id="thebutton" type="button">Download!</button>
+		</form>
+
+		<script>
+			let form = document.getElementById("theform");
+			let button = document.getElementById("thebutton");
+			button.addEventListener('click', function() {
+				form.submit();
+			});
+		</script>
+	</body>
+</html>
