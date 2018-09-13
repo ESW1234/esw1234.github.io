@@ -36,7 +36,6 @@
 	// Adidas
 	var interval = setInterval(
 		function() {
-			debugger;
 			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
 			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
 			
@@ -85,7 +84,6 @@
 		
 		// Adidas coloring messages based on payload.
 		embedded_svc.addEventHandler("onAgentMessage", function() {
-			debugger;
 			// Use a setTimeout to make sure the message has already rendered.
 			setTimeout(
 				function() {
