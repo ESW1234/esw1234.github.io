@@ -43,7 +43,7 @@ Ideally, I'd like to click this command, launch P4V with the path to the file, a
 	- First it copies the path of the current file to the clipboard.<br />
 	- Second, it launches P4V.<br />
 <br />
-Once opened (if not already), simply CMD-V in the input field at the top.  Not ideal, but it's something.
+	Once opened (if not already), simply CMD-V in the input field at the top.  Not ideal, but it's something.<br />
 
 * Run Current Component Test<br />
 Ideally, I'd like to have the text caret anywhere within a test, and then be able to launch this command.  At this time, one needs to select the name of the test and then invoke Run Current Component Test.
