@@ -1,0 +1,6 @@
+{
+  "name": "@types/gist-package-json",
+  "version": "1.0.0",
+  "author": "Iain Reid",
+  "types": "package-json.d.ts"
+}
