@@ -40,8 +40,8 @@ This extension contributes the following settings:
 
 * Open File In P4V<br />
 Ideally, I'd like to click this command, launch P4V with the path to the file, and then have P4V navigate to the file in its Workspace tree.  At this time, P4V doesn't support AppleScript and doesn't support a parameter passed to it through the command line.  In the mean time, this command does two things:<br />
-- First it copies the path of the current file to the clipboard.<br />
-- Second, it launches P4V.<br />
+	- First it copies the path of the current file to the clipboard.<br />
+	- Second, it launches P4V.<br />
 <br />
 Once opened (if not already), simply CMD-V in the input field at the top.  Not ideal, but it's something.
 
