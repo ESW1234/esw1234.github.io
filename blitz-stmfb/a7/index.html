@@ -41,11 +41,11 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		// embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-		embedded_svc.settings.defaultAssistiveText = 'Live Chat:'; //(Defaults to nothing)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -64,7 +64,7 @@
 
 		embedded_svc.init(
 			'https://stmfbna44esw.my.stmfb.stm.salesforce.com',
-			'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/212110917',
+			'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/napili',
 			gslbBaseURL,
 			'00DRM0000005iqj',
 			'OmniButton7',
@@ -81,7 +81,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://stmfbna44esw.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://stmfbna44esw.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
