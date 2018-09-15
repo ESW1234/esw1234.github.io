@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
   <title>STMFA - Chatbot</title>
 </head>
-
+ 
 <body>
 
 <p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
@@ -32,6 +32,29 @@
 	}
 </style>
 
+<script>
+	// Adidas
+	var interval = setInterval(
+		function() {
+			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
+			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
+			
+			if(nodes.length > 0) {
+				// Once the messages are loaded, clear the interval.
+				clearInterval(interval);
+				
+				// Check each message to conditionally add CSS.
+				Array.prototype.slice.call(nodes).forEach(function(element) {
+					if(element.innerText.toLowerCase().includes("adidas")) {
+						element.style.background = "red";
+					}
+				});
+			}
+		},
+		1
+	);
+</script>
+	
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -58,6 +81,24 @@
 		
 		// Debug
 		embedded_svc.settings.devMode = true;
+		
+		// Adidas coloring messages based on payload.
+		embedded_svc.addEventHandler("onAgentMessage", function() {
+			// Use a setTimeout to make sure the message has already rendered.
+			setTimeout(
+				function() {
+					// For any new message that comes in, check if message needs special CSS applied.
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+
+					if(lastMessageContent.innerText.toLowerCase().includes("adidas")) {
+						lastMessageContent.style.background = "red";
+					}
+			   	},
+				1
+			);
+		});
 		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
