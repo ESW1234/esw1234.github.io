@@ -44,7 +44,13 @@
 
 		// Settings for Live Agent
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			debugger;
+			var selectValues = prechatFormData.find(function(item) { 
+				return item.label.toLowerCase() === "priority" 
+			});
+			
+			if(selectValues.value === "") {
+				return ""; // Route to some other button.
+			}
 		};
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "change password", Company: "Salesforce", Priority: "Medium"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
