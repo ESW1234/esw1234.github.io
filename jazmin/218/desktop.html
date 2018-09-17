@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">218 Desktop WIDGET</font></p>
+  <p align="center"><font color ="blue">218 Desktop WIDGET</font></p>
   <br/>
   <br/>
 
@@ -13,15 +13,15 @@
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #09C9EA;
+		background-color: #ED1372;
 		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #09C9EA;
+		outline: 1px solid #ED1372;
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -44,11 +44,10 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.devMode = true;
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazminssubdomain.localhost.soma.force.com:6109/CustomerService0905',
+			'http://jazminscommunitysubdomain.localhost.soma.force.com:6109/CustomerService0917',
 			gslbBaseURL,
 			'00Dxx0000001gER',
 			'githubPage',
@@ -57,7 +56,7 @@
 				deploymentId: '572xx0000000001',
 				buttonId: '573xx0000000001',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1634b0852b6',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_165e9421c24',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -71,7 +70,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://jazortiz-wsm3.internal.salesforce.com:6109');
+		initESW('https://service.force.com');
 	}
 </script>
    
