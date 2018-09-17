@@ -1,7 +1,10 @@
 body {
   background-image: url("capwebsite.jpg");
-  background-size: cover;
+  background-size: contain;
   background-attachment: scroll;
   background-repeat: no-repeat;
   background-position: center top;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 142vw;
 }
