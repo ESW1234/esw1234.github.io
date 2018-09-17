@@ -44,11 +44,11 @@
 
 		// Settings for Live Agent
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			var selectValues = prechatFormData.find(function(item) { 
+			var selectValue = prechatFormData.find(function(item) { 
 				return item.label.toLowerCase() === "priority" 
-			});
+			}).value;
 			
-			if(selectValues.value === "") {
+			if(selectValue === "") {
 				return ""; // Route to some other button.
 			}
 		};
