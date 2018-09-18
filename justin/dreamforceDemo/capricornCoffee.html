@@ -38,7 +38,7 @@
 
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			var selectValue = prechatFormData.find(function(item) { 	
-				return item.label.toLowerCase() === "Capricorn Product" 	
+				return item.label.includes"Capricorn Product");
 			}).value;	
 
 			if(selectValue.includes("Tropic") || selectValue.includes("Capricorn")) {	
