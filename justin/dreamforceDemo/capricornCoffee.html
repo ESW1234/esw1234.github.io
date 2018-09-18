@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="capricornCoffee.css">
   
 <body>
-
+ 
 <!-- Snippet -->
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #b5651d; font-family: "Salesforce Sans", sans-serif; }
@@ -38,7 +38,7 @@
 
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			var selectValue = prechatFormData.find(function(item) { 	
-				return item.label.includes"Capricorn Product");
+				return item.label.includes("Capricorn Product");
 			}).value;	
 
 			if(selectValue.includes("Tropic") || selectValue.includes("Capricorn")) {	
