@@ -41,6 +41,9 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+
+		
+		// DIRECT TO BUTTON ROUTING.
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			var selectValue = prechatFormData.find(function(item) { 	
 				return item.label.includes("Capricorn Product");
@@ -52,11 +55,8 @@
 		};
 
 
+
 		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-		// Returns a valid button ID.
-		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {
 			FirstName: "Justin",
 			LastName: "MacMillin",
