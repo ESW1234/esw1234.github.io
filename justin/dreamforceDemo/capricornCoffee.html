@@ -45,6 +45,8 @@
 		
 		// DIRECT TO BUTTON ROUTING.
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// We can access any information on the page here, not just prechat data.
+
 			var selectValue = prechatFormData.find(function(item) { 	
 				return item.label.includes("Capricorn Product");
 			}).value;	
