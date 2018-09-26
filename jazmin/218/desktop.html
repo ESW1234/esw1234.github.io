@@ -13,15 +13,15 @@
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #ED1372;
+		background-color: #D27BDA;
 		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #ED1372;
+		outline: 1px solid #D27BDA;
 	}
 </style>
 
-<script type='text/javascript' src=''></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -54,7 +54,7 @@
 			{
 				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000000001',
-				buttonId: '573xx0000000001',
+				buttonId: '573xx0000000006',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_165e9421c24',
 				isOfflineSupportEnabled: true
@@ -70,7 +70,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
    
