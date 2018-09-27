@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="blue">218 Desktop WIDGET</font></p>
+  <p align="center"><font color ="red">218 Desktop WIDGET</font></p>
   <br/>
   <br/>
 
@@ -54,13 +54,25 @@
 			{
 				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000000001',
-				buttonId: '573xx0000000006',
+				buttonId: '573xx0000000001',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_165e9421c24',
 				isOfflineSupportEnabled: true
 			}
 		);
 	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
