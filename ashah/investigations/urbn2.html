@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+<body>
+<a href="http://esw1234.github.io/ashah/investigations/urbn.html">Main Page</a><br>
+<div id="button_goes_here">
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #C24C6E;
+		font-family: "Open Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #C24C6E;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://urbn--Full.cs15.my.salesforce.com',
+			'https://full-urbanoutfitters.cs15.force.com/CCLiveAgent',
+			gslbBaseURL,
+			'00De0000005F3RB',
+			'FreePeople_Reactive',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1cs-iad.salesforceliveagent.com/content',
+				deploymentId: '572e00000004CW6',
+				buttonId: '573e000000001da',
+				baseLiveAgentURL: 'https://d.la1-c1cs-iad.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ie00000008OJ3EAM_1656c6fafc1',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://urbn--Full.cs15.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</div>
+</body>
+</html>
