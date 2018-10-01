@@ -69,11 +69,12 @@
 		initESW('https://service.force.com');
 	}
 	
+	window.onload = function (){
 	embedded_svc.addEventHandler("featureLoaded", function(payload){
 		if(embedded_svc.inviteAPI){
 			embedded_svc.inviteAPI.acceptInvite();
 		}
-	});
+	});}
 </script>
 </div>
 </body>
