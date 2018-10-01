@@ -70,11 +70,13 @@
 	}
 	
 	window.onload = function (){
-	embedded_svc.addEventHandler("featureLoaded", function(payload){
-		if(embedded_svc.inviteAPI){
-			embedded_svc.inviteAPI.acceptInvite();
-		}
-	});}
+// 	embedded_svc.addEventHandler("featureLoaded", function(payload){
+// 		if(embedded_svc.inviteAPI){
+// 			embedded_svc.inviteAPI.acceptInvite();
+// 		}
+// 	});}
+		embedded_svc.onHelpButtonClick();
+	}
 </script>
 </div>
 </body>
