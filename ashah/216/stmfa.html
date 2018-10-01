@@ -63,6 +63,7 @@
 		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
+			embedded_svc.inviteAPI.acceptInvite();
 		};
 		document.body.appendChild(s);
 	} else {
