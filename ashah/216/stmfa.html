@@ -68,6 +68,12 @@
 	} else {
 		initESW('https://service.force.com');
 	}
+	
+	window.onload = function(){
+		if(embedded_svc.inviteAPI){
+			embedded_svc.inviteAPI.acceptInvite();
+		}
+	};
 </script>
 </div>
 </body>
