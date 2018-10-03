@@ -39,16 +39,18 @@ var initESW = function(gslbBaseURL) {
 	embedded_svc.settings.enabledFeatures = ['FieldService'];
 	embedded_svc.settings.entryFeature = 'FieldService';
 	embedded_svc.settings.useCustomAuthentication = false;
-	embedded_svc.init(
-		'http://poojaganesh-wsm.internal.salesforce.com:6109',
-		'http://snapins-subdomain-161923d1a2-165ee07c2bb.localhost.soma.force.com:6109/poojaCommunity',
-		gslbBaseURL,
-		'00Dxx0000006GkV',
-		'PoojaDep',
-		{
-		}
-	);
+		embedded_svc.init(
+			'http://poojaganesh-wsm.internal.salesforce.com:6109',
+			'http://snapins-subdomain-161923d1a2-16635c80bd3.localhost.soma.force.com:6109/poojaCommunity',
+			gslbBaseURL,
+			'00Dxx0000006Git',
+			'testFlexipage',
+			{
+				
+			}
+		);
 	};
+
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'http://poojaganesh-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
