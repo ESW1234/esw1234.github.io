@@ -63,7 +63,7 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -86,7 +86,7 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+		embedded_svc.settings.devMode = true;
 		embedded_svc.init(
 			'https://urbn--Full.cs15.my.salesforce.com',
 			'https://full-urbanoutfitters.cs15.force.com/resources',
