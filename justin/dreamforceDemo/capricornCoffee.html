@@ -5,8 +5,9 @@
 </head>
 
 <!-- Edit page link. -->
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<!-- <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+ -->
 
 <!-- External CSS file. -->
 <link rel="stylesheet" href="capricornCoffee.css">
@@ -15,15 +16,16 @@
  
 <!-- Snippet -->
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #b5651d; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #b5651d; }
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #764c2f; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #764c2f; }
 	@font-face {
 		font-family: 'Salesforce Sans';
 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
-	.modalContainer.sidebarMaximized.layout-docked .dockableContainer {
-		overflow: visible;
+	/* Show overflow to see support hours table. */
+	.modalContainer.sidebarMaximized.layout-docked .dockableContainer {	
+		overflow: visible;	
 	}
 </style>
 
@@ -39,7 +41,12 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+
+		
+		// DIRECT TO BUTTON ROUTING.
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// We can access any information on the page here, not just prechat data.
+
 			var selectValue = prechatFormData.find(function(item) { 	
 				return item.label.includes("Capricorn Product");
 			}).value;	
@@ -50,11 +57,8 @@
 		};
 
 
+
 		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-		// Returns a valid button ID.
-		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {
 			FirstName: "Justin",
 			LastName: "MacMillin",
