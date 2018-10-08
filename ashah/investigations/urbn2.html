@@ -1,25 +1,20 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
    <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
 <body>
-  <p align="center"><font color ="red">218 STMFA WIDGET</font></p>
-  <p align="center"><font color = "blue"><a href="steam2.html">Link to steam page 2 widget</a></font></p>
-  <br/>
-  <br/>
-
+<a href="http://esw1234.github.io/ashah/investigations/urbn.html">Main Page</a><br>
 <div id="button_goes_here">
-</div>
-
-  <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #F102F1;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #C24C6E;
+		font-family: "Open Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #F102F1;
+		outline: 1px solid #C24C6E;
 	}
 </style>
 
@@ -43,31 +38,30 @@
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		embedded_svc.settings.avatarImgURL = '../../avatar.png';
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15f7e6db324.stmfa.stm.force.com/napili111217',
+			'https://urbn--Full.cs15.my.salesforce.com',
+			'https://full-urbanoutfitters.cs15.force.com/CCLiveAgent',
 			gslbBaseURL,
-			'00DRM0000005hL0',
-			'githubPage',
+			'00De0000005F3RB',
+			'FreePeople_Reactive',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004Csn',
-				buttonId: '573RM0000004Ct5',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006S2AQ_161062f736b',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'https://c.la1-c1cs-iad.salesforceliveagent.com/content',
+				deploymentId: '572e00000004CW6',
+				buttonId: '573e000000001da',
+				baseLiveAgentURL: 'https://d.la1-c1cs-iad.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ie00000008OJ3EAM_1656c6fafc1',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://urbn--Full.cs15.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -75,17 +69,7 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script> 
+</script>
+</div>
 </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }

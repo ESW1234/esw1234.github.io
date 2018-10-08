@@ -27,11 +27,11 @@
 	<div id="button_goes_here"></div>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #D41822;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #D41822;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -43,6 +43,9 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
+//		embedded_svc.settings.avatarImgURL = "../../avatar.png";
+		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+		
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 

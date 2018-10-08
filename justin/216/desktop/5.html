@@ -6,9 +6,6 @@
 </head>
 
 <body>
-
-<div id="button_goes_here">
-</div>
       
 <h1>
 	216 | desktop | justin | 5.0
@@ -35,7 +32,7 @@
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.defaultMinimizedText = 'online 5.0'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
+		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -45,7 +42,7 @@
 		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 		// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Company: "Salesforce", Priority: "Medium"}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Company: "Salesforce", Priority: "Medium", Email: "jmacmillin@salesforce.com", Subject: "Help"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -72,7 +69,7 @@
 				buttonId: '573xx0000000001',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000GOEAY_165400531ae',
-				isOfflineSupportEnabled: true
+				isOfflineSupportEnabled: false
 			}
 		);
 	};

@@ -50,28 +50,28 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.language ='it';
+                embedded_svc.settings.language = 'it';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15fc6fb04c9-16428ee4-165fd9ed657.stmfa.stm.force.com/labeltest',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins-15fc6fb04c9-164f1d48c06.stmfb.stm.force.com/216label',
 			gslbBaseURL,
-			'00DRM0000006R47',
-			'X218_Label_Test',
+			'00DRM0000006ZTA',
+			'LA_Blitz_One',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004G9O',
-				buttonId: '573RM0000004GTh',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001CD2AY_1660c6ad6ae',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004G8g',
+				buttonId: '573RM0000004GIk',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Jm2AI_164f1d84580',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
