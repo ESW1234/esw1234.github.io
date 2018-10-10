@@ -49,11 +49,13 @@
 		embedded_svc.settings.devMode = true;
 		
 		// STMFA content server - https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content
+		// STMFA chat server - https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat
+
 		// local content server - http://jmacmillin-wsm3.internal.salesforce.com:8095/content
     
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109', 
-			'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', 
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
 			'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
 			'http://communities.localhost.soma.force.com:6109/theme083018', 
 			'572xx0000004C92', 
