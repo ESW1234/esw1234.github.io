@@ -11,7 +11,7 @@
 <h1>
 	STMFA
 </h1>
-
+ 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
         
@@ -20,10 +20,7 @@
 		1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>10<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>20<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>30<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>40<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>50<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>60<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>70<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>80<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>90<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>100
 	</p> -->
 
-
-<!-- SNIPPETS -->
-
-<script>
+<!-- <script>
 	// Adidas
 	var interval = setInterval(
 		function() {
@@ -44,7 +41,10 @@
 		},
 		1
 	);
-</script>
+</script> -->
+
+
+<!-- SNIPPETS -->
 
 
 <!-- start 5.0 snippet -->
@@ -84,6 +84,7 @@
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 		
 		// Adidas coloring messages based on payload.
+		/*
 		embedded_svc.addEventHandler("onAgentMessage", function() {
 			// Use a setTimeout to make sure the message has already rendered.
 			setTimeout(
@@ -100,112 +101,7 @@
 				1
 			);
 		});
-		
-// 		var countrySettings = {
-			
-// 		};
-// 		var defaults = {};
-// 		embedded_svc.settings.extraPrechatInfo = [
-// 			{
-// 				"entityName":"Contact",
-// 				"showOnCreate":true,
-// 				"linkToEntityName":"Case",
-// 				"linkToEntityField":"ContactId",
-// 				"saveToTranscript":"ContactId",
-// 				"entityFieldMaps":[{
-// 					"isExactMatch": false,
-// 					"fieldName": "Email",
-// 					"doFind": false,
-// 					"doCreate": true,
-// 					"label": "Email"
-// 				},{
-// 					"isExactMatch": false,
-// 					"fieldName": "FirstName",
-// 					"doCreate": true,
-// 					"doFind": false,
-// 					"label": "FirstName"//countrySettings[defaults.countryCode].FirstName
-// 				},{
-// 					"isExactMatch": true,
-// 					"fieldName": "Id",
-// 					"doCreate": false,
-// 					"doFind": true,
-// 					"label": "Contact Id"
-// 				},{
-// 					"isExactMatch": false,
-// 					"fieldName": "LastName",
-// 					"doCreate": true,
-// 					"doFind": false,
-// 					"label": "LastName"//countrySettings[defaults.countryCode].LastName
-// 				}]
-// 			},{
-//                 		"entityName": "Case",
-// 				"showOnCreate": true,
-// 				"saveToTranscript":"CaseId",
-// 				"entityFieldMaps": [
-// 					{
-// 					    "isExactMatch": true,
-// 					    "fieldName": "Id",
-// 					    "doCreate": false,
-// 					    "doFind": true,
-// 					    "label": "Case Id"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Ecom_Language__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Language"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Subject",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Subject"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Ecom_Chat_Type__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Ecom_Chat_Type__c"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Origin",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Case Origin"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Country__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Country"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Status",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Status"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Sub_Origin__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Sub Origin"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Ecom_Brand__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Brand"
-// 					},{
-// 					    "isExactMatch": false,
-// 					    "fieldName": "Sub_Brand__c",
-// 					    "doCreate": true,
-// 					    "doFind": false,
-// 					    "label": "Sub Brand"
-// 					}]
-// 		    }];
-		
-		
+		*/
 		
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
@@ -570,7 +466,7 @@
 
 
 <!-- start 2.2 snippet -->
-<!--<style type='text/css'>
+<!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
 @font-face {
@@ -672,18 +568,19 @@
 		];
 		*/
 		
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  '572RM0000004CDV', 
-				  '00DRM0000005cyu', 
-				  '573RM0000004CDc', 
-				  '2.2', 
-				  gslbBaseUrl, 
-				  '40.0', 
-				  'anal', 
-				  'EmbeddedServiceLiveAgent_Parent04IRM000000001Y2AQ_16264c1ace5'
+		embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
+			  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+			  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+			  'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118', 
+			  '572RM0000004CDV', 
+			  '00DRM0000005cyu', 
+			  '573RM0000004CDc', 
+			  '2.2', 
+			  gslbBaseUrl, 
+			  '40.0', 
+			  'justin', 
+			  'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2'
 		); 
 	}; 
 	if (!window.embedded_svc) { 
@@ -722,10 +619,11 @@
 		embedded_svc.settings.offlineText = 'offline 2.0'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.onlineLoadingText = '...'; //(Defaults to Loading)
 
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "help"}; //Sets the auto-population of pre-chat form fields
 
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+		/*
 		embedded_svc.settings.extraPrechatFormDetails = [
 		  {"label":"First Name",
 		   "value":"Usain",
@@ -796,19 +694,21 @@
 		    ]
 		   }
 		];
+		*/
 		
-		embedded_svc.init('https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-				  'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				  'https://snapins.stmfa.stm.force.com/test', 
-				  '572RM0000004CDV', 
-				  '00DRM0000005cyu', 
-				  '573RM0000004CDc', 
-				  '2.0', 
-				  gslbBaseUrl, 
-				  '40.0', 
-				  'a', 
-				  'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2'
+		embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+			'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118', 
+			'572RM0000004CDV', 
+			'00DRM0000005cyu', 
+			'573RM0000004CDc', 
+			'2.0', 
+			gslbBaseUrl, 
+			'40.0', 
+			'justin', 
+			'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2'
 		); 
 	}; 
 	if (!window.embedded_svc) { 

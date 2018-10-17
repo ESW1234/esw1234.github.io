@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <p align="center"><font color ="red">GS0 2.0 Snippet</font></p>
+  <br/>
+  <br/>
+
+<div id="button_goes_here">
+</div>
+
+<!------------------------------------------------ 2.2 SNIPPET ------------------------------------------------------>
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #0B3CED; font-family: "Salesforce Sans", sans-serif;}
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #0B3CED}
+</style>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.init(
+'https://snapins216.my.salesforce.com', 
+'https://d.la4-c1-dfw.salesforceliveagent.com/chat', 
+'https://c.la4-c1-dfw.salesforceliveagent.com/content',
+'https://sdodemo-main-1637594504f.force.com/consumer', 
+'572f4000000Dr7b', 
+'00Df4000003mbT1', 
+'573f4000000DpX8', 
+'2.0', 
+gslbBaseUrl, 
+'40.0', 
+'Snap_ins_Chat', 
+'EmbeddedServiceLiveAgent_Parent04If4000000PE51EAG_163b7df8e67'
+); 
+}; 
+if (!window.embedded_svc) { 
+var s = document.createElement('script'); 
+s.setAttribute('src', 'https://snapins216.my.salesforce.com/embeddedservice/2.0/esw.min.js'); 
+s.onload = function() { 
+initESW(null); 
+}; 
+document.body.appendChild(s);
+} else { initESW(''); }
+</script>
+
+
+<!------------------------------------------------ 2.2 SNIPPET END -------------------------------------------------->
+
+   
+   
+</body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+      }
