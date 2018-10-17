@@ -1,16 +1,16 @@
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
-
 <body>
-  <style type='text/css'>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #1F8749;
+		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #1F8749;
+		outline: 1px solid #005290;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -19,13 +19,11 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
-		embedded_svc.settings.waitingStateBackgroundImgURL= "http://esw1234.github.io/automation/company_logo.png";
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -38,7 +36,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "test", LastName: "test", Email: "test@salesforce.com", Subject: "Change password"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -46,31 +44,32 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://nishantaga-wsm.internal.salesforce.com:6109',
-			'http://nwk00dxx0000006gm7-1657da9f020.localhost.soma.force.com:6109/community6',
+			'http://fazmain.localhost.internal.salesforce.com:6109',
+			'http://main.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006GKh',
-			'justin',
+			'00Dxx0000001gHL',
+			'FlightBot',
 			{
-				baseLiveAgentContentURL: 'http://nishantaga-wsm.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C93',
-				baseLiveAgentURL: 'http://nishantaga-wsm.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'http://smohammed-ltm4.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000000001',
+				buttonId: '573xx000000000G',
+				baseLiveAgentURL: 'http://smohammed-ltm4.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000006EAA_16658e4fe7d',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://nishantaga-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://fazmain.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://nishantaga-wsm.internal.salesforce.com:6109');
+// 		initESW('https://service.force.com');
+		initESW('http://fazmain.localhost.internal.salesforce.com:6109');
 	}
 </script>
 </body>

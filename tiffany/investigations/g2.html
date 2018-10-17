@@ -1,26 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-<body>
-  <p align="center"><font color ="blue">218 Desktop WIDGET</font></p>
-  <br/>
-  <br/>
-
-<div id="button_goes_here">
-</div>
-
-<style type='text/css'>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #5E188E;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #446373;
+		font-family: "Roboto", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #5E188E;
+		outline: 1px solid #446373;
 	}
 </style>
 
+<!-- // <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -45,17 +36,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazminscommunitysubdomain.localhost.soma.force.com:6109/CustomerService0917',
+			'http://tiffanytso-wsm.internal.salesforce.com:6109',
+			'http://g2crowd.localhost.soma.force.com:6109/support',
 			gslbBaseURL,
-			'00Dxx0000001gER',
-			'githubPage',
+			'00Dxx0000006PKB',
+			'Chat_Deployment',
 			{
-				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000000001',
-				buttonId: '573xx0000000001',
-				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_165e9421c24',
+				baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content',
+				deploymentId: '57244000000LElM',
+				buttonId: '57344000000LGuI',
+				baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I44000000000fEAA_16630b102e9',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -63,27 +54,14 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
-   
-   
-</body>
+  </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }
