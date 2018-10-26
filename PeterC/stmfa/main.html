@@ -40,24 +40,26 @@ embedded_svc.settings.enabledFeatures = ['FieldService'];
 embedded_svc.settings.entryFeature = 'FieldService';
 embedded_svc.settings.useCustomAuthentication = false;
 embedded_svc.init(
-	'https://na44.stmfa.stm.salesforce.com',
-	'https://snapins-subdomain-161923d1a2-16567f15a2f.stmfa.stm.force.com/poojaCommunity',
-	gslbBaseURL,
-	'00DRM0000006KLN',
-	'FS2',
-	{
-	}
-	);
-};
-if (!window.embedded_svc) {
-	var s = document.createElement('script');
-	s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-	s.onload = function() {
-	initESW(null);
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://snapins-subdomain-161923d1a2-166b198b1a6.stmfa.stm.force.com/pchungCommunity',
+			gslbBaseURL,
+			'00DRM0000006eo4',
+			'FieldServiceOfficialDeployment',
+			{
+				
+			}
+		);
 	};
-	document.body.appendChild(s);
-} else {
-	initESW('https://service.force.com');
-}
-</script>	
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </html>
