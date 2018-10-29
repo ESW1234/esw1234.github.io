@@ -1,13 +1,21 @@
 <html>
-  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
-	<body>
-		<style type='text/css'>
+<body>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #A70BA5;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #005290;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #A70BA5;
+		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -16,8 +24,6 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		
-		embedded_svc.settings.waitingStateBackgroundImgURL = 'https://esw1234.github.io/automation/extra_banner.jpg';
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -30,7 +36,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "test", LastName: "test", Email: "test@salesforce.com", Subject: "Change password"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -38,33 +44,33 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15fc6fb04c9-16428ee4002.stmfa.stm.force.com',
+			'http://fazmain.localhost.internal.salesforce.com:6109',
+			'http://fazmain.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00DRM00000069l0',
-			'oh_mylanta',
+			'00Dxx0000001gEq',
+			'liveagent_snapin',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004FW3',
-				buttonId: '573RM0000004FmF',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'http://smohammed-ltm4.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000000001',
+				buttonId: '573xx000000000B',
+				baseLiveAgentURL: 'http://smohammed-ltm4.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_166c03c8a0c',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://fazmain.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		// initESW('https://service.force.com');
-		initESW('https://na44.stmfa.stm.salesforce.com');
+		//initESW('https://service.force.com');
+		initESW('http://fazmain.localhost.internal.salesforce.com:6109');
 	}
 </script>
-	</body>
+</body>
 </html>
