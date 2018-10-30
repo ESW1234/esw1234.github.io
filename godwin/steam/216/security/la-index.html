@@ -21,12 +21,11 @@
 
 <!-- start 5.0 snippet -->
 
-<style type='text/css'>
+<!--<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #E10808; font-family: "Georgia", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #E10808; }
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -56,21 +55,6 @@
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 
-		/*embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			'https://snapins.stmfa.stm.force.com/test', 
-			gslbBaseURL, 
-			'00DRM0000005cyu', 
-			'justin', 
-			{ 
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004CDV', 
-				buttonId: '573RM0000004CDc', 
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2',
-				isOfflineSupportEnabled: true
-			}
-		);*/ 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://snapins-15fc6fb04c9-16428ee4-166c1890fe0.stmfa.stm.force.com/gnapili',
@@ -112,7 +96,7 @@
 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
-</style>
+</style>-->
 <!-- end 5.0 snippet -->
 
 
@@ -388,7 +372,7 @@
 
 
 <!-- start 2.2 snippet -->
-<!-- <style type='text/css'>
+<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
 @font-face {
@@ -515,7 +499,7 @@
 	} else {
 		initESW('https://na44.stmfa.stm.salesforce.com');
 	}
-</script> -->
+</script>
 <!-- end 2.2 snippet -->
 
 	
