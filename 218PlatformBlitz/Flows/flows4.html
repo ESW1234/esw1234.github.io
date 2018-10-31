@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Widget Main</title>
+  <title>STMFA(2018-October)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
 <body>
-STEAM 218: Adidas Field Service Test
-<div id="salesforce-login"></div>
-<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
+STMFA: October 2018 Flows
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
 	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	font-family: 'Salesforce Sans';
+	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {		
+var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.devMode = true;
@@ -42,7 +34,6 @@ STEAM 218: Adidas Field Service Test
 		embedded_svc.settings.useCustomAuthentication = true;
 		embedded_svc.settings.allowGuestUsers = true;
 		//embedded_svc.settings.useCustomAuthentication = false;
-
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://snapins-subdomain-161923d1a2-166c1940080.stmfa.stm.force.com/poojaCommunity',
@@ -57,7 +48,7 @@ STEAM 218: Adidas Field Service Test
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -65,6 +56,5 @@ STEAM 218: Adidas Field Service Test
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
-</body>
+</script>	
 </html>
