@@ -59,6 +59,26 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		embedded_svc.addEventHandler("chatConferenceInitiated", function(data) {
+					debugger;
+					console.log("chatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("onAgentJoinedConference", function(data) {
+					debugger;
+					console.log("onAgentJoinedConference event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("chatConferenceEnded", function(data) {
+					debugger;
+					console.log("chatConferenceEnded event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("onAgentLeftConference", function(data) {
+					debugger;
+					console.log("onAgentLeftConference event was fired.  data was " + JSON.stringify(data));
+				});
+		
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
