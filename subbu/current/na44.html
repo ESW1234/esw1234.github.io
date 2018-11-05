@@ -61,7 +61,7 @@
 
 		embedded_svc.addEventHandler("chatConferenceInitiated", function(data) {
 					debugger;
-					console.log("chatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
 				});
 		
 		embedded_svc.addEventHandler("onAgentJoinedConference", function(data) {
@@ -69,7 +69,7 @@
 					console.log("onAgentJoinedConference event was fired.  data was " + JSON.stringify(data));
 				});
 		
-		embedded_svc.addEventHandler("chatConferenceEnded", function(data) {
+		embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
 					debugger;
 					console.log("chatConferenceEnded event was fired.  data was " + JSON.stringify(data));
 				});
