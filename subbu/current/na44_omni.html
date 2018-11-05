@@ -8,11 +8,11 @@
 	<div id="button_goes_here"></div>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #D41822;
+		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #D41822;
+		outline: 1px solid #005290;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -24,7 +24,6 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-//		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -51,14 +50,14 @@
 			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
 			gslbBaseURL,
 			'00DRM0000005cdE',
-			'X218092018LA',
+			'X214032118',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004C9N',
-				buttonId: '573RM0000004GH9',
+				buttonId: '573RM0000004C9U',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013M2AQ_165f8598812',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000EH2AY_16249c391cb',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
