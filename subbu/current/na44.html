@@ -59,7 +59,7 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		embedded_svc.addEventHandler("chatConferenceInitiated", function(data) {
+		embedded_svc.addEventHandler("onChatConferenceInitiated", function(data) {
 					debugger;
 					console.log("onChatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
 				});
@@ -71,7 +71,7 @@
 		
 		embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
 					debugger;
-					console.log("chatConferenceEnded event was fired.  data was " + JSON.stringify(data));
+					console.log("onChatConferenceEnded event was fired.  data was " + JSON.stringify(data));
 				});
 		
 		embedded_svc.addEventHandler("onAgentLeftConference", function(data) {
