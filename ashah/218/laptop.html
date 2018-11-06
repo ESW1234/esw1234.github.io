@@ -14,20 +14,15 @@
 <div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #A70BA5;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #A70BA5;
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -50,19 +45,19 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.devMode = true;
+
 		embedded_svc.init(
-			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-16699ddbeeb.localhost.soma.force.com:6109/',
+			'http://analshah-ltm9.internal.salesforce.com:6109',
+			'http://snapins-15fc6fb04c9-164fcb26382.localhost.soma.force.com:6109/napili',
 			gslbBaseURL,
-			'00Dxx0000006GkV',
-			'a',
+			'00Dxx0000006Gm7',
+			'oh_mylanta',
 			{
-				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
+				baseLiveAgentContentURL: 'http://analshah-ltm9.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004C92',
-				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CCGEA2_16699e9a7a7',
+				baseLiveAgentURL: 'http://analshah-ltm9.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -70,7 +65,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://analshah-ltm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
