@@ -54,7 +54,7 @@
 			'https://nwk00dxx0000006gm7-166d1d3ca00.stmfa.stm.force.com/csNov0618',
 			gslbBaseURL,
 			'00DRM0000006h1L',
-			'adminSkill',
+			'sysAdminSkill',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004H6b',
@@ -65,13 +65,17 @@
 			}
 		);
 	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-// 	} else { initESW('https://service.force.com'); }
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
 </script>
 
 </body>
