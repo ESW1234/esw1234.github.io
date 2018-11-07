@@ -32,7 +32,7 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -58,17 +58,17 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917',
+			'https://snapins-15fc6fb04c9-16428ee4-166ecdf2b63.stmfa.stm.force.com/218061118',
 			gslbBaseURL,
-			'00DRM0000005iAS',
-			'OmniButton5',
+			'00DRM0000006iTf',
+			'LASkill1',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004D5G',
-				buttonId: '573RM0000004D5c',
+				deploymentId: '572RM0000004HNl',
+				buttonId: '573RM0000004HmE',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002q2AA_15fa67b3f03',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DVP2A2_166eb815bbc',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
@@ -81,7 +81,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW(null);
+		initESW('https://service.force.com');
 	}
 </script>
 Portugal Stuns France to Win Euro 2016 Final
