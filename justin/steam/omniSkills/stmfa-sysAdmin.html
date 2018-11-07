@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	<title>STMFA - Omni Skills Admin</title>
+	<title>STMFA - Omni Skills SysAdmin</title>
 </head>
 
 <body>
@@ -47,6 +47,8 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		embedded_svc.settings.devMode = true;
+		
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://nwk00dxx0000006gm7-166d1d3ca00.stmfa.stm.force.com/csNov0618',
