@@ -3,11 +3,11 @@
   <body>
     <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #222222;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #222222;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -41,32 +41,43 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://communities-1669eceec76.stmfa.stm.force.com',
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
 			gslbBaseURL,
-			'00DRM0000006d1i',
-			'omni',
+			'00DRM0000005cyu',
+			'justinChatbot',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000004fV',
-				buttonId: '573RM000000050i',
+				deploymentId: '572RM0000004CDV',
+				buttonId: '573RM0000004GGf',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DOp2AM_1669ed51212',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013C2AQ_165c9e77147',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://na44.stmfa.stm.salesforce.com');
+		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
 </script>
   </body>
+	
+<style>
+	body {
+          
+         background: url("https://esw1234.github.io/ashah/216/Screen%20Shot%202018-07-15%20at%2021.45.31.png") no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+</style>
 </html>

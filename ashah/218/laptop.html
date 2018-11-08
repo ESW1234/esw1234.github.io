@@ -1,30 +1,30 @@
 <!DOCTYPE HTML>
 <html>
    <head>
-   	<title>DEFAULT PAGE</title>
-   	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-	</head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
 <body>
-	<div id="button_goes_here"></div>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/218/local.html">EDIT PAGE</a><br>
+<a href="http://esw1234.github.io/ashah/218/local2.html">Page 2</a><br>
+<a href="http://esw1234.github.io/ashah/218/local3.html">Page 3</a><br>
+<a href="http://esw1234.github.io/ashah/218/local_laDep2.html">Different LA Deployment and button</a><br>
+<a href="http://esw1234.github.io/ashah/218/local_laButton2.html">Same LA Deployment and different button</a><br>
+<div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #D41822;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #A70BA5;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #D41822;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #A70BA5;
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-//		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -45,27 +45,27 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+embedded_svc.settings.devMode = true;
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
+			'http://analshah-ltm9.internal.salesforce.com:6109',
+			'http://snapins-15fc6fb04c9-164fcb26382.localhost.soma.force.com:6109/napili',
 			gslbBaseURL,
-			'00DRM0000005cdE',
-			'X218092018LA',
+			'00Dxx0000006Gm7',
+			'oh_mylanta',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004C9N',
-				buttonId: '573RM0000004GH9',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013M2AQ_165f8598812',
-				isOfflineSupportEnabled: false
+				baseLiveAgentContentURL: 'http://analshah-ltm9.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
+				baseLiveAgentURL: 'http://analshah-ltm9.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://analshah-ltm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -74,5 +74,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
+</div>
 </body>
 </html>
