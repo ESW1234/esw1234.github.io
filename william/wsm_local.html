@@ -15,6 +15,7 @@
         }
     </style>
     
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
@@ -31,29 +32,23 @@
                 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
                 // Returns a valid button ID.
             //};
-            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+            embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "Y", LastName: "K", Email: "stuff@stuff.stug", Subject: "Laptop Issues"}
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-            embedded_svc.settings.prepopulatedPrechatFields = {
-                FirstName: "hey",
-                LastName: "dude",
-                Email: "hey@dude.com",
-                Subject: "hey"
-            }; //Sets the auto-population of pre-chat form fields
-
+    
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
     
             embedded_svc.init(
                 'http://williamc-wsm.internal.salesforce.com:6109',
-                'http://snapins-15fc6fb04c9-1653a8bb048.localhost.soma.force.com:6109/napili',
+                'http://snapins-15fc6fb04c9-16428ee4-166c208ee8b.localhost.soma.force.com:6109/',
                 gslbBaseURL,
-                '00Dxx0000001gER',
+                '00Dxx0000006Gm7',
                 'oh_mylanta',
                 {
                     baseLiveAgentContentURL: 'http://williamc-wsm.internal.salesforce.com:8095/content',
-                    deploymentId: '572xx0000000001',
-                    buttonId: '573xx0000000001',
+                    deploymentId: '572xx0000004C92',
+                    buttonId: '573xx0000004C92',
                     baseLiveAgentURL: 'http://williamc-wsm.internal.salesforce.com:8096/chat',
                     eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
                     isOfflineSupportEnabled: true
@@ -72,7 +67,6 @@
             initESW('https://service.force.com');
         }
     </script>
-
 </body>
 
 </html>
