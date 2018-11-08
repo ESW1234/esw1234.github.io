@@ -33,7 +33,7 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -45,11 +45,11 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for __MISSING LABEL__ PropertyFile - val Live AgentFeatureName not found in section SnapinsSetup_CodeSnippet
+		// Settings for Live Agent
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-// Returns a valid button ID.
-//};
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
@@ -59,11 +59,18 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15f9f30faf3.stmfa.stm.force.com/212110917',
+			'https://snapins-15fc6fb04c9-16428ee4-166ef708286.stmfa.stm.force.com/218061118',
 			gslbBaseURL,
-			'00DRM0000005iAS',
-			'OmniButton6',
-			{ baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', deploymentId: '572RM0000004D18', buttonId: '573RM0000004D61', baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002v2AA_15fa685d9e2', isOfflineSupportEnabled: true}
+			'00DRM0000006iff',
+			'LASkill1',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004HRt',
+				buttonId: '573RM0000004HqM',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DVP2A2_166eb815bbc',
+				isOfflineSupportEnabled: false
+			}
 		);
 	};
 

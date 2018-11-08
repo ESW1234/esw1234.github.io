@@ -1,7 +1,11 @@
-<!DOCTYPE html>
-<html> 
+<!DOCTYPE HTML>
+<html>
+   <head>
+   	<title>DEFAULT PAGE</title>
+   	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
 <body>
-<style type='text/css'>
+	<div id="button_goes_here"></div>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -29,25 +33,31 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Field Service
+		// Settings for Live Agent
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-		embedded_svc.settings.enabledFeatures = ['FieldService'];
-		embedded_svc.settings.entryFeature = 'FieldService';
-
-		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '';
-		embedded_svc.settings.loginRedirectURL = '';
-		embedded_svc.settings.loginTargetQuerySelector = '';
-		embedded_svc.settings.authenticationStartLabel = '';
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-subdomain-161923d1a2-166c1959401.stmfa.stm.force.com/nucom',
+			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
 			gslbBaseURL,
-			'00DRM0000006fNl',
-			'FS3',
+			'00DRM0000005cdE',
+			'X214032118',
 			{
-				
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004C9N',
+				buttonId: '573RM0000004C9U',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000EH2AY_16249c391cb',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};

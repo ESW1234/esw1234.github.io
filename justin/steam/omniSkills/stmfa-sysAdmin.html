@@ -1,21 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	<title>STMFA - Live Agent Routing</title>
+	<title>STMFA - Omni Skills SysAdmin</title>
 </head>
- 
+
 <body>
 
-<p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
+<p align="center"><font color = "red"><a href="stmfa-agent.html">Omni Skills Agent Page</a></font></p>
 
 <h1>
-	STMFA - Live Agent Routing
+	STMFA - OMNI SKILLS ROUTING - system admin
 </h1>
  
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-
+        
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #E10808; font-family: "Georgia", sans-serif; }
@@ -46,38 +46,36 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		
-		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
-		//embedded_svc.settings.externalScripts = ["log", "log2"];
-		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 
-		// Debugging
 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
-			'https://snapins.stmfa.stm.force.com/test',
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://nwk00dxx0000006gm7-166d1d3ca00.stmfa.stm.force.com/csNov0618',
 			gslbBaseURL,
-			'00DRM0000005cyu',
-			'justinChoice',
+			'00DRM0000006h1L',
+			'sysAdminSkill',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CDV',
-				buttonId: '573RM0000004HSH',
+				deploymentId: '572RM0000004H6b',
+				buttonId: '573RM0000004HYf',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Ky2AI_166c5bd9d0b',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-// 	} else { initESW('https://service.force.com'); }
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
 </script>
 
 </body>
