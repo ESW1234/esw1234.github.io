@@ -130,26 +130,6 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
 //embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-	embedded_svc.addEventHandler("onChatConferenceInitiated", function(data) {
-				debugger;
-				console.log("onChatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
-			});
-		
-	embedded_svc.addEventHandler("onAgentJoinedConference", function(data) {
-				debugger;
-				console.log("onAgentJoinedConference event was fired.  data was " + JSON.stringify(data));
-			});
-		
-	embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
-				debugger;
-				console.log("onChatConferenceEnded event was fired.  data was " + JSON.stringify(data));
-			});
-		
-	embedded_svc.addEventHandler("onAgentLeftConference", function(data) {
-				debugger;
-				console.log("onAgentLeftConference event was fired.  data was " + JSON.stringify(data));
-			});
 embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
 		  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
 		  'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118', '572RM0000004C9N', 
