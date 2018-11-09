@@ -25,7 +25,7 @@
 
 
 	<div id="button_goes_here"></div>
-<style type='text/css'>
+<!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #D41822;
 		font-family: "Comic Sans MS", sans-serif;
@@ -59,6 +59,26 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		embedded_svc.addEventHandler("onChatConferenceInitiated", function(data) {
+					debugger;
+					console.log("onChatConferenceInitiated event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("onAgentJoinedConference", function(data) {
+					debugger;
+					console.log("onAgentJoinedConference event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
+					debugger;
+					console.log("onChatConferenceEnded event was fired.  data was " + JSON.stringify(data));
+				});
+		
+		embedded_svc.addEventHandler("onAgentLeftConference", function(data) {
+					debugger;
+					console.log("onAgentLeftConference event was fired.  data was " + JSON.stringify(data));
+				});
+		
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
@@ -86,7 +106,40 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
+</script>	-->
+	
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+ <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>	
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.init('https://na44.stmfa.stm.salesforce.com', 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+		  'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
+		  'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118', '572RM0000004C9N', 
+		  '00DRM0000005cdE', '573RM0000004GH9', '2.2', gslbBaseUrl, '40.0', 'X218092018LA', 
+		  'EmbeddedServiceLiveAgent_Parent04IRM000000013M2AQ_165f8598812'); };
+	if (!window.embedded_svc) {
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/2.2/esw.min.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
+	else { initESW('https://na44.stmfa.stm.salesforce.com'); }</script>
 
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
