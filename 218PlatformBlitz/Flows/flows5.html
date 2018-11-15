@@ -17,7 +17,6 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -31,8 +30,8 @@
 
 		// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['FieldService'];
-		embedded_svc.settings.entryFeature = 'FieldService';
+		embedded_svc.settings.enabledFeatures = ['Flows'];
+		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.settings.useCustomAuthentication = false;
 		embedded_svc.settings.loginClientId = '';
@@ -45,7 +44,7 @@
 			'https://snapins-subdomain-161923d1a2-166c1959401.stmfa.stm.force.com/nucom',
 			gslbBaseURL,
 			'00DRM0000006fNl',
-			'FS3',
+			'flowtesting',
 			{
 				
 			}
