@@ -90,6 +90,9 @@
 		
 		// Debug
 		embedded_svc.settings.devMode = true;
+
+		// Open post chat on chat end.
+		embedded_svc.settings.autoOpenPostChat = true;
 		
 		// Adidas coloring messages based on payload.
 		/*
@@ -110,8 +113,6 @@
 			);
 		});
 		*/
-		
-		embedded_svc.settings.autoOpenPostChat = true;
 		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
