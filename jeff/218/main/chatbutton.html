@@ -26,7 +26,7 @@
 				background-color: green;
 				background-color: blue;
 				background-color: aqua;
-				//background-color: orange;
+				background-color: orange;
 				//background-color: tan;
 				//background-color: gold;
 			}
@@ -59,6 +59,7 @@
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 				
+				/*
 				embedded_svc.settings.prepopulatedPrechatFields = {
 					"FirstName": "a",
 					"LastName": "y",
@@ -68,19 +69,21 @@
 					//"picklistCustomContact__c": "here", 
 					//"Priority": "Low"
 				};
+				*/
 				
 				embedded_svc.settings.devMode = true;
+				embedded_svc.settings.devMode = false;
 				
 				
 				embedded_svc.settings.prechatBackgroundImgURL = 'https://esw1234.github.io/jeff/images/pre-chat-background-inverted.png';
-				embedded_svc.settings.smallCompanyLogoImgURL = 'https://esw1234.github.io/jeff/images/small-company-logo.png';
-				embedded_svc.settings.waitingStateBackgroundImgURL = 'https://esw1234.github.io/jeff/images/waiting-state-background-inverted.png';
+				//embedded_svc.settings.smallCompanyLogoImgURL = 'https://esw1234.github.io/jeff/images/small-company-logo.png';
+				//embedded_svc.settings.waitingStateBackgroundImgURL = 'https://esw1234.github.io/jeff/images/waiting-state-background-inverted.png';
 				
 				embedded_svc.settings.headerBackgroundURL = 'https://esw1234.github.io/jeff/images/header-background-image-inverted.png';
 
 				
 								//embedded_svc.snippetSettingsFile.avatarImgURL = 'https://esw1234.github.io/jeff/images/Avatar_avatar.png';
-				embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/jeff/images/Avatar_avatar.png';
+				//embedded_svc.settings.avatarImgURL = 'https://esw1234.github.io/jeff/images/Avatar_avatar.png';
 								//embedded_svc.settings.avatarImgURL = '';
 								//embedded_svc.settings.avatarImgURL = undefined;
 				
@@ -91,7 +94,7 @@
 debugger;			
 				embedded_svc.init(
 					'http://jbeeghly-wsm0.internal.salesforce.com:6109',
-					'http://myfirstlocalsite.localhost.soma.force.com:6109/',
+					null. //'http://myfirstlocalsite.localhost.soma.force.com:6109/',
 					gslbBaseURL,
 					'00Dxx0000000001',
 					'myFirstLocalSiteSnapInDeployment',
@@ -101,7 +104,7 @@ debugger;
 						buttonId: '573xx0000000001',
 						baseLiveAgentURL: 'http://jbeeghly-wsm0.internal.salesforce.com:8096/chat',
 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1633276197c',
-						isOfflineSupportEnabled: true
+						isOfflineSupportEnabled: false
 					}
 				);
 			};
