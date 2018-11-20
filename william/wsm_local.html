@@ -8,18 +8,16 @@
     <button onclick="onclickPrechat()">Fill prechat details</button>
     <script type='text/javascript'>
         function onclickPrechat() {
-            embedded_svc.sidebarInstanceMap[Object.keys(embedded_svc.sidebarInstanceMap)[0]].getActiveState(function (
-                state) {
-                var prechatFields = state.get("v.prechatFields");
-                prechatFields.forEach(function (prechatField) {
-                    if (prechatField.label === "First Name") {
-                        prechatField.value = "Will"
-                    } else if (prechatField.label === "Last Name") {
-                        prechatField.value = "Chang"
-                    }
-                });
-                state.set("v.prechatFields", prechatFields);
+            let state = embedded_svc.sidebarInstanceMap[Object.keys(embedded_svc.sidebarInstanceMap)[0]].getActiveState();
+            let prechatFields = state.get("v.prechatFields");
+            prechatFields.forEach(function (prechatField) {
+                if (prechatField.label === "First Name") {
+                    prechatField.value = "Will"
+                } else if (prechatField.label === "Last Name") {
+                    prechatField.value = "Chang"
+                }
             });
+            state.set("v.prechatFields", prechatFields);
         }
     </script>
     <style type='text/css'>
