@@ -24,7 +24,7 @@
         }
     </style>
 
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/4.0/esw.min.js'></script>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         function onclickPrechat() {
             embedded_svc.sidebarInstanceMap[Object.keys(embedded_svc.sidebarInstanceMap)[0]].getActiveState(function (
@@ -76,7 +76,7 @@
         };
         if (!window.embedded_svc) {
             var s = document.createElement('script');
-            s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.0/esw.min.js');
+            s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
             s.onload = function () {
                 initESW(null);
             };
