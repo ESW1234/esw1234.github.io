@@ -5,6 +5,23 @@
 </head>
 
 <body>
+    <button onclick="onclickPrechat()">Fill prechat details</button>
+    <script type='text/javascript'>
+        function onclickPrechat() {
+            embedded_svc.sidebarInstanceMap[Object.keys(embedded_svc.sidebarInstanceMap)[0]].getActiveState(function (
+                state) {
+                var prechatFields = state.get("v.prechatFields");
+                prechatFields.forEach(function (prechatField) {
+                    if (prechatField.label === "First Name") {
+                        prechatField.value = "Will"
+                    } else if (prechatField.label === "Last Name") {
+                        prechatField.value = "Chang"
+                    }
+                });
+                state.set("v.prechatFields", prechatFields);
+            });
+        }
+    </script>
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #A70BA5;
@@ -33,7 +50,12 @@
             // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
             // Returns a valid button ID.
             //};
-            embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "Y", LastName: "K", Email: "stuff@stuff.stug", Subject: "Laptop Issues"}
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                FirstName: "Y",
+                LastName: "K",
+                Email: "stuff@stuff.stug",
+                Subject: "Laptop Issues"
+            }
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
