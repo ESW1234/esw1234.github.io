@@ -33,14 +33,12 @@ STMFA: October 2018 Flows
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Flows
-
-		embedded_svc.settings.enabledFeatures = ['Flows'];
-		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.settings.enabledFeatures = [];
+		embedded_svc.settings.entryFeature = '';
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-subdomain-161923d1a2-166c198af09.stmfa.stm.force.com',
+			'https://snapins-subdomain-161923d1a2-166c198af09.stmfa.stm.force.com/poojaCommunity',
 			gslbBaseURL,
 			'00DRM0000006fSE',
 			'FlowsRuntimeTest',
