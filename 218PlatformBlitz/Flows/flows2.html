@@ -22,11 +22,11 @@ STMFA: October 2018 Flows
 	}
 </style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -34,19 +34,17 @@ STMFA: October 2018 Flows
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for __MISSING LABEL__ PropertyFile - val FlowsFeatureName not found in section SnapinsSetup_CodeSnippet
+		// Settings for Flows
 
 		embedded_svc.settings.enabledFeatures = ['Flows'];
 		embedded_svc.settings.entryFeature = 'Flows';
-		embedded_svc.settings.useCustomAuthentication = true;
-		embedded_svc.settings.allowGuestUsers = true;
-		
+
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
 			'https://snapins-subdomain-161923d1a2-166c192d28d.stmfa.stm.force.com/poojaCommunity',
 			gslbBaseURL,
 			'00DRM0000006fF1',
-			'EswFlow3',
+			'flowtesting',
 			{
 				
 			}
