@@ -8,19 +8,7 @@
 
 <body>
 	<button id="inert-button" onclick="toggleInert()">Toggle the page inertness!</button>
-	<script>
-
-		function toggleInert() {
-			const inertEnabled = embedded_svc && embedded_svc.settings && embedded_svc.settings.inertEnabled;
-			const num_children = document.body.children.length;
-			for (let i = 0; i < num_children; i++) {
-				const child = document.body.children[i];
-				if(['button_goes_here', 'inert-button'].indexOf(child.id) !== -1) {
-					document.body.children[i].inert = !inertEnabled;
-				}
-			}
-		}
-	</script>
+	<script type='text/javascript' src='inert_helper.js'/>
 
 	<p><a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
