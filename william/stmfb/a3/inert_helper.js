@@ -4,7 +4,8 @@ function toggleInert() {
 	console.log('Toggling inert status of every child element of the body to: ' + !isPageInert);
 	for (let i = 0; i < num_children; i++) {
 		const child = document.body.children[i];
-		if (['button_goes_here', 'inert-button'].indexOf(child.id) === -1) {
+		if (['button_goes_here', 'inert-button'].indexOf(child.id) === -1 &&
+			child.className.indexOf('embeddedServiceHelpButton') === -1) {
 			child.inert = !isPageInert;
 		}
 	}
