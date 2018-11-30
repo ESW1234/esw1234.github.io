@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>STMFA(2018-October)</title>
+  <title>Flows_1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
 <body>
-STMFA: October 2018 Flows
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -39,11 +39,11 @@ STMFA: October 2018 Flows
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-subdomain-161923d1a2-166c198af09.stmfa.stm.force.com/flowsruntimetestcommunity2',
+			'http://npachpande-wsm.internal.salesforce.com:6109',
+			'http://testdomain.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00DRM0000006fSE',
-			'FlowsRuntimeTest',
+			'00Dxx0000001gER',
+			'testdeployement',
 			{
 				
 			}
@@ -52,7 +52,7 @@ STMFA: October 2018 Flows
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://npachpande-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -61,4 +61,5 @@ STMFA: October 2018 Flows
 		initESW('https://service.force.com');
 	}
 </script>	
+</body>
 </html>
