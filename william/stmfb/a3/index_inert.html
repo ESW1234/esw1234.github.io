@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<button id="inert-button" onclick="toggleInert()">Toggle the page inertness!</button>
+	<!-- <button id="inert-button" onclick="toggleInert()">Toggle the page inertness!</button> -->
 	<script type='text/javascript' src='inert_helper.js' />
 
 	<p><a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a></p>
@@ -264,9 +264,15 @@
 			embedded_svc.addEventHandler("onHelpButtonClick", function() {
 				toggleInert(true);
 			});
-			embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+			embedded_svc.addEventHandler("onChatEstablished", function(data) {
 				toggleInert(false);
 			});
+			embedded_svc.addEventHandler("onChasitorMessage", function(data) {
+				toggleInert(true);
+			});
+			embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+				toggleInert(false);
+			});			
 
 			embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 				'https://snapins-15f9f30faf3-15fe5be147c.stmfb.stm.force.com/212110917', gslbBaseURL, '00DRM0000005iqj',
