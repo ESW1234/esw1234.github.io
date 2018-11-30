@@ -264,7 +264,7 @@
 			embedded_svc.addEventHandler("onHelpButtonClick", function() {
 				toggleInert(true);
 			});
-			embedded_svc.addEventHandler("onChatEstablished", function(data) {
+			embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
 				toggleInert(false);
 			});
 			embedded_svc.addEventHandler("onChasitorMessage", function(data) {
