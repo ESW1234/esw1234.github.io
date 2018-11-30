@@ -26,6 +26,7 @@ STMFA: October 2018 Flows
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -37,6 +38,8 @@ STMFA: October 2018 Flows
 
 		embedded_svc.settings.enabledFeatures = ['Flows'];
 		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.settings.useCustomAuthentication = true;
+		embedded_svc.settings.allowGuestUsers = true;
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
