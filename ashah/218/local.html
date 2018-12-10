@@ -14,11 +14,11 @@
 <div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #058E31;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #058E31;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -27,12 +27,12 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+embedded_svc.settings.devMode=true;
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -50,19 +50,19 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.devMode = true;
+
 		embedded_svc.init(
 			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-16699ddbeeb.localhost.soma.force.com:6109/',
+			'http://snapins-15fc6fb04c9-16428ee4-167572a56b9.force.com:6109',
 			gslbBaseURL,
-			'00Dxx0000006GkV',
-			'a',
+			'00Dxx0000006Gvn',
+			'oh_mylanta',
 			{
 				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C92',
+				deploymentId: '572xx0000004CAe',
+				buttonId: '573xx0000004CAe',
 				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CCGEA2_16699e9a7a7',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
 				isOfflineSupportEnabled: true
 			}
 		);
