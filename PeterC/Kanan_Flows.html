@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120390004-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-120390004-1');
+	</script>
+
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="salesforce-use-min-js" content="false"/>
+</head> 
+<body>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { 
+		background-color: #005290; 
+		font-family: "Salesforce Sans", sans-serif; 
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { 
+		outline: 1px solid #005290; 
+	}
+	@font-face {
+	font-family: 'Salesforce Sans';
+/* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+	}
+</style>
+
+//Launch chat from button, not snap-in
+<button class="helpButtonEnabled uiButton" onclick="document.getElementsByClassName('uiButton')[0].click();">Click me</button>
+	
+
+	
+
+	
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		// Settings for Flows
+		embedded_svc.settings.enabledFeatures = ['Flows'];
+		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.init(
+			'https://gs0.salesforce.com',
+			'https://eswgs0.secure.force.com/liveAgentSetupFlow',
+			gslbBaseURL,
+			'00DB0000000XvAr',
+			'Flows_Snap_in',
+			{
+				
+			}
+		);
+	};
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</body>
+	</html>
