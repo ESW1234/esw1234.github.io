@@ -40,14 +40,75 @@
                         "label": "First Name",
                         "name": "FirstName",
                         "value": firstName,
+                        "displayToAgent":true,
                         "transcriptFields": ["FirstName__C"]
+                    },
+                    {
+                        "label":"Email",
+                        "value":"hey@dude.com",
+                        "displayToAgent":true
                     },
                     {
                         "label": "Last Name",
                         "value": lastName,
+                        "displayToAgent":true,
                         "transcriptFields": ["LastName__c"]
+                    }, {
+                        "label":"issue",
+                        "value":"Sales forecasts",
+                        "displayToAgent":true
                     }
                 ];
+                
+                embedded_svc.settings.extraPrechatInfo = [{
+                    "entityName":"Contact",
+                    "showOnCreate":true,
+                    "linkToEntityName":"Case",
+                    "linkToEntityField":"ContactId",
+                    "saveToTranscript":"ContactId",
+                    "entityFieldMaps": [{
+                        "isExactMatch":true,
+                        "fieldName":"FirstName",
+                        "doCreate":true,
+                        "doFind":true,
+                        "label":"First Name"
+                    }, {
+                        "isExactMatch":true,
+                        "fieldName":"LastName",
+                        "doCreate":true,
+                        "doFind":true,
+                        "label":"Last Name"
+                    }, {
+                        "isExactMatch":true,
+                        "fieldName":"Email",
+                        "doCreate":true,
+                        "doFind":true,
+                        "label":"Email"
+                    }]
+                }, {
+                    "entityName":"Case",
+                    "showOnCreate":true,
+                    "saveToTranscript":"CaseId",
+                    "entityFieldMaps": [{
+                        "isExactMatch":false,
+                        "fieldName":"Subject",
+                        "doCreate":true,
+                        "doFind":false,
+                        "label":"issue"
+                      }, {
+                        "isExactMatch":false,
+                        "fieldName":"Status",
+                        "doCreate":true,
+                        "doFind":false,
+                        "label":"Status"
+                      }, {
+                        "isExactMatch":false,
+                        "fieldName":"Origin",
+                        "doCreate":true,
+                        "doFind":false,
+                        "label":"Origin"
+                    }]
+                }];
 
                 embedded_svc.init(
                     'https://na44.stmfb.stm.salesforce.com',
