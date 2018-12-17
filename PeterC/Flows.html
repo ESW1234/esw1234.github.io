@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120390004-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-120390004-1');
+	</script>
+
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="salesforce-use-min-js" content="false"/>
+</head> 
+<body>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { 
+		background-color: #005290; 
+		font-family: "Salesforce Sans", sans-serif; 
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { 
+		outline: 1px solid #005290; 
+	}
+	@font-face {
+	font-family: 'Salesforce Sans';
+/* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+	}
+	.myButton {
+        -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+        -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+        box-shadow: 0px 0px 0px 2px #9fb4f2;
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+        background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+        background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+        background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+        background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+        background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+        background-color:#7892c2;
+        -moz-border-radius:10px;
+        -webkit-border-radius:10px;
+        border-radius:10px;
+        border:1px solid #4e6096;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:19px;
+        padding:12px 37px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #283966;
+    }
+    .myButton:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+        background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+        background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+        background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+        background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+        background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+        background-color:#476e9e;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+    .pageBody {
+        margin: 20 px;
+        padding: 20 px;
+        text-align: center;
+    }
+</style>
+
+<!--Launch chat from button, not snap-in*/-->
+<div class="pageBody">
+<h2> Click this button to launch an embedded Flow</h2>
+<p>
+<button class="myButton" onclick="document.getElementsByClassName('uiButton')[0].click();">Launch Flow</button>
+</p>
+</div>
+
+	
+
+	
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = false; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Flows
+
+		embedded_svc.settings.enabledFeatures = ['Flows'];
+		embedded_svc.settings.entryFeature = 'Flows';
+
+		embedded_svc.init(
+			'https://gs0.salesforce.com',
+			'https://eswgs0.secure.force.com/liveAgentSetupFlow',
+			gslbBaseURL,
+			'00DB0000000XvAr',
+			'Flows_Snap_in',
+			{
+				
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</body>
+	</html>

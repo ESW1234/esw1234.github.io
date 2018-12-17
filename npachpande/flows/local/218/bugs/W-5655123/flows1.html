@@ -1,24 +1,12 @@
-<!DOCTYPE HTML>
 <html>
-   <head>
-   <title>DEFAULT PAGE</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1, 
-				  imum-scale=1, maximum-scale=1, user-scalable=0">
-   </head>
 <body>
-<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/218/local.html">EDIT PAGE</a><br>
-<a href="http://esw1234.github.io/ashah/218/local2.html">Page 2</a><br>
-<a href="http://esw1234.github.io/ashah/218/local3.html">Page 3</a><br>
-<a href="http://esw1234.github.io/ashah/218/local_laDep2.html">Different LA Deployment and button</a><br>
-<a href="http://esw1234.github.io/ashah/218/local_laButton2.html">Same LA Deployment and different button</a><br>
-<div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #058E31;
+		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #058E31;
+		outline: 1px solid #005290;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -27,12 +15,12 @@
 	}
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.devMode=true;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -52,17 +40,17 @@ embedded_svc.settings.devMode=true;
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-167572a56b9.localhost.soma.force.com:6109/gnapili/s/',
+			'http://npachpande-wsm.internal.salesforce.com:6109',
+			'http://testdomain.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006Gvn',
-			'oh_mylanta',
+			'00Dxx0000001gER',
+			'ESFlowConfigCustomComponentsTest',
 			{
-				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
-				buttonId: '573xx0000004CAe',
-				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+				baseLiveAgentContentURL: 'http://npachpande-wsm.internal.salesforce.com:8095/content',
+				deploymentId: '572xx000000005W',
+				buttonId: '573xx000000005W',
+				baseLiveAgentURL: 'http://npachpande-wsm.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000003fEAA_167a8e8d846',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -70,7 +58,7 @@ embedded_svc.settings.devMode=true;
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://npachpande-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -79,6 +67,5 @@ embedded_svc.settings.devMode=true;
 		initESW('https://service.force.com');
 	}
 </script>
-</div>
 </body>
 </html>
