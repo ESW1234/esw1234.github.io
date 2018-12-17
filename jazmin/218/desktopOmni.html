@@ -1,38 +1,32 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
    <head>
-   <title>DEFAULT PAGE</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1, 
-				  imum-scale=1, maximum-scale=1, user-scalable=0">
-   </head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
 <body>
-<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/218/local.html">EDIT PAGE</a><br>
-<a href="http://esw1234.github.io/ashah/218/local2.html">Page 2</a><br>
-<a href="http://esw1234.github.io/ashah/218/local3.html">Page 3</a><br>
-<a href="http://esw1234.github.io/ashah/218/local_laDep2.html">Different LA Deployment and button</a><br>
-<a href="http://esw1234.github.io/ashah/218/local_laButton2.html">Same LA Deployment and different button</a><br>
+  <p align="center"><font color ="red">218 Desktop WIDGET</font></p>
+  <br/>
+  <br/>
+
 <div id="button_goes_here">
+</div>
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #058E31;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #0DDEDA;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #058E31;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #0DDEDA;
 	}
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.devMode=true;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -52,17 +46,17 @@ embedded_svc.settings.devMode=true;
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-167572a56b9.localhost.soma.force.com:6109/gnapili/s/',
+			'http://jazortiz-wsm3.internal.salesforce.com:6109',
+			'http://jazmincommunitysubdomanin.localhost.soma.force.com:6109/CustomerService1127',
 			gslbBaseURL,
 			'00Dxx0000006Gvn',
-			'oh_mylanta',
+			'omniGithubPage',
 			{
-				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
+				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004CAe',
-				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_1679af6f723',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -70,7 +64,7 @@ embedded_svc.settings.devMode=true;
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -79,6 +73,17 @@ embedded_svc.settings.devMode=true;
 		initESW('https://service.force.com');
 	}
 </script>
-</div>
+   
 </body>
 </html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+      }
