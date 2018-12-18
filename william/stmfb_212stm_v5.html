@@ -110,7 +110,7 @@
                     }]
                 }];
 
-                let gslbBaseURL = esw_base_url;
+                let gslbBaseURL = eswBaseURL;
                 embedded_svc.init(
                     'https://na44.stmfb.stm.salesforce.com',
                     'https://snapins-16046f8157b.stmfb.stm.force.com/napili',
@@ -188,10 +188,10 @@
                 initESW(null);
             };
             document.body.appendChild(s);
-            esw_base_url = null;
+            eswBaseURL = null;
         } else {
             initESW('https://service.force.com');
-            esw_base_url = 'https://service.force.com';
+            eswBaseURL = 'https://service.force.com';
         }
     </script>
 </body>
