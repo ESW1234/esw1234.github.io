@@ -3,7 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<style type='text/css'>
+<div id="salesforce-login"></div>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -17,7 +18,7 @@
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
-<div id="salesforce-login"></div>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -36,10 +37,15 @@
 		embedded_svc.settings.entryFeature = 'FieldService';
 
 		embedded_svc.settings.useCustomAuthentication = false;
+
 		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOIIwp3RekYf4DBtTrrjpWbhXRnU2roRC0uE8rLOUAHfTU_iM3G18EliMkj87gJa7cHKXvDI';
+
 		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Nishant/FS/220/OAuthMain.html';
+
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
+
 
 		embedded_svc.init(
 			'http://nishantaga-ltm.internal.salesforce.com:6109',
@@ -64,5 +70,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
+
 </body>
 </html>
