@@ -18,7 +18,7 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -42,8 +42,8 @@
 		embedded_svc.settings.authenticationStartLabel = 'Book an Appointment';
 
 		embedded_svc.init(
-			'http://nishantaga-ltm.internal.salesforce.com:6109',
-			'http://snapins-subdomain-161923d1a2-167bfe286bd.localhost.soma.force.com:6109/',
+			'https://nishantaga-ltm.internal.salesforce.com:6109',
+			'https://snapins-subdomain-161923d1a2-167bfe286bd.localhost.soma.force.com:6109/',
 			gslbBaseURL,
 			'00Dxx0000006Hod',
 			'NishantFlow',
@@ -55,7 +55,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://nishantaga-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://nishantaga-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
