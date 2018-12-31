@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><script src="/static/111213/js/perf/stub.js" type="text/javascript"></script><script src="/jslibrary/1543986924000/sfdc/main.js" type="text/javascript"></script><script src="/jslibrary/jslabels/1545327730000/en_US.js" type="text/javascript"></script><link class="user" href="/sCSS/44.0/sprites/1539205178000/Theme3/default/gc/zen-componentsCompatible.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1539205178000/Theme3/default/gc/elements.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1539205178000/Theme3/default/gc/common.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1544133140000/Theme3/gc/dStandard.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1544133140000/Theme3/00D6F000001eN1n/0056F000006Tsb9/gc/dCustom0.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1539205178000/Theme3/default/gc/extended.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/44.0/sprites/1539205178000/Theme3/default/gc/setup.css" rel="stylesheet" type="text/css" /><script>(function(UITheme) {
+    UITheme.getUITheme = function() { 
+        return UserContext.uiTheme;
+    };
+}(window.UITheme = window.UITheme || {}));</script></head>
+
+<body>
+  <script src="https://service.force.com/embeddedservice/5.0/esw.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var initESW = function(gslbBaseURL) {
+        embedded_svc.settings.displayHelpButton = true; //Or false
+        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+        // ----- override start
+        //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+        //  Pre-populate for prechat form.  Replace hard code with logged in user data
+        embedded_svc.settings.prepopulatedPrechatFields = {
+            FirstName: "Apple",
+            LastName: "Bee",
+            Email: "AB@osmail.com"
+        };
+            
+        // override: match email on contact, fieldmap case origin, web origin
+        embedded_svc.settings.extraPrechatInfo = [
+            {"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"Contact","entityFieldMaps":[
+                {"isExactMatch":false,"fieldName":"FirstName","doCreate":true,"doFind":false,"label":"First Name"},
+                {"isExactMatch":false,"fieldName":"LastName","doCreate":true,"doFind":false,"label":"Last Name"},
+                {"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},
+            {"entityName":"Case","showOnCreate":true, "saveToTranscript":"Case", "entityFieldMaps":[
+                {"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Case Origin"},
+                {"isExactMatch":false,"fieldName":"Program__c","doCreate":true,"doFind":false,"label":"Product"}    
+                ]}
+        ];
+        
+        embedded_svc.settings.extraPrechatFormDetails = [
+            // {"label":"chatOrigin","value":"Chat","transcriptFields":[],"displayToAgent":true},
+            {"label":"Product","value":"RealPage Accounting","transcriptFields":[],"displayToAgent":true}
+            {"label":"Case Origin","value":"Chat","transcriptFields":["Origin"],"displayToAgent":true}
+        ]; 
+              
+        // ----- override end
+        
+        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+        embedded_svc.settings.entryFeature = 'LiveAgent';
+        embedded_svc.init(
+            'https://realpage--RPIDEV.cs67.my.salesforce.com',
+            'https://rpidev-realpage.cs67.force.com/cportal',
+            gslbBaseURL,
+            '00D0n0000000WCf',
+            'PS_RPA',
+            {
+                baseLiveAgentContentURL: 'https://c.la1-c2cs-iad.salesforceliveagent.com/content',
+                deploymentId: '5720n000000005V',
+                buttonId: '5730n00000000cB',
+                baseLiveAgentURL: 'https://d.la1-c2cs-iad.salesforceliveagent.com/chat',
+                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I0n000000001nEAA_165f32cba15',
+                isOfflineSupportEnabled: false
+            }
+        );
+    };
+    if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://realpage--RPIDEV.cs67.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function() {
+            initESW(null);
+        };
+        document.body.appendChild(s);
+    } else {
+        initESW('https://service.force.com');
+    }
+</script>
+<!-- <script>if (this.SfdcApp && this.SfdcApp.projectOneNavigator) { SfdcApp.projectOneNavigator.sendTitleToParent('snapinstest'); } </script>-->
+</body></html>
