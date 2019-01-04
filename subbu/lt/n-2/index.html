@@ -81,11 +81,9 @@ debugger;
 	};
 
 	if (!window.embedded_svc) {
-		debugger;
 		var s = document.createElement('script');
 		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/5.0/esw.js');
 		s.onload = function() {
-			debugger;
 			initESW(null);
 		};
 		document.body.appendChild(s);
