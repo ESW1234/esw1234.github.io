@@ -21,6 +21,33 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		
+		//  Pre-populate for prechat form.  Replace hard code with logged in user data
+        embedded_svc.settings.prepopulatedPrechatFields = {
+            FirstName: "Apple",
+            LastName: "Bee",
+            Email: "AB@osmail.com"
+        };
+       
+         
+
+        // override: match email on contact, fieldmap case origin, web origin
+        embedded_svc.settings.extraPrechatInfo = [
+            {"entityName":"Contact","showOnCreate":true,"linkToEntityName":"Case","linkToEntityField":"ContactId","saveToTranscript":"Contact","entityFieldMaps":[
+                {"isExactMatch":false,"fieldName":"FirstName","doCreate":true,"doFind":false,"label":"First Name"},
+                {"isExactMatch":false,"fieldName":"LastName","doCreate":true,"doFind":false,"label":"Last Name"},
+                {"isExactMatch":true,"fieldName":"Email","doCreate":true,"doFind":true,"label":"Email"}]},
+            {"entityName":"Case","showOnCreate":true, "saveToTranscript":"Case", "entityFieldMaps":[
+                {"isExactMatch":false,"fieldName":"Origin","doCreate":true,"doFind":false,"label":"Case Origin"},
+                {"isExactMatch":false,"fieldName":"Program__c","doCreate":true,"doFind":false,"label":"Product"}    
+                ]}
+        ];
+        
+        embedded_svc.settings.extraPrechatFormDetails = [
+            // {"label":"chatOrigin","value":"Chat","transcriptFields":[],"displayToAgent":true},
+            {"label":"Product","value":"RealPage Accounting","displayToAgent":true},
+            {"label":"Case Origin","value":"Chat","displayToAgent":true}
+        ]; 
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
