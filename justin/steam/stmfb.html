@@ -76,7 +76,7 @@
 		
 		// Home Depot investigation.
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// If prechatFormData[4] then route to 573RM0000004HAw button instead.
+			// If prechatFormData[4] then route to 573RM0000004DDS button instead.
 			if (prechatFormData[4].value){   
 				embedded_svc.init(
 					'https://na44.stmfb.stm.salesforce.com', 
@@ -87,14 +87,14 @@
 					{ 
 						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
 						deploymentId: '572RM0000004DDM', 
-						buttonId: '573RM0000004HAw', 
+						buttonId: '573RM0000004DDS', 
 						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971', 
 						isOfflineSupportEnabled: true
 					}
 				); 
 
-				return "573RM0000004HAw";
+				return "573RM0000004DDS";
 			}
                 };
 
