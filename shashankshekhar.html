@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
  <body>
-	<style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -18,16 +18,12 @@
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
-	 
 
-
-<div id="salesforce-login"></div>
-<script type='text/javascript' src='https://localhost:6101/embeddedservice/5.0/esw.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -45,10 +41,6 @@
 		embedded_svc.settings.loginRedirectURL = "https://esw1234.github.io/shashankshekhar-callback.html";
 		embedded_svc.settings.loginTargetQuerySelector = "#salesforce-login";
 		embedded_svc.settings.fieldServiceStartLabel = "Authenticated!";
-		
-		// Settings for Flows
-		
-		
 
 		embedded_svc.init(
 			'https://localhost:6101',
@@ -64,7 +56,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://localhost:6101/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://localhost:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -73,7 +65,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
-	 
  
 </body>
 </html>
