@@ -16,6 +16,10 @@
 		background-color: #FF621F;
 		font-family: "Salesforce Sans", sans-serif;
 	}
+	
+	body > div.modalContainer.sidebarMaximized.layout-docked.embeddedServiceSidebar > div {
+		width:320px;
+	}
 
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 
@@ -86,29 +90,29 @@ var initESW = function(gslbBaseURL) {
 
 	    if (prechatFormData[4].value === "Escalation Request" ||prechatFormData[4].value === "MA Support" ||prechatFormData[4].value === "Live Engage Escalation"){
 
-		embedded_svc.init('https://warehouse.my.salesforce.com', 
-				  'https://thdcustomercommunity.secure.force.com/ResolutionsLAChat', 
-				  gslbBaseURL, '00Dxx0000001gWu','Res_Chat', {
-				      baseLiveAgentContentURL: 'https://c.la1-c2-ph2.salesforceliveagent.com/content',
-				      deploymentId: '57250000000TS8r', 
-				      buttonId: '57350000000TXFF',
-				      baseLiveAgentURL: 'https://d.la1-c2-ph2.salesforceliveagent.com/chat',
-				      eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I500000004C9SEAU_1651f7e2ddc'
-				  });
+// 		embedded_svc.init('https://warehouse.my.salesforce.com', 
+// 				  'https://thdcustomercommunity.secure.force.com/ResolutionsLAChat', 
+// 				  gslbBaseURL, '00Dxx0000001gWu','Res_Chat', {
+// 				      baseLiveAgentContentURL: 'https://c.la1-c2-ph2.salesforceliveagent.com/content',
+// 				      deploymentId: '57250000000TS8r', 
+// 				      buttonId: '57350000000TXFF',
+// 				      baseLiveAgentURL: 'https://d.la1-c2-ph2.salesforceliveagent.com/chat',
+// 				      eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I500000004C9SEAU_1651f7e2ddc'
+// 				  });
 
 		return "57350000000TXFF";
 	    } 
 	    else if(prechatFormData[4].value === "GM Support")
 	    {
-		embedded_svc.init('https://warehouse.my.salesforce.com',
-				  'https://thdcustomercommunity.secure.force.com/ResolutionsLAChat',
-				  gslbBaseURL, '00Dxx0000001gWu', 'Res_Chat', {
-				      baseLiveAgentContentURL: 'https://c.la1-c2-ph2.salesforceliveagent.com/content',
-				      deploymentId: '57250000000TS8q',
-				      buttonId: '57350000000TXFG',
-				      baseLiveAgentURL: 'https://d.la1-c2-ph2.salesforceliveagent.com/chat',
-				      eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I500000004C9SEAU_1651f7e2ddc'
-				  });
+// 		embedded_svc.init('https://warehouse.my.salesforce.com',
+// 				  'https://thdcustomercommunity.secure.force.com/ResolutionsLAChat',
+// 				  gslbBaseURL, '00Dxx0000001gWu', 'Res_Chat', {
+// 				      baseLiveAgentContentURL: 'https://c.la1-c2-ph2.salesforceliveagent.com/content',
+// 				      deploymentId: '57250000000TS8q',
+// 				      buttonId: '57350000000TXFG',
+// 				      baseLiveAgentURL: 'https://d.la1-c2-ph2.salesforceliveagent.com/chat',
+// 				      eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I500000004C9SEAU_1651f7e2ddc'
+// 				  });
 
 		return "57350000000TXFG";
 	    }
