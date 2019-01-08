@@ -18,7 +18,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -43,18 +43,18 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://g2crowd.my.salesforce.com',
-			'https://g2crowd.force.com/support',
+			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+			'http://warehouse.localhost.soma.force.com:6109',
 			gslbBaseURL,
-			'00DE0000000cNR4',
-			'Chat_Deployment',
+			'00Dxx0000001gWu',
+			'Res_Chat',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-c2-dfw.salesforceliveagent.com/content',
-				deploymentId: '57244000000LElM',
-				buttonId: '57344000000LGuI',
-				baseLiveAgentURL: 'https://d.la2-c2-dfw.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I44000000000fEAA_16630b102e9',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
+				deploymentId: '57250000000TS8q',
+				buttonId: '57350000000TXFG',
+				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I500000004C9SEAU_1651f7e2ddc',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
