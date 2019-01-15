@@ -1,17 +1,12 @@
-<!DOCTYPE html>
 <html>
-<head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<title>218 5.0 Desktop</title>
-</head>
-
-<body>
-
-<div id="button_goes_here">
-</div>
-
-<style type='text/css'>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  </head>
+  
+  <body>
+	<div id="salesforce-login"></div>
+	<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
+    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -38,38 +33,32 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+		// Settings for Field Service
+		embedded_svc.settings.flexipageAptHome = 'support__AppointmentHome';
+		embedded_svc.settings.enabledFeatures = ['FieldService'];
+		embedded_svc.settings.entryFeature = 'FieldService';
 
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.useCustomAuthentication = false;
+		embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbuQG2sMdPa2Qoe.PydlpZTawQtlOcM7nkPVtQ1x43EFGP9w17WqZxkijeS3hhQSLpCPMOSv';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Nishant/FS/220/STMFA/OAuthMain.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://ccqsanity.stmfb.stm.force.com',
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://snapins-subdomain-161923d1a2-168345d7dea.stmfa.stm.force.com/poojaCommunity',
 			gslbBaseURL,
-			'00DRM0000007uyB',
-			'eswdeploy',
+			'00DRM0000007CZb',
+			'nishantFS',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004HmW',
-				buttonId: '573RM0000004IaW',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000ot2AA_167ecaf2cec',
-				isOfflineSupportEnabled: false
+				
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -78,5 +67,8 @@
 		initESW('https://service.force.com');
 	}
 </script>
-	</body>
+    
+  </body>
+  
+  
 </html>

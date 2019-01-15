@@ -1,16 +1,6 @@
-<!DOCTYPE html>
 <html>
-<head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<title>218 5.0 Desktop</title>
-</head>
-
-<body>
-
-<div id="button_goes_here">
-</div>
-
+    <head>Snap In Test for Lightning Scheduler</head> 
+    <body>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -38,31 +28,25 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+		// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.enabledFeatures = ['FieldService'];
+		embedded_svc.settings.entryFeature = 'FieldService';
+
+		embedded_svc.settings.useCustomAuthentication = false;
+        embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbs2EMqNvw7VQmsA1ldYPjWoUlyidTBY2BBg9p5W9z.wAGbFRdxfX05AcnFX7qj09Os79yTh';
+        embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/sshekharCallback.html';
+        embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+        embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
-			'https://ccqsanity.stmfb.stm.force.com',
+			'https://sshekharcomm.stmfb.stm.force.com',
 			gslbBaseURL,
-			'00DRM0000007uyB',
-			'eswdeploy',
+			'00DRM0000007rHv',
+			'Snapin_FSL',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004HmW',
-				buttonId: '573RM0000004IaW',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000ot2AA_167ecaf2cec',
-				isOfflineSupportEnabled: false
+				
 			}
 		);
 	};
@@ -78,5 +62,7 @@
 		initESW('https://service.force.com');
 	}
 </script>
-	</body>
+<div id="salesforce-login"></div>
+
+</body>
 </html>
