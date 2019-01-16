@@ -71,7 +71,7 @@
 	  
 <!-- 3.1 --> 
 	  
-<style type='text/css'>
+<!-- <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #0A7E00; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #0A7E00; }
 @font-face {
@@ -118,6 +118,55 @@ embedded_svc.init(
 }
 ); 
 };
+if (!window.embedded_svc) { 
+var s = document.createElement('script');
+s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+s.onload = function() {
+	initESW(null);
+}; 
+document.body.appendChild(s); 
+} else { initESW('https://na44.stmfb.stm.salesforce.com'); }
+</script> -->
+	  
+<!-- 2.2 -->
+
+<style type='text/css'>
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Arial", sans-serif; }
+.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
+</style>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+embedded_svc.init(
+'https://na44.stmfb.stm.salesforce.com', 
+'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat', 
+'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+'https://snapins-1629cc5b71b-16568516-1685369e153.stmfc.stm.force.com/napili', 
+'572RM00000000MY', 
+'00DRM0000005yVO', 
+'573RM00000000Sv', 
+'2.2', 
+gslbBaseUrl, 
+'40.0', 
+'Agent1Blitz', 
+'EmbeddedServiceLiveAgent_Parent04IRM0000004CA72AM_16853bae079'
+); 
+}; 
 if (!window.embedded_svc) { 
 var s = document.createElement('script');
 s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
