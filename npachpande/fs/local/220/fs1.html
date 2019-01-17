@@ -48,7 +48,7 @@ STMFA:Platform Blitz fs1
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'http://npachpande-wsm1.internal.salesforce.com:6109',
+			'https://npachpande-wsm1.internal.salesforce.com:6101',
 			'https://eswdomain.localhost.soma.force.com:6101/',
 			gslbBaseURL,
 			'00Dxx0000006GkV',
@@ -61,7 +61,7 @@ STMFA:Platform Blitz fs1
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://npachpande-wsm1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://npachpande-wsm1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
