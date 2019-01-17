@@ -9,7 +9,7 @@
 <body>
 
 <!-- load esw.min.js to load helper functions -->
-<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'></script>
 
 <script>
 
@@ -17,7 +17,7 @@
 (function() {
 
 	debugger;
-	embedded_svc.settings.iframeURL = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	embedded_svc.settings.iframeURL = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/eswDev.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
 	embedded_svc.appendIFrame();
 	
 	document.getElementById('esw_storage_iframe').onload = function() {
