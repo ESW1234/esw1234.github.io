@@ -8,6 +8,9 @@
 
 <body>
 
+// load esw.min.js to load helper functions
+<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'></script>
+
 <script>
 
 // iife
@@ -17,7 +20,7 @@
 	var iframe = document.createElement("iframe");
 
 	iframe.style.display = "none";
-	iframe.src = "https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	iframe.src = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
 	
 	// on iframe load, load eswFrame.js
   	iframe.onload = function() {
