@@ -2,6 +2,10 @@
 <head>
 	<title>STMFA - Clear Session Storage</title>
 </head>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
 <body>
 
 <script>
@@ -12,6 +16,7 @@
 	// append iframe
 	var iframe = document.createElement("iframe");
 
+	iframe.style.display = "none";
 	iframe.src = "https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html"
 	
 	// on iframe load, load eswFrame.js
