@@ -90,8 +90,13 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		// Dev mode.
 		embedded_svc.settings.devMode = true;
+
+		// Before create sidebar handler.
 		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 		
