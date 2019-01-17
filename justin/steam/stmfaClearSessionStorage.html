@@ -16,26 +16,29 @@
 // iife
 (function() {
 
-	// append iframe
-	var iframe = document.createElement("iframe");
-
-	iframe.style.display = "none";
-	iframe.src = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	debugger;
+	embedded_svc.appendIFrame();
 	
-	// on iframe load, load eswFrame.js
-  	iframe.onload = function() {
-		// chasitor.endChat?
-		// clear session data
+// 	// append iframe
+// 	var iframe = document.createElement("iframe");
 
-		debugger;
-		setTimeout(
-			function() { embedded_svc.loadStorageScript("Chasitor"); },
-			1000
-		);
-	};
+// 	iframe.style.display = "none";
+// 	iframe.src = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	
+// 	// on iframe load, load eswFrame.js
+//   	iframe.onload = function() {
+// 		// chasitor.endChat?
+// 		// clear session data
 
-	// add iframe to document body
-	document.body.appendChild(iframe);
+// 		debugger;
+// 		setTimeout(
+// 			function() { embedded_svc.loadStorageScript("Chasitor"); },
+// 			1000
+// 		);
+// 	};
+
+// 	// add iframe to document body
+// 	document.body.appendChild(iframe);
 
 })()
 
