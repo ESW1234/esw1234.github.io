@@ -5,8 +5,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <!-- <p align="center"><font color ="blue">218 STMFB WIDGET</font></p>
-  <p align="center"><font color = "blue"><a href="steam2.html">Link to steam page 2 Snapin</a></font></p> -->
+ <p align="center"><font color ="blue">218 NA40 STMFB WIDGET</font></p>
+
   <br/>
   <br/>
 
@@ -52,25 +52,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://eswcommunitiessubdomain.stmfb.stm.force.com/SnapInsDeploymentCommunity',
+			'https://na40.stmfb.stm.salesforce.com',
+			'https://nwk00ds30000000hfs.stmfb.stm.force.com/CustomerService0123',
 			gslbBaseURL,
-			'00DRM0000007ep9',
-			'githubPage',
+			'00DS30000000hfs',
+			'githubPAge',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004HlJ',
-				buttonId: '573RM0000004IXm',
+				deploymentId: '572S3000000000u',
+				buttonId: '573S3000000001d',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000lz2AA_1677b696c9b',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS30000000006MAA_1687d5f0cc2',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na40.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -78,6 +78,7 @@
 	} else {
 		initESW('https://service.force.com');
 	}
+</script>
 </script>
 
 </body>
