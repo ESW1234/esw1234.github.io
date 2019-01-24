@@ -1,8 +1,5 @@
 @font-face {
-font-family: "Harabara Bold";
-src: url("css/fonts/Harabara.eot");
-src: 
-url("graffonti_3d_drop__fontvir_us_.ttf") format("ttf"),
-url("css/fonts/Harabara.otf") format("opentype"),
-url("css/fonts/Harabara.svg#filename") format("svg");
+  font-family: HarabaraBold;
+  src: url("graffonti_3d_drop__fontvir_us_.ttf"
+    );
 }
