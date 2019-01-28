@@ -1,17 +1,21 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>esw1234.github.io CS8 Production</title>
 </head>
+
 <body>
- <p align="center"><font color ="blue">218 NA40 STMFB WIDGET</font></p>
 
-  <br/>
-  <br/>
+<!-- <p align="center"><font color = "red"><a href="http://websnapins.com/justin/steam/stmfa.html">STMFA websnapins.com (this page)</a></font></p> -->
 
-<div id="button_goes_here">
-</div>
+<h1>
+	esw1234.github.io CS8 Production
+</h1>
+	
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -22,12 +26,12 @@
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -44,25 +48,28 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "esw1234", LastName: "github.io"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		// DEV MODE
+		embedded_svc.settings.devMode = true;
+
 		embedded_svc.init(
-			'https://na40.stmfb.stm.salesforce.com',
-			'https://nwk00ds30000000hfs.stmfb.stm.force.com/CustomerService0123',
+			'https://cs8.salesforce.com',
+			'https://sandbox-liveagentcs8.cs8.force.com/',
 			gslbBaseURL,
-			'00DS30000000hfs',
-			'githubPAge',
+			'00DL00000000MNx',
+			'Snap_In',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572S3000000000u',
-				buttonId: '573S3000000001d',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS30000000006MAA_1687d5f0cc2',
+				baseLiveAgentContentURL: 'https://c.la1-c1cs-ord.salesforceliveagent.com/content',
+				deploymentId: '572L00000004C9D',
+				buttonId: '573L00000004C9D',
+				baseLiveAgentURL: 'https://d.la1-c1cs-ord.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IL00000008OIFMA2_160fbf68e79',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -70,7 +77,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na40.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://cs8.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -79,18 +86,7 @@
 		initESW('https://service.force.com');
 	}
 </script>
-</script>
+
 
 </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }

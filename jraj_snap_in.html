@@ -1,5 +1,7 @@
 <html>
-<body>
+    <head>
+</head> 
+    <body>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -15,7 +17,6 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -27,17 +28,23 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Flows
+		// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['Flows'];
-		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.settings.enabledFeatures = ['FieldService'];
+		embedded_svc.settings.entryFeature = 'FieldService';
+
+		embedded_svc.settings.useCustomAuthentication = false;
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLqtY.wNrKt_IFGdw7CrlqR49W2mxjKpK_TdebIEyDlW1tVZ4RbDvGlkCy7jBF3G92QIN7u';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jraj_snap_in_callback.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+        embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'http://eswdomain.localhost.internal.salesforce.com:6109',
-			'http://eswdomain.localhost.soma.force.com:6109/',
+			'http://jyotiraj-ltm1.internal.salesforce.com:6109',
+			'http://nwk00dxx0000006gnj.localhost.soma.force.com:6109/jrajsnapin',
 			gslbBaseURL,
-			'00Dxx0000006GkV',
-			'Flows',
+			'00Dxx0000006Gnj',
+			'jraj',
 			{
 				
 			}
@@ -46,7 +53,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://eswdomain.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jyotiraj-ltm1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -55,5 +62,8 @@
 		initESW('https://service.force.com');
 	}
 </script>
-</body>
+<div id="salesforce-login"></div>
+    
+    
+    </body>
 </html>

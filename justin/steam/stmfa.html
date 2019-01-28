@@ -70,7 +70,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
@@ -90,8 +90,13 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		// Dev mode.
 		embedded_svc.settings.devMode = true;
+
+		// Before create sidebar handler.
 		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
 		
@@ -124,7 +129,7 @@
 
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			'https://snapins.stmfa.stm.force.com/test', 
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', 
 			gslbBaseURL, 
 			'00DRM0000005cyu', 
 			'justin', 

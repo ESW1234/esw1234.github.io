@@ -1,6 +1,8 @@
 <html>
-<body>
-<style type='text/css'>
+    <head>
+</head> 
+    <body>
+	<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -27,17 +29,23 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Flows
+		// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['Flows'];
-		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.settings.enabledFeatures = ['FieldService'];
+		embedded_svc.settings.entryFeature = 'FieldService';
+
+		embedded_svc.settings.useCustomAuthentication = false;
+		embedded_svc.settings.loginClientId = 'DavidMobile2Snapin';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/david-m2-snapin-callback.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'http://eswdomain.localhost.internal.salesforce.com:6109',
-			'http://eswdomain.localhost.soma.force.com:6109/',
+			'https://mobile2.t.salesforce.com',
+			'https://kliu-snapin-comm.mobile2.t.force.com',
 			gslbBaseURL,
-			'00Dxx0000006GkV',
-			'Flows',
+			'00DR00000008l35',
+			'Snapin_mobile2',
 			{
 				
 			}
@@ -46,7 +54,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://eswdomain.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://mobile2.t.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -54,6 +62,9 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
-</body>
+</script>    
+	    <div id="salesforce-login"></div>
+	
+	
+	</body>
 </html>
