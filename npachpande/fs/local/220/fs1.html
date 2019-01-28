@@ -1,5 +1,14 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <title>STMFA(2018-October) platform blitz 218 fs1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head> 
 <body>
+STMFA:Platform Blitz fs1
+<div id="salesforce-login"></div>
+<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -15,7 +24,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -27,17 +36,23 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Flows
+		// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['Flows'];
-		embedded_svc.settings.entryFeature = 'Flows';
+		embedded_svc.settings.enabledFeatures = ['FieldService'];
+		embedded_svc.settings.entryFeature = 'FieldService';
+
+		embedded_svc.settings.useCustomAuthentication = false;
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLuN0pfpmIgfw7kYlJ1VhgL1DumGSRsnMVAjJGyw_KeXZuIOcyfOUuSUF442paqubabYvSu';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/local/220/oauth.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'http://eswdomain.localhost.internal.salesforce.com:6109',
-			'http://eswdomain.localhost.soma.force.com:6109/',
+			'https://npachpande-wsm1.internal.salesforce.com:6101',
+			'https://eswdomain.localhost.soma.force.com:6101',
 			gslbBaseURL,
 			'00Dxx0000006GkV',
-			'Flows',
+			'FS',
 			{
 				
 			}
@@ -46,7 +61,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://eswdomain.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://npachpande-wsm1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};

@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>STMFA - Clear Session Storage</title>
+</head>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<body>
+
+<!-- load esw.min.js to load helper functions -->
+<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'></script>
+
+<script>
+
+// iife
+(function() {
+
+	debugger;
+	embedded_svc.settings.iframeURL = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/eswDev.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	embedded_svc.appendIFrame();
+	
+	document.getElementById('esw_storage_iframe').onload = function() {
+		debugger;
+		embedded_svc.postMessage("script.load", "Chasitor");
+	};
+	
+// 	// append iframe
+// 	var iframe = document.createElement("iframe");
+
+// 	iframe.style.display = "none";
+// 	iframe.src = "https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.html?parent=http://esw1234.github.io/justin/steam/stmfaClearSessionStorage.html";
+	
+// 	// on iframe load, load eswFrame.js
+//   	iframe.onload = function() {
+// 		// chasitor.endChat?
+// 		// clear session data
+
+// 		debugger;
+// 		setTimeout(
+// 			function() { embedded_svc.loadStorageScript("Chasitor"); },
+// 			1000
+// 		);
+// 	};
+
+// 	// add iframe to document body
+// 	document.body.appendChild(iframe);
+
+})()
+
+</script>
+
+</body>
+</html>

@@ -1,18 +1,7 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-   <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-</head>
-<body>
- <p align="center"><font color ="blue">218 NA40 STMFB WIDGET</font></p>
-
-  <br/>
-  <br/>
-
-<div id="button_goes_here">
-</div>
-<style type='text/css'>
+  <head></head>
+  <body>
+    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -52,17 +41,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na40.stmfb.stm.salesforce.com',
-			'https://nwk00ds30000000hfs.stmfb.stm.force.com/CustomerService0123',
+			'https://na44.stmfc.stm.salesforce.com',
+			'https://snapins-1629cc5b71b-16568516-1685369e153.stmfc.stm.force.com/napili',
 			gslbBaseURL,
-			'00DS30000000hfs',
-			'githubPAge',
+			'00DRM0000005yVO',
+			'Agent5Blitz',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572S3000000000u',
-				buttonId: '573S3000000001d',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS30000000006MAA_1687d5f0cc2',
+				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM00000000MY',
+				buttonId: '573RM00000000TF',
+				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CAR2A2_16853c5897d',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -70,7 +59,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na40.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -79,18 +68,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-</script>
-
-</body>
+  </body>
 </html>
-    <style>
-       body {
-          
-         background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-      }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;
-      }

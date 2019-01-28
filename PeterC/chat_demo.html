@@ -15,6 +15,7 @@
   <title>Widget Main</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
   <meta name="salesforce-use-min-js" content="false"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head> 
 <body>
 
@@ -26,15 +27,24 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { 
 		outline: 1px solid #005290; 
 	}
-	@font-face {
-	font-family: 'Salesforce Sans';
+	
+	/*font-family: 'Salesforce Sans';*/
+	h1 {
+	font-family:HarabaraBold,Arial,sans-serif;
+	font-weight:normal;
+	font_style:normal;
+	}
 /* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
 
-//Launch chat from button, not snap-in
+Launch chat from button, not snap-in: <br>
 <button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
+<br>
+
+<!-- <h1>Test2</H1> -->
+	
 	
 
 	
