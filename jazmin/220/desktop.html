@@ -4,17 +4,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="blue">220 DESKTOP</font></p>
+  <p align="center"><font color ="red">220 DESKTOP</font></p>
   <br/>
   <br/>
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #E114AD;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #005290;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #E114AD;
+		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -44,7 +49,7 @@
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazmincommunity.localhost.soma.force.com:6109/CustomerService0107',
+			'http://jazmincommunity.localhost.soma.force.com:6109/CustomerService0109',
 			gslbBaseURL,
 			'00Dxx0000001gER',
 			'githubPage',
@@ -53,7 +58,7 @@
 				deploymentId: '572xx0000000001',
 				buttonId: '573xx0000000001',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_1682b15ff20',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000fEAA_168972069dc',
 				isOfflineSupportEnabled: true
 			}
 		);
