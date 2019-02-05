@@ -4,20 +4,26 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="blue">220 Steam</font></p>
+  <p align="center"><font color ="red">220 Steam</font></p>
   <br/>
   <br/>
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #97E1DF;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #DE02DE;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #97E1DF;
+		outline: 1px solid #DE02DE;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -43,16 +49,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/CustomerService0125',
+			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/CustomerService125',
 			gslbBaseURL,
 			'00DRM0000007KOQ',
-			'LiveAgentSetupFlow',
+			'NewSnapin',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM00000005C2',
-				buttonId: '573RM00000005b3',
+				buttonId: '573RM00000005ay',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'LiveAgentSetupFlow',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004De02AE_168bfc92f02',
 				isOfflineSupportEnabled: false
 			}
 		);
