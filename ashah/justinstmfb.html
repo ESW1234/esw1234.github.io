@@ -39,26 +39,8 @@
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>;
-<!-- Fix for RETAIL-1977 -->
-<script type="text/javascript">
-	function htmlDecode(input) {
-		var e = document.createElement('div');
-		e.innerHTML = input;
-		return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-	}
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js"></script>
 
-	require([ "dojo/on", "dojo/query" ], function(on, query) {
-		on(window, "message", function(e) {
-			query(".chatContent").forEach(function(node, index, array) {
-				var y = node.innerText;
-				if (y.includes('&')) {
-					node.innerText = htmlDecode(y);
-				}
-			});
-		});
-	});
-</script>
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
