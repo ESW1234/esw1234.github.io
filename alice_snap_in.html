@@ -1,10 +1,6 @@
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
+  <head></head>
 <body>
-<div id="salesforce-login"></div>
-<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -20,7 +16,7 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -33,27 +29,22 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Field Service
-	        embedded_svc.settings.flexipageAptHome='support__AppointmentHome';
+
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
 
 		embedded_svc.settings.useCustomAuthentication = false;
-
-		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOIIwp3RekYf4DBtTrrjpWbhXRnU2roRC0uE8rLOUAHfTU_iM3G18EliMkj87gJa7cHKXvDI';
-
-		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Nishant/FS/220/OAuthMain.html';
-
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOIcm3vjp_RoiFhTmL3zxAE12nWeHH2RFIykXD1NKlZ8eTzdaiD9pQu7TH6pJH2LpCWqCMjL';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/alice_snap_in_callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
-
 		embedded_svc.init(
-			'https://nishantaga-ltm.internal.salesforce.com:6101',
-			'https://snapins-subdomain-161923d1a2-167bfe286bd.localhost.soma.force.com:6101/fieldService',
+			'http://peichu-wsm.internal.salesforce.com:6109',
+			'http://biubiualice.localhost.soma.force.com:6109',
 			gslbBaseURL,
-			'00Dxx0000006Hod',
-			'NishantFlow',
+			'00Dxx0000006Gqx',
+			'aliceinwonderland',
 			{
 				
 			}
@@ -62,7 +53,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://nishantaga-ltm.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://peichu-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -71,6 +62,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
+<div id="salesforce-login"></div>
 </body>
 </html>
