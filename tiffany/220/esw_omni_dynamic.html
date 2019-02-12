@@ -29,12 +29,12 @@
 		
     // Dynamically route to offline button 
     embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-      if (prechatFormData[3].value === "Route") {
-        return 573RM00000005vm;
-      }
-		};
+	// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+	// Returns a valid button ID.
+	if (prechatFormData[3].value === "Route") {
+		return "573RM00000005vm";
+	}
+};
 		
     //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
