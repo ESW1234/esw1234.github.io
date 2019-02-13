@@ -24,7 +24,7 @@ STMFA:Platform Blitz fs1
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -48,8 +48,8 @@ STMFA:Platform Blitz fs1
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'https://eswdomain.localhost.internal.salesforce.com:6101',
-			'https://eswdomain.localhost.soma.force.com:6101',
+			'http://eswdomain.localhost.internal.salesforce.com:6109',
+			'http://eswdomain.localhost.soma.force.com:6109',
 			gslbBaseURL,
 			'00Dxx0000006GkV',
 			'FS',
@@ -61,7 +61,7 @@ STMFA:Platform Blitz fs1
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswdomain.localhost.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://eswdomain.localhost.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
