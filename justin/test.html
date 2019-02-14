@@ -18,6 +18,15 @@
 	lightningOutScript.src = "http://service.force.com/lightning/lightning.out.js";
 	lightningOutScript.onload = function() {
 		// Lightning Out is loaded, try creating application.
+		$Lightning.use(
+			"c:justinLightningApp.app",
+			function() {
+				debugger;
+			},
+			"http://communities.localhost.soma.force.com:6109/napiliOct152018", // community endpoint
+			undefined,	// oauthToken
+			undefined	// language
+		);
 	};
 	document.body.appendChild(lightningOutScript);
 	
