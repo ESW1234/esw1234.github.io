@@ -18,6 +18,19 @@
 	lightningOutScript.src = "http://service.force.com/lightning/lightning.out.js";
 	lightningOutScript.onload = function() {
 		// Lightning Out is loaded, try creating application.
+
+		// STMFB
+		$Lightning.use(
+			"c:justinLightningApp",
+			function() {
+				debugger;
+			},
+			"https://snapins-1600942b294.stmfb.stm.force.com/napili", // community endpoint
+			undefined,	// oauthToken
+			undefined	// language
+		);
+
+		// Desktop, local
 		$Lightning.use(
 			"c:justinLightningApp",
 			function() {
