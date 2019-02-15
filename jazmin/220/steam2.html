@@ -1,14 +1,14 @@
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
    <head>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">220 Essentials STMFA Snap-In</font></p>
+<p align="center"><font color ="red">220 Steam</font></p>
   <br/>
   <br/>
-   
-   <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -26,8 +26,8 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false		
-		embedded_svc.settings.language = 'eo';
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -49,17 +49,17 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://essentials-snapins.stmfa.stm.force.com/liveAgentSetupFlow',
+			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/CustomerService0125',
 			gslbBaseURL,
-			'00DRM0000006TTy',
-			'Support_Agents',
+			'00DRM0000007KOQ',
+			'githubLiveAgentRouting',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000005BY',
-				buttonId: '573RM00000005Zb',
+				deploymentId: '572RM00000005Bd',
+				buttonId: '573RM00000005Zq',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'Support_Agents',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dej2AE_168df8907b5',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
@@ -75,7 +75,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
 </body>
 </html>
     <style>
@@ -89,4 +88,3 @@
             margin: 0 auto;
             position: relative;
       }
-      </style>

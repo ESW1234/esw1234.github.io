@@ -63,6 +63,15 @@
 		// Debug
 		embedded_svc.settings.devMode = true;
 
+		// onAgentMessage
+		embedded_svc.addEventHandler("onAgentMessage", function(data) {
+			console.log("onAgentMessage event was fired.");
+		});
+		// onAgentRichMessage
+		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
+			console.log("onAgentRichMessage event was fired.");
+		});
+
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
 			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
