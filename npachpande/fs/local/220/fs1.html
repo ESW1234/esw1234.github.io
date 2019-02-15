@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>STMFA(2018-October) platform blitz 218 fs1</title>
+  <title>FS-1 Local</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
 <body>
-STMFA:Platform Blitz fs1
+FS-1 Local
 <div id="salesforce-login"></div>
 <button id="logout" onclick="SFIDWidget.logout()">Log out</button>
 
@@ -24,7 +24,7 @@ STMFA:Platform Blitz fs1
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -37,21 +37,21 @@ STMFA:Platform Blitz fs1
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Field Service
-
+		embedded_svc.settings.flexipageAptHome='support__AppointmentHome';
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
 
 		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLuN0pfpmIgfw7kYlJ1VhgL1DumGSRsnMVAjJGyw_KeXZuIOcyfOUuSUF442paqubabYvSu';
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOIE62OrS1uTtUTXH7C7XvXYHzRW.LXgPtFHZUgBvj0.EgHZEkhpP2ORtCBLyKZPqFsvIDLr';
 		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/local/220/oauth.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
 			'https://npachpande-wsm1.internal.salesforce.com:6101',
-			'https://eswdomain.localhost.soma.force.com:6101',
+			'https://eswdomain-168e9dc83b3.localhost.soma.force.com:6101/',
 			gslbBaseURL,
-			'00Dxx0000006GkV',
+			'00Dxx0000006GsZ',
 			'FS',
 			{
 				
