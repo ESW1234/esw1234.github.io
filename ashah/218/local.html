@@ -27,12 +27,12 @@
 	}
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.devMode=true;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -50,10 +50,11 @@ embedded_svc.settings.devMode=true;
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+		embedded_svc.settings.devMode = true;
+		
 		embedded_svc.init(
 			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-167572a56b9.localhost.soma.force.com:6109/gnapili/s/',
+			'http://bo-16428ee4002-167572a56b9.localhost.soma.force.com:6109/',
 			gslbBaseURL,
 			'00Dxx0000006Gvn',
 			'oh_mylanta',
@@ -70,7 +71,7 @@ embedded_svc.settings.devMode=true;
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
