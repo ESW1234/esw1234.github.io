@@ -14,11 +14,11 @@
 <div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #058E31;
+		background-color: #1F8749;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #058E31;
+		outline: 1px solid #1F8749;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -50,20 +50,19 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.devMode = true;
-		
+
 		embedded_svc.init(
 			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://bo-16428ee4002-167572a56b9.localhost.soma.force.com:6109/',
+			'http://communities-1691906ed34.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006Gvn',
-			'oh_mylanta',
+			'00Dxx0000006HS3',
+			'justin',
 			{
 				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
-				buttonId: '573xx0000004CAe',
+				deploymentId: '572xx0000004CDs',
+				buttonId: '573xx0000004CDs',
 				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
 				isOfflineSupportEnabled: true
 			}
 		);
