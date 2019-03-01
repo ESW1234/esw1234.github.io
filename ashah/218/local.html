@@ -27,7 +27,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='http://service.force.com/embeddedservice/5.0/esw.js'></script>
+<!-- <script type='text/javascript' src='http://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -78,8 +78,8 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		// initESW('http://analshah-wsm9.internal.salesforce.com:6109');
-	 	initESW('http://service.force.com');
+		initESW('http://analshah-wsm9.internal.salesforce.com:6109');
+	 	// initESW('http://service.force.com');
 
 	}
 </script>
