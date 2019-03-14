@@ -47,8 +47,8 @@ LOCAL 220: Field Service
 		embedded_svc.settings.authenticationStartLabel = 'LOCAL 220 FS';
 
 		embedded_svc.init(
-			'http://yatlaw-wsm2.internal.salesforce.com:6109',
-			'http://eswdomain-1697dfc0a82.localhost.soma.force.com:6109/cs1',
+			'https://yatlaw-wsm2.internal.salesforce.com:6101',
+			'https://eswdomain-1697dfc0a82.localhost.soma.force.com:6101/cs1',
 			gslbBaseURL,
 			'00Dxx0000006fB1',
 			'X220_AM_One',
@@ -60,7 +60,7 @@ LOCAL 220: Field Service
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://yatlaw-wsm2.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
