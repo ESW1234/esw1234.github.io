@@ -6,14 +6,15 @@
 <body>
 <p align="center"><font color ="blue">220 Steam</font></p>
   <br/>
-  <br/>
+  <br/>	
+	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
+		background-color: #2AE7E7;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #2AE7E7;
 	}
 </style>
 
@@ -29,18 +30,14 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
-		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
-			return '573RM00000005b3'
-		};
+		//};
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		//embedded_svc.settings.directToButtonRouting = function() {return "573RM00000005Zq"}
-		
-		//embedded_svc.settings.fallbackRouting = ["573RM00000005Zq"];
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -55,7 +52,7 @@
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM00000005Bd',
-				buttonId: '573RM00000005ay',
+				buttonId: '573RM000000066r',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dd22AE_168869546bb',
 				isOfflineSupportEnabled: true
