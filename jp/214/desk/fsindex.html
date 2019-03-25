@@ -63,12 +63,12 @@
 		
 		embedded_svc.init(
 			'http://snimmag-wsm2.internal.salesforce.com:6109', 
-			'http://snapins-1622abec3c9.localhost.soma.force.com:6109/napili', 
-			gslbBaseURL, '00Dxx0000001mFB', 'EswFs01', { });
+			'http://snapins-1622abec3c9.localhost.soma.force.com:6109/napili',
+			gslbBaseURL, '00Dxx0000001mJS', 'EswFs01', { });
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://snimmag-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js'); 
+		s.setAttribute('src', 'http://snimmag-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { 
 			initESW(null); 
 		}; 
