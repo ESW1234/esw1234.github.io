@@ -23,7 +23,9 @@
 	}
 </style>
 
+	
 <!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script-->
+<!-- 5.0 
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -74,7 +76,29 @@ embedded_svc.settings.devMode = true;
 	} else {
 		initESW('http://analshah-wsm9.internal.salesforce.com:6109');
 	}
-</script>
+</script> -->
+	<script type='text/javascript'>
+var initESW = function(gslbBaseUrl) {
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
+//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
+//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.init('http://analshah-wsm9.internal.salesforce.com:6109', 'http://analshah-wsm9.internal.salesforce.com:8096/chat', 
+		  'http://analshah-wsm9.internal.salesforce.com:8095/content', 
+		  'http://eswdomain-169ba3c3386.localhost.soma.force.com:6109/', '572xx0000004CDs', 
+		  '00Dxx0000006HCR', '573xx0000004CDs', '2.2', gslbBaseUrl, '40.0', 'a', 
+		  'EmbeddedServiceLiveAgent_Parent04Ixx0000004D1sEAE_169bd8d94e2'); };
+	if (!window.embedded_svc) {
+		var s = document.createElement('script'); 
+		s.setAttribute('src', 'http://analshah-wsm9.internal.salesforce.com:6109/embeddedservice/2.2/esw.js'); 
+		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
+	else { initESW('http://analshah-wsm9.internal.salesforce.com:6109'); }</script>
 </div>
 </body>
 </html>
