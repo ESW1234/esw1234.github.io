@@ -9,11 +9,16 @@
   <br/>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #7DEDE7;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #58E8EA;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #7DEDE7;
+		outline: 1px solid #58E8EA;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -43,17 +48,17 @@
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazmincommunities.localhost.soma.force.com:6109/SnapInDeploymentCommunity',
+			'http://jazmincommunitysubdomanin.localhost.soma.force.com:6109/CustomerService0402',
 			gslbBaseURL,
-			'00Dxx0000001gEg',
+			'00Dxx0000006Gmd',
 			'githubPage',
 			{
 				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000000019',
-				buttonId: '573xx0000000019',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000002lEAA_1698323f152',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_169dfcf5eb1',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
