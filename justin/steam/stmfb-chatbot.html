@@ -4,10 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
   <title>STMFB - Chatbot</title>
 </head>
- 
+
 <body>
 
-<p align="center"><font color = "red"><a href="stmfb.html">STMFB page 1.</a></font></p>
+<p align="center"><font color = "red"><a href="stmfb-chatbot.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot.html">Open this page in a new tab</a></font></p>
 
 <h1>
 	STMFB - Chatbot
@@ -62,6 +63,15 @@
 
 		// Debug
 		embedded_svc.settings.devMode = true;
+
+		// onAgentMessage
+		embedded_svc.addEventHandler("onAgentMessage", function(data) {
+			console.log("onAgentMessage event was fired.");
+		});
+		// onAgentRichMessage
+		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
+			console.log("onAgentRichMessage event was fired.");
+		});
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
