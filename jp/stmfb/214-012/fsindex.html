@@ -47,22 +47,22 @@ var initESW = function(gslbBaseURL) {
 	//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 	//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 	// Settings for Field Service
-	embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcburn.INIpPTT9v0KWQkV2p_V_uLCpIQyYIOJu63owMiWXJFkveQTZXkjBo0ZKFIBLAe.lOV';
-	embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/214/steam/stmfa002/callback.html';
+	embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbs1HdbjLf9Xa.K2SmneJ3AaV754KZY3TgkhcNBHSasdN6M92qfsFkcUi6oZyoiMmhBagXWp';
+	embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/stmfb/214-012/callback.html';
 	embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 	embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
 	embedded_svc.settings.enabledFeatures = ['FieldService'];
 	embedded_svc.settings.entryFeature = 'FieldService';
   embedded_svc.settings.useCustomAuthentication = false;
 	embedded_svc.init(
-		'https://na44.stmfa.stm.salesforce.com',
-		'https://snapins-15f082fb956-15fbc261d27.stmfa.stm.force.com/napili2',
-		gslbBaseURL, '00DRM0000005ixF', 'EswFS', { }
+		'https://na44.stmfb.stm.salesforce.com',
+		'https://snapins-subdomain-162b3ce9ce5.stmfb.stm.force.com/napili3',
+		gslbBaseURL, '00DRM0000005xkX', 'EswFS', { }
 	);
 };
 if (!window.embedded_svc) {
 	var s = document.createElement('script');
-	s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 	s.onload = function() {
 		initESW(null);
 	};
