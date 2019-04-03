@@ -64,17 +64,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
+			'https://na50.salesforce.com',
+			'https://sdo-demo-main-15c01a41a7c.secure.force.com',
 			gslbBaseURL,
-			'00DRM0000005cdE',
-			'LASkill3laDeployment',
+			'00D6A000000fWDI',
+			'Snapinsidkd',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004C9N',
-				buttonId: '573RM0000004HUD',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001OH2AY_166e9f37804',
+				baseLiveAgentContentURL: 'https://c.la1-c1-iad.salesforceliveagent.com/content',
+				deploymentId: '5726A000000L4U9',
+				buttonId: '5736A000000L1zQ',
+				baseLiveAgentURL: 'https://d.la1-c1-iad.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I6A000000Gnb2UAC_169059148da',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -82,7 +82,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na50.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};

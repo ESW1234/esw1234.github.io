@@ -11,6 +11,7 @@
 <body>
 
 <p align="center"><font color = "red"><a href="stmfb-2.html">STMFB page 2.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmfb-2.html">STMFB page 2 in another tab.</a></font></p>
         
 <h1>
 	STMFB
@@ -150,65 +151,7 @@
 
 		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-
-
 		
-		// Home Depot investigation.
-		embedded_svc.settings.extraPrechatFormDetails = [{
-			"label": "CartValue",
-			"value": "MA Support",
-			"transcriptFields": ["CartValue__c"],
-			"displayToAgent": true
-		}];
-		embedded_svc.settings.extraPrechatInfo = [ {
-                    "entityFieldMaps" : [ {
-                        "doCreate" : false,
-                        "doFind" : false,
-                        "fieldName" : "LastName",
-                        "isExactMatch" : true,
-                        "label" : "Last Name"
-                    }, {
-                        "doCreate" : false,
-                        "doFind" : false,
-                        "fieldName" : "FirstName",
-                        "isExactMatch" : true,
-                        "label" : "First Name"
-                    }, {
-                        "doCreate" : false,
-                        "doFind" : false,
-                        "fieldName" : "Email",
-                        "isExactMatch" : true,
-                        "label" : "Email"
-                    } ],
-                    "entityName" : "Contact"
-		} ];
-		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// If prechatFormData[4] then route to 573RM0000004DDS button instead.
-			if (prechatFormData[4].value){   
-				embedded_svc.init(
-					'https://na44.stmfb.stm.salesforce.com', 
-					'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-					gslbBaseURL, 
-					'00DRM0000005jYI', 
-					'justin', 
-					{ 
-						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-						deploymentId: '572RM0000004EQN', 
-						buttonId: '573RM0000004DDS', 
-						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971', 
-						isOfflineSupportEnabled: true
-					}
-				); 
-
-				return "573RM0000004DDS";
-			}
-		};
-
-
-
-
-
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
 		

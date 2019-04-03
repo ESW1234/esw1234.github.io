@@ -14,11 +14,11 @@
 <div id="button_goes_here">
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #058E31;
+		background-color: #1F8749;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #058E31;
+		outline: 1px solid #1F8749;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -27,12 +27,12 @@
 	}
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
+<!-- <script type='text/javascript' src='http://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-embedded_svc.settings.devMode=true;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -50,19 +50,21 @@ embedded_svc.settings.devMode=true;
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "Justin", LastName: "M", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+		
 		embedded_svc.init(
 			'http://analshah-wsm9.internal.salesforce.com:6109',
-			'http://snapins-15fc6fb04c9-16428ee4-167572a56b9.localhost.soma.force.com:6109/gnapili/s/',
+			'http://communities-1691906ed34.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006Gvn',
-			'oh_mylanta',
+			'00Dxx0000006HS3',
+			'justin',
 			{
 				baseLiveAgentContentURL: 'http://analshah-wsm9.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
-				buttonId: '573xx0000004CAe',
+				deploymentId: '572xx0000004CDs',
+				buttonId: '573xx0000004CDs',
 				baseLiveAgentURL: 'http://analshah-wsm9.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -76,7 +78,9 @@ embedded_svc.settings.devMode=true;
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('http://analshah-wsm9.internal.salesforce.com:6109');
+	 	// initESW('http://service.force.com');
+
 	}
 </script>
 </div>
