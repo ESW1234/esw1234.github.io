@@ -1,27 +1,7 @@
 <html>
-  <head>
-	<!-- From code snippet generator. -->
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> -->
-
-	<!-- No iOS zoom. -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	
-	<title>STMFA - Tiffany Chatbot</title>
-</head>
-
-<body>
-
-<p align="center"><font color = "red"><a href="stmfa-chatbot.html">https://esw1234.github.io/justin/steam/stmfa-chatbot.html</a></font></p>
-
-<h1>
-	STMFA - Tiffany Chatbot
-</h1>
-
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-
-<style type='text/css'>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -31,22 +11,18 @@
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
-/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
-
-<!-- SNIPPETS -->
-
-<!-- 5.0 snippet -->
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'Bastion 5.0'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -57,7 +33,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName:"justin", LastName:"macmillin"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -66,17 +42,17 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://eswtiffany.stmfa.stm.force.com/esw',
+			'https://tiffanytso.stmfa.stm.force.com',
 			gslbBaseURL,
 			'00DRM0000007d8z',
-			'OmniBot_QueueBased',
+			'LA_SkillsBased',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000005Wq',
-				buttonId: '573RM000000066w',
+				deploymentId: '572RM00000005Wl',
+				buttonId: '573RM00000005vm',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dee2AE_168df736d40',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
@@ -93,17 +69,14 @@
 		initESW('https://na44.stmfa.stm.salesforce.com');
 	}
 </script>
-<!-- end 5.0 snippet -->
-
-
-<!-- 4.1 snippet -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
-<script type='text/javascript'>
+	  
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script> -->
+<!-- <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'Bastion 4.1'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -114,7 +87,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName:"justin", LastName:"macmillin"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -123,17 +96,17 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://eswtiffany.stmfa.stm.force.com/esw',
+			'https://tiffanytso.stmfa.stm.force.com',
 			gslbBaseURL,
 			'00DRM0000007d8z',
-			'OmniBot_QueueBased',
+			'LA_SkillsBased',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000005Wq',
-				buttonId: '573RM000000066w',
+				deploymentId: '572RM00000005Wl',
+				buttonId: '573RM00000005vm',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dee2AE_168df736d40',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
@@ -146,11 +119,10 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+// 		initESW('https://service.force.com');
+		initESW('https://na44.stmfa.stm.salesforce.com');
 	}
 </script> -->
-<!-- end 4.1 snippet -->
-
-
-</body>
+	  
+  </body>
 </html>
