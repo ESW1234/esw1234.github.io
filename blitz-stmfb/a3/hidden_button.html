@@ -8,7 +8,7 @@
 <p><a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
+<p align="center"><font color ="red">PAGE WITH HIDDEN BUTTON</font></p>
 
 <br/>
 <br/>
@@ -77,7 +77,7 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = false; //Or false
@@ -126,7 +126,8 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+// 		initESW('https://service.force.com');
+		initESW('https://stmfbna44esw.my.stmfb.stm.salesforce.com');
 	}
 </script>
 <!-- end 5.0 snippet -->
