@@ -32,6 +32,15 @@
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
             outline: 1px solid #A70BA5;
         }
+        
+        .previews img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    
+        .chat-content a {
+            color: #fff;
+        }
     </style>
 
     <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
@@ -64,7 +73,7 @@
                 Email: "hey@dude.com",
                 Subject: "hey"
             }; //Sets the auto-population of pre-chat form fields
-            
+
             embedded_svc.init(
                 'https://na44.stmfb.stm.salesforce.com',
                 'https://tiffanytso-16a22511f58.stmfb.stm.force.com',
