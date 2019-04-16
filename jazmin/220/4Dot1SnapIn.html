@@ -19,7 +19,7 @@
 	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script> -->
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -112,7 +112,7 @@ embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { 
-		initESW('https://service.force.com'); 
+		initESW(''); 
 	}
 </script>
 
