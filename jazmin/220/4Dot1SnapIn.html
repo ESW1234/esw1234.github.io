@@ -41,6 +41,11 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 //Returns a valid button ID.
 //};
 
+embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+	if (prechatFormData[3].value === "directToButtonRouting")
+		return "573RM0000004IXw";
+}	
+	
 embedded_svc.settings.prepopulatedPrechatFields = { 
 	FirstName: "Jazmin", 
 	LastName: "Ortiz", 
