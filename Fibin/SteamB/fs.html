@@ -17,7 +17,7 @@
             url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
             }
         </style>
-        <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+        <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
         <script type='text/javascript'>
             var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
@@ -28,8 +28,8 @@
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
             // Settings for Field Service
-            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbvyHQ2QkwQ0kNf0rwednOAJqlXmtqA.OFlyARccaiONGtD0wQSZ6BRZ9df1DNGODaG90SJJ';
-            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/220PlatformBlitz/FieldService/oauth1.html';
+            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbuiISiziX2MFCOqglwiEC0SOU92txUTrvoC_wjdnCpARxxzY9xeyeF.MVKc1to.m9xj0vkv';
+            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Fibin/callback.html';
             embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
             embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -40,10 +40,10 @@
             embedded_svc.settings.useCustomAuthentication = false;
             embedded_svc.init(
                 'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-subdomain-161923d1a2-169e5690f6e.stmfb.stm.force.com/snapinscomm1',
+			'https://scccq.stmfb.stm.force.com/flowstestcommunity',
 			gslbBaseURL,
-			'00DRM000000ApQ5',
-			'instrumentation_test',
+			'00DRM0000006YqX',
+			'localisation_test',
             	{
             	}
             	);
