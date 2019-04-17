@@ -37,25 +37,26 @@
             embedded_svc.settings.enabledFeatures = ['FieldService'];
             embedded_svc.settings.entryFeature = 'FieldService';
             embedded_svc.settings.useCustomAuthentication = false;
-            embedded_svc.init(
-                'https://na44.stmfb.stm.salesforce.com',
-            	'https://scccq.stmfb.stm.force.com/flowstestcommunity',
-            	gslbBaseURL,
-            	'00DRM0000006YqX',
-            	'instrumenation_test',
-            	{
-            	}
-            	);
-            };
+            	embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://scccq.stmfb.stm.force.com/flowstestcommunity',
+			gslbBaseURL,
+			'00DRM0000006YqX',
+			'instrumenation_test',
+			{
+				
+			}
+		);
+	};
             if (!window.embedded_svc) {
-            	var s = document.createElement('script');
-            	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-            	s.onload = function() {
-            	initESW(null);
-            	};
-            	document.body.appendChild(s);
-            } else {
-            	initESW('https://service.force.com');
-            }
-        </script>	
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </html>
