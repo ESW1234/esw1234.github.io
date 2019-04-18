@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">220 Steam 3.1 Snap-In</font></p>
+	<p align="center"><font color ="blue">220 Steam 3.1 Snap-In</font></p>
 	<!-- <p align="center"><font color = "blue"><a href="steam2.html">Link to default steam page 2</a></font></p> -->
   <br/>
   <br/>		
@@ -20,7 +20,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script> -->
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -32,6 +32,11 @@ embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
+embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+	if (prechatFormData[3].value === "directToButtonRouting")
+		return "573RM0000004IXw";
+}
+	
 embedded_svc.settings.prepopulatedPrechatFields = { 
 	FirstName: "Jazmin", 
 	LastName: "Ortiz", 
@@ -115,7 +120,7 @@ embedded_svc.init(
 		}; 
 		document.body.appendChild(s); 
 	} else { 
-		initESW('https://service.force.com'); 
+		initESW(''); 
 	}
 </script>
 
