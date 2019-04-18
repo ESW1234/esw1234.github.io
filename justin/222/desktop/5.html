@@ -21,9 +21,9 @@
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
 	@font-face {
-	font-family: 'Salesforce Sans';
-/* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+		font-family: 'Salesforce Sans';
+/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
+/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
 
@@ -56,7 +56,7 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 		// Non-standard snippet settings.
-// 		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.devMode = true;
 
 		// Adidas
 		//embedded_svc.settings.autoOpenPostChat = true;
@@ -80,8 +80,8 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
-		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
