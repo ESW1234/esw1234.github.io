@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>220 5.0 Desktop</title>
+	<title>222 5.0 Desktop</title>
 </head>
 
 <body>
@@ -11,7 +10,7 @@
 <p align="center"><font color = "red"><a target="_blank" href="5-2.html">Desktop Page 2 in new tab</a></font></p>
 
 <h1>
-	220 | desktop | justin | 5.0
+	222 | desktop | justin | 5.0
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -22,9 +21,9 @@
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
 	@font-face {
-	font-family: 'Salesforce Sans';
-/* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+		font-family: 'Salesforce Sans';
+/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
+/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
 
@@ -57,14 +56,14 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 		// Non-standard snippet settings.
-// 		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.devMode = true;
 
 		// Adidas
 		//embedded_svc.settings.autoOpenPostChat = true;
 		
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://tiffanytso-16a2dbb6bde.localhost.soma.force.com:6109',
+			'http://tiffanytso-16a2dbb6bde.localhost.soma.force.com:6109/',
 			gslbBaseURL,
 			'00Dxx0000006Gmd',
 			'Omni_QueueBased',
@@ -81,8 +80,8 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
-		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};

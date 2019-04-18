@@ -1,31 +1,24 @@
+<!DOCTYPE html>
 <html>
- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<head>
+  <title>Widget Main</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
-
 <body>
+STMFB 220
+<div id="salesforce-login"></div>
+<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #0253B0;
-		font-family: "Salesforce Sans", sans-serif;
-		font-size: 18px;
-		position: fixed;
-		top: 73px;
-		left: 430px;	
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
 	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-	body {
-  		background: url("https://esw1234.github.io/Chase.png") no-repeat left top;
-	}		
 </style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -43,18 +36,17 @@
 		embedded_svc.settings.entryFeature = 'FieldService';
 
 		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9Iu66FKeHhIOXwUxNxXuhlTytynqRU8.8Cee0uXEZvIPzaFT1OpeofEkZXdbKTGzVFJVNtUhwowPSI91v';
-		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/obiwan_callback.html';
+		embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbulfNMVtY6N7MAOdeFUwakqspjJpOn5rWCTAKaIoJon5EalV3ieTKbWmYtu.6dIrdukCvAm';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/godwin/steam/220/fs_callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
-		//embedded_svc.settings.devMode= true;
+		embedded_svc.settings.authenticationStartLabel = '220 STMFB';
 
 		embedded_svc.init(
-			'https://mobile1.t.salesforce.com',
-			'https://obi-wan.mobile1.t.force.com',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins-subdomain-161923d1a2-166f00d5148.stmfb.stm.force.com/220commone',
 			gslbBaseURL,
-			'00DR00000009Wwy',
-			'Obi_Wan_Snap_In',
+			'00DRM0000007Kj5',
+			'FS_220',
 			{
 				
 			}
@@ -63,7 +55,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://mobile1.t.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -72,6 +64,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-<div id="salesforce-login"></div>
-    </body>
+</body>
 </html>
