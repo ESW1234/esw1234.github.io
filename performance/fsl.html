@@ -46,11 +46,11 @@
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'https://nishantaga-wsm.internal.salesforce.com:6101',
-			'https://snapins-subdomain-161923d1a2-1685e18853f.localhost.soma.force.com:6101/nishantCommunity',
+			'https://dbl17.soma.salesforce.com',
+			'https://snapins-subdomain-161923d1a2-16a36f0ccef.dbl17.soma.force.com/fieldServiceCommunity',
 			gslbBaseURL,
-			'00Dxx0000006OfL',
-			'nishant_fs',
+			'00Dx0000000BXiy',
+			'FS',
 			{
 				
 			}
@@ -59,7 +59,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://nishantaga-wsm.internal.salesforce.com:6101/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://dbl17.soma.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
