@@ -61,6 +61,10 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: 'subbu',
+			LastName: 'krish'
+		};
 
 		embedded_svc.init(
 			'http://subbu1-lt.localhost.internal.salesforce.com:57983',
