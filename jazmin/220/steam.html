@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">220 Steam</font></p>
+	<p align="center"><font color ="blue">220 Steam</font></p>
 	<p align="center"><font color = "blue"><a href="steam2.html">Link to default steam page 2</a></font></p>
   <br/>
   <br/>	
@@ -39,7 +39,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 //Returns a valid button ID.
 //};
-//embedded_svc.settings.devMode = true;
+embedded_svc.settings.devMode = true;
 embedded_svc.settings.enabledFeatures = ['LiveAgent', '%2e%2e/%2e%2e/%2e%2e/sfc/dist/version/download/?oid=00%441i000000g%5a%54%43&ids=0681i000000nv%43%4f%41%41%59&d=/a/1i000000k%48fw/st%44r7y%57l%4d%52zl%576oss%51%52u%4e37%52%54w%58%53%57%52%578%45km%4c%57f.tf%4b%49#'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -60,7 +60,7 @@ eswLiveAgentDevName: 'Omni_Channel_Chat_Folks'
 };
 if (!window.embedded_svc) { 
 var s = document.createElement('script'); 
-s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
+s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.js'); 
 s.onload = function() { initESW(null); }; 
 document.body.appendChild(s); 
 } else { initESW('https://na44.stmfb.stm.salesforce.com'); }
