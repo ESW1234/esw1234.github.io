@@ -35,8 +35,8 @@
     embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'http://ckrajewski-wsl3.internal.salesforce.com:6109',
-			'http://snapinscomm.localhost.soma.force.com:6109/SnapIns',
+			'https://ckrajewski-wsl3.internal.salesforce.com:57983',
+			'https://snapinscomm.ckrajewski-wsl3.t.force.com:57983/SnapIns',
 			gslbBaseURL,
 			'00Dxx0000006Gpr',
 			'SnapIns',
@@ -48,7 +48,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://ckrajewski-wsl3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://ckrajewski-wsl3.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
