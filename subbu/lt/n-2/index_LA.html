@@ -12,7 +12,6 @@
 	<p align="center"><font color = "red"><a href="na1_blitz03_page2.html">Link to PAGE ONE DEFAULT WIDGET</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_no_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
-	<p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH SECOND DEPLOYMENT</a></font></p>
 	<!--
   <p align="center"><font color = "red"><a href="bl1custom.html">Link to PAGE TWO CUSTOM WIDGET</a></font></p>
   <p align="center"><font color = "red"><a href="bl1hidden.html">Link to PAGE THREE BUTTON AS A LINK</a></font></p>
@@ -23,7 +22,7 @@
   <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
 
 
-<div id="button_goes_here"></div>
+	<div id="button_goes_here"></div>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -39,7 +38,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -51,7 +50,7 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
+		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
@@ -62,19 +61,24 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: 'subbu',
+			LastName: 'krish'
+		};
+		embedded_svc.settings.devMode = true;
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-15fe5b0b0e3.stmfb.stm.force.com/212112217',
+			'http://subbu1-lt.localhost.internal.salesforce.com:57983',
+			'http://eswcomm-15846119c54.localhost.soma.force.com:57983/214032918',
 			gslbBaseURL,
-			'00DRM0000005iqb',
-			'LASkill1',
+			'00Dxx0000001jFX',
+			'X218_LA_Technical',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CTr',
-				buttonId: '573RM0000004INQ',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000l22AA_1676132512a',
+				baseLiveAgentContentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000000006',
+				buttonId: '573xx00000000VA',
+				baseLiveAgentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000P6EAI_1667ea1f308',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -82,15 +86,19 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://subbu1-lt.localhost.internal.salesforce.com:57983/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('http://subbu1-lt.localhost.internal.salesforce.com:57983');
 	}
 </script>
+	
+Portugal Stuns France to Win Euro 2016 Final
+Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
+Jul 11, 2016•Fitbit Help
 
 HELP
 Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
@@ -102,6 +110,7 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 	Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
+
    </body>
 </html>
     <style>
