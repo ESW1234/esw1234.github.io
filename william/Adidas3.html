@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<body>
+    <div id="button_goes_here"> </div>
+    <style>
+        body {
+            background: url("../Adidas-home.png") no-repeat;
+            background-size: 100%;
+        }
+
+        #button_goes_here {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /** Unread message counter. **/
+
+        .minimizedContainer.newMessage .content {
+            position: fixed;
+            display: block;
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            bottom: 50px;
+            right: 15px;
+            bottom: 45px;
+            color: #fff;
+            box-shadow: none;
+            border: 1px solid #fff;
+            background-color: #f00;
+        }
+
+        .minimizedContainer.newMessage .content {
+            padding: 0;
+            font-size: 0.875rem;
+        }
+
+        .minimizedContainer.newMessage .minimizedImage {
+            display: none;
+        }
+
+        .minimizedContainer.newMessage {
+            display: block;
+            width: 40px;
+            min-width: 40px;
+            height: 40px;
+            background-color: #000;
+            bottom: 20px;
+            right: 20px;
+            z-index: -1;
+            border-radius: 100%;
+            overflow: visible;
+        }
+
+        .minimizedContainer.newMessage .minimizedText {
+            margin-top: -1px;
+        }
+
+        /** Prechat text **/
+
+        .embeddedServiceLiveAgentStatePrechat .backgroundImg {
+            display: block !important;
+            height: auto !important;
+            background: none !important;
+            padding: 10px 10px 5px;
+        }
+
+        .embeddedServiceLiveAgentStatePrechat .backgroundImg:before {
+            content: "Hello, welcome to our live chat. Please enter your information.";
+            display: block;
+            font-weight: 800;
+        }
+
+        .embeddedServiceLiveAgentStatePrechat .backgroundImg:after {
+            content: "We promise not to share it with anyone or anything like that.";
+            display: block;
+            font-size: 0.825rem;
+            margin-top: 5px;
+        }
+
+        .embeddedServiceLiveAgentStatePrechat .backgroundImgColorMask {
+            display: none;
+        }
+
+        /** User icon in chat state **/
+
+        .chatMessage.chasitor .avatar {
+            content: "";
+            position: absolute;
+            display: block;
+            border-radius: 100%;
+            right: 15px;
+            top: 0;
+            margin: 6px 0 0 6px;
+            background-image: url("../bot-avatar.png") !important;
+        }
+
+        .chatMessage.chasitor .chatContent {
+            margin-right: 35px;
+        }
+
+        /** Shortened extended header **/
+
+        .embeddedServiceLiveAgentStateChatHeader {
+            height: 70px;
+        }
+
+        .embeddedServiceLiveAgentStateChatHeader .content {
+            height: 24px;
+            padding: 0 10px;
+        }
+
+        .embeddedServiceLiveAgentStateChatHeader .agentInfo,
+        .embeddedServiceLiveAgentStateChatHeader .agentInfo+.fade {
+            display: none;
+        }
+
+        .embeddedServiceLiveAgentStateChatHeader .chatOptions {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .embeddedServiceLiveAgentStateChatHeader .embeddedServiceLiveAgentStateChatHeaderOption {
+            padding: 0;
+            margin: 0;
+        }
+
+        .embeddedServiceLiveAgentStateChatHeader .embeddedServiceLiveAgentStateChatHeaderOption .embeddedServiceIcon {
+            border: none;
+            position: relative;
+            top: -9px;
+        }
+    </style>
+
+    <style type='text/css'>
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #ffb500;
+            font-family: "Salesforce Sans", sans-serif;
+        }
+
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #ffb500;
+        }
+
+        @font-face {
+            font-family: 'Salesforce Sans';
+            src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+                url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+        }
+    </style>
+    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.0/esw.min.js'></script> -->
+    <script type='text/javascript'>
+        var initESW = function (gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+            // Settings for Live Agent
+            embedded_svc.settings.avatarImgURL = '../avatar.png';
+            embedded_svc.settings.prechatBackgroundImgURL = '../adidas-prechat-300x100.png';
+            embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
+            embedded_svc.settings.smallCompanyLogoImgURL = 'blank.png';
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                FirstName: "Will",
+                LastName: "Chang",
+                Email: "william.chang@salesforce.com",
+                Subject: "I need help!"
+            }; //Sets the auto-population of pre-chat form fields
+
+            embedded_svc.init(
+                'https://na44.stmfb.stm.salesforce.com',
+                'https://tiffanytso-16a22511f58.stmfb.stm.force.com',
+                gslbBaseURL,
+                '00DRM000000Bee1',
+                'Omni_QueueBased', {
+                    baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+                    deploymentId: '572RM0000004Inp',
+                    buttonId: '573RM0000004JiD',
+                    baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f',
+                    isOfflineSupportEnabled: true
+                }
+            );
+        };
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function () {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://gs0.salesforce.com');
+        }
+    </script>
+
+</body>
+
+</html>
