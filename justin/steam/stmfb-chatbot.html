@@ -67,7 +67,11 @@
 		// onAgentMessage
 		embedded_svc.addEventHandler("onAgentMessage", function(data) {
 			window.requestAnimationFrame(function() {
-				debugger;
+				window.requestAnimationFrame(function() {
+					var mostRecentMessage = document.querySelector(".embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI div a");
+					debugger;
+					mostRecentMessage ? mostRecentMessage.removeAttribute("target")
+				});
 			});
 		});
 		// onAgentRichMessage
