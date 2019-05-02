@@ -66,7 +66,9 @@
 
 		// onAgentMessage
 		embedded_svc.addEventHandler("onAgentMessage", function(data) {
-			console.log("onAgentMessage event was fired.");
+			window.requestAnimationFrame(function() {
+				debugger;
+			});
 		});
 		// onAgentRichMessage
 		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
