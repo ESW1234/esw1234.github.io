@@ -66,13 +66,13 @@
 
 		// onAgentMessage
 		embedded_svc.addEventHandler("onAgentMessage", function(data) {
-			window.requestAnimationFrame(function() {
-				window.requestAnimationFrame(function() {
-					var mostRecentMessage = document.querySelector(".embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI div a");
-					debugger;
-					if(mostRecentMessage) mostRecentMessage.removeAttribute("target");
-				});
-			});
+// 			window.requestAnimationFrame(function() {
+// 				window.requestAnimationFrame(function() {
+// 					var mostRecentMessage = document.querySelector(".embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI div a");
+
+// 					if(mostRecentMessage) mostRecentMessage.removeAttribute("target");
+// 				});
+// 			});
 		});
 		// onAgentRichMessage
 		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
