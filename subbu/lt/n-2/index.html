@@ -42,7 +42,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'ar'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -59,35 +59,36 @@
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
+		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://subbu1-lt.localhost.internal.salesforce.com:57983',
-			'http://eswcomm-15846119c54.localhost.soma.force.com:57983/214032918',
+			'http://subbu-lt.localhost.internal.salesforce.com:57983',
+			'http://subbu.localhost.soma.force.com:57983/VfSite1',
 			gslbBaseURL,
-			'00Dxx0000001jFX',
-			'X214032918',
+			'00Dxx0000001gHB',
+			'omni1_220_021319',
 			{
 				baseLiveAgentContentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000000006',
-				buttonId: '573xx0000000006',
+				deploymentId: '572xx0000000001',
+				buttonId: '573xx00000000WN',
 				baseLiveAgentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000DyEAI_16273b19f4f',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx00000000RqEAI_168e9ab40fd',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://subbu1-lt.localhost.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://subbu-lt.localhost.internal.salesforce.com:57983/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://subbu1-lt.localhost.internal.salesforce.com:57983');
+		initESW('http://subbu-lt.localhost.internal.salesforce.com:57983');
 	}
 </script>
 	
