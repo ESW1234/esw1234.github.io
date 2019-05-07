@@ -2,76 +2,67 @@
     <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head> 
-    <body>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	    <script src="https://cumulus-fs.s3.amazonaws.com/javascripts/jquery.navgoco.js"></script>
-	    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<link href="https://cumulus-fs.s3.amazonaws.com/styles/bootstrap.min.css" rel="stylesheet">    
-	    <link rel="stylesheet" href="/styles/cumulus.min.css">
-	    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-	    <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-</style>
+<body>
+	<style type='text/css'>
+		.embeddedServiceHelpButton .helpButton .uiButton {
+			background-color: #005290;
+			font-family: "Salesforce Sans", sans-serif;
+		}
+		.embeddedServiceHelpButton .helpButton .uiButton:focus {
+			outline: 1px solid #005290;
+		}
+		@font-face {
+			font-family: 'Salesforce Sans';
+			src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+			url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		}
+	</style>
 
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+	<script type='text/javascript'>
+		var initESW = function(gslbBaseURL) {
+			embedded_svc.settings.displayHelpButton = true; //Or false
+			embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+			//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+			//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+			//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+			//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Field Service
+			// Settings for Field Service
 
-		embedded_svc.settings.enabledFeatures = ['FieldService'];
-		embedded_svc.settings.entryFeature = 'FieldService';
+			embedded_svc.settings.enabledFeatures = ['FieldService'];
+			embedded_svc.settings.entryFeature = 'FieldService';
 
-		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9lKcPoNINVBKGWKJcu_U.2YWHZeKcDj0fSjwFEZ9N60RN3VuTR_5nut55vVGfwETBagCPzco7Rq4Vtv1t';
-		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/twist16-callback.html';
-		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
+			embedded_svc.settings.useCustomAuthentication = false;
+			embedded_svc.settings.loginClientId = '3MVG9lKcPoNINVBKGWKJcu_U.2YWHZeKcDj0fSjwFEZ9N60RN3VuTR_5nut55vVGfwETBagCPzco7Rq4Vtv1t';
+			embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/twist16-callback.html';
+			embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+			embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
-		embedded_svc.init(
-			'https://twist16-login.soma.salesforce.com',
-			'https://fsc-developer-edition.twist16.soma.force.com',
-			gslbBaseURL,
-			'00Dx0000000IioK',
-			'Lightning_Scheduler_Deployment',
-			{
-				
-			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ls-org-dev-ed.twist16.blitz.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
+			embedded_svc.init(
+				'https://twist16-login.soma.salesforce.com',
+				'https://fsc-developer-edition.twist16.soma.force.com',
+				gslbBaseURL,
+				'00Dx0000000IioK',
+				'Lightning_Scheduler_Deployment',
+				{
+					
+				}
+			);
 		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script>
-	    <div id="salesforce-login"></div>
-	
-	
-	</body>
+
+		if (!window.embedded_svc) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://ls-org-dev-ed.twist16.blitz.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			document.body.appendChild(s);
+		} else {
+			initESW('https://service.force.com');
+		}
+	</script>
+	<div id="salesforce-login"></div>
+</body>
 </html>
