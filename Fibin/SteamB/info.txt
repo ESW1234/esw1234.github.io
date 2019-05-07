@@ -1,0 +1,4 @@
+fs1 is working
+Cred: platform7@esw.com/123456
+
+Community user: cu@esw.com/123456

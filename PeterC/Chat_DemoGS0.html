@@ -17,7 +17,7 @@
   <meta name="salesforce-use-min-js" content="false"/>
 </head> 
 <body>
-
+<a href="https://esw1234.github.io/PeterC/Chat_DemoGS0_Page2.html">Page 2</a>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { 
 		background-color: #005290; 
@@ -33,78 +33,67 @@
 	}
 </style>
 
-//Launch chat from button, not snap-in
+<!--Launch chat from button, not snap-in-->
 <button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
-	
+<br>
+	<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/PeterC/Chat_DemoGS0.html">Edit</a>
 
 	
 
 	
-//<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://test-service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
-var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = 'de'; //For example, enter 'en' or 'en-US'
-	
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-//Returns a valid button ID.
-//};
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-//Add field to the chat transcript record
-// embedded_svc.settings.extraPrechatFormDetails = [{
-// 	"label":"Subject", 
-// 	"transcriptFields":["Chat_Subject__c"]
-// 	},{
-// 	"label":"Custom Date Field",
-// 	"value":'2018-01-29',
-// 	"transcriptFields":["Custom_Date_Field__c"]
-// }];
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.externalScripts = ["customEvents"];
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "Jon", LastName: "Snow", Email: "jsnow@salesforce.com", Subject: "Help me", Company: "Salesforce"}; //Sets the auto-population of pre-chat form fields
 
-embedded_svc.settings.devMode = true;
-	
-embedded_svc.init(
-			'https://gs0.salesforce.com',
-			'https://eswgs0.secure.force.com/liveAgentSetupFlow',
+		embedded_svc.init(
+			'https://eswdemo.my.salesforce.com',
+			'https://esw.secure.force.com/liveAgentSetupFlow',
 			gslbBaseURL,
-			'00DB0000000XvAr',
-			'Chat_Agents',
+			'00DB0000000TrfT',
+			'Chat_Team',
 			{
-				baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content',
-				deploymentId: '572B0000000PJJw',
-				buttonId: '573B0000000PJXJ',
-				baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'Chat_Agents',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'https://eswdemo.salesforcescrt.com/content',
+				deploymentId: '572B0000000L62n',
+				buttonId: '573B0000000L63d',
+				baseLiveAgentURL: 'https://eswdemo.salesforcescrt.com/chat',
+				eswLiveAgentDevName: 'Chat_Team',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://eswdemo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('https://test-service.force.com');
 	}
-	</script>
+</script>
 </body>
 	</html>

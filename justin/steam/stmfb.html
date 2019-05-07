@@ -10,6 +10,7 @@
 
 <body>
 
+<p align="center"><font color = "red"><a target="_blank" href="stmfb.html">THIS PAGE in a new tab.</a></font></p>
 <p align="center"><font color = "red"><a href="stmfb-2.html">STMFB page 2.</a></font></p>
 <p align="center"><font color = "red"><a target="_blank" href="stmfb-2.html">STMFB page 2 in another tab.</a></font></p>
         
@@ -51,6 +52,9 @@
 		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
 		embedded_svc.settings.chatbotAvatarImgURL = 'http://esw1234.github.io/automation/company_logo.png';
 		embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/automation/avatar.jpg';
+		embedded_svc.settings.externalScripts = ["customEvents"];
+
+
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -153,7 +157,7 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 		
 		// Debug mode.
-		embedded_svc.settings.devMode = true;
+// 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com', 
@@ -173,7 +177,8 @@
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
+// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 // 	} else { initESW('https://service.force.com'); }
