@@ -6,12 +6,14 @@
 
 	<!-- No iOS zoom. -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	
+
 	<title>STMPA</title>
 </head>
  
 <body>
 
+<p align="center"><font color = "red"><a href="stmpa.html">this page</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmpa.html">this page in a new tab</a></font></p>
 <p align="center"><font color = "red"><a href="stmpa-2.html">STMPA page 2.</a></font></p>
 
 <h1>
@@ -38,7 +40,8 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -62,6 +65,9 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		// Dev mode - needed for native function override validation.
+		embedded_svc.settings.devMode = true;
+
 		// Non standard settings.
 		embedded_svc.settings.autoOpenPostChat = true;
 
@@ -84,15 +90,15 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-// 		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+// 		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
-// 		initESW('https://ap1.stmpa.stm.salesforce.com');
+// 		initESW('https://service.force.com');
+		initESW('https://ap1.stmpa.stm.salesforce.com');
 	}
 </script>
 
