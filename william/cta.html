@@ -1,8 +1,20 @@
 <html>
 <script src="https://static.cdn-apple.com/businesschat/start-chat-button/2.0.0/index.js"></script>
 <style>
+	#accordian-fb {
+		display: none;
+	}
 </style>
+<head>
+	<script>
+		function toggleAccordianFb() {
+			let accordianFb = document.getElementById("accordian-fb");
+			const isHidden = accordianFb.hidden;
 
+			accordianFb = !accordianFb.hidden;
+		}
+	</script>
+</head>
 <body>
 	<script>
 		window.fbAsyncInit = function () {
@@ -15,11 +27,14 @@
 		};
 	</script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
-	<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
-		size="standard">
-	</div>
-	<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="white"
-		size="xlarge">
+	<button onclick="toggleAccordianFb()">Toggle fb button region</button>
+	<div id="accordian-fb">
+		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
+			size="standard">
+		</div>
+		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="white"
+			size="xlarge">
+		</div>
 	</div>
 	<div>
 		<a href="tel:+14155352635">Call Peter's Cell</a>
