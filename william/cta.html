@@ -3,8 +3,6 @@
 
 <head>
 	<script>
-		document.getElementById("accordian-fb").hidden = true;
-
 		function toggleAccordianFb() {
 			let accordianFb = document.getElementById("accordian-fb");
 
@@ -23,6 +21,7 @@
 				version: 'v3.3'
 			});
 		};
+		document.getElementById("accordian-fb").hidden = true;
 	</script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 	<button onclick="toggleAccordianFb()">Toggle fb button region</button>
