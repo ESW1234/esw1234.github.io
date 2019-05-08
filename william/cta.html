@@ -4,10 +4,16 @@
 	#accordian-fb {
 		visibility: hidden;
 	}
+
+	.accordian-fb {
+		visibility: hidden;
+	}
 </style>
+
 <head>
 	<script>
 		document.getElementById("accordian-fb").hidden = true;
+
 		function toggleAccordianFb() {
 			let accordianFb = document.getElementById("accordian-fb");
 
@@ -15,7 +21,17 @@
 		}
 	</script>
 </head>
+
 <body>
+	<style>
+		#accordian-fb {
+			visibility: hidden;
+		}
+
+		.accordian-fb {
+			visibility: hidden;
+		}
+	</style>
 	<script>
 		window.fbAsyncInit = function () {
 			FB.init({
@@ -28,7 +44,7 @@
 	</script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 	<button onclick="toggleAccordianFb()">Toggle fb button region</button>
-	<div id="accordian-fb">
+	<div id="accordian-fb" class="accordian-fb">
 		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
 			size="standard">
 		</div>
