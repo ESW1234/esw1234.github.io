@@ -85,23 +85,6 @@
             display: none;
         }
 
-        /** User icon in chat state **/
-
-        .chatMessage.chasitor .avatar {
-            content: "";
-            position: absolute;
-            display: block;
-            border-radius: 100%;
-            right: 15px;
-            top: 0;
-            margin: 6px 0 0 6px;
-            background-image: url("../bot-avatar.png") !important;
-        }
-
-        .chatMessage.chasitor .chatContent {
-            margin-right: 35px;
-        }
-
         /** Shortened extended header **/
 
         .embeddedServiceLiveAgentStateChatHeader {
@@ -179,7 +162,7 @@
             embedded_svc.settings.avatarImgURL = '../avatar.png';
             embedded_svc.settings.prechatBackgroundImgURL = '../adidas-prechat-300x100.png';
             embedded_svc.settings.waitingStateBackgroundImgURL = '../waitingStateImage.png';
-            embedded_svc.settings.smallCompanyLogoImgURL = 'blank.png';
+            // embedded_svc.settings.smallCompanyLogoImgURL = 'blank.png';
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
