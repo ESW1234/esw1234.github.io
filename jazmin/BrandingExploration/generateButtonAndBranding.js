@@ -79,7 +79,7 @@
 	};
 
 	ChannelMenuBrandingDemo.prototype.displayBrandedHelpButton = function() {
-		this.generateButton(this.generateCss())
+		this.generateButton(this.generateCss)
 	}
 
 	document.channelMenuBrandingDemo = new ChannelMenuBrandingDemo();
