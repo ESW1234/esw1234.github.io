@@ -3,20 +3,22 @@
 
 <head>
 	<script>
-		function toggleAccordianFb() {
+		/*function toggleAccordianFb() {
 			let accordianFb = document.getElementById("accordian-fb");
 			const accordianFbDisplay = accordianFb.style.display;
-			if (accordianFbDisplay === "none") {
+			if (accordianFbDisplay === "none" || accordianFbDisplay === "") {
 				accordianFb.style.display = "block";
 			} else {
 				accordianFb.style.display = "none";
 			}
-		}
+		}*/
 	</script>
 	<style>
+		/*
 		.accordian-fb {
 			display:none;
 		}
+		*/
 	</style>
 </head>
 
@@ -31,11 +33,10 @@
 				version: 'v3.3'
 			});
 		};
-		document.getElementById("accordian-fb").style.display = "none";
 	</script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 	<h2>Facebook Messenger</h2>
-	<button onclick="toggleAccordianFb()">Toggle fb button region</button>
+	<!-- <button onclick="toggleAccordianFb()">Toggle fb button region</button> -->
 	<div id="accordian-fb" class="accordian-fb">
 		<h3>Plugin</h3>
 		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
