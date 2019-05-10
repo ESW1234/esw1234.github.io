@@ -5,8 +5,12 @@
 	<script>
 		function toggleAccordianFb() {
 			let accordianFb = document.getElementById("accordian-fb");
-
-			accordianFb.hidden = !accordianFb.hidden;
+			const accordianFbDisplay = accordianFb.style.display;
+			if (accordianFbDisplay === "none") {
+				accordianFb.style.display = "block";
+			} else {
+				accordianFb.style.display = "none";
+			}
 		}
 	</script>
 	<style>
