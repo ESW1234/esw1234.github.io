@@ -12,6 +12,7 @@
 </head>
 
 <body>
+	<h1>Call To Action Channels Proof of Concept</h1>
 	<script>
 		window.fbAsyncInit = function () {
 			FB.init({
@@ -24,8 +25,10 @@
 		document.getElementById("accordian-fb").hidden = true;
 	</script>
 	<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+	<h2>Facebook Messenger</h2>
 	<button onclick="toggleAccordianFb()">Toggle fb button region</button>
 	<div id="accordian-fb" class="accordian-fb">
+		<h3>Plugin</h3>
 		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
 			size="standard">
 		</div>
@@ -34,37 +37,51 @@
 			size="xlarge">
 		</div>
 		<br />
+		<h3>Click to chat link</h3>
 		<div>
-			<a href="https://www.messenger.com/t/2296846213889326/">Chat with us on FB Messenger!</a>
+			<a href="https://www.messenger.com/t/2296846213889326/">Chat with us on FB Messenger! (This will swivel on mobile)</a>
 		</div>
 	</div>
+	<hr>
+	<h2>Call/SMS</h2>
+	<h3>Click to call link</h3>
 	<div>
-		<a href="tel:+14155352635">Call Peter's Cell</a>
+		<a href="tel:+14155352635">Call Peter's Cell (This will swivel)</a>
 	</div>
 	<br />
+	<h3>Click to chat link</h3>
 	<div>
-		<a href="sms:+14155352635">Text Peter's Cell</a>
+		<a href="sms:+14155352635">Text Peter's Cell (This will swivel)</a>
 	</div>
+	<hr>
 	<!--		<div 
 			class="apple-business-chat-banner-container" 
 			data-apple-business-id="03930a79-b762-4b49-81d5-f2cc897f0871" 
 			data-apple-banner-cta="Questions? We can help."
 			data-apple-banner-context="Chat with one of our pros to get your offer for iPhone Xs."
 		</div>-->
+	<h2>Apple Business Chat</h2>
+	<h3>Plugin</h3>
 	<div class="apple-business-chat-message-container" data-apple-business-id="03930a79-b762-4b49-81d5-f2cc897f0871"
 		data-apple-icon-color="#1B3F68" data-apple-icon-scale="1.0"
 		data-apple-icon-title="Style questions? We can help.">
 	</div>
 	<br />
+	<h3>Click to chat link</h3>
 	<div>
 		<a href="https://bcrw.apple.com/urn:biz:03930a79-b762-4b49-81d5-f2cc897f0871?body=Help%20me%20please">Chat with
 			us on Apple Business
-			Chat!</a>
+			Chat! (This will swivel on Apple devices)</a>
 	</div>
 	<br />
+	<hr>
+	<h2>WhatsApp</h2>
+	<h3>Click to chat link</h3>
 	<div>
-		<a href="https://wa.me/14155352635?text=initialmessage"> WhatsApp Link</a>
+		<a href="https://wa.me/14155352635?text=initialmessage"> WhatsApp Link (This will swivel on mobile)</a>
 	</div>
+	<h2>WeChat</h2>
+	<h3>Click to chat link</h3>
 </body>
 
 </html>
