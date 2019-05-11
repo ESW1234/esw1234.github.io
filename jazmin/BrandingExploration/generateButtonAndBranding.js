@@ -1,7 +1,7 @@
 (function() {
 	function ChannelMenuBrandingDemo() {
 		// This would be replaced by custom branding JSON from Rest Endpoint
-		this.channelBrandingData = {
+		var CHANNEL_BRANDING_DATA = {
 			branding1: {
 				cssTagType: "color",
 				cssValue: "FF5733"
@@ -48,7 +48,7 @@
 
 		// Callback after we have completed generating the help button and putting it on the page
 		if(callback) {
-			callback().bind(this)
+			callback()
 		}
 	};
 
@@ -56,7 +56,7 @@
 		var stylesToApply = "";
 		var channelMenuButton = document.getElementsByClassName("channelMenuButton");
 		var channelMenuBranding = document.createElement("style");
-		var brandingData = this.channelBrandingData;
+		var brandingData = CHANNEL_BRANDING_DATA;
 
 		channelMenuBranding.type = "text/css";
 
