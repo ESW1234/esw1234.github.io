@@ -24,7 +24,7 @@
 			}
 		};
 
-		this.displayBrandedHelpButton(this.channelBrandingData);
+		this.displayBrandedHelpButton();
 	}
 
 	ChannelMenuBrandingDemo.prototype.generateButton = function(callback) {
@@ -48,7 +48,7 @@
 
 		// Callback after we have completed generating the help button and putting it on the page
 		if(callback) {
-			callback()
+			callback().bind(this)
 		}
 	};
 
