@@ -1,28 +1,28 @@
 (function() {
+	// This would be replaced by custom branding JSON from Rest Endpoint
+	var CHANNEL_BRANDING_DATA = {
+		branding1: {
+			cssTagType: "color",
+			cssValue: "FF5733"
+		},
+		branding2: {
+			cssTagType: "color",
+			cssValue: "#FFBD33"
+		},
+		 branding3: {
+			cssTagType: "color",
+			cssValue: "#33FFBD"
+		},
+		branding4: {
+			cssTagType: "font-size",
+			cssValue: "1.2em"
+		},
+		branding5: {
+			cssTagType: "font-family",
+			cssValue: "Arial"
+		}
+	};
 	function ChannelMenuBrandingDemo() {
-		// This would be replaced by custom branding JSON from Rest Endpoint
-		var CHANNEL_BRANDING_DATA = {
-			branding1: {
-				cssTagType: "color",
-				cssValue: "FF5733"
-			},
-			branding2: {
-				cssTagType: "color",
-				cssValue: "#FFBD33"
-			},
-			 branding3: {
-				cssTagType: "color",
-				cssValue: "#33FFBD"
-			},
-			branding4: {
-				cssTagType: "font-size",
-				cssValue: "1.2em"
-			},
-			branding5: {
-				cssTagType: "font-family",
-				cssValue: "Arial"
-			}
-		};
 
 		this.displayBrandedHelpButton();
 	}
