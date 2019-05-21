@@ -28,7 +28,8 @@
 			}
 			let whatsAppAnchorElement = document.createElement("a");
 			whatsAppAnchorElement.href = whatsAppHref;
-			whatsAppAnchorElement.innerText = whatsAppInnerText;
+			let whatsAppInnerText = document.createTextNode(whatsAppInnerText);
+			whatsAppAnchorElement.appendChild(whatsAppInnerText);
 			whatsAppDiv.appendChild(whatsAppAnchorElement);
 		}
 	</script>
