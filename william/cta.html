@@ -12,6 +12,25 @@
 				accordianFb.style.display = "none";
 			}
 		}*/
+		function onload() {
+			let whatsAppDiv = document.getElementById("whatsapp");
+			let whatsAppHref = "https://web.whatsapp.com/send?phone=18001234567";
+			let whatsAppInnerText = "WhatsApp Link (This will display a QR code on desktop)";
+			if (navigator.userAgent.match(/Android/i) ||
+				navigator.userAgent.match(/webOS/i) ||
+				navigator.userAgent.match(/iPhone/i) ||
+				navigator.userAgent.match(/iPad/i) ||
+				navigator.userAgent.match(/iPod/i) ||
+				navigator.userAgent.match(/BlackBerry/i) ||
+				navigator.userAgent.match(/Windows Phone/i)) {
+				whatsAppHref = "https://wa.me/14155352635?text=Help%20me%20please";
+				whatsAppInnerText = "WhatsApp Link (This will swivel on mobile and include the message \"Help me please\")";
+			}
+		}
+		let whatsAppAnchorElement = document.createElement("a");
+		whatsAppAnchor.href = whatsAppHref;
+		whatsAppAnchor.innerText = whatsAppInnerText;
+		whatsAppDiv.appendChild(whatsAppAnchorElement);
 	</script>
 	<style>
 		/*
@@ -22,7 +41,7 @@
 	</style>
 </head>
 
-<body>
+<body onload="onload()">
 	<h1>CTA Channels POC</h1>
 	<script>
 		window.fbAsyncInit = function () {
@@ -88,48 +107,49 @@
 	<hr>
 	<h2>WhatsApp</h2>
 	<h3>Click to chat link</h3>
-	<div>
-		<a href="https://wa.me/14155352635?text=Help%20me%20please">WhatsApp Link (This will swivel on mobile and
+	<div id="whatsapp">
+		<!-- <a href="https://wa.me/14155352635?text=Help%20me%20please">WhatsApp Link (This will swivel on mobile and
 			include the message "Help me please")</a>
-	</div>
-	<!-- WhatsHelp.io widget -->
-	<script type="text/javascript">
-		(function () {
-			var options = {
-				whatsapp: "+1 (800) 123-4567", // WhatsApp number
-				call_to_action: "Message us", // Call to action
-				position: "right", // Position may be 'right' or 'left'
-			};
-			var proto = document.location.protocol,
-				host = "whatshelp.io",
-				url = proto + "//static." + host;
-			var s = document.createElement('script');
-			s.type = 'text/javascript';
-			s.async = true;
-			s.src = url + '/widget-send-button/js/init.js';
-			s.onload = function () {
-				WhWidgetSendButton.init(host, proto, options);
-			};
-			var x = document.getElementsByTagName('script')[0];
-			x.parentNode.insertBefore(s, x);
-		})();
-	</script>
-	<!-- /WhatsHelp.io widget -->
-	<hr>
-	<h2>WeChat</h2>
-	<h3>Scan with WeChat to chat</h3>
-	<div>
-		<span>Chat with us on WeChat!</span>
-		<br />
-		<img src="wechat_business_qr.jpg" alt="wechat qr code">
-		<!--
+		<a href="https://web.whatsapp.com/send?phone=18001234567"/> -->
+	</div> 
+			<!-- WhatsHelp.io widget -->
+			<script type="text/javascript">
+				(function () {
+					var options = {
+						whatsapp: "+1 (800) 123-4567", // WhatsApp number
+						call_to_action: "Message us", // Call to action
+						position: "right", // Position may be 'right' or 'left'
+					};
+					var proto = document.location.protocol,
+						host = "whatshelp.io",
+						url = proto + "//static." + host;
+					var s = document.createElement('script');
+					s.type = 'text/javascript';
+					s.async = true;
+					s.src = url + '/widget-send-button/js/init.js';
+					s.onload = function () {
+						WhWidgetSendButton.init(host, proto, options);
+					};
+					var x = document.getElementsByTagName('script')[0];
+					x.parentNode.insertBefore(s, x);
+				})();
+			</script>
+			<!-- /WhatsHelp.io widget -->
+			<hr>
+			<h2>WeChat</h2>
+			<h3>Scan with WeChat to chat</h3>
+			<div>
+				<span>Chat with us on WeChat!</span>
+				<br />
+				<img src="wechat_business_qr.jpg" alt="wechat qr code">
+				<!--
 		<br />
 		<a href="weixin://dl/profile/jessicacoke">View a WeChat profile!</a>
 		<br />
 		<a href="weixin://scanqrcode">Scan qr code</a>
 		-->
-		<!-- weixin://dl/businessWebview/link/?appid=%s&url=%s -->
-	</div>
+				<!-- weixin://dl/businessWebview/link/?appid=%s&url=%s -->
+			</div>
 </body>
 
 </html>
