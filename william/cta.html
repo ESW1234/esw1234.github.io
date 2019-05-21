@@ -26,11 +26,11 @@
 				whatsAppHref = "https://wa.me/14155352635?text=Help%20me%20please";
 				whatsAppInnerText = "WhatsApp Link (This will swivel on mobile and include the message \"Help me please\")";
 			}
+			let whatsAppAnchorElement = document.createElement("a");
+			whatsAppAnchorElement.href = whatsAppHref;
+			whatsAppAnchorElement.innerText = whatsAppInnerText;
+			whatsAppDiv.appendChild(whatsAppAnchorElement);
 		}
-		let whatsAppAnchorElement = document.createElement("a");
-		whatsAppAnchorElement.href = whatsAppHref;
-		whatsAppAnchorElement.innerText = whatsAppInnerText;
-		whatsAppDiv.appendChild(whatsAppAnchorElement);
 	</script>
 	<style>
 		/*
