@@ -1,17 +1,7 @@
 <html>
-<!-- <script src="https://static.cdn-apple.com/businesschat/start-chat-button/2.0.0/index.js"></script> -->
 
 <head>
 	<script>
-		/*function toggleAccordianFb() {
-			let accordianFb = document.getElementById("accordian-fb");
-			const accordianFbDisplay = accordianFb.style.display;
-			if (accordianFbDisplay === "none" || accordianFbDisplay === "") {
-				accordianFb.style.display = "block";
-			} else {
-				accordianFb.style.display = "none";
-			}
-		}*/
 		function onload() {
 			let whatsAppDiv = document.getElementById("whatsapp");
 			let whatsAppHref = "https://web.whatsapp.com/send?phone=18001234567";
@@ -34,13 +24,6 @@
 			whatsAppDiv.appendChild(whatsAppAnchorElement);
 		}
 	</script>
-	<style>
-		/*
-		.accordian-fb {
-			display:none;
-		}
-		*/
-	</style>
 </head>
 
 <body onload="onload()">
@@ -55,19 +38,8 @@
 			});
 		};
 	</script>
-	<!-- <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script> -->
 	<h2>Facebook Messenger</h2>
-	<!-- <button onclick="toggleAccordianFb()">Toggle fb button region</button> -->
-	<div id="accordian-fb" class="accordian-fb">
-		<h3>Plugin</h3>
-		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="blue"
-			size="standard">
-		</div>
-		<br />
-		<div class="fb-messengermessageus" messenger_app_id="369201057026870" page_id="2296846213889326" color="white"
-			size="xlarge">
-		</div>
-		<br />
+	<div>
 		<h3>Click to chat link</h3>
 		<div>
 			<a href="https://m.me/2296846213889326/">Chat with us on FB Messenger! (This will swivel)</a>
@@ -86,19 +58,7 @@
 			the message "Help me please")</a>
 	</div>
 	<hr>
-	<!--		<div 
-			class="apple-business-chat-banner-container" 
-			data-apple-business-id="03930a79-b762-4b49-81d5-f2cc897f0871" 
-			data-apple-banner-cta="Questions? We can help."
-			data-apple-banner-context="Chat with one of our pros to get your offer for iPhone Xs."
-		</div>-->
 	<h2>Apple Business Chat</h2>
-	<h3>Plugin</h3>
-	<div class="apple-business-chat-message-container" data-apple-business-id="03930a79-b762-4b49-81d5-f2cc897f0871"
-		data-apple-icon-color="#1B3F68" data-apple-icon-scale="1.0"
-		data-apple-icon-title="Style questions? We can help.">
-	</div>
-	<br />
 	<h3>Click to chat link</h3>
 	<div>
 		<a href="https://bcrw.apple.com/urn:biz:03930a79-b762-4b49-81d5-f2cc897f0871?body=Help%20me%20please">Chat with
@@ -113,9 +73,9 @@
 		<!-- <a href="https://wa.me/14155352635?text=Help%20me%20please">WhatsApp Link (This will swivel on mobile and
 			include the message "Help me please")</a>
 		<a href="https://web.whatsapp.com/send?phone=18001234567"/> -->
-	</div> 
-			<!-- WhatsHelp.io widget -->
-			<!-- <script type="text/javascript">
+	</div>
+	<!-- WhatsHelp.io widget -->
+	<!-- <script type="text/javascript">
 				(function () {
 					var options = {
 						whatsapp: "+1 (800) 123-4567", // WhatsApp number
@@ -136,22 +96,21 @@
 					x.parentNode.insertBefore(s, x);
 				})();
 			</script> -->
-			<!-- /WhatsHelp.io widget -->
-			<hr>
-			<h2>WeChat</h2>
-			<h3>Scan with WeChat to chat</h3>
-			<div>
-				<span>Chat with us on WeChat!</span>
-				<br />
-				<img src="wechat_business_qr.jpg" alt="wechat qr code">
-				<!--
+	<!-- /WhatsHelp.io widget -->
+	<hr>
+	<h2>WeChat</h2>
+	<h3>Scan with WeChat to chat</h3>
+	<div>
+		<span>Chat with us on WeChat!</span>
+		<br />
+		<img src="wechat_business_qr.jpg" alt="wechat qr code">
+		<!--
 		<br />
 		<a href="weixin://dl/profile/jessicacoke">View a WeChat profile!</a>
 		<br />
 		<a href="weixin://scanqrcode">Scan qr code</a>
 		-->
-				<!-- weixin://dl/businessWebview/link/?appid=%s&url=%s -->
-			</div>
+		<!-- weixin://dl/businessWebview/link/?appid=%s&url=%s -->
+	</div>
 </body>
-
 </html>
