@@ -1,16 +1,17 @@
+
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>222 5.0 Desktop</title>
+	<title>222 5.0 Desktop - Chatbot</title>
 </head>
 
 <body>
 
-<p align="center"><font color = "red"><a href="5.html">This page.</a></font></p>
-<p align="center"><font color = "red"><a target="_blank" href="5.html">This page in new tab.</a></font></p>
+<p align="center"><font color = "red"><a href="5-chatbot.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="5-chatbot.html">This page in new tab</a></font></p>
 
 <h1>
-	222 | desktop | justin | 5.0
+	222 | desktop | justin | 5.0 chatbot
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -33,7 +34,7 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.defaultMinimizedText = 'chat with a bot'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -63,17 +64,17 @@
 		
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/helpCenterMay2019',
+			'http://communities.localhost.soma.force.com:6109/napiliOct152018',
 			gslbBaseURL,
 			'00Dxx0000006Gz1',
-			'justin',
+			'chatbot',
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004CAe',
+				buttonId: '573xx0000004CFU',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_165a5ef6cb6',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
