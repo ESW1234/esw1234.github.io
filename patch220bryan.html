@@ -1,16 +1,20 @@
 
-
-<html>
-    <head>
-</head> 
+<html>	
+    <head>	
+</head> 	
     <body>
-<style type='text/css'>
+	    <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Arial", sans-serif;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -30,18 +34,18 @@
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
 
-		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLTsndF_20tXI1XLI_BJVc2xlP9m9dqz0ARy0XgPCEEjWmOm4ZuLZv4VrN1_MEW9_Hdw8Nb';
+		embedded_svc.settings.useCustomAuthentication = false;		
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOL1TTDyGVU_faSHFGkT2slIhKB0lxTmZnHHMBvFl7bMpebM3SVD.Ave1aWIxwAsxkSIQ7y4';
 		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/bryanpatch220-callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 		embedded_svc.settings.authenticationStartLabel = 'authenticated';
 
 		embedded_svc.init(
-			'http://bsugiarto-wsm.internal.salesforce.com:6109',
-			'http://patch220.localhost.soma.force.com:6109',
+			'https://bsugiarto-wsm.internal.salesforce.com:7443',
+			'https://obi-wan-16ae6cb8126.localhost.soma.force.com:7443',
 			gslbBaseURL,
-			'00Dxx0000006GXb',
-			'patch220snapin',
+			'00Dxx0000006H2l',
+			'Obi_Wan_Snap_In',
 			{
 				
 			}
@@ -50,7 +54,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://bsugiarto-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://bsugiarto-wsm.internal.salesforce.com:7443/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -59,9 +63,8 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
-
- <div id="salesforce-login"></div>
- 
- </body>
-</html>
+	    
+	    <div id="salesforce-login"></div>
+  	
+    </body>
+</html>	
