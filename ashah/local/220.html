@@ -49,9 +49,9 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		embedded_svc.settings.externalScripts = ["customEvents"];
-		
+		embedded_svc.settings.devMode = true;
 		embedded_svc.addEventHandler("onChatStateLoaded", function(data) {
-    			console.log("Chat state loaded! ");
+    			console.log("Chat state loaded! " + data);
 		});
 		// embedded_svc.settings.devMode = true;
 		embedded_svc.init(
