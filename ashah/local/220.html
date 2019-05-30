@@ -51,7 +51,7 @@
 		embedded_svc.settings.externalScripts = ["customEvents"];
 		embedded_svc.settings.devMode = true;
 		embedded_svc.addEventHandler("onChatStateLoaded", function(data) {
-    			console.log("Chat state loaded! " + data);
+    			console.log("Chat state loaded! " + "In " + data.isMaster + " Mode..With active sessions : " + data.activeTabsInChat);
 		});
 		// embedded_svc.settings.devMode = true;
 		embedded_svc.init(
