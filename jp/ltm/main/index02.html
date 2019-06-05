@@ -36,6 +36,7 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.devMode=true
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -62,13 +63,13 @@
 			'http://jp222ltm-admin002-community.localhost.soma.force.com:6109/comm1',
 			gslbBaseURL,
 			'00Dxx0000006GwJ',
-			'EswLA1',
+			'chatTeam1',
 			{
 				baseLiveAgentContentURL: 'http://snimmaga-ltm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
-				buttonId: '573xx0000004CAe',
+				deploymentId: '572xx0000004CCG',
+				buttonId: '573xx0000004CCG',
 				baseLiveAgentURL: 'http://snimmaga-ltm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CDsEAM_16b0d074d1b',
+				eswLiveAgentDevName: 'chatTeam1',
 				isOfflineSupportEnabled: true
 			}
 		);
