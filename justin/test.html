@@ -78,10 +78,7 @@
 			"updateCaseId",
 			function(e) {
 				debugger;
-				var prechatDetails = embedded_svc.settings.extraPrechatFormDetails[0];
-
-				if(prechatDetails && e.caseId) prechatDetails.value = e.caseId;
-
+				embedded_svc.settings.extraPrechatFormDetails[0].value = e.caseId;
 				debugger;
 				// Fire callback.
 				e.callback();
