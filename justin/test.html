@@ -78,10 +78,10 @@
 			"updateCaseId",
 			function(e) {
 				debugger;
-				embedded_svc.settings.extraPrechatFormDetails[0].value = e.caseId;
+				embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.caseId;
 				debugger;
 				// Fire callback.
-				e.callback();
+				event.detail.callback();
 			},
 			false
 		);
