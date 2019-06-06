@@ -76,10 +76,8 @@
 
 		document.addEventListener(
 			"updateCaseId",
-			function(e) {
-				debugger;
+			function(event) {
 				embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.caseId;
-				debugger;
 				// Fire callback.
 				event.detail.callback();
 			},
