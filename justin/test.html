@@ -58,22 +58,18 @@
 			"value":"500RM000002WNsG",
 			"displayToAgent":true
 		}];
-		embedded_svc.settings.extraPrechatInfo = [
-                    {
-                        "entityName": "Case",
-                        "saveToTranscript": "CaseId",
-                        "showOnCreate":false,
-                        "entityFieldMaps": [
-                            {   
-                                "isExactMatch": true,
-                                "fieldName": "Id",
-                                "doCreate": false,
-                                "doFind": true,
-                                "label": "CaseId"
-                                }
-                        ]
-                    }
-                ];
+		embedded_svc.settings.extraPrechatInfo = [{
+			"entityName": "Case",
+			"saveToTranscript": "CaseId",
+			"showOnCreate":false,
+			"entityFieldMaps": [{
+				"isExactMatch": true,
+				"fieldName": "Id",
+				"doCreate": false,
+				"doFind": true,
+				"label": "CaseId"
+			}]
+		}];
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
