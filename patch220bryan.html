@@ -41,8 +41,8 @@
 		embedded_svc.settings.authenticationStartLabel = 'authenticated';
 
 		embedded_svc.init(
-			'https://bsugiarto-wsm.internal.salesforce.com:7443',
-			'https://obi-wan-16ae6cb8126.localhost.soma.force.com:7443',
+			'https://bsugiarto-wsm.internal.salesforce.com:57983',
+			'https://obi-wan-16ae6cb8126.localhost.soma.force.com:57983',
 			gslbBaseURL,
 			'00Dxx0000006H2l',
 			'Obi_Wan_Snap_In',
@@ -54,7 +54,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://bsugiarto-wsm.internal.salesforce.com:7443/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://bsugiarto-wsm.internal.salesforce.com:57983/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
