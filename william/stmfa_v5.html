@@ -48,6 +48,15 @@
                 Subject: "hey"
             }; //Sets the auto-population of pre-chat form fields
             
+            embedded_svc.addEventHandler("onChatStateLoaded", function (data) {
+                debugger;
+                console.log("onChatStateLoaded event was fired. data was " + JSON.stringify(data));
+            });
+            embedded_svc.addEventHandler("onCustomEventsScriptsLoaded", function (data) {
+                debugger;
+                console.log("onCustomEventsScriptsLoaded event was fired. data was " + JSON.stringify(data));
+			});
+			embedded_svc.settings.externalScripts = ["CustomEvents"];
             embedded_svc.init(
 			'https://willesw.my.stmfa.stm.salesforce.com',
 			'https://snapins-15fc6fb04c9-163409bf568.stmfa.stm.force.com/napili',
