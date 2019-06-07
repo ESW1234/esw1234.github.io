@@ -54,10 +54,6 @@
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
             //embedded_svc.settings.chatbotAvatarImgURL = 'https://esw1234.github.io/automation/avatar.jpg';
-            embedded_svc.addEventHandler("onChatEndedByChasitor", function (data) {
-                debugger;
-                console.log("onChatEndedByChasitor event was fired. data was " + JSON.stringify(data));
-            });
             embedded_svc.addEventHandler("onChatStateLoaded", function (data) {
                 debugger;
                 console.log("onChatStateLoaded event was fired. data was " + JSON.stringify(data));
