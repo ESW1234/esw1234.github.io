@@ -65,7 +65,8 @@
             embedded_svc.addEventHandler("onCustomEventsScriptsLoaded", function (data) {
                 debugger;
                 console.log("onCustomEventsScriptsLoaded event was fired. data was " + JSON.stringify(data));
-            });
+			});
+			embedded_svc.settings.externalScripts = ["CustomEvents"];
             embedded_svc.init('https://na44.stmfa.stm.salesforce.com',
                 'https://snapins-15fc6fb04c9-163409bf568.stmfa.stm.force.com/napili', gslbBaseURL,
                 '00DRM00000061S6', 'chatbot', {
