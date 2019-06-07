@@ -1,0 +1,213 @@
+var JSON_MOCK = {
+	menuSettings : {
+		name : "developerName",
+		enabled : true,
+		siteUrl : "https://snapins-1600942b294.stmfb.stm.force.com/napili",
+		branding : {
+			property1 : "value1",
+			property2 : "value2"
+		},
+		labels : {
+			header: "Hello!",
+			subheader: "How can we help you?"
+		}
+	 },
+	menuItems : {
+        // item1 : {
+        //     channel : "EswConfig1",
+        //     channelType : "EmbeddedServiceConfig",
+        //     order : 1,
+        //     icon : "someImageUrl",
+        //     configuration : {
+        //     },
+        //     labels : {
+        //     	CTA: "Chat with an Expert"
+        //     }
+        // },
+        item2 : {
+            channel : "WhatsApp1",
+            channelType : "MessagingChannel",
+            order : 2,
+				icon: "someImageUrl",
+            configuration : {
+                link: "https://wa.me/14155352635?text=Help%20me%20please"
+            },
+            labels : {
+                CTA: "Message us on WhatsApp"
+            }
+        },
+        item3 : {
+            channel : "Facebook1",
+            channelType : "MessagingChannel",
+            order : 3,
+            configuration : {
+                link: "https://m.me/2296846213889326/"
+            },
+            labels : {
+					CTA: "Message us on Facebook"
+            }
+        },
+        item4 : {
+            channel : "SMS1",
+            channelType : "SMS",
+            order : 4,
+            configuration : {
+            	link: "sms:+14155352635?&body=Help%20me%20please"
+            },
+            labels : {
+            	CTA: "Text us"
+            }
+        },
+        item5 : {
+            channel : "CALL1",
+            channelType : "CALL",
+            order : 5,
+            configuration : {
+					link: "tel:+14155352635"
+            },
+            labels : {
+            	CTA: "Call us"
+            }
+        },
+        item6 : {
+            channel : "ABC1",
+            channelType : "MessagingChannel",
+            order : 6,
+            configuration : {
+					link: "https://bcrw.apple.com/urn:biz:03930a79-b762-4b49-81d5-f2cc897f0871?body=Help%20me%20please"
+            },
+            labels : {
+					CTA: "iMessage us"
+            }
+        },
+        item7 : {
+            channel : "WeChat",
+            channelType : "MessagingChannel",
+            order : 7,
+            configuration : {
+					link: "weixin://dl/chat"
+            },
+            labels : {
+					CTA: "WeChat us"
+            }
+        }
+    }
+};
+
+	window.embedded_svc.menu.configuration = {
+		menuSetting: {
+			name: "developerName",
+			enabled: true,
+			siteUrl: "https://snapins-1600942b294.stmfb.stm.force.com/napili",
+			branding: {
+				tokens: {
+					primary: {
+						cssTagType: "",
+						cssValue: ""
+					},
+					contrastPrimary: {
+						cssTagType: "",
+						cssValue: ""
+					},
+					contrastInvertedColor: {
+						cssTagType: "",
+						cssValue: ""
+					},
+					font: {
+						cssTagType: "",
+						cssValue: ""
+					}
+				}
+			},
+			labels: {
+				header: "Hello!",
+				subheader: "How can we help you?"
+			}
+		},
+		menuItems: {
+			item1: {
+				channel: "SMS1",
+				channelType: "SMS",
+				order: 1,
+				configuration: {
+					linkUrl: "sms:+14155352635?&body=Help%20me%20please",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "Text us"
+				}
+			},
+			item2: {
+				channel: "CALL1",
+				channelType: "CALL",
+				order: 2,
+				configuration: {
+					linkUrl: "tel:+14155352635",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "Call us"
+				}
+			},
+			item3: {
+				channel: "ABC1",
+				channelType: "MessagingChannel",
+				order: 3,
+				configuration: {
+					linkUrl: "https://bcrw.apple.com/urn:biz:03930a79-b762-4b49-81d5-f2cc897f0871?body=Help%20me%20please",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "iMessage us"
+				}
+			},
+			item4: {
+				channel: "WeChat1",
+				channelType: "MessagingChannel",
+				order: 4,
+				configuration: {
+					linkUrl: "weixin://dl/chat",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "Message us on WeChat"
+				}
+			},
+			item5: {
+				channel: "WhatsApp1",
+				channelType: "MessagingChannel",
+				order: 5,
+				configuration: {
+					linkUrl: "https://wa.me/14155352635?text=Help%20me%20please",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "Message us on WhatsApp"
+				}
+			},
+			item6: {
+				channel: "Facebook1",
+				channelType: "MessagingChannel",
+				order: 6,
+				configuration: {
+					linkUrl: "https://m.me/2296846213889326/",
+					iconUrl: ""
+				},
+				labels: {
+					CTA: "Message us on Facebook"
+				}
+			},
+			item7: {
+				channel: "EswConfig1",
+				channelType: "EmbeddedServiceConfig",
+				order: 7,
+				configuration: {
+					// linkUrl: "",
+					// iconUrl: ""
+				},
+				labels: {
+					CTA: "Chat with an Expert"
+				}
+			}
+		}
+	};
