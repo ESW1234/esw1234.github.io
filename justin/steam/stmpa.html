@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<!-- From code snippet generator. -->
@@ -58,7 +57,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -69,20 +68,20 @@
 		embedded_svc.settings.devMode = true;
 
 		// Non standard settings.
-		embedded_svc.settings.autoOpenPostChat = true;
+// 		embedded_svc.settings.autoOpenPostChat = true;
 
 		embedded_svc.init(
 			'https://ap1.stmpa.stm.salesforce.com',
-			'https://eswcommunities.stmpa.stm.force.com/helpCenterMarch2019',
+			'https://embedded.stmpa.stm.force.com/customerServiceJune2019',
 			gslbBaseURL,
-			'00DR00000009Vdz',
-			'justin',
+			'00DR00000009ooL',
+			'omniRouted',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/content',
-				deploymentId: '572R000000001fq',
-				buttonId: '573R00000004EWW',
+				deploymentId: '572R000000001kS',
+				buttonId: '573R00000004Fzs',
 				baseLiveAgentURL: 'https://d.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR00000000089MAA_16978672d63',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR0000000008iMAA_16b1f356e10',
 				isOfflineSupportEnabled: true
 			}
 		);
