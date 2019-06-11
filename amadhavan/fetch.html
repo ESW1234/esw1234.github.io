@@ -3,7 +3,8 @@
 fetch(url, {
   method: 'GET', // or 'PUT' // data can be `string` or {object}!
   headers:{
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    mode: 'no-cors'
   }
 }).then(res => res.json())
 .then(response => console.log('Success:', JSON.stringify(response)))
