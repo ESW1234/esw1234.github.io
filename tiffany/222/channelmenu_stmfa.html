@@ -2,8 +2,8 @@
 <html>
 	<style>
 		html {
-  background-color: #f5f5f5;
-}
+			background-color: #f5f5f5;
+		}
 	</style>
    <head>
    <title>DEFAULT PAGE</title>
@@ -12,21 +12,21 @@
    </head>
 <body>
 <a href="https://github.com/ESW1234/esw1234.github.io/edit/master/tiffany/local/222-fab.html">EDIT PAGE</a>
-<script type='text/javascript' src='http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script>
-<!-- <script type='text/javascript' src='http://tiffanytso-wsm.internal.salesforce.com:6109/sfdc/htdocs/embeddedservice/menu/fab.js'></script> -->
+<script type='text/javascript' src='https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL){
 	embedded_svc.menu.init(gslbBaseURL);
 }
 if (!window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
+// 		initESW('http://service.force.com');
+		initESW('https://na44.stmfa.stm.salesforce.com');
 	}
 </script>
 </body>
