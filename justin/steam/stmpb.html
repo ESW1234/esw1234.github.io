@@ -12,12 +12,12 @@
  
 <body>
 
-<p align="center"><font color = "red"><a href="stmpa.html">this page</a></font></p>
-<p align="center"><font color = "red"><a target="_blank" href="stmpa.html">this page in a new tab</a></font></p>
-<p align="center"><font color = "red"><a href="stmpa-2.html">STMPA page 2.</a></font></p>
+<p align="center"><font color = "red"><a href="stmba.html">this page</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmba.html">this page in a new tab</a></font></p>
+
 
 <h1>
-	STMPA
+	STMPB
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -72,17 +72,17 @@
 // 		embedded_svc.settings.autoOpenPostChat = true;
 
 		embedded_svc.init(
-			'https://ap1.stmpa.stm.salesforce.com',
-			'https://embedded.stmpa.stm.force.com/customerServiceJune2019',
+			'https://ap1.stmpb.stm.salesforce.com',
+			'https://embedded-service-sites.stmpb.stm.force.com/site1',
 			gslbBaseURL,
-			'00DR00000009ooL',
-			'omniRouted',
+			'00DR00000009Niu',
+			'justin',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/content',
-				deploymentId: '572R000000001kS',
-				buttonId: '573R00000004Fzs',
-				baseLiveAgentURL: 'https://d.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR0000000008iMAA_16b1f356e10',
+				baseLiveAgentContentURL: 'https://c.la2-stmpb1-0-prd.stmpb.stm.salesforceliveagent.com/content',
+				deploymentId: '572R000000001b9',
+				buttonId: '573R00000004DwZ',
+				baseLiveAgentURL: 'https://d.la2-stmpb1-0-prd.stmpb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR00000004CIQMA2_16b714b7922',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -91,14 +91,14 @@
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
 // 		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://ap1.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://ap1.stmba.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 // 		initESW('https://service.force.com');
-		initESW('https://ap1.stmpa.stm.salesforce.com');
+		initESW('https://ap1.stmpb.stm.salesforce.com');
 	}
 </script>
 
