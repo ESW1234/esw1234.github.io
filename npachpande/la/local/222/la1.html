@@ -13,11 +13,12 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -42,14 +43,14 @@
 			'http://snapins-subdomain-161923d1a2-16b4cc05b1e.localhost.soma.force.com:6109/fscommunity',
 			gslbBaseURL,
 			'00Dxx0000006IgN',
-			'LA',
+			'ChatTeam',
 			{
 				baseLiveAgentContentURL: 'http://npachpande-ltm2.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CiW',
-				buttonId: '573xx0000004CiW',
+				deploymentId: '572xx0000004CiX',
+				buttonId: '573xx0000004Ck8',
 				baseLiveAgentURL: 'http://npachpande-ltm2.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CguEAE_16b4cce0e8b',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'ChatTeam',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
