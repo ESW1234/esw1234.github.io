@@ -1,16 +1,17 @@
+
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>222 5.0 Desktop</title>
+	<title>222 5.0 Laptop - Chatbot</title>
 </head>
 
 <body>
 
-<p align="center"><font color = "red"><a href="5.html">This page.</a></font></p>
-<p align="center"><font color = "red"><a target="_blank" href="5.html">This page in new tab.</a></font></p>
+<!-- <p align="center"><font color = "red"><a href="5-2.html">Desktop Page 2</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="5-2.html">Desktop Page 2 in new tab</a></font></p> -->
 
 <h1>
-	222 | desktop | justin | 5.0
+	222 | laptop | justin | 5.0 chatbot
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -27,70 +28,61 @@
 	}
 </style>
 
+
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
+		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		// Extra settings.
-		embedded_svc.settings.avatarImgURL = "../../../avatar.png";
-		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
-
-		// Non-standard snippet settings.
-		embedded_svc.settings.devMode = true;
-
-		// Adidas
-		//embedded_svc.settings.autoOpenPostChat = true;
-		
 		embedded_svc.init(
-			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/customerServiceMay2019',
+			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109/helpCenter03102019',
 			gslbBaseURL,
-			'00Dxx0000006Gz1',
-			'justin',
+			'00Dxx0000006HDX',
+			'chatbot',
 			{
-				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
+				baseLiveAgentContentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004CAe',
-				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
-				isOfflineSupportEnabled: true
+				buttonId: '573xx0000004C92',
+				baseLiveAgentURL: 'http://jmacmillin-ltm4.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CIiEAM_16969bf7c11',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
-// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 // 		initESW('https://service.force.com');
-		initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
+		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 	}
 </script>
+
 
 </body>
 </html>
