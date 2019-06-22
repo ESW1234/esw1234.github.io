@@ -3,6 +3,29 @@
    <head>
    <title>DEFAULT PAGE</title>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	   <script>
+		function overrideWeakMapGet() {
+			console.log("checking for WeakMap breaking override...");
+			var isWeakMapGetBroken = false;
+			try {
+				new WeakMap().get(undefined);
+				console.log("all good here!");
+			} catch (e) {
+				isWeakMapGetBroken = true;
+			}
+			if (isWeakMapGetBroken) {
+				console.log("WeakMap get has been broken. Swapping out!");
+				var originalGet = WeakMap.prototype.get;
+				WeakMap.prototype.get = function (key) {
+					if (key == null) {
+						return key; // null and undefined values
+					}
+					return originalGet.call(this, key);
+				}
+			}
+		}
+	   </script>
+   <script type="text/javascript" onload="overrideWeakMapGet" src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
   <p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
