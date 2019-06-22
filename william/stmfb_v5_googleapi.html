@@ -16,7 +16,7 @@
 				console.log("WeakMap get has been broken. Swapping out!");
 				var originalGet = WeakMap.prototype.get;
 				WeakMap.prototype.get = function (key) {
-					if (key === null || key === undefined) {
+					if (key == null) {
 						return key; // null and undefined values
 					}
 					return originalGet.call(this, key);
