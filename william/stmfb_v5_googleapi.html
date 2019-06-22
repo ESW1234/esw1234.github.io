@@ -5,9 +5,11 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js" onload="overrideWeakMapGet()"></script>
 	<script>
 		function overrideWeakMapGet() {
+			console.log("checking for WeakMap breaking override...");
 			var isWeakMapGetBroken = false;
 			try {
-				new WeakMap().get(undefined)
+				new WeakMap().get(undefined);
+				console.log("all good here!");
 			} catch (e) {
 				isWeakMapGetBroken = true;
 			}
