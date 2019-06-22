@@ -24,8 +24,13 @@
 				}
 			}
 		}
-	   </script>
-   <script type="text/javascript" onload="overrideWeakMapGet" src="https://maps.googleapis.com/maps/api/js"></script>
+		var script = document.createElement("script");
+
+		script.type = "text/javascript";
+		script.src = "https://maps.googleapis.com/maps/api/js";
+		script.onload = overrideWeakMapGet;
+		document.head.appendChild(script);
+	</script>
 </head>
 <body>
   <p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
