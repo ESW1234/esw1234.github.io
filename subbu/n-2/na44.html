@@ -3,13 +3,41 @@
    <head>
    <title>DEFAULT PAGE</title>
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	   <script>
+		function overrideWeakMapGet() {
+			console.log("checking for WeakMap breaking override...");
+			var isWeakMapGetBroken = false;
+			try {
+				new WeakMap().get(undefined);
+				console.log("all good here!");
+			} catch (e) {
+				isWeakMapGetBroken = true;
+			}
+			if (isWeakMapGetBroken) {
+				console.log("WeakMap get has been broken. Swapping out!");
+				var originalGet = WeakMap.prototype.get;
+				WeakMap.prototype.get = function (key) {
+					if (key == null) {
+						return key; // null and undefined values
+					}
+					return originalGet.call(this, key);
+				}
+			}
+		}
+		var script = document.createElement("script");
+
+		script.type = "text/javascript";
+		script.src = "https://maps.googleapis.com/maps/api/js";
+		script.onload = overrideWeakMapGet;
+		document.head.appendChild(script);
+	</script>
 </head>
 <body>
   <p align="center"><font color ="red">PAGE ONE DEFAULT WIDGET</font></p>
   <br/>
   <br/>
 	<p align="center"><font color = "red"><a href="https://esw4321.github.io/subbu/na1_blitz03.html">Link to PAGE IN ANOTHER SUBDOMAIN</a></font></p>
-	<p align="center"><font color = "red"><a href="na1_blitz03_page2.html">Link to PAGE ONE DEFAULT WIDGET</a></font></p>
+	<p align="center"><font color = "red"><a href="na44_page2.html">Link to PAGE TWO DEFAULT WIDGET</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_no_button.html">Link to PAGE WITH BUTTON HIDDEN</a></font></p>
 	<p align="center"><font color = "red"><a href="na44_no_snippet.html">Link to PAGE WITHOUT SNIPPET</a></font></p>
 	<p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH SECOND DEPLOYMENT</a></font></p>
@@ -21,7 +49,6 @@
 -->
   <br>
   <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"</script>
 
 	<div id="button_goes_here"></div>
 <style type='text/css'>

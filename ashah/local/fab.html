@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+<body>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/local/222-fab.html">EDIT PAGE</a>
+<script type='text/javascript' src='http://analshah-wsm10.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script>
+<script type='text/javascript'>
+var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, eswConfigDevName, channelMenuSettingDevName){
+	embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, eswConfigDevName, channelMenuSettingDevName);
+}
+if (!window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://analshah-wsm10.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.onload = function() {
+			initESW('http://analshah-wsm10.internal.salesforce.com:6109', 'http://tiffanytso-16b1ea1943e.localhost.soma.force.com:6109', 'http://analshah-wsm10.internal.salesforce.com:6109', '00Dxx0000006GoF', undefined, 'EmbeddedServiceMenu1' );
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('http://analshah-wsm10.internal.salesforce.com:6109', 'http://tiffanytso-16b1ea1943e.localhost.soma.force.com:6109', 'http://analshah-wsm10.internal.salesforce.com:6109', '00Dxx0000006GoF', undefined, 'EmbeddedServiceMenu1');
+	}
+</script>
+</body>
+</html>
