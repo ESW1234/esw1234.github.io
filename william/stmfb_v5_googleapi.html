@@ -5,6 +5,7 @@
 	<script>
 		function overrideAuraGet() {
 			if (typeof $A.get === "undefined") {
+				console.log("$A.get undefined!");
 				window.$A.prototype.get = function (whatever) {
 					console.log("$A.get called!");
 					return "foo";
