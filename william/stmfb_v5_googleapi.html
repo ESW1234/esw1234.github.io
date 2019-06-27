@@ -6,9 +6,9 @@
 		function overrideAuraGet() {
 			console.log("overrideAuraGet called!");
 			if (typeof window.$A.get === "undefined") {
-				console.log("window.$A.get undefined!");
-				window.$A.prototype.get = function (whatever) {
-					console.log("window.$A.get called!");
+				console.log("window.$A.get undefined, updating prototype method!");
+				window.$A.prototype.get = function (context) {
+					console.log(`window.$A.get called from ${context}`);
 					return "foo";
 				};
 			}
@@ -18,7 +18,7 @@
 
 		script.type = "text/javascript";
 		script.src = "https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js";
-		script.onload = overrideAuraGet;
+		script.onload = overrideAuraGet.bind(null, "head");
 		document.head.appendChild(script);
 	</script>
 	<!-- <script>
@@ -52,7 +52,7 @@
 	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
 </head>
 
-<body onload=overrideAuraGet()>
+<body onload=overrideAuraGet("onloadBody")>
 	<h1>Chat with us!</h1>
 	<!-- <button onclick="onclickPrechat()">Fill prechat details</button>
     <script type='text/javascript'>
@@ -192,7 +192,7 @@
 				Subject: "I need help!"
 			}; //Sets the auto-population of pre-chat form fields
 
-			overrideAuraGet();
+			overrideAuraGet("beforeESInitCall");
 			embedded_svc.init(
 				'https://na44.stmfb.stm.salesforce.com',
 				'https://tiffanytso-16a22511f58.stmfb.stm.force.com',
