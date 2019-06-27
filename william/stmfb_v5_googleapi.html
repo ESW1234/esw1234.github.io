@@ -2,7 +2,21 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script> -->
+	<script>
+		function overrideAuraGet() {
+			$A.prototype.get = function (whatever) {
+				return null;
+			};
+		}
+
+		var script = document.createElement("script");
+
+		script.type = "text/javascript";
+		script.src = "https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js";
+		script.onload = overrideAuraGet;
+		document.head.appendChild(script);
+	</script>
 	<!-- <script>
 		function overrideWeakMapGet() {
 			console.log("checking for WeakMap breaking override...");
