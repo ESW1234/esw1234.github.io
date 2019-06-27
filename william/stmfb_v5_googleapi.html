@@ -193,7 +193,14 @@
 				Subject: "I need help!"
 			}; //Sets the auto-population of pre-chat form fields
 
-			window.overrideAuraGet();
+			//overrideAuraGet();
+			if (typeof window.$A.get === "undefined") {
+				console.log("window.$A.get undefined, adding method!");
+				window.$A.get = function (key) {
+					console.log(`window.$A.get called with key: ${key}, returning false until Aura overrides $A.`);
+					return false;
+				};
+			}
 			embedded_svc.init(
 				'https://na44.stmfb.stm.salesforce.com',
 				'https://tiffanytso-16a22511f58.stmfb.stm.force.com',
