@@ -4,9 +4,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<script>
 		function overrideAuraGet() {
-			window.$A.prototype.get = function (whatever) {
-				return null;
-			};
+			if (typeof $A.get === "undefined") {
+				window.$A.prototype.get = function (whatever) {
+					console.log("$A.get called!");
+					return "foo";
+				};
+			}
 		}
 
 		var script = document.createElement("script");
