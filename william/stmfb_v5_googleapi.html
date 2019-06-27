@@ -7,8 +7,8 @@
 			console.log(`overrideAuraGet called from ${context}!`);
 			if (typeof window.$A.get === "undefined") {
 				console.log("window.$A.get undefined, updating prototype method!");
-				window.$A.get = function () {
-					console.log("window.$A.get called!");
+				window.$A.get = function (key) {
+					console.log(`window.$A.get called with key: ${key}`);
 					return "foo";
 				};
 			}
