@@ -9,7 +9,7 @@
 		if (typeof window.$A.get === "undefined") {
 			console.log("window.$A.get undefined, adding method!");
 			window.$A.get = function (key) {
-				console.log(`window.$A.get called with key: ${key}, returning false until Aura overrides $A.`);
+				console.log("window.$A.get called with key: ${key}, returning false until Aura overrides $A.");
 				return false;
 			};
 		}
