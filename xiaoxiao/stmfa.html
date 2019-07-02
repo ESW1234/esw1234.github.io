@@ -1,18 +1,16 @@
 <html>
-	<head></head>
+<head>
+</head>
 <body>
-  <style type='text/css'>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -42,16 +40,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://eswtiffany.stmfa.stm.force.com/esw',
+			'https://xxtest-16b718ea209-developer-edition.na44.stmfa.stm.force.com/',
 			gslbBaseURL,
-			'00DRM0000007d8z',
-			'OmniBot_QueueBased',
+			'00DRM000000ExTZ',
+			'xxzhouDeployment',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000005Wq',
-				buttonId: '573RM000000066w',
+				deploymentId: '572RM0000004Ihm',
+				buttonId: '573RM0000004JEn',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16b47e5e001',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -65,9 +63,8 @@
 		};
 		document.body.appendChild(s);
 	} else {
-// 		initESW('https://service.force.com');
-		initESW('https://na44.stmfa.stm.salesforce.com');
+	  initESW('https://service.force.com');
 	}
 </script>
-	</body>
+</body>
 </html>
