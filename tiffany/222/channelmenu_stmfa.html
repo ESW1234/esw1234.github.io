@@ -11,17 +11,27 @@
 				  imum-scale=1, maximum-scale=1, user-scalable=0"> -->
    </head>
 <body>
-<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/tiffany/local/222-fab.html">EDIT PAGE</a>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/tiffany/222/channelmenu_stmfa.html">EDIT PAGE</a>
 <script type='text/javascript' src='https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js'></script>
 <script type='text/javascript'>
-var initESW = function(gslbBaseURL){
-	embedded_svc.menu.init(gslbBaseURL);
+var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName){
+	    // Add the liveAgentChatUrl and liveAgentContentUrl only if they can't be obtained on the REST call
+	    // Also not making it part of init as we'll want to get rid of them
+	    embedded_svc.menu.settings.liveAgentChatUrl = "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat";
+	    embedded_svc.menu.settings.liveAgentContentUrl = "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content";
+	    // Language setting needed for fetching the labels in the right language for chat
+	    // embedded_svc.menu.settings.language = "en";
+	    embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName);
 }
 if (!window.embedded_svc.menu) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
 		s.onload = function() {
-			initESW(null);
+			initESW('https://na44.stmfa.stm.salesforce.com',
+			        'https://tiffanytso.stmfa.stm.force.com',
+			       	'https://na44.stmfa.stm.salesforce.com',
+			        '00DRM0000007d8z',
+			        'Esms01');
 		};
 		document.body.appendChild(s);
 	} else {
