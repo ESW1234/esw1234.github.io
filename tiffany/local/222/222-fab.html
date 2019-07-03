@@ -18,7 +18,314 @@
 var initESW = function(gslbBaseURL){
 	// embedded_svc.menu.init(gslbBaseURL);
 	embedded_svc.menu.settings.devMode = 'true';
-
+	
+	embedded_svc.menu.settings.replaceWithMock = true;
+	embedded_svc.menu.settings.JSON_MOCK = {
+		menuSettings: {
+			name: "developerName",
+			enabled: true,
+			site: "siteName",
+			siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
+			branding: {
+				property1: "value1",
+				property2: "value2"
+			},
+			labels: [
+				{
+					section: "ChannelMenuHeader",
+					name: "HeaderText",
+					value: "Hello!"
+				}, {
+					section: "ChannelMenuHeader",
+					name: "SubheaderText",
+					value: "How can we help you today?"
+				}
+			]
+		},
+		menuItems: [
+			// {
+			// 	id: "3miXX0000000001",
+			// 	channel: "EswConfig1",
+			// 	channelType: "EmbeddedServiceConfig",
+			// 	order: 1,
+			// 	configuration: {
+			// 		// refer to https://salesforce.quip.com/I92VAYjkLbYq
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "Chat with an Expert"
+			// 		}
+			// 		// {
+			// 		// 	section : "labelSectionName",
+			// 		// 	name : "labelName",
+			// 		// 	value : "labelValue"
+			// 		// }
+			// 	]
+			// },
+			{
+				id: "3miXX0000000001",
+				channel: "OmniBot_QueueBased",
+				channelType: "EmbeddedServiceConfig",
+				order: 1,
+				liveAgentContentUrl: "http://tiffanytso-wsm.internal.salesforce.com:8095/content",
+				liveAgentChatUrl: "http://tiffanytso-wsm.internal.salesforce.com:8096/chat",
+				isEssentialsEdition: true,
+				isSelfServiceEnabled: false,
+				latestChasitorVersion: "47.0",
+				namespace: "c",
+				isReadOnlyAppMode: false,
+				htmlDirection: "ltr",
+				labels: [{
+					section: "ChannelMenuOption",
+					name: "CTALabel",
+					value: "Chat with an Expert"
+				}],
+				embeddedServiceConfig: {
+					shouldHideAuthDialog: false,
+					siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
+					areGuestUsersAllowed: false,
+					embeddedServiceBranding: {
+						contrastInvertedColor: "#ffffff",
+						contrastPrimaryColor: "#333333",
+						font: "Salesforce Sans",
+						navBarColor: "#222222",
+						primaryColor: "#222222",
+						secondaryColor: "#005290"
+					},
+					embeddedServiceCustomComponents: [{
+						feature: "LiveAgent",
+						customComponent: "auraCustomPrechat",
+						namespacePrefix: "c",
+						customComponentType: "LA_Prechat"
+					}],
+					embeddedServiceLiveAgent: {
+						enabled: true,
+						fontSize: "Medium",
+						isOfflineCaseEnabled: true,
+						isQueuePositionEnabled: true,
+						liveChatButton: "573xx0000004EsO",
+						liveChatDeployment: "572xx0000004EFh",
+						eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04Ixx0000004FoSEAU_168edecf889",
+						prechatEnabled: true,
+						scenario: "Service",
+						embeddedServiceQuickActions: [{
+							order: 1,
+							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
+							quickActionType: "OfflineCase"
+						},
+						{
+							order: 1,
+							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat"
+						},
+						{
+							order: 2,
+							quickActionDefinition: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat"
+						}],
+						quickActionsList: [{
+							layoutItems: [
+								[{
+									label: "Name",
+									required: true,
+									fields: [{
+										type: "string",
+										name: "Name",
+										label: "Full Name",
+										value: null,
+										length: 121,
+										extraTypeInfo: "personname",
+										pickListOption: null
+									}],
+									readOnly: false
+								}, null ],
+								[{
+									label: "Email",
+									required: false,
+									fields: [{
+										type: "email",
+										name: "Email",
+										label: "Email",
+										value: null,
+										length: 80,
+										extraTypeInfo: null,
+										pickListOption: null
+									}],
+									readOnly: false
+								}, null ]
+							],
+							targetSobjectType: "Contact",
+							targetRecordTypeId: null,
+							targetParentField: null,
+							type: "Create",
+							name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+							label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
+						},
+						{
+							layoutItems: [
+								[{
+									label: "Subject",
+									required: false,
+									fields: [{
+										type: "string",
+										name: "Subject",
+										label: "Subject",
+										value: null,
+										length: 255,
+										extraTypeInfo: null,
+										pickListOption: null
+									}],
+									readOnly: false
+								}, null ]
+							],
+							targetSobjectType: "Case",
+							targetRecordTypeId: null,
+							targetParentField: null,
+							type: "Create",
+							name: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+							label: "Snapins_Case_PrechatQuickAction_08hRM00000000eh"
+						}]
+					}
+				}
+			},
+			{
+				id: "3miXX0000000002",
+				channel: "WhatsApp1",
+				channelType: "MessagingChannel",
+				order: 2,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "WhatsApp",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on WhatsApp"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000003",
+				channel: "Facebook1",
+				channelType: "MessagingChannel",
+				order: 3,
+				configuration: {
+					messagingPlatformKey: "2296846213889326",
+					messageType: "Facebook",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on Facebook"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000004",
+				channel: "Sms1",
+				channelType: "SMS",
+				order: 4,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "SMS",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Text us"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000005",
+				channel: null,
+				channelType: "Phone",
+				order: 5,
+				phoneNumber: 1234567890,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Call us... this is a ridiculously long label that is guaranteed to overflow"
+						// value : "Call us"
+					}
+				]
+			}
+			// Following is assumed, not listed in doc: https://salesforce.quip.com/DR5xAqbauKi4
+			// {
+			// 	id: "3miXX0000000006",
+			// 	channel: "ABC1",
+			// 	channelType: "MessagingChannel",
+			// 	order: 6,
+			// 	configuration: {
+			// 		messageType: "ABC",
+			// 		messagingPlatformKey: "03930a79-b762-4b49-81d5-f2cc897f0871",
+			// 		isoCountryCode: "en"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "iMessage us"
+			// 		}
+			// 	]
+			// },
+			// {  // Not for 222 release
+			// 	id: "3miXX0000000007",
+			// 	channel: "WeChat",
+			// 	channelType: "MessagingChannel",
+			// 	order: 7,
+			// 	configuration: {
+			// 		messageType: "WeChat",
+			// 		// messagingPlatformKey : "123-456-7890",
+			// 		// isoCountryCode : "en"
+			// 		linkUrl: "weixin://dl/chat"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "Message us on WeChat"
+			// 		}
+			// 	]
+			// }
+		],
+		standardLabels: [
+			// {
+			// 	"labelName": "ErrorNoAgentTitle",
+			// 	"labelValue": "Agents Offline",
+			// 	"sectionName": "MessageOverlay"
+			// }
+		],
+		additionalSettings: {
+			auraJarVersion: "220.6000.2058.28",
+			isEssentialsEdition: false,
+			isSelfServiceEnabled: false,
+			htmlDirection: "RTL",
+			latestChasitorVersion: "47.0",
+			orgLanguage: "en_US",
+			guestUserLang: "en_US"
+		}
+	};
+	
 	embedded_svc.menu.init(
 		'http://tiffanytso-ltm.internal.salesforce.com:6109',		//baseCoreUrl
 		'http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/',	//communityOrSiteEndPointURL
