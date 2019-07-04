@@ -100,19 +100,8 @@ var initESW = function(gslbBaseURL){
 						embeddedServiceQuickActions: [{
 							order: 1,
 							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
-							quickActionType: "OfflineCase"
-						},
-						{
-							order: 1,
-							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
-							quickActionType: "Prechat"
-						},
-						{
-							order: 2,
-							quickActionDefinition: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
-							quickActionType: "Prechat"
-						}],
-						quickActionInfo: [{
+							quickActionType: "OfflineCase",
+							quickActionInfo: [{
 							layoutItems: [
 								[{
 									label: "Name",
@@ -149,8 +138,18 @@ var initESW = function(gslbBaseURL){
 							type: "Create",
 							name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
 							label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
+						}]
 						},
 						{
+							order: 1,
+							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat"
+						},
+						{
+							order: 2,
+							quickActionDefinition: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat",
+							quickActionInfo: [{
 							layoutItems: [
 								[{
 									label: "Subject",
@@ -173,6 +172,7 @@ var initESW = function(gslbBaseURL){
 							type: "Create",
 							name: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
 							label: "Snapins_Case_PrechatQuickAction_08hRM00000000eh"
+						}]
 						}]
 					}
 				}
