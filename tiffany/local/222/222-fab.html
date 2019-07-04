@@ -88,18 +88,19 @@ var initESW = function(gslbBaseURL){
 					embeddedServiceLiveAgent: {
 						enabled: true,
 						fontSize: "Medium",
-						isOfflineCaseEnabled: true,
+						isOfflineCaseEnabled: false,
 						isQueuePositionEnabled: true,
 						liveChatButton: "573xx0000004EsO",
 						liveChatDeployment: "572xx0000004EFh",
 						eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04Ixx0000004FoSEAU_168edecf889",
 						prechatEnabled: true,
 						scenario: "Service",
-						embeddedServiceQuickActions: [{
-							order: 1,
-							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
-							quickActionType: "OfflineCase"
-						},
+						embeddedServiceQuickActions: [
+// 						{
+// 							order: 1,
+// 							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
+// 							quickActionType: "OfflineCase"
+// 						},
 						{
 							order: 1,
 							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
