@@ -61,7 +61,7 @@
 				console.log("onCustomEventsScriptsLoaded event was fired. data was " + JSON.stringify(data));
 			});
 			embedded_svc.settings.externalScripts = ["CustomEvents"];
-			embedded_svc.init(
+			/*embedded_svc.init(
 				'https://na44.stmfa.stm.salesforce.com',
 				'https://yxu-test.stmfa.stm.force.com',
 				gslbBaseURL,
@@ -74,7 +74,7 @@
 					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dg52AE_1692845a9ae',
 					isOfflineSupportEnabled: false
 				}
-			);
+			); */
 			embedded_svc.init(
 				"https://na44.stmfa.stm.salesforce.com", //coreHost,
 				"https://na44.stmfa.stm.salesforce.com", //coreHost,
@@ -87,7 +87,6 @@
 					baseLiveAgentURL: "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat", //baseLiveAgentURL,
 					eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04IRM0000004Dg52AE_1692845a9ae" //eswLiveAgentDevName
 				});
-		};
 		};
 
 		if (!window.embedded_svc) {
