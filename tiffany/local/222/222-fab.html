@@ -17,6 +17,9 @@
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL){
 	// embedded_svc.menu.init(gslbBaseURL);
+	embedded_svc.menu.settings.liveAgentChatUrl = "http://tiffanytso-wsm.internal.salesforce.com:8096/chat";
+	embedded_svc.menu.settings.liveAgentContentUrl = "http://tiffanytso-wsm.internal.salesforce.com:8095/content";
+	
 	embedded_svc.menu.settings.devMode = 'true';
 	
 	embedded_svc.menu.settings.replaceWithMock = true;
@@ -43,46 +46,30 @@ var initESW = function(gslbBaseURL){
 			]
 		},
 		menuItems: [
-			// {
-			// 	id: "3miXX0000000001",
-			// 	channel: "EswConfig1",
-			// 	channelType: "EmbeddedServiceConfig",
-			// 	order: 1,
-			// 	configuration: {
-			// 		// refer to https://salesforce.quip.com/I92VAYjkLbYq
-			// 	},
-			// 	labels: [
-			// 		{
-			// 			section: "ChannelMenuOption",
-			// 			name: "CTALabel",
-			// 			value: "Chat with an Expert"
-			// 		}
-			// 		// {
-			// 		// 	section : "labelSectionName",
-			// 		// 	name : "labelName",
-			// 		// 	value : "labelValue"
-			// 		// }
-			// 	]
-			// },
 			{
 				id: "3miXX0000000001",
 				channel: "OmniBot_QueueBased",
 				channelType: "EmbeddedServiceConfig",
 				order: 1,
-				liveAgentContentUrl: "http://tiffanytso-wsm.internal.salesforce.com:8095/content",
-				liveAgentChatUrl: "http://tiffanytso-wsm.internal.salesforce.com:8096/chat",
-				isEssentialsEdition: true,
-				isSelfServiceEnabled: false,
-				latestChasitorVersion: "47.0",
-				namespace: "c",
-				isReadOnlyAppMode: false,
-				htmlDirection: "ltr",
-				labels: [{
-					section: "ChannelMenuOption",
-					name: "CTALabel",
-					value: "Chat with an Expert"
-				}],
-				embeddedServiceConfig: {
+// 				isEssentialsEdition: true,
+// 				isSelfServiceEnabled: false,
+// 				latestChasitorVersion: "47.0",
+// 				namespace: "c",
+// 				isReadOnlyAppMode: false,
+// 				htmlDirection: "ltr",
+				labels: [
+				    {
+				      "labelName": "StartChat",
+				      "labelValue": "Start Chat",
+				      "sectionName": "LiveAgentPrechat"
+				    },
+				    {
+				      "labelName": "LiveChat",
+				      "labelValue": "Chat!!!",
+				      "sectionName": "LiveAgentSidebarApp"
+				    }
+				],
+				configuration: {
 					shouldHideAuthDialog: false,
 					siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
 					areGuestUsersAllowed: false,
@@ -331,7 +318,6 @@ var initESW = function(gslbBaseURL){
 		'http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/',	//communityOrSiteEndPointURL
 		gslbBaseURL,							//gslbBaseUrl
 		'00Dxx0000006NfX',						//orgId
-		'OmniBot_QueueBased',						//eswConfigDevName
 		'developerName'							//channelMenuSettingDevName
 	);
 }
