@@ -33,8 +33,7 @@ var initESW = function(gslbBaseURL){
 				property1: "value1",
 				property2: "value2"
 			},
-			labels: [
-				{
+			labels: [{
 					section: "ChannelMenuHeader",
 					name: "HeaderText",
 					value: "Hello!"
@@ -42,8 +41,7 @@ var initESW = function(gslbBaseURL){
 					section: "ChannelMenuHeader",
 					name: "SubheaderText",
 					value: "How can we help you today TEST?"
-				}
-			]
+			}]
 		},
 		menuItems: [
 			{
@@ -100,80 +98,80 @@ var initESW = function(gslbBaseURL){
 						embeddedServiceQuickActions: [{
 							order: 1,
 							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
-							quickActionType: "OfflineCase",
-							quickActionInfo: [{
-							layoutItems: [
-								[{
-									label: "Name",
-									required: true,
-									fields: [{
-										type: "string",
-										name: "Name",
-										label: "Full Name",
-										value: null,
-										length: 121,
-										extraTypeInfo: "personname",
-										pickListOption: null
-									}],
-									readOnly: false
-								}, null ],
-								[{
-									label: "Email",
-									required: false,
-									fields: [{
-										type: "email",
-										name: "Email",
-										label: "Email",
-										value: null,
-										length: 80,
-										extraTypeInfo: null,
-										pickListOption: null
-									}],
-									readOnly: false
-								}, null ]
-							],
-							targetSobjectType: "Contact",
-							targetRecordTypeId: null,
-							targetParentField: null,
-							type: "Create",
-							name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
-							label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
-						}]
+							quickActionType: "OfflineCase"
 						},
 						{
 							order: 1,
 							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
-							quickActionType: "Prechat"
+							quickActionType: "Prechat",
+							quickActionInfo: [{
+								layoutItems: [
+									[{
+										label: "Name",
+										required: true,
+										fields: [{
+											type: "string",
+											name: "Name",
+											label: "Full Name",
+											value: null,
+											length: 121,
+											extraTypeInfo: "personname",
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ],
+									[{
+										label: "Email",
+										required: false,
+										fields: [{
+											type: "email",
+											name: "Email",
+											label: "Email",
+											value: null,
+											length: 80,
+											extraTypeInfo: null,
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ]
+								],
+								targetSobjectType: "Contact",
+								targetRecordTypeId: null,
+								targetParentField: null,
+								type: "Create",
+								name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+								label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
+							}]
 						},
 						{
 							order: 2,
 							quickActionDefinition: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
 							quickActionType: "Prechat",
 							quickActionInfo: [{
-							layoutItems: [
-								[{
-									label: "Subject",
-									required: false,
-									fields: [{
-										type: "string",
-										name: "Subject",
+								layoutItems: [
+									[{
 										label: "Subject",
-										value: null,
-										length: 255,
-										extraTypeInfo: null,
-										pickListOption: null
-									}],
-									readOnly: false
-								}, null ]
-							],
-							targetSobjectType: "Case",
-							targetRecordTypeId: null,
-							targetParentField: null,
-							type: "Create",
-							name: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
-							label: "Snapins_Case_PrechatQuickAction_08hRM00000000eh"
-						}]
-						}]
+										required: false,
+										fields: [{
+											type: "string",
+											name: "Subject",
+											label: "Subject",
+											value: null,
+											length: 255,
+											extraTypeInfo: null,
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ]
+								],
+								targetSobjectType: "Case",
+								targetRecordTypeId: null,
+								targetParentField: null,
+								type: "Create",
+								name: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+								label: "Snapins_Case_PrechatQuickAction_08hRM00000000eh"
+							}]
+						}
 					}
 				}
 			},
