@@ -75,11 +75,24 @@
 					isOfflineSupportEnabled: false
 				}
 			);
+			embedded_svc.init(
+				"https://na44.stmfa.stm.salesforce.com", //coreHost,
+				"https://na44.stmfa.stm.salesforce.com", //coreHost,
+				gslbBaseURL,
+				"00DRM0000006k89", // OrgId,
+				"Einstein_Dealership", { // snapInName, {
+					baseLiveAgentContentURL: "https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content", //baseLiveAgentContentURL,
+					deploymentId: "572RM00000005ff", //deploymentId,
+					buttonId: "573RM000000064g", //buttonId,
+					baseLiveAgentURL: "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat", //baseLiveAgentURL,
+					eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04IRM0000004Dg52AE_1692845a9ae" //eswLiveAgentDevName
+				});
+		};
 		};
 
 		if (!window.embedded_svc) {
 			var s = document.createElement('script');
-			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/3.0/esw.js');
 			s.onload = function () {
 				initESW(null);
 			};
