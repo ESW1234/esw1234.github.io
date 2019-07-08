@@ -38,21 +38,22 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
 		menuItems: [
 						
 			{
-				id: "3miXX0000000005",
-				channel: null,
-				channelType: "Phone",
-				order: 1,
-				phoneNumber: 1234567890,
+				id: "3miXX0000000002",
+				channel: "WhatsApp1",
+				channelType: "MessagingChannel",
+				order: 2,
 				configuration: {
 					messagingPlatformKey: "1234567890",
+					messageType: "WhatsApp",
+					isActive: true,
+					isAuthenticated: true,
 					isoCountryCode: "en"
 				},
 				labels: [
 					{
 						section: "ChannelMenuOption",
 						name: "CTALabel",
-						value: "Call us... this is a ridiculously long label that is guaranteed to overflow"
-						// value : "Call us"
+						value: "Message us on WhatsApp"
 					}
 				]
 			}
