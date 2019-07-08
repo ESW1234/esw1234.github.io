@@ -15,7 +15,7 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
    embedded_svc.menu.settings.liveAgentChatUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat";
    embedded_svc.menu.settings.liveAgentContentUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/content";
    embedded_svc.menu.settings.replaceWithMock = true;
-   embedded_svc.menu.settings.JSON_MOCK = {
+  embedded_svc.menu.settings.JSON_MOCK = {
 		menuSettings: {
 			name: "developerName",
 			enabled: true,
@@ -35,111 +35,29 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
 					value: "How can we help you today TEST?"
 			}]
 		},
-	       menuItems: [
+		menuItems: [
+						
 			{
-				id: "3miXX0000000001",
-				channel: "OmniBot_QueueBased",
-				channelType: "EmbeddedServiceConfig",
-				order: 1,
-				isEssentialsEdition: true,
-				isSelfServiceEnabled: false,
-				latestChasitorVersion: "47.0",
-				namespace: "c",
-				isReadOnlyAppMode: false,
-				htmlDirection: "ltr",
-				labels: [
-				    {
-				      "labelName": "StartChat",
-				      "labelValue": "Start Chat",
-				      "sectionName": "LiveAgentPrechat"
-				    },
-				    {
-				      "labelName": "LiveChat",
-				      "labelValue": "Chat!!!",
-				      "sectionName": "LiveAgentSidebarApp"
-				    }
-				],
+				id: "3miXX0000000005",
+				channel: null,
+				channelType: "Phone",
+				order: 5,
+				phoneNumber: 1234567890,
 				configuration: {
-					shouldHideAuthDialog: false,
-					siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
-					areGuestUsersAllowed: false,
-					embeddedServiceBranding: {
-						contrastInvertedColor: "#ffffff",
-						contrastPrimaryColor: "#333333",
-						font: "Salesforce Sans",
-						navBarColor: "#222222",
-						primaryColor: "#222222",
-						secondaryColor: "#005290"
-					},
-// 					embeddedServiceCustomComponents: [{
-// 						feature: "LiveAgent",
-// 						customComponent: "auraCustomPrechat",
-// 						namespacePrefix: "c",
-// 						customComponentType: "LA_Prechat"
-// 					}],
-					embeddedServiceLiveAgent: {
-						enabled: true,
-						fontSize: "Medium",
-						isOfflineCaseEnabled: false,
-						isQueuePositionEnabled: true,
-						liveChatButton: "573xx0000004EsO",
-						liveChatDeployment: "572xx0000004EFh",
-						eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04Ixx0000004FoSEAU_168edecf889",
-						prechatEnabled: true,
-						scenario: "Service",
-						embeddedServiceQuickActions: [
-// 						{
-// 							order: 1,
-// 							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
-// 							quickActionType: "OfflineCase"
-// 						},
-						{
-							order: 1,
-							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
-							quickActionType: "Prechat",
-							quickActionInfo: {
-								layoutItems: [
-									[{
-										label: "Name",
-										required: true,
-										fields: [{
-											type: "string",
-											name: "Name",
-											label: "Full Name",
-											value: null,
-											length: 121,
-											extraTypeInfo: "personname",
-											pickListOption: null
-										}],
-										readOnly: false
-									}, null ],
-									[{
-										label: "Email",
-										required: false,
-										fields: [{
-											type: "email",
-											name: "Email",
-											label: "Email",
-											value: null,
-											length: 80,
-											extraTypeInfo: null,
-											pickListOption: null
-										}],
-										readOnly: false
-									}, null ]
-								],
-								targetSobjectType: "Contact",
-								targetRecordTypeId: null,
-								targetParentField: null,
-								type: "Create",
-								name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
-								label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
-							}
-						}
-			
-						],
-	   
-	"standardLabels": [
+					messagingPlatformKey: "1234567890",
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Call us... this is a ridiculously long label that is guaranteed to overflow"
+						// value : "Call us"
+					}
+				]
+			}
+		],
+		    "standardLabels": [
         {
             "labelName": "QueuePositionMaxNumber",
             "labelValue": "99+",
@@ -686,6 +604,7 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
 			guestUserLang: "en_US"
 		}
 	};
+		
     // Language setting needed for fetching the labels in the right language for chat
     // embedded_svc.menu.settings.language = "en";
     embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName);
