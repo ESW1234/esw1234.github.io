@@ -1,4 +1,4 @@
 fs1 is working
-Cred: platform7@esw.com/test1234
+Cred: platform7@esw.com/test123456
 
 Community user: cu@esw.com/123456
