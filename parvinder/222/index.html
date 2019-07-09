@@ -16,7 +16,7 @@
     }
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
     var initESW = function(gslbBaseURL) {
         embedded_svc.settings.displayHelpButton = true; //Or false
@@ -39,10 +39,10 @@
 
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
-
+        embedded_svc.settings.devMode = true;
         embedded_svc.init(
             'http://pghotra-wsm2.internal.salesforce.com:6109',
-            'http://pg.localhost.soma.force.com:6109/',
+            'http://pg.localhost.soma.force.com:6109',
             gslbBaseURL,
             '00Dxx000000000z',
             'rsb_snap_in_latest',
@@ -59,13 +59,13 @@
 
     if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'http://pghotra-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+        s.setAttribute('src', 'http://pghotra-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
         s.onload = function() {
             initESW(null);
         };
         document.body.appendChild(s);
     } else {
-        initESW('https://service.force.com');
+        initESW('http://pghotra-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
     }
 </script>
 </body>
