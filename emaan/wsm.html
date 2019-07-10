@@ -5,73 +5,73 @@
     </head>
     <body>
     <h1>Hello, world!</h1>
-     <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+     <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page!</a></p>
     <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
     
-    <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-    </style>
+   	<style type='text/css'>
+		.embeddedServiceHelpButton .helpButton .uiButton {
+			background-color: #005290;
+			font-family: "Arial", sans-serif;
+		}
+		.embeddedServiceHelpButton .helpButton .uiButton:focus {
+			outline: 1px solid #005290;
+		}
+	</style>
 
-    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-    <script type='text/javascript'>
-        var initESW = function(gslbBaseURL) {
-            embedded_svc.settings.displayHelpButton = true; //Or false
-            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+	<script type='text/javascript'>
+		var initESW = function(gslbBaseURL) {
+			embedded_svc.settings.displayHelpButton = true; //Or false
+			embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+			//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+			//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+			//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+			//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-            // Settings for Chat
-            //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-                // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-                // Returns a valid button ID.
-            //};
-            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-            //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-            
-            embedded_svc.settings.devMode = true;
+			// Settings for Chat
+			//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+				// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+				// Returns a valid button ID.
+			//};
+			//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+			//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-            embedded_svc.settings.entryFeature = 'LiveAgent';
+			embedded_svc.settings.devMode = true;
 
-            embedded_svc.init(
-                'http://ehariri-wsm01.internal.salesforce.com:6109',
-                'http://mycommunit-16b715123c5-developer-edition.localhost.soma.force.com:6109/',
-                gslbBaseURL,
-                '00Dxx0000006Gmd',
-                'Github_Deployment',
-                {
-                    baseLiveAgentContentURL: 'http://ehariri-wsm01.internal.salesforce.com:8095/content',
-                    deploymentId: '572xx0000004C92',
-                    buttonId: '573xx0000004C92',
-                    baseLiveAgentURL: 'http://ehariri-wsm01.internal.salesforce.com:8096/chat',
-                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_16b48946804',
-                    isOfflineSupportEnabled: false
-                }
-            );
-        };
+			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+			embedded_svc.settings.entryFeature = 'LiveAgent';
 
-        if (!window.embedded_svc) {
-            var s = document.createElement('script');
-            s.setAttribute('src', 'http://ehariri-wsm01.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-            s.onload = function() {
-                initESW(null);
-            };
-            document.body.appendChild(s);
-        } else {
-//            initESW('https://service.force.com');
-            initESW('http://ehariri-wsm01.internal.salesforce.com:6109')
-        }
-    </script>
+			embedded_svc.init(
+				'http://mydomain-dev-ed.localhost.internal.salesforce.com:6109',
+				'http://mycommunit-16b715123c5-developer-edition.localhost.soma.force.com:6109/',
+				gslbBaseURL,
+				'00Dxx0000006Gmd',
+				'GithubDeployment',
+				{
+					baseLiveAgentContentURL: 'http://ehariri-wsm01.internal.salesforce.com:8095/content',
+					deploymentId: '572xx0000004C92',
+					buttonId: '573xx0000004C92',
+					baseLiveAgentURL: 'http://ehariri-wsm01.internal.salesforce.com:8096/chat',
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CSOEA2_16bb57956bb',
+					isOfflineSupportEnabled: false
+				}
+			);
+		};
+
+		if (!window.embedded_svc) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'http://mydomain-dev-ed.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			document.body.appendChild(s);
+		} else {
+			// initESW('https://service.force.com');
+			initESW('http://ehariri-wsm01.internal.salesforce.com:6109')
+		}
+	</script>
     </body>
 </html>
