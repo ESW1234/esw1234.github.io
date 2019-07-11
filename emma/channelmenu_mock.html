@@ -29,8 +29,8 @@
         background-color: #005290;
       }
 
-      /* trying animation */
-      .embedded-service .fab {
+      /* trying ripple animation */
+      /*.embedded-service .fab {
       	position: relative;
   		overflow: hidden;
   		transform: translate3d(0, 0, 0);	
@@ -57,9 +57,33 @@
       	transform: scale(0, 0);
   		opacity: .3;
   		transition: 0s;
-      }
+      }*/
+      /* end ripple animation */
 
-      /* end animation */
+      /* trying gradient animation */
+      .embedded-service .fab {
+      	background: linear-gradient(20deg, #005290, #1A79C2);
+
+		-webkit-animation: AnimationName 0s ease infinite;
+		-moz-animation: AnimationName 0s ease infinite;
+		animation: AnimationName 0s ease infinite;
+
+		@-webkit-keyframes AnimationName {
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}
+		@-moz-keyframes AnimationName {
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}
+		@keyframes AnimationName { 
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}
+      }
 
       .embedded-service .channelmenu_ctas svg[class^="icon_cta-"] {
         fill: #005290;
