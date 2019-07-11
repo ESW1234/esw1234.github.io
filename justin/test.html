@@ -58,12 +58,12 @@
 
 
 		// Fallback + Direct to Button
-		// 573RM0000004KQ4 - empty queue
-		// 573RM0000004DDR - agent
+		// 573RM0000004KQ9 - standard agent 
+		// 573RM0000004DDR - system admin agent
 		// 573RM0000004HAw - bot
 		/*
-			This page is set up to route to the empty queue (573RM0000004KQ4) by default.
-			Direct to button routing will specify to route to the agent (573RM0000004DDR).
+			This page is set up to route to the standard agent button/queue (573RM0000004KQ9) by default.
+			Direct to button routing will specify to route to the system admin agent (573RM0000004DDR).
 			Fallback routing will route to the chatbot (573RM0000004HAw) which will always succeed.
 		*/
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
@@ -83,7 +83,7 @@
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004DDM',
-				buttonId: '573RM0000004KQ4', // empty queue
+				buttonId: '573RM0000004KQ9', // standard agent
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
 				isOfflineSupportEnabled: false
