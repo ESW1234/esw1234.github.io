@@ -1,21 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	<title>Test Page</title>
 </head>
 
 <body>
 
 <h1>Test Page</h1>
- 
+
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<!--  -->
+
+
+<!-- Dell - Fallback Routing + Direct to Button Routing -->
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #4380AE;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #4380AE;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+	}
+</style>
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+// 		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		// Avatars
+		//embedded_svc.settings.avatarImgURL = "../../avatar.png";
+		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+
+		// Debug
+		embedded_svc.settings.devMode = true;
+
+
+		// Fallback + Direct to Button
+		// 573RM0000004KQ9 - standard agent 
+		// 573RM0000004DDR - system admin agent
+		// 573RM0000004HAw - bot
+		/*
+			This page is set up to route to the standard agent button/queue (573RM0000004KQ9) by default.
+			Direct to button routing will specify to route to the system admin agent (573RM0000004DDR).
+			Fallback routing will route to the chatbot (573RM0000004HAw) which will always succeed.
+		*/
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+			embedded_svc.settings.fallbackRouting = ["573RM0000004DDR", "573RM0000004HAw"];
+			return "573RM0000004DDR";
+		};
+		embedded_svc.settings.fallbackRouting = ["573RM0000004HAw"]; //An array of button IDs, user IDs, or userId_buttonId
+
+		
+		embedded_svc.init(
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+			gslbBaseURL,
+			'00DRM0000005jYI',
+			'justinChatbot',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004DDM',
+				buttonId: '573RM0000004KQ9', // standard agent
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('https://na44.stmfb.stm.salesforce.com');
+	}
+</script>
+
+<!-- Dell - Fallback Routing + Direct to Button Routing -->
+
+
 
 <!-- Debugging for Org62 passing Case ID in dynamically -->
-<style type='text/css'>
+
+<!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #307EBA;
 		font-family: "Salesforce Sans", sans-serif;
@@ -28,10 +125,10 @@
 /* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
 /* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
-</style>
+</style> -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<!-- <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -111,7 +208,7 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
+</script> -->
 
 <!-- Debugging for Org62 passing Case ID in dynamically -->
 
