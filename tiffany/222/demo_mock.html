@@ -1,24 +1,27 @@
 <!DOCTYPE HTML>
 <html>
-		<style>
-	body {
+ <style>
+  		html {
+  		font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
+  		-webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+  		}
+
+  		body {
  			background-color: #f8f8f8;        
          background: url("https://esw1234.github.io/ashah/216/Screen%20Shot%202018-07-15%20at%2021.45.31.png") no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-	}
-  		html {
-  		font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
-  		-webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: antialiased;
-  		}
+      	}
+
       	.editlink {
         color: #F8558D;
         font-weight: 500;
         letter-spacing: 0.03rem;
       	}
+
       .embedded-service .channelmenu {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: antialiased;
@@ -40,12 +43,14 @@
         background-color: #005290;
         animation: shadow-pulse 1s 2;
       }
+
       /* trying ripple animation */
 	      .embedded-service .fab {
 	      	position: relative;
 	  		overflow: hidden;
 	  		transform: translate3d(0, 0, 0);	
 	      }
+
 	      .embedded-service .fab:after {
 	      	content: "";
 	  		display: block;
@@ -62,19 +67,23 @@
 	  		opacity: 0;
 	  		transition: transform .5s, opacity 1s;
 	      }
+
 	      .embedded-service .fab:active:after {
 	      	transform: scale(0, 0);
 	  		opacity: .3;
 	  		transition: 0s;
 	      }
       /* end ripple animation */
+
       /* trying gradient animation */
       	/*.embedded-service .fab {
       		background: linear-gradient(20deg, #005290, #EAA1C0);
 			background-size: 100% 100%;
+
 			-webkit-animation: AnimationName 0s ease infinite;
 			-moz-animation: AnimationName 0s ease infinite;
 			animation: AnimationName 0s ease infinite;
+
 			@-webkit-keyframes AnimationName {
 			    0%{background-position:0% 56%}
 			    50%{background-position:100% 45%}
@@ -91,7 +100,9 @@
 			    100%{background-position:0% 56%}
 			}
       	}*/
+
       /* end gradient animation */
+
       .embedded-service .channelmenu_ctas svg[class^="icon_cta-"] {
         fill: #005290;
       }
@@ -130,6 +141,7 @@
       	text-decoration: none;
       	background-color: #fafafa;
       }
+
     /* radiant animation */
     	@keyframes shadow-pulse
 		{
