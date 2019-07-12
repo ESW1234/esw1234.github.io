@@ -10,6 +10,143 @@
 		background-size: cover;
 	}
 </style>
+  <style>
+  		html {
+  		font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
+  		-webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+  		}
+  		body {
+        background: #f8f8f8;
+      	}
+      	.editlink {
+        color: #F8558D;
+        font-weight: 500;
+        letter-spacing: 0.03rem;
+      	}
+      .embedded-service .channelmenu {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+        font-family: 'Helvetica Neue', Helvetica, 'Roboto', Arial, sans-serif;
+      }
+      .embedded-service .channelmenu_header {
+        background-color: #222;
+        text-align: left;
+      }
+      .embedded-service .channelmenu_header > h2 {
+      	font-weight: bolder;
+      	letter-spacing: 0.05rem;
+      	text-transform: none;
+      }
+      .embedded-service .channelmenu_header > p {
+      	letter-spacing: 0.025rem;
+      }
+      .embedded-service .fab {
+        background-color: #005290;
+        animation: shadow-pulse 1s 2;
+      }
+      /* trying ripple animation */
+	      .embedded-service .fab {
+	      	position: relative;
+	  		overflow: hidden;
+	  		transform: translate3d(0, 0, 0);	
+	      }
+	      .embedded-service .fab:after {
+	      	content: "";
+	  		display: block;
+	  		position: absolute;
+	  		width: 100%;
+	  		height: 100%;
+	  		top: 0;
+	  		left: 0;
+	  		pointer-events: none;
+	  		background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+	  		background-repeat: no-repeat;
+	  		background-position: 50%;
+	  		transform: scale(10, 10);
+	  		opacity: 0;
+	  		transition: transform .5s, opacity 1s;
+	      }
+	      .embedded-service .fab:active:after {
+	      	transform: scale(0, 0);
+	  		opacity: .3;
+	  		transition: 0s;
+	      }
+      /* end ripple animation */
+      /* trying gradient animation */
+      	/*.embedded-service .fab {
+      		background: linear-gradient(20deg, #005290, #EAA1C0);
+			background-size: 100% 100%;
+			-webkit-animation: AnimationName 0s ease infinite;
+			-moz-animation: AnimationName 0s ease infinite;
+			animation: AnimationName 0s ease infinite;
+			@-webkit-keyframes AnimationName {
+			    0%{background-position:0% 56%}
+			    50%{background-position:100% 45%}
+			    100%{background-position:0% 56%}
+			}
+			@-moz-keyframes AnimationName {
+			    0%{background-position:0% 56%}
+			    50%{background-position:100% 45%}
+			    100%{background-position:0% 56%}
+			}
+			@keyframes AnimationName { 
+			    0%{background-position:0% 56%}
+			    50%{background-position:100% 45%}
+			    100%{background-position:0% 56%}
+			}
+      	}*/
+      /* end gradient animation */
+      .embedded-service .channelmenu_ctas svg[class^="icon_cta-"] {
+        fill: #005290;
+      }
+      .test-element {
+        position: absolute;
+        right: 32px;
+        bottom: 103px;
+        min-width: 200px;
+        max-width: 275px;
+        height: auto;
+        box-shadow: 0 2px 6px 0 rgba(154,154,154,0.50);
+        background: #fff;
+        border: 1px solid #DEDEDE;
+        padding: 8px 16px;
+        border-radius: 3px;
+        margin-bottom: 8px;
+      }
+      p.dismiss {
+        text-align: right;
+        color: #005290;
+        font-weight: 500;
+        margin: 8px;
+      }
+      .embedded-service .channelmenu_ctas span[class^="cta-label-"] {
+      	transition: color 0.25s ease;
+      	letter-spacing: 0.025rem;
+      }
+      .embedded-service .channelmenu_ctas span[class^="cta-label-"]:hover {
+      	text-decoration: none;
+      	color: #005290;
+      }
+      .embedded-service .channelmenu_ctas > li {
+      	transition: background-color 0.25s ease;
+      }
+      .embedded-service .channelmenu_ctas > li:hover {
+      	text-decoration: none;
+      	background-color: #fafafa;
+      }
+    /* radiant animation */
+    	@keyframes shadow-pulse
+		{
+		     0% {
+		          box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+		     }
+		     100% {
+		          box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+		     }
+		}
+	/* end radiant animation */
+  </style>
    <head>
    <title>DEFAULT PAGE</title>
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1, 
@@ -33,9 +170,127 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
     "menuItems":[
       {"channel":"OmniBot_QueueBased","channelType":"EmbeddedServiceConfig","configuration":{"areGuestUsersAllowed":false,
         "embeddedServiceBranding":{"contrastInvertedColor":"#ffffff","contrastPrimaryColor":"#333333","font":"Salesforce Sans","navBarColor":"#222222","primaryColor":"#A12525","secondaryColor":"#005290"},
-        "embeddedServiceLiveAgent":{"embeddedServiceQuickActions":[{"order":1,"quickActionDefinition":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","quickActionInfo":{"label":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","layoutItems":[[{"fields":[{"extraTypeInfo":"personname","label":"Full Name","length":121,"name":"Name","pickListOption":null,"type":"string","value":null}],"label":"Name","readOnly":false,"required":true},null],[{"fields":[{"extraTypeInfo":null,"label":"Email","length":80,"name":"Email","pickListOption":null,"type":"email","value":null}],"label":"Email","readOnly":false,"required":false},null]],"name":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","targetParentField":null,"targetRecordTypeId":null,"targetSobjectType":"Contact","type":"Create"},"quickActionType":"Prechat"},{"order":2,"quickActionDefinition":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","quickActionInfo":{"label":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","layoutItems":[[{"fields":[{"extraTypeInfo":null,"label":"Subject","length":255,"name":"Subject","pickListOption":null,"type":"string","value":null}],"label":"Subject","readOnly":false,"required":false},null]],"name":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","targetParentField":null,"targetRecordTypeId":null,"targetSobjectType":"Case","type":"Create"},"quickActionType":"Prechat"}],"enabled":true,"fontSize":"Medium","isOfflineCaseEnabled":false,"isQueuePositionEnabled":true,"liveChatButton":"573RM000000066w","liveChatDeployment":"572RM00000005Wq","prechatEnabled":true,"scenario":"Service"},"shouldHideAuthDialog":false,"siteUrl":"https://eswtiffany.stmfa.stm.force.com/esw"},"id":"3miRM0000004C93","order":1}],
-        "menuSettings":{"enabled":true,"name":"Esms02","site":"Tiffany_s_Community","siteUrl":"https://eswtiffany.stmfa.stm.force.com/esw"},
-        "standardLabels":[{"labelName":"MessageAreaTransferred","labelValue":"Chat started with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"BannerTransferred","labelValue":"You’re chatting with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"MinimizedInProgressTransfer","labelValue":"Transferring","sectionName":"LiveAgentTransfer"},{"labelName":"BannerInProgressTransfer","labelValue":"We're transferring your chat to another agent.","sectionName":"LiveAgentTransfer"},{"labelName":"BannerReconnected","labelValue":"Reconnected. You’re chatting with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"AgentLeftChatSystemMessage","labelValue":"{0} left the chat","sectionName":"LiveAgentGroupChat"},{"labelName":"MinimizedStateMessage","labelValue":"Group Chat","sectionName":"LiveAgentGroupChat"},{"labelName":"ExtendedHeaderGreeting","labelValue":"You are chatting with {0} people","sectionName":"LiveAgentGroupChat"},{"labelName":"HeaderTitle","labelValue":"Group Chat","sectionName":"LiveAgentGroupChat"},{"labelName":"AgentJoinedChatSystemMessage","labelValue":"{0} joined the chat","sectionName":"LiveAgentGroupChat"},{"labelName":"SupportFormButton","labelValue":"Submit","sectionName":"LiveAgentOfflineSupport"},{"labelName":"BannerAltText","labelValue":"Offline Support Image","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogTitle","labelValue":"Something went wrong","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogTitle","labelValue":"Case submitted","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogButton","labelValue":"Got It","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogBody","labelValue":"We logged your case. You’ll hear back from us soon.","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogBody","labelValue":"Offline support isn’t working right now. Please try again later.","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogButton","labelValue":"Done","sectionName":"LiveAgentOfflineSupport"},{"labelName":"HeaderText","labelValue":"Contact Us","sectionName":"LiveAgentOfflineSupport"},{"labelName":"BannerAltText","labelValue":"Prechat Image","sectionName":"LiveAgentPrechat"},{"labelName":"StartChat","labelValue":"Start Chatting","sectionName":"LiveAgentPrechat"},{"labelName":"FieldError","labelValue":"This field is required.","sectionName":"LiveAgentPrechat"},{"labelName":"IdleTimeoutWarningQuestion","labelValue":"Are you still there?","sectionName":"LiveAgentChatWindow"},{"labelName":"AgentSaysNotification","labelValue":"{0} says...","sectionName":"LiveAgentChatWindow"},{"labelName":"UnseenMessage","labelValue":"{0} new messages","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStateHeaderGreeting","labelValue":"Thanks for chatting with us. Ask me anything.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEnd","labelValue":"Chat Ended","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMessageSecondLine","labelValue":"You're number {0} in line.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEndAgent","labelValue":"Chat Ended by Agent","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutWarningRequest","labelValue":" Please send a message within {0}m {1}s or this chat will time out.","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutMinimizedEndChat","labelValue":"Chat ended","sectionName":"LiveAgentChatWindow"},{"labelName":"SingleUnseenMessage","labelValue":"1 new message","sectionName":"LiveAgentChatWindow"},{"labelName":"AgentTypingUpdate","labelValue":"Agent is Typing","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionZeroAssistiveMessage","labelValue":"You're next in line for support!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionTransferringMessage","labelValue":"Transferring...","sectionName":"LiveAgentChatWindow"},{"labelName":"MessageNotification","labelValue":"{0} Messages","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingCancelChatRequest","labelValue":"Cancel Chat Request","sectionName":"LiveAgentChatWindow"},{"labelName":"ReconnectingMinimizedMessage","labelValue":"Reconnecting","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutMinimizedWarning","labelValue":"Still there?","sectionName":"LiveAgentChatWindow"},{"labelName":"SingleMessageNotification","labelValue":"1 Message","sectionName":"LiveAgentChatWindow"},{"labelName":"Send","labelValue":"Send","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMessageFirstLine","labelValue":"Hang in there.","sectionName":"LiveAgentChatWindow"},{"labelName":"SaveTranscript","labelValue":"Save Transcript","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingGreeting","labelValue":"Hello, {0}!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxNumber","labelValue":"99+","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatWindowAgent","labelValue":"Agent","sectionName":"LiveAgentChatWindow"},{"labelName":"InputTextPlaceholder","labelValue":"Type your message...","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStartTime","labelValue":"Chat started at {0}","sectionName":"LiveAgentChatWindow"},{"labelName":"ChooseOption","labelValue":"Choose one of the following options","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutEndChatMessage","labelValue":"Chat ended due to timeout","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingMessage","labelValue":"An agent is on the way.","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionZeroMessage","labelValue":"You're up next!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxMessageSecondLine","labelValue":"An agent is on the way.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatButtonClose","labelValue":"Close Chat","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEndConnection","labelValue":"Chat Ended from Lost Connection","sectionName":"LiveAgentChatWindow"},{"labelName":"ReconnectingChasitorIssue","labelValue":"Please wait. Reconnecting","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionAssistiveMessage","labelValue":"Place in line for support:","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxMessageFirstLine","labelValue":"Hang in there.","sectionName":"LiveAgentChatWindow"},{"labelName":"EndChatAction","labelValue":"End Chat","sectionName":"LiveAgentChatWindow"},{"labelName":"PostChatButton","labelValue":"Give Feedback","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionConnectingMessage","labelValue":"Connecting...","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingDefaultName","labelValue":"Guest","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionZeroMessage","labelValue":"You're next!","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedWaitingMessage","labelValue":"Waiting","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingBannerAssistiveText","labelValue":"Waiting Screen Image","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionMessage","labelValue":"Place in line:","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStateBody","labelValue":"Don't worry, after the chat ends, you can save the transcript. Click the agent name in the header and then click Save Transcript.","sectionName":"MessageOverlay"},{"labelName":"WaitingStateContinue","labelValue":"Continue to Wait","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedCloseButton","labelValue":"OK","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionBodyRequest","labelValue":"Try connecting again or come back later.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentTitle","labelValue":"Agents Offline","sectionName":"MessageOverlay"},{"labelName":"ChatStateEnd","labelValue":"Confirm End Chat","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningButton","labelValue":"Go Back","sectionName":"MessageOverlay"},{"labelName":"ChatStateResume","labelValue":"Go Back","sectionName":"MessageOverlay"},{"labelName":"WaitingStateHeader","labelValue":"Leave?","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionBodyApology","labelValue":"Sorry that we are not able to chat with you.","sectionName":"MessageOverlay"},{"labelName":"ErrorTryAgainButton","labelValue":"Start a New Chat","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentBodyApology","labelValue":"Sorry that we are not able to chat with you.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionHeader","labelValue":"There is a connection issue","sectionName":"MessageOverlay"},{"labelName":"ChatStateHeader","labelValue":"End chat?","sectionName":"MessageOverlay"},{"labelName":"WaitingStateBodyApology","labelValue":"We’re sorry we missed you.","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningTitle","labelValue":"Be careful…","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedTitleAndHeader","labelValue":"Chat blocked","sectionName":"MessageOverlay"},{"labelName":"ErrorExitChatButton","labelValue":"Leave Chat","sectionName":"MessageOverlay"},{"labelName":"WaitingStateLeave","labelValue":"Leave","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionTitle","labelValue":"Connection Issues","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentHeader","labelValue":"No agents are available","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedBody","labelValue":"It looks like an agent has blocked your chats.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentBodyRequest","labelValue":"Come back later or try again.","sectionName":"MessageOverlay"},{"labelName":"WaitingStateBodyWarning","labelValue":"If you leave now, you’ll lose your place in line to chat.","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningBody","labelValue":"If you close, leave, or refresh this tab, you could lose your chat.","sectionName":"MessageOverlay"},{"labelName":"FileTransferRequested","labelValue":"File Transfer Requested","sectionName":"LiveAgentFileTransfer"},{"labelName":"UploadFile","labelValue":"Upload this file","sectionName":"LiveAgentFileTransfer"},{"labelName":"SelectNewFile","labelValue":"Select a file under 5mb","sectionName":"LiveAgentFileTransfer"},{"labelName":"TransferFailed","labelValue":"Transfer failed","sectionName":"LiveAgentFileTransfer"},{"labelName":"RemoveFile","labelValue":"Remove this file.","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferFailure","labelValue":"File Transfer Failed","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferCanceled","labelValue":"File Transfer Canceled","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileUpload","labelValue":"Upload a file","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferSuccess","labelValue":"File Transfer Succeeded","sectionName":"LiveAgentFileTransfer"},{"labelName":"UsePreviousElementToUploadFile","labelValue":"File transfer requested. Press the upload a file button.","sectionName":"LiveAgentFileTransfer"},{"labelName":"Minimize","labelValue":"Minimize chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"LiveChat","labelValue":"Chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"PostChat","labelValue":"Post-Chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"Close","labelValue":"Close dialog","sectionName":"LiveAgentSidebarApp"},{"labelName":"MinimizedContainerAssistiveText","labelValue":"Expand the chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"EndOfDialog","labelValue":"End of Dialog","sectionName":"LiveAgentSidebarApp"}]};
+        "embeddedServiceLiveAgent":{"embeddedServiceQuickActions":[{"order":1,"quickActionDefinition":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","quickActionInfo":{"label":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","layoutItems":[[{"fields":[{"extraTypeInfo":"personname","label":"Full Name","length":121,"name":"Name","pickListOption":null,"type":"string","value":null}],"label":"Name","readOnly":false,"required":true},null],[{"fields":[{"extraTypeInfo":null,"label":"Email","length":80,"name":"Email","pickListOption":null,"type":"email","value":null}],"label":"Email","readOnly":false,"required":false},null]],"name":"Snapins_Contact_PrechatQuickAction_08hRM0000004CkL","targetParentField":null,"targetRecordTypeId":null,"targetSobjectType":"Contact","type":"Create"},"quickActionType":"Prechat"},{"order":2,"quickActionDefinition":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","quickActionInfo":{"label":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","layoutItems":[[{"fields":[{"extraTypeInfo":null,"label":"Subject","length":255,"name":"Subject","pickListOption":null,"type":"string","value":null}],"label":"Subject","readOnly":false,"required":false},null]],"name":"Snapins_Case_PrechatQuickAction_08hRM0000004CkL","targetParentField":null,"targetRecordTypeId":null,"targetSobjectType":"Case","type":"Create"},"quickActionType":"Prechat"}],"enabled":true,"fontSize":"Medium","isOfflineCaseEnabled":false,"isQueuePositionEnabled":true,"liveChatButton":"573RM000000066w","liveChatDeployment":"572RM00000005Wq","prechatEnabled":true,"scenario":"Service"},"shouldHideAuthDialog":false,"siteUrl":"https://eswtiffany.stmfa.stm.force.com/esw"},"id":"3miRM0000004C93","order":1}, 
+			{
+				id: "3miXX0000000002",
+				channel: "WhatsApp1",
+				channelType: "MessagingChannel",
+				order: 2,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "WhatsApp",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on WhatsApp"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000003",
+				channel: "Facebook1",
+				channelType: "MessagingChannel",
+				order: 3,
+				configuration: {
+					messagingPlatformKey: "2296846213889326",
+					messageType: "Facebook",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on Facebook"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000004",
+				channel: "Sms1",
+				channelType: "SMS",
+				order: 6,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "SMS",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Text us"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000005",
+				channel: null,
+				channelType: "Phone",
+				order: 5,
+				phoneNumber: 1234567890,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Call us... this is a ridiculously long label that is guaranteed to overflow"
+						// value : "Call us"
+					}
+				]
+			}
+			// Following is assumed, not listed in doc: https://salesforce.quip.com/DR5xAqbauKi4
+			// {
+			// 	id: "3miXX0000000006",
+			// 	channel: "ABC1",
+			// 	channelType: "MessagingChannel",
+			// 	order: 6,
+			// 	configuration: {
+			// 		messageType: "ABC",
+			// 		messagingPlatformKey: "03930a79-b762-4b49-81d5-f2cc897f0871",
+			// 		isoCountryCode: "en"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "iMessage us"
+			// 		}
+			// 	]
+			// },
+			// {  // Not for 222 release
+			// 	id: "3miXX0000000007",
+			// 	channel: "WeChat",
+			// 	channelType: "MessagingChannel",
+			// 	order: 7,
+			// 	configuration: {
+			// 		messageType: "WeChat",
+			// 		// messagingPlatformKey : "123-456-7890",
+			// 		// isoCountryCode : "en"
+			// 		linkUrl: "weixin://dl/chat"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "Message us on WeChat"
+			// 		}
+			// 	]
+			// }	    
+    ],
+"menuSettings":{"enabled":true,"name":"Esms02","site":"Tiffany_s_Community","siteUrl":"https://eswtiffany.stmfa.stm.force.com/esw"},
+"standardLabels":[{"labelName":"MessageAreaTransferred","labelValue":"Chat started with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"BannerTransferred","labelValue":"You’re chatting with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"MinimizedInProgressTransfer","labelValue":"Transferring","sectionName":"LiveAgentTransfer"},{"labelName":"BannerInProgressTransfer","labelValue":"We're transferring your chat to another agent.","sectionName":"LiveAgentTransfer"},{"labelName":"BannerReconnected","labelValue":"Reconnected. You’re chatting with {0}","sectionName":"LiveAgentTransfer"},{"labelName":"AgentLeftChatSystemMessage","labelValue":"{0} left the chat","sectionName":"LiveAgentGroupChat"},{"labelName":"MinimizedStateMessage","labelValue":"Group Chat","sectionName":"LiveAgentGroupChat"},{"labelName":"ExtendedHeaderGreeting","labelValue":"You are chatting with {0} people","sectionName":"LiveAgentGroupChat"},{"labelName":"HeaderTitle","labelValue":"Group Chat","sectionName":"LiveAgentGroupChat"},{"labelName":"AgentJoinedChatSystemMessage","labelValue":"{0} joined the chat","sectionName":"LiveAgentGroupChat"},{"labelName":"SupportFormButton","labelValue":"Submit","sectionName":"LiveAgentOfflineSupport"},{"labelName":"BannerAltText","labelValue":"Offline Support Image","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogTitle","labelValue":"Something went wrong","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogTitle","labelValue":"Case submitted","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogButton","labelValue":"Got It","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogBody","labelValue":"We logged your case. You’ll hear back from us soon.","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ErrorDialogBody","labelValue":"Offline support isn’t working right now. Please try again later.","sectionName":"LiveAgentOfflineSupport"},{"labelName":"ConfirmationDialogButton","labelValue":"Done","sectionName":"LiveAgentOfflineSupport"},{"labelName":"HeaderText","labelValue":"Contact Us","sectionName":"LiveAgentOfflineSupport"},{"labelName":"BannerAltText","labelValue":"Prechat Image","sectionName":"LiveAgentPrechat"},{"labelName":"StartChat","labelValue":"Start Chatting","sectionName":"LiveAgentPrechat"},{"labelName":"FieldError","labelValue":"This field is required.","sectionName":"LiveAgentPrechat"},{"labelName":"IdleTimeoutWarningQuestion","labelValue":"Are you still there?","sectionName":"LiveAgentChatWindow"},{"labelName":"AgentSaysNotification","labelValue":"{0} says...","sectionName":"LiveAgentChatWindow"},{"labelName":"UnseenMessage","labelValue":"{0} new messages","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStateHeaderGreeting","labelValue":"Thanks for chatting with us. Ask me anything.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEnd","labelValue":"Chat Ended","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMessageSecondLine","labelValue":"You're number {0} in line.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEndAgent","labelValue":"Chat Ended by Agent","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutWarningRequest","labelValue":" Please send a message within {0}m {1}s or this chat will time out.","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutMinimizedEndChat","labelValue":"Chat ended","sectionName":"LiveAgentChatWindow"},{"labelName":"SingleUnseenMessage","labelValue":"1 new message","sectionName":"LiveAgentChatWindow"},{"labelName":"AgentTypingUpdate","labelValue":"Agent is Typing","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionZeroAssistiveMessage","labelValue":"You're next in line for support!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionTransferringMessage","labelValue":"Transferring...","sectionName":"LiveAgentChatWindow"},{"labelName":"MessageNotification","labelValue":"{0} Messages","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingCancelChatRequest","labelValue":"Cancel Chat Request","sectionName":"LiveAgentChatWindow"},{"labelName":"ReconnectingMinimizedMessage","labelValue":"Reconnecting","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutMinimizedWarning","labelValue":"Still there?","sectionName":"LiveAgentChatWindow"},{"labelName":"SingleMessageNotification","labelValue":"1 Message","sectionName":"LiveAgentChatWindow"},{"labelName":"Send","labelValue":"Send","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMessageFirstLine","labelValue":"Hang in there.","sectionName":"LiveAgentChatWindow"},{"labelName":"SaveTranscript","labelValue":"Save Transcript","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingGreeting","labelValue":"Hello, {0}!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxNumber","labelValue":"99+","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatWindowAgent","labelValue":"Agent","sectionName":"LiveAgentChatWindow"},{"labelName":"InputTextPlaceholder","labelValue":"Type your message...","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStartTime","labelValue":"Chat started at {0}","sectionName":"LiveAgentChatWindow"},{"labelName":"ChooseOption","labelValue":"Choose one of the following options","sectionName":"LiveAgentChatWindow"},{"labelName":"IdleTimeoutEndChatMessage","labelValue":"Chat ended due to timeout","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingMessage","labelValue":"An agent is on the way.","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionZeroMessage","labelValue":"You're up next!","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxMessageSecondLine","labelValue":"An agent is on the way.","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatButtonClose","labelValue":"Close Chat","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatEndConnection","labelValue":"Chat Ended from Lost Connection","sectionName":"LiveAgentChatWindow"},{"labelName":"ReconnectingChasitorIssue","labelValue":"Please wait. Reconnecting","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionAssistiveMessage","labelValue":"Place in line for support:","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionMaxMessageFirstLine","labelValue":"Hang in there.","sectionName":"LiveAgentChatWindow"},{"labelName":"EndChatAction","labelValue":"End Chat","sectionName":"LiveAgentChatWindow"},{"labelName":"PostChatButton","labelValue":"Give Feedback","sectionName":"LiveAgentChatWindow"},{"labelName":"QueuePositionConnectingMessage","labelValue":"Connecting...","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingDefaultName","labelValue":"Guest","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionZeroMessage","labelValue":"You're next!","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedWaitingMessage","labelValue":"Waiting","sectionName":"LiveAgentChatWindow"},{"labelName":"WaitingBannerAssistiveText","labelValue":"Waiting Screen Image","sectionName":"LiveAgentChatWindow"},{"labelName":"MinimizedQueuePositionMessage","labelValue":"Place in line:","sectionName":"LiveAgentChatWindow"},{"labelName":"ChatStateBody","labelValue":"Don't worry, after the chat ends, you can save the transcript. Click the agent name in the header and then click Save Transcript.","sectionName":"MessageOverlay"},{"labelName":"WaitingStateContinue","labelValue":"Continue to Wait","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedCloseButton","labelValue":"OK","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionBodyRequest","labelValue":"Try connecting again or come back later.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentTitle","labelValue":"Agents Offline","sectionName":"MessageOverlay"},{"labelName":"ChatStateEnd","labelValue":"Confirm End Chat","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningButton","labelValue":"Go Back","sectionName":"MessageOverlay"},{"labelName":"ChatStateResume","labelValue":"Go Back","sectionName":"MessageOverlay"},{"labelName":"WaitingStateHeader","labelValue":"Leave?","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionBodyApology","labelValue":"Sorry that we are not able to chat with you.","sectionName":"MessageOverlay"},{"labelName":"ErrorTryAgainButton","labelValue":"Start a New Chat","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentBodyApology","labelValue":"Sorry that we are not able to chat with you.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionHeader","labelValue":"There is a connection issue","sectionName":"MessageOverlay"},{"labelName":"ChatStateHeader","labelValue":"End chat?","sectionName":"MessageOverlay"},{"labelName":"WaitingStateBodyApology","labelValue":"We’re sorry we missed you.","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningTitle","labelValue":"Be careful…","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedTitleAndHeader","labelValue":"Chat blocked","sectionName":"MessageOverlay"},{"labelName":"ErrorExitChatButton","labelValue":"Leave Chat","sectionName":"MessageOverlay"},{"labelName":"WaitingStateLeave","labelValue":"Leave","sectionName":"MessageOverlay"},{"labelName":"ErrorNoConnectionTitle","labelValue":"Connection Issues","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentHeader","labelValue":"No agents are available","sectionName":"MessageOverlay"},{"labelName":"ErrorBlockedBody","labelValue":"It looks like an agent has blocked your chats.","sectionName":"MessageOverlay"},{"labelName":"ErrorNoAgentBodyRequest","labelValue":"Come back later or try again.","sectionName":"MessageOverlay"},{"labelName":"WaitingStateBodyWarning","labelValue":"If you leave now, you’ll lose your place in line to chat.","sectionName":"MessageOverlay"},{"labelName":"CloseSessionWarningBody","labelValue":"If you close, leave, or refresh this tab, you could lose your chat.","sectionName":"MessageOverlay"},{"labelName":"FileTransferRequested","labelValue":"File Transfer Requested","sectionName":"LiveAgentFileTransfer"},{"labelName":"UploadFile","labelValue":"Upload this file","sectionName":"LiveAgentFileTransfer"},{"labelName":"SelectNewFile","labelValue":"Select a file under 5mb","sectionName":"LiveAgentFileTransfer"},{"labelName":"TransferFailed","labelValue":"Transfer failed","sectionName":"LiveAgentFileTransfer"},{"labelName":"RemoveFile","labelValue":"Remove this file.","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferFailure","labelValue":"File Transfer Failed","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferCanceled","labelValue":"File Transfer Canceled","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileUpload","labelValue":"Upload a file","sectionName":"LiveAgentFileTransfer"},{"labelName":"FileTransferSuccess","labelValue":"File Transfer Succeeded","sectionName":"LiveAgentFileTransfer"},{"labelName":"UsePreviousElementToUploadFile","labelValue":"File transfer requested. Press the upload a file button.","sectionName":"LiveAgentFileTransfer"},{"labelName":"Minimize","labelValue":"Minimize chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"LiveChat","labelValue":"Chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"PostChat","labelValue":"Post-Chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"Close","labelValue":"Close dialog","sectionName":"LiveAgentSidebarApp"},{"labelName":"MinimizedContainerAssistiveText","labelValue":"Expand the chat","sectionName":"LiveAgentSidebarApp"},{"labelName":"EndOfDialog","labelValue":"End of Dialog","sectionName":"LiveAgentSidebarApp"}]};
       
       
       
