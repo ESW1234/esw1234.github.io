@@ -22,6 +22,33 @@
 	apiScript.src = "http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/common/api.js"
 	apiScript.onload = function() {
 		// Load Snap-in here.
+		embedded_svc.api.bootstrap.createEmbeddedServiceComponent(
+			{
+				baseCoreUrl: "http://jmacmillin-wsm3.internal.salesforce.com:6109",
+				communityEndpointUrl: "http://communities.force.com:6109/customerServiceMay2019"
+				// TODO
+			},
+			function() {
+				console.log("snapin loaded!");
+			}
+		);
+		
+		embedded_svc.init(
+			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+			'http://communities.force.com:6109/customerServiceMay2019',
+			gslbBaseURL,
+			'00Dxx0000006Gz1',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004CAe',
+				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
 	};
 </script>
 
