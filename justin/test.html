@@ -23,33 +23,13 @@
 		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		// Extra settings.
-		embedded_svc.settings.avatarImgURL = "../../../avatar.png";
-		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
-
 		// Non-standard snippet settings.
 		embedded_svc.settings.devMode = true;
-
-		// Adidas
-		//embedded_svc.settings.autoOpenPostChat = true;
-
-		// Snippet settings.
-		//embedded_svc.settings.snippetSettingsFile = "storageDomain";
 
 // 		embedded_svc.init(
 // 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
