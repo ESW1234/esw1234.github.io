@@ -13,10 +13,26 @@
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
+<!-- Test common/api.js -->
+
+<script type="text/javascript">
+	var apiScript = document.createElement("script");
+
+	apiScript.type = "text/javascript";
+	apiScript.src = "http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/common/api.js"
+	apiScript.onload = function() {
+		// Load Snap-in here.
+	};
+</script>
+
+
+<!-- Test common/api.js -->
+
+
 
 <!-- Dell - Fallback Routing + Direct to Button Routing -->
 
-<style type='text/css'>
+<!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #4380AE;
 		font-family: "Salesforce Sans", sans-serif;
@@ -29,12 +45,10 @@
 /* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
-</style>
-
-<script type='text/javascript'>
+</style> -->
+<!-- <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-// 		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
@@ -105,7 +119,7 @@
 		initESW('https://na44.stmfb.stm.salesforce.com');
 	}
 </script>
-
+ -->
 <!-- Dell - Fallback Routing + Direct to Button Routing -->
 
 
