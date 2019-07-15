@@ -8,28 +8,101 @@
 <body>
   <style>
       html {
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Helvetica Neue';
+      font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
       }
+
       body {
         background: #f8f8f8;
-      }
-      .editlink {
+        }
+
+        .editlink {
         color: #F8558D;
         font-weight: 500;
         letter-spacing: 0.03rem;
-      }
-      .embedded-service {
-        font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
-      }
+        }
 
+      .embedded-service .channelmenu {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: antialiased;
+        font-family: 'Helvetica Neue', Helvetica, 'Roboto', Arial, sans-serif;
+      }
       .embedded-service .channelmenu_header {
         background-color: #222;
+        text-align: left;
       }
-
+      .embedded-service .channelmenu_header > h2 {
+        font-weight: bolder;
+        letter-spacing: 0.05rem;
+        text-transform: none;
+      }
+      .embedded-service .channelmenu_header > p {
+        letter-spacing: 0.025rem;
+      }
       .embedded-service .fab {
         background-color: #005290;
+        animation: shadow-pulse 1s 2;
       }
+
+      /* trying ripple animation */
+        .embedded-service .fab {
+          position: relative;
+        overflow: hidden;
+        transform: translate3d(0, 0, 0);  
+        }
+
+        .embedded-service .fab:after {
+          content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform .5s, opacity 1s;
+        }
+
+        .embedded-service .fab:active:after {
+          transform: scale(0, 0);
+        opacity: .3;
+        transition: 0s;
+        }
+      /* end ripple animation */
+
+      /* trying gradient animation */
+        /*.embedded-service .fab {
+          background: linear-gradient(20deg, #005290, #EAA1C0);
+      background-size: 100% 100%;
+
+      -webkit-animation: AnimationName 0s ease infinite;
+      -moz-animation: AnimationName 0s ease infinite;
+      animation: AnimationName 0s ease infinite;
+
+      @-webkit-keyframes AnimationName {
+          0%{background-position:0% 56%}
+          50%{background-position:100% 45%}
+          100%{background-position:0% 56%}
+      }
+      @-moz-keyframes AnimationName {
+          0%{background-position:0% 56%}
+          50%{background-position:100% 45%}
+          100%{background-position:0% 56%}
+      }
+      @keyframes AnimationName { 
+          0%{background-position:0% 56%}
+          50%{background-position:100% 45%}
+          100%{background-position:0% 56%}
+      }
+        }*/
+
+      /* end gradient animation */
 
       .embedded-service .channelmenu_ctas svg[class^="icon_cta-"] {
         fill: #005290;
@@ -54,6 +127,33 @@
         font-weight: 500;
         margin: 8px;
       }
+      .embedded-service .channelmenu_ctas span[class^="cta-label-"] {
+        transition: color 0.25s ease;
+        letter-spacing: 0.025rem;
+      }
+      .embedded-service .channelmenu_ctas span[class^="cta-label-"]:hover {
+        text-decoration: none;
+        color: #005290;
+      }
+      .embedded-service .channelmenu_ctas > li {
+        transition: background-color 0.25s ease;
+      }
+      .embedded-service .channelmenu_ctas > li:hover {
+        text-decoration: none;
+        background-color: #fafafa;
+      }
+
+    /* radiant animation */
+      @keyframes shadow-pulse
+    {
+         0% {
+              box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+         }
+         100% {
+              box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+         }
+    }
+  /* end radiant animation */
   </style>
 <!-- Hooked up to Justin's NA44 STMFA org! justin@esw.com / test1234 -->
 <a class="editlink" href="https://github.com/ESW1234/esw1234.github.io/edit/master/emma/channelmenu.html">EDIT PAGE</a>
