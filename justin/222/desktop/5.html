@@ -184,8 +184,8 @@
 		window.setTimeout(
 			function() {
 				embedded_svc.bootstrapEmbeddedService().then(function() {
-					debugger;
 					console.log("created!");
+					embedded_svc.startChat();
 				});
 			},
 			3000
