@@ -180,6 +180,15 @@
 // 			},
 // 			3000
 // 		);
+
+		window.setTimeout(
+			function() {
+				embedded_svc.bootstrapEmbeddedService().then(function() {
+					debugger;
+				});
+			},
+			3000
+		);
 	};
 
 	if (!window.embedded_svc) {
