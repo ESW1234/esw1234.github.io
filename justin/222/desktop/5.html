@@ -185,7 +185,9 @@
 			function() {
 				embedded_svc.bootstrapEmbeddedService().then(function() {
 					console.log("created!");
-					embedded_svc.startChat();
+					window.setTimeout(function() {
+						embedded_svc.startChat();
+					}, 3000);
 				});
 			},
 			3000
