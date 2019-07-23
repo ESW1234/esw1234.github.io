@@ -17,7 +17,7 @@
 
 
 <div id="button_goes_here">
-<!--  <style type='text/css'>
+  <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -32,13 +32,13 @@
 	}
 </style>
 
- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'he'; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.defaultMinimizedText = 'לשוחח עם מומחה'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -85,7 +85,7 @@
 		initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983');
 	}
 </script>
--->	
+	
 <!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -137,7 +137,7 @@ embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
 -->
 
-	<style type='text/css'>
+<!--	<style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #71C757; font-family: "Salesforce Sans", sans-serif; }
 .embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #71C757; }
 @font-face {
@@ -146,7 +146,7 @@ src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/Salesforc
 url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 }
 </style>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>	-->
+ <script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -179,7 +179,7 @@ embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
 	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
-	
+-->	
 
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
