@@ -181,17 +181,17 @@
 // 			3000
 // 		);
 
-		window.setTimeout(
-			function() {
-				embedded_svc.bootstrapEmbeddedService().then(function() {
-					console.log("created!");
-					window.setTimeout(function() {
-						embedded_svc.startChat();
-					}.bind(window), 1000);
-				}.bind(window));
-			}.bind(window),
-			3000
-		);
+// 		window.setTimeout(
+// 			function() {
+// 				embedded_svc.bootstrapEmbeddedService().then(function() {
+// 					console.log("created!");
+// 					window.setTimeout(function() {
+// 						embedded_svc.startChat();
+// 					}.bind(window), 1000);
+// 				}.bind(window));
+// 			}.bind(window),
+// 			3000
+// 		);
 	};
 
 	if (!window.embedded_svc) {
