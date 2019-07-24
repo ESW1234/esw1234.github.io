@@ -101,7 +101,7 @@
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 
 //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -177,7 +177,7 @@ embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983',
 	
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js'); 
+		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/3.0/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
 	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
 	
