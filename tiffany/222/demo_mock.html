@@ -48,6 +48,7 @@
       .embedded-service .fab {
         background-color: #005290;
         animation: shadow-pulse 1s 2;
+      box-shadow: 2px 2px 5px 0 rgba(45,45,45,0.50);
       }
 
       /* trying ripple animation */
@@ -72,6 +73,7 @@
 	  		transform: scale(10, 10);
 	  		opacity: 0;
 	  		transition: transform .5s, opacity 1s;
+		background-color: #005290;
 	      }
 
 	      .embedded-service .fab:active:after {
@@ -158,7 +160,49 @@
 		          box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
 		     }
 		}
+	 
 	/* end radiant animation */
+	 .embedded-service .fab:hover {
+	 	background-color: #003977;
+		 outline: 0;
+	 }
+	 
+	 .embedded-service .fab:focus {
+	 	background-color: #003977;
+		 outline: 0;
+/* 		 box-shadow: 0 0 5px 0 #3385C3; */
+		 box-shadow: 0 0 3px 3px #3385C3;
+	 }
+	 
+	 .embedded-service .channelmenu_ctas > li {
+	 	padding-top: 0;
+		 padding-bottom: 0;
+	 }
+	 
+	 .embedded-service .channelmenu_ctas li a {
+	 	display: flex;
+		 height: 100%;
+	     padding-top: 12px;
+    		padding-bottom: 12px;
+	 }
+/* 	 
+	 .embedded-service .channelmenu_ctas a:focus {
+	 	outline: 0;
+		 box-shadow: 0 0 5px 0 #3385C3;
+	 } */
+	 
+/* 	 .embeddedServiceSidebarMinimizedFabDefaultUI.minimizedContainer:focus {
+    outline: 0;
+    color: rgb(255, 255, 255);
+    background-color: #003977;
+    text-decoration: underline;
+    box-shadow: 0 0 3px 3px #3385C3;
+}
+
+.embeddedServiceSidebarMinimizedFabDefaultUI.minimizedContainer:hover {
+    background-color: #003977;
+    color: rgb(255, 255, 255);
+} */
   </style>	
 <a href="https://github.com/ESW1234/esw1234.github.io/edit/master/tiffany/222/channelmenu_stmfa.html">EDIT PAGE</a>
 <script type='text/javascript' src='https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js'></script>
@@ -171,6 +215,7 @@ var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, org
 	    // Language setting needed for fetching the labels in the right language for chat
 	    // embedded_svc.menu.settings.language = "en";
       
+	 embedded_svc.menu.settings.displayFab = false;
       embedded_svc.menu.settings.replaceWithMock = true;
 	embedded_svc.menu.settings.JSON_MOCK = {
     "additionalSettings":{"auraJarVersion":"0.6000.2242","essentialsEdition":false,"htmlDirection":"ltr","latestChasitorVersion":"47.0","selfServiceEnabled":false},
