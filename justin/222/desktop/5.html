@@ -34,40 +34,48 @@
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
+		
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 		// Settings for Live Agent
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
+
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+
 		// Extra settings.
 		embedded_svc.settings.avatarImgURL = "../../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
+
 		// Non-standard snippet settings.
 		embedded_svc.settings.devMode = true;
 
-		// Agent 1 button id: 573xx0000004GZk
+		// Agent 1 button id: 573xx0000004CAe
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/customerServiceMay2019',
+			'http://sites.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006Gz1',
+			'00Dxx0000006GgB',
 			'justin',
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004CAe',
+				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16c44bd8033',
 				isOfflineSupportEnabled: true
 			}
 		);
+	};
 		
 // 		window.setTimeout(
 // 			function() {
