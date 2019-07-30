@@ -42,8 +42,8 @@ LOCAL 222/PATCH: FIELD SERVICE
 		embedded_svc.settings.authenticationStartLabel = '222 PATCH LOCAL';
 
 		embedded_svc.init(
-			'http://yatlaw-wsm2.internal.salesforce.com:6109',
-			'http://esw-domain-16c44ed6a44.localhost.soma.force.com:6109/fs1',
+			'https://yatlaw-wsm2.internal.salesforce.com:6101',
+			'https://esw-domain-16c44ed6a44.localhost.soma.force.com:6101/fs1',
 			gslbBaseURL,
 			'00Dxx0000006Gxv',
 			'FS',
@@ -55,7 +55,7 @@ LOCAL 222/PATCH: FIELD SERVICE
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://yatlaw-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://yatlaw-wsm2.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
