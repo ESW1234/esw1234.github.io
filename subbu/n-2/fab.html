@@ -6,7 +6,7 @@
                   imum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
 <body>
- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
@@ -25,7 +25,7 @@
 		);
 	};
 
-	if (/*!window.embedded_svc ||*/ !window.embedded_svc.menu) {
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
