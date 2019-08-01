@@ -1,6 +1,11 @@
+<!DOCTYPE html>
 <html>
-<body>
-  STMUA FieldService
+    <head>
+        <title>STEAM-U FS Snap-in</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+    </head>
+    <body>
+	STEAM-U FS Snap-in    
 	<div id="salesforce-login"></div>
 	<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
 <style type='text/css'>
@@ -11,14 +16,10 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
 	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<link href="https://cumulus-fs.s3.amazonaws.com/styles/bootstrap.min.css">
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -37,6 +38,7 @@
 		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Fibin/STEAMU/FS/callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated';
+		embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
 		embedded_svc.init(
 			'https://na45.stmua.stm.salesforce.com',
 			'https://eswdomain-16c4e415a38.stmua.stm.force.com/fscommunity',
