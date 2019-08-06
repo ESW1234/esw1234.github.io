@@ -8,7 +8,7 @@
         STEAM-B FS Snap-in
         <div id="salesforce-login"></div>
         <button id="logout" onclick="SFIDWidget.logout()">Log out</button>
-        <style type='text/css'>
+         <style type='text/css'>
             .embeddedServiceHelpButton .helpButton .uiButton {
                 background-color: #005290;
                 font-family: "Arial", sans-serif;
@@ -17,21 +17,19 @@
                 outline: 1px solid #005290;
             }
         </style>
-        <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+	<link href="https://cumulus-fs.s3.amazonaws.com/styles/bootstrap.min.css">
         <script type='text/javascript'>
             var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
-            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-             
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US
             //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
             //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-                
             // Settings for Field Service
-                
-            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbuiISiziX2MFKTiXByDgtTtH65z9.wUj0UN.acCLesL34lOxxhWh8Yw9RNBzVstWHxqfto1';
-            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/stmfb/oauth1.html';
+            embedded_svc.settings.loginClientId = '3MVG9QHbZxUACcUsqjN3auexYyJg9KtK5hw8TWpk46GmNFyUCVIkINd4qQ9pbr6BHX2j72.0DfaF6QA.uAlyL';
+            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Fibin/NA43/STMFB/callback.html';
             embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
             embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -39,26 +37,26 @@
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             embedded_svc.settings.enabledFeatures = ['FieldService'];
             embedded_svc.settings.entryFeature = 'FieldService';
-            embedded_svc.settings.useCustomAuthentication = false;
             embedded_svc.init(
-                'https://na44.stmfb.stm.salesforce.com',
-            	'https://scccq.stmfb.stm.force.com/testcommunity',
-            	gslbBaseURL,
-            	'00DRM0000006YqX',
-            	'TestDeployment',
-            	{
-            	}
-            	);
-            };
+			'https://na43.stmfb.stm.salesforce.com',
+			'https://esw-domain-16c67cc270c.stmfb.stm.force.com/fscommunity',
+			gslbBaseURL,
+			'00DS60000000MoP',
+			'FS',
+			{
+				
+			}
+		);
+	};
             if (!window.embedded_svc) {
-            	var s = document.createElement('script');
-            	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-            	s.onload = function() {
-            	initESW(null);
-            	};
-            	document.body.appendChild(s);
-            } else {
-            	initESW('https://service.force.com');
-            }
-        </script>	
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://na43.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </html>

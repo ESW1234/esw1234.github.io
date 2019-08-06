@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
-  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
-  <body>
-  	<a href="http://google.com">Test Background Link</a>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+<head>
+  <title>CM - STMFB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head> 
+<body>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
@@ -13,17 +16,17 @@
 		embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content';
 
 		embedded_svc.menu.init(
-			'https://snapins.my.stmfb.stm.salesforce.com',
-			'https://snapins-1600942b294.stmfb.stm.force.com/tiffanytest',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://xxzzy2-16c4f742c02.stmfb.stm.force.com',
 			gslbBaseURL,
-			'00DRM0000005jYI',
-			'tiffanyChatAndCall'
+			'00DRM000000F3wA',
+			'a'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -32,5 +35,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-  </body>
+</body>
 </html>

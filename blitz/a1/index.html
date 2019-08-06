@@ -26,27 +26,27 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		// Chat server endpoint URLs.
-		embedded_svc.menu.settings.liveAgentChatUrl = 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat';
-		embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content';
+		embedded_svc.menu.settings.liveAgentChatUrl = 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat';
+		embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content';
 
 		embedded_svc.menu.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://eswblitz.stmfa.stm.force.com/site1',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://sdo-demo-main-166ce2cf6b6-16c1ae159e8.stmfb.stm.force.com/esw1',
 			gslbBaseURL,
-			'00DRM000000EtFT',
+			'00DRM000000EyR9',
 			'fab1'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://na44.stmfa.stm.salesforce.com');
+		initESW('https://na44.stmfb.stm.salesforce.com');
 	}
 </script>
 
