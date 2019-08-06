@@ -31,7 +31,7 @@
             // Settings for Field Service
                 
             embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbs3u6RtQzDGzUuM9C11mcurjQd5YfmksukJZkmWrgDOH_9SSQLvfxkXXsg0DqzypRbHg5cF';
-            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/stmfb/oauth1.html';
+            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/stmfc/oauth1.html';
             embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
             embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -41,18 +41,18 @@
             embedded_svc.settings.entryFeature = 'FieldService';
             embedded_svc.settings.useCustomAuthentication = false;
             embedded_svc.init(
-              'https://na44.stmfb.stm.salesforce.com',
-            	'https://eswdomain.stmfb.stm.force.com/fscommunity',
+                'https://na44.stmfc.stm.salesforce.com',
+            	'https://eswdomain-16c685e5f71.stmfc.stm.force.com/testcommunity',
             	gslbBaseURL,
-            	'00DRM000000CLyc',
-            	'FSArial',
+            	'00DRM000000626p',
+            	'TestDeployment',
             	{
             	}
             	);
             };
             if (!window.embedded_svc) {
             	var s = document.createElement('script');
-            	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+            	s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
             	s.onload = function() {
             	initESW(null);
             	};
