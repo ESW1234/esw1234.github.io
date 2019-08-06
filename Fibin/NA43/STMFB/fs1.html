@@ -28,8 +28,8 @@
             //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
             //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
             // Settings for Field Service
-            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbsnpWqjp0mX.6ZiWNs2Ng2ByttEbFMMNDZnfdCFNrYIhgqoqekusfPX3APRkraWEZiBy6Mc';
-            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Fibin/SteamB/callback.html';
+            embedded_svc.settings.loginClientId = '3MVG9QHbZxUACcUsqjN3auexYyJg9KtK5hw8TWpk46GmNFyUCVIkINd4qQ9pbr6BHX2j72.0DfaF6QA.uAlyL';
+            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/Fibin/NA43/STMFB/callback.html';
             embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
             embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -37,13 +37,12 @@
             //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
             embedded_svc.settings.enabledFeatures = ['FieldService'];
             embedded_svc.settings.entryFeature = 'FieldService';
-            embedded_svc.settings.useCustomAuthentication = false;
-            		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-subdomain-161923d1a2-169e5690f6e.stmfb.stm.force.com/fscommunity',
+            embedded_svc.init(
+			'https://na43.stmfb.stm.salesforce.com',
+			'https://esw-domain-16c67cc270c.stmfb.stm.force.com/fscommunity',
 			gslbBaseURL,
-			'00DRM000000ApQ5',
-			'fibin_FS',
+			'00DS60000000MoP',
+			'FS',
 			{
 				
 			}
@@ -51,7 +50,7 @@
 	};
             if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na43.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
