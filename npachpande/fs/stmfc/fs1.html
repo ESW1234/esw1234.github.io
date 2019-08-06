@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>STEAM-B FS Snap-in</title>
+        <title>STEAM-C FS Snap-in</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
     </head>
     <body>
-        STEAM-B FS Snap-in
+        STEAM-C FS Snap-in
         <div id="salesforce-login"></div>
         <button id="logout" onclick="SFIDWidget.logout()">Log out</button>
         <style type='text/css'>
@@ -30,8 +30,8 @@
                 
             // Settings for Field Service
                 
-            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbuiISiziX2MFKTiXByDgtTtH65z9.wUj0UN.acCLesL34lOxxhWh8Yw9RNBzVstWHxqfto1';
-            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/stmfb/oauth1.html';
+            embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbtLuS3qQDfV0NWu53n8Wf9Dwh0Bbl0oIp6oWCsEav74sDsMCwCL0bhzwETMxg==';
+            embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/npachpande/fs/stmfc/oauth1.html';
             embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
             embedded_svc.settings.fieldServiceStartLabel = 'Book an Appointment';
             //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
@@ -41,10 +41,10 @@
             embedded_svc.settings.entryFeature = 'FieldService';
             embedded_svc.settings.useCustomAuthentication = false;
             embedded_svc.init(
-                'https://na44.stmfb.stm.salesforce.com',
-            	'https://scccq.stmfb.stm.force.com/testcommunity',
+                'https://na44.stmfc.stm.salesforce.com',
+            	'https://eswdomain-16c685e5f71.stmfc.stm.force.com/testcommunity',
             	gslbBaseURL,
-            	'00DRM0000006YqX',
+            	'00DRM000000626p',
             	'TestDeployment',
             	{
             	}
@@ -52,7 +52,7 @@
             };
             if (!window.embedded_svc) {
             	var s = document.createElement('script');
-            	s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+            	s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
             	s.onload = function() {
             	initESW(null);
             	};
