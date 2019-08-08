@@ -1,10 +1,13 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  </head>
-  
-  <body>
-    <style type='text/css'>
+   <head>
+   	<title>DEFAULT PAGE</title>
+   	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+<body>
+	<div id="button_goes_here"></div>
+
+
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
@@ -19,13 +22,13 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = 'ar'; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.defaultMinimizedText = 'לשוחח עם מומחה'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -68,9 +71,8 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('https://na44.stmfb.stm.salesforce.com');
 	}
 </script>
-  </body>
-  
+</body>
 </html>
