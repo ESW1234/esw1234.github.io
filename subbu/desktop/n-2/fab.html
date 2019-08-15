@@ -23,6 +23,20 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		//embedded_svc.settings.defaultMinimizedText = 'talk to representative'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = 'Nobody is Home'; //(Defaults to Agent Offline)
+		//embedded_svc.settings.loadingText = 'Be Patient'; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.settings.liveAgentChatUrl = 'http://skrishnamu-wsm.internal.salesforce.com:8096/chat';
