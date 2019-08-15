@@ -24,29 +24,27 @@
 			// Chat server endpoint URLs.
 			embedded_svc.menu.settings.liveAgentChatUrl = 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat';
 			embedded_svc.menu.settings.liveAgentContentUrl = 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content';
-			
-			// Dev mode.
-			embedded_svc.menu.settings.devMode = true;
 
 			embedded_svc.menu.init(
-				'http://snap.localhost.internal.salesforce.com:6109',
-				'http://communities.localhost.soma.force.com:6109/fabJuly2019',
+				'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+				'http://communities.localhost.soma.force.com:6109/customerServiceAug2019',
 				gslbBaseURL,
-				'00Dxx0000006GgB',
-				'justin'
+				'00Dxx0000006Gmd',
+				'justinMenu'
 			);
 		};
 
 		if (!window.embedded_svc || !window.embedded_svc.menu) {
 			var s = document.createElement('script');
-			s.setAttribute('src', 'http://snap.localhost.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+// 			s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+			s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
 			s.onload = function() {
 				initESW(null);
 			};
 			document.body.appendChild(s);
 		} else {
 // 			initESW('https://service.force.com');
-			initESW('http://snap.localhost.internal.salesforce.com:6109');
+			initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
 		}
 	</script>
 
