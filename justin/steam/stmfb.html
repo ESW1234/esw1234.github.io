@@ -77,7 +77,7 @@
 // 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins.my.stmfb.stm.salesforce.com',
 			'https://snapins-1600942b294.stmfb.stm.force.com/napili',
 			gslbBaseURL,
 			'00DRM0000005jYI',
@@ -92,14 +92,19 @@
 			}
 		);
 	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
-// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-// 	} else { initESW('https://service.force.com'); }
-	} else { initESW('https://na44.stmfb.stm.salesforce.com'); }
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('https://snapins.my.stmfb.stm.salesforce.com');
+	}
 </script>
 <!-- stop 5.0 snippet -->
 
