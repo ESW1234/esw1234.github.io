@@ -1,8 +1,13 @@
+<!DOCTYPE html>
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
+<head>
+  <title>Widget Main</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head> 
 <body>
+LOCAL 222PATCH
+ <div id="salesforce-login"></div>
+<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -30,26 +35,26 @@
 		embedded_svc.settings.entryFeature = 'FieldService';
 
 		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLYvmVa.ipZGpPm7OAiXhch7.cB8mP6oj1I6KHX.BEBgRPiDpWApN45COt.bECRflzTUOQX';
-		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/ckrajewski-m-snapin-callback.html';
-    embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-    embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
+		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLMTXgZ9zoc5.OeCz5yKASfqNYcN.zmv79G1t7NijesvvY3LvYx44B7fjSEMfXIh.c1Os7c';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/godwin/local/222/oauth.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.authenticationStartLabel = 'FS 222 PATCH';
 
 		embedded_svc.init(
-			'https://ckrajewski-ltm5.internal.salesforce.com:6101',
-			'https://rf.localhost.soma.force.com:6101/SnapIns',
+			'https://yatlaw-wsm2.internal.salesforce.com:6101',
+			'https://esw-domain-16c9c0a55bc.localhost.soma.force.com:6101/lscomm',
 			gslbBaseURL,
-			'00Dxx0000006Gmd',
-			'SnapIns',
+			'00Dxx0000006Hp9',
+			'LS',
 			{
-
+				
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ckrajewski-ltm5.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://yatlaw-wsm2.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -58,6 +63,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-<div id="salesforce-login"></div>
 </body>
 </html>
