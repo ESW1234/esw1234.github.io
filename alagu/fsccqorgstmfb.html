@@ -1,15 +1,26 @@
+<!DOCTYPE html>
 <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
+<head>
+  <title>Alagu FS testing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head> 
 <body>
+STMFA:Alagu test fs1
+<div id="salesforce-login"></div>
+<button id="logout" onclick="SFIDWidget.logout()">Log out</button>
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Arial", sans-serif;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -17,39 +28,32 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
 		// Settings for Field Service
-
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
-
 		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOLYvmVa.ipZGpPm7OAiXhch7.cB8mP6oj1I6KHX.BEBgRPiDpWApN45COt.bECRflzTUOQX';
-		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/ckrajewski-m-snapin-callback.html';
-    embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-    embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
-
+		embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbv.o1cWqqCjxsHOXDJPiNDu5QJnqs2G3Aulxh.px0B3bKvy8r0xG5z5orXIC02OnrHZ40Sz';
+		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/alagu/callback.html';
+		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
+		embedded_svc.settings.fieldServiceStartLabel = "Authenticated!"
 		embedded_svc.init(
-			'https://ckrajewski-ltm5.internal.salesforce.com:6101',
-			'https://rf.localhost.soma.force.com:6101/SnapIns',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://mission.stmfb.stm.force.com/FirstComm',
 			gslbBaseURL,
-			'00Dxx0000006Gmd',
-			'SnapIns',
+			'00DRM000000EyxW',
+			'FSDeploy',
 			{
-
+				
 			}
 		);
 	};
-
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ckrajewski-ltm5.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -58,6 +62,4 @@
 		initESW('https://service.force.com');
 	}
 </script>
-<div id="salesforce-login"></div>
-</body>
 </html>

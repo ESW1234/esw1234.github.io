@@ -64,8 +64,8 @@
 		// Debug
 		embedded_svc.settings.devMode = true;
 
-		// onAgentMessage
-		embedded_svc.addEventHandler("onAgentMessage", function(data) {
+// 		// onAgentMessage
+// 		embedded_svc.addEventHandler("onAgentMessage", function(data) {
 // 			window.requestAnimationFrame(function() {
 // 				window.requestAnimationFrame(function() {
 // 					var mostRecentMessage = document.querySelector(".embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI div a");
@@ -73,11 +73,11 @@
 // 					if(mostRecentMessage) mostRecentMessage.removeAttribute("target");
 // 				});
 // 			});
-		});
-		// onAgentRichMessage
-		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
-			console.log("onAgentRichMessage event was fired.");
-		});
+// 		});
+// 		// onAgentRichMessage
+// 		embedded_svc.addEventHandler("onAgentRichMessage", function(data) {
+// 			console.log("onAgentRichMessage event was fired.");
+// 		});
 
 		// Extra prechat details/info.
 		/*
@@ -152,7 +152,7 @@
 		*/
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
+			'https://snapins.my.stmfb.stm.salesforce.com',
 			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
 			gslbBaseURL,
 			'00DRM0000005jYI',
@@ -170,15 +170,15 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 // 		initESW('https://service.force.com');
-		initESW('https://na44.stmfb.stm.salesforce.com');
+		initESW('https://snapins.my.stmfb.stm.salesforce.com');
 	}
 </script>
 
