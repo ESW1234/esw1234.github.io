@@ -1,0 +1,69 @@
+<html>
+  <head></head>
+  <body>
+    <style type='text/css'>
+   	.embeddedServiceHelpButton .helpButton .uiButton {
+   		background-color: #008fe9;
+   		font-family: "Arial", sans-serif;
+   	}
+   	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+   		outline: 1px solid #008fe9;
+   	}
+   </style>
+
+   <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+   <script type='text/javascript'>
+   	var initESW = function(gslbBaseURL) {
+   		embedded_svc.settings.displayHelpButton = true; //または false
+   		embedded_svc.settings.language = ''; //たとえば、「en」または「en-US」を入力します
+   		embedded_svc.settings.chatbotAvatarImgURL = "https://zkai--c.visualforce.com/resource/1562308705000/ChatBotAvatarImage?"; // ボットのアバター画像
+
+   		embedded_svc.settings.defaultMinimizedText = 'Z会お客さまセンターです'; //(エキスパートとチャットにデフォルト設定)
+   		//embedded_svc.settings.defaultMinimizedText = '...'; //(エキスパートとチャットにデフォルト設定)
+   		//embedded_svc.settings.disabledMinimizedText = '...'; //(エージェントがオフラインにデフォルト設定)
+
+   		//embedded_svc.settings.loadingText = ''; //(読み込み中にデフォルト設定)
+   		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(リリースのドメインを設定して、訪問者がチャットセッション中にサブドメインを移動できるようにします)
+
+   		// チャット の設定
+   		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+   			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+   			// Returns a valid button ID.
+   		//};
+   		//embedded_svc.settings.prepopulatedPrechatFields = {}; //事前チャットフォームの項目の自動入力を設定
+   		//embedded_svc.settings.fallbackRouting = []; //ボタン ID、ユーザ ID、または userId_buttonId の配列
+   		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(デフォルトは [お問い合わせ])
+
+   		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+   		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+   		embedded_svc.init(
+   			'https://zkai.my.salesforce.com',
+   			'https://zkai.force.com/inquiry',
+   			gslbBaseURL,
+   			'00D0o000001A3f2',
+   			'zkaiBots',
+   			{
+   				baseLiveAgentContentURL: 'https://c.la1-c2-hnd.salesforceliveagent.com/content',
+   				deploymentId: '5720o000000c9S1',
+   				buttonId: '5730o000000cA3t',
+   				baseLiveAgentURL: 'https://d.la1-c2-hnd.salesforceliveagent.com/chat',
+   				eswLiveAgentDevName: 'zkaiBots',
+   				isOfflineSupportEnabled: false
+   			}
+   		);
+   	};
+
+   	if (!window.embedded_svc) {
+   		var s = document.createElement('script');
+   		s.setAttribute('src', 'https://zkai.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+   		s.onload = function() {
+   			initESW(null);
+   		};
+   		document.body.appendChild(s);
+   	} else {
+   		initESW('https://service.force.com');
+   	}
+   </script>
+  </body>
+ </html>
