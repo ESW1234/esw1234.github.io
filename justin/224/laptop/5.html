@@ -52,6 +52,13 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
+		embedded.svc.addEventListener("onChatEndedByAgent", function() {
+			debugger;
+			if(embedded_svc) {
+				embedded_svc.postMessage("session.delete", ["ACTIVE_CHAT_SESSIONS"]);
+			}
+		});
+
 		embedded_svc.init(
 			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
 			'http://communities.localhost.soma.force.com:6109/helpCenter03102019',
