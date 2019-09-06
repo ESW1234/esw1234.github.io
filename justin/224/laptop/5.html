@@ -55,7 +55,7 @@
 		embedded_svc.addEventHandler("onChatEndedByAgent", function() {
 			debugger;
 			if(embedded_svc) {
-				embedded_svc.postMessage("session.delete", ["ACTIVE_CHAT_SESSIONS"]);
+				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
 			}
 		});
 
