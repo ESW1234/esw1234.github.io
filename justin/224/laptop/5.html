@@ -53,14 +53,9 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.settings.autoOpenPostChat = true;
-// 		embedded_svc.addEventHandler("onChatEndedByAgent", function() {
-// 			if(embedded_svc) {
-// 				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
-// 			}
-// 		});
 		window.addEventListener("message", function(payload) {
-			if(payload.data.method === "clearActiveChatSessions") {
-				debugger;
+			if(payload.data === "clearActiveChatSessions") {
+				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
 			}
 		});
 
