@@ -59,8 +59,9 @@
 // 			}
 // 		});
 		window.addEventListener("message", function(payload) {
-			debugger;
-			// if(payload.message === "clearActiveChatSessions") {}
+			if(payload.data.method === "clearActiveChatSessions") {
+				debugger;
+			}
 		});
 
 		embedded_svc.init(
