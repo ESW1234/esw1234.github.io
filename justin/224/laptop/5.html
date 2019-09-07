@@ -58,8 +58,9 @@
 // 				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
 // 			}
 // 		});
-		window.addEventListener("clearActiveChatSessions", function(payload) {
+		window.addEventListener("message", function(payload) {
 			debugger;
+			// if(payload.message === "clearActiveChatSessions") {}
 		});
 
 		embedded_svc.init(
