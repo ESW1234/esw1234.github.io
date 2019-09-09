@@ -19,9 +19,16 @@
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 	
-<button onClick="function() { if(embedded_svc) { embedded_svc.inviteAPI.acceptInvite(); } }">
+<button onclick="onButtonClick()">
 	Click me!
 </button>
+<script type="text/javascript">
+	function onButtonClick() { 
+		if(embedded_svc) {
+			embedded_svc.inviteAPI.acceptInvite();
+		}
+	}
+</script>
 
 
 <style type='text/css'>
