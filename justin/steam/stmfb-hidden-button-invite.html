@@ -18,6 +18,11 @@
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
+	
+<button onClick="function() { if(embedded_svc) { embedded_svc.inviteAPI.acceptInvite(); } }">
+	Click me!
+</button>
+
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
@@ -35,6 +40,7 @@
 </style>
 
 <!-- Start of Invitations -->
+<!--
 <div class="embeddedServiceInvitation" id="snapins_invite" inert aria-live="assertive" role="dialog" aria-atomic="true">
 	<div class="embeddedServiceInvitationHeader" aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext">
 		<img id="embeddedServiceAvatar">
@@ -77,6 +83,7 @@
 		document.addEventListener('keyup', function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})
 	})();
 </script>
+-->
 <!-- End of Invitations -->
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
