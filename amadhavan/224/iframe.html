@@ -17,8 +17,8 @@
     }
     window.onload = function()
     {
-        parent.document.getElementById('chatFrame').style.height = document.body.clientHeight+5+'px';
-        parent.document.getElementById('chatFrame').style.width = document.body.clientWidth+18+'px';
+        parent.document.getElementById('chatFrame').style.height = document.querySelector('.dockableContainer').clientHeight+'px';
+        parent.document.getElementById('chatFrame').style.width = document.querySelector('.dockableContainer').clientWidth+'px';
     };
 </script>
 	
