@@ -12,14 +12,21 @@
       <title>HTML Iframes</title>
    </head>
 	 <script type="text/javascript">
-    function clickHandler() {
-      alert("something");
-    }
-    window.onload = function()
-    {
-        parent.document.getElementById('chatFrame').style.height = document.querySelector('.dockableContainer').clientHeight+'px';
-        parent.document.getElementById('chatFrame').style.width = document.querySelector('.dockableContainer').clientWidth+'px';
-    };
+<script type="application/javascript">
+
+function resizeIFrameToFitContent( iFrame ) {
+
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+
+window.addEventListener('DOMContentLoaded', function(e) {
+
+    var iFrame = document.getElementById( 'chatFrame' );
+    resizeIFrameToFitContent( iFrame );
+} );
+
+</script>
 </script>
 	
    <body>
