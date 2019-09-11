@@ -26,7 +26,7 @@ function resizeIFrameToFitContent( iFrame ) {
 window.addEventListener('DOMContentLoaded', function(e) {
 
     	var iFrame = document.getElementById( 'chatFrame' );
-	iFrame.document.body.onload = resizeIFrameToFitContent( iFrame );
+	iFrame.contentDocument.body.onload = resizeIFrameToFitContent( iFrame );
 } );
 
 </script>	
