@@ -1,35 +1,30 @@
 
 <!DOCTYPE html>
 <html>
-	<style>
-		html {
-	 background-image: url('https://esw1234.github.io/amadhavan/224/adidas_Screenshot.gif');
-    background-repeat: norepeat;
-			
-}
-	</style>
-   <head>
+ <style>
+    html {
+     background-image: url('https://esw1234.github.io/amadhavan/224/adidas_Screenshot.gif');
+     background-repeat: norepeat;		
+     }
+    iframe{
+        width: 100%;
+	height:100%;		
+    }
+  </style>
+  <head>
       <title>HTML Iframes</title>
-   </head>
+  </head>
 <script type="application/javascript">
-var iFrame = document.getElementById("chatFrame");
-iFrame.onload = resizeIFrameToFitContent();
-function resizeIFrameToFitContent() {
-		var iFrame = document.getElementById("chatFrame");
-		iFrame.clientWidth = document.getElementById("chatFrame").contentWindow.document.querySelector(".helpButton").clientWidth;
-		iFrame.clientHeight = iFrame.contentWindow.document.querySelector(".helpButton").clientHeight;	
-	// For resizing to open chat widget
-   // iFrame.style.width  = iFrame.windowContent.document.querySelector(".dockableContainer").clientWidth;
-   // iFrame.style.height = iFrame.windowContent.document.querySelector(".dockableContainer").clientHeight;
-}
-
-
+var iframe = document.getElementById("chatFrame");
+iFrame.onload = function(){
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+};
 </script>	
    <body>
       <p>Document content goes here...</p>  
    <div style ="bottom: 0px; right: 0px; position: absolute;" > 
 	   <iframe id="chatFrame" src= "http://esw1234.github.io/amadhavan/224/chat.html" 
-	       border-color: black" width="100%" height="100% ></iframe>
+	       border-color: black"></iframe>
    </div> 	   
 	</body>
 	
