@@ -15,7 +15,7 @@
 
 function resizeIFrameToFitContent() {
 		var iFrame = document.getElementById("chatFrame");
-		iFrame.clientWidth = iFrame.contentWindow.document.querySelector(".helpButton").clientWidth;
+		iFrame.clientWidth = document.getElementById("chatFrame").contentWindow.document.querySelector(".helpButton").clientWidth;
 		iFrame.clientHeight = iFrame.contentWindow.document.querySelector(".helpButton").clientHeight;
 	
 	// For resizing to open chat widget
