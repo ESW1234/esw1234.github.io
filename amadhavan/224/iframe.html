@@ -15,9 +15,11 @@
       <title>HTML Iframes</title>
   </head>
 <script type="application/javascript">
-var iframe = document.getElementById("chatFrame");
-iframe.onload = function(){
-        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+window.onload = function(){
+	var iframe = document.getElementById("chatFrame");
+	if(iframe){ 
+		iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+	}
 };
 </script>	
    <body>
