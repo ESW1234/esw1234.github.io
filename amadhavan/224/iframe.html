@@ -14,8 +14,10 @@
 <script type="application/javascript">
 
 function resizeIFrameToFitContent( iFrame ) {
-	iFrame.style.width = iFrame.windowContent.document.querySelector(".helpButton").clientWidth;
-	iFrame.style.height = iFrame.windowContent.document.querySelector(".helpButton").clientHeight;
+	iFrame.addEventListener('DOMContentLoaded'), function(e) {
+		iFrame.style.width = iFrame.windowContent.document.querySelector(".helpButton").clientWidth;
+		iFrame.style.height = iFrame.windowContent.document.querySelector(".helpButton").clientHeight;
+	});
 	
 	// For resizing to open chat widget
    // iFrame.style.width  = iFrame.windowContent.document.querySelector(".dockableContainer").clientWidth;
