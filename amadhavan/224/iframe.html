@@ -14,10 +14,9 @@
 <script type="application/javascript">
 
 function resizeIFrameToFitContent( iFrame ) {
-	iFrame.addEventListener('DOMContentLoaded', function(e) {
-		iFrame.clientWidth = iFrame.windowContent.document.querySelector(".helpButton").clientWidth;
-		iFrame.clientHeight = iFrame.windowContent.document.querySelector(".helpButton").clientHeight;
-	});
+
+		iFrame.clientWidth = iFrame.contentWindow.document.querySelector(".helpButton").clientWidth;
+		iFrame.clientHeight = iFrame.contentWindow.document.querySelector(".helpButton").clientHeight;
 	
 	// For resizing to open chat widget
    // iFrame.style.width  = iFrame.windowContent.document.querySelector(".dockableContainer").clientWidth;
@@ -26,8 +25,8 @@ function resizeIFrameToFitContent( iFrame ) {
 
 window.addEventListener('DOMContentLoaded', function(e) {
 
-    var iFrame = document.getElementById( 'chatFrame' );
-    resizeIFrameToFitContent( iFrame );
+    	var iFrame = document.getElementById( 'chatFrame' );
+	iFrame.document.body.onload = resizeIFrameToFitContent( iFrame );
 } );
 
 </script>	
