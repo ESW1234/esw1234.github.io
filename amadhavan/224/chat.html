@@ -23,17 +23,16 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type ='text/javascript'>
 	
-   let height;
+window.onload = function(){
    const sendPostMessage = () => {
-   if (height !== document.getElementById('.helpButton').clientHeight) {
-   	height = document.getElementById('.helpButton').clientHeight;
+   if (height !== document.querySelector('.helpButton').clientHeight) {   
+    height = document.querySelector('.helpButton').clientHeight;
+    console.log(height) // check the message is being sent correctly
     window.parent.postMessage({
       frameHeight: height
     }, '*');
-    console.log(height) // check the message is being sent correctly
   }
-}
-window.onload = () => sendPostMessage();
+};
 window.onresize = () => sendPostMessage();
 //document.getElementById('.helpButton').onclick = () => sendPostMessage();
 //document.getElementById('.dockableContainer').onclick = () => sendPostMessage();
