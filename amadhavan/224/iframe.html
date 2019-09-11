@@ -12,28 +12,23 @@
       <title>HTML Iframes</title>
    </head>
 <script type="application/javascript">
-
+var iFrame = document.getElementById("chatFrame");
+iFrame.onload = resizeIFrameToFitContent();
 function resizeIFrameToFitContent() {
 		var iFrame = document.getElementById("chatFrame");
 		iFrame.clientWidth = document.getElementById("chatFrame").contentWindow.document.querySelector(".helpButton").clientWidth;
-		iFrame.clientHeight = iFrame.contentWindow.document.querySelector(".helpButton").clientHeight;
-	
+		iFrame.clientHeight = iFrame.contentWindow.document.querySelector(".helpButton").clientHeight;	
 	// For resizing to open chat widget
    // iFrame.style.width  = iFrame.windowContent.document.querySelector(".dockableContainer").clientWidth;
    // iFrame.style.height = iFrame.windowContent.document.querySelector(".dockableContainer").clientHeight;
 }
 
-//window.addEventListener('DOMContentLoaded', function(e) {
-
-    	//var iFrame = document.getElementById( 'chatFrame' );
-	//iFrame.contentDocument.body.onload = resizeIFrameToFitContent( iFrame );
-//} );
 
 </script>	
    <body>
       <p>Document content goes here...</p>  
    <div style ="bottom: 0px; right: 0px; position: absolute;" > 
-	   <iframe id="chatFrame" onload ="resizeIFrameToFitContent()" src= "http://esw1234.github.io/amadhavan/224/chat.html" 
+	   <iframe id="chatFrame" src= "http://esw1234.github.io/amadhavan/224/chat.html" 
 	       border-color: black" ></iframe>
    </div> 	   
 	</body>
