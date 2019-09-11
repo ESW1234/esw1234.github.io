@@ -14,11 +14,8 @@
 <script type="application/javascript">
 
 function resizeIFrameToFitContent( iFrame ) {
-	var sidebar = 
-	sidebar
-
-    iFrame.style.width  = document.querySelector(".dockableContainer").clientWidth;
-    iFrame.style.height = document.querySelector(".dockableContainer").clientHeight;
+    iFrame.style.width  = iFrame.windowContent.document.querySelector(".dockableContainer").clientWidth;
+    iFrame.style.height = iFrame.windowContent.document.querySelector(".dockableContainer").clientHeight;
 }
 
 window.addEventListener('DOMContentLoaded', function(e) {
