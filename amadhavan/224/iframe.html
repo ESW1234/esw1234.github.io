@@ -15,11 +15,11 @@
       <title>HTML Iframes</title>
   </head>
 <script type="application/javascript">
-window.onload = function(){
-	var iframe = document.getElementById("chatFrame");
-	if(iframe){ 
-		iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-	}
+window.onmessage = (e) => {
+  console.log(e.data.hasOwnProperty("frameHeight"));	
+  if (e.data.hasOwnProperty("frameHeight")) {
+    document.getElementById("chatFrame").style.height = `${e.data.frameHeight + 30}px`;
+  }
 };
 </script>	
    <body>
