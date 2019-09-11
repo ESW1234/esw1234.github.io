@@ -18,7 +18,7 @@ function resizeIFrameToFitContent( iFrame ) {
     iFrame.style.height = iFrame.windowContent.document.querySelector(".dockableContainer").clientHeight;
 }
 
-document.getElementById("chatFrame").addEventListener('DOMContentLoaded', function(e) {
+window.addEventListener('DOMContentLoaded', function(e) {
 
     var iFrame = document.getElementById( 'chatFrame' );
     resizeIFrameToFitContent( iFrame );
