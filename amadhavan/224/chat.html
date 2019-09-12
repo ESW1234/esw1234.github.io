@@ -50,10 +50,14 @@
 			setTimeout(function() {
 				// Post message to your parent saying how big the iframe should be.
 				var height = document.querySelector('.helpButton').clientHeight;
+				var width = document.querySelector('.helpButton').clientWidth;
 
 				console.log(height); // check the message is being sent correctly
+				console.log(width); // check the message is being sent correctly
+
 				window.parent.postMessage({
-					frameHeight: height
+					frameHeight: height,
+					frameWidth: width
 				}, '*');
 			}, 3000);
 		});
