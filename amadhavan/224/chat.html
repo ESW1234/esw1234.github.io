@@ -22,22 +22,13 @@
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type ='text/javascript'>
-function sendPostMessage(){
-    height = document.querySelector('.helpButton').clientHeight;
-    console.log(height) // check the message is being sent correctly
-    window.parent.postMessage({
-      frameHeight: height
-    }, '*');
- }
 window.onload = sendPostMessage();
 window.onresize = sendPostMessage();
 //document.getElementById('.helpButton').onclick = () => sendPostMessage();
 //document.getElementById('.dockableContainer').onclick = () => sendPostMessage();
 </script>
 <script type='text/javascript'>
-	
-	
-	
+	 
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -62,7 +53,15 @@ window.onresize = sendPostMessage();
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-
+		embedded_svc.addEventHandler(“afterInit”, function() {
+			// Post message to your parent saying how big the iframe should be.
+			var height = document.querySelector('.helpButton').clientHeight;
+			
+			console.log(height); // check the message is being sent correctly
+			window.parent.postMessage({
+				frameHeight: height
+			}, '*');
+		});
 		embedded_svc.init(
 			'http://amadhavan-wsm2.internal.salesforce.com:6109',
 			'http://amadhavan.localhost.soma.force.com:6109/test1',
