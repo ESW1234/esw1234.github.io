@@ -17,6 +17,17 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
+	embedded_sv.afterMinimize = function(){
+		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
+
+
+		  window.parent.postMessage({
+			frameHeight: height,
+			frameWidth: width
+		    }, '*');		    
+		   });
+	}
 	window.onload = function(){
 			setTimeout(function() {
 				// Post message to your parent saying how big the iframe should be.
@@ -32,14 +43,14 @@
 
 
 				document.querySelector('.helpButton').addEventListener("click", () => {
-					var height = document.querySelector('.helpButton').clientHeight;
-					var width = document.querySelector('.helpButton').clientWidth;
+					var height = document.querySelector('.sidebarMinimized').clientHeight;
+					var width = document.querySelector('.sidebarMinimized').clientWidth;
 					
 					window.parent.postMessage({
 					frameHeight: height,
 					frameWidth: width
 				    }, '*');		    
-	           });
+	         	       });
 			}, 3000);	
 	}
 	
@@ -93,7 +104,7 @@
 	const resize = () => {
 		setTimeout(function() {
 			var height = document.querySelector('.dockableContainer').clientHeight;
-			var width = document.querySelector('.dockabaleContainer').clientWidth;
+			var width = document.querySelector('.dockableContainer').clientWidth;
 	     		window.parent.postMessage({
 				frameHeight: height,
 				frameWidth: width
@@ -102,7 +113,7 @@
 	      console.log(width);
 		},1000);
     	}
-	window.onresize = () => resize();
+	
 </script>
 </body>
 </html>
