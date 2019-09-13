@@ -1,0 +1,119 @@
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0"> -->
+   </head>
+<body>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
+<script type='text/javascript'>	 
+	embedded_sv.afterMinimize = function(){
+		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
+
+
+		  window.parent.postMessage({
+			frameHeight: height,
+			frameWidth: width
+		    }, '*');		    
+		   });
+	}
+	window.onload = function(){
+			setTimeout(function() {
+				// Post message to your parent saying how big the iframe should be.
+				var height = document.querySelector('.helpButton').clientHeight;
+				var width = document.querySelector('.helpButton').clientWidth;
+				
+				console.log(height); // check the message is being sent correctly
+				console.log(width); // check the message is being sent correctly
+				window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				}, '*');
+
+
+				document.querySelector('.helpButton').addEventListener("click", () => {
+					var height = document.querySelector('.sidebarMinimized').clientHeight;
+					var width = document.querySelector('.sidebarMinimized').clientWidth;
+					
+					window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				    }, '*');		    
+	         	       });
+			}, 3000);	
+	}
+	
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+       		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.prechatBackgroundImgURL = 'https://images.app.goo.gl/DixNHiA8mU6oUPdJ7'
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.init(
+			'http://amadhavan-wsm2.internal.salesforce.com:6109',
+			'http://amadhavan.localhost.soma.force.com:6109/test1',
+			gslbBaseURL,
+			'00Dxx0000001gEW',
+			'omni_1',
+			{
+				baseLiveAgentContentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000000001',
+				buttonId: '573xx0000000001',
+				baseLiveAgentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
+	}
+	
+
+	const resize = () => {
+		setTimeout(function() {
+			var height = document.querySelector('.dockableContainer').clientHeight;
+			var width = document.querySelector('.dockableContainer').clientWidth;
+	     		window.parent.postMessage({
+				frameHeight: height,
+				frameWidth: width
+			}, '*');
+	      console.log(height);
+	      console.log(width);
+		},1000);
+    	}
+	
+</script>
+</body>
+</html>
