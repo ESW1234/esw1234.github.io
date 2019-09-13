@@ -29,6 +29,17 @@
 					frameHeight: height,
 					frameWidth: width
 				}, '*');
+
+
+				document.querySelector('.helpButton').addEventListener("click", () => {
+					var height = document.querySelector('.helpButton').clientHeight;
+					var width = document.querySelector('.helpButton').clientWidth;
+					
+					window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				    }, '*');		    
+	           });
 			}, 3000);	
 	}
 	
@@ -51,19 +62,6 @@
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.addEventHandler("embeddedServiceDOMPrepared", function() {
-			setTimeout(function() {
-				// Post message to your parent saying how big the iframe should be.
-				var height = document.querySelector('.helpButton').clientHeight;
-				var width = document.querySelector('.helpButton').clientWidth;
-				console.log(height); // check the message is being sent correctly
-				console.log(width); // check the message is being sent correctly
-				window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-				}, '*');
-			}, 3000);
-		});
 		embedded_svc.init(
 			'http://amadhavan-wsm2.internal.salesforce.com:6109',
 			'http://amadhavan.localhost.soma.force.com:6109/test1',
@@ -91,16 +89,7 @@
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 	}
 	
-		
-	document.querySelector('.helpButton').addEventListener("click", () => {
-		var height = document.querySelector('.helpButton').clientHeight;
-		var width = document.querySelector('.helpButton').clientWidth;
-		
-					window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-	    }, '*');
-	});
+
 	const resize = () => {
 		setTimeout(function() {
 			var height = document.querySelector('.dockableContainer').clientHeight;
@@ -113,8 +102,7 @@
 	      console.log(width);
 		},1000);
     	}
-	document.getElementById('.helpButton').onclick = () => resize();
-	document.getElementById('.helpButton').onclick = () => resize();
+	window.onresize = () => resize();
 </script>
 </body>
 </html>
