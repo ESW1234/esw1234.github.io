@@ -1,16 +1,34 @@
 
 <!DOCTYPE html>
 <html>
-
-   <head>
+ <style>
+    html {
+     background-image: url('https://esw1234.github.io/amadhavan/224/adidas_Screenshot.gif');
+     background-repeat: norepeat;		
+     }
+    iframe{
+        width: 100%;
+	height:100%;		
+    }
+  </style>
+  <head>
       <title>HTML Iframes</title>
-   </head>
-	
+  </head>
+<script type="application/javascript">
+window.onmessage = (e) => {
+  console.log(e.data.hasOwnProperty("frameHeight"));	
+  if (e.data.hasOwnProperty("frameHeight")) {
+    document.getElementById("chatFrame").style.height = e.data.frameHeight+20+"px";
+    document.getElementById("chatFrame").style.width = e.data.frameWidth+20+"px";
+  }
+};
+</script>	
    <body>
-      <p>Document content goes here...</p>
-       <iframe src= "http://esw1234.github.io/amadhavan/224/chat.html"   frameborder="0" style="min-height: -webkit-fill-available;
-    min-width: -webkit-fill-available; border-style: solid";
-  border-color: black" ></iframe>
-   </body>
+      <p>Document content goes here...</p>  
+   <div style ="bottom: 0px; right: 0px; position: absolute;" > 
+	   <iframe id="chatFrame" src= "http://esw1234.github.io/amadhavan/224/chat.html" 
+	       border-color: black"></iframe>
+   </div> 	   
+	</body>
 	
 </html>
