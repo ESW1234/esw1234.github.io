@@ -22,14 +22,6 @@
 				// Post message to your parent saying how big the iframe should be.
 				var height = document.querySelector('.helpButton').clientHeight;
 				var width = document.querySelector('.helpButton').clientWidth;
-
-				
-				document.querySelector('.helpButton').addEventListener("click", () => {
-					window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-					}, '*');
-				});
 				
 				console.log(height); // check the message is being sent correctly
 				console.log(width); // check the message is being sent correctly
@@ -40,6 +32,9 @@
 				}, '*');
 			}, 3000);	
 	}
+	
+
+  }
 
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -107,6 +102,32 @@
 	} else {
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 	}
+	
+		
+	document.querySelector('.helpButton').addEventListener("click", () => {
+		var height = document.querySelector('.helpButton').clientHeight;
+		var width = document.querySelector('.helpButton').clientWidth;
+		
+					window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+	    }, '*');
+	});
+	const resize = () => {
+		setTimeout(function() {
+			var height = document.querySelector('.dockableContainer').clientHeight;
+			var width = document.querySelector('.dockabaleContainer').clientWidth;
+	     		window.parent.postMessage({
+				frameHeight: height,
+				frameWidth: width
+			}, '*');
+	      console.log(height);
+	      console.log(width);
+		},1000);
+    	}
+	document.getElementById('.helpButton').onclick = () => resize();
+	document.getElementById('.helpButton').onclick = () => resize();
+
 </script>
 </body>
 </html>
