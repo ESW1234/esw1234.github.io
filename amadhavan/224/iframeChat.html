@@ -30,17 +30,6 @@
 					frameHeight: height,
 					frameWidth: width
 				}, '*');
-
-
-				document.querySelector('.helpButton').addEventListener("click", () => {
-					var height = document.querySelector('.sidebarMinimized').clientHeight;
-					var width = document.querySelector('.sidebarMinimized').clientWidth;
-					
-					window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-				    }, '*');		    
-	         	       });
 			}, 3000);	
 	}
 	
@@ -103,17 +92,16 @@
 	      console.log(width);
 		},1000);
     	}
-	
-	embedded_svc.afterMinimize = function(){
-		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
-		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
 
+	document.querySelector('.helpButton').addEventListener("click", () => {
+		var height = document.querySelector('.sidebarMinimized').clientHeight;
+		var width = document.querySelector('.sidebarMinimized').clientWidth;
 
-		  window.parent.postMessage({
-			frameHeight: height,
-			frameWidth: width
-		    }, '*');		    
-	}
+		window.parent.postMessage({
+		frameHeight: height,
+		frameWidth: width
+   		}, '*');		    
+       });
 	
 </script>
 </body>
