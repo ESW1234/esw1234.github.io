@@ -17,16 +17,7 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
-	embedded_sv.afterMinimize = function(){
-		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
-		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
 
-
-		  window.parent.postMessage({
-			frameHeight: height,
-			frameWidth: width
-		    }, '*');		    
-	}
 	window.onload = function(){
 			setTimeout(function() {
 				// Post message to your parent saying how big the iframe should be.
@@ -112,6 +103,17 @@
 	      console.log(width);
 		},1000);
     	}
+	
+	embedded_svc.afterMinimize = function(){
+		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
+
+
+		  window.parent.postMessage({
+			frameHeight: height,
+			frameWidth: width
+		    }, '*');		    
+	}
 	
 </script>
 </body>
