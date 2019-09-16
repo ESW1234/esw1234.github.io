@@ -19,6 +19,18 @@
 <script type='text/javascript'>	 
 
 		window.onload = function(){
+			setTimeout(function() {
+				// Post message to your parent saying how big the iframe should be.
+				var height = document.querySelector('.helpButton').clientHeight;
+				var width = document.querySelector('.helpButton').clientWidth;
+				
+				console.log(height); // check the message is being sent correctly
+				console.log(width); // check the message is being sent correctly
+				window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				}, '*');
+				
 				embedded_svc.addEventHandler("afterMinimize", function() {
 					setTimeout(function() {
 						var height = document.querySelector('.helpButton').clientHeight;
@@ -29,7 +41,7 @@
 						}, '*');
 						 console.log("after minimized height-" + height);
 						 console.log("after minimized width-"+ width);
-					},2000);	
+					},1000);	
 				});
 								
 				embedded_svc.addEventHandler("afterMaximize", function() {
@@ -44,7 +56,10 @@
 						 console.log("after minimized width-"+ width);
 					},1000);	
 				});
-		}
+
+			}, 2000);	
+	}
+
 	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -80,6 +95,9 @@
 				isOfflineSupportEnabled: true
 			}
 		);
+		
+		
+		
 	};
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
