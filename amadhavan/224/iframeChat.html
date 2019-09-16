@@ -30,6 +30,29 @@
 					frameHeight: height,
 					frameWidth: width
 				}, '*');
+				
+				embedded_svc.addEventHandler("afterMinimize", function() {
+				  var height = document.querySelector('.sidebarMinimized').clientHeight;
+		                  var width = document.querySelector('.sidebarMinimized').clientWidth;
+
+		                  window.parent.postMessage({
+					frameHeight: height,
+		                        frameWidth: width
+   		                  }, '*');		    
+                });		
+				
+								
+				embedded_svc.addEventHandler("afterMaximize", function() {
+					var height = document.querySelector('.dockableContainer').clientHeight;
+					var width = document.querySelector('.dockableContainer').clientWidth;
+					window.parent.postMessage({
+						frameHeight: height,
+						frameWidth: width
+					}, '*');
+					 console.log(height);
+					 console.log(width);
+				});
+
 			}, 3000);	
 	}
 	
@@ -93,15 +116,6 @@
 		},1000);
     	}
 
-	document.querySelector('.helpButton').addEventListener("click", () => {
-		var height = document.querySelector('.sidebarMinimized').clientHeight;
-		var width = document.querySelector('.sidebarMinimized').clientWidth;
-
-		window.parent.postMessage({
-		frameHeight: height,
-		frameWidth: width
-   		}, '*');		    
-       });
 	
 </script>
 </body>
