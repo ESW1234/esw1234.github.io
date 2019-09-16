@@ -98,11 +98,11 @@
 				return field.name === "Chat_With__c";
 			});
 			// Sales
-			if(chatWithField.value === "Sales") {
+			if(chatWithField && chatWithField.value === "Sales") {
 				return "573RM00000000ET";
 			}
 			// Service
-			if(chatWithField.value === "Service") {
+			if(chatWithField && chatWithField.value === "Service") {
 				return "573RM00000000EY";
 			}
 		};
