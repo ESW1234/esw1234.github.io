@@ -85,6 +85,24 @@
 		// ROBERT HALF - SC ACROSS COMMUNITIES & LO
 // 		embedded_svc.settings.storageDomain = "snapins-1600942b294.stmfb.stm.force.com/cypress071218";
 		
+		// Mattress Firm
+		// Sales button - 573RM00000000ET
+		// Service button - 573RM00000000EY
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			debugger;
+			if(typeof Array.prototype.find !== "function") {
+				return;
+			}
+			// Sales
+			if(prechatFormData.find("Chat_With__c").value === "Sales") {
+				return "573RM00000000ET";
+			}
+			// Service
+			if(prechatFormData.find("Chat_With__c").value === "Service") {
+				return "573RM00000000EY";
+			}
+		};
+		
 		embedded_svc.init(
 			'https://snapins.my.stmfb.stm.salesforce.com',
 			'https://snapins-1600942b294.stmfb.stm.force.com/napili',
