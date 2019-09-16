@@ -26,14 +26,23 @@
 				
 				console.log(height); // check the message is being sent correctly
 				console.log(width); // check the message is being sent correctly
+				document.querySelector('.helpButton').addEventListener("click",function(){
+				var height = document.querySelector('.dockableContainer').clientHeight;
+				var width = document.querySelector('.dockableContainer').clientWidth;	
+					window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				}, '*');		
 				window.parent.postMessage({
 					frameHeight: height,
 					frameWidth: width
 				}, '*');
 			}, 2000);
 			
-							
-				embedded_svc.addEventHandler("afterMinimize", function() {
+			
+			
+			
+			embedded_svc.addEventHandler("afterMinimize", function() {
 					setTimeout(function() {
 						var height = document.querySelector('.helpButton').clientHeight;
 						var width = document.querySelector('.helpButton').clientWidth;
@@ -46,18 +55,18 @@
 					},1000);	
 				});
 								
-				embedded_svc.addEventHandler("afterMaximize", function() {
-					setTimeout(function() {
-						var height = document.querySelector('.dockableContainer').clientHeight;
-						var width = document.querySelector('.dockableContainer').clientWidth;
-						window.parent.postMessage({
-							frameHeight: height,
-							frameWidth: width
-						}, '*');
-						 console.log("after maximized height-" + height);
-						 console.log("after minimized width-"+ width);
-					},1000);	
-				});
+			embedded_svc.addEventHandler("afterMaximize", function() {
+				setTimeout(function() {
+					var height = document.querySelector('.dockableContainer').clientHeight;
+					var width = document.querySelector('.dockableContainer').clientWidth;
+					window.parent.postMessage({
+						frameHeight: height,
+						frameWidth: width
+					}, '*');
+					 console.log("after maximized height-" + height);
+					 console.log("after minimized width-"+ width);
+				},1000);	
+			});
 
 	       }
 
