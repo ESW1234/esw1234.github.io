@@ -21,8 +21,8 @@
 		window.onload = function(){
 				embedded_svc.addEventHandler("afterMinimize", function() {
 					setTimeout(function() {
-						var height = document.querySelector('.dockableContainer').clientHeight;
-						var width = document.querySelector('.dockableContainer').clientWidth;
+						var height = document.querySelector('.helpButton').clientHeight;
+						var width = document.querySelector('.helpButton').clientWidth;
 						window.parent.postMessage({
 							frameHeight: height,
 							frameWidth: width
