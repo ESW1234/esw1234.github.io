@@ -76,11 +76,11 @@
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
 
-		embedded_svc.addEventHandler("onChatEndedByAgent", function() {
-			if(embedded_svc) {
-				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
-			}
-		});
+// 		embedded_svc.addEventHandler("onChatEndedByAgent", function() {
+// 			if(embedded_svc) {
+// 				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
+// 			}
+// 		});
 
 		// ROBERT HALF - SC ACROSS COMMUNITIES & LO
 // 		embedded_svc.settings.storageDomain = "snapins-1600942b294.stmfb.stm.force.com/cypress071218";
@@ -89,16 +89,20 @@
 		// Sales button - 573RM00000000ET
 		// Service button - 573RM00000000EY
 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			var chatWithField;
 			debugger;
 			if(typeof Array.prototype.find !== "function") {
 				return;
 			}
+			chatWithField = prechatFormData.find(function(field) {
+				return field.name === "Chat_With__c";
+			});
 			// Sales
-			if(prechatFormData.find("Chat_With__c").value === "Sales") {
+			if(chatWithField.value === "Sales") {
 				return "573RM00000000ET";
 			}
 			// Service
-			if(prechatFormData.find("Chat_With__c").value === "Service") {
+			if(chatWithField.value === "Service") {
 				return "573RM00000000EY";
 			}
 		};
