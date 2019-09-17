@@ -31,7 +31,7 @@
 				frameHeight: height,
 				frameWidth: width
 			}, '*');
-		}, 2000);
+		}, 1000);
        }
 	
 	var initESW = function(gslbBaseURL) {
@@ -86,8 +86,8 @@
 			var height = document.querySelector('.dockableContainer').clientHeight;
 			var width = document.querySelector('.dockableContainer').clientWidth;
 			window.parent.postMessage({
-				frameHeight: 320,
-				frameWidth: 498
+				frameHeight: embedded_svc.settings.widgetHeight,
+				frameWidth: embedded_svc.settings.widgetWidth 
 			}, '*');
 			 console.log("after maximized height-" + height);
 			 console.log("after minimized width-"+ width);
