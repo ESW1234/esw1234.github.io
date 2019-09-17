@@ -69,8 +69,8 @@
 			}
 		);
 		embedded_svc.addEventHandler("afterMinimize", function() {
-			var height = document.querySelector('.helpButton').clientHeight;
-			var width = document.querySelector('.helpButton').clientWidth;
+			var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+			var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
 			window.parent.postMessage({
 				frameHeight: height,
 				frameWidth: width
