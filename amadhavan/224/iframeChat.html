@@ -39,6 +39,9 @@
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
        		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.prechatBackgroundImgURL = 'https://images.app.goo.gl/DixNHiA8mU6oUPdJ7'
+		embedded_svc.settings.widgetWidth = 320; 
+		embedded_svc.settings.widgetHeight = 498;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -83,8 +86,8 @@
 			var height = document.querySelector('.dockableContainer').clientHeight;
 			var width = document.querySelector('.dockableContainer').clientWidth;
 			window.parent.postMessage({
-				frameHeight: height,
-				frameWidth: width
+				frameHeight: 320,
+				frameWidth: 498
 			}, '*');
 			 console.log("after maximized height-" + height);
 			 console.log("after minimized width-"+ width);
