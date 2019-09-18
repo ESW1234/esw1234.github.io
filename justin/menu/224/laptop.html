@@ -695,26 +695,26 @@
 			*/
 
 			embedded_svc.menu.init(
-				'http://jmacmillin-ltm4.internal.salesforce.com:6109',
-				'http://communities.localhost.soma.force.com:6109/helpCenter03102019',
-				gslbBaseURL,
-				'00Dxx0000006HDX',
-				'justinMenu'
-			);
-		};
+			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109/helpCenter03102019',
+			gslbBaseURL,
+			'00Dxx0000006HDX',
+			'justinMenu'
+		);
+	};
 
-		if (!window.embedded_svc || !window.embedded_svc.menu) {
-			var s = document.createElement('script');
-// 			s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
-			s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
-			s.onload = function() {
-				initESW(null);
-			};
-			document.body.appendChild(s);
-		} else {
-// 			initESW('https://service.force.com');
-			initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
-		}
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
+	}
 	</script>
 
 </body>
