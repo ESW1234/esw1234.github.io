@@ -22,19 +22,19 @@
 	}
 </style>
 
-<!--  <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->	
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		//embedded_svc.settings.language = 'he' //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-		//embedded_svc.settings.defaultMinimizedText = 'לשוחח עם מומחה'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
+		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
@@ -48,16 +48,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://snapins-15eee7b817c.stmfa.stm.force.com/214032118',
+			'https://tiffanytso-169ca6c909f.stmfa.stm.force.com',
 			gslbBaseURL,
-			'00DRM0000005cdE',
-			'X214032118',
+			'00DRM0000008zMe',
+			'Omni_QueueBased',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004C9N',
-				buttonId: '573RM0000004C9U',
+				deploymentId: '572RM00000005nJ',
+				buttonId: '573RM00000006Dz',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000EH2AY_16249c391cb',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f',
 				isOfflineSupportEnabled: true
 			}
 		);

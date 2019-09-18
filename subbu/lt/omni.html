@@ -17,7 +17,8 @@
 
 
 <div id="button_goes_here">
-  <style type='text/css'>
+	<!-- uses site end point -->
+<!--  <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -27,7 +28,7 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
+ <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -80,172 +81,71 @@
 		initESW('http://skrishnamu-ltm1.internal.salesforce.com:6109');
 	}
 </script>
-
-<!--
- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
-	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+-->
+	<!-- uses community endpoint -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
 	}
 </style>
 
- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
-var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-//Returns a valid button ID.
-//};
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 
-		  'http://tiffanytso-16adb31c55b.localhost.soma.force.com:57983/', 
-		  gslbBaseURL, '00Dxx0000006Gl1', 'Omni_QueueBased', 
-		  { baseLiveAgentContentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 
-		   deploymentId: '572xx0000004C93', buttonId: '573xx0000004C93', 
-		   baseLiveAgentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 
-		   eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f'}); };
-	
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/4.1/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
-	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
--->
-<!--
-	<style type='text/css'>
-.embeddedServiceHelpButton .helpButton .uiButton { background-color: #71C757; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #71C757; }
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
- <script type='text/javascript' src='https://service.force.com/embeddedservice/3.1/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseURL) {
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.init(
+			'http://skrishnamu-ltm1.internal.salesforce.com:6109',
+			'http://subbu.localhost.soma.force.com:6109/224091519',
+			gslbBaseURL,
+			'00Dxx0000006Gmd',
+			'community_omni',
+			{
+				baseLiveAgentContentURL: 'http://skrishnamu-ltm1.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
+				baseLiveAgentURL: 'http://skrishnamu-ltm1.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_16d31e970d9',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
 
-//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-// Settings for Live Agent
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-embedded_svc.settings.entryFeature = 'LiveAgent';
-
-embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 
-		  'http://tiffanytso-16adb31c55b.localhost.soma.force.com:57983/', gslbBaseURL, '00Dxx0000006Gl1', 
-		  'Omni_QueueBased', { baseLiveAgentContentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 
-					    deploymentId: '572xx0000004C93', buttonId: '573xx0000004C93', 
-					    baseLiveAgentURL: 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 
-					    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f'}); };
-	
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/3.1/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
-	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>
--->	
-<!--	
- <style type='text/css'>
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
-.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 1px solid #005290}
-@font-face {
-font-family: 'Salesforce Sans';
-src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-}
-</style>
- <script type='text/javascript' src='https://service.force.com/embeddedservice/2.2/esw.min.js'></script>	
-<script type='text/javascript'>
-var initESW = function(gslbBaseUrl) {
-embedded_svc.settings.avatarImgURL = '';
-embedded_svc.settings.prechatBackgroundImgURL = '';
-embedded_svc.settings.waitingStateBackgroundImgURL = '';
-embedded_svc.settings.smallCompanyLogoImgURL = '';
-embedded_svc.settings.displayHelpButton = true; //Or false
-embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-//embedded_svc.settings.defaultMinimizedText = '...'; (Defaults to Chat with an Expert)
-//embedded_svc.settings.offlineText = '...'; (Defaults to Agent Offline)
-//embedded_svc.settings.onlineLoadingText = '...'; (Defaults to Loading)
-//embedded_svc.settings.storageDomain = 'yourdomain.com'; (Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-embedded_svc.init('http://skrishnamu-ltm5.internal.salesforce.com:57983', 'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 
-		  'http://skrishnamu-ltm5.internal.salesforce.com:8095/content', 
-		  'http://tiffanytso-16adb31c55b.localhost.soma.force.com:57983/', '572xx0000004C93', 
-		  '00Dxx0000006Gl1', '573xx0000004C93', '2.2', gslbBaseUrl, '40.0', 'Omni_QueueBased', 
-		  'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f'); };
 	if (!window.embedded_svc) {
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/2.2/esw.min.js'); 
-		s.onload = function() { initESW(null); }; document.body.appendChild(s);} 
-	else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }</script>	
--->
-<!--
-<script type='text/javascript' src='https://service.force.com/lightning/lightning.out.js'></script>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
-<script type='text/javascript'>
-var initESW = function(gslbBaseURL) {
-    embedded_svc.settings.avatarImgURL = '';
-    embedded_svc.settings.prechatBackgroundImgURL = '';
-    embedded_svc.settings.waitingStateBackgroundImgURL = '';
-    embedded_svc.settings.smallCompanyLogoImgURL = '';
-    
-    
-    embedded_svc.init(
-        'http://skrishnamu-ltm5.internal.salesforce.com:57983', 
-        'http://skrishnamu-ltm5.internal.salesforce.com:8096/chat', 
-        'http://skrishnamu-ltm5.internal.salesforce.com:8095/content',
-        'http://tiffanytso-16adb31c55b.localhost.soma.force.com:57983/', 
-        '572xx0000004C93', 
-        '00Dxx0000006Gl1', 
-        '573xx0000004C93', 
-        '1.0', 
-        gslbBaseURL, 
-        '39.0', 
-        'Omni_QueueBased', 
-        'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f'
-        ); 
-    }; 
-    if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
-        s.setAttribute('src', 'http://skrishnamu-ltm5.internal.salesforce.com:57983/embeddedservice/1.0/esw.min.js'); 
-        s.onload = function() { 
-            initESW(null); 
-        }; 
-        document.body.appendChild(s);
-    } else { initESW('http://skrishnamu-ltm5.internal.salesforce.com:57983'); }
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://skrishnamu-ltm1.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('http://skrishnamu-ltm1.internal.salesforce.com');
+	}
 </script>
--->
 	
 Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal

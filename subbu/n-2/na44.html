@@ -23,22 +23,17 @@
   <p align="center"><font color = "red"><a href="na1_blitz03_second_deployment.html">Link to PAGE WITH CHAT BUTTON 2</a></font></p>
 
 	<div id="button_goes_here"></div>
- <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
 	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
 </style>
 
- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -64,16 +59,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-15fe5b0b0e3.stmfb.stm.force.com/212112217',
+			'https://eswtiffany-16d2cdd568c.stmfb.stm.force.com/esw',
 			gslbBaseURL,
-			'00DRM0000005iqb',
-			'X212120117',
+			'00DRM000000F7jg',
+			'Tiffanys_community',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CTr',
-				buttonId: '573RM0000004CTw',
+				deploymentId: '572RM000000009M',
+				buttonId: '573RM00000000AM',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000262AA_16013b997d6',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CBR2A2_16d4185fe5f',
 				isOfflineSupportEnabled: true
 			}
 		);
