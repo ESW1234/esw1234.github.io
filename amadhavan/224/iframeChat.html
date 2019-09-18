@@ -17,48 +17,31 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
-	embedded_sv.afterMinimize = function(){
-		var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
-		var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
 
-
-		  window.parent.postMessage({
-			frameHeight: height,
-			frameWidth: width
-		    }, '*');		    
-		   });
-	}
+	// On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
 	window.onload = function(){
-			setTimeout(function() {
-				// Post message to your parent saying how big the iframe should be.
-				var height = document.querySelector('.helpButton').clientHeight;
-				var width = document.querySelector('.helpButton').clientWidth;
-				
-				console.log(height); // check the message is being sent correctly
-				console.log(width); // check the message is being sent correctly
-				window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-				}, '*');
+		setTimeout(function() {
+			// Post message to your parent saying how big the iframe should be.
+			var height = document.querySelector('.helpButton').clientHeight;
+			var width = document.querySelector('.helpButton').clientWidth;
 
-
-				document.querySelector('.helpButton').addEventListener("click", () => {
-					var height = document.querySelector('.sidebarMinimized').clientHeight;
-					var width = document.querySelector('.sidebarMinimized').clientWidth;
-					
-					window.parent.postMessage({
-					frameHeight: height,
-					frameWidth: width
-				    }, '*');		    
-	         	       });
-			}, 3000);	
-	}
+			console.log(height); // check the message is being sent correctly
+			console.log(width); // check the message is being sent correctly
+			window.parent.postMessage({
+				frameHeight: height,
+				frameWidth: width
+			}, '*');
+		}, 1000);
+       }
 	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
        		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.prechatBackgroundImgURL = 'https://images.app.goo.gl/DixNHiA8mU6oUPdJ7'
+		embedded_svc.settings.widgetWidth = 320; 
+		embedded_svc.settings.widgetHeight = 498;
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -88,6 +71,30 @@
 				isOfflineSupportEnabled: true
 			}
 		);
+		embedded_svc.addEventHandler("afterMinimize", function() {
+			var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+			var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
+			window.parent.postMessage({
+				frameHeight: height,
+				frameWidth: width
+			}, '*');
+			 console.log("after minimized height-" + height);
+			 console.log("after minimized width-"+ width);	
+		});
+								
+		embedded_svc.addEventHandler("afterMaximize", function() {
+			var height = document.querySelector('.dockableContainer').clientHeight;
+			var width = document.querySelector('.dockableContainer').clientWidth;
+			window.parent.postMessage({
+				frameHeight: embedded_svc.settings.widgetHeight,
+				frameWidth: embedded_svc.settings.widgetWidth 
+			}, '*');
+			 console.log("after maximized height-" + height);
+			 console.log("after minimized width-"+ width);
+		});
+		
+		
+		
 	};
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
@@ -98,22 +105,7 @@
 		document.body.appendChild(s);
 	} else {
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
-	}
-	
-
-	const resize = () => {
-		setTimeout(function() {
-			var height = document.querySelector('.dockableContainer').clientHeight;
-			var width = document.querySelector('.dockableContainer').clientWidth;
-	     		window.parent.postMessage({
-				frameHeight: height,
-				frameWidth: width
-			}, '*');
-	      console.log(height);
-	      console.log(width);
-		},1000);
-    	}
-	
+	}	
 </script>
 </body>
 </html>

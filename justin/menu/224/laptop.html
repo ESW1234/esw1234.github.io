@@ -1,7 +1,7 @@
 <html>
 <head>
-  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>224 Channel Menu Desktop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">	
+	<title>224 Channel Menu Laptop</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 
 	
 	<h1>
-		224 | channel menu | desktop
+		224 | channel menu | laptop
 	</h1>
 
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -25,8 +25,8 @@
 			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 			// Chat server endpoint URLs.
-			embedded_svc.menu.settings.liveAgentChatUrl = 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat';
-			embedded_svc.menu.settings.liveAgentContentUrl = 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content';
+			embedded_svc.menu.settings.liveAgentChatUrl = 'http://jmacmillin-ltm4.internal.salesforce.com:8096/chat';
+			embedded_svc.menu.settings.liveAgentContentUrl = 'http://jmacmillin-ltm4.internal.salesforce.com:8095/content';
 
 			/*
 			embedded_svc.menu.settings.replaceWithMock = true;
@@ -36,7 +36,7 @@
 			    "htmlDirection": "ltr",
 			    "isEssentialsEdition": false,
 			    "isSelfServiceEnabled": false,
-			    "latestChasitorVersion": "47.0"
+			    "latestChasitorVersion": "48.0"
 			  },
 			  "menuItems": [
 			    {
@@ -695,26 +695,26 @@
 			*/
 
 			embedded_svc.menu.init(
-				'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-				'http://communities.localhost.soma.force.com:6109/fabAug2019',
-				gslbBaseURL,
-				'00Dxx0000006Gz1',
-				'justinMenu'
-			);
-		};
+			'http://jmacmillin-ltm4.internal.salesforce.com:6109',
+			'http://communities.localhost.soma.force.com:6109/helpCenter03102019',
+			gslbBaseURL,
+			'00Dxx0000006HDX',
+			'justinMenu'
+		);
+	};
 
-		if (!window.embedded_svc || !window.embedded_svc.menu) {
-			var s = document.createElement('script');
-// 			s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
-			s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
-			s.onload = function() {
-				initESW(null);
-			};
-			document.body.appendChild(s);
-		} else {
-// 			initESW('https://service.force.com');
-			initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
-		}
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://jmacmillin-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
+	}
 	</script>
 
 </body>
