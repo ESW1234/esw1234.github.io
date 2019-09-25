@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script> -->
 </head>
 
 <body>
@@ -49,7 +49,7 @@
 
 
             // Workaround for prototype
-            if (typeof window.$A.get === "undefined") {
+            if (window.$A && typeof window.$A.get === "undefined") {
                 console.log("window.$A.get undefined, adding method!");
                 window.$A.get = function (key) {
                     console.log("window.$A.get called with key: " + key +
