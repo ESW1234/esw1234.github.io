@@ -64,7 +64,7 @@
 				NodeList.prototype.each = function (callback, thisArg) {
 					var nodeListArray = [].slice.call(this);
 					nodeListArray.forEach(function(node) {
-						callback.call(node);
+						callback.call(thisArg, node);
 					})
 				}
 			}
