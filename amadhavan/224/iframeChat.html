@@ -20,18 +20,27 @@
 
 	// On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
 	window.onload = function(){
-		setTimeout(function() {
-			// Post message to your parent saying how big the iframe should be.
-			var height = document.querySelector('.helpButton').clientHeight;
-			var width = document.querySelector('.helpButton').clientWidth;
+		var helpButton = document.querySelector('.helpButton');
+		var config = { 
+			characterData: true,
+                  	attributes: false,
+               		childList: false,
+              	        subtree: true };
+		
+		// instantiating observer
+		const observer = new MutationObserver(function(){
+		     var height = document.querySelector('.helpButton').clientHeight;
+		     var width = document.querySelector('.helpButton').clientWidth;
 
-			console.log(height); // check the message is being sent correctly
-			console.log(width); // check the message is being sent correctly
-			window.parent.postMessage({
+		     console.log(height); // check the message is being sent correctly
+		     console.log(width); // check the message is being sent correctly
+		     window.parent.postMessage({
 				frameHeight: height,
 				frameWidth: width
 			}, '*');
-		}, 1000);
+		});
+		// observing target help button
+		observer.observe(target, config);
        }
 	
 	var initESW = function(gslbBaseURL) {
@@ -92,9 +101,7 @@
 			 console.log("after maximized height-" + height);
 			 console.log("after minimized width-"+ width);
 		});
-		
-		
-		
+			
 	};
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
