@@ -78,9 +78,9 @@
 				console.log("patching NodeList.each...");
 				NodeList.prototype.each = function (callback, thisArg) {
 					var nodeListArray = [].slice.call(this);
-					for (var i = 0; i < nodeListArray.length; i++) {
-						nodeListArray[i].call(nodeListArray, callback, thisArg);
-					}
+					nodeListArray.foreach(function(node) {
+						node.call(node, callback, thisArg);
+					})
 				}
 			}
 
