@@ -3,19 +3,4 @@
 	<!-- This will present all the post chat parameters available to this page -->
 		<h1>Post Chat Page</h1>
 	</div>
-	<hr/>
-	<!-- Message to show if chat is abandoned -->
-	<div id='abandoned' style='display: none;'>
-	We are sorry you decided to leave the chat. Feel free to initiate a new session.
-	</div>
-	<!-- Code to decide if we show the abandoned block or the full data -->
-	<script type='text/javascript'>
-	var requestTime = '{!$CurrentPage.parameters.requestTime}';
-	var startTime = '{!$CurrentPage.parameters.startTime}';
-	// when startTime doesn't have a value, it means the chat never started
-	if (!startTime) {
-	document.getElementById('details').style.display = 'none';
-	document.getElementById('abandoned').style.display = 'block';
-	}
-	</script>
 </html>
