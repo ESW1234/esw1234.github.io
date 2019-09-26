@@ -74,7 +74,7 @@
 				};
 			}
 			// Workaround for prototype w/ SFDC 222+
-			if (typeof NodeList.each !== "function") {
+			/*if (typeof NodeList.each !== "function") {
 				console.log("patching NodeList.each...");
 				NodeList.prototype.each = function (callback, thisArg) {
 					var nodeListArray = [].slice.call(this);
@@ -82,7 +82,7 @@
 						node.call(node, callback, thisArg);
 					})
 				}
-			}
+			}*/
 
 			embedded_svc.init(
 				'https://stmfbna44esw.my.stmfb.stm.salesforce.com',
