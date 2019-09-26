@@ -18,8 +18,12 @@
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
 	// On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
-	function ready(){
+	function helpButtonLoaded(){
 		var helpButton = document.querySelector('.helpButton');
+		if(!helpButton){
+		  window.setTimeout(helpButtonLoaded, 500);
+	          return;		
+		}
 		var config = { 
 			characterData: true,
                   	attributes: false,
@@ -41,6 +45,7 @@
 		// observing target help button
 		observer.observe(helpButton, config);		
        }
+       window.onload = helpButtonLoaded();	
 	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -109,7 +114,6 @@
 			initESW(null);
 		};
 		document.body.appendChild(s);
-		document.addEventListener("DOMContentLoaded", ready);
 	} else {
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 	}
