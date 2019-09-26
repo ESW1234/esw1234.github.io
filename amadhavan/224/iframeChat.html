@@ -109,10 +109,10 @@
 			initESW(null);
 		};
 		document.body.appendChild(s);
+		document.addEventListener("DOMContentLoaded", ready);
 	} else {
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 	}
-	document.addEventListener("DOMContentLoaded", ready);
 </script>
 </body>
 </html>
