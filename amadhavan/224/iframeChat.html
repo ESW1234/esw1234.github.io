@@ -17,28 +17,30 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
-
 	// On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
-	window.onload = function(){
-		setTimeout(function() {
-			// Post message to your parent saying how big the iframe should be.
+		function helpButtonLoaded(){
+			var helpButton = document.querySelector('.helpButton');
+			if(!helpButton){
+			  window.setTimeout(helpButtonLoaded, 500);
+		          return;		
+			}
 			var height = document.querySelector('.helpButton').clientHeight;
 			var width = document.querySelector('.helpButton').clientWidth;
 
-			console.log(height); // check the message is being sent correctly
-			console.log(width); // check the message is being sent correctly
-			window.parent.postMessage({
-				frameHeight: height,
-				frameWidth: width
-			}, '*');
-		}, 1000);
-       }
+			 console.log(height); // check the message is being sent correctly
+			 console.log(width); // check the message is being sent correctly
+			 window.parent.postMessage({
+					frameHeight: height,
+					frameWidth: width
+				}, '*');
+      }
+
+      window.onload = helpButtonLoaded();	
 	
-	var initESW = function(gslbBaseURL) {
+		var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-       		embedded_svc.settings.devMode = true;
-		embedded_svc.settings.prechatBackgroundImgURL = 'https://images.app.goo.gl/DixNHiA8mU6oUPdJ7'
+		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
+      		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.widgetWidth = 320; 
 		embedded_svc.settings.widgetHeight = 498;
 
@@ -71,6 +73,7 @@
 				isOfflineSupportEnabled: true
 			}
 		);
+
 		embedded_svc.addEventHandler("afterMinimize", function() {
 			var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
 			var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
@@ -92,9 +95,7 @@
 			 console.log("after maximized height-" + height);
 			 console.log("after minimized width-"+ width);
 		});
-		
-		
-		
+			
 	};
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
@@ -105,7 +106,7 @@
 		document.body.appendChild(s);
 	} else {
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
-	}	
+	}
 </script>
 </body>
 </html>
