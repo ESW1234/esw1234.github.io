@@ -75,6 +75,7 @@
 			}
 			// Workaround for prototype w/ SFDC 222+
 			if (typeof NodeList.each !== "function") {
+				console.log("patching NodeList.each...");
 				NodeList.prototype.each = function(callback, thisArg) {
 					this.forEach(callback, thisArg);
 				}
