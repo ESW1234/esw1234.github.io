@@ -56,7 +56,18 @@
                         ", returning false until Aura overrides $A.");
                     return false;
                 };
-            }
+			}
+			
+			// Workaround for prototype w/ SFDC 222+
+			if (typeof NodeList.each !== "function") {
+				console.log("patching NodeList.each...");
+				NodeList.prototype.each = function (callback, thisArg) {
+					var nodeListArray = [].slice.call(this);
+					nodeListArray.forEach(function(node) {
+						node.call(node, callback, thisArg);
+					})
+				}
+			}
 
             embedded_svc.init(
                 'http://williamc-wsm.internal.salesforce.com:6109',
