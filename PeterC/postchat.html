@@ -2,47 +2,6 @@
 	<div id='details'>
 	<!-- This will present all the post chat parameters available to this page -->
 		<h1>Post Chat Page</h1>
-		<p>
-		<!-- These variables are passed to the post-chat page and can be used to customize your post-chat experience -->
-			Request Time: <apex:outputText id='c_rt'
-		value='{!$CurrentPage.parameters.requestTime}' /><br/>
-		Start Time: <apex:outputText id='c_st'
-		value='{!$CurrentPage.parameters.startTime}' /><br/>
-		Deployment Id: <apex:outputText
-		value='{!$CurrentPage.parameters.deploymentId}' /><br/>
-		Button Id: <apex:outputText value='{!$CurrentPage.parameters.buttonId}'
-		/><br/>
-		Chat Key: <apex:outputText value='{!$CurrentPage.parameters.chatKey}'
-		/><br />
-		Last Visited Page: <apex:outputText
-		value='{!$CurrentPage.parameters.lastVisitedPage}' /><br/>
-		Original Referrer: <apex:outputText
-		value='{!$CurrentPage.parameters.originalReferrer}' /><br/>
-		<!-- When the GeoLocation is not available this will appear as Unknown-->
-		Latitude: <apex:outputText value='{!$CurrentPage.parameters.latitude}'
-		/><br/>
-		Longitude: <apex:outputText value='{!$CurrentPage.parameters.longitude}'
-		/><br/>
-		City: <apex:outputText value='{!$CurrentPage.parameters.city}' /><br/>
-		Region: <apex:outputText value='{!$CurrentPage.parameters.region}' /><br/>
-		Country: <apex:outputText value='{!$CurrentPage.parameters.country}'
-		/><br/>
-		<!-- End of GeoLocation information -->
-		Organization: <apex:outputText
-		value='{!$CurrentPage.parameters.organization}' /><br/>
-		Disconnected By: <apex:outputText
-		value='{!$CurrentPage.parameters.disconnectedBy}' /><br/>
-		Window Language: <apex:outputText
-		value='{!$CurrentPage.parameters.windowLanguage}' /><br/>
-		Chat Details: <apex:outputText
-		value='{!$CurrentPage.parameters.chatDetails}' /><br />
-		Transcript: <apex:outputText value='{!$CurrentPage.parameters.transcript}'
-		/><br/>
-		Attached Records : <apex:outputText
-		value='{!$CurrentPage.parameters.attachedRecords}' /><br />
-		Error: <apex:outputText value='{!$CurrentPage.parameters.error}' /><br
-		/>
-		</p>
 	</div>
 	<hr/>
 	<!-- Message to show if chat is abandoned -->
