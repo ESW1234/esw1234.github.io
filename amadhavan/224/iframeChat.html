@@ -17,9 +17,9 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>	 
-
+	document.addEventListener("DOMContentLoaded", ready);
 	// On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
-	window.onload = function(){
+	function ready(){
 		var helpButton = document.querySelector('.helpButton');
 		var config = { 
 			characterData: true,
