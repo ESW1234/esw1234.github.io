@@ -1,1 +1,33 @@
 
+<html>
+<body>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/224/desktop/fab.html">EDIT PAGE</a><br>
+<div>
+<!--script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script-->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+    		embedded_svc.menu.settings.devMode = true;
+		embedded_svc.menu.init(
+			'http://analshah-wsm11.internal.salesforce.com:6109',
+			'http://analshah-wsm11.internal.salesforce.com:8096/chat',
+			gslbBaseURL,
+			'00Dxx0000006GjP',
+			'fab1'
+		);
+	};
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://analshah-wsm11.internal.salesforce.com:6109/embeddedservice/menu/shim.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</div>
+</body>
+</html>
