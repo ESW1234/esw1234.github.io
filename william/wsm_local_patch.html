@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script> -->
 </head>
 
 <body>
@@ -56,7 +56,18 @@
                         ", returning false until Aura overrides $A.");
                     return false;
                 };
-            }
+			}
+			
+			// Workaround for prototype w/ SFDC 222+
+			if (NodeList && typeof NodeList.each !== "function") {
+				console.log("patching NodeList.each...");
+				NodeList.prototype.each = function (callback, thisArg) {
+					var nodeListArray = [].slice.call(this);
+					nodeListArray.forEach(function(node) {
+						callback.call(thisArg, node);
+					})
+				}
+			}
 
             embedded_svc.init(
                 'http://williamc-wsm.internal.salesforce.com:6109',
