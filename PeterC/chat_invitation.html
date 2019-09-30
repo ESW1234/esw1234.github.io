@@ -1,32 +1,29 @@
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <script src="/static/111213/js/perf/stub.js" type="text/javascript"></script><script src="/jslibrary/1543986924218/sfdc/main.js" type="text/javascript"></script><script src="/jslibrary/jslabels/1550122884000/en_US.js" type="text/javascript"></script><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/zen-componentsCompatible.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/elements.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/common.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/CTI.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549477392000/Theme3/gc/dStandard.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549477392000/Theme3/00Df4000003mbT1/005f4000002928p/gc/dCustom0.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549477392000/Theme3/00Df4000003mbT1/005f4000002928p/gc/dCustom1.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549477392000/Theme3/00Df4000003mbT1/005f4000002928p/gc/dCustom2.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549477392000/Theme3/00Df4000003mbT1/005f4000002928p/gc/dCustom3.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/extended.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/45.0/sprites/1549510428000/Theme3/default/gc/setup.css" rel="stylesheet" type="text/css" /><script>(function(UITheme) {
-    UITheme.getUITheme = function() { 
-        return UserContext.uiTheme;
-    };
-}(window.UITheme = window.UITheme || {}));</script></head><body>
-<style type="text/css">
-    .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #005290;
-        font-family: "Salesforce Sans", sans-serif;
-    }
-    .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #005290;
-    }
-    @font-face {
-        font-family: 'Salesforce Sans';
-        src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-        url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-    }
-</style>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+<body>
+    <style type="text/css">
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #005290;
+            font-family: "Salesforce Sans", sans-serif;
+        }
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #005290;
+        }
+        @font-face {
+            font-family: 'Salesforce Sans';
+            src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+            url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+        }
+    </style>
 
-
-<div aria-atomic="true" aria-live="assertive" class="embeddedServiceInvitation" id="snapins_invite" inert="true" role="dialog">
-    <div aria-describedby="snapins_bodytext" aria-labelledby="snapins_titletext" class="embeddedServiceInvitationHeader">
-        <img id="embeddedServiceAvatar" />
+    <div aria-atomic="true" aria-live="assertive" class="embeddedServiceInvitation" id="snapins_invite" inert="true" role="dialog">
+        <div aria-describedby="snapins_bodytext" aria-labelledby="snapins_titletext" class="embeddedServiceInvitationHeader">
+            <img id="embeddedServiceAvatar" />
         <span class="embeddedServiceTitleText" id="snapins_titletext">Need help?</span>
         <button aria-label="Exit invitation" class="embeddedServiceCloseIcon" id="closeInvite" type="button">&times;</button>
     </div>
@@ -68,55 +65,56 @@
 </script>
 
 
-<script src="https://service.force.com/embeddedservice/5.0/esw.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-    var initESW = function(gslbBaseURL) {
-        embedded_svc.settings.displayHelpButton = true; //Or false
-        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-        //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-        //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-        // Settings for Live Agent
-        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-            // Returns a valid button ID.
-        //};
-        //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-        //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-        embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-        embedded_svc.init(
-            'https://websnapins.my.salesforce.com',
-            'https://sdodemo-main-1637594504f.force.com/snapins',
-            gslbBaseURL,
-            '00Df4000003mbT1',
-            'Snap_ins_Chat_Invitation',
-            {
-                baseLiveAgentContentURL: 'https://c.la4-c1-dfw.salesforceliveagent.com/content',
-                deploymentId: '572f4000000Dr7b',
-                buttonId: '573f4000000MkNK',
-                baseLiveAgentURL: 'https://d.la4-c1-dfw.salesforceliveagent.com/chat',
-                eswLiveAgentDevName: 'EmmaNew',
-                isOfflineSupportEnabled: false
-            }
-        );
-    };
+		embedded_svc.init(
+			'https://embeddedservicede.my.salesforce.com',
+			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
+			gslbBaseURL,
+			'00DB0000000K6Ez',
+			'Chat_Invitation',
+			{
+				baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content',
+				deploymentId: '572B0000000LALF',
+				buttonId: '573B0000000LANm',
+				baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000L8POMA0_16d73b550b9',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
 
-    if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://websnapins.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-            initESW(null);
-        };
-        document.body.appendChild(s);
-    } else {
-        initESW('https://service.force.com');
-    }
-</script><script>if (this.SfdcApp && this.SfdcApp.projectOneNavigator) { SfdcApp.projectOneNavigator.sendTitleToParent('AAAChat_Invitation'); } </script></body></html>
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</body></html>
