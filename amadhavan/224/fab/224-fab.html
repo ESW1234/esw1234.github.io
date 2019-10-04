@@ -12,29 +12,28 @@
    </head>
 <body>
 <a href="https://github.com/ESW1234/esw1234.github.io/edit/master/amadhavan/224/fab/224-fab.html">EDIT PAGE</a>
-<script type='text/javascript' src='http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script>
-<!-- <script type='text/javascript' src='http://tiffanytso-wsm.internal.salesforce.com:6109/sfdc/htdocs/embeddedservice/menu/fab.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.devmode =true;
 		// Chat server endpoint URLs.
 		embedded_svc.menu.settings.liveAgentChatUrl = 'http://amadhavan-wsm2.internal.salesforce.com:8096/chat';
 		embedded_svc.menu.settings.liveAgentContentUrl = 'http://amadhavan-wsm2.internal.salesforce.com:8095/content';
-    embedded_svc.menu.settings.devMode = true;
+
 		embedded_svc.menu.init(
 			'http://amadhavan-wsm2.internal.salesforce.com:6109',
-			'http://eswblitz-16cd051bb2b.localhost.soma.force.com:6109/site1',
+			'http://amadhavan.localhost.soma.force.com:6109/test1',
 			gslbBaseURL,
 			'00Dxx0000001gEW',
-			'fab1'
+			'cmtest'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.setAttribute('src', 'http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
