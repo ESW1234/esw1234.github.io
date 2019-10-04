@@ -36,9 +36,9 @@
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #307EBA; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #307EBA; }
 	@font-face {
-	font-family: 'Salesforce Sans';
-	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		font-family: 'Salesforce Sans';
+/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 	}
 </style>
 
@@ -47,13 +47,12 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
 		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
-
+		
+		//embedded_svc.settings.externalScripts = ["customEvents"];
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
 		// Settings for Live Agent
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
@@ -62,36 +61,72 @@
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "Help me", Company: "Salesforce"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.avatarImgURL = "../../avatar.png";
+		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+// 		embedded_svc.settings.chatbotAvatarImgURL = 'http://esw1234.github.io/automation/company_logo.png';
+// 		embedded_svc.settings.avatarImgURL = 'http://esw1234.github.io/automation/avatar.jpg';
 		
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
-
+// 		embedded_svc.addEventHandler("onChatEndedByAgent", function() {
+// 			if(embedded_svc) {
+// 				embedded_svc.postMessage("chasitor.decrementActiveChatSession");
+// 			}
+// 		});
+		// ROBERT HALF - SC ACROSS COMMUNITIES & LO
+// 		embedded_svc.settings.storageDomain = "snapins-1600942b294.stmfb.stm.force.com/cypress071218";
+		
+		// Mattress Firm
+		// Sales button - 573RM00000000ET
+		// Service button - 573RM00000000EY
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			var chatWithField;
+			if(typeof Array.prototype.find !== "function") {
+				return;
+			}
+			chatWithField = prechatFormData.find(function(field) {
+				return field.name === "Chat_With__c";
+			});
+			// Sales
+			if(chatWithField && chatWithField.value === "Sales") {
+				return "573RM00000000ET";
+			}
+			// Service
+			if(chatWithField && chatWithField.value === "Service") {
+				return "573RM00000000EY";
+			}
+		};
+		
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com', 
-			'https://snapins-1600942b294.stmfb.stm.force.com/napili', 
-			gslbBaseURL, 
-			'00DRM0000005jYI', 
-			'justin', 
-			{ 
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004DDM', 
-				buttonId: '573RM0000004DDR', 
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971', 
+			'https://snapins.my.stmfb.stm.salesforce.com',
+			'https://snapins-1600942b294.stmfb.stm.force.com/napili',
+			gslbBaseURL,
+			'00DRM0000005jYI',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004DDM',
+				buttonId: '573RM0000004DDR',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
 				isOfflineSupportEnabled: true
 			}
-		); 
+		);
 	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-// 	} else { initESW('https://service.force.com'); }
-	} else { initESW('https://na44.stmfb.stm.salesforce.com'); }
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('https://snapins.my.stmfb.stm.salesforce.com');
+	}
 </script>
 <!-- stop 5.0 snippet -->
 
