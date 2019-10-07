@@ -162,12 +162,12 @@
 var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName){
     // Add the liveAgentChatUrl and liveAgentContentUrl only if they can't be obtained on the REST call
     // Also not making it part of init as we'll want to get rid of them
-    embedded_svc.menu.settings.liveAgentChatUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat";
-    embedded_svc.menu.settings.liveAgentContentUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/content";
+    //embedded_svc.menu.settings.liveAgentChatUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat";
+    //embedded_svc.menu.settings.liveAgentContentUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/content";
     // Language setting needed for fetching the labels in the right language for chat
     // embedded_svc.menu.settings.language = "en";
     
-embedded_svc.menu.settings.replaceWithMock = true;
+	embedded_svc.menu.settings.replaceWithMock = true;
 	embedded_svc.menu.settings.JSON_MOCK = {
 		menuSettings: {
 			name: "developerName",
@@ -988,7 +988,7 @@ embedded_svc.menu.settings.replaceWithMock = true;
 	};
     
     
-    embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName);
+    embedded_svc.menu.init(baseCoreURL, liveAgentChatUrl, gslbBaseURL, orgId, channelMenuSettingDevName);
 }
 if (!window.embedded_svc.menu) {
         var s = document.createElement('script');
