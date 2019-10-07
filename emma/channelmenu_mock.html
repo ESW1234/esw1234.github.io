@@ -6,7 +6,7 @@
                   imum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
 <body>
-  <style>
+	 <!-- <style>
   		html {
   		font-family: 'Helvetica Neue', 'Roboto', Helvetica, Arial, sans-serif;
   		-webkit-font-smoothing: antialiased;
@@ -154,20 +154,20 @@
 		     }
 		}
 	/* end radiant animation */
-  </style>
-<!-- Hooked up to Justin's NA44 STMFA org! justin@esw.com / test1234 -->
+  </style> -->
+<!-- Hooked up to Justin's NA44 STMFA org! Login: justin@esw.com / test1234 -->
 <a class="editlink" href="https://github.com/ESW1234/esw1234.github.io/edit/master/emma/channelmenu.html">EDIT PAGE</a>
 <script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js'></script>
 <script type='text/javascript'>
-var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName){
+var initESW = function(baseCoreURL, liveAgentChatUrl, gslbBaseURL, orgId, channelMenuSettingDevName){
     // Add the liveAgentChatUrl and liveAgentContentUrl only if they can't be obtained on the REST call
     // Also not making it part of init as we'll want to get rid of them
-    embedded_svc.menu.settings.liveAgentChatUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat";
-    embedded_svc.menu.settings.liveAgentContentUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/content";
+    //embedded_svc.menu.settings.liveAgentChatUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat";
+    //embedded_svc.menu.settings.liveAgentContentUrl = "https://justinmacmillin.stmfa.stm.salesforcescrt.com/content";
     // Language setting needed for fetching the labels in the right language for chat
     // embedded_svc.menu.settings.language = "en";
     
-embedded_svc.menu.settings.replaceWithMock = true;
+	embedded_svc.menu.settings.replaceWithMock = true;
 	embedded_svc.menu.settings.JSON_MOCK = {
 		menuSettings: {
 			name: "developerName",
@@ -988,22 +988,22 @@ embedded_svc.menu.settings.replaceWithMock = true;
 	};
     
     
-    embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName);
+    embedded_svc.menu.init(baseCoreURL, liveAgentChatUrl, gslbBaseURL, orgId, channelMenuSettingDevName);
 }
 if (!window.embedded_svc.menu) {
         var s = document.createElement('script');
         s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
         s.onload = function() {
-            initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com', 'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118', 'https://justinmacmillin.my.stmfa.stm.salesforce.com', '00DRM0000005cyu', 'Esms01' );
+            initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com', 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat', 'https://justinmacmillin.my.stmfa.stm.salesforce.com', '00DRM0000005cyu', 'Esms01' );
         };
         document.body.appendChild(s);
     } else {
-            initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com', 'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118', 'https://justinmacmillin.my.stmfa.stm.salesforce.com', '00DRM0000005cyu', 'Esms01' );
+            initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com', 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat', 'https://justinmacmillin.my.stmfa.stm.salesforce.com', '00DRM0000005cyu', 'Esms01' );
     }
 </script>
-  <div class="test-element">
+<!--  <div class="test-element">
       <p>There is a connection issue. Sorry that we are not able to chat with you. Try connecting again or come back later.</p>
       <p class="dismiss">Got it</p>
-  </div>
+  </div> -->
 </body>
 </html>
