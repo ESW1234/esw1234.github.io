@@ -59,16 +59,6 @@
             observer.observe(document.body, {childList: true, subtree: true})
             domAdded = true;
         });
-		
-		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
-			console.log("onChatEndedByAgent event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
-			location.reload();
-		});
-
-		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
-			console.log("onChatEndedByChasitor event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
-			location.reload();
-		});
 
         embedded_svc.settings.displayHelpButton = true; //Or false
         embedded_svc.settings.autoOpenPostChat = true;
