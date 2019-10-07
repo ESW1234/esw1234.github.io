@@ -58,21 +58,21 @@
                     return false;
                 };
 			}*/
-			
-			// Workaround for prototype w/ SFDC 222+
-			/*if (NodeList && typeof NodeList.each !== "function") {
-				console.log("patching NodeList.each...");
-				NodeList.prototype.each = function (callback, thisArg) {
-					var nodeListArray = [].slice.call(this);
-					nodeListArray.forEach(function(node) {
-						callback.call(thisArg, node);
-					})
-				}
-			}*/
+
+            // Workaround for prototype w/ SFDC 222+
+            /*if (NodeList && typeof NodeList.each !== "function") {
+            	console.log("patching NodeList.each...");
+            	NodeList.prototype.each = function (callback, thisArg) {
+            		var nodeListArray = [].slice.call(this);
+            		nodeListArray.forEach(function(node) {
+            			callback.call(thisArg, node);
+            		})
+            	}
+            }*/
 
             embedded_svc.init(
                 'http://williamc-wsm.internal.salesforce.com:6109',
-                'http://jazmincommunity-16cb5874dc5.force.com:6109/channelmenu',
+                'http://jazmincommunity-16cb5874dc5.localhost.soma.force.com:6109/channelmenu',
                 gslbBaseURL,
                 '00Dxx0000006Gmd',
                 'Omni_Chat', {
