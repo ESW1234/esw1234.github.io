@@ -6,6 +6,826 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		
+		embedded_svc.menu.replaceWithMock = true;
+		embedded_svc.menu.settings.JSON_MOCK = {
+		menuSettings: {
+			name: "developerName",
+			enabled: true,
+			site: "siteName",
+			siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
+			branding: {
+				property1: "value1",
+				property2: "value2"
+			},
+			labels: [{
+					section: "ChannelMenuHeader",
+					name: "HeaderText",
+					value: "Hello!"
+				}, {
+					section: "ChannelMenuHeader",
+					name: "SubheaderText",
+					value: "How can we help you today TEST?"
+			}]
+		},
+		menuItems: [
+			{
+				id: "3miXX0000000001",
+				channel: "OmniBot_QueueBased",
+				channelType: "EmbeddedServiceConfig",
+				order: 1,
+				isEssentialsEdition: true,
+				isSelfServiceEnabled: false,
+				latestChasitorVersion: "47.0",
+				namespace: "c",
+				isReadOnlyAppMode: false,
+				htmlDirection: "ltr",
+				labels: [
+				    {
+				      "labelName": "StartChat",
+				      "labelValue": "Start Chat",
+				      "sectionName": "LiveAgentPrechat"
+				    },
+				    {
+				      "labelName": "LiveChat",
+				      "labelValue": "Chat!!!",
+				      "sectionName": "LiveAgentSidebarApp"
+				    }
+				],
+				configuration: {
+					shouldHideAuthDialog: false,
+					siteUrl: "http://tiffanytso-168e81127ee.localhost.soma.force.com:6109/",
+					areGuestUsersAllowed: false,
+					embeddedServiceBranding: {
+						contrastInvertedColor: "#ffffff",
+						contrastPrimaryColor: "#333333",
+						font: "Salesforce Sans",
+						navBarColor: "#222222",
+						primaryColor: "#222222",
+						secondaryColor: "#005290"
+					},
+// 					embeddedServiceCustomComponents: [{
+// 						feature: "LiveAgent",
+// 						customComponent: "auraCustomPrechat",
+// 						namespacePrefix: "c",
+// 						customComponentType: "LA_Prechat"
+// 					}],
+					embeddedServiceLiveAgent: {
+						enabled: true,
+						fontSize: "Medium",
+						isOfflineCaseEnabled: false,
+						isQueuePositionEnabled: true,
+						liveChatButton: "573xx0000004EsO",
+						liveChatDeployment: "572xx0000004EFh",
+						eswLiveAgentDevName: "EmbeddedServiceLiveAgent_Parent04Ixx0000004FoSEAU_168edecf889",
+						prechatEnabled: true,
+						scenario: "Service",
+						embeddedServiceQuickActions: [
+// 						{
+// 							order: 1,
+// 							quickActionDefinition: "Snapins_Case_OfflineCaseQuickAction_08hRM00000000eh",
+// 							quickActionType: "OfflineCase"
+// 						},
+						{
+							order: 1,
+							quickActionDefinition: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat",
+							quickActionInfo: {
+								layoutItems: [
+									[{
+										label: "Name",
+										required: true,
+										fields: [{
+											type: "string",
+											name: "Name",
+											label: "Full Name",
+											value: null,
+											length: 121,
+											extraTypeInfo: "personname",
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ],
+									[{
+										label: "Email",
+										required: false,
+										fields: [{
+											type: "email",
+											name: "Email",
+											label: "Email",
+											value: null,
+											length: 80,
+											extraTypeInfo: null,
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ]
+								],
+								targetSobjectType: "Contact",
+								targetRecordTypeId: null,
+								targetParentField: null,
+								type: "Create",
+								name: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh",
+								label: "Snapins_Contact_PrechatQuickAction_08hRM00000000eh"
+							}
+						},
+						{
+							order: 2,
+							quickActionDefinition: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+							quickActionType: "Prechat",
+							quickActionInfo: {
+								layoutItems: [
+									[{
+										label: "Subject",
+										required: false,
+										fields: [{
+											type: "string",
+											name: "Subject",
+											label: "Subject",
+											value: null,
+											length: 255,
+											extraTypeInfo: null,
+											pickListOption: null
+										}],
+										readOnly: false
+									}, null ]
+								],
+								targetSobjectType: "Case",
+								targetRecordTypeId: null,
+								targetParentField: null,
+								type: "Create",
+								name: "Snapins_Case_PrechatQuickAction_08hRM00000000eh",
+								label: "Snapins_Case_PrechatQuickAction_08hRM00000000eh"
+							}
+						}]
+					}
+				}
+			},
+			{
+				id: "3miXX0000000002",
+				channel: "WhatsApp1",
+				channelType: "MessagingChannel",
+				order: 2,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "WhatsApp",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on WhatsApp"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000003",
+				channel: "Facebook1",
+				channelType: "MessagingChannel",
+				order: 3,
+				configuration: {
+					messagingPlatformKey: "2296846213889326",
+					messageType: "Facebook",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Message us on Facebook"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000004",
+				channel: "Sms1",
+				channelType: "SMS",
+				order: 6,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					messageType: "SMS",
+					isActive: true,
+					isAuthenticated: true,
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Text us"
+					}
+				]
+			},
+			{
+				id: "3miXX0000000005",
+				channel: null,
+				channelType: "Phone",
+				order: 5,
+				phoneNumber: 1234567890,
+				configuration: {
+					messagingPlatformKey: "1234567890",
+					isoCountryCode: "en"
+				},
+				labels: [
+					{
+						section: "ChannelMenuOption",
+						name: "CTALabel",
+						value: "Call us... this is a ridiculously long label that is guaranteed to overflow"
+						// value : "Call us"
+					}
+				]
+			}
+			// Following is assumed, not listed in doc: https://salesforce.quip.com/DR5xAqbauKi4
+			// {
+			// 	id: "3miXX0000000006",
+			// 	channel: "ABC1",
+			// 	channelType: "MessagingChannel",
+			// 	order: 6,
+			// 	configuration: {
+			// 		messageType: "ABC",
+			// 		messagingPlatformKey: "03930a79-b762-4b49-81d5-f2cc897f0871",
+			// 		isoCountryCode: "en"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "iMessage us"
+			// 		}
+			// 	]
+			// },
+			// {  // Not for 222 release
+			// 	id: "3miXX0000000007",
+			// 	channel: "WeChat",
+			// 	channelType: "MessagingChannel",
+			// 	order: 7,
+			// 	configuration: {
+			// 		messageType: "WeChat",
+			// 		// messagingPlatformKey : "123-456-7890",
+			// 		// isoCountryCode : "en"
+			// 		linkUrl: "weixin://dl/chat"
+			// 	},
+			// 	labels: [
+			// 		{
+			// 			section: "ChannelMenuOption",
+			// 			name: "CTALabel",
+			// 			value: "Message us on WeChat"
+			// 		}
+			// 	]
+			// }
+		],
+		    "standardLabels": [
+        {
+            "labelName": "QueuePositionMaxNumber",
+            "labelValue": "99+",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "HeaderTitle",
+            "labelValue": "Group Chat",
+            "sectionName": "LiveAgentGroupChat"
+        },
+        {
+            "labelName": "ErrorDialogBody",
+            "labelValue": "Offline support isn’t working right now. Please try again later.",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "AgentTypingUpdate",
+            "labelValue": "Agent is Typing",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "EndChatAction",
+            "labelValue": "End Chat",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorBlockedTitleAndHeader",
+            "labelValue": "Chat blocked",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "TransferFailed",
+            "labelValue": "Transfer failed",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "IdleTimeoutEndChatMessage",
+            "labelValue": "Chat ended due to timeout",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "Send",
+            "labelValue": "Send",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorNoAgentTitle",
+            "labelValue": "Agents Offline",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ChatStateBody",
+            "labelValue": "Don't worry, after the chat ends, you can save the transcript. Click the agent name in the header and then click Save Transcript.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "Minimize",
+            "labelValue": "Minimize chat",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "BannerReconnected",
+            "labelValue": "Reconnected. You’re chatting with {0}",
+            "sectionName": "LiveAgentTransfer"
+        },
+        {
+            "labelName": "ChatStateHeader",
+            "labelValue": "End chat?",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "BannerTransferred",
+            "labelValue": "You’re chatting with {0}",
+            "sectionName": "LiveAgentTransfer"
+        },
+        {
+            "labelName": "ChatStateResume",
+            "labelValue": "Go Back",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ErrorNoConnectionBodyRequest",
+            "labelValue": "Try connecting again or come back later.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ConfirmationDialogButton",
+            "labelValue": "Done",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "IdleTimeoutWarningQuestion",
+            "labelValue": "Are you still there?",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "BannerInProgressTransfer",
+            "labelValue": "We're transferring your chat to another agent.",
+            "sectionName": "LiveAgentTransfer"
+        },
+        {
+            "labelName": "WaitingStateContinue",
+            "labelValue": "Continue to Wait",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ChatEndConnection",
+            "labelValue": "Chat Ended from Lost Connection",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorBlockedBody",
+            "labelValue": "It looks like an agent has blocked your chats.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "FileTransferFailure",
+            "labelValue": "File Transfer Failed",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "AgentJoinedChatSystemMessage",
+            "labelValue": "{0} joined the chat",
+            "sectionName": "LiveAgentGroupChat"
+        },
+        {
+            "labelName": "QueuePositionMessageSecondLine",
+            "labelValue": "You're number {0} in line.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ChatButtonClose",
+            "labelValue": "Close Chat",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "WaitingStateHeader",
+            "labelValue": "Leave?",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "FileTransferCanceled",
+            "labelValue": "File Transfer Canceled",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "ErrorNoAgentBodyApology",
+            "labelValue": "Sorry that we are not able to chat with you.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "WaitingStateBodyWarning",
+            "labelValue": "If you leave now, you’ll lose your place in line to chat.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "MinimizedStateMessage",
+            "labelValue": "Group Chat",
+            "sectionName": "LiveAgentGroupChat"
+        },
+        {
+            "labelName": "ErrorNoConnectionHeader",
+            "labelValue": "There is a connection issue",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "InputTextPlaceholder",
+            "labelValue": "Type your message...",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "FieldError",
+            "labelValue": "This field is required.",
+            "sectionName": "LiveAgentPrechat"
+        },
+        {
+            "labelName": "SingleMessageNotification",
+            "labelValue": "1 Message",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ConfirmationDialogTitle",
+            "labelValue": "Case submitted",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "MinimizedQueuePositionZeroMessage",
+            "labelValue": "You're next!",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorDialogButton",
+            "labelValue": "Got It",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "MinimizedQueuePositionZeroAssistiveMessage",
+            "labelValue": "You're next in line for support!",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "StartChat",
+            "labelValue": "Start Chatting",
+            "sectionName": "LiveAgentPrechat"
+        },
+        {
+            "labelName": "ErrorNoConnectionTitle",
+            "labelValue": "Connection Issues",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "WaitingBannerAssistiveText",
+            "labelValue": "Waiting Screen Image",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "CloseSessionWarningButton",
+            "labelValue": "Go Back",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ChatEndAgent",
+            "labelValue": "Chat Ended by Agent",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "QueuePositionConnectingMessage",
+            "labelValue": "Connecting...",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "UnseenMessage",
+            "labelValue": "{0} new messages",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "LiveChat",
+            "labelValue": "Chat",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "WaitingCancelChatRequest",
+            "labelValue": "Cancel Chat Request",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "Close",
+            "labelValue": "Close dialog",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "QueuePositionMaxMessageFirstLine",
+            "labelValue": "Hang in there.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "MinimizedContainerAssistiveText",
+            "labelValue": "Expand the chat",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "MinimizedQueuePositionMessage",
+            "labelValue": "Place in line:",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorNoAgentHeader",
+            "labelValue": "No agents are available",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "BannerAltText",
+            "labelValue": "Offline Support Image",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "AgentSaysNotification",
+            "labelValue": "{0} says...",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ReconnectingChasitorIssue",
+            "labelValue": "Please wait. Reconnecting",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "WaitingGreeting",
+            "labelValue": "Hello, {0}!",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ChatWindowAgent",
+            "labelValue": "Agent",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "PostChatButton",
+            "labelValue": "Give Feedback",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "MinimizedWaitingMessage",
+            "labelValue": "Waiting",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "UploadFile",
+            "labelValue": "Upload this file",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "IdleTimeoutMinimizedEndChat",
+            "labelValue": "Chat ended",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ChooseOption",
+            "labelValue": "Choose one of the following options",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "WaitingMessage",
+            "labelValue": "An agent is on the way.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "SingleUnseenMessage",
+            "labelValue": "1 new message",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "SupportFormButton",
+            "labelValue": "Submit",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "CloseSessionWarningTitle",
+            "labelValue": "Be careful…",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "MessageNotification",
+            "labelValue": "{0} Messages",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ErrorNoConnectionBodyApology",
+            "labelValue": "Sorry that we are not able to chat with you.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "WaitingDefaultName",
+            "labelValue": "Guest",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "FileTransferSuccess",
+            "labelValue": "File Transfer Succeeded",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "ChatStartTime",
+            "labelValue": "Chat started at {0}",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ChatEnd",
+            "labelValue": "Chat Ended",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "HeaderText",
+            "labelValue": "Contact Us",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "QueuePositionMessageFirstLine",
+            "labelValue": "Hang in there.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "MessageAreaTransferred",
+            "labelValue": "Chat started with {0}",
+            "sectionName": "LiveAgentTransfer"
+        },
+        {
+            "labelName": "ErrorBlockedCloseButton",
+            "labelValue": "OK",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "FileTransferRequested",
+            "labelValue": "File Transfer Requested",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "ErrorExitChatButton",
+            "labelValue": "Leave Chat",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ErrorDialogTitle",
+            "labelValue": "Something went wrong",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "SelectNewFile",
+            "labelValue": "Select a file under 5mb",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "WaitingStateBodyApology",
+            "labelValue": "We’re sorry we missed you.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "RemoveFile",
+            "labelValue": "Remove this file.",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "UsePreviousElementToUploadFile",
+            "labelValue": "File transfer requested. Press the upload a file button.",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "ChatStateHeaderGreeting",
+            "labelValue": "Thanks for chatting with us. Ask me anything.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "AgentLeftChatSystemMessage",
+            "labelValue": "{0} left the chat",
+            "sectionName": "LiveAgentGroupChat"
+        },
+        {
+            "labelName": "FileUpload",
+            "labelValue": "Upload a file",
+            "sectionName": "LiveAgentFileTransfer"
+        },
+        {
+            "labelName": "EndOfDialog",
+            "labelValue": "End of Dialog",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "ReconnectingMinimizedMessage",
+            "labelValue": "Reconnecting",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "MinimizedQueuePositionAssistiveMessage",
+            "labelValue": "Place in line for support:",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "QueuePositionTransferringMessage",
+            "labelValue": "Transferring...",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "WaitingStateLeave",
+            "labelValue": "Leave",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ExtendedHeaderGreeting",
+            "labelValue": "You are chatting with {0} people",
+            "sectionName": "LiveAgentGroupChat"
+        },
+        {
+            "labelName": "ErrorNoAgentBodyRequest",
+            "labelValue": "Come back later or try again.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "BannerAltText",
+            "labelValue": "Prechat Image",
+            "sectionName": "LiveAgentPrechat"
+        },
+        {
+            "labelName": "QueuePositionZeroMessage",
+            "labelValue": "You're up next!",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "ChatStateEnd",
+            "labelValue": "Confirm End Chat",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "PostChat",
+            "labelValue": "Post-Chat",
+            "sectionName": "LiveAgentSidebarApp"
+        },
+        {
+            "labelName": "SaveTranscript",
+            "labelValue": "Save Transcript",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "QueuePositionMaxMessageSecondLine",
+            "labelValue": "An agent is on the way.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "IdleTimeoutMinimizedWarning",
+            "labelValue": "Still there?",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "MinimizedInProgressTransfer",
+            "labelValue": "Transferring",
+            "sectionName": "LiveAgentTransfer"
+        },
+        {
+            "labelName": "ConfirmationDialogBody",
+            "labelValue": "We logged your case. You’ll hear back from us soon.",
+            "sectionName": "LiveAgentOfflineSupport"
+        },
+        {
+            "labelName": "IdleTimeoutWarningRequest",
+            "labelValue": " Please send a message within {0}m {1}s or this chat will time out.",
+            "sectionName": "LiveAgentChatWindow"
+        },
+        {
+            "labelName": "CloseSessionWarningBody",
+            "labelValue": "If you close, leave, or refresh this tab, you could lose your chat.",
+            "sectionName": "MessageOverlay"
+        },
+        {
+            "labelName": "ErrorTryAgainButton",
+            "labelValue": "Start a New Chat",
+            "sectionName": "MessageOverlay"
+        }
+    ],
+		additionalSettings: {
+			auraJarVersion: "220.6000.2058.28",
+			isEssentialsEdition: false,
+			isSelfServiceEnabled: false,
+			htmlDirection: "RTL",
+			latestChasitorVersion: "47.0",
+			orgLanguage: "en_US",
+			guestUserLang: "en_US"
+		}
+	};
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
