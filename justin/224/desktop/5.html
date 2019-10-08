@@ -68,6 +68,15 @@
 			console.log("on help button - function 2");
 		});
 
+		// Automatically open sidebar on app load.
+		embedded_svc.addEventHandler(
+			"ready",
+			function() {
+				debugger;
+				embedded_svc.onHelpButtonClick();
+			}
+		);
+
 		// Snippet settings.
 		//embedded_svc.settings.snippetSettingsFile = "storageDomain";
 
