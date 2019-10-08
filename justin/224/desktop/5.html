@@ -68,15 +68,6 @@
 			console.log("on help button - function 2");
 		});
 
-		// Automatically open sidebar on app load.
-		embedded_svc.addEventHandler(
-			"ready",
-			function() {
-				debugger;
-				embedded_svc.onHelpButtonClick();
-			}
-		);
-
 		// Snippet settings.
 		//embedded_svc.settings.snippetSettingsFile = "storageDomain";
 
@@ -183,6 +174,13 @@
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
 				isOfflineSupportEnabled: true
 			}
+		);
+		
+		window.setTimeout(
+			function() {
+				embedded_svc.bootstrapEmbeddedService();
+			},
+			1000
 		);
 		
 // 		window.setTimeout(
