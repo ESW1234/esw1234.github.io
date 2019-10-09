@@ -1,0 +1,141 @@
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+<style type='text/css'>
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        background-color: #1a5888 !important;
+        min-width: 7em !important;
+    }
+    .embeddedServiceHelpButton .uiButton .helpButtonLabel .message {
+        font-size: 14px!important;
+    }
+    .sidebarMinimized .helpButton,
+    .embeddedServiceSidebarMinimizedDefaultUI {
+        min-width: 7em !important;
+        width: auto !important;
+    }
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+        outline: 1px solid #1a5888;
+    }
+    .embeddedServiceSidebarButton.uiButton:not(:disabled):focus,
+    .embeddedServiceSidebarButton.uiButton:not(:disabled):hover {
+        background-color: #0a92ca !important;
+    }
+    .embeddedServiceSidebarButton.uiButton.dialog-button-1,
+    .embeddedServiceSidebarButton.uiButton.dialog-button-1:not(:disabled):focus,
+    .embeddedServiceSidebarButton.uiButton.dialog-button-1:not(:disabled):hover,
+    .embeddedServiceSidebarButton.uiButton.uiButton--inverse,
+    .embeddedServiceSidebarButton.uiButton.uiButton--inverse:not(:disabled):focus,
+    .embeddedServiceSidebarButton.uiButton.uiButton--inverse:not(:disabled):hover {
+        background-color: #d9e3ed !important;
+        border: none !important;
+    }
+    .embeddedServiceSidebarButton.uiButton.dialog-button-1 span,
+    .embeddedServiceSidebarButton.uiButton.uiButton--inverse span{
+        color: #065879 !important;
+    }
+    .embeddedServiceLiveAgentStateOfflineSupportDefaultUI {display: none}
+</style>
+<script src="https://service.force.com/lightning/lightning.out.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"/>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+    var domAdded = false;
+    var initESW = function(gslbBaseURL) {
+        embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+            if(domAdded) return;
+            var observer = new MutationObserver(function() {
+                var el = jQuery(document).find('.embeddedServiceLiveAgentStateOfflineSupportDefaultUI:not(.addedIframe)');
+                if(el.length == 1) {
+                    jQuery(".embeddedServiceLiveAgentStateOfflineSupportDefaultUI").addClass('addedIframe').html('<iframe src="https://nico-bhphotovideo.cs43.force.com/SnapInsOffline" style="width: 100%;height: 100%;border: none;"/>').show();
+                    return;
+                }
+            })
+            observer.observe(document.body, {childList: true, subtree: true})
+            domAdded = true;
+        });
+        embedded_svc.settings.displayHelpButton = true; //Or false
+        embedded_svc.settings.autoOpenPostChat = true;
+        embedded_svc.settings.defaultMinimizedText = 'Chat'; //(Defaults to Chat with an Expert)
+        embedded_svc.settings.disabledMinimizedText = 'Chat'; //(Defaults to Agent Offline)
+        embedded_svc.settings.offlineSupportMinimizedText = 'Chat'; //(Defaults to Contact Us)
+        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+        embedded_svc.settings.entryFeature = 'LiveAgent';
+        //embedded_svc.settings.storageDomain = 'bhphotovideo.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+        embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+            // Returns a valid button ID.
+            console.log('button id from page --> ' + prechatFormData[4].value);
+            return prechatFormData[4].value;
+        };
+        window.addEventListener("message", function(payload) {
+            if(payload.data === "clearActiveChatSessions") {
+                embedded_svc.postMessage("chasitor.decrementActiveChatSession");
+            }
+			if(payload.data === 'SFDC:ChatEnded'){
+				console.log('end chat');
+			}
+        });
+		
+        embedded_svc.settings.extraPrechatInfo = [{
+            "entityFieldMaps": [{
+                'doCreate':false,
+                'doFind':true,
+                'fieldName':'LastName',
+                'isExactMatch':true,
+                'label':'Last Name'
+            }, {
+                'doCreate':false,
+                'doFind':true,
+                'fieldName':'FirstName',
+                'isExactMatch':true,
+                'label':'First Name'
+            }, {
+              "doCreate": false,
+              "doFind": true,
+              "fieldName": "Email",
+              "isExactMatch": true,
+              "label": "Email",
+              "displayToAgent": false
+            }],
+            "entityName": "Contact"
+            }
+        ];
+        embedded_svc.init(
+            'https://bnh--nico.cs43.my.salesforce.com',
+            'https://nico-bhphotovideo.cs43.force.com/',
+            gslbBaseURL,
+            '00D630000009loR',
+            'SnapInsDefaultTeam',
+            {
+                baseLiveAgentContentURL: 'https://c.la1-c2cs-ph2.salesforceliveagent.com/content',
+                deploymentId: '572630000004Di6',
+                buttonId: '5736300000001Jc',
+                baseLiveAgentURL: 'https://d.la1-c2cs-ph2.salesforceliveagent.com/chat',
+                eswLiveAgentDevName: 'SnapInsDefaultTeam',
+                isOfflineSupportEnabled: true
+            }
+        );
+    };
+	window.onload = function() {
+		if (!window.embedded_svc) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://bnh--nico.cs43.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			console.log(document.body);
+			document.body.appendChild(s);
+		} else {
+			initESW('https://service.force.com');
+		}		
+	}
+</script>
+</head>
+<body>
+<h2>Home</h2><br/>
+<a href="http://esw1234.github.io/ashah/bnh.html">home</a><br/>
+</body>
+</html>
