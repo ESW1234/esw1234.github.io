@@ -22,25 +22,25 @@
 
 			// Chat server endpoint URLs.
 			embedded_svc.menu.init(
-				'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+				'https://na44.stmfa.stm.salesforce.com',
 				'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				gslbBaseURL,
-				'00DRM0000005cyu',
-				'justinMenu'
+				'00DRM000000FBTy',
+				'justin'
 			);
 		};
 
 		if (!window.embedded_svc || !window.embedded_svc.menu) {
 			var s = document.createElement('script');
-// 			s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-			s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
+// 			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
 			s.onload = function() {
 				initESW(null);
 			};
 			document.body.appendChild(s);
 		} else {
 // 			initESW('https://service.force.com');
-			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+			initESW('https://na44.stmfa.stm.salesforce.com');
 		}
 	</script>
 
