@@ -4,17 +4,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="blue">222 STMFB</font></p>
+	<p align="center"><font color ="red">220 STMFC Org</font></p>
   <br/>
   <br/>	
-	
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #68EAA5;
+		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #68EAA5;
+		outline: 1px solid #005290;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -48,17 +48,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://eswcommunitiessubdomain.stmfb.stm.force.com/SnapInsDeploymentCommunity',
+			'https://na44.stmfc.stm.salesforce.com',
+			'https://snapins-1629cc5b71b.stmfc.stm.force.com/customerService0814',
 			gslbBaseURL,
-			'00DRM0000007ep9',
-			'githubPage',
+			'00DRM0000005lEo',
+			'Jazmin',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004HlJ',
-				buttonId: '573RM0000004IXm',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000lz2AA_1677b696c9b',
+				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CgP',
+				buttonId: '573RM0000004CgU',
+				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000z2AA_162d579a238',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -66,7 +66,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -75,7 +75,7 @@
 		initESW('https://service.force.com');
 	}
 </script>
-   
+
 </body>
 </html>
     <style>
