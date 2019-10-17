@@ -175,33 +175,33 @@
 				isOfflineSupportEnabled: true
 			}
 		);
-		
-// 		window.setTimeout(
-// 			function() {
-// 				embedded_svc.clearSession(
-// 					function() {
-// 						console.log("success");
-// 					},
-// 					function() {
-// 						console.log("failure");
-// 					}
-// 				);
-// 			},
-// 			3000
-// 		);
-
-// 		window.setTimeout(
-// 			function() {
-// 				embedded_svc.bootstrapEmbeddedService().then(function() {
-// 					console.log("created!");
-// 					window.setTimeout(function() {
-// 						embedded_svc.startChat();
-// 					}.bind(window), 1000);
-// 				}.bind(window));
-// 			}.bind(window),
-// 			3000
-// 		);
 	};
+
+	// Start/End/Clear API Testing.
+// 	window.setTimeout(
+// 		function() {
+// 			embedded_svc.clearSession(
+// 				function() {
+// 					console.log("success");
+// 				},
+// 				function() {
+// 					console.log("failure");
+// 				}
+// 			);
+// 		},
+// 		3000
+// 	);
+// 	window.setTimeout(
+// 		function() {
+// 			embedded_svc.bootstrapEmbeddedService().then(function() {
+// 				console.log("created!");
+// 				window.setTimeout(function() {
+// 					embedded_svc.startChat();
+// 				}.bind(window), 1000);
+// 			}.bind(window));
+// 		}.bind(window),
+// 		3000
+// 	);
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
