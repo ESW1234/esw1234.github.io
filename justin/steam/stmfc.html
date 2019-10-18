@@ -7,6 +7,16 @@
 
 <body>
 
+	<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+	
 <p align="center"><font color = "red"><a href="stmfc.html">this page</a></font></p>
 <p align="center"><font color = "red"><a target="_blank" href="stmfc.html">this page in a new tab</a></font></p>
 <p align="center"><font color = "red"><a href="stmfc-2.html">STMFC page 2.</a></font></p>
@@ -63,16 +73,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfc.stm.salesforce.com',
-			'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili',
+			'https://snapins-1629cc5b71b.stmfc.stm.force.com/JazminLangaugeTest1',
 			gslbBaseURL,
 			'00DRM0000005lEo',
-			'justin',
+			'lsfChatGroup',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CgP',
-				buttonId: '573RM0000004CgU',
+				deploymentId: '572RM0000004D6Y',
+				buttonId: '573RM0000004D80',
 				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa',
+				eswLiveAgentDevName: 'lsfChatGroup',
 				isOfflineSupportEnabled: false
 			}
 		);
