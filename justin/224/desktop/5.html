@@ -22,8 +22,8 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
 	@font-face {
 		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
-/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+ 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+ 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -162,7 +162,7 @@
 
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/customerServiceMay2019',
+			'http://communities.localhost.soma.force.com:6109/fabAug2019/s',
 			gslbBaseURL,
 			'00Dxx0000006Gz1',
 			'justin',
@@ -175,33 +175,33 @@
 				isOfflineSupportEnabled: true
 			}
 		);
-		
-// 		window.setTimeout(
-// 			function() {
-// 				embedded_svc.clearSession(
-// 					function() {
-// 						console.log("success");
-// 					},
-// 					function() {
-// 						console.log("failure");
-// 					}
-// 				);
-// 			},
-// 			3000
-// 		);
-
-// 		window.setTimeout(
-// 			function() {
-// 				embedded_svc.bootstrapEmbeddedService().then(function() {
-// 					console.log("created!");
-// 					window.setTimeout(function() {
-// 						embedded_svc.startChat();
-// 					}.bind(window), 1000);
-// 				}.bind(window));
-// 			}.bind(window),
-// 			3000
-// 		);
 	};
+
+	// Start/End/Clear API Testing.
+// 	window.setTimeout(
+// 		function() {
+// 			embedded_svc.clearSession(
+// 				function() {
+// 					console.log("success");
+// 				},
+// 				function() {
+// 					console.log("failure");
+// 				}
+// 			);
+// 		},
+// 		3000
+// 	);
+// 	window.setTimeout(
+// 		function() {
+// 			embedded_svc.bootstrapEmbeddedService().then(function() {
+// 				console.log("created!");
+// 				window.setTimeout(function() {
+// 					embedded_svc.startChat();
+// 				}.bind(window), 1000);
+// 			}.bind(window));
+// 		}.bind(window),
+// 		3000
+// 	);
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
