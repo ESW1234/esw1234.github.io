@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <title>DEFAULT PAGE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, 
+				  imum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+<body>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/ashah/local/fab.html">EDIT PAGE</a>
+<script type='text/javascript' src='http://analshah-wsm10.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script>
+<script type='text/javascript'>
+var initESW = function(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName){
+	// Add the liveAgentChatUrl and liveAgentContentUrl only if they can't be obtained on the REST call
+	// Also not making it part of init as we'll want to get rid of them
+	embedded_svc.menu.settings.liveAgentChatUrl = "http://analshah-wsm10.internal.salesforce.com:8096/chat";
+	embedded_svc.menu.settings.liveAgentContentUrl = "http://analshah-wsm10.internal.salesforce.com:8095/content";
+	// Language setting needed for fetching the labels in the right language for chat
+	embedded_svc.menu.settings.language = "es";
+	embedded_svc.menu.init(baseCoreURL, communityOrSiteEndPointURL, gslbBaseURL, orgId, channelMenuSettingDevName);
+}
+if (!window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://analshah-wsm10.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.onload = function() {
+			initESW('http://analshah-wsm10.internal.salesforce.com:6109', 'http://tiffanytso-16b1ea1943e.localhost.soma.force.com:6109', 'http://analshah-wsm10.internal.salesforce.com:6109', '00Dxx0000006GoF', 'EmbeddedServiceMenu1' );
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('http://analshah-wsm10.internal.salesforce.com:6109', 'http://tiffanytso-16b1ea1943e.localhost.soma.force.com:6109', 'http://analshah-wsm10.internal.salesforce.com:6109', '00Dxx0000006GoF', 'EmbeddedServiceMenu1');
+	}
+</script>
+</body>
+</html>
