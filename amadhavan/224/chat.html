@@ -81,11 +81,11 @@
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://service.force.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
-			initESW(null);
+			initESW('https://service.force.com/embeddedservice/5.0/esw.js');
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW(null);
+		initESW('https://service.force.com/embeddedservice/5.0/esw.js');
 	}
 </script>
 </body>
