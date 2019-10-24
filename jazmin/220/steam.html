@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">220 Steam</font></p>
+	<p align="center"><font color ="blue">220 Steam</font></p>
 	<p align="center"><font color = "blue"><a href="steam2.html">Link to default steam page 2</a></font></p>
   <br/>
   <br/>	
@@ -23,7 +23,6 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'en-AU'; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -45,16 +44,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfc.stm.salesforce.com',
-			'https://snapins-1629cc5b71b.stmfc.stm.force.com/JazminENGBCommunity',
+			'https://snapins-1629cc5b71b.stmfc.stm.force.com/JazminENAUCommunity',
 			gslbBaseURL,
 			'00DRM0000005lEo',
-			'Jazmin_EN_GB_Deployment',
+			'Jazmin_EN_AU_Deployment',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004D6Y',
 				buttonId: '573RM0000004CgU',
 				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002s2AA_16df0a3c2e0',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000002x2AA_16df0b0f7be',
 				isOfflineSupportEnabled: true
 			}
 		);
