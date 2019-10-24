@@ -79,9 +79,9 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://service.force.com');
+		s.setAttribute('src', 'https://service.force.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
-			initESW('https://service.force.com');
+			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
