@@ -2,34 +2,23 @@
 <html>
 <!-- Script for Slide Show: Change picture every three seconds -->
 <body>
-<script type="text/javascript">
-    var index = 0;
-    change();
+<style>
+    .slides { width: 100%; }
+    .slides-hidden { display : none; }
+</style>
 
-    function change() {
-
-        //Collect all images with class 'slides'
-        var x = document.getElementsByClassName('slides');
-
-        //Set all the images display to 'none' (invisible)
-        for(var i = 0; i < x.length; i++) { 
-            x[i].style.display = "none"; 
+<script>
+    addEventListener("load",() => { // "load" is safe but "DOMContentLoaded" starts earlier
+        var index = 0;
+        const slides = document.querySelectorAll(".slides");
+        const classHide = "slides-hidden", count = slides.length;
+        nextSlide();
+        function nextSlide() {
+            slides[(index ++) % count].classList.add(classHide);
+            slides[index % count].classList.remove(classHide);
+            setTimeout(nextSlide, 3000);
         }
-
-        //Increment index variable
-        index++;
-
-        //Set index to 1 if it's greater than the amount of images
-        if(index > x.length) { 
-            index = 1; 
-        }
-
-        //set image display to 'block' (visible)
-        x[index - 1].style.display = "block";
-
-        //set loop to change image every 3000 milliseconds (3 seconds)
-        setTimeout(change, 3000);
-    }
+    });
 </script>
 <section>
     <img class="slides" src="https://github.com/ESW1234/esw1234.github.io/blob/master/amadhavan/224/hackday/adidas3.jpeg" style="width:100%">
