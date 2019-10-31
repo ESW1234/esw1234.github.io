@@ -131,7 +131,10 @@
 // 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'); 
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
-	} else { initESW('https://service.force.com'); }
+	} else { 
+// 		initESW('https://service.force.com');
+		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+	}
 </script>
 <!-- end 5.0 snippet --> 
 
