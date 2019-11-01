@@ -6,16 +6,11 @@
 <body>
 	<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #1F8749;
-		font-family: "Salesforce Sans", sans-serif;
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #1F8749;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		outline: 1px solid #005290;
 	}
 </style>
 
@@ -24,7 +19,6 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -32,7 +26,7 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
+		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
@@ -46,16 +40,16 @@
 
 		embedded_svc.init(
 			'http://nishantaga-wsm.internal.salesforce.com:6109',
-			'http://nwk00dxx0000006gm7-1657da9f020.localhost.soma.force.com:6109/community6',
+			'http://eswblitz-16db7ce231d.localhost.soma.force.com:6109/site1',
 			gslbBaseURL,
-			'00Dxx0000006GKh',
-			'justin',
+			'00Dxx0000006Rbb',
+			'GackChatDeployment',
 			{
 				baseLiveAgentContentURL: 'http://nishantaga-wsm.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C96',
+				deploymentId: '572xx0000004FbY',
+				buttonId: '573xx0000004FdA',
 				baseLiveAgentURL: 'http://nishantaga-wsm.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16565801f5c',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004JlcEAE_16e28ce62e5',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -63,7 +57,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://nishantaga-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://nishantaga-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -71,7 +65,7 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
+</script>	
 </body>
 
 </html>
