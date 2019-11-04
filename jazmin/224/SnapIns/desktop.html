@@ -4,9 +4,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">Desktop</font></p>
+	<p align="center"><font color ="blue">Desktop</font></p>
   <br/>
   <br/>	
+
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
@@ -18,7 +19,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -44,17 +45,17 @@
 
 		embedded_svc.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazmincommunitysubdomanin.localhost.soma.force.com:6109/JazminENGBCommunity',
+			'http://jazmincommunitysubdomanin.localhost.soma.force.com:6109/jazminESMXCommunity',
 			gslbBaseURL,
 			'00Dxx0000006Id9',
-			'JazminENGBDeployment',
+			'JazminESMXDeployment',
 			{
 				baseLiveAgentContentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004DJc',
 				buttonId: '573xx0000004CAe',
 				baseLiveAgentURL: 'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004GHUEA2_16e241525c3',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004GFsEAM_16e23f7a5d4',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
@@ -67,7 +68,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('');
 	}
 </script>
 	
