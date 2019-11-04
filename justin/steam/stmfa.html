@@ -69,7 +69,7 @@
 </style>
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript'>
+<!-- <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -80,15 +80,7 @@
 		embedded_svc.settings.loadingText = '...'; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-		//Returns a valid button ID.
-		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
-		// Sets chats to route to the first available user or button in the array
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
@@ -105,26 +97,6 @@
 		// Avatars
 		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-		
-		// Adidas coloring messages based on payload.
-		/*
-		embedded_svc.addEventHandler("onAgentMessage", function() {
-			// Use a setTimeout to make sure the message has already rendered.
-			setTimeout(
-				function() {
-					// For any new message that comes in, check if message needs special CSS applied.
-					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
-					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
-					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
-
-					if(lastMessageContent.innerText.includes("adidas")) {
-						lastMessageContent.style.background = "red";
-					}
-			   	},
-				1
-			);
-		});
-		*/
 		
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
@@ -158,12 +130,12 @@
 // 		initESW('https://service.force.com');
 		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
-</script>
+</script> -->
 <!-- end 5.0 snippet -->
 
 
 <!-- start 4.1 snippet -->
-<!-- <style type='text/css'>
+<style type='text/css'>
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
         
@@ -302,7 +274,7 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script> -->
+</script>
 <!-- end 4.1 snippet -->
 
 
