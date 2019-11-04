@@ -25,6 +25,7 @@
 			// Required if you want labels in a language that’s different from your user’s context.
 			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 			
+			/*
 			embedded_svc.menu.settings.replaceWithMock = true;
 			embedded_svc.menu.settings.JSON_MOCK = {
 			  "additionalSettings": {
@@ -688,7 +689,7 @@
 			  ],
 			  "timestamp": 1565641740667
 			};
-
+			*/
 
 			// Chat server endpoint URLs.
 			embedded_svc.menu.settings.liveAgentChatUrl = 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat';
@@ -696,7 +697,7 @@
 
 			embedded_svc.menu.init(
 				'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-				'http://communities.localhost.soma.force.com:6109/customerServiceAug2019',
+				embedded_svc.menu.settings.liveAgentChatUrl,
 				gslbBaseURL,
 				'00Dxx0000006Gmd',
 				'justinMenu'
