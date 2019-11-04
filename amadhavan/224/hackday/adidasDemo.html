@@ -13,7 +13,7 @@
     .embeddedServiceHelpButton .helpButton .uiButton:focus {
         outline: 1px solid #005290;
     }
-    html {
+     html {
      	background-image: url('https://esw1234.github.io/amadhavan/224/hackday/adidasHelp.gif');
      	background-repeat: norepeat;
       	background-size: cover;	    
@@ -22,23 +22,6 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>     
-    // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
-        function helpButtonLoaded(){
-            var helpButton = document.querySelector('.helpButton');
-            if(!helpButton){
-              window.setTimeout(helpButtonLoaded, 500);
-                  return;        
-            }
-            var height = document.querySelector('.helpButton').clientHeight;
-            var width = document.querySelector('.helpButton').clientWidth;
-             console.log(height); // check the message is being sent correctly
-             console.log(width); // check the message is being sent correctly
-             window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                }, '*');
-      }
-      window.onload = helpButtonLoaded();    
     
         var initESW = function(gslbBaseURL) {
         embedded_svc.settings.displayHelpButton = true; //Or false
@@ -46,8 +29,6 @@
               embedded_svc.settings.devMode = true;
         embedded_svc.settings.widgetWidth = 320; 
         embedded_svc.settings.widgetHeight = 498;
-        embedded_svc.promotions = [{"name": "adidas3promo.jpeg" , "Imageurl": "adidas3.jpeg"}, {"name" : "adidas4promo", "Imageurl": "adidas4.jpeg"} ,
-                                    {"name ": "adidas2promo", "Imageurl": "adidas2.jpeg"}];   
         //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
         //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
         //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
@@ -77,27 +58,6 @@
                 isOfflineSupportEnabled: true
             }
         );
-        embedded_svc.addEventHandler("afterMinimize", function() {
-            var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
-            var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
-            window.parent.postMessage({
-                frameHeight: height,
-                frameWidth: width
-            }, '*');
-             console.log("after minimized height-" + height);
-             console.log("after minimized width-"+ width);    
-        });
-                                
-        embedded_svc.addEventHandler("afterMaximize", function() {
-            var height = document.querySelector('.dockableContainer').clientHeight;
-            var width = document.querySelector('.dockableContainer').clientWidth;
-            window.parent.postMessage({
-                frameHeight: embedded_svc.settings.widgetHeight,
-                frameWidth: embedded_svc.settings.widgetWidth 
-            }, '*');
-             console.log("after maximized height-" + height);
-             console.log("after minimized width-"+ width);
-        });
             
     };
     if (!window.embedded_svc) {
