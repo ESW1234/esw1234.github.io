@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="blue">224 STMFA Snap-In</font></p>
+	<p align="center"><font color="red">224 STMFA Snap-In</font></p>
   <br/>
   <br/>	
 <style type='text/css'>
@@ -17,15 +17,18 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
 		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
@@ -34,24 +37,27 @@
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/JazminESMXCommunity',
+			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/JazminEnAuCommunity',
 			gslbBaseURL,
 			'00DRM0000007KOQ',
-			'JazminESMXDeployment',
+			'JazminENAUDeployment',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM00000005Bd',
 				buttonId: '573RM00000005Zq',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004E6d2AE_16e2349874b',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004E722AE_16e38c182d1',
 				isOfflineSupportEnabled: true
 			}
 		);
 	};
+
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
@@ -60,7 +66,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 
