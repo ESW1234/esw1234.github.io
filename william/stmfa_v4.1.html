@@ -46,17 +46,17 @@
             embedded_svc.settings.entryFeature = 'LiveAgent';
             
             embedded_svc.init(
-                'https://na44.stmfa.stm.salesforce.com', // baseCoreUrl
-                'https://snapins-15f27b267a1.stmfa.stm.force.com/napili', // communityEndpointUrl
-                gslbBaseURL, // gslbBaseURL
-                '00DRM0000005e2E', // org id
-                'a', // eswConfigDevName
+                'https://na44.stmfa.stm.salesforce.com',
+				'https://ecm.stmfa.stm.force.com',
+				gslbBaseURL,
+				'00DRM000000EpDI',
+				'omni',
                 {
-                    baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-                    deploymentId: '572RM000000008r',
-                    buttonId: '573RM000000009D',
-                    baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971'
+					baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+					deploymentId: '572RM000000060t',
+					buttonId: '573RM00000006S8',
+					baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DtD2AU_16c24eec8dc',
                 });
         };
         if (!window.embedded_svc) {
