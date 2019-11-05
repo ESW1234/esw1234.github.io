@@ -1,18 +1,21 @@
+
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>STMFB Channel Menu</title>
+	<title>STMFA Channel Menu Page 2</title>
 </head>
-
 <body>
+	<p align="center"><font color = "red"><a href="stmfa-2.html">This page in this tab.</a></font></p>
+	<p align="center"><font color = "red"><a target="_blank" href="stmfa-2.html">This page in a new tab.</a></font></p>
+	<p align="center"><font color = "red"><a href="stmfa.html">STMFA Channel Menu page 1.</a></font></p>
+	<p align="center"><font color = "red"><a target="_blank" href="stmfa.html">STMFA Channel Menu page 1 in a new tab.</a></font></p>
 
 	<h1>
-		STMFB | Channel Menu
+		STMFA | Channel Menu Page 2
 	</h1>
 
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
 
 <!-- 	<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 	<script type='text/javascript'>
@@ -21,35 +24,28 @@
 			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 			// Chat server endpoint URLs.
-			embedded_svc.menu.settings.liveAgentChatUrl = 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat';
-			embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content';
-
-			// Dev mode.
-			embedded_svc.menu.settings.devMode = true;
-
 			embedded_svc.menu.init(
-				'https://snapins.my.stmfb.stm.salesforce.com',
-				embedded_svc.menu.settings.liveAgentChatUrl,
+				'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+				'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				gslbBaseURL,
-				'00DRM0000005jYI',
-				'justin'
+				'00DRM0000005cyu',
+				'justinMenu'
 			);
 		};
 
 		if (!window.embedded_svc || !window.embedded_svc.menu) {
 			var s = document.createElement('script');
-// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/menu/fab.js');
+// 			s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+			s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
 			s.onload = function() {
 				initESW(null);
 			};
 			document.body.appendChild(s);
 		} else {
 // 			initESW('https://service.force.com');
-			initESW('https://snapins.my.stmfb.stm.salesforce.com');
+			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 		}
 	</script>
 
-</body>
-
+</body
 </html>
