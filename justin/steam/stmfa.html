@@ -16,11 +16,6 @@
  
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-        
-
-<!-- 	<p align="left">
-		1<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>10<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>20<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>30<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>40<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>50<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>60<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>70<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>80<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>90<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>100
-	</p> -->
 
 <!-- <script>
 	// Adidas
@@ -44,13 +39,84 @@
 		1
 	);
 </script> -->
+	
+<!-- embedded_svc.settings.extraPrechatFormDetails = [
+  {"label":"First Name",
+   "value":"Usain",
+   "transcriptFields":[],
+   "displayToAgent":true},
+  {"label":"Last Name",
+   "value":"Bolt",
+   "transcriptFields":[],
+   "displayToAgent":false},
+  {"label":"Email",
+   "value":"bolt@gmail.com",
+   "transcriptFields":[],
+   "displayToAgent":true},
+  {"label":"textCustomContact",
+   "value":"text from extra prechat field",
+   "transcriptFields":[],
+   "displayToAgent":true},
+  {"label":"Fax",
+   "value":"000-000-0000",
+   "transcriptFields":[],
+   "displayToAgent":true},
+  {"label":"issue",
+   "value":"Laptop broken",
+   "transcriptFields":[],
+   "displayToAgent":true}
+]; 
+embedded_svc.settings.extraPrechatInfo = [
+  {"entityName":"Contact",
+    "showOnCreate":true,
+    "linkToEntityName":"Case",
+    "linkToEntityField":"ContactId",
+    "saveToTranscript":"Contact",
+    "entityFieldMaps":[
+      {"isExactMatch":true,
+       "fieldName":"FirstName",
+       "doCreate":true,
+       "doFind":true,
+       "label":"firstName"},
+      {"isExactMatch":true,
+       "fieldName":"LastName",
+       "doCreate":true,
+       "doFind":true,
+       "label":"LastName"},
+      {"isExactMatch":true,
+       "fieldName":"Email",
+       "doCreate":true,
+       "doFind":true,
+       "label":"Email"}]
+   },
+   {"entityName":"Case",
+    "showOnCreate":true,
+    "entityFieldMaps":[
+      {"isExactMatch":false,
+       "fieldName":"Subject",
+       "doCreate":true,
+       "doFind":false,
+       "label":"issue"},
+      {"isExactMatch":false,
+       "fieldName":"Status",
+       "doCreate":true,
+       "doFind":false,
+       "label":"Status"},
+      {"isExactMatch":false,
+       "fieldName":"Origin",
+       "doCreate":true,
+       "doFind":false,
+       "label":"Origin"}
+    ]
+   }
+]; -->
+
 
 
 <!-- SNIPPETS -->
 
 
 <!-- start 5.0 snippet -->
-
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #769ADA;
@@ -69,7 +135,7 @@
 </style>
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<!-- <script type='text/javascript'>
+<script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -130,12 +196,12 @@
 // 		initESW('https://service.force.com');
 		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
-</script> -->
+</script>
 <!-- end 5.0 snippet -->
 
 
 <!-- start 4.1 snippet -->
-<style type='text/css'>
+<!-- <style type='text/css'>
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
         .embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
         
@@ -151,9 +217,9 @@
                 background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
                 position: relative;
         }
-</style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script>
-<script type='text/javascript'>
+</style> -->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script> -->
+<!-- <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -180,79 +246,6 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
-		/*
-		embedded_svc.settings.extraPrechatFormDetails = [
-		  {"label":"First Name",
-		   "value":"Usain",
-		   "transcriptFields":[],
-		   "displayToAgent":true},
-		  {"label":"Last Name",
-		   "value":"Bolt",
-		   "transcriptFields":[],
-		   "displayToAgent":false},
-		  {"label":"Email",
-		   "value":"bolt@gmail.com",
-		   "transcriptFields":[],
-		   "displayToAgent":true},
-		  {"label":"textCustomContact",
-		   "value":"text from extra prechat field",
-		   "transcriptFields":[],
-		   "displayToAgent":true},
-		  {"label":"Fax",
-		   "value":"000-000-0000",
-		   "transcriptFields":[],
-		   "displayToAgent":true},
-		  {"label":"issue",
-		   "value":"Laptop broken",
-		   "transcriptFields":[],
-		   "displayToAgent":true}
-		]; 
-		embedded_svc.settings.extraPrechatInfo = [
-		  {"entityName":"Contact",
-		    "showOnCreate":true,
-		    "linkToEntityName":"Case",
-		    "linkToEntityField":"ContactId",
-		    "saveToTranscript":"Contact",
-		    "entityFieldMaps":[
-		      {"isExactMatch":true,
-		       "fieldName":"FirstName",
-		       "doCreate":true,
-		       "doFind":true,
-		       "label":"firstName"},
-		      {"isExactMatch":true,
-		       "fieldName":"LastName",
-		       "doCreate":true,
-		       "doFind":true,
-		       "label":"LastName"},
-		      {"isExactMatch":true,
-		       "fieldName":"Email",
-		       "doCreate":true,
-		       "doFind":true,
-		       "label":"Email"}]
-		   },
-		   {"entityName":"Case",
-		    "showOnCreate":true,
-		    "entityFieldMaps":[
-		      {"isExactMatch":false,
-		       "fieldName":"Subject",
-		       "doCreate":true,
-		       "doFind":false,
-		       "label":"issue"},
-		      {"isExactMatch":false,
-		       "fieldName":"Status",
-		       "doCreate":true,
-		       "doFind":false,
-		       "label":"Status"},
-		      {"isExactMatch":false,
-		       "fieldName":"Origin",
-		       "doCreate":true,
-		       "doFind":false,
-		       "label":"Origin"}
-		    ]
-		   }
-		];
-		*/
-
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
 			'https://snapins.stmfa.stm.force.com/test', 
@@ -274,7 +267,7 @@
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script>
+</script> -->
 <!-- end 4.1 snippet -->
 
 
