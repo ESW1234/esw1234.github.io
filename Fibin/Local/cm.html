@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
 <body>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
@@ -17,7 +17,7 @@
 			'http://fabinfranci-wsl.internal.salesforce.com:8096/chat',
 			gslbBaseURL,
 			'00Dxx0000006GrT',
-			'ESMS1'
+			'CustomLabelTesting'
 		);
 	};
 
@@ -29,8 +29,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		//initESW('https://service.force.com');
-		initESW('http://fabinfranci-wsl.internal.salesforce.com:6109')
+		initESW('https://service.force.com');
 	}
 </script>
 </body>
