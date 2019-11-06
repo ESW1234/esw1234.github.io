@@ -18,10 +18,8 @@
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.menu.settings.devmode =true;
-		// Chat server endpoint URLs.
-		//embedded_svc.menu.settings.liveAgentChatUrl = 'http://amadhavan-wsm2.internal.salesforce.com:8096/chat';
-		//embedded_svc.menu.settings.liveAgentContentUrl = 'http://amadhavan-wsm2.internal.salesforce.com:8095/content';
 
+		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
 			'http://amadhavan-wsm2.internal.salesforce.com:6109',
 			'http://amadhavan-wsm2.internal.salesforce.com:8096/chat',
@@ -33,7 +31,7 @@
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+		s.setAttribute('src', 'http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
