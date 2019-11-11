@@ -7,15 +7,15 @@
    </head> 
 <body>
 <a href="https://github.com/ESW1234/esw1234.github.io/edit/master/justin/steam/stmfa-channelmenu.html">EDIT PAGE</a>
-<script type='text/javascript' src='http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script>
+<!--<script type='text/javascript' src='http://amadhavan-wsm2.internal.salesforce.com:6109/embeddedservice/menu/fab.js'></script> -->
 <script type='text/javascript'>
 		var initESW = function(gslbBaseURL) {
 			// Required if you want labels in a language that’s different from your user’s context.
 			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 			// Chat server endpoint URLs.
-			embedded_svc.menu.settings.liveAgentChatUrl = 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat';
-			embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content';
+			//embedded_svc.menu.settings.liveAgentChatUrl = 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat';
+			//embedded_svc.menu.settings.liveAgentContentUrl = 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content';
 
 			embedded_svc.menu.init(
 				'https://justinmacmillin.my.stmfa.stm.salesforce.com',
@@ -35,7 +35,7 @@
 			document.body.appendChild(s);
 		} else {
 // 			initESW('https://service.force.com');
-			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+			initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 		}
 	</script>
 </body>
