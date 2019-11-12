@@ -20,7 +20,7 @@
 					embedded_svc.addEventHandler('afterDestroy', function(data) {
 						toggleInert(false);
 					});
-					embedded_svc.addEventHandler('onMinimize', function(data) {
+					embedded_svc.addEventHandler('afterMinimize', function(data) {
 						toggleInert(false);
 					});
 				}
