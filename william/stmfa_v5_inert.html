@@ -24,11 +24,10 @@
 						toggleInert(false);
 					});
 				}
-				//if(Element.prototype.hasOwnProperty('inert')) {
-					addA11yHooks();
-				//} else {
-					//embedded_svc.loadScriptFromDirectory('utils', 'inert', addA11yHooks);
-				//}
+				if(embedded_svc.isDesktop()) {
+					return;
+				}
+				addA11yHooks();
 			}
 		</script>
 </head>
