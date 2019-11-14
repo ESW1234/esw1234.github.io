@@ -85,7 +85,7 @@ function scrollChatToBottom() {
 }
 	
 embedded_svc.addEventHandler("onAgentMessage", function(data) {
-scrollChatToBottom();
+  setTimeout(scrollChatToBottom, 500);
 });
 
 
