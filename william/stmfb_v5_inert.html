@@ -1,0 +1,198 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+		<script type='text/javascript'>
+			function onBodyLoad() {
+				function toggleInert(disabled) {
+					let bodyElem = document.getElementById("body-content");
+					if(bodyElem) {
+						bodyElem.inert = disabled;
+					}
+				}	
+				function addA11yHooks() {
+					embedded_svc.addEventHandler('afterInitialization', function() {
+						toggleInert(true);
+					});
+					embedded_svc.addEventHandler('afterMaximize', function(data) {
+						toggleInert(true);
+					});
+					embedded_svc.addEventHandler('afterDestroy', function(data) {
+						toggleInert(false);
+					});
+					embedded_svc.addEventHandler('afterMinimize', function(data) {
+						toggleInert(false);
+					});
+				}
+				if(embedded_svc.isDesktop()) {
+					return;
+				}
+				addA11yHooks();
+			}
+		</script>
+</head>
+
+<body onload="onBodyLoad()">
+	<div id="body-content">
+		<h1>Chat with us! - Page 1</h1>
+		<img src="https://www.aspca.org/sites/default/files/blog_foster-myth_062718_main.jpg" alt=""/>
+		<a href="https://esw1234.github.io/william/stmfb_v5.html">Page 1</a>
+		<button>This does nothing!</button>
+
+		<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #A70BA5;
+				font-family: "Comic Sans MS", sans-serif;
+			}
+
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #A70BA5;
+			}
+
+			.previews img {
+				max-width: 100%;
+				border-radius: 10px;
+			}
+		
+			.chat-content a {
+				color: #fff;
+			}
+		</style>
+	</div>
+
+    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+    <script type='text/javascript'>
+        var initESW = function (gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+			embedded_svc.settings.devMode = true;
+			//embedded_svc.settings.autoOpenPostChat = true;
+
+            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+            // Settings for Live Agent
+            /*embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+				embedded_svc.settings.fallbackRouting = ["573RM0000004JiD"];
+				return "573RM0000004JiC";
+            };
+            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+            embedded_svc.settings.fallbackRouting = ["573RM00000000AG"]; //An array of button IDs, user IDs, or userId_buttonId
+            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)*/
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+            //embedded_svc.settings.autoOpenPostChat = true;
+
+            /*
+            embedded_svc.settings.extraPrechatFormDetails = [{
+                "label": "First Name",
+                "name" : "FirstName",
+                "value": "John",
+                "displayToAgent": true
+              }, {
+                "label": "Last Name",
+                "value": "Doe",
+                "displayToAgent": true
+              }, {
+                "label": "Email",
+                "value": "john.doe@salesforce.com",
+                "displayToAgent": true
+              }, {
+                "label": "Subject",
+                "value": "Overriding your setup",
+                "displayToAgent": true
+              }];
+              
+              embedded_svc.settings.extraPrechatInfo = [{
+                "entityName": "Contact",
+                "showOnCreate": true,
+                "linkToEntityName": "Case",
+                "linkToEntityField": "ContactId",
+                "saveToTranscript": "ContactId",
+                "entityFieldMaps": [{
+                  "isExactMatch": true,
+                  "fieldName": "FirstName",
+                  "doCreate": true,
+                  "doFind": true,
+                  "label": "First Name"
+                }, {
+                  "isExactMatch": true,
+                  "fieldName": "LastName",
+                  "doCreate": true,
+                  "doFind": true,
+                  "label": "Last Name"
+                }, {
+                  "isExactMatch": true,
+                  "fieldName": "Email",
+                  "doCreate": true,
+                  "doFind": true,
+                  "label": "Email"
+                }]
+              }, {
+                "entityName": "Case",
+                "showOnCreate": true,
+                "saveToTranscript": "CaseId",
+                "entityFieldMaps": [{
+                  "isExactMatch": false,
+                  "fieldName": "Subject",
+                  "doCreate": true,
+                  "doFind": false,
+                  "label": "Subject"
+                }, {
+                  "isExactMatch": false,
+                  "fieldName": "Status",
+                  "doCreate": true,
+                  "doFind": false,
+                  "label": "Status"
+                }, {
+                  "isExactMatch": false,
+                  "fieldName": "Origin",
+                  "doCreate": true,
+                  "doFind": false,
+                  "label": "Origin"
+                }]
+              }]; */
+            
+            embedded_svc.settings.prepopulatedPrechatFields = {
+                FirstName: "Will",
+                LastName: "Chang",
+                Email: "william.chang@salesforce.com",
+                Subject: "I need help!"
+            }; //Sets the auto-population of pre-chat form fields
+
+            embedded_svc.init(
+                'https://na44.stmfb.stm.salesforce.com',
+                'https://tiffanytso-16a22511f58.stmfb.stm.force.com',
+                gslbBaseURL,
+                '00DRM000000Bee1',
+                'Omni_QueueBased', {
+                    baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+                    deploymentId: '572RM0000004Inp',
+                    buttonId: '573RM0000004JiD',
+                    baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f',
+                    isOfflineSupportEnabled: true
+                }
+            );
+        };
+
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function () {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://service.force.com');
+        }
+    </script>
+</body>
+
+</html>
