@@ -2,41 +2,44 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-		<script type='text/javascript'>
-			function onBodyLoad() {
-				function toggleInert(disabled) {
-					let bodyElem = document.getElementById("body-content");
-					if(bodyElem) {
-						bodyElem.inert = disabled;
-					}
-				}	
-				function addA11yHooks() {
-					embedded_svc.addEventHandler('afterInitialization', function() {
-						toggleInert(true);
-					});
-					embedded_svc.addEventHandler('afterMaximize', function(data) {
-						toggleInert(true);
-					});
-					embedded_svc.addEventHandler('afterDestroy', function(data) {
-						toggleInert(false);
-					});
-					embedded_svc.addEventHandler('afterMinimize', function(data) {
-						toggleInert(false);
-					});
+	<script type='text/javascript'>
+		function onBodyLoad() {
+			function toggleInert(disabled) {
+				let bodyElem = document.getElementById("body-content");
+				if(bodyElem) {
+					bodyElem.inert = disabled;
 				}
-				if(embedded_svc.isDesktop()) {
-					return;
-				}
-				addA11yHooks();
+			}	
+			function addA11yHooks() {
+				embedded_svc.addEventHandler('afterInitialization', function() {
+					toggleInert(true);
+				});
+				embedded_svc.addEventHandler('afterMaximize', function(data) {
+					toggleInert(true);
+				});
+				embedded_svc.addEventHandler('afterDestroy', function(data) {
+					toggleInert(false);
+				});
+				embedded_svc.addEventHandler('afterMinimize', function(data) {
+					toggleInert(false);
+				});
 			}
-		</script>
+			if(embedded_svc.isDesktop()) {
+				return;
+			}
+			addA11yHooks();
+		}
+	</script>
 </head>
 
 <body onload="onBodyLoad()">
 	<div id="body-content">
 		<h1>Chat with us! - Page 1</h1>
+		<br/>
 		<a href="https://esw1234.github.io/william/stmfb_v5.html">Page 1</a>
+		<br/>
 		<button type="button">This does nothing!</button>
+		<br/>
 		<img src="https://www.aspca.org/sites/default/files/blog_foster-myth_062718_main.jpg" alt="">
 
 		<style type='text/css'>
@@ -60,7 +63,7 @@
 		</style>
 	</div>
 
-    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
         var initESW = function (gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
