@@ -16,7 +16,10 @@
 				if(bodyElem) {
 					bodyElem.inert = disabled;
 				}
-			}	
+			}
+
+			// Add hooks to toggle inert on our page when Embedded Chat
+    		// changes state.
 			function addA11yHooks() {
 				embedded_svc.addEventHandler('afterMaximize', function(data) {
 					toggleInert(true);
