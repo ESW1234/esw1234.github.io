@@ -3,7 +3,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	<script type='text/javascript'>
-		function onBodyLoad() {
+		function onBodyLoaded() {
+			/**
+			  * Toggles the inert attribute on background content for the page.
+			  * The inert attribute just needs to be set on parent level DOM
+			  * nodes. Inert will set the DOM node aria-hidden attribute and
+			  * and set tab-index="-1" on all children so that screen readers
+			  * can't access the content.
+			  */
 			function toggleInert(disabled) {
 				let bodyElem = document.getElementById("body-content");
 				if(bodyElem) {
@@ -11,9 +18,6 @@
 				}
 			}	
 			function addA11yHooks() {
-				embedded_svc.addEventHandler('afterInitialization', function() {
-					toggleInert(true);
-				});
 				embedded_svc.addEventHandler('afterMaximize', function(data) {
 					toggleInert(true);
 				});
@@ -24,15 +28,19 @@
 					toggleInert(false);
 				});
 			}
+
+			// Early out for desktop.
 			if(embedded_svc.isDesktop()) {
 				return;
 			}
+
+			// Add hooks for mobile.
 			addA11yHooks();
 		}
 	</script>
 </head>
 
-<body onload="onBodyLoad()">
+<body onload="onBodyLoaded()">
 	<div id="body-content">
 		<h1>Chat with us! - Page 1</h1>
 		<br/>
