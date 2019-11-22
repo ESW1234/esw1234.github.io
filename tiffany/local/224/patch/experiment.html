@@ -1,4 +1,5 @@
 <html>
+	<!-- NA44 STMFA org with Desktop (224/Patch) static files + load local css workaround -->
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
 <!--     <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script> -->
@@ -20,7 +21,7 @@
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
 		// s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
-    s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+    s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
 		s.onload = function() {
 			initESW(null);
 		};
