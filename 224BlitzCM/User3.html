@@ -18,31 +18,32 @@
   <br>
 
 <div id="button_goes_here"></div>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>	-->
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
+		embedded_svc.menu.settings.devMode = true;
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
-			'http://skrishnamu-wsm.internal.salesforce.com:6109',
-			'http://skrishnamu-wsm.internal.salesforce.com:8096/chat',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00Dxx0000006GgB',
-			'subbu1'
+			'00DRM000000EyxW',
+			'CMUser3'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://skrishnamu-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://skrishnamu-wsm.internal.salesforce.com:6109');
+		initESW('https://service.force.com');
 	}
 </script>
 

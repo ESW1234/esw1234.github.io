@@ -1,8 +1,7 @@
-<!DOCTYPE HTML>
 <html>
    <head>
    <title>DEFAULT PAGE</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
   <p><a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a></p>
@@ -17,32 +16,30 @@
 	<p align="center"><font color = "red"><a href="different_button.html">Link to PAGE WITH DIFFERENT BUTTON</a></font></p>
   <br>
 
-<div id="button_goes_here"></div>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>	-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+		embedded_svc.menu.settings.devMode = true;
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
-			'http://skrishnamu-wsm.internal.salesforce.com:6109',
-			'http://skrishnamu-wsm.internal.salesforce.com:8096/chat',
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00Dxx0000006GgB',
-			'subbu1'
+			'00DRM0000005iAS',
+			'FAB8'
 		);
 	};
-
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://skrishnamu-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://skrishnamu-wsm.internal.salesforce.com:6109');
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
 
@@ -72,16 +69,6 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 </html>
     <style>
        body {
-          
          background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
       }
-      #button_goes_here{
-            width: 100%; 
-            height: 100%; 
-            margin: 0 auto;
-            position: relative;            
-      }
-	    #myText {
-		    width: 65%;
-	    }
     </style>

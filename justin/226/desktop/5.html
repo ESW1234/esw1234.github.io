@@ -1,32 +1,35 @@
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>224 5.0 Desktop Page 2</title>
+	<title>226 5.0 Desktop</title>
 </head>
 
 <body>
 
-<p align="center"><font color="red"><a href="5-2.html">This page.</a></font></p>
-<p align="center"><font color="red"><a target="_blank" href="5-2.html">This page in new tab.</a></font></p>
-<p align="center"><font color="red"><a href="5.html">Page 1.</a></font></p>
-<p align="center"><font color="red"><a target="_blank" href="5.html">Page 1 in new tab.</a></font></p>
+<p align="center"><font color="red"><a href="5.html">This page.</a></font></p>
+<p align="center"><font color="red"><a target="_blank" href="5.html">This page in new tab.</a></font></p>
+<p align="center"><font color="red"><a rel="noopener" target="_blank" href="5.html">This page in new tab with rel noopener.</a></font></p>
+<p align="center"><font color="red"><a href="5-2.html">Page 2.</a></font></p>
 
 <h1>
-	224 | desktop | justin | 5.0 page 2
+	226 | desktop | justin | 5.0
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<!-- Snippet -->
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
 	@font-face {
 		font-family: 'Salesforce Sans';
- 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
- 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -34,7 +37,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -62,17 +65,17 @@
 
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.localhost.soma.force.com:6109/customerServiceNov2019',
+			'http://communities.localhost.soma.force.com:6109/fabAug2019',
 			gslbBaseURL,
-			'00Dxx0000006GgB',
+			'00Dxx0000006Gz1',
 			'justin',
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C92',
+				buttonId: '573xx0000004CAe',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16e80adc605',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
