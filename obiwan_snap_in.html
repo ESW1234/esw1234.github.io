@@ -1,69 +1,52 @@
 <html>
- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <head>
 </head> 
-
-<body>
+    <body>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #0253B0;
+		background-color: #005290;
 		font-family: "Salesforce Sans", sans-serif;
-		font-size: 18px;
-		position: fixed;
-		top: 73px;
-		left: 430px;	
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 	}
-	body {
-  		background: url("https://esw1234.github.io/Chase.png") no-repeat left top;
-	}		
 </style>
 
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
 		// Settings for Field Service
-
 		embedded_svc.settings.enabledFeatures = ['FieldService'];
 		embedded_svc.settings.entryFeature = 'FieldService';
-
 		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '3MVG9Iu66FKeHhIOXwUxNxXuhlTytynqRU8.8Cee0uXEZvIPzaFT1OpeofEkZXdbKTGzVFJVNtUhwowPSI91v';
+		embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbvY9BvZssI7sUvYOXf84thW4DTAafYG.nPXOEDdKNmFaL0GesYc9fMYMF81k88rFhpS4guN';
 		embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/obiwan_callback.html';
 		embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
-		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
-		//embedded_svc.settings.devMode= true;
-
+		embedded_svc.settings.authenticationStartLabel = 'authenticated';
 		embedded_svc.init(
-			'https://mobile1.t.salesforce.com',
-			'https://obi-wan.mobile1.t.force.com',
+			'https://lightningscheduler-dev-ed.my.stmfa.stm.salesforce.com',
+			'https://absteam-developer-edition.na44.stmfa.stm.force.com/ls',
 			gslbBaseURL,
-			'00DR00000009Wwy',
-			'Obi_Wan_Snap_In',
+			'00DRM0000006Dg0',
+			'snapintest',
 			{
 				
 			}
 		);
 	};
-
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://mobile1.t.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://lightningscheduler-dev-ed.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -72,6 +55,9 @@
 		initESW('https://service.force.com');
 	}
 </script>
-<div id="salesforce-login"></div>
+
+        <div id="salesforce-login"></div>
+    
+    
     </body>
 </html>

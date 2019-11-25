@@ -8,8 +8,9 @@
 
 <p align="center"><font color="red"><a href="5.html">This page.</a></font></p>
 <p align="center"><font color="red"><a target="_blank" href="5.html">This page in new tab.</a></font></p>
-<p align="center"><font color="red"><a rel="noopener" target="_blank" href="5.html">This page in new tab with rel noopener.</a></font></p>
 <p align="center"><font color="red"><a href="5-2.html">Page 2.</a></font></p>
+<p align="center"><font color="red"><a target="_blank" href="5-2.html">Page 2 in new tab.</a></font></p>
+<p align="center"><font color="red"><a rel="noopener" target="_blank" href="5.html">This page in new tab with rel noopener.</a></font></p>
 
 <h1>
 	224 | desktop | justin | 5.0
@@ -37,7 +38,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -65,17 +66,17 @@
 
 		embedded_svc.init(
 			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.localhost.soma.force.com:6109/fabAug2019',
+			'http://communities.localhost.soma.force.com:6109/customerServiceNov2019',
 			gslbBaseURL,
-			'00Dxx0000006Gz1',
+			'00Dxx0000006GgB',
 			'justin',
 			{
 				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004CAe',
+				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_16e80adc605',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
