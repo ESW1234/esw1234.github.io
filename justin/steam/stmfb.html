@@ -29,7 +29,7 @@
 
 
 <!-- start 5.0 snippet -->
-<style type='text/css'>
+<!-- <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #307EBA; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #307EBA; }
 	@font-face {
@@ -37,7 +37,7 @@
  		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
-</style>
+</style> -->
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
@@ -47,8 +47,6 @@
 
 		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
 		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
-		embedded_svc.settings.autoOpenPostChat = true;
-		//embedded_svc.settings.externalScripts = ["customEvents"];
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -67,6 +65,8 @@
 
 		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+		
+		embedded_svc.settings.autoOpenPostChat = true;
 		
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
@@ -87,17 +87,14 @@
 			}
 		);
 	};
-
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-// 		initESW('https://service.force.com');
 		initESW('https://snapins.my.stmfb.stm.salesforce.com');
 	}
 </script>
