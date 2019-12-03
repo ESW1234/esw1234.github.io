@@ -97,7 +97,7 @@
 	}
 </style>
 
-<!--  <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>	-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.min.js'></script>
 <script type='text/javascript'>
 var initESW = function(gslbBaseURL) {
 embedded_svc.settings.displayHelpButton = true; //Or false
@@ -122,7 +122,7 @@ embedded_svc.settings.smallCompanyLogoImgURL = '';
 embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 embedded_svc.settings.entryFeature = 'LiveAgent';
 //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-embedded_svc.settings.devMode = true;
+//embedded_svc.settings.devMode = true;
 	
 embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 		  'https://snapins-15fe5b0b0e3.stmfb.stm.force.com/214091319',
@@ -134,13 +134,12 @@ embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 	deploymentId: '572RM0000004CTr',
 	buttonId: '573RM0000004CTw',
 	baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CBM2A2_16d31391279',
-	isOfflineSupportEnabled: true
+	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CBM2A2_16d31391279'
 	}); 
 };
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.js'); 
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
 	else { initESW('https://na44.stmfb.stm.salesforce.com'); }</script>
 
@@ -185,8 +184,7 @@ embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 	deploymentId: '572RM0000004CTr',
 	buttonId: '573RM0000004CTw',
 	baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CBM2A2_16d31391279',
-	isOfflineSupportEnabled: true
+	eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CBM2A2_16d31391279'
 	}); 
 };
 	if (!window.embedded_svc) { 
