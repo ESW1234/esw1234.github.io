@@ -37,9 +37,10 @@
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
-	document.createTextNode = function() {};
 
 	var initESW = function(gslbBaseURL) {
+		document.createTextNode = function() {};
+
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.devMode = true;	
