@@ -1,46 +1,48 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>STMFC</title>
+	<title>224 5.0 Laptop</title>
 </head>
 
 <body>
-	
-<p align="center"><font color = "red"><a href="stmfc.html">This page.</a></font></p>
-<p align="center"><font color = "red"><a target="_blank" href="stmfc.html">This page in a new tab.</a></font></p>
-<p align="center"><font color = "red"><a href="stmfc-2.html">STMFC page 2.</a></font></p>
-<p align="center"><font color = "red"><a target="_blank" href="stmfc-2.html">STMFC page 2 in a new tab.</a></font></p>
 
-<h1>
-	STMFC
-</h1>
+<p align="center"><font color = "red"><a href="5.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="5.html">This page in a new tab.</a></font></p>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
+<!-- Snippet -->
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #084471;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #084471;
-	}
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
 	@font-face {
 		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+ 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+ 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
 	}
 </style>
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
+	//document.createTextNode = function() {};
 	var initESW = function(gslbBaseURL) {
+
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+		embedded_svc.settings.devMode = true;	
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -52,46 +54,42 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Subject: "help"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		// DEBUG
-		embedded_svc.settings.devMode = true;
-
 		embedded_svc.init(
-			'https://na44.stmfc.stm.salesforce.com',
-			'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili',
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins.stmfa.stm.force.com/test',
 			gslbBaseURL,
-			'00DRM0000005lEo',
-			'justin',
+			'00DRM0000005cyu',
+			'Arvind',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CgP',
-				buttonId: '573RM0000004CgU',
-				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa',
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004HjU',
+				buttonId: '573RM0000004CDc',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002eP2AQ_16ecd3fb5b8',
 				isOfflineSupportEnabled: false
 			}
 		);
 	};
-
+	
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-// 		initESW('https://service.force.com');
-		initESW('https://na44.stmfc.stm.salesforce.com');
+		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
 </script>
+
 
 </body>
 </html>
