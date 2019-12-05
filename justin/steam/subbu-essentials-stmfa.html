@@ -8,43 +8,77 @@
 
 <body>
 	
-	<h1>
-		STMFA | Chat | Subbu Essentials Org
-	</h1>
+<h1>
+	STMFA | Chat | Subbu Essentials Org
+</h1>
 
-	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<!-- 	<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
-	<script type='text/javascript'>
-		var initESW = function(gslbBaseURL) {
-			// Required if you want labels in a language that’s different from your user’s context.
-			embedded_svc.menu.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
-			// Chat server endpoint URLs.
-			embedded_svc.menu.init(
-				'https://na44.stmfa.stm.salesforce.com',
-				'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				gslbBaseURL,
-				'00DRM000000FBTy',
-				'justin'
-			);
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://subbu1.stmfa.stm.force.com/helpCenterOct2019',
+			gslbBaseURL,
+			'00DRM000000FBTy',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM00000006r5',
+				buttonId: '573RM00000007JY',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004E9I2AU_16ed79df2d2',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
 		};
-
-		if (!window.embedded_svc || !window.embedded_svc.menu) {
-			var s = document.createElement('script');
-			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-// 			s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
-			s.onload = function() {
-				initESW(null);
-			};
-			document.body.appendChild(s);
-		} else {
-// 			initESW('https://service.force.com');
-			initESW('https://na44.stmfa.stm.salesforce.com');
-		}
-	</script>
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('https://na44.stmfa.stm.salesforce.com');
+	}
+</script>
 
 </body
-
 </html>
