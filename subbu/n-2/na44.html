@@ -29,7 +29,7 @@
 		    color: #fff;
 		}
 	</style>
-<!--  <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -39,7 +39,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -91,8 +91,8 @@
 		initESW('https://na44.stmfb.stm.salesforce.com');
 	}
 </script>
--->	
-
+	
+<!--
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
@@ -148,7 +148,7 @@ embedded_svc.init('https://na44.stmfb.stm.salesforce.com',
 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/4.1/esw.min.js'); 
 		s.onload = function() { initESW(null); }; document.body.appendChild(s); } 
 	else { initESW('https://na44.stmfb.stm.salesforce.com'); }</script>
-
+-->
 <!--
 <style type='text/css'>
 .embeddedServiceHelpButton .helpButton .uiButton { background-color: #71C757; font-family: "Salesforce Sans", sans-serif; }
