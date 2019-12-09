@@ -23,7 +23,7 @@
 			function addA11yHooks() {
 				// Channel Menu Events
 				embedded_svc.menu.addEventHandler("onChannelMenuClosed", function (data) {
-					console.log("onChannelMenuClosed event was fired.");
+					console.log("onChannelMenuClosed event was fired. " + new Date().getTime());
 					toggleInert(false);
 				});
 				embedded_svc.menu.addEventHandler("onChannelMenuOpened", function (data) {
@@ -33,7 +33,7 @@
 
 				// Embedded Chat Events
 				embedded_svc.menu.chat.settings.addEventHandler('afterMaximize', function (data) {
-					console.log("afterMaximize event was fired.");
+					console.log("afterMaximize event was fired. " + new Date().getTime());
 					toggleInert(true);
 				});
 				embedded_svc.menu.chat.settings.addEventHandler('afterDestroy', function (data) {
