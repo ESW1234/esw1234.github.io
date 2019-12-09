@@ -2,38 +2,103 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
-
-<body>
-	<h1>Chat with us!</h1>
-
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 	<script type='text/javascript'>
-		var initESW = function (gslbBaseURL) {
-			// Required if you want labels in a language that’s different from your user’s context.
-			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		function onBodyLoad() {
+			/**
+			  * Toggles the inert attribute on background content for the page.
+			  * The inert attribute just needs to be set on parent level DOM
+			  * nodes. Inert will set the DOM node aria-hidden attribute and
+			  * and set tab-index="-1" on all children so that screen readers
+			  * can't access the content.
+			  */
+			function toggleInert(disabled) {
+				let bodyElem = document.getElementById("body-content");
+				if (bodyElem) {
+					bodyElem.inert = disabled;
+				}
+			}
 
-			// Chat server endpoint URLs.
-			embedded_svc.menu.init(
-				'https://na44.stmfb.stm.salesforce.com',
-				'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				gslbBaseURL,
-				'00DRM000000Bee1',
-				'menu'
-			);
-		};
+			// Add hooks to toggle inert on our page when Channel Menu
+			// and Embedded Chat change state.
+			function addA11yHooks() {
+				// Channel Menu Events
+				embedded_svc.menu.addEventHandler("onChannelMenuClosed", function (data) {
+					console.log("onChannelMenuClosed event was fired.");
+					toggleInert(false);
+				});
+				embedded_svc.menu.addEventHandler("onChannelMenuOpened", function (data) {
+					console.log("onChannelMenuOpened event was fired.");
+					toggleInert(true);
+				});
 
-		if (!window.embedded_svc || !window.embedded_svc.menu) {
-			var s = document.createElement('script');
-			s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-			s.onload = function () {
-				initESW(null);
-			};
-			document.body.appendChild(s);
-		} else {
-			initESW('https://service.force.com');
+				// Embedded Chat Events
+				embedded_svc.menu.chat.settings.addEventHandler('afterMaximize', function (data) {
+					console.log("afterMaximize event was fired.");
+					toggleInert(true);
+				});
+				embedded_svc.menu.chat.settings.addEventHandler('afterDestroy', function (data) {
+					console.log("afterDestroy event was fired.");
+					toggleInert(false);
+				});
+				embedded_svc.menu.chat.settings.addEventHandler('afterMinimize', function (data) {
+					console.log("afterMinimize event was fired.");
+					toggleInert(false);
+				});
+			}
+
+			// Early out for desktop.
+			if(embedded_svc.isDesktop()) {
+				return;
+			}
+
+			// Add hooks for mobile.
+			addA11yHooks();
 		}
 	</script>
+</head>
+
+<body onload="onBodyLoad()">
+	<div id="body-content">
+		<h1>Chat with us!</h1>
+		<br/>
+		<a href="https://esw1234.github.io/william/stmfb_v5.html">STMFB V5 Snippet Embedded Chat</a>
+		<br/>
+		<button type="button">Clicking this does nothing!</button>
+		<br/>
+		First name:<br/>
+		<input type="text" name="fname">
+		<br/>
+		<iframe inert="true" src="https://esw1234.github.io/william/stmfb_v5.html" height="100px" width="100px"></iframe>
+		<img src="https://www.aspca.org/sites/default/files/blog_foster-myth_062718_main.jpg" alt="">
+
+		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+		<script type='text/javascript'>
+			var initESW = function (gslbBaseURL) {
+				// Required if you want labels in a language that’s different from your user’s context.
+				//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				// Chat server endpoint URLs.
+				embedded_svc.menu.init(
+					'https://na44.stmfb.stm.salesforce.com',
+					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+					gslbBaseURL,
+					'00DRM000000Bee1',
+					'menu'
+				);
+			};
+
+			if (!window.embedded_svc || !window.embedded_svc.menu) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+				s.onload = function () {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script>
+	</div>
 </body>
 
 </html>
