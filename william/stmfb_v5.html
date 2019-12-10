@@ -124,7 +124,12 @@
                   "doFind": false,
                   "label": "Origin"
                 }]
-              }]; */
+			  }]; */
+
+			embedded_svc.settings.addEventHandler('onPostChatPushed', function (data) {
+				console.log("onPostChatPushed event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+			});
+			  
             
             embedded_svc.settings.prepopulatedPrechatFields = {
                 FirstName: "Will",
