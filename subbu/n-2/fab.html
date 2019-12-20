@@ -11,6 +11,16 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.settings.extraPrechatFormDetails = [{
+			"label":"First Name",  
+			"transcriptFields": ["FirstName__c"]
+		},{
+			"label":"Last Name", 
+			"transcriptFields": ["LastName__c"]
+		},{
+			"label":"Email", 
+			"transcriptFields": ["Email__c"]
+		}];
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
