@@ -12,21 +12,18 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		// Chat server endpoint URLs.
-		embedded_svc.menu.settings.liveAgentChatUrl = 'http://npachpand-wsm.internal.salesforce.com:8096/chat';
-		embedded_svc.menu.settings.liveAgentContentUrl = 'http://npachpand-wsm.internal.salesforce.com:8095/content';
-
 		embedded_svc.menu.init(
-			'http://npachpand-wsm.internal.salesforce.com:6109',
-			'http://esw-domain-16c3f90c245.localhost.soma.force.com:6109/fscommunity',
+			'http://npachpande-ltm2.internal.salesforce.com:6109',
+			'http://npachpande-ltm2.internal.salesforce.com:8096/chat',
 			gslbBaseURL,
-			'00Dxx0000006GoF',
+			'00Dxx0000006GgB',
 			'ESMS01'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://npachpande-ltm2.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
