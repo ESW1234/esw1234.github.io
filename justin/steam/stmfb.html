@@ -84,7 +84,6 @@
 		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
 			const targetNode = document.querySelector(".sidebarBody .activeFeature");
 			const callback = function(mutationsList, observer) {
-				debugger;
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
 				
 				if(listenerAdded) {
@@ -94,7 +93,6 @@
 				if(cancelChatButton && !listenerAdded) {
 					listenerAdded = true;
 					cancelChatButton.addEventListener("click", function() {
-						debugger;
 						const queuePosition = sessionStorage.getItem("embeddedServiceQueuePosition");
 						
 						if(queuePosition) {
