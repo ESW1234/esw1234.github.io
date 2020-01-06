@@ -77,14 +77,17 @@
 		
 		// VISIBLE QP ON CANCEL CHAT.
 		
-		const targetNode = document.querySelector(".sidebarBody .activeFeature .embeddedServiceSidebarFeature");
-		const callback = function(mutationsList, observer) {
-			debugger;	
-		};
-		const observer = new MutationObserver(callback);
+		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
+			const targetNode = document.querySelector(".sidebarBody .activeFeature .embeddedServiceSidebarFeature");
+			const callback = function(mutationsList, observer) {
+				debugger;	
+			};
+			const observer = new MutationObserver(callback);
 		
-		observer.observe(targetNode, { subtree: true });
+			observer.observe(targetNode, { subtree: true });
 		      // document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
+		}
+
 		
 		// VISIBLE QP ON CANCEL CHAT.
 		
