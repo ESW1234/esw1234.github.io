@@ -81,7 +81,7 @@
 			sessionStorage.setItem("embeddedServiceQueuePosition", data.queuePosition);
 		});
 		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
-			const targetNode = document.querySelector(".sidebarBody .activeFeature .embeddedServiceSidebarFeature");
+			const targetNode = document.querySelector(".sidebarBody .activeFeature");
 			const callback = function(mutationsList, observer) {
 				debugger;
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
@@ -101,7 +101,7 @@
 			};
 			const observer = new MutationObserver(callback);
 		
-			observer.observe(targetNode, { childList: true, subtree: true });
+			observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
 		});
 
 		// VISIBLE QP ON CANCEL CHAT.
