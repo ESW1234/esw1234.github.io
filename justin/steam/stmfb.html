@@ -86,10 +86,6 @@
 			const callback = function(mutationsList, observer) {
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
 				
-				if(listenerAdded) {
-					observer.disconnect();
-				}
-
 				if(cancelChatButton && !listenerAdded) {
 					listenerAdded = true;
 					cancelChatButton.addEventListener("click", function() {
