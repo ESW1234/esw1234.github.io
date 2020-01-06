@@ -55,10 +55,10 @@
 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.addEventHandler("onIdleTimeoutWarningStart", function(data) {
-			console.log("warning start " + data);
+			console.log("warning start " + data.liveAgentSessionKey);
 		});
 		embedded_svc.addEventHandler("onIdleTimeoutClear", function(data) {
-			console.log("warning clear " + data);
+			console.log("warning clear " + data.liveAgentSessionKey);
 		});
 
 		embedded_svc.init(
