@@ -61,21 +61,22 @@
         //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
-        embedded_svc.init(
-            'http://amadhavan-wsm2.internal.salesforce.com:6109',
-            'http://amadhavan.localhost.soma.force.com:6109/test1',
-            gslbBaseURL,
-            '00Dxx0000001gEW',
-            'omni_1',
-            {
-                baseLiveAgentContentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8095/content',
-                deploymentId: '572xx0000000001',
-                buttonId: '573xx0000000001',
-                baseLiveAgentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8096/chat',
-                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
-                isOfflineSupportEnabled: true
-            }
-        );
+        	embedded_svc.init(
+			'http://amadhavan-wsm2.internal.salesforce.com:6109',
+			'http://eswblitz-16e8641f866.localhost.soma.force.com:6109/site1',
+			gslbBaseURL,
+			'00Dxx0000001gER',
+			'test1',
+			{
+				baseLiveAgentContentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000000001',
+				buttonId: '573xx0000000001',
+				baseLiveAgentURL: 'http://amadhavan-wsm2.internal.salesforce.com:8096/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx000000000GEAQ_16f7cddeecf',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
         embedded_svc.addEventHandler("afterMinimize", function() {
             var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
             var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
