@@ -75,6 +75,19 @@
 			console.log(data.liveAgentSessionKey); 
 		});
 		
+		// VISIBLE QP ON CANCEL CHAT.
+		
+		const targetNode = document.querySelector(".sidebarBody .activeFeature .embeddedServiceSidebarFeature");
+		const callback = function(mutationsList, observer) {
+			debugger;	
+		};
+		const observer = new MutationObserver(callback);
+		
+		observer.observe(targetNode, { subtree: true };
+		      // document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
+		
+		// VISIBLE QP ON CANCEL CHAT.
+		
 		embedded_svc.init(
 			'https://snapins.my.stmfb.stm.salesforce.com',
 			'https://snapins-1600942b294.stmfb.stm.force.com/napili',
