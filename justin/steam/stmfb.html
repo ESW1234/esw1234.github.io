@@ -81,7 +81,7 @@
 			sessionStorage.setItem("embeddedServiceQueuePosition", data.queuePosition);
 		});
 		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
-			const targetNode = document.querySelector(".sidebarBody .activeFeature");
+			const targetNode = document.querySelector(".sidebarBody .activeFeature .embeddedServiceSidebarFeature");
 			const callback = function(mutationsList, observer) {
 				debugger;
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
