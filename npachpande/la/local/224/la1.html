@@ -13,7 +13,7 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -39,17 +39,17 @@
 
 		embedded_svc.init(
 			'http://npachpande-ltm2.internal.salesforce.com:6109',
-			'http://eswblitz-16e80b93cce.localhost.soma.force.com:6109/site1',
+			'http://eswdomain.localhost.soma.force.com:6109/lacommunity',
 			gslbBaseURL,
 			'00Dxx0000006GgB',
-			'TestSwitchServer',
+			'SwtichServerGroup',
 			{
-				baseLiveAgentContentURL: 'http://npachpande-ltm2.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C92',
+				baseLiveAgentContentURL: 'http://npachpand-wsm.internal.salesforce.com:8095/content',
+				deploymentId: '572xx0000004CAe',
+				buttonId: '573xx0000004CAe',
 				baseLiveAgentURL: 'http://npachpande-ltm2.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CDsEAM_16f7cb64bdd',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'SwtichServerGroup',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
