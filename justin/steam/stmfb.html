@@ -83,19 +83,20 @@
 		});
 		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
 			const targetNode = document.querySelector(".sidebarBody .activeFeature");
+			const queuePositionCallback = function() {
+				const queuePosition = sessionStorage.getItem("embeddedServiceQueuePosition");
+					
+				if(queuePosition) {
+					// Log QP here.
+				
+					// Remove session storage item after logging.
+					sessionStorage.removeItem("embeddedServiceQueuePosition");
+				}
+			};
+
 			const callback = function(mutationsList, observer) {
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
-				const queuePositionCallback = function() {
-					const queuePosition = sessionStorage.getItem("embeddedServiceQueuePosition");
-						
-					if(queuePosition) {
-						// Log QP here.
-					
-						// Remove session storage item after logging.
-						sessionStorage.removeItem("embeddedServiceQueuePosition");
-					}
-				};
-				
+
 				if(!listenerAdded && cancelChatButton) {
 					const closeButton = document.querySelector(".sidebarHeader .closeButton");
 					listenerAdded = true;
