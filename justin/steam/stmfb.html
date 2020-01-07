@@ -85,19 +85,22 @@
 			const targetNode = document.querySelector(".sidebarBody .activeFeature");
 			const callback = function(mutationsList, observer) {
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
+				const queuePositionCallback = function() {
+					const queuePosition = sessionStorage.getItem("embeddedServiceQueuePosition");
+						
+					if(queuePosition) {
+						// Log QP here.
+					
+						// Remove session storage item after logging.
+						sessionStorage.removeItem("embeddedServiceQueuePosition");
+					}
+				};
 				
-				if(cancelChatButton && !listenerAdded) {
+				if(!listenerAdded && cancelChatButton) {
+					const closeButton = document.querySelector(".sidebarHeader .closeButton");
 					listenerAdded = true;
-					cancelChatButton.addEventListener("click", function() {
-						const queuePosition = sessionStorage.getItem("embeddedServiceQueuePosition");
-						
-						if(queuePosition) {
-							// Log QP here.
-						
-							// Remove session storage item after logging.
-							sessionStorage.removeItem("embeddedServiceQueuePosition");
-						}
-					});
+					cancelChatButton.addEventListener("click", queuePositionCallback);
+					closeButton.addEventListener("click", queuePositionCallback);
 				}
 			};
 			const observer = new MutationObserver(callback);
