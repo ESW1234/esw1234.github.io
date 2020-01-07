@@ -41,7 +41,6 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
-	let listenerAdded = false;
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -97,9 +96,9 @@
 			const callback = function(mutationsList, observer) {
 				const cancelChatButton = document.querySelector(".embeddedServiceSidebarState .dialogButtonContainer button:first-child");
 
-				if(!listenerAdded && cancelChatButton) {
+				if(cancelChatButton) {
 					const closeButton = document.querySelector(".sidebarHeader .closeButton");
-					listenerAdded = true;
+
 					cancelChatButton.addEventListener("click", queuePositionCallback);
 					closeButton.addEventListener("click", queuePositionCallback);
 				}
