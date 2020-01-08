@@ -25,26 +25,22 @@
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
-<button id="stmfbInit">
-	add another init call
-<button>
 <script>
-	var button = document.getElementById("stmfbInit");
-	
-	if(button) {
-		button.addEventHandler("click", function() {
-			var script = document.createElement("script");
-			
-			script.type = "text/javascript";
-			script.src = "stmfb_init.js";
-			script.onload = function() {
-				console.log("script loaded");
-			}
-			
-			document.body.appendChild(script);
-		});
+	function addInit() {
+		var script = document.createElement("script");
+
+		script.type = "text/javascript";
+		script.src = "stmfb_init.js";
+		script.onload = function() {
+			console.log("script loaded");
+		}
+
+		document.body.appendChild(script);
 	}
 </script>
+<button id="stmfbInit" onclick="addInit">
+	add another init call
+</button>
 
 
 <!-- SNIPPETS -->
