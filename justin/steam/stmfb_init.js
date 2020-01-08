@@ -1,7 +1,7 @@
 embedded_svc.init(
 	'https://snapins.my.stmfb.stm.salesforce.com',
 	'https://snapins-1600942b294.stmfb.stm.force.com/napili',
-	gslbBaseURL,
+	null,
 	'00DRM0000005jYI',
 	'justin',
 	{
