@@ -58,8 +58,10 @@
 	script.type = "text/javascript";
 	script.src = "require.js";
 	script.onload = function() {
+		console.log("require loaded");
 		requirejs(["util", "esw"], function(dep) {
-			/*
+			console.log("require dependencies loaded");
+
 			// Start snippet.
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -98,13 +100,12 @@
 				initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 			}
 			// End snippet.
-			*/
 		});
 	};
 	document.body.appendChild(script);
 </script>
 
-
+<!--
 <script type="text/javascript">
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -143,7 +144,7 @@
 		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 	}
 </script>
-
+-->
 
 </body>
 </html>
