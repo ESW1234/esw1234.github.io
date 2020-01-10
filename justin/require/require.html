@@ -16,7 +16,12 @@
 	script.type = "text/javascript";
 	script.src = "require.js";
 	script.onload = function() {
-		requirejs(["esw", "DOMPurify/src/purify"], function(esw) {
+		require(['dompurify'], function(DOMPurify) {
+			var clean = DOMPurify.sanitize(dirty);
+			
+			console.log(clean);
+		});
+		requirejs(["esw"], function(esw) {
 			/*
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
