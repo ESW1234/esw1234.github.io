@@ -1,3 +1,5 @@
 // example module to load from require.html
-// Just set a global var
-myFoobar = "foo";
+define({
+    color: "black",
+    size: "unisize"
+});
