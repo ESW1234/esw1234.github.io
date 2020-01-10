@@ -17,7 +17,7 @@
 	script.type = "text/javascript";
 	script.src = "require.js";
 	script.onload = function() {
-		requirejs(["util, esw"], function(util) {
+		requirejs(["esw"], function(esw) {
 			debugger;
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -57,10 +57,8 @@
 			}
 		});
 	};
-  
 	document.body.appendChild(script);
 </script>
 
 </body>
-
 </html>
