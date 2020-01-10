@@ -16,7 +16,7 @@
 	script.type = "text/javascript";
 	script.src = "require.js";
 	script.onload = function() {
-		requirejs(["esw"], function(esw) {
+		requirejs(["esw", "purify"], function(esw) {
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
