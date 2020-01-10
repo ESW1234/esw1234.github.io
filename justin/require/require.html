@@ -6,7 +6,19 @@
 
 <body>
 
-  <script type="text/javascript" src="require.js"></script>
+<script type="text/javascript">
+  var script = document.createElement("script");
+  
+  script.type = "text/javascript";
+  script.src = "require.js";
+  script.onload = function() {
+    requirejs(["util"], function(util) {
+      debugger;
+    });
+  };
+  
+  document.body.appendChild(script);
+</script>
 
 </body>
 
