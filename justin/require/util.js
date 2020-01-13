@@ -9,3 +9,5 @@ define(function() {
     //do your stuff
     return sample1;
 });
+// Just set a global var
+myFoobar = "foo";
