@@ -4,3 +4,8 @@ define({
     color: "black",
     size: "unisize"
 });
+define(function() {
+    var sample1 = {};
+    //do your stuff
+    return sample1;
+});
