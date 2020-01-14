@@ -8,7 +8,7 @@ requirejs(["util"], function(util) {
     var script = document.createElement("script");
     
     script.type = "text/javascript";
-    script.src = "snippet.js";
+    script.src = "scripts/snippet.js";
     script.onload = function() {
         console.log("snippet loaded");
     };
