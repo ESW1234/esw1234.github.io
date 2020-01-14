@@ -4,7 +4,7 @@ var initESW = function(gslbBaseURL) {
       embedded_svc.settings.enabledFeatures = ['LiveAgent'];
       embedded_svc.settings.entryFeature = 'LiveAgent';
 
-      embedded_svc.settings.devMode = true;
+//       embedded_svc.settings.devMode = true;
 
       embedded_svc.init(
         'http://jmacmillin-ltm4.internal.salesforce.com:6109',
