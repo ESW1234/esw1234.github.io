@@ -29,14 +29,14 @@
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 
-	window.addEventListener("message", receiveMessage, false);
-	function receiveMessage(event) {
-		var payload = event.data;
+// 	window.addEventListener("message", receiveMessage, false);
+// 	function receiveMessage(event) {
+// 		var payload = event.data;
 
-		if(payload && payload.type === "chasitor.sendMessage") {
-			embedded_svc.postMessage("chasitor.sendMessage", payload.message)
-		}
-	}
+// 		if(payload && payload.type === "chasitor.sendMessage") {
+// 			embedded_svc.postMessage("chasitor.sendMessage", payload.message)
+// 		}
+// 	}
 
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
