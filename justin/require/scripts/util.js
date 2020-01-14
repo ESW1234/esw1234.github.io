@@ -1,9 +1,9 @@
 // example module to load from require.html
-//console.log("util - define");
 define({
     color: "black",
     size: "unisize"
 });
+console.log("util.js loaded - define called");
 // define(function() {
 //     var sample1 = {};
 //     //do your stuff
