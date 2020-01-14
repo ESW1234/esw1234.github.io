@@ -1,4 +1,4 @@
-requirejs(["util"], function(util) {
+requirejs(["util", "purify"], function(util, purify) {
     //This function is called when scripts/util.js is loaded.
     //If util.js calls define(), then this function is not fired until
     //util's dependencies have loaded, and the util argument will hold
