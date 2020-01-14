@@ -33,7 +33,7 @@
 	function receiveMessage(event) {
 		var payload = event.data;
 
-		if(payload.method === "chasitor.sendMessage") {
+		if(payload.method === "liveagent.event" && payload.data.event === "chasitor.sendMessage") {
 			embedded_svc.postMessage("chasitor.sendMessage", payload.data)
 		}
 	}
