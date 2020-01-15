@@ -18,7 +18,7 @@ requirejs(["util", "purify"], function (util, purify) { // bootstrap must come f
 	var script = document.createElement("script");
     
     	script.type = "text/javascript";
-    	script.src = "snippet.js";
+    	script.src = "scripts/snippet.js";
     	script.onload = function() {
 		console.log("snippet loaded");
     	};
@@ -38,7 +38,7 @@ requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
     var script = document.createElement("script");
     
     script.type = "text/javascript";
-    script.src = "snippet.js";
+    script.src = "scripts/snippet.js";
     script.onload = function() {
         console.log("snippet loaded");
     };
