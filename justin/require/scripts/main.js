@@ -1,4 +1,4 @@
-requirejs(["util", "purify"], function(util, purify) {
+requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
     console.log("util, purify loaded");
 
     //This function is called when scripts/util.js is loaded.
