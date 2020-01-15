@@ -74,7 +74,8 @@
 		});
 	}
 </script>
-<script type="text/javascript" onload="onRequireLoaded()" src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
+<!-- <script type="text/javascript" onload="onRequireLoaded()" src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script> -->
+<script type="text/javascript" onload="onRequireLoaded()" src="scripts/require.js"></script>
 <!-- End of Method 2. -->
 
 
@@ -86,7 +87,7 @@
 	script.type = "text/javascript";
 	script.src = "https://requirejs.org/docs/release/2.3.6/comments/require.js";
 	//script.src = "https://requirejs.org/docs/release/2.3.6/minified/require.js";
-	//script.src = "require.js";
+	//script.src = "scripts/require.js";
 	script.onload = function() {
 		console.log("require.js loaded");
 		requirejs(["scripts/util", "scripts/snippet"], function(util, snippet) {
