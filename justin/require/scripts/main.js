@@ -1,5 +1,5 @@
 requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
-    console.log("util, purify loaded");
+    console.log("util, purify, jquery loaded");
 
     //This function is called when scripts/util.js is loaded.
     //If util.js calls define(), then this function is not fired until
@@ -9,7 +9,7 @@ requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
     var script = document.createElement("script");
     
     script.type = "text/javascript";
-    script.src = "snippet.js";
+    script.src = "scripts/snippet.js";
     script.onload = function() {
         console.log("snippet loaded");
     };
