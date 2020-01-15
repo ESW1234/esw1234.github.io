@@ -1,4 +1,6 @@
-requirejs(["util", "inert"], function(util, inert) {
+requirejs(["util"], function(util) {
+    console.log("util loaded");
+
     //This function is called when scripts/util.js is loaded.
     //If util.js calls define(), then this function is not fired until
     //util's dependencies have loaded, and the util argument will hold
@@ -14,7 +16,4 @@ requirejs(["util", "inert"], function(util, inert) {
 //     };
     
 //     document.body.appendChild(script);
-
-    console.log("util loaded");
-    console.log("snippet loaded");
 });
