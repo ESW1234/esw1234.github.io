@@ -13,8 +13,8 @@ requirejs.config({
 	}
 });
 
-requirejs(["util", "purify"], function (util, purify) { // bootstrap must come first
-	console.log("util, purify loaded");
+requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { // bootstrap must come first
+	console.log("bootstrap, util, purify loaded");
 	var script = document.createElement("script");
 
 	script.type = "text/javascript";
