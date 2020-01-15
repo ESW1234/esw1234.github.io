@@ -16,14 +16,14 @@ requirejs.config({
 requirejs(["util", "purify"], function (util, purify) { // bootstrap must come first
 	console.log("util, purify loaded");
 	var script = document.createElement("script");
-    
-    	script.type = "text/javascript";
-    	script.src = "scripts/snippet.js";
-    	script.onload = function() {
-		console.log("snippet loaded");
-    	};
 
-    	document.body.appendChild(script);
+	script.type = "text/javascript";
+	script.src = "scripts/snippet.js";
+	script.onload = function() {
+		console.log("snippet loaded");
+	};
+
+	document.body.appendChild(script);
 });
 
 /*
