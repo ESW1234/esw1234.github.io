@@ -1,4 +1,4 @@
-// https://code.jquery.com/jquery-1.12.4.js
+// source: https://code.jquery.com/jquery-1.12.4.js
 
 /*!
  * jQuery JavaScript Library v1.12.4
