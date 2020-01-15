@@ -7,9 +7,9 @@ requirejs.config({
 		}
 	},
 	paths: {
-		"jquery": "scripts/jquery.js",
-// 		"jquery-ui": "https://code.jquery.com/ui/1.11.4/jquery-ui.min.js",
-// 		"bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"
+		"jquery": "https://code.jquery.com/jquery-1.11.2.min",
+		"jquery-ui": "https://code.jquery.com/ui/1.11.4/jquery-ui.min",
+		"bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min"
 	}
 });
 
