@@ -1,8 +1,8 @@
 // example module to load from require.html
-// define({
-//     color: "black",
-//     size: "unisize"
-// });
+define({
+    color: "black",
+    size: "unisize"
+});
 console.log("util.js loaded - define called");
 // define(function() {
 //     var sample1 = {};
@@ -10,4 +10,4 @@ console.log("util.js loaded - define called");
 //     return sample1;
 // });
 // // Just set a global var
-myFoobar = "foo";
+// myFoobar = "foo";
