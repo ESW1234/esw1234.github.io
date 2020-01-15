@@ -34,7 +34,7 @@
 <script type="text/javascript">
 	function onRequireLoaded() {
 		console.log("require.js loaded");
-		requirejs(["scripts/util", "scripts/esw"], function(util, esw) {
+		requirejs(["scripts/util"], function(util) {
 			console.log("require dependencies loaded - util");
 			
 			define({
