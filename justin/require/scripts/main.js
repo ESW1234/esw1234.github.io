@@ -1,9 +1,9 @@
 requirejs(
 	["scripts/util"],
 	function(util) {
-		console.log("INSIDE REQUIREJS CALLBACK.");
+		console.log("Successfully loaded util.js using require.");
 	},
 	function(err) {
-		debugger;
+		console.error("Error loading util.js using require: " + err);
 	}
 );
