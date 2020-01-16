@@ -1,5 +1,5 @@
 requirejs(
-	["util"],
+	["scripts/util"],
 	function(util) {
 		/*
 		 * You will not reach this because an error will be thrown on loading util.js via require.
