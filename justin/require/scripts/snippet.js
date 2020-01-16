@@ -1,4 +1,3 @@
-console.log("inside snippet");
 var initESW = function(gslbBaseURL) {
       embedded_svc.settings.displayHelpButton = true; //Or false
       embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
@@ -31,3 +30,5 @@ if (!window.embedded_svc) {
 } else {
       initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 }
+
+console.log("Loaded snippet.js");
