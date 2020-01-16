@@ -1,5 +1,5 @@
 requirejs(
-	["util"],
+	["scripts/util"],
 	function(util) {
 		console.log("INSIDE REQUIREJS CALLBACK.");
 	},
