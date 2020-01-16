@@ -6,6 +6,12 @@
 <body>
 
   <h2>MISMATCHED ANONYMOUS DEFINE() MODULES</h2>
+  <h3>
+    This module shows an example of how to reproduce this require.js error: <a href="https://requirejs.org/docs/errors.html#mismatch">"Mismatched anonymous define() module:"</a>
+    Here are the steps to reproduce this error:
+      1. Load <a href="https://requirejs.org/docs/release/2.3.6/comments/require.js">require.js</a>.
+      2. On load of require, load another javascript file that calls define, <a href="https://github.com/ESW1234/esw1234.github.io/blob/master/justin/require/mismatchedAnonymousDefineExample/scripts/anonDefine.js">here's the one I used</a>.
+  </h3>
 
   <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
   <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
