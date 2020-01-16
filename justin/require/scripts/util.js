@@ -1,4 +1,5 @@
-define({
-    color: "black",
-    size: "unisize"
-});
+// define({
+//     color: "black",
+//     size: "unisize"
+// });
+myvar = "foo";
