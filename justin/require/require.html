@@ -97,8 +97,8 @@
 	script.src = "scripts/require.js";
 	script.onload = function() {
 		console.log("require.js loaded");
-		requirejs(["scripts/util", "scripts/esw"], function(util, esw) {
-			console.log("require dependencies loaded - util & esw");
+		requirejs(["scripts/util"], function(util) {
+			console.log("require dependencies loaded - util");
 
 			// Start snippet.
 			/*
