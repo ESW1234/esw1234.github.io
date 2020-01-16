@@ -1,3 +1,8 @@
 requirejs(["util"], function(util) {
-  console.log("in require callback");
+  /*
+   * You will never reach this because an error will be thrown on loading util.js via require.
+   * 
+   * An error is thrown because require has been loaded and another javascript file was loaded
+   * that calls define() but was not loaded via require.
+   */
 });
