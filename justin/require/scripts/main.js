@@ -25,6 +25,11 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 
 // 	document.body.appendChild(script);
 	console.log("snippet");
+	
+	define({});
+	
+	// start snippet
+	/*
 	var initESW = function(gslbBaseURL) {
 	      embedded_svc.settings.displayHelpButton = true; //Or false
 	      embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
@@ -57,6 +62,8 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 	} else {
 	      initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 	}
+	*/
+	// end snippet
 });
 
 /*
