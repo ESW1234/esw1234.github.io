@@ -24,12 +24,10 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 // 	};
 
 // 	document.body.appendChild(script);
-	console.log("snippet");
-	
-	define({});
 	
 	// start snippet
 	/*
+	console.log("snippet");
 	var initESW = function(gslbBaseURL) {
 	      embedded_svc.settings.displayHelpButton = true; //Or false
 	      embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
@@ -65,6 +63,8 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 	*/
 	// end snippet
 });
+
+define({});
 
 /*
 requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
