@@ -41,7 +41,13 @@
 			script.onload = function() {
 				console.log("Loaded main.js");
 			};
-			document.body.appendChild(script);
+			setTimeout(
+				function() {
+					// Use a setTimeout to load main.js to allow snippet to load inert.js.
+					document.body.appendChild(script);
+				},
+				3000
+			);
 		};
 		document.body.appendChild(script);
 	}
