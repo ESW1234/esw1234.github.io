@@ -1,4 +1,4 @@
-console.log("snippet");
+console.log("inside snippet");
 var initESW = function(gslbBaseURL) {
       embedded_svc.settings.displayHelpButton = true; //Or false
       embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac"}; //Sets the auto-population of pre-chat form fields
