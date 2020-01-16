@@ -1,3 +1,13 @@
+setTimeout(
+	function() {
+		requirejs(["util"], function(util) {
+			console.log("inside requirejs callback");
+		}	
+	},
+	3000
+);
+
+/*
 requirejs.config({
 	shim: {
 		"bootstrap": {
@@ -12,7 +22,8 @@ requirejs.config({
 		"bootstrap": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min"
 	}
 });
-
+*/
+/*
 requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { // bootstrap must come first
 	console.log("bootstrap, util, purify loaded");
 // 	var script = document.createElement("script");
@@ -63,8 +74,7 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 	*/
 	// end snippet
 });
-
-define({});
+*/
 
 /*
 requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
