@@ -21,8 +21,8 @@
     This module shows an example of how to reproduce this require.js error: <a href="https://requirejs.org/docs/errors.html#mismatch">"Mismatched anonymous define() module:"</a>
     Here are the steps to reproduce this error:
       1. Load <a href="https://requirejs.org/docs/release/2.3.6/comments/require.js">require.js</a>.
-      2. On load of require.js, load another javascript file that calls define (<a href="https://github.com/ESW1234/esw1234.github.io/blob/master/justin/require/mismatchedAnonymousDefineExample/scripts/anonDefine.js">here's the one I used</a>) NOT using require. This file was loaded dynamically using plain javascript.
-      3. After file from step 2 is loaded, 
+      2. On load of require.js, load another javascript file that calls define (<a href="https://github.com/ESW1234/esw1234.github.io/blob/master/justin/require/mismatchedAnonymousDefineExample/scripts/anonDefine.js">here's the file I used</a>) NOT using require. This file was loaded dynamically using plain javascript.
+      3. After file from step 2 is loaded, load a file that uses the requirejs(deps, callback, ...) function to load other javascript files that call define(). Here's the <a href="https://github.com/ESW1234/esw1234.github.io/blob/master/justin/require/mismatchedAnonymousDefineExample/scripts/util.js">file</a> we load using the requirejs function.
   </div>
 
   <script type="text/javascript">
