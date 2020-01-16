@@ -21,6 +21,8 @@
 </style>
 
 
+<!-- This example WILL cause mismatch error. -->
+<!--
 <script type="text/javascript" src="scripts/esw.js"></script>
 <script type="text/javascript">
 	function onRequireLoaded() {
@@ -50,6 +52,11 @@
 	}
 </script>
 <script src="scripts/require.js" onload="onRequireLoaded()"></script>
+-->
+
+
+<!-- This example will NOT throw mismatch error. -->
+<script data-main="scripts/validMain.js" src="scripts/require.js"></script>
 
 
 </body>
