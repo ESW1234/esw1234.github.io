@@ -2,7 +2,7 @@ setTimeout(
 	function() {
 		requirejs(["util"], function(util) {
 			console.log("inside requirejs callback");
-		}	
+		});
 	},
 	3000
 );
