@@ -1,9 +1,3 @@
-requirejs(["util"], function(util) {
-
-  console.log("Loaded util.js via require.");
-});
-
-
 requirejs(
 	["scripts/util"],
 	function(util) {
