@@ -24,8 +24,8 @@ requirejs.config({
 });
 */
 /*
-requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { // bootstrap must come first
-	console.log("bootstrap, util, purify loaded");
+requirejs(["util", "purify"], function(bootstrap, util, purify) { // bootstrap must come first
+	console.log("util, purify loaded");
 // 	var script = document.createElement("script");
 
 // 	script.type = "text/javascript";
@@ -37,7 +37,6 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 // 	document.body.appendChild(script);
 	
 	// start snippet
-	/*
 	console.log("snippet");
 	var initESW = function(gslbBaseURL) {
 	      embedded_svc.settings.displayHelpButton = true; //Or false
@@ -71,28 +70,6 @@ requirejs(["bootstrap", "util", "purify"], function(bootstrap, util, purify) { /
 	} else {
 	      initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 	}
-	*/
 	// end snippet
-});
-*/
-
-/*
-requirejs(["util", "purify", "jquery"], function(util, purify, jquery) {
-    console.log("util, purify, jquery loaded");
-
-    //This function is called when scripts/util.js is loaded.
-    //If util.js calls define(), then this function is not fired until
-    //util's dependencies have loaded, and the util argument will hold
-    //the module value for "util".
-    
-    var script = document.createElement("script");
-    
-    script.type = "text/javascript";
-    script.src = "scripts/snippet.js";
-    script.onload = function() {
-        console.log("snippet loaded");
-    };
-    
-    document.body.appendChild(script);
 });
 */
