@@ -1,4 +1,3 @@
-define({
-  size: "medium",
-  color: "black"
+define(function(require) {
+  debugger;
 });
