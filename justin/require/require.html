@@ -25,12 +25,20 @@
 <!-- <script type="text/javascript" src="scripts/purify.js"></script> -->
 <!-- <script type="text/javascript" src="scripts/esw.js"></script> -->
 <!-- <script type="text/javascript" src="scripts/util.js"></script> -->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	function onRequireLoaded() {
 		console.log("require loaded");
+
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "scripts/snippet.js";
+		script.onload = function() {
+			console.log("snippet loaded");
+		};
+		document.body.appendChild(script);
 	}
-</script> -->
-<!-- <script data-main="scripts/main" src="scripts/require.js" onload="onRequireLoaded()"></script> -->
+</script>
+<script data-main="scripts/main" src="scripts/require.js" onload="onRequireLoaded()"></script>
 <!-- <script data-main="scripts/main" src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script> -->
 <!-- <script type="text/javascript" src="scripts/snippet.js"></script> -->
 <!-- End of Method 1. -->
@@ -88,6 +96,7 @@
 
 
 <!-- Method 3: Dynamically load require.js, then load util & snippet via requirejs function. -->
+<!--
 <script type="text/javascript">
 	var script = document.createElement("script");
   
@@ -140,10 +149,12 @@
 	};
 	document.body.appendChild(script);
 </script>
+-->
 <!-- End of Method 3. -->
 
 
 <!-- Static snippet. -->
+<!--
 <script type="text/javascript">
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -178,6 +189,7 @@
 		initESW('http://jmacmillin-ltm4.internal.salesforce.com:6109');
 	}
 </script>
+-->
 
 </body>
 </html>
