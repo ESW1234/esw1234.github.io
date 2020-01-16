@@ -13,6 +13,15 @@
   <script type="text/javascript">
     function onRequireLoaded() {
       console.log("require loaded");
+      
+      var script = document.createElement("script");
+      
+      script.src = "scripts/anonDefine.js";
+      script.type = "text/javascript";
+      script.onload = function() {
+        console.log("anon define loaded");
+      };
+      document.body.appendChild(script);
     }
   </script>
   <script data-main="scripts/main" src="scripts/require.js" onload="onRequireLoaded()"></script>
