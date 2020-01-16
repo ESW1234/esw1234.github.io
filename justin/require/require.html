@@ -44,12 +44,14 @@
 			embedded_svc.addEventHandler("featureLoaded", function(feature) {
 				// inert loaded???
 				debugger;
-				
+				if(feature === "inert") {
+					document.body.appendChild(script);
+				}
 			});
 			setTimeout(
 				function() {
 					// Use a setTimeout to load main.js to allow snippet to load inert.js.
-					document.body.appendChild(script);
+					
 				},
 				3000
 			);
