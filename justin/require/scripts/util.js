@@ -1,3 +1,2 @@
-define(function(require) {
-  debugger;
-});
+console.log("util.js");
+define(function(require) {});
