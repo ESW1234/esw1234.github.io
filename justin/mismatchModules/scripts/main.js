@@ -1,3 +1,3 @@
 requirejs(["util"], function(util) {
-  console.log("util loaded");
+  console.log("in require callback");
 });
