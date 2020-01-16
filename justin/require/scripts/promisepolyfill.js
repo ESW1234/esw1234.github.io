@@ -5,7 +5,7 @@
 /* Approved in: https://gus.lightning.force.com/lightning/r/ADM_Third_Party_Software__c/a0qB0000000Y64lIAC/view */
 (function(global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-	typeof define === 'function' && define.amd ? define(factory) : (factory());
+	typeof define === 'function' && define.amd ? define('promisepolyfill', factory) : (factory());
 }(this, (function() {
 	"use strict";
 
