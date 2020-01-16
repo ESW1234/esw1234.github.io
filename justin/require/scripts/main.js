@@ -1,5 +1,5 @@
 requirejs(
-	["scripts/util"],
+	["util"],
 	function(util) {
 		console.log("Successfully loaded util.js using require.");
 	},
