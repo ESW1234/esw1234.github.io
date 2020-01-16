@@ -29,13 +29,13 @@
 	function onRequireLoaded() {
 		var script = document.createElement("script");
 
+		// Load snippet.js to add snapins to the page and begin loading dependencies.
 		script.type = "text/javascript";
 		script.src = "scripts/snippet.js";
 		script.onload = function() {
-			// Load scripts/main.js that calls requirejs() function.
-
 			var script = document.createElement("script");
 
+			// Load scripts/main.js that calls requirejs() function.
 			script.type = "text/javascript";
 			script.src = "scripts/main.js";
 			script.onload = function() {
