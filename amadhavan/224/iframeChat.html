@@ -104,6 +104,17 @@
              console.log("after maximized height-" + height);
              console.log("after minimized width-"+ width);
         });
+		
+	embedded_svc.addEventHandler("afterClose", function() {
+            var height = document.querySelector('.dockableContainer').clientHeight;
+            var width = document.querySelector('.dockableContainer').clientWidth;
+            window.parent.postMessage({
+                frameHeight: embedded_svc.settings.widgetHeight,
+                frameWidth: embedded_svc.settings.widgetWidth 
+            }, '*');
+             console.log("after maximized height-" + height);
+             console.log("after minimized width-"+ width);
+        });
             
     };
     if (!window.embedded_svc) {
