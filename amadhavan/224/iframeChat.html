@@ -105,7 +105,7 @@
              console.log("after minimized width-"+ width);
         });
 		
-	embedded_svc.addEventHandler("afterClose", function() {
+	embedded_svc.addEventHandler("afterDestroy", function() {
             var height = document.querySelector('.dockableContainer').clientHeight;
             var width = document.querySelector('.dockableContainer').clientWidth;
             window.parent.postMessage({
