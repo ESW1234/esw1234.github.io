@@ -106,14 +106,14 @@
         });
 		
 	embedded_svc.addEventHandler("afterDestroy", function() {
-            var height = document.querySelector('.dockableContainer').clientHeight;
-            var width = document.querySelector('.dockableContainer').clientWidth;
+            var height = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientHeight;
+            var width = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI').clientWidth;
             window.parent.postMessage({
-                frameHeight: embedded_svc.settings.widgetHeight,
-                frameWidth: embedded_svc.settings.widgetWidth 
+                frameHeight: height,
+                frameWidth: width
             }, '*');
-             console.log("after maximized height-" + height);
-             console.log("after minimized width-"+ width);
+             console.log("after minimized height-" + height);
+             console.log("after minimized width-"+ width);    
         });
             
     };
