@@ -93,8 +93,12 @@
 			console.log(data.liveAgentSessionKey); 
 		});
 		
-		// VISIBLE QP ON CANCEL CHAT.
+		embedded_svc.addEventHandler("afterDestroy", function() {
+			console.log("AFTER DESTROY");
+		});
 		
+		// VISIBLE QP ON CANCEL CHAT.
+		/*
 		embedded_svc.addEventHandler("onQueueUpdate", function(data) {
 			sessionStorage.setItem("embeddedServiceQueuePosition", data.queuePosition);
 		});
@@ -125,7 +129,7 @@
 		
 			observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
 		});
-
+		*/
 		// VISIBLE QP ON CANCEL CHAT.
 		
 		embedded_svc.init(
