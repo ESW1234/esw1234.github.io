@@ -20,12 +20,10 @@
 	}
 </style>
 
-<script type="text/javascript" src="scripts/snippet.js"></script>
 
 <!-- This example WILL cause mismatch error. -->
 <script type="text/javascript">
 	function onRequireLoaded() {
-		/*
 		var script = document.createElement("script");
 
 		// Load snippet.js to add snapins to the page and begin loading dependencies.
@@ -54,23 +52,6 @@
 			);
 		};
 		document.body.appendChild(script);
-		*/
-		
-		var script = document.createElement("script");
-
-			// Load scripts/main.js that calls requirejs(deps, callback, ...) function.
-			script.type = "text/javascript";
-			script.src = "scripts/main.js";
-			script.onload = function() {
-				console.log("Loaded main.js");
-			};
-			setTimeout(
-				function() {
-					// Use a setTimeout to load main.js to allow snippet to load inert.js.
-					document.body.appendChild(script);
-				},
-				3000
-			);
 	}
 </script>
 <script src="scripts/require.js" onload="onRequireLoaded()"></script>
