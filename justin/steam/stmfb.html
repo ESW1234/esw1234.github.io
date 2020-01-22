@@ -89,9 +89,9 @@
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
 		
-		embedded_svc.addEventHandler("onAgentMessage", function(data) { 
-			console.log(data.liveAgentSessionKey); 
-		});
+// 		embedded_svc.addEventHandler("onAgentMessage", function(data) { 
+// 			console.log(data.liveAgentSessionKey); 
+// 		});
 		
 		embedded_svc.addEventHandler("afterDestroy", function() {
 			console.log("AFTER DESTROY");
