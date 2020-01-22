@@ -1,5 +1,5 @@
 requirejs(
-	["snippet", "util"],
+	["util", "snippet"],
 	function(util, snippet) {
 		console.log("Successfully loaded require dependencies.");
 	},
