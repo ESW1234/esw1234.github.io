@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="blue">226 STMFA Channel Menu</font></p>
+	<p align="center"><font color ="red">226 STMFA Channel Menu</font></p>
   <br/>
   <br/>	
 	
@@ -17,17 +17,17 @@
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
-			'https://na44.stmfa.stm.salesforce.com',
+			'https://jazminstmfa.my.stmfa.stm.salesforce.com',
 			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DRM000000EtFT',
-			'CM2'
+			'00DRM0000007KOQ',
+			'githubPage'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://jazminstmfa.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
