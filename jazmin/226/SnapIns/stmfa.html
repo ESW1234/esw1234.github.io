@@ -12,11 +12,11 @@
 	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
+		background-color: #2AE7E7;
+		font-family: "Comic Sans MS", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #2AE7E7;
 	}
 </style>
 
@@ -40,24 +40,22 @@
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		
-		embedded_svc.settings.snippetSettingsFile = "StaticResourceTest";
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://cm224local.stmfa.stm.force.com/ccm1',
+			'https://jazminstmfa.my.stmfa.stm.salesforce.com',
+			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/CustomerService125',
 			gslbBaseURL,
-			'00DRM000000EtFT',
-			'JazminGroup1',
+			'00DRM0000007KOQ',
+			'githubPage',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000006r0',
-				buttonId: '573RM00000007JO',
+				deploymentId: '572RM00000005Bd',
+				buttonId: '573RM000000066r',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'JazminGroup1',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dd22AE_168869546bb',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -65,13 +63,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://jazminstmfa.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 	
