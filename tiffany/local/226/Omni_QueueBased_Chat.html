@@ -16,13 +16,26 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		
-		embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -44,9 +57,9 @@
 
 		embedded_svc.init(
 			'http://tiffanytso-wsm.internal.salesforce.com:6109',
-			'http://tiffanytso-16f8317f6da.dev.localhost.soma.force.com:6109/',
+			'http://tiffanytso-1702153bb98.dev.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006Gl1',
+			'00Dxx0000006GeZ',
 			'Omni_QueueBased',
 			{
 				baseLiveAgentContentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8095/content',
@@ -67,7 +80,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-// 		initESW('https://service.force.com');
+		//initESW('https://service.force.com');
 		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
