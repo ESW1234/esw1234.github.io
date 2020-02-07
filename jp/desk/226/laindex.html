@@ -65,7 +65,7 @@
 
 		embedded_svc.init(
 			'https://snimmagadd-wsl1.internal.salesforce.com:6109',
-			'https://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6109/comm1',
+			'https://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6101/comm1',
 			gslbBaseURL,
 			'00Dxx0000006HPL',
 			'JpLA1',
@@ -82,7 +82,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://snimmagadd-wsl1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://snimmagadd-wsl1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
