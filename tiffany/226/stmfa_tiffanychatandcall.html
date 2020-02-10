@@ -4,7 +4,20 @@
   </head>
   <body>
    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script> -->
-  
+	  <style type='text/css'>
+		/* .embedded-service .channelmenu_ctas span[class^="cta-label-"]:hover {
+			text-decoration: none;
+		} */
+
+		.embedded-service .channelmenu_ctas > li:hover,
+		.embedded-service .channelmenu_ctas > li:active {
+			text-decoration: none;
+			/* default menu item hover background color */
+			background-color: #FAFAFA;
+			/* default menu item text hover color */
+			color: #005290;
+		}
+	  </style>
   <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
