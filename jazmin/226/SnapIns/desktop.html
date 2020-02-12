@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="blue">226 Desktop Snap-In</font></p>
+	<p align="center"><font color ="red">226 Desktop Snap-In</font></p>
   <br/>
   <br/>	
 
@@ -45,8 +45,8 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'https://jazmincommunity.dev.localhost.soma.force.com:6109/JazminTestCommunity',
+			'https://jazortiz-wsm3.internal.salesforce.com:6101',
+			'https://jazmincommunity.dev.localhost.soma.force.com:6101/JazminTestCommunity',
 			gslbBaseURL,
 			'00Dxx0000001gER',
 			'ChatGroup',
@@ -63,7 +63,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://jazortiz-wsm3.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
