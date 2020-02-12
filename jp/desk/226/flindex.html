@@ -56,8 +56,8 @@
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://snimmagadd-wsl1.internal.salesforce.com:6101',
-			'https://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6101/comm1',
+			'http://snimmagadd-wsl1.internal.salesforce.com:6109',
+			'http://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6109/comm1',
 			gslbBaseURL,
 			'00Dxx0000006HPL',
 			'JpFlow1',
@@ -67,13 +67,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://snimmagadd-wsl1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://snimmagadd-wsl1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://snimmagadd-wsl1.internal.salesforce.com:6101');
+		initESW('http://snimmagadd-wsl1.internal.salesforce.com:6109');
 	}
 </script>
 
