@@ -9,18 +9,17 @@
   <br/>	
 
 
-	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #2AE7E7;
-		font-family: "Comic Sans MS", sans-serif;
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #2AE7E7;
+		outline: 1px solid #005290;
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -46,16 +45,16 @@
 
 		embedded_svc.init(
 			'https://jazminstmfa.my.stmfa.stm.salesforce.com',
-			'https://jazmincommunitysubdomanin.stmfa.stm.force.com/CustomerService125',
+			'https://jazmin.stmfa.stm.force.com/JazminTestSite',
 			gslbBaseURL,
 			'00DRM0000007KOQ',
-			'githubPage',
+			'githubPageStmfa',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000005Bd',
-				buttonId: '573RM000000066r',
+				deploymentId: '572RM00000005C2',
+				buttonId: '573RM00000009Bg',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dd22AE_168869546bb',
+				eswLiveAgentDevName: 'githubPageStmfa',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -69,10 +68,9 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('');
 	}
 </script>
-	
 	
 	
 </body>
