@@ -1,3 +1,30 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<title>224 5.0 Laptop</title>
+</head>
+
+<body>
+
+<p align="center"><font color = "red"><a href="5.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="5.html">This page in a new tab.</a></font></p>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- Snippet -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #1F86D4; font-family: "Salesforce Sans", sans-serif; }
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #1F86D4; }
+	@font-face {
+		font-family: 'Salesforce Sans';
+ 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+ 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -8,12 +35,21 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+    embedded_svc.settings.devMode =true;
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -34,17 +70,17 @@
 
 		embedded_svc.init(
 			'http://vpatoju-wsl.internal.salesforce.com:6109',
-			'http://myfirstdomain-17033046a38.dev.localhost.soma.force.com:6109',
+			'http://myfirstdomain-17033046a38.dev.localhost.soma.force.com:6109/s/',
 			gslbBaseURL,
-			'00Dxx0000001gXi',
-			'MyESWDeployment',
+			'00Dxx0000001gER',
+			'B_H_Repro_issue',
 			{
 				baseLiveAgentContentURL: 'http://vpatoju-wsl.internal.salesforce.com:8095/content',
-				deploymentId: '572xx000000004E',
-				buttonId: '573xx000000004E',
+				deploymentId: '572xx0000000002',
+				buttonId: '573xx0000000005',
 				baseLiveAgentURL: 'http://vpatoju-wsl.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_16ffd8940d7',
-				isOfflineSupportEnabled: false
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
@@ -60,3 +96,7 @@
 		initESW('http://vpatoju-wsl.internal.salesforce.com:6109');
 	}
 </script>
+
+
+</body>
+</html>
