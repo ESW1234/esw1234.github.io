@@ -25,25 +25,6 @@
 
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
-
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
 
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -83,6 +64,7 @@
 				isOfflineSupportEnabled: false
 			}
 		);
+	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
@@ -95,7 +77,6 @@
 		initESW('http://amadhavan-wsm2.internal.salesforce.com:6109');
 	}
 </script>
-
 
 </body>
 </html>
