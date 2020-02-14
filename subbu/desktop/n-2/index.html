@@ -39,7 +39,7 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>	-->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -65,9 +65,9 @@
 
 		embedded_svc.init(
 			'http://skrishnamu-wsm.internal.salesforce.com:6109',
-			'http://tiffanytso-16e95f6b417.localhost.soma.force.com:6109/',
+			'http://tiffanytso-17045de083f.dev.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006GgB',
+			'00Dxx0000006Ghn',
 			'Omni_QueueBased',
 			{
 				baseLiveAgentContentURL: 'http://skrishnamu-wsm.internal.salesforce.com:8095/content',
@@ -82,13 +82,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://skrishnamu-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://skrishnamu-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://skrishnamu-wsm.internal.salesforce.com:6109');
+		initESW('https://service.force.com');
 	}
 </script>
 	
