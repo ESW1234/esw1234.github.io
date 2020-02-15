@@ -43,8 +43,8 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://jazortiz-wsm3.internal.salesforce.com:6109',
-			'http://jazmincommunity.dev.localhost.soma.force.com:6109/jazmintest',
+			'https://jazortiz-wsm3.internal.salesforce.com:6101',
+			'https://jazmincommunity.dev.localhost.soma.force.com:6101/jazmintest',
 			gslbBaseURL,
 			'00Dxx0000006GgB',
 			'ESW_Chat_Group',
@@ -61,7 +61,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://jazortiz-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://jazortiz-wsm3.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
