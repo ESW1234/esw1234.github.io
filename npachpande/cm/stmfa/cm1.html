@@ -24,44 +24,16 @@
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		//s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		//s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		//initESW('https://service.force.com');
-		initESW('http://npachpand-wsm.internal.salesforce.com:6109');
+		initESW('https://service.force.com');
+		//initESW('http://npachpand-wsm.internal.salesforce.com:6109');
 	}
-	
-	function notifyMe() {
-			Notification.requestPermission(function (permission) {
-				doNotify();
-			});
-		}
-		function doNotify() {
-			let title = "The Title";
-			let t = Date.now() + 120000;    //2 mins in future
-			let options = {
-			body: 'Hello from JavaScript!',
-			data: {prop1:123, prop2:"Steve"},
-			lang: 'en-CA',
-			icon: './img/calendar-lg.png',
-			timestamp: t,
-			vibrate: [100, 200, 100]
-			}
-			let n = new Notification(title, options);
-
-			n.addEventListener('show', function(ev){
-			console.log('SHOW', ev.currentTarget.data);
-			});
-			n.addEventListener('close', function(ev){
-			   console.log('CLOSE', ev.currentTarget.body); 
-			});
-			setTimeout( n.close.bind(n), 3000); //close notification after 3 seconds
-		}
 </script>
-<button onclick="notifyMe()">Click me updated</button>
 </body>
 </html>
