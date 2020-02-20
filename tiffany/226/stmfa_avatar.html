@@ -9,6 +9,17 @@
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #1BCE36;
 	}
+	    
+	    	    	.embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
+		top: 8%;
+	    width: 42px;
+	    height: 42px;
+	    border-radius: 100%;
+	    left: 32px;
+	    z-index: 2;
+	    -webkit-box-shadow: 0 0 0 2px rgba(255,204,0,1);
+	    box-shadow: 0 0 0 2px rgba(255,204,0,1);
+	}
 </style>
 <!-- 
   NA44 STMFA ORG: subbu@stmfa.na44 / 123456
@@ -19,7 +30,7 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
     
-    embedded_svc.settings.chatbotAvatarImgURL = '../../../avatar.png';
+    // embedded_svc.settings.chatbotAvatarImgURL = '../../../avatar.png';
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
