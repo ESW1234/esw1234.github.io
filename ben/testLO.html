@@ -5,12 +5,14 @@
 <script>
 $Lightning.use("c:lightningOutTest",
   function() { 
+    console.log("callback for $Lightning.use");
     $Lightning.createComponent(
       "c:buttonTest",
       {},
       "lightningLocator",
-      function(){}
-      );
+      function(){
+         console.log("callback for $Lightning.createComponent");
+      });
      },
      "https://eswtiffany-1707d78b9e8.stmfa.stm.force.com/esw"
      );
