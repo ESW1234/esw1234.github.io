@@ -18,24 +18,24 @@
 	var lightningOutScript = document.createElement("script");
 
 	lightningOutScript.type = "text/javascript";
-	lightningOutScript.src = "https://snapins-15ef4331aa1.stmfa.stm.force.com/napili/lightning/lightning.out.js";
+	lightningOutScript.src = "http://communities.dev.localhost.soma.force.com:6109/feb2020/lightning/lightning.out.js";
 	lightningOutScript.onload = function() {
 		// Lightning Out is loaded, try creating application.
 
 		// STMFA
 		$Lightning.use(
-			"c:oauthTestApp",
+			"c:justinLightningOutApp",
 			function() {
 				$Lightning.createComponent(
-					"lightning:input",				// component to create
-					{},						// attributes
-					document.body,					// where to put component
+					"lightning:input",		// component to create
+					{},				// attributes
+					document.body,			// where to put component
 					function(cmp) {
 						debugger;
 					}
 				);
 			},
-			"https://snapins-15ef4331aa1.stmfa.stm.force.com/napili", // community endpoint
+			"http://communities.dev.localhost.soma.force.com:6109/feb2020", // community endpoint
 			undefined,	// oauthToken
 			undefined	// language
 		);
