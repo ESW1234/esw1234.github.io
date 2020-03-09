@@ -29,7 +29,7 @@
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+		embedded_svc.settings.storageDomain = 'github.io'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
@@ -44,15 +44,15 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://benchat.my.stmfa.stm.salesforce.com',
-			'https://eswtiffany-1707d78b9e8.stmfa.stm.force.com/test1',
+			'https://na43.stmfa.stm.salesforce.com',
+			'https://eswtiffany-170c1ac7da6.stmfa.stm.force.com/esw',
 			gslbBaseURL,
-			'00DRM000000GDK2',
+			'00DS60000000NLO',
 			'OmniBot_QueueBased',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000009Z0',
-				buttonId: '573RM0000000A4l',
+				deploymentId: '572S60000004CPa',
+				buttonId: '573S60000004CPb',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2',
 				isOfflineSupportEnabled: false
@@ -62,7 +62,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://benchat.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na43.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
