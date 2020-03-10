@@ -4,12 +4,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 
 	<style>
-		body {
+		body, html {
+			height: 100%;
+		}
+		.parallax {
 			/* The image used */
 			background-image: url("https://esw1234.github.io/npachpande/images/grocerEaseBackground.png");
 
 			/* Full height */
-			height: 100%;
+			height: 100%; 
 
 			/* Create the parallax scrolling effect */
 			background-attachment: fixed;
@@ -19,7 +22,7 @@
 		}
 	</style>
 </head>
-<body>	
+<body>
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -47,6 +50,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
+<div class="parallax"></div>
 </body>
 </html>
