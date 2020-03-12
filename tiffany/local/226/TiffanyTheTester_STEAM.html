@@ -1,10 +1,25 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
-	  <button id="reorder" onclick="callReorder()">reorder</button>
+	  <button id="reorder" onclick="callReorderBot()">BOT</button>
+	  <button id="reorder" onclick="callReorderSalesforce()">WEB</button>
+	  <button id="reorder" onclick="callReorderGoogle()">GOOGLE</button>
+	  <button id="reorder" onclick="callReorderMenu()">MENU</button>
 	  <script type='text/javascript'>
-	  	function callReorder() {
+	  	function callReorderBot() {
 			embedded_svc.menu.reorder(["Bot"]);
+		}
+		  
+		function callReorderSalesforce() {
+			embedded_svc.menu.reorder(["Salesforce"]);
+		}
+		  
+		function callReorderGoogle() {
+			embedded_svc.menu.reorder(["Google"]);
+		}
+		  
+		function callReorderMenu() {
+			embedded_svc.menu.reorder(["Google", "Bot", "Salesforce"]);
 		}
 	  </script>
     <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
