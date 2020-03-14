@@ -38,6 +38,15 @@
 </style>
 
 		<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+		<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #ED3BEA;
+				font-family: "Comic Sans MS", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #ED3BEA;
+			}
+		</style>
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -62,17 +71,17 @@
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
 				embedded_svc.init(
-					'https://na44.stmfb.stm.salesforce.com',
-					'https://kb.stmfb.stm.force.com/cs',
+					'https://esw-na44a.my.stmfa.stm.salesforce.com',
+					'https://esw-na44a.stmfa.stm.force.com/cs',
 					gslbBaseURL,
-					'00DRM000000FJAf',
-					'ESW_Dep',
+					'00DRM000000Fulj',
+					'ESWDeployment1',
 					{
-						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-						deploymentId: '572RM0000004L0H',
-						buttonId: '573RM0000004Lxm',
-						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Rz2AI_16fcfbf996b',
+						baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM00000008Ye',
+						buttonId: '573RM000000092S',
+						baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EAY2A2_16f8748fc42',
 						isOfflineSupportEnabled: false
 					}
 				);
@@ -80,7 +89,7 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://esw-na44a.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
