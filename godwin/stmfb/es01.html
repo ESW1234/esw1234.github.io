@@ -22,7 +22,6 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -48,16 +47,16 @@
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
-			'https://channelcomm-170f13468b4.stmfb.stm.force.com/commendpoint',
+			'https://channelcomm-170f13468b4.stmfb.stm.force.com/nucom',
 			gslbBaseURL,
 			'00DRM000000FN4K',
-			'ES01',
+			'deployment1',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004LD9',
 				buttonId: '573RM0000004MBI',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Sy2AI_170f14942e6',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CEY2A2_170c81196ac',
 				isOfflineSupportEnabled: false
 			}
 		);
