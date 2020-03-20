@@ -7,7 +7,27 @@
    </head> 
 <body>
 <a href="https://github.com/ESW1234/esw1234.github.io/edit/master/justin/steam/stmfa-channelmenu.html">EDIT PAGE</a>	
-
+	  <button id="reorder" onclick="callReorderBot()">BOT</button>
+	  <button id="reorder" onclick="callReorderSalesforce()">WEB</button>
+	  <button id="reorder" onclick="callReorderGoogle()">GOOGLE</button>
+	  <button id="reorder" onclick="callReorderMenu()">MENU</button>
+	  <script type='text/javascript'>
+	  	function callReorderBot() {
+			embedded_svc.menu.reorder(["Bot"]);
+		}
+		  
+		function callReorderSalesforce() {
+			embedded_svc.menu.reorder(["Salesforce"]);
+		}
+		  
+		function callReorderGoogle() {
+			embedded_svc.menu.reorder(["Google"]);
+		}
+		  
+		function callReorderMenu() {
+			embedded_svc.menu.reorder(["Google", "Bot", "Salesforce"]);
+		}
+	  </script>
 <script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js'></script>	
 <script type='text/javascript'>	
 		var initESW = function(gslbBaseURL) {	
