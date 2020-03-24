@@ -69,14 +69,14 @@ embedded_svc.settings.devMode =true;
 
 		embedded_svc.init(
 			'http://vpotoju-ltm3.internal.salesforce.com:6109',
-			'http://myfirstdomain-170ed1e3f95.dev.localhost.soma.force.com:6109/',
+			'http://myfirstdomain-1710b8faac3.dev.localhost.soma.force.com:6109/',
 			gslbBaseURL,
-			'00Dxx0000006GbL',
+			'00Dxx0000006H19',
 			'MyCommunityDeployment',
 			{
 				baseLiveAgentContentURL: 'http://vpotoju-ltm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C92',
+				deploymentId: '572xx0000004CLw',
+				buttonId: '573xx0000004CLw',
 				baseLiveAgentURL: 'http://vpotoju-ltm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CCGEA2_16ffdf758ca',
 				isOfflineSupportEnabled: false
@@ -86,7 +86,7 @@ embedded_svc.settings.devMode =true;
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://vpotoju-ltm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://vpotoju-ltm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
