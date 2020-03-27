@@ -6,10 +6,27 @@
                   imum-scale=1, maximum-scale=1, user-scalable=0"> 
    </head> 
 <body>
-<button onclick="reorder()">re order </button>	
+<button onclick="reorder()">re order to one CTA </button>	
+   <a href onclick="reorderMultiple()">re order to 2 CTA</button>	 
+    <a href onclick="reorderToGoogle1()">re order in same page</button>	 
+   <a href onclick="window.href">re order in same page</button>	 
+
+   <a href onclick="reorder()">re order in different page</button>	
 <script>
 function reorder() {
   embedded_svc.menu.reorder(["whatsapp"]);
+}
+function reorderMultiple() {
+  embedded_svc.menu.reorder(["whatsapp"]);
+}
+function reorderToGoogle() {
+  embedded_svc.menu.reorder(["Google"]);
+}
+function reorderToGoogle1() {
+ embedded_svc.menu.reorder(["Google1"]);
+}
+function reorderWithTimeOut() {
+setTimeout(function(){  embedded_svc.menu.reorder(["Google1","CallMeMaybe"]); }, 1000);	
 }
 </script>
 	<br></br>
