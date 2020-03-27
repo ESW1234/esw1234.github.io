@@ -5,8 +5,82 @@
 	  <button id="endChat" onclick="endChat()">END CHAT</button>
 	  <button id="clearSession" onclick="clearSession()">CLEAR SESSION</button>
 	  <button id="onButtonClick" onclick="onButtonClick()">CLICK BUTTON</button>
+	  <br/>
+	  <button id="startChatWithPrepopulated" onclick="startChatPrepop()">START CHAT</button>
+	  <button id="startChatWithExtraPrechat" onclick="startChatExtraPrechat()">START CHAT</button>
+	   <button id="startChatWithDirectToAgent" onclick="startChatD2A()">START CHAT</button>
+	   <button id="startChatWithDirectToButton" onclick="startChatD2B()">START CHAT</button>
+	  <button id="startChatWithFallback" onclick="startChatWithFallback()">START CHAT</button>
 	  <script type='text/javascript'>
-	  	function startChat() {
+	  	function startChatPrepop() {
+			embedded_svc.liveAgentAPI.startChat({
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com"
+				}; //Sets the auto-population of pre-chat form fields
+			});
+		}
+	  	function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+				  "entityFieldMaps": [{
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "LastName",
+				    "isExactMatch": true,
+				    "label": "Last Name"
+				  }, {
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "FirstName",
+				    "isExactMatch": true,
+				    "label": "First Name"
+				  }, {
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "Email",
+				    "isExactMatch": true,
+				    "label": "Email"
+				  }],
+				  "entityName": "Contact",
+				  "saveToTranscript": "customContact__c"
+				}],
+				extraPrechatFormDetails: [{ 
+					"label":"CartValue",
+					"value": 200,
+					"transcriptFields":["CartValue__c"],
+					"displayToAgent":true
+				}]
+			});
+		}
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				buttonId: ""
+				userId: ""
+				fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[3] === "High") {
+						console.log("d2b invoked");
+
+						return "573xx0000004C93";
+					}};
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				fallbackRouting: ["573xx0000004C93", "573xx0000004C94"]
+			});
+		}
+		  
+		function startChat() {
 			embedded_svc.liveAgentAPI.startChat();
 		}
 		  
@@ -45,56 +119,56 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
-		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-			if(prechatFormData[3] === "High") {
-				console.log("d2b invoked");
+// 		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// 			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+// 			// Returns a valid button ID.
+// 			if(prechatFormData[3] === "High") {
+// 				console.log("d2b invoked");
 
-				return "573xx0000004C93";
-			}
+// 				return "573xx0000004C93";
+// 			}
 
-		};
+// 		};
 		
-		embedded_svc.settings.prepopulatedPrechatFields = {
-			FirstName: "Porter",
-			LastName: "Robinson",
-			Subject: "Second Sky",
-			Email: "porter@nurture.com"
-		}; //Sets the auto-population of pre-chat form fields
+// 		embedded_svc.settings.prepopulatedPrechatFields = {
+// 			FirstName: "Porter",
+// 			LastName: "Robinson",
+// 			Subject: "Second Sky",
+// 			Email: "porter@nurture.com"
+// 		}; //Sets the auto-population of pre-chat form fields
 		
-		embedded_svc.settings.fallbackRouting = ["573xx0000004C93", "573xx0000004C94"]; //An array of button IDs, user IDs, or userId_buttonId
+		// embedded_svc.settings.fallbackRouting = ["573xx0000004C93", "573xx0000004C94"]; //An array of button IDs, user IDs, or userId_buttonId
 		
-		embedded_svc.settings.extraPrechatFormDetails = [{ 
-			"label":"CartValue",
-			"value": 200,
-			"transcriptFields":["CartValue__c"],
-			"displayToAgent":true
-		}];
+// 		embedded_svc.settings.extraPrechatFormDetails = [{ 
+// 			"label":"CartValue",
+// 			"value": 200,
+// 			"transcriptFields":["CartValue__c"],
+// 			"displayToAgent":true
+// 		}];
 		
-		embedded_svc.settings.extraPrechatInfo = [{
-		  "entityFieldMaps": [{
-		    "doCreate": true,
-		    "doFind": true,
-		    "fieldName": "LastName",
-		    "isExactMatch": true,
-		    "label": "Last Name"
-		  }, {
-		    "doCreate": true,
-		    "doFind": true,
-		    "fieldName": "FirstName",
-		    "isExactMatch": true,
-		    "label": "First Name"
-		  }, {
-		    "doCreate": true,
-		    "doFind": true,
-		    "fieldName": "Email",
-		    "isExactMatch": true,
-		    "label": "Email"
-		  }],
-		  "entityName": "Contact",
-		  "saveToTranscript": "customContact__c"
-		}];
+// 		embedded_svc.settings.extraPrechatInfo = [{
+// 		  "entityFieldMaps": [{
+// 		    "doCreate": true,
+// 		    "doFind": true,
+// 		    "fieldName": "LastName",
+// 		    "isExactMatch": true,
+// 		    "label": "Last Name"
+// 		  }, {
+// 		    "doCreate": true,
+// 		    "doFind": true,
+// 		    "fieldName": "FirstName",
+// 		    "isExactMatch": true,
+// 		    "label": "First Name"
+// 		  }, {
+// 		    "doCreate": true,
+// 		    "doFind": true,
+// 		    "fieldName": "Email",
+// 		    "isExactMatch": true,
+// 		    "label": "Email"
+// 		  }],
+// 		  "entityName": "Contact",
+// 		  "saveToTranscript": "customContact__c"
+// 		}];
 
 		
 		
