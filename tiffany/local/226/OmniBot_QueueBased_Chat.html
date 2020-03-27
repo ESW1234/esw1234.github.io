@@ -45,10 +45,17 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
-		//};
+			if(prechatFormData[3] === "High") {
+				console.log("d2b invoked");
+
+				return "573xx0000004C93";
+			}
+
+		};
+		
 		embedded_svc.settings.prepopulatedPrechatFields = {
 			FirstName: "Porter",
 			LastName: "Robinson",
@@ -57,6 +64,40 @@
 		}; //Sets the auto-population of pre-chat form fields
 		
 		embedded_svc.settings.fallbackRouting = ["573xx0000004C93", "573xx0000004C94"]; //An array of button IDs, user IDs, or userId_buttonId
+		
+		embedded_svc.settings.extraPrechatFormDetails = [{ 
+			"label":"CartValue",
+			"value":”200”,
+			"transcriptFields":[ "CartValue__c" ],
+			"displayToAgent":true
+		}];
+		
+		embedded_svc.settings.extraPrechatInfo = [{
+		  "entityFieldMaps": [{
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "LastName",
+		    "isExactMatch": true,
+		    "label": "Last Name"
+		  }, {
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "FirstName",
+		    "isExactMatch": true,
+		    "label": "First Name"
+		  }, {
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "Email",
+		    "isExactMatch": true,
+		    "label": "Email"
+		  }],
+		  "entityName": "Contact",
+		  "saveToTranscript": "customContact__c"
+		}];
+
+		
+		
 		
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
