@@ -36,64 +36,64 @@
 			});
 		}
 		  
-// 	  	function startChatExtraPrechat() {
-// 			embedded_svc.liveAgentAPI.startChat({
-// 				extraPrechatInfo: [{
-// 				  "entityFieldMaps": [{
-// 				    "doCreate": true,
-// 				    "doFind": true,
-// 				    "fieldName": "LastName",
-// 				    "isExactMatch": true,
-// 				    "label": "Last Name"
-// 				  }, {
-// 				    "doCreate": true,
-// 				    "doFind": true,
-// 				    "fieldName": "FirstName",
-// 				    "isExactMatch": true,
-// 				    "label": "First Name"
-// 				  }, {
-// 				    "doCreate": true,
-// 				    "doFind": true,
-// 				    "fieldName": "Email",
-// 				    "isExactMatch": true,
-// 				    "label": "Email"
-// 				  }],
-// 				  "entityName": "Contact",
-// 				  "saveToTranscript": "customContact__c"
-// 				}],
-// 				extraPrechatFormDetails: [{ 
-// 					"label":"CartValue",
-// 					"value": 200,
-// 					"transcriptFields":["CartValue__c"],
-// 					"displayToAgent":true
-// 				}]
-// 			});
-// 		}
+	  	function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+				  "entityFieldMaps": [{
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "LastName",
+				    "isExactMatch": true,
+				    "label": "Last Name"
+				  }, {
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "FirstName",
+				    "isExactMatch": true,
+				    "label": "First Name"
+				  }, {
+				    "doCreate": true,
+				    "doFind": true,
+				    "fieldName": "Email",
+				    "isExactMatch": true,
+				    "label": "Email"
+				  }],
+				  "entityName": "Contact",
+				  "saveToTranscript": "customContact__c"
+				}],
+				extraPrechatFormDetails: [{ 
+					"label":"CartValue",
+					"value": 200,
+					"transcriptFields":["CartValue__c"],
+					"displayToAgent":true
+				}]
+			});
+		}
 		  
-// 		function startChatD2A() {
-// 			embedded_svc.liveAgentAPI.startChat({
-// 				// buttonId: ""
-// 				// userId: ""
-// 				// fallback: false
-// 			});
-// 		}
-// 	  	function startChatD2B() {
-// 			embedded_svc.liveAgentAPI.startChat({
-// 				directToButtonRouting: function(prechatFormData) {
-// 			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-// 			// Returns a valid button ID.
-// 					if(prechatFormData[3] === "High") {
-// 						console.log("d2b invoked");
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				// buttonId: ""
+				// userId: ""
+				// fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[3] === "High") {
+						console.log("d2b invoked");
 
-// 						return "573xx0000004C93";
-// 					}};
-// 			});
-// 		}
-// 	  	function startChatWithFallback() {
-// 			embedded_svc.liveAgentAPI.startChat({
-// 				fallbackRouting: ["573xx0000004C93", "573xx0000004C94"]
-// 			});
-// 		}
+						return "573xx0000004C93";
+					}};
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				fallbackRouting: ["573xx0000004C93", "573xx0000004C94"]
+			});
+		}
 		  
 		function startChat() {
 			embedded_svc.liveAgentAPI.startChat();
