@@ -10,8 +10,22 @@
 	   <button id="startChatWithDirectToAgent" onclick="startChatD2A()">START CHAT DIRECT TO AGENT</button>
 	   <button id="startChatWithDirectToButton" onclick="startChatD2B()">START CHAT DIRECT TO BUTTON</button>
 	  <button id="startChatWithFallback" onclick="startChatWithFallback()">START CHAT WITH FALLBACK</button>
-	  <script type='text/javascript'>
-	  	function startChatPrepop() {
+
+    <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #000000;
+		font-family: "Hello", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #000000;
+	}
+</style>
+<!-- 	  	  <script type='text/javascript'>
+
+	  </script> -->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript'>
+		  	function startChatPrepop() {
 			embedded_svc.liveAgentAPI.startChat({
 				prepopulatedPrechatFields: {
 					FirstName: "Porter",
@@ -96,18 +110,7 @@
 		function onButtonClick() {
 			embedded_svc.onHelpButtonClick();
 		}
-	  </script>
-    <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #000000;
-		font-family: "Hello", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #000000;
-	}
-</style>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript'>
+	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
