@@ -64,16 +64,18 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-  
+	
 window.onscroll = function(ev) {
 	var eop = true;
     if (eop && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
         console.log("End of Page");
 	console.log(eop);
+	    alert("you're at the Bottom of the page");
 	eop = false;
     } 
 	if (window.scrollY == 0 ) {
 		eop = true;
+		alert("you're at the Top of the page");
 		console.log("Top of Page");
 		console.log(eop);
 	}
