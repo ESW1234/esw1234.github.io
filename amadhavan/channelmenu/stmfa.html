@@ -7,10 +7,15 @@
    </head> 
 <body>
 <style type='text/css'>
-.divimage{
+.div1{
 	height:200%;
 	width:100%;
-        background-image:url('http://esw1234.github.io/amadhavan/channelmenu/UCSFBCH_logo_onecolor_navy.jpg');
+        background-image:"red";
+}
+.div3{
+	height:200%;
+	width:100%;
+        background-color:"blue");
 }
 </style>
 <button onclick="reorder()">re order to one CTA </button>	
@@ -18,6 +23,8 @@
 <a href ='javascript:;' onclick='reorderToGoogle1()'>re order to google1 in same page</a>
 <br/>
 <a href ='#bottom' onclick='reorderToGoogle1()'>re order to bottom</a>	 	
+	<a href ='#top' onclick='reorderToGoogle()'>re order to top</a>	 	
+
 <script>
 function reorder() {
   embedded_svc.menu.reorder(["Google"]);
@@ -63,7 +70,9 @@ setTimeout(function(){  embedded_svc.menu.reorder(["Google1","CallMeMaybe"]); },
 		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
 </script>
-<div class = "divimage"></div>	
+<a name="top"></a>	
+<div class = "div1"></div>	
+<div class = "div2"></div>	
 <a name="bottom"></a>
 </body>
 
