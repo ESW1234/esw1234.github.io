@@ -66,8 +66,11 @@
 	}
   
 window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+	var eop=false;
+    if (eop == false && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
         console.log("End of Page");
+	     console.log(eop);
+	    eop = true;
     }
 };
 </script>
