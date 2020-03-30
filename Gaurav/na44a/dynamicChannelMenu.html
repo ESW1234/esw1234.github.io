@@ -36,7 +36,18 @@
 	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
+<script type='text/javascript'>
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        console.log("End of Page");
+	embedded_svc.menu.reorder(["fb", "wechat"]);
 
+    } 
+	if (window.scrollY == 0 ) {
+		console.log("Top of Page");
+	}
+};
+ </script>
 	<!-- CHANNEL MENU -->
 	<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
