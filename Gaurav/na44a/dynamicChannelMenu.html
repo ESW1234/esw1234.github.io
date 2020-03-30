@@ -68,9 +68,7 @@
 window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         console.log("End of Page");
-	embedded_svc.menu.reorder(newOrder);
-
-	let newOrder = [“fb”, “wechat”];
+	embedded_svc.menu.reorder(["fb", "wechat"]);
 
     } 
 	if (window.scrollY == 0 ) {
