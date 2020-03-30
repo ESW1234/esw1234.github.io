@@ -66,18 +66,15 @@
 	}
 	
 window.onscroll = function(ev) {
-	var eop = true;
-    if (eop && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         console.log("End of Page");
-	console.log(eop);
-	    alert("you're at the Bottom of the page");
-	eop = false;
+	embedded_svc.menu.reorder(newOrder);
+
+	let newOrder = [“fb”, “wechat”];
+
     } 
 	if (window.scrollY == 0 ) {
-		eop = true;
-		alert("you're at the Top of the page");
 		console.log("Top of Page");
-		console.log(eop);
 	}
 };
 </script>
