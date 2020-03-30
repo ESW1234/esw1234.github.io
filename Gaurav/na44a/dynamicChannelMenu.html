@@ -66,15 +66,15 @@
 	}
   
 window.onscroll = function(ev) {
-	var eop=false;
-    if (eop === false && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
+	var eop = true;
+    if (eop && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
         console.log("End of Page");
-	     console.log(eop);
-	    eop = true;
+	console.log(eop);
+	eop = false;
     } 
 	if (window.scrollY == 0 ) {
-		eop=true;
-		 console.log("Top of Page");
+		eop = true;
+		console.log("Top of Page");
 		console.log(eop);
 	}
 };
