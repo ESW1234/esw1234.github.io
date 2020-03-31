@@ -45,7 +45,7 @@
 window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         console.log("End of Page");
-	embedded_svc.menu.reorder(["FB", "WhatsApp", "APB"]);
+	embedded_svc.menu.reorder(["FB", "WhatsApp", "ABC"]);
 
     } 
 	if (window.scrollY == 0 ) {
@@ -80,17 +80,6 @@ window.onscroll = function(ev) {
 	} else {
 		initESW('https://service.force.com');
 	}
-	
-window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        console.log("End of Page");
-	embedded_svc.menu.reorder(["FB", "SMS"]);
-
-    } 
-	if (window.scrollY == 0 ) {
-		console.log("Top of Page");
-	}
-};
 </script>
 <!-- end 5.0 snippet -->
 
