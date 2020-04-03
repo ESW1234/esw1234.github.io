@@ -138,7 +138,8 @@ embedded_svc.settings.extraPrechatInfo = [
 </style>
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript'>
+<!-- <script type='text/javascript'>
+/*
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
  		//embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
@@ -170,10 +171,11 @@ embedded_svc.settings.extraPrechatInfo = [
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
 
+		// SITE 'https://snapins.stmfa.stm.force.com/test'
+
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
 			'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', // community
-// 			'https://snapins.stmfa.stm.force.com/test', // site
 			gslbBaseURL,
 			'00DRM0000005cyu',
 			'justin',
@@ -199,7 +201,8 @@ embedded_svc.settings.extraPrechatInfo = [
 // 		initESW('https://service.force.com');
 		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
-</script>
+*/
+</script> -->
 <!-- end 5.0 snippet -->
 
 
@@ -221,8 +224,8 @@ embedded_svc.settings.extraPrechatInfo = [
                 position: relative;
         }
 </style> -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script> -->
-<!-- <script type='text/javascript'>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script>
+<script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -250,19 +253,19 @@ embedded_svc.settings.extraPrechatInfo = [
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 
 		embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			'https://snapins.stmfa.stm.force.com/test', 
-			gslbBaseURL, 
-			'00DRM0000005cyu', 
-			'justin', 
-			{ 
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004CDV', 
-				buttonId: '573RM0000004CDc', 
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2'
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', // community
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CDV',
+				buttonId: '573RM0000004CDc',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2',
 			}
-		); 
+		);
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
@@ -270,7 +273,7 @@ embedded_svc.settings.extraPrechatInfo = [
 		s.onload = function() { initESW(null); }; 
 		document.body.appendChild(s); 
 	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script> -->
+</script>
 <!-- end 4.1 snippet -->
 
 
