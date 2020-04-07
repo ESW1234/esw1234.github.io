@@ -8,8 +8,14 @@
 <body>
 	<button id="endChat" onclick="endChat()">END CHAT</button>
 	<button id="clearSession" onclick="clearSession()">CLEAR SESSION</button>
+	<button id="bootstrapChat" onclick="bootstrapChat()">BOOTSTRAP CHAT</button>
+	<button id="startChat" onclick="startChat()">START CHAT</button>
 	<button id="startChatWithPrepopulated" onclick="startChatPrepop()">START CHAT PREPOPULATED</button>
-
+	<button id="startChatWithExtraPrechat" onclick="startChatExtraPrechat()">START CHAT EXTRA PRECHAT</button>
+	<button id="startChatWithDirectToAgent" onclick="startChatD2A()">START CHAT DIRECT TO AGENT</button>
+	<button id="startChatWithDirectToButton" onclick="startChatD2B()">START CHAT DIRECT TO BUTTON</button>
+	<button id="startChatWithFallback" onclick="startChatWithFallback()">START CHAT WITH FALLBACK</button>
+	
 <p align="center"><font color = "red"><a href="stmfa.html">This page.</a></font></p>
 <p align="center"><font color = "red"><a target="_blank" href="stmfa.html">This page in a new tab.</a></font></p>
 
@@ -37,7 +43,116 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
+		function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+					"entityName":"Contact",
+					"showOnCreate":true,
+					"linkToEntityName":"Case",
+					"linkToEntityField":"ContactId",
+					"saveToTranscript":"ContactId",
+					"entityFieldMaps": [{
+						"isExactMatch":true,
+						"fieldName":"FirstName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"First Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"LastName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Last Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"Email",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Email"
+					}]
+				}, {
+					"entityName":"Case",
+					"showOnCreate":true,
+					"saveToTranscript":"CaseId",
+					"entityFieldMaps": [{
+						"isExactMatch":false,
+						"fieldName":"Subject",
+						"doCreate":true,
+						"doFind":false,
+						"label":"issue"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Status",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Status"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Origin",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Origin"
+					}]
+				}],
+				extraPrechatFormDetails: [{
+					"label":"First Name",
+					"name":"FirstName",
+					"value":"Jane",
+					"displayToAgent":true
+				}, {
+					"label":"Last Name",
+					"value":"Doe",
+					"displayToAgent":true
+				}, {
+					"label":"Email",
+					"value":"jane.doe@salesforce.com",
+					"displayToAgent":true
+				}, {
+					"label":"issue",
+					"value":"Sales forecasts",
+					"displayToAgent":true
+				}]
+			});
+		}
+		  
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				//buttonId: "573xx0000004C93",
+ 				userId: "005RM000001c45x",
+				fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[4].value === "High") {
+						console.log("d2b invoked");
 
+						return "573xx0000004C93";
+					}},
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com",
+					Priority: "High"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				// "573xx0000004C94"
+				fallbackRouting: ["573xx0000004C93"]
+			});
+		}	  
+		function startChat() {
+			embedded_svc.liveAgentAPI.startChat();
+		}
+		function bootstrapChat() {
+			embedded_svc.bootstrapEmbeddedService();
+		}
 		function endChat() {
 			embedded_svc.liveAgentAPI.endChat();
 		}
@@ -55,7 +170,6 @@
 				} //Sets the auto-population of pre-chat form fields
 			});
 		}
-
 
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -85,6 +199,13 @@
 		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 		
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: "Jeff",
+			LastName: "Montalvo",
+			Subject: "Chronicles",
+			Email: "jeff@sevenlions.com"
+		}; //Sets the auto-population of pre-chat form fields
+
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
 
