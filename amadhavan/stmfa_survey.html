@@ -5,20 +5,20 @@
 </head>
 
 <body>
-    <style type='text/css'>
-        .embeddedServiceHelpButton .helpButton .uiButton {
-            background-color: #A70BA5;
-			font-family: "Arial", sans-serif;
-        }
-        .embeddedServiceHelpButton .helpButton .uiButton:focus {
-            outline: 1px solid #A70BA5;
-        }
-    </style>
+  <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.devMode=true;
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -39,17 +39,17 @@
 
 		embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://myfirstdomain-170c9e6c956.stmfa.stm.force.com',
+			'https://myfirstlocalsite-170c9e6c956.stmfa.stm.force.com',
 			gslbBaseURL,
 			'00DRM000000GMab',
-			'ArvindSurveyChat',
+			'SurveyGroup',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000000A2N',
-				buttonId: '573RM0000000AZ5',
+				deploymentId: '572RM0000000C2j',
+				buttonId: '573RM0000000CaX',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EJE2A2_1715ba46cee',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'SurveyGroup',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
@@ -65,6 +65,5 @@
 		initESW('https://na44.stmfa.stm.salesforce.com');
 	}
 </script>
-	
 	
 </body>
