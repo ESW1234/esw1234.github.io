@@ -5,20 +5,22 @@
 </head>
 
 <body>
-  <style type='text/css'>
+<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #4EBE22;
 		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #4EBE22;
 	}
 </style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode=true;
+		embedded_svc.settings.devMode= true;
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -38,17 +40,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://myfirstlocalsite-170c9e6c956.stmfa.stm.force.com',
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins.stmfa.stm.force.com/test',
 			gslbBaseURL,
-			'00DRM000000GMab',
-			'SurveyGroup',
+			'00DRM0000005cyu',
+			'Arvind',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000000C2j',
-				buttonId: '573RM0000000CaX',
+				deploymentId: '572RM0000004HjU',
+				buttonId: '573RM0000004Evj',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'SurveyGroup',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002eP2AQ_16ecd3fb5b8',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -56,14 +58,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://na44.stmfa.stm.salesforce.com');
+		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	}
 </script>
-	
 </body>
