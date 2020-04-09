@@ -164,6 +164,27 @@ embedded_svc.settings.extraPrechatFormDetails = [{
 	"value":'2018-01-29',
 	"transcriptFields":["Custom_Date_Field__c"]
 }];
+	
+//change findOrCreate to match only on Email Address
+embedded_svc.settings.extraPrechatInfo = [{
+	"entityFieldMaps":[{
+		"doCreate": false,
+		"doFind": false,
+		"fieldName": "LastName"
+		"label": "First Name"
+	}, {
+		"doCreate": false,
+		"doFind": false,
+		"fieldName": "FirstName"
+		"label": "First Name"
+	}, {
+		"doCreate": false,
+		"doFind": true,
+		"fieldName": "Email"
+		"label": "Email"
+	}],
+	"entityName": "Contact"
+}];
 
 embedded_svc.settings.devMode = true;
 	
