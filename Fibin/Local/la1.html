@@ -1,3 +1,6 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -7,8 +10,8 @@
 		outline: 1px solid #005290;
 	}
 </style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+	
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -33,7 +36,7 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://fibinfranc-wsl1.internal.salesforce.com:6101',
+			'http://fibinfranc-wsl1.internal.salesforce.com:6109',
 			'https://fib-developer-edition.dev.localhost.soma.force.com:6101/',
 			gslbBaseURL,
 			'00Dxx0000006OCJ',
@@ -51,7 +54,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://fibinfranc-wsl1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'http://fibinfranc-wsl1.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -60,3 +63,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
+</body>
+</html>
