@@ -66,7 +66,7 @@
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		embedded_svc.settings.loadingText = 'Hang Tight....'; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
@@ -78,6 +78,8 @@
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
+		embedded_svc.settings.prepopulatedPrechatFields = { FirstName: “John”, LastName: “Smith”, Email: “js@gmail.com” (mailto:js@gmail.com), Subject: “Laptop Charging Issues”}
+		
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
