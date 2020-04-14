@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<br><br>
-		<title>STANDARD CHAT BUTTON</title>
+		<title>CUSTOM CHAT BUTTON</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 
@@ -15,7 +15,7 @@
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		</script>
 
-		<p align="center"><font color ="red">STANDARD CHAT BUTTON</font></p>
+		<p align="center"><font color ="red">CUSTOM CHAT BUTTON</font></p>
 
 		<br/>
 		<br/>
@@ -25,6 +25,7 @@
 		<p><font color = "red"><a href="noButton.html">PAGE WITHOUT SNIPPET</a></font></p>
 		<p><font color = "red"><a href="hiddenChannelMenu.html">PAGE WITH CHANNEL MENU HIDDEN</a></font></p> 
 		<br/> 
+		<p><font color = "red"><a target="_blank" href="chatButton.html">STANDARD CHAT BUTTON</a></font></p>
 		<p><font color = "red"><a target="_blank" href="chatButtonPage2.html">STANDARD CHAT BUTTON PAGE-2 (New Tab)</a></font></p>
 		<p><font color = "red"><a href="invitationButton.html">PAGE WITH INVITATION CHAT BUTTON</a></font></p> 
 
