@@ -90,14 +90,6 @@
 		// Debug mode.
 		embedded_svc.settings.devMode = true;
 		
-// 		embedded_svc.addEventHandler("onAgentMessage", function(data) { 
-// 			console.log(data.liveAgentSessionKey); 
-// 		});
-		
-		embedded_svc.addEventHandler("afterDestroy", function() {
-			console.log("AFTER DESTROY");
-		});
-		
 		// VISIBLE QP ON CANCEL CHAT.
 		/*
 		embedded_svc.addEventHandler("onQueueUpdate", function(data) {
@@ -142,7 +134,7 @@
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004DDM',
-				buttonId: '573RM0000004DDR',
+				buttonId: '573RM00000000vc',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
 				isOfflineSupportEnabled: true
