@@ -84,27 +84,43 @@
 		embedded_svc.liveAgentAPI.startChat({
 			extraPrechatInfo: [{
 			  "entityFieldMaps": [{
-			    "doCreate": true,
+			    "doCreate": false,
 			    "doFind": true,
 			    "fieldName": "LastName",
 			    "isExactMatch": true,
 			    "label": "Last Name"
 			  }, {
-			    "doCreate": true,
-			    "doFind": true,
-			    "fieldName": "FirstName",
-			    "isExactMatch": true,
-			    "label": "First Name"
-			  }, {
-			    "doCreate": true,
+			    "doCreate": false,
 			    "doFind": true,
 			    "fieldName": "Email",
 			    "isExactMatch": true,
 			    "label": "Email"
 			  }],
-			  "entityName": "Contact",
-			  "saveToTranscript": "customContact__c"
+			  "entityName": "Contact"
 			}],
+// 			extraPrechatInfo: [{
+// 			  "entityFieldMaps": [{
+// 			    "doCreate": true,
+// 			    "doFind": true,
+// 			    "fieldName": "LastName",
+// 			    "isExactMatch": true,
+// 			    "label": "Last Name"
+// 			  }, {
+// 			    "doCreate": true,
+// 			    "doFind": true,
+// 			    "fieldName": "FirstName",
+// 			    "isExactMatch": true,
+// 			    "label": "First Name"
+// 			  }, {
+// 			    "doCreate": true,
+// 			    "doFind": true,
+// 			    "fieldName": "Email",
+// 			    "isExactMatch": true,
+// 			    "label": "Email"
+// 			  }],
+// 			  "entityName": "Contact",
+// 			  "saveToTranscript": "customContact__c"
+// 			}],
 // 			extraPrechatFormDetails: [{ 
 // 				"label":"CartValue",
 // 				"value": 200,
