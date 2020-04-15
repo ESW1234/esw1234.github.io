@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CM - Local</title>
+  <title>CM1 - Local</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head> 
 <body>
@@ -13,17 +13,17 @@
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
-			'http://npachpande-ltm2.internal.salesforce.com:6109',
-			'http://npachpande-ltm2.internal.salesforce.com:8096/chat',
+			'http://npachpand-wsm.internal.salesforce.com:6109',
+			'http://npachpand-wsm.internal.salesforce.com:8096/chat',
 			gslbBaseURL,
-			'00Dxx0000006GzX',
+			'00Dxx0000006Gcx',
 			'ESMS01'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://npachpande-ltm2.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -31,6 +31,6 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
+</script>	
 </body>
 </html>
