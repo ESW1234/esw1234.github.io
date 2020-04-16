@@ -45,11 +45,11 @@
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://websnapins.my.salesforce.com',
-			'https://sdodemo-main-1637594504f.force.com/consumer',
+			'https://embeddedservicede.my.salesforce.com',
+			'https://embeddedservicede.secure.force.com/next',
 			gslbBaseURL,
-			'00Df4000003mbT1',
-			'Snap_ins_Flow',
+			'00DB0000000K6Ez',
+			'Flows',
 			{
 				
 			}
@@ -58,7 +58,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://websnapins.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
