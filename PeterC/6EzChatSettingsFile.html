@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120390004-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-120390004-1');
+	</script>
+
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">	
+  <meta name="salesforce-use-min-js" content="false"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head> 
+<body>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton { 
+		background-color: #005290; 
+		font-family: "Salesforce Sans", sans-serif; 
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus { 
+		outline: 1px solid #005290; 
+	}
+	/*font-family: 'Salesforce Sans';*/
+	h1 {
+	font-family:HarabaraBold,Arial,sans-serif;
+	font-weight:normal;
+	font_style:normal;
+	}
+/* 	src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+	url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+	}
+</style>
+
+Launch chat from button, not snap-in: <br>
+<button onclick="embedded_svc.inviteAPI.inviteButton.acceptInvite()">Click me</button>
+<br>
+<a href="https://github.com/ESW1234/esw1234.github.io/edit/master/PeterC/6EzChat.html" target="_blank">Edit</a>
+<!-- <h1>Test2</H1> -->
+	
+	
+
+	
+
+	
+<script type='text/javascript' src='https://test-service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.displayHelpButton = true; //Or false
+embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+	
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.snippetSettingsFile.extraPrechatFormDetails = [
+        {"label":"First Name","value":"John","displayToAgent":true}
+    ];
+	
+embedded_svc.settings.prepopulatedPrechatFields = {
+	FirstName: 'Peter',
+	LastName: 'Chung',
+	Email: 'pchung@salesforce.com'
+};
+
+// Settings for Live Agent
+embedded_svc.settings.avatarImgURL = '';
+embedded_svc.settings.prechatBackgroundImgURL = '';
+embedded_svc.settings.waitingStateBackgroundImgURL = '';
+embedded_svc.settings.smallCompanyLogoImgURL = '';
+//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+//Returns a valid button ID.
+//};
+
+embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+    console.log("onHelpButtonClick event was fired.");
+});
+
+embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
+    console.log("onChatRequestSuccess event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatEstablished", function(data) {
+    console.log("onChatEstablished event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChasitorMessage", function(data) {
+    console.log("onChasitorMessage event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onAgentMessage", function(data) {
+    console.log("onAgentMessage event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatConferenceInitiated", function(data) {
+    console.log("onChatConferenceInitiated event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onAgentJoinedConference", function(data) {
+    console.log("onAgentJoinedConference event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onAgentLeftConference", function(data) {
+    console.log("onAgentLeftConference event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatConferenceEnded", function(data) {
+    console.log("onChatConferenceEnded event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatTransferSuccessful", function(data) {
+    console.log("onChatTransferSuccessful event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+    console.log("onChatEndedByChasitor event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+    console.log("onChatEndedByAgent event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onQueueUpdate", function(data) {
+    console.log("onQueueUpdate event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey + "and queuePosition was " + data.queuePosition);
+});
+
+embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
+    console.log("onIdleTimeoutOccurred event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onConnectionError", function(data) {
+    console.log("onConnectionError event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+
+embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
+    console.log("onClickSubmitButton event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+});
+embedded_svc.addEventHandler("onInviteAccepted", function(data) {
+    console.log("onInviteAccepted event was fired.");
+});
+
+embedded_svc.addEventHandler("onInviteRejected", function(data) {
+    console.log("onInviteRejected event was fired.");
+});
+	
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.entryFeature = 'LiveAgent';
+//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+
+embedded_scv.settings.snippetSettingsFile = 'SnippetSettingsFile';
+
+embedded_svc.settings.devMode = true;
+	
+embedded_svc.init(
+			'https://embeddedservicede.my.salesforce.com',
+			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/chc',
+			gslbBaseURL,
+			'00DB0000000K6Ez',
+			'Bright',
+			{
+				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
+				deploymentId: '572B0000000LALF',
+				buttonId: '573B0000000LANm',
+				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://test-service.force.com');
+	}
+	</script>
+</body>
+	</html>
