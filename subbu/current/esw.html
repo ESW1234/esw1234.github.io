@@ -60,17 +60,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://chatbotcommunitystmfaq3-1707-1717fcbccbb.stmfb.stm.force.com',
+			'https://na44.stmfa.stm.salesforce.com',
+			'https://chatbotcommunitystmfaq3-17079eda205.stmfa.stm.force.com',
 			gslbBaseURL,
-			'00DRM000000FQfg',
-			'snapindeploy',
+			'00DRM000000GD9d',
+			'DepWithoutBot',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM000000023c',
-				buttonId: '573RM000000025g',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EB72AM_16fca1e3a22',
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004N3Q',
+				buttonId: '573RM0000004NdE',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EB22AM_16fca144a9a',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -78,7 +78,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
