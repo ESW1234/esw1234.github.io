@@ -4,23 +4,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">226 Desktop Channel Menu</font></p>
+	<p align="center"><font color ="red">228 Desktop Channel Menu</font></p>
   <br/>
   <br/>	
 	
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script> -->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-		 embedded_svc.menu.settings.devMode = true; 
+		embedded_svc.menu.settings.devMode = true;
 
-		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
 			'http://jazortiz-wsm3.internal.salesforce.com:6109',
 			'http://jazortiz-wsm3.internal.salesforce.com:8096/chat',
 			gslbBaseURL,
-			'00Dxx0000009Id9',
+			'00Dxx0000006Gcx',
 			'githubPage'
 		);
 	};
@@ -33,7 +32,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 	
