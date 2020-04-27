@@ -201,6 +201,16 @@
 		
 		embedded_svc.settings.devMode = true;
 		
+		embedded_svc.addEventHandler("afterSettings", function(data) {
+			debugger;
+		    if(data) {
+			console.log("Agent available. Start Chat!");
+			embedded_svc.liveAgentAPI.startChat();
+		    } else {
+			console.log("Agent unavailable.");
+		    }
+		});
+		
 		embedded_svc.settings.autoOpenPostChat = true;
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
