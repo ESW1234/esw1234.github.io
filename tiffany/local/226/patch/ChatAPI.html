@@ -206,7 +206,9 @@
 		    if(data.status) {
 			console.log("Agent available. Start Chat!");
 			    // Open to prechat.
-			embedded_svc.liveAgentAPI.startChat();
+			    startChatPrepop();
+			// embedded_svc.liveAgentAPI.startChat();
+			    
 		    } else {
 			    // No-op. Can open to offline support.
 			console.log("Agent unavailable.");
