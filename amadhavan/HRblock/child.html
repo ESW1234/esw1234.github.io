@@ -1,0 +1,106 @@
+<html>
+
+  <head>
+    <title>CHAT PAGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+    imum-scale=1, maximum-scale=1, user-scalable=0">
+  </head>
+
+  <body>
+    <style type='text/css'>
+      .embeddedServiceHelpButton .helpButton .uiButton {
+        background-color: #005290;
+        font-family: "Arial", sans-serif;
+      }
+
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+      outline: 1px solid #005290;
+    }
+    </style>
+
+
+    <script type='text/javascript'>
+      // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
+      function helpButtonLoaded() {
+        var helpButton = document.querySelector('.helpButton');
+        if (!helpButton) {
+          window.setTimeout(helpButtonLoaded, 500);
+          return;
+        }
+        var height = helpButton.clientHeight;
+        var width = helpButton.clientWidth;
+        window.parent.postMessage({
+                                  frameHeight: height,
+                                  frameWidth: width
+                                  }, '*'); // Used a * but for security reasons you can plug in the domain name.
+      }
+      window.onload = helpButtonLoaded();
+
+      var initESW = function(gslbBaseURL) {
+        embedded_svc.settings.displayHelpButton = true; // Or false
+        embedded_svc.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+        embedded_svc.settings.devMode = true;
+        // Have set the widget height and width as a property on the object
+        embedded_svc.settings.widgetWidth = 320;
+        embedded_svc.settings.widgetHeight = 498;
+        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+        embedded_svc.settings.entryFeature = 'LiveAgent';
+        embedded_svc.init(
+          'https://hrblockenterprise--poc2.my.salesforce.com',
+          'https://poc2-hrblockenterprise.cs124.force.com/',
+          gslbBaseURL,
+          '00D3J0000008jgt',
+          'Support_Group', {
+            baseLiveAgentContentURL: 'https://c.la1-c1cs-ia4.salesforceliveagent.com/content',
+            deploymentId: '5723k000000bxPd',
+            buttonId: '5733J0000004CEN',
+            baseLiveAgentURL: 'https://d.la1-c1cs-ia4.salesforceliveagent.com/chat',
+            eswLiveAgentDevName: 'Support_Group',
+            isOfflineSupportEnabled: true
+          }
+        );
+
+        embedded_svc.addEventHandler("afterMinimize", function() {
+          var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
+          var height = sidebar.clientHeight;
+          var width = sidebar.clientWidth;
+          window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+           }, '*');
+        });
+
+        embedded_svc.addEventHandler("afterMaximize", function() {
+          var container = document.querySelector('.dockableContainer');
+          var height = container.clientHeight;
+          var width = container.clientWidth;
+          window.parent.postMessage({
+            frameHeight: embedded_svc.settings.widgetHeight,
+            frameWidth: embedded_svc.settings.widgetWidth
+          }, '*');
+        });
+
+        embedded_svc.addEventHandler("afterDestroy", function() {
+          var height = document.querySelector('.helpButton').clientHeight;
+          var width = document.querySelector('.helpButton').clientWidth;
+          window.parent.postMessage({
+            frameHeight: height,
+            frameWidth: width
+          }, '*');
+        });
+      };
+
+      if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://hrblockenterprise--poc2.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function() {
+          initESW(null);
+        };
+        document.body.appendChild(s);
+      } else {
+        initESW('https://hrblockenterprise--poc2.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+      }
+
+    </script>
+  </body>
+</html>
