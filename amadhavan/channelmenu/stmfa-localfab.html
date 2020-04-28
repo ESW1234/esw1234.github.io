@@ -33,7 +33,7 @@ function reorder() {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'http://amadhavan-ltm4.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
 		s.onload = function() {
-			initESW(null);
+			initESW('http://amadhavan-ltm4.internal.salesforce.com:6109');
 		};
 		document.body.appendChild(s);
 	} else {
