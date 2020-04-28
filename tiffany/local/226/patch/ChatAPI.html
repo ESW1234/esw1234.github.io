@@ -201,7 +201,7 @@
 		
 		embedded_svc.settings.devMode = true;
 		
-		embedded_svc.addEventHandler("afterSettings", function(data) {
+		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
 			// debugger;
 		    if(data.status) {
 			console.log("Agent available. Start Chat!");
