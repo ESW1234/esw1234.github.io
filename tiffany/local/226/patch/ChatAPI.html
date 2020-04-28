@@ -203,7 +203,7 @@
 		
 		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
 			// debugger;
-		    if(data.agentAvailable) {
+		    if(data.isAgentAvailable) {
 			console.log("Agent available. Start Chat!");
 			    // Open to prechat.
 			    startChatPrepop();
