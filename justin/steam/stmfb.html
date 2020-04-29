@@ -25,22 +25,17 @@
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
-<script>
-	function addInit() {
-		var script = document.createElement("script");
-
-		script.type = "text/javascript";
-		script.src = "stmfb_init.js";
-		script.onload = function() {
-			console.log("script loaded");
-		}
-
-		document.body.appendChild(script);
+<style type='text/css'>
+	.embeddedServiceSidebar .sidebarBody {
+		position: relative !important;
+		overflow: hidden !important;
+		flex-grow: 1 !important;
 	}
-</script>
-<button id="stmfbInit" onclick="addInit()">
-	add another init call
-</button>
+	.embeddedServiceSidebar.layout-docked .dockableContainer, .embeddedServiceSidebar.layout-float .dockableContainer {
+		display: flex !important;
+		flex-direction: column !important;
+	}
+</style>
 
 
 <!-- SNIPPETS -->
