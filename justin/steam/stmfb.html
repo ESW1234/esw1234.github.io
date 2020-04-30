@@ -49,7 +49,7 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
    		  console.log("onSettingsCallCompleted event was fired.");
-		  embedded_svc.liveAgentAPI.startChat();
+		  embedded_svc.bootstrapEmbeddedService();
                 });
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
