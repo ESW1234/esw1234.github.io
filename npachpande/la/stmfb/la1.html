@@ -14,11 +14,11 @@
     }
   </style>
 
-  <script type='text/javascript' src='https://test-service.force.com/embeddedservice/5.0/esw.min.js'></script>
+  <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
   <script type='text/javascript'>
     var initESW = function(gslbBaseURL) {
       embedded_svc.settings.displayHelpButton = true; //Or false
-      embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+      embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
       ////embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
       //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -63,7 +63,7 @@
       };
       document.body.appendChild(s);
     } else {
-      initESW('https://test-service.force.com');
+      initESW('https://service.force.com');
     }
   </script>
   
