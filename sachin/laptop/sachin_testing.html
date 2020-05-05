@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-eval'">
+<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 </head>
 <body>
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -15,7 +15,7 @@
 		outline: 1px solid #005290;
 	}
 </style>
-
+<script>eval('2+2');</script>
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
