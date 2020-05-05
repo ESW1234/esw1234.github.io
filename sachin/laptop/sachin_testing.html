@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline' 'unsafe-eval'">
+<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
 </head>
 <body>
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -17,7 +17,7 @@
 </style>
 <script>
 function looseJsonParse(obj){
-    return Function('"use strict";return (' + obj + ')')();
+    return JSON.parse(obj);
 }
 console.log(looseJsonParse(
    "{a:(4-1), b:function(){}, c:new Date()}"
