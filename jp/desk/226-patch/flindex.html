@@ -41,8 +41,9 @@
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -57,9 +58,9 @@
 
 		embedded_svc.init(
 			'http://snimmagadd-wsl1.internal.salesforce.com:6109',
-			'http://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6109/comm1',
+			'http://eswtiffany-171e358e712.dev.localhost.soma.force.com:6109/esw',
 			gslbBaseURL,
-			'00Dxx0000006HPL',
+			'00Dxx0000006GeZ',
 			'JpFlow1',
 			{ }
 		);
@@ -76,7 +77,6 @@
 		initESW('http://snimmagadd-wsl1.internal.salesforce.com:6109');
 	}
 </script>
-
 	
 </div>
 <div id="text">
