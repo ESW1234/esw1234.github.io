@@ -27,6 +27,7 @@
 </div>
 <div id="button_goes_here">
 
+
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -42,8 +43,9 @@
 -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.devMode = true;
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -65,17 +67,17 @@
 
 		embedded_svc.init(
 			'http://snimmagadd-wsl1.internal.salesforce.com:6109',
-			'http://eswtiffany-16fd4593bb5.dev.localhost.soma.force.com:6109/comm1',
+			'http://eswtiffany-171e358e712.dev.localhost.soma.force.com:6109/esw',
 			gslbBaseURL,
-			'00Dxx0000006HPL',
-			'JpLA1',
+			'00Dxx0000006GeZ',
+			'omni_1',
 			{
 				baseLiveAgentContentURL: 'http://snimmagadd-wsl1.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CAe',
-				buttonId: '573xx0000004CAe',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://snimmagadd-wsl1.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EkKEAU_1701c9199a0',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_171e5cfb463',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
@@ -91,7 +93,6 @@
 		initESW('http://snimmagadd-wsl1.internal.salesforce.com:6109');
 	}
 </script>
-
 	
 </div>
 <div id="text">
