@@ -8,7 +8,7 @@
 		var script = document.createElement("script");
 
 		script.type = "text/javascript";
-		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588879363000/sampleInvitationResource";
+		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588880899000/sampleInvitationResource";
 
 		script.onload = this.generateInvitation();
 
