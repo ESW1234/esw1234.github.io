@@ -28,5 +28,5 @@
 		document.body.appendChild(invitation);
 	};
 
-	document.dynamicInvitationDemo = new DynamicInvitationDemo();
-})(document.dynamicInvitationDemo || {});
+	window.dynamicInvitationDemo = new DynamicInvitationDemo();
+})(window.dynamicInvitationDemo || {});
