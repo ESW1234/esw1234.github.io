@@ -19,10 +19,10 @@
 		var invitation = document.createElement("div");
 
 		//This is the invitation markup
-		invitation.innerHTML = DynamicInvitationDemo.invitationMarkup;
+		invitation.innerHTML = this.invitationMarkup;
 
 		// This is the invitation style tag
-		invitation.style = DynamicInvitationDemo.styleTag;
+		invitation.style = this.styleTag;
 
 		// Now that we have created the invitation append it to the page
 		document.body.appendChild(invitation);
