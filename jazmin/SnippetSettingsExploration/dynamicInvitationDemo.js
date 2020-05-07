@@ -29,4 +29,4 @@
 	};
 
 	window.dynamicInvitationDemo = new DynamicInvitationDemo();
-})(window.dynamicInvitationDemo || {});
+})();
