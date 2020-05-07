@@ -31,7 +31,7 @@
 		invitation.append(invitationStyle);
 		
 		
-		/ Now that we have created the invitation append it to the page
+		// Now that we have created the invitation append it to the page
 		document.body.appendChild(invitation);
 	};
 
