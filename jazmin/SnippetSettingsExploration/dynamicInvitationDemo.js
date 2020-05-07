@@ -1,8 +1,9 @@
 (function() {
 
+	/*
 	function DynamicInvitationDemo() {
 		this.loadAndDisplayInvitationResource();
-	};
+	}; */
 
 	DynamicInvitationDemo.prototype.loadAndDisplayInvitationResource = function() {
 		var script = document.createElement("script");
