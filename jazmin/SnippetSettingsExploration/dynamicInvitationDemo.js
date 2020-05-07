@@ -1,9 +1,9 @@
 (function() {
 
-	/*
+
 	function DynamicInvitationDemo() {
 		this.loadAndDisplayInvitationResource();
-	}; */
+	};
 
 	DynamicInvitationDemo.prototype.loadAndDisplayInvitationResource = function() {
 		var script = document.createElement("script");
@@ -11,7 +11,7 @@
 		script.type = "text/javascript";
 		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588885881000/sampleInvitationResource";
 
-		script.onload = this.generateInvitation();
+		script.onload = this.generateInvitation;
 
 		document.body.appendChild(script);
 	};
