@@ -10,7 +10,7 @@
 		script.type = "text/javascript";
 		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588885881000/sampleInvitationResource";
 
-		script.onload = this.generateInvitation();
+		script.onload = dynamicInvitationDemo.generateInvitation();
 
 		document.body.appendChild(script);
 	};
@@ -19,10 +19,10 @@
 		var invitation = document.createElement("div");
 
 		//This is the invitation markup
-		invitation.innerHTML = this.invitationMarkup;
+		invitation.innerHTML = dynamicInvitationDemo.invitationMarkup;
 
 		// This is the invitation style tag
-		invitation.style = this.styleTag;
+		invitation.style = dynamicInvitationDemo.styleTag;
 
 		// Now that we have created the invitation append it to the page
 		document.body.appendChild(invitation);
