@@ -15,7 +15,7 @@
 		document.body.appendChild(script);
 	};
 
-	DynamicInvitationDemo.prototype.generateInvitation = function(callback) {
+	DynamicInvitationDemo.prototype.generateInvitation = function() {
 		var invitation = document.createElement("div");
 
 		//This is the invitation markup
