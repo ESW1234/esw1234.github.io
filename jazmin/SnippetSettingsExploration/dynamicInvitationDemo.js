@@ -10,7 +10,7 @@
 		script.type = "text/javascript";
 		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588879363000/sampleInvitationResource";
 
-		script.onload = DynamicInvitationDemo.generateInvitation();
+		script.onload = this.generateInvitation();
 
 		document.body.appendChild(script);
 	};
