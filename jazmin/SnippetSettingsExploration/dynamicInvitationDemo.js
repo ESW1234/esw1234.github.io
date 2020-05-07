@@ -31,6 +31,7 @@
 
 		// Now that we have created the invitation append it to the page
 		document.body.appendChild(invitation);
+		document.body.appendChild(invitationStyle);
 	};
 
 	window.dynamicInvitationDemo = new DynamicInvitationDemo();
