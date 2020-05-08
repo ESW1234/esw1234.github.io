@@ -33,13 +33,12 @@ dynamicInvitationDemo.styleTag =
 	'.embeddedServiceInvitationFooter > #acceptInvite { background-color: #005290; color: #FFFFFF; }'+
 	'.embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #005290; }';
 
+// More thought is required to see if we want customers to include this in thier custom invitation code
 dynamicInvitationDemo.invitationAPIs =
-'<script type="text/javascript">'+
 	'(function() {'+
 		'document.getElementById("closeInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };'+
 		'document.getElementById("rejectInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }; // use this API call to reject invitations'+
 		'document.getElementById("acceptInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); }; // use this API call to start chat from invitations'+
 		'document.addEventListener("keyup", function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})'+
-	'})();'+
-'</script>';
+	'})();';
 })();
