@@ -37,8 +37,8 @@ dynamicInvitationDemo.styleTag =
 dynamicInvitationDemo.invitationAPIs =
 	'(function() {'+
 		'document.getElementById("closeInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };'+
-		'document.getElementById("rejectInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }; // use this API call to reject invitations'+
-		'document.getElementById("acceptInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); }; // use this API call to start chat from invitations'+
+		'document.getElementById("rejectInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };'+
+		'document.getElementById("acceptInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.acceptInvite(); };'+
 		'document.addEventListener("keyup", function(event) { if (event.keyCode == 27) { embedded_svc.inviteAPI.inviteButton.rejectInvite(); }})'+
 	'})();';
 })();
