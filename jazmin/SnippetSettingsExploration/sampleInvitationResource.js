@@ -33,7 +33,7 @@ dynamicInvitationDemo.styleTag =
 	'.embeddedServiceInvitationFooter > #acceptInvite { background-color: #005290; color: #FFFFFF; }'+
 	'.embeddedServiceInvitationFooter > #rejectInvite { background-color: #FFFFFF; color: #005290; }';
 
-dynamicInvitationDemo.javascriptInvitationAPI =
+dynamicInvitationDemo.invitationAPIs =
 '<script type="text/javascript">'+
 	'(function() {'+
 		'document.getElementById("closeInvite").onclick = function() { embedded_svc.inviteAPI.inviteButton.rejectInvite(); };'+
