@@ -17,19 +17,10 @@
 	};
 
 	DynamicInvitationDemo.prototype.generateInvitation = function() {
-		var invitationScript =  document.createElement("script");
 		var invitation = document.createElement("div");
 		var invitationStyle = document.createElement('style');
+		var invitationScript =  document.createElement("script");
 
-		// This is the invitation API specified in the static resource
-		// In the actual implementation we should probably not have people need to include this in their
-		// static resource as I don't see what exactly they would want to customize in it. So the
-		// invitationScript specific logic will probs go away.
-		invitationScript.type = "text/javascript";
-		invitationScript.innerHTML = dynamicInvitationDemo.invitationAPIs;
-		// Append the script to the page
-		document.body.appendChild(invitationScript);
-		
 		//This is the invitation markup
 		invitation.innerHTML = dynamicInvitationDemo.invitationMarkup;
 		
@@ -45,6 +36,16 @@
 		
 		// Now that we have created the invitation append it to the page
 		document.body.appendChild(invitation);
+		
+		
+		// This is the invitation API specified in the static resource
+		// In the actual implementation idk if we should have peopleinclude this in their
+		// static resource as I don't see what exactly they would want to customize in it. So the
+		// invitationScript specific logic will probs go away.
+		invitationScript.type = "text/javascript";
+		invitationScript.innerHTML = dynamicInvitationDemo.invitationAPIs;
+		// Append the script to the page
+		document.body.appendChild(invitationScript);
 	};
 
 	window.dynamicInvitationDemo = new DynamicInvitationDemo();
