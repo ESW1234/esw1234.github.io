@@ -9,7 +9,7 @@
 		var script = document.createElement("script");
 
 		script.type = "text/javascript";
-		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588898350000/sampleInvitationResource";
+		script.src = "https://cm224local.stmfa.stm.force.com/community0605/resource/1588899215000/sampleInvitationResource";
 
 		script.onload = this.generateInvitation;
 
