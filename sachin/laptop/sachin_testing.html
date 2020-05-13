@@ -81,29 +81,6 @@ console.log(looseJsonParse(
 				isOfflineSupportEnabled: false
 			}
 		);
-		
-		function wireTextChangeListner() {
-	// Find the chasitor's chat input field
-	var obj = document.getElementsByClassName('chasitorText');
-
-	// Wire up the event listener
-	obj[0].oninput = function() {
-		switch(this.value) {
-			// When the chasitor types "trigger", an event is fired to the agent
-			case "trigger":	
-				alert("TRIGGER!!!");
-				embedded_svc.liveAgentAPI.sendCustomEvent(
-					"Customer_to_agent_event_type",
-					"data from the customer");
-				break;
-
-			default:
-				break;
-		}
-	};
-}
-
-wireTextChangeListner();
 	};
 
 	if (!window.embedded_svc) {
