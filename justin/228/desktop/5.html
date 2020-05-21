@@ -56,10 +56,13 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
-		//};
+			debugger;
+
+			return "573xx0000004CAe";
+		};
 		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
@@ -72,10 +75,6 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 		embedded_svc.settings.devMode = true;
-
-		embedded_svc.addEventHandler("afterInitialization", function() {
-			debugger;
-		});
 
 		// Buttons
 		// System Admin - 573xx0000004CAe
