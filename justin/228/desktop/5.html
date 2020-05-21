@@ -72,7 +72,11 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 		embedded_svc.settings.devMode = true;
-		
+
+		embedded_svc.addEventHandler("afterInitialization", function() {
+			debugger;
+		});
+
 		// Buttons
 		// System Admin - 573xx0000004CAe
 		// Agent - 573xx0000004GZk
