@@ -123,12 +123,16 @@
 				"entityName": "Case",
 				"showOnCreate": true,
 				"saveToTranscript": "CaseId",
-				"entityFieldMaps": [{
-					"isExactMatch": false,
-					"fieldName": "SuppliedName",
-					"doCreate": true,
-					"doFind": true
-				}]
+				"entityFieldMaps": [
+					{
+						"isExactMatch": false,
+						"fieldName": "SuppliedName",
+						"doCreate": true,
+						"doFind": false,
+						"isExactMatch":false,
+						"label": "Web Name"
+					}
+				]
 			}
 		];
 
