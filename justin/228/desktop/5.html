@@ -80,19 +80,55 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 		// Value for both of these fields is set in directToButtonRouting.
-		embedded_svc.settings.extraPrechatFormDetails = [
+		embedded_svc.settings.extraPrechatFormDetails = [{
+			label: "Web Name",
+			name: "SuppliedName",
+			value: "",
+			displayToAgent: true
+		},
+		{
+			label: "Full_Name",
+			name: "Full_Name",
+			value: "",
+			transcriptFields: [ "Full_Name__c" ],
+			displayToAgent: true
+		}];
+		embedded_svc.settings.extraPrechatInfo = [
 			{
-				label: "Web Name",
-				name: "SuppliedName",
-				value: "",
-				displayToAgent: true
-			},
-			{
-				label: "Full_Name",
-				name: "Full_Name",
-				value: "",
-				transcriptFields: [ "Full_Name__c" ],
-				displayToAgent: true
+				"entityName": "Contact",
+				"showOnCreate": true,
+				"linkToEntityName": "Case",
+				"linkToEntityField": "ContactId",
+				"saveToTranscript": "ContactId",
+				"entityFieldMaps": [{
+					"isExactMatch": true,
+					"fieldName": "FirstName",
+					"doCreate": true,
+					"doFind": true,
+					"label": "First Name"
+				}, {
+					"isExactMatch": true,
+					"fieldName": "LastName",
+					"doCreate": true,
+					"doFind": true,
+					"label": "Last Name"
+				}, {
+					"isExactMatch": true,
+					"fieldName": "Email",
+					"doCreate": true,
+					"doFind": true,
+					"label": "Email"
+				}]
+			}, {
+				"entityName": "Case",
+				"showOnCreate": true,
+				"saveToTranscript": "CaseId",
+				"entityFieldMaps": [{
+					"isExactMatch": false,
+					"fieldName": "SuppliedName",
+					"doCreate": true,
+					"doFind": true
+				}]
 			}
 		];
 
