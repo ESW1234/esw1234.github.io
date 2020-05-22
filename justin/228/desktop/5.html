@@ -62,13 +62,20 @@
 			
 			var firstNameField = prechatFormData.find((field) => { return field.name === "FirstName"; });
 			var lastNameField = prechatFormData.find((field) => { return field.name === "LastName"; });
+			var fullName = detail.value = firstNameField.value.trim() + " " + lastNameField.value.trim();
 			
 			// Error handling could go here for missing fields.
 			
-			embedded_svc.settings.extraPrechatFormDetails.forEach((detail) => {
-				if(detail.label === "Full_Name") {
-					detail.value = firstNameField.value.trim() + " " + lastNameField.value.trim();
-				}
+// 			embedded_svc.settings.extraPrechatFormDetails.forEach((detail) => {
+// 				if(detail.label === "Full_Name") {
+// 					detail.value = firstNameField.value.trim() + " " + lastNameField.value.trim();
+// 				}
+// 			});
+
+			embedded_svc.settings.extraPrechatFormDetails.push({
+				label: "Supplied_Name";
+				value: fullName,
+				displayToAgent: true
 			});
 
 			return "573xx0000004CAe";
