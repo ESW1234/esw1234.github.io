@@ -56,85 +56,16 @@
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
 		// Settings for Chat
-		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
-			
-			var firstNameField = prechatFormData.find((field) => { return field.name === "FirstName"; });
-			var lastNameField = prechatFormData.find((field) => { return field.name === "LastName"; });
-			var fullName = firstNameField.value.trim() + " " + lastNameField.value.trim();
-			
-			// Example 1: Standard Field.
-			embedded_svc.settings.extraPrechatFormDetails.find((field) => { return field.name === "SuppliedName"; }).value = fullName;
-			
-			// Example 2: Custom Field.
-			embedded_svc.settings.extraPrechatFormDetails.find((field) => { return field.name === "Full_Name"; }).value = fullName;
-
-			return "573xx0000004CAe";
-		};
+		//};
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "I need help."};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		
-		// Value for both of these fields is set in directToButtonRouting.
-		embedded_svc.settings.extraPrechatFormDetails = [{
-			label: "Web Name",
-			name: "SuppliedName",
-			value: "",
-			displayToAgent: true
-		},
-		{
-			label: "Full_Name",
-			name: "Full_Name",
-			value: "",
-			transcriptFields: [ "Full_Name__c" ],
-			displayToAgent: true
-		}];
-		embedded_svc.settings.extraPrechatInfo = [
-			{
-				"entityName": "Contact",
-				"showOnCreate": true,
-				"linkToEntityName": "Case",
-				"linkToEntityField": "ContactId",
-				"saveToTranscript": "ContactId",
-				"entityFieldMaps": [{
-					"isExactMatch": true,
-					"fieldName": "FirstName",
-					"doCreate": true,
-					"doFind": true,
-					"label": "First Name"
-				}, {
-					"isExactMatch": true,
-					"fieldName": "LastName",
-					"doCreate": true,
-					"doFind": true,
-					"label": "Last Name"
-				}, {
-					"isExactMatch": true,
-					"fieldName": "Email",
-					"doCreate": true,
-					"doFind": true,
-					"label": "Email"
-				}]
-			}, {
-				"entityName": "Case",
-				"showOnCreate": true,
-				"saveToTranscript": "CaseId",
-				"entityFieldMaps": [
-					{
-						"isExactMatch": false,
-						"fieldName": "SuppliedName",
-						"doCreate": true,
-						"doFind": false,
-						"isExactMatch":false,
-						"label": "Web Name"
-					}
-				]
-			}
-		];
 
 		// Avatars.
 		embedded_svc.settings.avatarImgURL = "../../../avatar.png";
