@@ -68,7 +68,7 @@
 			embedded_svc.settings.extraPrechatFormDetails.find((field) => { return field.name === "SuppliedName"; }).value = fullName;
 			
 			// Example 2: Custom Field.
-			
+			embedded_svc.settings.extraPrechatFormDetails.find((field) => { return field.name === "Full_Name"; }).value = fullName;
 
 			return "573xx0000004CAe";
 		};
@@ -89,6 +89,7 @@
 			},
 			{
 				label: "Full_Name",
+				name: "Full_Name",
 				value: "",
 				transcriptFields: [ "Full_Name__c" ],
 				displayToAgent: true
