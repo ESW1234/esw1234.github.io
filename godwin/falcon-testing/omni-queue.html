@@ -52,16 +52,16 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://sdb1.test1.pc-rnd.pc-aws.salesforce.com:7442',
-			'https://tiffanytso-17238fabbf3.secure.force.com',
+			'https://sdb1.test1.pc-rnd.pc-aws.salesforce.com',
+			'https://tiffanytso-1725887f765.test1.pc-rnd.force.com',
 			gslbBaseURL,
-			'00DAB0000002uY5',
+			'00DAB00000036Ch',
 			'Omni_QueueBased',
 			{
-				baseLiveAgentContentURL: 'https://c./content',
-				deploymentId: '572AB0000000eAM',
-				buttonId: '573AB0000000XaI',
-				baseLiveAgentURL: 'https://d./chat',
+				baseLiveAgentContentURL: 'https://c.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				deploymentId: '572AB0000000iic',
+				buttonId: '573AB0000000c6w',
+				baseLiveAgentURL: 'https://d.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f',
 				isOfflineSupportEnabled: true
 			}
@@ -70,7 +70,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://sdb1.test1.pc-rnd.pc-aws.salesforce.com:7442/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://sdb1.test1.pc-rnd.pc-aws.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
