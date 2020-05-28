@@ -10,7 +10,37 @@
 		outline: 1px solid #CA56BB;
 	}
 </style>
-
+	  ANCHOR WITH HREF / TARGET
+	  <a href="http://esw1234.github.io/tiffany/228/na45stmfa_chat.html">same page</a>
+	  <a href="http://esw1234.github.io/tiffany/228/na45stmfa_chat.html"target="_blank">same page new window</a>
+	  BUTTON WITH CLICK HANDLER
+	  <button onclick=openLink()>same page</button>
+	  <button onclick=openLinkNewWindow()>same page new window</button>
+ 
+	  ANCHOR WITH HREF / TARGET
+	  <a href="http://esw1234.github.io/tiffany/228/na45stmfa_chat2.html">same page</a>
+	  <a href="http://esw1234.github.io/tiffany/228/na45stmfa_chat2.html"target="_blank">same page new window</a>
+	  BUTTON WITH CLICK HANDLER
+	  <button onclick=openLink2()>same page</button>
+	  <button onclick=openLinkNewWindow2()>same page new window</button>
+		  
+	  <script type='text/javascript'>
+	  	var openLinkNewWindow = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na45stmfa_chat.html","_blank");
+	  	};
+	  
+		var openLink = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na45stmfa_chat.html","_self");
+	  	};
+		  
+		var openLinkNewWindow2 = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na45stmfa_chat2.html","_blank");
+	  	};
+	  
+		var openLink2 = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na45stmfa_chat2.html","_self");
+	  	};
+	  </script>
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
