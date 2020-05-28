@@ -8,22 +8,17 @@
 	<p align="center"><font color = "pink"><a href="desktopPage2.html">Link to default widget page 2</a></font></p>
   <br/>
   <br/>
-
+LA SKILLS
 <div id="button_goes_here">
 </div>
 <!------------------------------------------------ 5.0 SNIPPPET ----------------------------------------------------->	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -52,25 +47,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://sdb1.test1.pc-rnd.pc-aws.salesforce.com:7442',
-			'https://tiffanytso-17238fabbf3.secure.force.com',
+			'https://sdb1.test1.pc-rnd.pc-aws.salesforce.com',
+			'https://eswtiffany-1725887f765.test1.pc-rnd.force.com/esw',
 			gslbBaseURL,
-			'00DAB0000002uY5',
-			'LA_SkillsBased',
+			'00DAB00000036Ch',
+			'Falcon_ES01',
 			{
-				baseLiveAgentContentURL: 'https://c./content',
-				deploymentId: '572AB0000000eAL',
-				buttonId: '573AB0000000XaH',
-				baseLiveAgentURL: 'https://d./chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dee2AE_168df736d40',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'https://c.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				deploymentId: '572AB0000000iib',
+				buttonId: '573AB0000000c6v',
+				baseLiveAgentURL: 'https://d.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IAB0000000B9x2AE_17259a8bd8a',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://sdb1.test1.pc-rnd.pc-aws.salesforce.com:7442/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://sdb1.test1.pc-rnd.pc-aws.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
