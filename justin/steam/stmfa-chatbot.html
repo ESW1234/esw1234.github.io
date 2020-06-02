@@ -24,22 +24,6 @@
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #3072A4;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #3072A4;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
-	}
-</style>
-
 <!-- <script>
 	// Adidas
 	var interval = setInterval(
@@ -62,7 +46,16 @@
 		1
 	);
 </script> -->
-	
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #6B2121;
+		font-family: "Palatino Linotype", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #6B2121;
+	}
+</style>
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -124,12 +117,12 @@
 			'00DRM0000005cyu',
 			'justinChatbot',
 			{
-// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',	// standard
-				baseLiveAgentContentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/content',	// my domain
+ 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',	// standard
+//				baseLiveAgentContentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/content',	// my domain
 				deploymentId: '572RM0000004CDV',
 				buttonId: '573RM0000004GGf',
-// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',		// standard
-				baseLiveAgentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat',		// my domain
+ 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',		// standard
+//				baseLiveAgentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat',		// my domain
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013C2AQ_165c9e77147',
 				isOfflineSupportEnabled: false
 			}
