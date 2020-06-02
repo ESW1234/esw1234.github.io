@@ -19,7 +19,31 @@
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
+	  BUTTON WITH CLICK HANDLER TO WINDOW.OPEN<br>
+	  <button onclick=openLink()>same page</button><br>
+	  <button onclick=openLinkNewWindow()>same page new window</button><br>
+	  BUTTON WITH CLICK HANDLER TO WINDOW.OPEN<br>
+	  <button onclick=openLink2()>different page</button><br>
+	  <button onclick=openLinkNewWindow2()>different page new window</button><br>
+		  
+	  <script type='text/javascript'>
+	  	var openLinkNewWindow = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na44stmfc_chat.html","_blank");
+	  	};
+	  
+		var openLink = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na44stmfc_chat.html","_self");
+	  	};
+		  
+		var openLinkNewWindow2 = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na44stmfc_chat2.html","_blank");
+	  	};
+	  
+		var openLink2 = function() {
+			window.open("http://esw1234.github.io/tiffany/228/na44stmfc_chat2.html","_self");
+	  	};
+	  </script>
+	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #084471;
