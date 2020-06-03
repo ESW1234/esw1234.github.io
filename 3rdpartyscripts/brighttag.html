@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
-  <script src="https://cdn.optimizely.com/js/12345678.js"></script>
   <title>STMFB - Chatbot</title>
 </head>
 
@@ -13,6 +12,7 @@
 
 <h1>
 	STMFB - Chatbot
+	TAG.JS 
 </h1>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -189,6 +189,20 @@
 		initESW('https://snapins.my.stmfb.stm.salesforce.com');
 	}
 </script>
-
+     <!-- BrightTag -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var tagjs = document.createElement("script");
+        var s = document.getElementsByTagName("script")[0];
+        tagjs.text = "{'site':'8Gx4INC'}";
+        tagjs.async = true;
+        tagjs.src = "//s.btstatic.com/tag.js";
+        s.parentNode.insertBefore(tagjs, s);
+    });
+</script>
+<noscript>
+    <iframe src="//s.thebrighttag.com/iframe?c=8Gx4INC"></iframe>
+</noscript>
+<!--End Scripts-->
 </body>
 </html>
