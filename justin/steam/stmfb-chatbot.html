@@ -15,7 +15,6 @@
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
 	<style type='text/css'>
 		.embeddedServiceHelpButton .helpButton .uiButton {
 			background-color: #33A721;
@@ -29,25 +28,9 @@
 			src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
 			url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 		}
-
-	/* 	.embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
-			top: 8%;
-		    width: 42px;
-		    height: 42px;
-		    border-radius: 100%;
-		    left: 32px;
-		    z-index: 2;
-		    -webkit-box-shadow: 0 0 0 2px rgba(255,204,0,1);
-		    box-shadow: 0 0 0 2px rgba(255,204,0,1);
-		}
-
-		.embeddedServiceLiveAgentStateChatButtonMessage .embeddedServiceLiveAgentStateChatAvatar,
-		.embeddedServiceLiveAgentStateChatMenuMessage .embeddedServiceLiveAgentStateChatAvatar {
-			display: none;
-		} */
 	</style>
 
-	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 	<script type='text/javascript'>
 		var initESW = function(gslbBaseURL) {
 			// Avatars
@@ -187,8 +170,8 @@
 			};
 			document.body.appendChild(s);
 		} else {
-	// 		initESW('https://service.force.com');
-			initESW('https://snapins.my.stmfb.stm.salesforce.com');
+			initESW('https://service.force.com');
+// 			initESW('https://snapins.my.stmfb.stm.salesforce.com');
 		}
 	</script>
 
