@@ -7,6 +7,8 @@
 <body> 
 	<p align="center"><font color = "red"><a href="stmfb-chatbot.html">This page.</a></font></p>
 	<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot.html">Open this page in a new tab</a></font></p>
+	<p align="center"><font color = "red"><a href="stmfb-chatbot-2.html">Page 2.</a></font></p>
+	<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot-2.html">Page 2 in a new tab</a></font></p>
 
 	<h1>
 		STMFB - Chatbot
@@ -30,7 +32,7 @@
 		}
 	</style>
 
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- 	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 	<script type='text/javascript'>
 		var initESW = function(gslbBaseURL) {
 			// Avatars
@@ -70,7 +72,7 @@
 			*/
 
 			// Debug
-			embedded_svc.settings.devMode = true;
+// 			embedded_svc.settings.devMode = true;
 
 			// Extra prechat details/info.
 			/*
@@ -163,15 +165,15 @@
 
 		if (!window.embedded_svc) {
 			var s = document.createElement('script');
-	// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 			s.onload = function() {
 				initESW(null);
 			};
 			document.body.appendChild(s);
 		} else {
-			initESW('https://service.force.com');
-// 			initESW('https://snapins.my.stmfb.stm.salesforce.com');
+// 			initESW('https://service.force.com');
+			initESW('https://snapins.my.stmfb.stm.salesforce.com');
 		}
 	</script>
 
