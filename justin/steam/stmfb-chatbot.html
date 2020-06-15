@@ -72,7 +72,7 @@
 			*/
 
 			// Debug
-// 			embedded_svc.settings.devMode = true;
+			embedded_svc.settings.devMode = true;
 
 			// Extra prechat details/info.
 			/*
@@ -165,8 +165,8 @@
 
 		if (!window.embedded_svc) {
 			var s = document.createElement('script');
-			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 			s.onload = function() {
 				initESW(null);
 			};
