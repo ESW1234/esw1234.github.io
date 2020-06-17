@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>STMFA</title>
+</head>
+ 
+<body>
+	<button id="endChat" onclick="endChat()">END CHAT</button>
+	<button id="clearSession" onclick="clearSession()">CLEAR SESSION</button>
+	<button id="bootstrapChat" onclick="bootstrapChat()">BOOTSTRAP CHAT</button>
+	<button id="startChat" onclick="startChat()">START CHAT</button>
+	<button id="startChatWithPrepopulated" onclick="startChatPrepop()">START CHAT PREPOPULATED</button>
+	<button id="startChatWithExtraPrechat" onclick="startChatExtraPrechat()">START CHAT EXTRA PRECHAT</button>
+	<button id="startChatWithDirectToAgent" onclick="startChatD2A()">START CHAT DIRECT TO AGENT</button>
+	<button id="startChatWithDirectToButton" onclick="startChatD2B()">START CHAT DIRECT TO BUTTON</button>
+	<button id="startChatWithFallback" onclick="startChatWithFallback()">START CHAT WITH FALLBACK</button>
+	
+<p align="center"><font color = "red"><a href="stmfa.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmfa.html">This page in a new tab.</a></font></p>
+
+<h1>
+	STMFA
+</h1>
+<!-- SNIPPETS -->
+<!-- start Channel Menu snippet -->
+	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script> -->
+<script type='text/javascript'>
+		function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+					"entityName":"Contact",
+					"showOnCreate":true,
+					"linkToEntityName":"Case",
+					"linkToEntityField":"ContactId",
+					"saveToTranscript":"ContactId",
+					"entityFieldMaps": [{
+						"isExactMatch":true,
+						"fieldName":"FirstName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"First Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"LastName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Last Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"Email",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Email"
+					}]
+				}, {
+					"entityName":"Case",
+					"showOnCreate":true,
+					"saveToTranscript":"CaseId",
+					"entityFieldMaps": [{
+						"isExactMatch":false,
+						"fieldName":"Subject",
+						"doCreate":true,
+						"doFind":false,
+						"label":"issue"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Status",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Status"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Origin",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Origin"
+					}]
+				}],
+				extraPrechatFormDetails: [{
+					"label":"First Name",
+					"name":"FirstName",
+					"value":"Jane",
+					"displayToAgent":true
+				}, {
+					"label":"Last Name",
+					"value":"Doe",
+					"displayToAgent":true
+				}, {
+					"label":"Email",
+					"value":"jane.doe@salesforce.com",
+					"displayToAgent":true
+				}, {
+					"label":"issue",
+					"value":"Sales forecasts",
+					"displayToAgent":true
+				}]
+			});
+		}
+		  
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				buttonId: "573RM0000004CDd",
+ 				userId: "005RM000001c45x",
+				fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[4].value === "High") {
+						console.log("d2b invoked");
+
+						return "573xx0000004C93";
+					}},
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com",
+					Priority: "High"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				// "573xx0000004C94"
+				fallbackRouting: ["005RM000001c45x","573RM0000004CDd"]
+			});
+		}	  
+		function startChat() {
+			embedded_svc.liveAgentAPI.startChat();
+		}
+		function bootstrapChat() {
+			embedded_svc.bootstrapEmbeddedService();
+		}
+		function endChat() {
+			embedded_svc.liveAgentAPI.endChat();
+		}
+		  
+		function clearSession() {
+			embedded_svc.liveAgentAPI.clearSession();
+		}
+		function startChatPrepop() {
+			embedded_svc.liveAgentAPI.startChat({
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		embedded_svc.menu.settings.language = 'es_MX'; //For example, enter 'en' or 'en-US'
+		// embedded_svc.menu.settings.devMode = true;
+		embedded_svc.menu.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'lehantest'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://service.force.com');
+    initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+	}
+</script>
+<!-- end 5.0 snippet -->
+</body>
+</html>
