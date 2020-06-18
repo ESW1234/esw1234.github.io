@@ -9,6 +9,14 @@
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.menu.settings.devMode = true;
+		
+		embedded_svc.menu.configuration.Salesforce.customURLHandler = function(messagingPlatformKey) {
+			return "/trial";
+		};
+		
+		embedded_svc.menu.configuration.Google.customURLHandler = function(messagingPlatformKey) {
+			return "https://googlemaps.com";
+		};
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
