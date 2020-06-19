@@ -10,13 +10,12 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.menu.settings.devMode = true;
 		
-// 		embedded_svc.menu.Salesforce.customURLHandler = function(messagingPlatformKey) {
-// 			return "/trial";
-// 		};
-		
-// 		embedded_svc.menu.Google.customURLHandler = function(messagingPlatformKey) {
-// 			return "https://googlemaps.com";
-// 		};
+		embedded_svc.menu.Salesforce.settings.customURLHandler = function(messagingPlatformKey) {
+			return "/trial";
+		};	
+		embedded_svc.menu.Google.settings.customURLHandler = function(messagingPlatformKey) {
+			return "https://googlemaps.com";
+		};
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
