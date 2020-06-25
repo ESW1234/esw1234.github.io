@@ -53,12 +53,13 @@
 			// Returns a valid button ID.
 		//};
 
-		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
-			debugger;
-			if(document.getElementById("snapins_postChatForm")) document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
-		});
+// 		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+// 			debugger;
+// 			if(document.getElementById("snapins_postChatForm")) document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
+// 		});
 		
-		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+		embedded_svc.addEventHandler("onPostChatPushed", function(data) {
+			debugger;
 			if(document.getElementById("snapins_postChatForm")) document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
 		});
 
