@@ -53,6 +53,15 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
+
+		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+			document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
+		});
+		
+		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+			document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
+		});
+
 		
 		embedded_svc.settings.autoOpenPostChat = true;
 		embedded_svc.settings.__synchronous_decrement_tab = true;
