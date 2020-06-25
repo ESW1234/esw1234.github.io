@@ -54,11 +54,12 @@
 		//};
 
 		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
-			document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
+			debugger;
+			if(document.getElementById("snapins_postChatForm")) document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
 		});
 		
 		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
-			document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
+			if(document.getElementById("snapins_postChatForm")) document.getElementById("snapins_postChatForm").acceptCharset = "UTF-8";
 		});
 
 		
