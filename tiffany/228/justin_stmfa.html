@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>STMFA</title>
+</head>
+ 
+<body>
+	<button id="endChat" onclick="endChat()">END CHAT</button>
+	<button id="clearSession" onclick="clearSession()">CLEAR SESSION</button>
+	<button id="bootstrapChat" onclick="bootstrapChat()">BOOTSTRAP CHAT</button>
+	<button id="startChat" onclick="startChat()">START CHAT</button>
+	<button id="startChatWithPrepopulated" onclick="startChatPrepop()">START CHAT PREPOPULATED</button>
+	<button id="startChatWithExtraPrechat" onclick="startChatExtraPrechat()">START CHAT EXTRA PRECHAT</button>
+	<button id="startChatWithDirectToAgent" onclick="startChatD2A()">START CHAT DIRECT TO AGENT</button>
+	<button id="startChatWithDirectToButton" onclick="startChatD2B()">START CHAT DIRECT TO BUTTON</button>
+	<button id="startChatWithFallback" onclick="startChatWithFallback()">START CHAT WITH FALLBACK</button>
+	
+<p align="center"><font color = "red"><a href="stmfa.html">This page.</a></font></p>
+<p align="center"><font color = "red"><a target="_blank" href="stmfa.html">This page in a new tab.</a></font></p>
+
+<h1>
+	STMFA
+</h1>
+<!-- SNIPPETS -->
+<!-- start 5.0 snippet -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #769ADA;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #769ADA;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		/*
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+		*/
+	}
+</style>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript'>
+		function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+					"entityName":"Contact",
+					"showOnCreate":true,
+					"linkToEntityName":"Case",
+					"linkToEntityField":"ContactId",
+					"saveToTranscript":"ContactId",
+					"entityFieldMaps": [{
+						"isExactMatch":true,
+						"fieldName":"FirstName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"First Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"LastName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Last Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"Email",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Email"
+					}]
+				}, {
+					"entityName":"Case",
+					"showOnCreate":true,
+					"saveToTranscript":"CaseId",
+					"entityFieldMaps": [{
+						"isExactMatch":false,
+						"fieldName":"Subject",
+						"doCreate":true,
+						"doFind":false,
+						"label":"issue"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Status",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Status"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Origin",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Origin"
+					}]
+				}],
+				extraPrechatFormDetails: [{
+					"label":"First Name",
+					"name":"FirstName",
+					"value":"Jane",
+					"displayToAgent":true
+				}, {
+					"label":"Last Name",
+					"value":"Doe",
+					"displayToAgent":true
+				}, {
+					"label":"Email",
+					"value":"jane.doe@salesforce.com",
+					"displayToAgent":true
+				}, {
+					"label":"issue",
+					"value":"Sales forecasts",
+					"displayToAgent":true
+				}]
+			});
+		}
+		  
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				buttonId: "573RM0000004CDd",
+ 				userId: "005RM000001c45x",
+				fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[4].value === "High") {
+						console.log("d2b invoked");
+
+						return "573xx0000004C93";
+					}},
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com",
+					Priority: "High"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				// "573xx0000004C94"
+				fallbackRouting: ["005RM000001c45x","573RM0000004CDd"]
+			});
+		}	  
+		function startChat() {
+			embedded_svc.liveAgentAPI.startChat();
+		}
+		function bootstrapChat() {
+			embedded_svc.bootstrapEmbeddedService();
+		}
+		function endChat() {
+			embedded_svc.liveAgentAPI.endChat();
+		}
+		  
+		function clearSession() {
+			embedded_svc.liveAgentAPI.clearSession();
+		}
+		function startChatPrepop() {
+			embedded_svc.liveAgentAPI.startChat({
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+ 		//embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
+		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
+
+		embedded_svc.settings.loadingText = '...'; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		//embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		// Dev mode.
+		embedded_svc.settings.devMode = true;
+
+		// Before create sidebar handler.
+		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+
+		//embedded_svc.settings.externalScripts = ["log", "log2"];
+		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+		
+		// Avatars
+		embedded_svc.settings.avatarImgURL = "../../avatar.png";
+		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+		
+		embedded_svc.settings.prepopulatedPrechatFields = {
+			FirstName: "Jeff",
+			LastName: "Montalvo",
+			Subject: "Chronicles",
+			Email: "jeff@sevenlions.com"
+		}; //Sets the auto-population of pre-chat form fields
+
+		// BUTTONS
+		// 573RM0000004CDc - chat button, omni routing, chatbot
+
+		embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', // community
+// 			'https://snapins.stmfa.stm.force.com/test', // site
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CDV',
+				buttonId: '573RM0000004CDc',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+// 		initESW('https://service.force.com');
+		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+	}
+</script>
+<!-- end 5.0 snippet -->
+</body>
+</html>
