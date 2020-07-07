@@ -17,22 +17,12 @@
 <!-- 
   NA44 STMFA ORG: sachinh@esw.com / test1234
 -->
-<script type='text/javascript'>
-console.defaultError = console.error.bind(console);
-console.errors = [];
-console.error = function(){
-    // new & array data
-    console.errors.push(Array.from(arguments));
-    // default &  console.error()
-    console.defaultError.apply(console, arguments);
-}
-</script>
 // window.onerror = function myErrorHandler(err, url, line) { 
 // 	console.log("ERR: "+err);
 // 	console.log("URL: "+url);
 // 	console.log("LINE: "+line);
 // }
-</script>
+//</script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -75,6 +65,15 @@ console.error = function(){
 			}
 		);
 	};
+	
+console.defaultError = console.error.bind(console);
+console.errors = [];
+console.error = function(){
+    // new & array data
+    console.errors.push(Array.from(arguments));
+    // default &  console.error()
+    console.defaultError.apply(console, arguments);
+}
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
