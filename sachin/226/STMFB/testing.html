@@ -18,11 +18,13 @@
   NA44 STMFA ORG: sachinh@esw.com / test1234
 -->
 <script type='text/javascript'>
-console.stdlog = console.log.bind(console);
-console.logs = [];
-console.log = function(){
-    console.logs.push(Array.from(arguments));
-    console.stdlog.apply(console, arguments);
+console.defaultError = console.error.bind(console);
+console.errors = [];
+console.error = function(){
+    // default &  console.error()
+    console.defaultError.apply(console, arguments);
+    // new & array data
+    console.errors.push(Array.from(arguments));
 }
 </script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
