@@ -59,10 +59,16 @@
 			}
 		);
 	};
-	
-window.onerror = function (errorMsg, url, lineNumber) {
-    alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+
+console.stdlog = console.log.bind(console);
+console.logs = [];
+console.log = function(){
+    console.logs.push(Array.from(arguments));
+    console.stdlog.apply(console, arguments);
 }
+// window.onerror = function (errorMsg, url, lineNumber) {
+//     alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+// }
 // console.defaultError = console.error.bind(console);
 // console.errors = [];
 // console.error = function(){
