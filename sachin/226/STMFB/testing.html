@@ -21,11 +21,12 @@
 console.defaultError = console.error.bind(console);
 console.errors = [];
 console.error = function(){
-    // default &  console.error()
-    console.defaultError.apply(console, arguments);
     // new & array data
     console.errors.push(Array.from(arguments));
+    // default &  console.error()
+    console.defaultError.apply(console, arguments);
 }
+</script>
 // window.onerror = function myErrorHandler(err, url, line) { 
 // 	console.log("ERR: "+err);
 // 	console.log("URL: "+url);
