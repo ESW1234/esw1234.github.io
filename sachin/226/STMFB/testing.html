@@ -17,6 +17,14 @@
 <!-- 
   NA44 STMFA ORG: sachinh@esw.com / test1234
 -->
+<script type='text/javascript'>
+console.stdlog = console.log.bind(console);
+console.logs = [];
+console.log = function(){
+    console.logs.push(Array.from(arguments));
+    console.stdlog.apply(console, arguments);
+}
+</script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -60,12 +68,6 @@
 		);
 	};
 
-console.stdlog = console.log.bind(console);
-console.logs = [];
-console.log = function(){
-    console.logs.push(Array.from(arguments));
-    console.stdlog.apply(console, arguments);
-}
 // window.onerror = function (errorMsg, url, lineNumber) {
 //     alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
 // }
