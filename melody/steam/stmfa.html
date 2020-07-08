@@ -5,16 +5,11 @@
   <body>
     <style type='text/css'>
       .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #005290;
-        font-family: "Salesforce Sans", sans-serif;
+        background-color: #000000;
+        font-family: "Hello", sans-serif;
       }
       .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #005290;
-      }
-      @font-face {
-        font-family: 'Salesforce Sans';
-        src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-        url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+        outline: 1px solid #000000;
       }
     </style>
 
@@ -44,17 +39,17 @@
 
         embedded_svc.init(
           'https://melody.my.stmfa.stm.salesforce.com',
-          'https://tiffanytso-1702153bb98-1730202f29f.stmfa.stm.force.com',
+          'https://eswtiffany-1702153bb98-1730202f29f.stmfa.stm.force.com/esw',
           gslbBaseURL,
           '00DRM000000H9Lr',
-          'Omni_QueueBased',
+          'OmniBot_QueueBased',
           {
             baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
             deploymentId: '572RM0000004PtW',
-            buttonId: '573RM0000004QTz',
+            buttonId: '573RM0000004QU0',
             baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DeU2AU_168dad58d5f',
-            isOfflineSupportEnabled: true
+            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2',
+            isOfflineSupportEnabled: false
           }
         );
       };
