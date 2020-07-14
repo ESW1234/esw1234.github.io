@@ -187,7 +187,7 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		// Dev mode.
-		embedded_svc.settings.devMode = false;
+		embedded_svc.settings.devMode = true;
 
 		// Before create sidebar handler.
 		// embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
@@ -205,19 +205,16 @@
 		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
 			console.log("Agent availability: " + data.isAgentAvailable ? "online" : "offline");
 
-			embedded_svc.bootstrapEmbeddedService({
-				baseCoreURL: "http://tiffanytso-wsm.internal.salesforce.com:6109"
-			});
-		});
-
-		embedded_svc.addEventHandler("onPrechatLoaded", function(data) {
-			console.log("Prechat loaded!");
 			embedded_svc.liveAgentAPI.startChat({
 				FirstName: "Jeff",
 				LastName: "Montalvo",
 				Subject: "Chronicles",
 				Email: "jeff@sevenlions.com"
 			}); // Sets the auto-population of pre-chat form fields);
+		});
+
+		embedded_svc.addEventHandler("onPrechatLoaded", function(data) {
+			console.log("Prechat loaded!");
 		});
 
 		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
