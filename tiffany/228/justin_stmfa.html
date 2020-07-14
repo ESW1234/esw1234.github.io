@@ -172,7 +172,7 @@
 		}
 
 	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.displayHelpButton = false; //Or false
  		//embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
@@ -190,7 +190,7 @@
 		embedded_svc.settings.devMode = false;
 
 		// Before create sidebar handler.
-		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+		// embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
 
 		//embedded_svc.settings.externalScripts = ["log", "log2"];
 		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
@@ -199,15 +199,51 @@
 		embedded_svc.settings.avatarImgURL = "../../avatar.png";
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 		
-		embedded_svc.settings.prepopulatedPrechatFields = {
-			FirstName: "Jeff",
-			LastName: "Montalvo",
-			Subject: "Chronicles",
-			Email: "jeff@sevenlions.com"
-		}; //Sets the auto-population of pre-chat form fields
-
 		// BUTTONS
 		// 573RM0000004CDc - chat button, omni routing, chatbot
+		
+		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
+			console.log("Agent availability: " + data.isAgentAvailable ? "online" : "offline");
+
+			embedded_svc.bootstrapEmbeddedService({
+				baseCoreURL: "http://tiffanytso-wsm.internal.salesforce.com:6109"
+			});
+		});
+
+		embedded_svc.addEventHandler("onPrechatLoaded", function(data) {
+			console.log("Prechat loaded!");
+			embedded_svc.liveAgentAPI.startChat({
+				FirstName: "Jeff",
+				LastName: "Montalvo",
+				Subject: "Chronicles",
+				Email: "jeff@sevenlions.com"
+			}; //Sets the auto-population of pre-chat form fields);
+		});
+
+		embedded_svc.addEventHandler("onChatRequestSuccess", function(data) {
+			console.log("Chat requested! Session key: " + data.liveAgentSessionKey);
+		});
+
+		embedded_svc.addEventHandler("onChatEstablished", function(data) {
+			console.log("Chat established! Session key: " + data.liveAgentSessionKey);
+		});
+		
+		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+			console.log("Chat ended by chasitor! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
+		});
+		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+			console.log("Chat ended by agent! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
+		});
+		embedded_svc.addEventHandler("onConnectionError", function(data) {
+			console.log("Chat connection lost! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
+		});
+		embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
+			console.log("Chat timed out! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
+		});
 
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
