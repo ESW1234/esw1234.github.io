@@ -205,12 +205,14 @@
 		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
 			console.log("Agent availability: " + data.isAgentAvailable ? "online" : "offline");
 
-			embedded_svc.liveAgentAPI.startChat({
-				FirstName: "Jeff",
-				LastName: "Montalvo",
-				Subject: "Chronicles",
-				Email: "jeff@sevenlions.com"
-			}); // Sets the auto-population of pre-chat form fields);
+			if(data.isAgentAvailable) {
+				embedded_svc.liveAgentAPI.startChat({
+					FirstName: "Jeff",
+					LastName: "Montalvo",
+					Subject: "Chronicles",
+					Email: "jeff@sevenlions.com"
+				}); // Sets the auto-population of pre-chat form fields);
+			}
 		});
 
 		embedded_svc.addEventHandler("onPrechatLoaded", function(data) {
