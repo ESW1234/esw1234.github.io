@@ -67,15 +67,19 @@
 		
 		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
 			console.log("Chat ended by chasitor! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
 		});
 		embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
 			console.log("Chat ended by agent! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
 		});
 		embedded_svc.addEventHandler("onConnectionError", function(data) {
 			console.log("Chat connection lost! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
 		});
 		embedded_svc.addEventHandler("onIdleTimeoutOccurred", function(data) {
 			console.log("Chat timed out! Session key: " + data.liveAgentSessionKey);
+			embedded_svc.liveAgentAPI.clearSession();
 		});
 		
 		
