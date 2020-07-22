@@ -88,9 +88,10 @@
 
 	
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = false; //Or false
+		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
@@ -105,11 +106,11 @@
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://gs0.salesforce.com',
-			'https://eswgs0.secure.force.com/liveAgentSetupFlow',
+			'https://embeddedservicede.my.salesforce.com',
+			'https://embeddedservicede.secure.force.com/next',
 			gslbBaseURL,
-			'00DB0000000XvAr',
-			'Flows_Snap_in',
+			'00DB0000000K6Ez',
+			'Flows',
 			{
 				
 			}
@@ -118,7 +119,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://gs0.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
