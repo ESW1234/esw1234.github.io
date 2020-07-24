@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>FALCON-ORA Screen Flow 1</title>
+  <title>FALCON STAGING - ORA Screen Flow 1</title>
 </head>
 <body>
 <h1>SPOTIFY DOT COM</h1>
@@ -32,11 +32,11 @@
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://ora1.test1.pc-rnd.pc-aws.salesforce.com',
-			'https://eswtiffany-17251e9c867.test1.pc-rnd.force.com/esw',
+			'https://esw.stagecom.my.pc-rnd.salesforce.com',
+			'https://eswtiffany-17382e74678.stagecom.pc-rnd.force.com/subdomain',
 			gslbBaseURL,
-			'00DXY0000008cQ4',
-			'ESC02',
+			'00Dab0000008bQM',
+			'Flows',
 			{
 				
 			}
@@ -45,7 +45,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ora1.test1.pc-rnd.pc-aws.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://esw.stagecom.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
