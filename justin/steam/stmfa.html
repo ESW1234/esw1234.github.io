@@ -20,7 +20,7 @@
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<style type='text/css'>
+	<style type='text/css'>
 		.embeddedServiceHelpButton .helpButton .uiButton {
 			background-color: #47AB0D;
 			font-family: "Arial", sans-serif;
@@ -55,8 +55,17 @@
 			embedded_svc.settings.entryFeature = 'LiveAgent';
 			
 			embedded_svc.addEventHandler("onAvailability", (data) => {
+				var helpButton = document.querySelector(".embeddedServiceHelpButton");
+
 				console.log("Availability handler, id: " + data.id);
 				console.log("Availability handler, isAgentAvailable: " + data.isAgentAvailable);
+				
+				// Hide button on availability offline.
+				if(!data.isAgentAvailable) {
+					helpButton.style.visibility = "hidden";
+				} else {
+					helpButton.style.visibility = "visible";
+				}
 			});
 
 			embedded_svc.init(
