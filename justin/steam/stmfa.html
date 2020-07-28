@@ -53,6 +53,11 @@
 
 			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 			embedded_svc.settings.entryFeature = 'LiveAgent';
+			
+			embedded_svc.addEventHandler("onAvailability", (data) => {
+				console.log("Availability handler, id: " + data.id);
+				console.log("Availability handler, isAgentAvailable: " + data.isAgentAvailable);
+			});
 
 			embedded_svc.init(
 				'https://justinmacmillin.my.stmfa.stm.salesforce.com',
