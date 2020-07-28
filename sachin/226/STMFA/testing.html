@@ -43,23 +43,6 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-// 		embedded_svc.init(
-// 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
-// 			'https://snapins.stmfa.stm.force.com/sachin',
-// 			gslbBaseURL,
-// 			'00DRM0000005cyu',
-// 			'Sachin',
-// 			{
-// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-// 				deploymentId: '572RM0000004NnK',
-// 				buttonId: '573RM0000004ON1',
-// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
-// 				isOfflineSupportEnabled: true
-// 			}
-// 		);
-// 	};
-		
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
 			'https://snapins.stmfa.stm.force.com/sachin',
@@ -69,13 +52,30 @@
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
 				deploymentId: '572RM0000004NnK',
-				buttonId: '573RM0000004SUa',
+				buttonId: '573RM0000004ON1',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
 				isOfflineSupportEnabled: true
 			}
 		);
 	};
+		
+// 		embedded_svc.init(
+// 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+// 			'https://snapins.stmfa.stm.force.com/sachin',
+// 			gslbBaseURL,
+// 			'00DRM0000005cyu',
+// 			'Sachin',
+// 			{
+// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+// 				deploymentId: '572RM0000004NnK',
+// 				buttonId: '573RM0000004SUa',
+// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
+// 				isOfflineSupportEnabled: true
+// 			}
+// 		);
+// 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
