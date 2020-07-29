@@ -53,20 +53,6 @@
 
 			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 			embedded_svc.settings.entryFeature = 'LiveAgent';
-			
-			embedded_svc.addEventHandler("onAvailability", (data) => {
-				var helpButton = document.querySelector(".embeddedServiceHelpButton");
-
-				console.log("Availability handler, id: " + data.id);
-				console.log("Availability handler, isAgentAvailable: " + data.isAgentAvailable);
-				
-				// Hide button on availability offline.
-				if(!data.isAgentAvailable) {
-					helpButton.style.visibility = "hidden";
-				} else {
-					helpButton.style.visibility = "visible";
-				}
-			});
 
 			embedded_svc.init(
 				'https://justinmacmillin.my.stmfa.stm.salesforce.com',
