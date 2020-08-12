@@ -27,7 +27,7 @@
 
 <!-- SNIPPETS -->
 
-<script>
+<!-- <script>
 	// Adidas
 	var interval = setInterval(
 		function() {
@@ -48,7 +48,7 @@
 		},
 		1
 	);
-</script>
+</script> -->
 
 <!-- start 5.0 snippet -->
 <style type='text/css'>
@@ -94,34 +94,8 @@
 		// Sets chats to route to the first available user or button in the array
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 
-		// Adidas coloring messages based on payload.
-		embedded_svc.addEventHandler("onAgentMessage", function() {
-			// Use a setTimeout to make sure the message has already rendered.
-			setTimeout(
-				function() {
-					// For any new message that comes in, check if message needs special CSS applied.
-					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
-					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
-					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
-					if(lastMessageContent.innerText.includes("adidas")) {
-						lastMessageContent.style.background = "red";
-					}
-			   	},
-				1
-			);
-		});
-		
-		// sys admin		005xx0000000001
-		// agent 1		005xx000000000f
-		// agent 2		005xx000000000p
-		// agent 3		005RM000001c4uH
-
-		// sys admin button	573RM0000004CDc
-		// button agent 1 & 3	573RM0000004CDd
-		// button agent 2	573RM0000004DbL
-
 		//embedded_svc.settings.fallbackRouting = ["573RM0000004CDd", "573RM0000004DbL"]; // button w/ agent 1 & 3, button w/ agent 2
-		embedded_svc.settings.fallbackRouting = ["005xx000000000f_573RM0000004CDd"]; // agent 1 w/ fallback to button w/ agent 1 & 3
+		//embedded_svc.settings.fallbackRouting = ["005xx000000000f_573RM0000004CDd"]; // agent 1 w/ fallback to button w/ agent 1 & 3
 		//embedded_svc.settings.fallbackRouting = ["005xx000000000f", "005xx000000000p", "005RM000001c4uH"]; // agent 1, agent 2, agent 3
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
@@ -132,20 +106,20 @@
 		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 
 		embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com', 
-			'https://snapins-15ef4331aa1.stmfa.stm.force.com/napili', 
-			gslbBaseURL, 
-			'00DRM0000005cyu', 
-			'justin', 
-			{ 
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content', 
-				deploymentId: '572RM0000004CDV', 
-				buttonId: '573RM0000004CDc', 
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', 
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/erintest',
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CDV',
+				buttonId: '573RM0000004CDc',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2',
-				isOfflineSupportEnabled: true
+				isOfflineSupportEnabled: false
 			}
-		); 
+		);
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
