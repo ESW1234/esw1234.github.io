@@ -52,7 +52,7 @@ console.log(looseJsonParse(
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
-		embedded_svc.settings.devMode = true;
+		//embedded_svc.settings.devMode = true;
 
 // 		embedded_svc.init(
 // 			'http://sachinhanu-wsl1.internal.salesforce.com:6109',
@@ -71,17 +71,17 @@ console.log(looseJsonParse(
 // 		);
 		
 		embedded_svc.init(
-			'http://sachinhanum-ltm.internal.salesforce.com:6109',
-			'http://myfirstlocalsite-1735585b984.dev.localhost.soma.force.com:6109',
+			'http://esw.localhost.internal.salesforce.com:6109',
+			'http://sachinh.dev.localhost.soma.force.com:6109/sac',
 			gslbBaseURL,
-			'00Dxx0000006Gcx',
+			'00Dxx0000006GeZ',
 			'MyESWDeployment',
 			{
 				baseLiveAgentContentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_16ffd8940d7',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_173554d855e',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -90,7 +90,7 @@ console.log(looseJsonParse(
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
 // 		s.setAttribute('src', 'http://sachinhanu-wsl1.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'http://sachinhanum-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://sachinhanum-ltm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
