@@ -6,6 +6,35 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.menu.chat.settings.extraPrechatInfo = [{
+		  "entityFieldMaps": [{
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "LastName",
+		    "isExactMatch": true,
+		    "label": "Last Name"
+		  }, {
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "FirstName",
+		    "isExactMatch": true,
+		    "label": "First Name"
+		  }, {
+		    "doCreate": true,
+		    "doFind": true,
+		    "fieldName": "Email",
+		    "isExactMatch": true,
+		    "label": "Email"
+		  }],
+		  "entityName": "Contact",
+		  "saveToTranscript": "customContact__c"
+		}];
+		embedded_svc.menu.chat.settings.extraPrechatFormDetails = [{ 
+			"label":"CartValue",
+			"value": 200,
+			"transcriptFields":["CartValue__c"],
+			"displayToAgent":true
+		}]];
 
 		embedded_svc.menu.init(
 			'http://esw.localhost.internal.salesforce.com:6109',
