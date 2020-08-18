@@ -6,9 +6,9 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 			//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-			embedded_svc.menu.settings.displayChannelMenu = false;
+			//embedded_svc.menu.settings.displayChannelMenu = true;
 
-			embedded_svc.menu.snippetSetting = {
+			embedded_svc.menu.snippetSettings = {
 				Chat: {
 					settings: {
 						chatbotAvatarImgURL: "https://esw1234.github.io/avatar.png",
@@ -18,14 +18,14 @@
 						// avatarImgURL: ""
 						externalScripts: ["hello_js"],
 						externalStyles: ["hello_css"],
-						fallbackRouting: ["573RM0000004CYH"],
-						directToButtonRouting: function(prechatFormData) {
+						// fallbackRouting: ["573RM0000004CYH"],
+						/* directToButtonRouting: function(prechatFormData) {
 							if(prechatFormData[4].value === "High") {
 								console.log("d2b invoked");
 
 								return "573RM0000004CY4";
 							}
-						},
+						},*/
 						prepopulatedPrechatFields: {
 							FirstName: "Porter",
 							LastName: "Robinson",
