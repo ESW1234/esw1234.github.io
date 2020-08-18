@@ -19,7 +19,6 @@
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
 <!-- 	<style type='text/css'>
 		.embeddedServiceHelpButton .helpButton .uiButton {
 			background-color: #084471;
@@ -98,10 +97,12 @@
 	</script> -->
 		
 	<!-- 1.0 -->
+	<script type='text/javascript'>
+		document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	</script>
 	<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
 	<script type='text/javascript'>
 		var initESW = function(gslbBaseUrl) {
-			document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 			embedded_svc.settings.avatarImgURL = '';
 			embedded_svc.settings.prechatBackgroundImgURL = '';
 			embedded_svc.settings.waitingStateBackgroundImgURL = '';
