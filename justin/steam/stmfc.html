@@ -20,7 +20,7 @@
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
-	<style type='text/css'>
+<!-- 	<style type='text/css'>
 		.embeddedServiceHelpButton .helpButton .uiButton {
 			background-color: #084471;
 			font-family: "Salesforce Sans", sans-serif;
@@ -33,10 +33,10 @@
 			src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
 			url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 		}
-	</style>
+	</style> -->
 
 	<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-	<script type='text/javascript'>
+<!-- 	<script type='text/javascript'>
 		var initESW = function(gslbBaseURL) {
 			embedded_svc.settings.displayHelpButton = true; //Or false
 			embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -67,26 +67,26 @@
 			//embedded_svc.settings.devMode = true;
 
 			embedded_svc.init(
-			'https://na44.stmfc.stm.salesforce.com',
-			'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili',
-			gslbBaseURL,
-			'00DRM0000005lEo',
-			'justin',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CgP',
-				buttonId: '573RM0000004CgU',
-				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa',
-				isOfflineSupportEnabled: true
-			}
-		);
+				'https://justinmacmillin.my.stmfc.stm.salesforce.com',
+				'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili',
+				gslbBaseURL,
+				'00DRM0000005lEo',
+				'justin',
+				{
+					baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+					deploymentId: '572RM0000004CgP',
+					buttonId: '573RM0000004CgU',
+					baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa',
+					isOfflineSupportEnabled: true
+				}
+			);
 		};
 
 		if (!window.embedded_svc) {
 			var s = document.createElement('script');
-			s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-// 			s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.js');
+			s.setAttribute('src', 'https://justinmacmillin.my.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+// 			s.setAttribute('src', 'https://justinmacmillin.my.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.js');
 			s.onload = function() {
 				initESW(null);
 			};
@@ -95,7 +95,40 @@
 // 			initESW('https://service.force.com');
 			initESW('https://na44.stmfc.stm.salesforce.com');
 		}
+	</script> -->
+		
+	<!-- 1.0 -->
+	<script type='text/javascript' src='https://service.force.com/embeddedservice/1.0/esw.min.js'></script>
+	<script type='text/javascript'>
+		var initESW = function(gslbBaseUrl) {
+			embedded_svc.settings.avatarImgURL = '';
+			embedded_svc.settings.prechatBackgroundImgURL = '';
+			embedded_svc.settings.waitingStateBackgroundImgURL = '';
+			embedded_svc.settings.smallCompanyLogoImgURL = '';
+
+			embedded_svc.init(
+				'https://justinmacmillin.my.stmfc.stm.salesforce.com', 
+				'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat', 
+				'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content', 
+				'https://snapins-1629cc5b71b.stmfc.stm.force.com/napili',  
+				'572RM0000004CgP', 
+				'00DRM0000005lEo', 
+				'573RM0000004CgU', 
+				'1.0', 
+				gslbBaseUrl, 
+				'39.0', 
+				'justin', 
+				'EmbeddedServiceLiveAgent_Parent04IRM000000000u2AA_1629cd661fa'
+			); 
+		}; 
+		if (!window.embedded_svc) { 
+			var s = document.createElement('script'); 
+			s.setAttribute('src', 'https://justinmacmillin.my.stmfc.stm.salesforce.com/embeddedservice/1.0/esw.min.js'); 
+			s.onload = function() { initESW(null); }; 
+			document.body.appendChild(s); 
+		} else { initESW('https://service.force.com'); }
 	</script>
+	<!-- 1.0 -->
 
 	</body>
 </html>
