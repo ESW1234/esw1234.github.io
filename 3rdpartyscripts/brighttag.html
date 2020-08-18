@@ -180,14 +180,14 @@
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
 // 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 // 		initESW('https://service.force.com');
-		initESW('https://benco.my.stmfb.stm.salesforce.com');
+		initESW('https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw');
 	}
 </script>
      <!-- BrightTag -->
