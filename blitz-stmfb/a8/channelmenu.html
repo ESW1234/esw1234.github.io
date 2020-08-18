@@ -6,6 +6,42 @@
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+		
+			embedded_svc.menu.snippetSettingsFile.Chat = {
+				settings: {
+					chatbotAvatarImgURL: "https://esw1234.github.io/avatar.png",
+					smallCompanyLogoImgURL: "https://esw1234.github.io/automation/coffee-time-png_91570.png",
+					prechatBackgroundImgURL: "https://esw1234.github.io/automation/header_banner.jpg",
+					waitingStateBackgroundImgURL: "https://esw1234.github.io/automation/lineup_banner.png",
+					// avatarImgURL: ""
+					externalScripts: ["hello_js"],
+					externalStyles: ["hello_css"],
+					fallbackRouting: ["573RM0000004CYH"],
+					directToButtonRouting: function(prechatFormData) {
+						if(prechatFormData[4].value === "High") {
+							console.log("d2b invoked");
+
+							return "573RM0000004CY4";
+						}
+					},
+					prepopulatedPrechatFields: {
+						FirstName: "Porter",
+						LastName: "Robinson",
+						Subject: "Second Sky",
+						Email: "porter@nurture.com"
+					},
+					extraPrechatFormDetails: [{"label":"FirstName","value":"Seven","displayToAgent":true},
+					       {"label":"LastName","value":"Lions","displayToAgent":true},
+					       {"label":"Email","value":"jeff@djsven.com","displayToAgent":true},
+					       {"label":"issue","value":"Overriding your setup","displayToAgent":true}],
+					extraPrechatInfo: [{ 
+						"label":"CartValue",
+						"value": 200,
+						"transcriptFields":["CartValue__c"],
+						"displayToAgent":true
+					}]
+				}
+			};
 
 		embedded_svc.menu.init(
 			'https://stmfbna44esw.my.stmfb.stm.salesforce.com',
@@ -28,7 +64,7 @@
 		document.body.appendChild(s);
 	} else {
 		// initESW('https://service.force.com');
-    initESW('https://stmfbna44esw.my.stmfb.stm.salesforce.com');
+    		initESW('https://stmfbna44esw.my.stmfb.stm.salesforce.com');
 	}
 </script>
   </body>
