@@ -30,7 +30,7 @@ console.log(looseJsonParse(
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
 		
-		embedded_svc.settings.externalScripts = ["CustomEvents"];
+		//embedded_svc.settings.externalScripts = ["CustomEvents"];
 		
 		//embedded_svc.menu.devMode = true;
 
@@ -71,18 +71,18 @@ console.log(looseJsonParse(
 // 		);
 		
 		embedded_svc.init(
-			'http://esw.localhost.internal.salesforce.com:6109',
-			'http://sachin-173ff16ac5d.dev.localhost.soma.force.com:6109/sac',
+			'http://mycompany2.localhost.internal.salesforce.com:6109',
+			'http://sachinh-173ffabcedc.dev.localhost.soma.force.com:6109/sac',
 			gslbBaseURL,
-			'00Dxx0000006Hrr',
-			'ESWDeployment',
+			'00Dxx0000006GR9',
+			'MyESWDeployment',
 			{
 				baseLiveAgentContentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004Cdg',
-				buttonId: '573xx0000004Cdg',
+				deploymentId: '572xx0000004C92',
+				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EKWEA2_173ff374a43',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_173554d855e',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
