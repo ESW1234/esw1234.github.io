@@ -15,18 +15,17 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://jazminstmfa.my.stmfa.stm.salesforce.com',
-			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			'https://na44.stmfb.stm.salesforce.com',
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DRM0000007KOQ',
-			'ChannelMenuCodeSettings',
-			{}
+			'00DRM000000FLLy',
+			'githubPage'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://jazminstmfa.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
