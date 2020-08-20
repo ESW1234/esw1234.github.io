@@ -54,38 +54,41 @@ console.log(looseJsonParse(
 		
 		//embedded_svc.settings.devMode = true;
 
-// 		embedded_svc.init(
-// 			'http://sachinhanu-wsl1.internal.salesforce.com:6109',
-// 			'http://myfirstlocalsite-1703bbb3725.dev.localhost.soma.force.com:6109/',
-// 			gslbBaseURL,
-// 			'00Dxx0000006Gl1',
-// 			'MyESWDeployment',
-// 			{
-// 				baseLiveAgentContentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8095/content',
-// 				deploymentId: '04Ixx0000004CAeEAM',
-// 				buttonId: '573xx0000004C92',
-// 				baseLiveAgentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8096/chat',
-// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_16ffd8940d7',
-// 				isOfflineSupportEnabled: false
-// 			}
-// 		);
-		
+// 228-Patch
 		embedded_svc.init(
 			'http://esw.localhost.internal.salesforce.com:6109',
-			'http://sachinh.dev.localhost.soma.force.com:6109/sac',
+			'http://sachin.dev.localhost.soma.force.com:6109/sac',
 			gslbBaseURL,
-			'00Dxx0000006GeZ',
-			'MyESWDeployment',
+			'00Dxx0000006GKh',
+			'ESWDeployment',
 			{
 				baseLiveAgentContentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004C92',
 				baseLiveAgentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_173554d855e',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004DRgEAM_174093b5b52',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
+		
+// MAIN - code
+// 		embedded_svc.init(
+// 			'http://esw.localhost.internal.salesforce.com:6109',
+// 			'http://sachinh.dev.localhost.soma.force.com:6109/sac',
+// 			gslbBaseURL,
+// 			'00Dxx0000006GeZ',
+// 			'MyESWDeployment',
+// 			{
+// 				baseLiveAgentContentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8095/content',
+// 				deploymentId: '572xx0000004C92',
+// 				buttonId: '573xx0000004C92',
+// 				baseLiveAgentURL: 'http://sachinhanum-ltm.internal.salesforce.com:8096/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_173554d855e',
+// 				isOfflineSupportEnabled: true
+// 			}
+// 		);
+// 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
