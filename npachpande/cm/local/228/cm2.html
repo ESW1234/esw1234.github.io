@@ -15,24 +15,27 @@
 		embedded_svc.menu.settings.devMode = true;
 
 		embedded_svc.menu.init(
-			'http://npachpand-wsm.internal.salesforce.com:6109',
+			'http://eswchannelmenuchat.localhost.internal.salesforce.com:6109',
 			'http://npachpand-wsm.internal.salesforce.com:8096/chat',
 			gslbBaseURL,
 			'00Dxx0000006GoF',
-			'ESMS01'
+			'SettingsTest',
+			{
+				pageName: 'Settings1'
+			}
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'http://eswchannelmenuchat.localhost.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 		//initESW('https://service.force.com');
-		initESW('http://npachpand-wsm.internal.salesforce.com:6109/');
+		initESW('http://eswchannelmenuchat.localhost.internal.salesforce.com:6109/');
 	}
 </script>
 </body>
