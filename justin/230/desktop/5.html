@@ -31,16 +31,11 @@
 
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
-				background-color: #005290;
-				font-family: "Salesforce Sans", sans-serif;
+				background-color: #6BA5D1;
+				font-family: "Arial", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
-				outline: 1px solid #005290;
-			}
-			@font-face {
-				font-family: 'Salesforce Sans';
-				src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-				url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+				outline: 1px solid #6BA5D1;
 			}
 		</style>
 
@@ -82,33 +77,33 @@
 				embedded_svc.settings.__synchronous_decrement_tab = true;
 
 				embedded_svc.init(
-					'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-					'http://communities.dev.localhost.soma.force.com:6109/customerServiceMarch2020',
+					'http://embeddedservice2.localhost.internal.salesforce.com:6109',
+					'http://sites.dev.localhost.soma.force.com:6109/siteAug2020',
 					gslbBaseURL,
-					'00Dxx0000006Gz1',
+					'00Dxx0000006GbL',
 					'justin',
 					{
 						baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
 						deploymentId: '572xx0000004C92',
-						buttonId: '573xx0000004CAe',
+						buttonId: '573xx0000004C92',
 						baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
-						isOfflineSupportEnabled: true
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_174277b95dd',
+						isOfflineSupportEnabled: false
 					}
 				);
 			};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-		// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		// 		s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 		// 		initESW('https://service.force.com');
-				initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
+				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
 			}
 		</script>
 
