@@ -14,6 +14,7 @@
     <body>
         <div id="content">
             <h1>Sample Page</h1>
+            <div id="innerContent"></div>
         </div>
         <script src="https://communities.dev.localhost.soma.force.com:6101/blaa/lightning/lightning.out.js"></script>
         <script>
@@ -24,7 +25,7 @@
                     $Lightning.createComponent(
                         "c:buttonTest",
                         {},
-                        "lightningLocator",
+                        "innerContent",
                         function(){
                             console.log("callback for $Lightning.createComponent");
                         }
