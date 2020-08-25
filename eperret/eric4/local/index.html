@@ -22,14 +22,14 @@
                 function() {                  // Callback once framework and app loaded
                     debugger;
                     console.log("callback for $Lightning.use");
-                    /*$Lightning.createComponent(
-                        "c:buttonTest",
+                    $Lightning.createComponent(
+                        "c:name",
                         {},
                         "innerContent",
-                        function(){
+                        function(cmp){
                             console.log("callback for $Lightning.createComponent");
                         }
-                    );*/
+                    );
                 },
                 "https://communities.dev.localhost.soma.force.com:6101/blaa"
             );
