@@ -5,6 +5,8 @@
 		<title>Sean's ESW Github Test Page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
+
+	<body>
 		<p>
 			<a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a>
 		</p>
@@ -14,83 +16,90 @@
 		</script>
 
 		<p align="center"><font color ="Green">ESW Github Test (Basic Template)</font></p>	
-	
+		
+		<br/>
+		<br/>	
+		
 	<div id="button_goes_here"></div>
 
-		<!-- 5.0 snippet -->
-<style type='text/css'>
-	
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+				<!-- 5.0 snippet -->
+		<script type='text/javascript' src='https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content/g/js/51.0/deployment.js'></script>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		
-embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "ESW", LastName: "Testing", Email: "test@esw.com", Subject: "Verification"}
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init(
-			'https://na44.stmfa.stm.salesforce.com',
-			'https://ccq.stmfa.stm.force.com/ccq',
-			gslbBaseURL,
-			'00DRM000000IdaB',
-			'ESW',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004O07',
-				buttonId: '573RM0000004SZ2',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002sR2AQ_173c0560db2',
-				isOfflineSupportEnabled: false
-			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
+liveagent.init('https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', '572RM0000004O07', '00DRM000000IdaB');
 </script>
-		<!-- end 5.0 snippet -->
-		
+		<style type='text/css'>
+
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #005290;
+				font-family: "Arial", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #005290;
+			}
+		</style>
+
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Chat
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "ESW", LastName: "Testing", Email: "test@esw.com", Subject: "Verification"}
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				embedded_svc.init(
+					'https://na44.stmfa.stm.salesforce.com',
+					'https://ccq.stmfa.stm.force.com/ccq',
+					gslbBaseURL,
+					'00DRM000000IdaB',
+					'ESW',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004O07',
+						buttonId: '573RM0000004SZ2',
+						baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002sR2AQ_173c0560db2',
+						isOfflineSupportEnabled: false
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script>
+				<!-- end 5.0 snippet -->
+
 		
 
 Cupcake ipsum dolor. Sit amet tart toffee. Apple pie caramels chocolate bar lollipop chocolate bar jelly beans oat cake. Topping donut sweet wafer candy jujubes tiramisu. Muffin bear claw carrot cake toffee muffin. Muffin donut sweet roll apple pie. Pie marzipan caramels cookie macaroon gummies. Topping chocolate bar gingerbread. Marshmallow sesame snaps carrot cake sweet icing sugar plum dragée. Biscuit caramels tart. Cupcake carrot cake chocolate cake danish soufflé liquorice donut dessert. Jujubes cheesecake chocolate cake candy dessert macaroon danish toffee liquorice.
 
-Liquorice carrot cake toffee. Chocolate bar bear claw tootsie roll croissant. Dragée gummies lollipop topping fruitcake ice cream sweet roll sweet roll cupcake. Jelly beans cake caramels caramels carrot cake cookie caramels. Dessert jelly-o cake dragée jujubes icing. Chupa chups chupa chups brownie powder. Bonbon sugar plum powder marshmallow chocolate cake croissant. Pudding cheesecake liquorice sweet roll topping dragée candy. Jujubes marshmallow chocolate cake chocolate bar sweet roll muffin jelly-o marzipan biscuit. Marzipan gummi bears donut. Pudding jujubes chocolate liquorice chocolate lemon drops. Icing cheesecake oat cake sugar plum lemon drops. Cookie chocolate cake icing toffee bonbon chocolate bar jelly beans. Sweet cake soufflé chupa chups jelly-o cookie cake tart jelly.
+<br>Liquorice carrot cake toffee. Chocolate bar bear claw tootsie roll croissant. Dragée gummies lollipop topping fruitcake ice cream sweet roll sweet roll cupcake. Jelly beans cake caramels caramels carrot cake cookie caramels. Dessert jelly-o cake dragée jujubes icing. Chupa chups chupa chups brownie powder. Bonbon sugar plum powder marshmallow chocolate cake croissant. Pudding cheesecake liquorice sweet roll topping dragée candy. Jujubes marshmallow chocolate cake chocolate bar sweet roll muffin jelly-o marzipan biscuit. Marzipan gummi bears donut. Pudding jujubes chocolate liquorice chocolate lemon drops. Icing cheesecake oat cake sugar plum lemon drops. Cookie chocolate cake icing toffee bonbon chocolate bar jelly beans. Sweet cake soufflé chupa chups jelly-o cookie cake tart jelly.
 
-Candy canes pudding jelly-o croissant cheesecake. Sweet gummi bears sweet roll chocolate dragée soufflé. Pudding chocolate bar cupcake gingerbread. Jelly sweet roll chocolate cake cookie cake cookie biscuit chocolate cake. Croissant marshmallow fruitcake cookie liquorice bonbon danish. Cookie cake oat cake chocolate cake pudding lemon drops. Lollipop gummies gingerbread jelly beans. Caramels croissant pastry lemon drops chocolate cake ice cream. Dragée tart pie icing cotton candy chocolate bar sugar plum. Oat cake donut carrot cake bear claw tart topping cheesecake jelly carrot cake. Ice cream ice cream pastry ice cream powder lemon drops dessert halvah biscuit. Biscuit halvah chocolate tiramisu candy canes halvah lemon drops. Ice cream brownie soufflé.
+<br>Candy canes pudding jelly-o croissant cheesecake. Sweet gummi bears sweet roll chocolate dragée soufflé. Pudding chocolate bar cupcake gingerbread. Jelly sweet roll chocolate cake cookie cake cookie biscuit chocolate cake. Croissant marshmallow fruitcake cookie liquorice bonbon danish. Cookie cake oat cake chocolate cake pudding lemon drops. Lollipop gummies gingerbread jelly beans. Caramels croissant pastry lemon drops chocolate cake ice cream. Dragée tart pie icing cotton candy chocolate bar sugar plum. Oat cake donut carrot cake bear claw tart topping cheesecake jelly carrot cake. Ice cream ice cream pastry ice cream powder lemon drops dessert halvah biscuit. Biscuit halvah chocolate tiramisu candy canes halvah lemon drops. Ice cream brownie soufflé.
 
 </body>
 </html>
