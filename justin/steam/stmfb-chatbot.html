@@ -32,7 +32,7 @@
 			}
 		</style>
 
-<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				// Avatars
@@ -162,15 +162,15 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-	// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+// 				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-// 				initESW('https://service.force.com');
-				initESW('https://snapins.my.stmfb.stm.salesforce.com');
+				initESW('https://service.force.com');
+// 				initESW('https://snapins.my.stmfb.stm.salesforce.com');
 			}
 		</script>
 
