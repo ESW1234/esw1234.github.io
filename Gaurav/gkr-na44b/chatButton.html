@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<br><br>
-		<title>CUSTOM CHAT BUTTON</title>
+		<title>STANDARD CHAT BUTTON</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 
@@ -14,15 +14,15 @@
 		<script>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		</script>
-<br>
-		<h2 align="center"><font color ="green">CUSTOM CHAT BUTTON</font></h2>
+		<br>	
+		<h2 align="center"><font color ="green">STANDARD CHAT BUTTON</font></h2>
 
 		<p><font color = "red"><a target="_blank" href="index.html">CHANNEL MENU Default Page</a></font></p> 
 		<p><font color = "red"><a target="_blank" href="channelMenuPage2.html">CHANNEL MENU PAGE-2 (New Tab)</a></font></p> 
 		<p><font color = "red"><a href="noButton.html">PAGE WITHOUT SNIPPET</a></font></p>
 		<p><font color = "red"><a href="hiddenChannelMenu.html">PAGE WITH CHANNEL MENU HIDDEN</a></font></p> 
 		<br/> 
-		<p><font color = "red"><a target="_blank" href="chatButton.html">STANDARD CHAT BUTTON</a></font></p>
+		<p><font color = "red"><a href="customChat.html">CUSTOM CHAT BUTTON</a></font></p>
 		<p><font color = "red"><a target="_blank" href="chatButtonPage2.html">STANDARD CHAT BUTTON PAGE-2 (New Tab)</a></font></p>
 		<p><font color = "red"><a href="invitationButton.html">PAGE WITH INVITATION CHAT BUTTON</a></font></p> 
 
@@ -31,19 +31,24 @@
 		<div id="button_goes_here"></div>
 
 		<!-- 5.0 snippet -->
-		<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Comic Sans MS", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
+			<style type='text/css'>
+				.embeddedServiceHelpButton .helpButton .uiButton {
+					background-color: #005290;
+					font-family: "Salesforce Sans", sans-serif;
+				}
+				.embeddedServiceHelpButton .helpButton .uiButton:focus {
+					outline: 1px solid #005290;
+				}
+				@font-face {
+					font-family: 'Salesforce Sans';
+					src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+					url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+				}
+			</style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
+			<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+			<script type='text/javascript'>
+				var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
@@ -61,31 +66,31 @@
 				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-				embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "John", LastName: "Smith", Email: "js@gmail.com", Subject: "Laptop Charging Issues Custom Comp"}
+embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "John", LastName: "Smith", Email: "js@gmail.com", Subject: "Laptop Charging Issues"}
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://eswna44b.my.stmfb.stm.salesforce.com',
-			'https://kb.stmfb.stm.force.com/cs',
+			'https://gkr-na44b.my.stmfb.stm.salesforce.com',
+			'https://212.stmfb.stm.force.com/cs',
 			gslbBaseURL,
-			'00DRM000000FJAf',
-			'ESWCustomChat',
+			'00DRM0000005vcg',
+			'ESWDep1',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004L0H',
-				buttonId: '573RM0000004Lxm',
+				deploymentId: '572RM0000004Q6G',
+				buttonId: '573RM0000004R4r',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Rz2AI_16fcfbf996b',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000031h2AA_1742d82b22c',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswna44b.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://gkr-na44b.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -110,7 +115,7 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 	Portugal Stuns France to Win Euro 2016 Final
 Portuguese overcome loss of Cristiano Ronaldo to beat host nation 1-0 on Eder’s extra-time goal
 Jul 11, 2016•Fitbit Help
-
+<p>
 HELP
 Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
 But in those nervous closing stages of Sunday night’s game, perhaps for the first time in a decade, Portugal didn’t need Ronaldo, its brightest star. With a goal from nowhere in extra time, it defeated host nation France 1-0 to win its first major championship.
