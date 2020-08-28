@@ -1,18 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
-herr
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><script src="/static/111213/js/perf/stub.js" type="text/javascript"></script><script src="/jslibrary/1595625414228/sfdc/main.js" type="text/javascript"></script><script src="/jslibrary/jslabels/1598645698000/en_US.js" type="text/javascript"></script><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/zen-componentsCompatible.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/elements.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/common.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/CTI.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1598469072000/Theme3/gc/dStandard.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1598469072000/Theme3/00DRM000000I8ML/005RM000001aHjf/gc/dCustom0.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/extended.css" rel="stylesheet" type="text/css" /><link class="user" href="/sCSS/50.0/sprites/1591979308000/Theme3/default/gc/setup.css" rel="stylesheet" type="text/css" /><script>(function(UITheme) {
-    UITheme.getUITheme = function() { 
-        return UserContext.uiTheme;
-    };
-}(window.UITheme = window.UITheme || {}));</script></head><body>
-<a href="javascript://Chat" id="liveagent_button_online_573RM000000068x" onclick="liveagent.startChat('573RM000000068x')" style="display: none;">Online Chat Content</a><div id="liveagent_button_offline_573RM000000068x" style="display: none;"> Offline Chat Content </div><script type="text/javascript">
-if (!window._laq) { window._laq = []; }
-window._laq.push(function(){liveagent.showWhenOnline('573RM000000068x', document.getElementById('liveagent_button_online_573RM000000068x'));
-liveagent.showWhenOffline('573RM000000068x', document.getElementById('liveagent_button_offline_573RM000000068x'));
-});</script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-<script src="https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content/g/js/50.0/deployment.js" type="text/javascript"></script>
-<script type="text/javascript">
-liveagent.init('https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', '572RM00000001Jn', '00DRM000000I8ML');
-</script><script>if (this.SfdcApp && this.SfdcApp.projectOneNavigator) { SfdcApp.projectOneNavigator.sendTitleToParent('CustomVisualforcePage'); } </script></body></html>
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://testfest1.my.stmfb.stm.salesforce.com',
+			'https://ccq.stmfb.stm.force.com',
+			gslbBaseURL,
+			'00DRM000000I8ML',
+			'ESW_Aura',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM00000001Jn',
+				buttonId: '573RM000000068x',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dq92AE_174364c1ce2',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://testfest1.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+    </head>
+    <body>
+        <a id="liveagent_button_online_573RM000000068x" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('573RM000000068x')">
+        </a><div id="liveagent_button_offline_573RM000000068x" style="display: none;">
+        </div>
+        <script type="text/javascript">
+         if (!window._laq) 
+             window._laq = []; 
+        }
+           window._laq.push(function(){liveagent.showWhenOnline('573RM000000068x', document.getElementById('liveagent_button_online_573RM000000068x'));
+            liveagent.showWhenOffline('573RM000000068x', document.getElementById('liveagent_button_offline_573RM000000068x'));});
+        </script>
+
+    </body>
+</html>
