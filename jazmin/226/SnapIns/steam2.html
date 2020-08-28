@@ -4,17 +4,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-	<p align="center"><font color ="red">226 STEAM 2 Snap-In</font></p>
+	<p align="center"><font color ="red">Test Page for Investigation W-8022341</font></p>
   <br/>
   <br/>	
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #B4281E;
 		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #B4281E;
 	}
 	@font-face {
 		font-family: 'Salesforce Sans';
@@ -23,11 +23,11 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		// embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -48,17 +48,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://scccq.stmfb.stm.force.com/flowstestcommunity',
+			'https://liveagent-test--dev11.my.salesforce.com',
+			'https://dev11-live-agent-test.cs111.force.com/liveagentsite',
 			gslbBaseURL,
-			'00DRM0000006YqX',
-			'LATest',
+			'00D1e0000008l2w',
+			'Snap_in',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004GEB',
-				buttonId: '573RM0000004Fxm',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000p82AA_168ab34cabc',
+				baseLiveAgentContentURL: 'https://c.la2-c1cs-ukb.salesforceliveagent.com/content',
+				deploymentId: '5727F000000Thz9',
+				buttonId: '5737F000000TdV2',
+				baseLiveAgentURL: 'https://d.la2-c1cs-ukb.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I7F0000008OeBUAU_15fbefb5680',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -66,13 +66,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://liveagent-test--dev11.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('');
+		initESW('https://service.force.com');
 	}
 </script>
 
