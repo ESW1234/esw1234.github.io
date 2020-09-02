@@ -7,7 +7,87 @@
 		
 	</head>
 
+	<p><font color = "blue"><a target="_blank" href="seaneswchannel.html">CHANNEL MENU Default Page</a></font></p>
+	
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "ESW", LastName: "Tester", Email: "github@test.esw", Subject: "Github chat page"}
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://testfest1.my.stmfb.stm.salesforce.com',
+			'https://ccq.stmfb.stm.force.com',
+			gslbBaseURL,
+			'00DRM000000I8ML',
+			'ESW_Aura',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM00000001Jn',
+				buttonId: '573RM000000068x',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dq92AE_174364c1ce2',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://testfest1.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+	
+	<body>
+		<p>
+			<a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a>
+		</p>
+		
+		<script>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+		</script>
+
+		<p align="center"><font color ="Green">ESW Github Test (Basic Template)</font></p>	
+		
+		<br/>
+		<br/>	
+		
 	<div id="button_goes_here"></div>
 
 				<!-- 5.0 snippet -->
@@ -27,33 +107,6 @@ Cupcake ipsum dolor. Sit amet tart toffee. Apple pie caramels chocolate bar loll
 
 <br><br>Candy canes pudding jelly-o croissant cheesecake. Sweet gummi bears sweet roll chocolate dragée soufflé. Pudding chocolate bar cupcake gingerbread. Jelly sweet roll chocolate cake cookie cake cookie biscuit chocolate cake. Croissant marshmallow fruitcake cookie liquorice bonbon danish. Cookie cake oat cake chocolate cake pudding lemon drops. Lollipop gummies gingerbread jelly beans. Caramels croissant pastry lemon drops chocolate cake ice cream. Dragée tart pie icing cotton candy chocolate bar sugar plum. Oat cake donut carrot cake bear claw tart topping cheesecake jelly carrot cake. Ice cream ice cream pastry ice cream powder lemon drops dessert halvah biscuit. Biscuit halvah chocolate tiramisu candy canes halvah lemon drops. Ice cream brownie soufflé.
 
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		// Required if you want labels in a language that’s different from your user’s context.
-		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.menu.init(
-			'https://testfest1.my.stmfb.stm.salesforce.com',
-			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-			gslbBaseURL,
-			'00DRM000000I8ML',
-			'ESW_7_Items'
-		);
-	};
-
-	if (!window.embedded_svc || !window.embedded_svc.menu) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://testfest1.my.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script>
-	
 </body>
 </html>
 
