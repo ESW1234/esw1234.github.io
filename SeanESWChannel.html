@@ -19,6 +19,15 @@
 </style>
 	
 		<!-- CHANNEL MENU -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
@@ -43,6 +52,7 @@
 
 		embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "ESW", LastName: "Tester", Email: "github@test.esw", Subject: "Github chat page"}
 
+		
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
@@ -51,13 +61,13 @@
 			'https://ccq.stmfb.stm.force.com',
 			gslbBaseURL,
 			'00DRM000000I8ML',
-			'ESW_Aura',
+			'ESW_Agents',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000001Jn',
+				deploymentId: '572RM00000001Js',
 				buttonId: '573RM000000068x',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dq92AE_174364c1ce2',
+				eswLiveAgentDevName: 'ESW_Agents',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -74,24 +84,6 @@
 		initESW('https://service.force.com');
 	}
 </script>
-	
-	<body>
-		<p>
-			<a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a>
-		</p>
-		
-		<script>
-			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-		</script>
-
-		<p align="center"><font color ="Green">ESW Github Test (Basic Template)</font></p>	
-		
-		<p><font color = "blue"><a target="_blank" href="seanesw.html">CHAT PAGE Default Page</a></font></p>
-		
-		<br/>
-		<br/>	
-		
-	<div id="button_goes_here"></div>
 
 				<!-- 5.0 snippet -->
 
