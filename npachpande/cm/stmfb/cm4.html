@@ -7,7 +7,7 @@
 <body>
 <h1>STEAM-B Channel Menu</h1>
 <!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>-->
-<script type='text/javascript' src='https://test-service.force.com/embeddedservice/menu/fab.min.js'></script>
+<!--<script type='text/javascript' src='https://test-service.force.com/embeddedservice/menu/fab.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
@@ -20,10 +20,7 @@
 			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
 			'00DRM000000FANG',
-			'SettingsTest',
-			{
-				pageName: 'Settings1'
-			}
+			'SettingsTest'
 		);
 	};
 
@@ -36,8 +33,8 @@
 		document.body.appendChild(s);
 	} else {
 		//initESW('https://service.force.com');
-		//initESW('https://na44.stmfb.stm.salesforce.com');
-		initESW('https://test-service.force.com');
+		initESW('https://na44.stmfb.stm.salesforce.com');
+		//initESW('https://test-service.force.com');
 	}
 </script>
 </body>
