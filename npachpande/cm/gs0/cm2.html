@@ -1,1 +1,38 @@
+<html>
+<head>
+  <title>cm2.html</title>
+</head>
+<body>
+  <h1>Page With Code Settings</h1>
+  <!--<script type='text/javascript' src='https://test-service.force.com/embeddedservice/menu/fab.js'></script>-->
+  <script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+      // Required if you want labels in a language that’s different from your user’s context.
+      //embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
+      embedded_svc.menu.init(
+        'https://embeddedservicede.my.salesforce.com',
+        'https://d.gla3-phx.gus.salesforce.com/chat',
+        gslbBaseURL,
+        '00DB0000000K6Ez',
+        'X226UpgradeTestDeployment',
+        {
+          pageName: 'Settings1'
+        }
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/menu/fab.min.js');
+      s.onload = function() {
+        initESW(null);
+      };
+      document.body.appendChild(s);
+    } else {
+      //initESW('https://test-service.force.com');
+      initESW('https://embeddedservicede.my.salesforce.com');
+    }
+  </script>
+</body>
+</html>
