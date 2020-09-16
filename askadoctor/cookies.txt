@@ -1,0 +1,9 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.askadoctor.help	TRUE	/	FALSE	1999999999	__cfduid	dca740dd8dd6a00ef1501a579c55efdc71600128774
+www.askadoctor.help	TRUE	/	FALSE	1999999999	SameSite	Lax
+.askadoctor.help	TRUE	/	FALSE	1999999999	JAAnonymousGUID	6f04cf3a-5d12-4e25-f8d4-7492098f1dcd
+.askadoctor.help	TRUE	/	FALSE	1999999999	JAAnonymousVisitKey	bbbad242-c3f5-4503-ac68-9e99724e8be3
+.askadoctor.help	TRUE	/	FALSE	1999999999	JAAnonymousVisit	1600128774
+askadoctor.help	TRUE	/	FALSE	1999999999	re.v2.ja-help	{"3134":{"eid":3134,"vid":5580,"vn":"Original"},"3147":{"eid":3147,"vid":5602,"vn":"Original"},"3148":{"eid":3148,"vid":5604,"vn":"Original"}}
+
