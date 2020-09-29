@@ -1,99 +1,95 @@
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	<title>STMFA - Live Agent Routing</title>
-</head>
- 
-<body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<title>STMFA - Live Agent Routing</title>
+	</head>
 
-<p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
+	<body>
+		<p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
 
-<h1>
-	STMFA - Live Agent Routing
-</h1>
- 
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+		<h1>
+			STMFA - Live Agent Routing
+		</h1>
 
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
+<!-- 		<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton { background-color: #E10808; font-family: "Georgia", sans-serif; }
+			.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #E10808; }
 
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton { background-color: #E10808; font-family: "Georgia", sans-serif; }
-	.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #E10808; }
-	
-	.embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
-		top: 8%;
-	    width: 42px;
-	    height: 42px;
-	    border-radius: 100%;
-	    left: 32px;
-	    z-index: 2;
-	    -webkit-box-shadow: 0 0 0 2px rgba(255,204,0,1);
-	    box-shadow: 0 0 0 2px rgba(255,204,0,1);
-	}
-</style>
-
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-		// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-		//Returns a valid button ID.
-		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
-		// Sets chats to route to the first available user or button in the array
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-		
-		embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
-		//embedded_svc.settings.externalScripts = ["log", "log2"];
-		//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
-
-		// Avatars
-		// embedded_svc.settings.avatarImgURL = "../../avatar.png";
-		// embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-
-		// Debugging
-		embedded_svc.settings.devMode = true;
-		
-		embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
-			'https://snapins.stmfa.stm.force.com/test',
-			gslbBaseURL,
-			'00DRM0000005cyu',
-			'justinChoice',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004CDV',
-				buttonId: '573RM0000004HSH',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Ky2AI_166c5bd9d0b',
-				isOfflineSupportEnabled: false
+			.embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar {
+				top: 8%;
+			    width: 42px;
+			    height: 42px;
+			    border-radius: 100%;
+			    left: 32px;
+			    z-index: 2;
+			    -webkit-box-shadow: 0 0 0 2px rgba(255,204,0,1);
+			    box-shadow: 0 0 0 2px rgba(255,204,0,1);
 			}
-		);
-	};
-	if (!window.embedded_svc) { 
-		var s = document.createElement('script'); 
-// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
-		s.onload = function() { initESW(null); }; 
-		document.body.appendChild(s); 
-// 	} else { initESW('https://service.force.com'); }
-	} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-</script>
+		</style> -->
 
-</body>
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				embedded_svc.settings.defaultMinimizedText = 'chat 5.0'; //(Defaults to Chat with an Expert)
+				embedded_svc.settings.disabledMinimizedText = 'offline 5.0'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Live Agent
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+				// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+				//Returns a valid button ID.
+				//};
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
+				// Sets chats to route to the first available user or button in the array
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				embedded_svc.addEventHandler("beforeCreate", function(){ console.log ("button clicked");})
+				//embedded_svc.settings.externalScripts = ["log", "log2"];
+				//embedded_svc.settings.externalStyles = ["redHeader", "greenMessage"];
+
+				// Avatars
+				embedded_svc.settings.avatarImgURL = "../../avatar.png";
+				embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+
+				embedded_svc.init(
+					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+					'https://snapins.stmfa.stm.force.com/test',
+					gslbBaseURL,
+					'00DRM0000005cyu',
+					'justinChoice',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004CDV',
+						buttonId: '573RM0000004HSH',
+						baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000001Ky2AI_166c5bd9d0b',
+						isOfflineSupportEnabled: false
+					}
+				);
+			};
+			if (!window.embedded_svc) { 
+				var s = document.createElement('script'); 
+				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+// 				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+				s.onload = function() { initESW(null); }; 
+				document.body.appendChild(s); 
+			} else { 
+				initESW('https://service.force.com');
+// 				initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+			}
+		</script>
+
+	</body>
 </html>
