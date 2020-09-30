@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<!-- <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'"> -->
+</head>
+<body>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		//embeddedservice_bootstrap.settings.devMode = false;
+		embeddedservice_bootstrap.init(
+			'scrtURL',
+			'00Dxx0000006Gl1',
+			// 'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109',
+      'http://eswtiffany-1702153bb98.localhost.soma.force.com:6109/esw',
+			// 'http://mycompany2.localhost.internal.salesforce.com:6109',
+      'http://tiffanytso-wsm.internal.salesforce.com:6109',
+			'MyESWDeployment'
+// 			{
+// 				deploymentId: '572xx0000004C93',
+// 				buttonId: '573xx0000004C94',
+// 				baseLiveAgentURL: 'http://tiffanytso-wsm.internal.salesforce.com:8096/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004DiB2AU_169972825e2'
+// 			}
+		);
+	};
+
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+		//initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
