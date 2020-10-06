@@ -9,12 +9,22 @@
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 		<style>
+			html {
+				height: 100%;
+				width: 100%;
+				margin: 0;
+			}
+			body {
+				max-height: calc(100% - 16px);
+				height: 100%;
+				max-width: calc(100% - 16px);
+			}
 			#embeddedMessagingFrame {
 /* 				position: fixed; */
 				bottom: 100px;
 				right: 30px;
 				height: 500px;
-				width: 500px;
+				width: 100%;
 /* 				border: none; */
 				outline: none;
 				box-shadow: none;
