@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Async Desktop Main</title>
+	<body>
+		<h1>Async Desktop Main</h1>
+
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+		<style>
+			html {
+				height: 100%;
+				width: 100%;
+				margin: 0;
+			}
+			body {
+				max-height: calc(100% - 16px);
+				height: 100%;
+				max-width: calc(100% - 16px);
+			}
+			#embeddedMessagingFrame {
+/* 				position: fixed; */
+				height: 600px;
+				width: 100%;
+/* 				border: none; */
+				outline: none;
+				box-shadow: none;
+				background: transparent;
+			}
+		</style>
+		
+<!-- 		<script type="text/javascript" src="https://github.com/EventSource/eventsource/blob/master/example/eventsource-polyfill.js"></script> -->
+
+		<!-- Open question - this doesn't work through a site? -->
+		<iframe id="embeddedMessagingFrame"
+			class="embeddedMessagingFrame"
+      src="http://dev.lightning.localhost.soma.force.com:6109/embeddedMessaging/sidebarApp2.app">
+			<!-- src="http://communities.dev.localhost.soma.force.com:6109/serviceOct2020/embeddedService/inApp.app"> -->
+		</iframe>
+	</body>
+
+</html>
