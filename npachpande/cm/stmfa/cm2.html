@@ -12,7 +12,7 @@
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
 		
-		embedded_svc.menu.settings.devMode = true;
+		embedded_svc.menu.settings.devMode = false;
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
@@ -29,7 +29,7 @@
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.js');
+		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		//s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
