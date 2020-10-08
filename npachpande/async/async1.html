@@ -5,8 +5,9 @@
 <body>
 <h1>SPOTIFY DOT COM</h1>
   
+<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js'></script>
 <script type='text/javascript'>
-    var initESW = function(gslbBaseURL) {
+    var initESW = function() {
       embeddedservice_bootstrap.init(
         'http://npachpand-wsm.internal.salesforce.com:8096/chat/rest/',
         '00Dxx0000006Gl1',
@@ -20,12 +21,11 @@
       var s = document.createElement('script');
       s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
       s.onload = function() {
-        initESW(null);
+        initESW();
       };
       document.body.appendChild(s);
     } else {
-      //initESW('https://service.force.com');
-      initESW('http://npachpand-wsm.internal.salesforce.com:6109');
+      initESW();
     }
 </script>
 </body>
