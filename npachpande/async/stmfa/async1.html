@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Local async1.html</title>
+  <title>STMFA async1.html</title>
 </head>
 <body>
 <h1>SPOTIFY DOT COM</h1>
@@ -9,17 +9,17 @@
 <script type='text/javascript'>
     var initESW = function() {
       embeddedservice_bootstrap.init(
-        'http://npachpand-wsm.internal.salesforce.com:8096/chat/rest/',
-        '00Dxx0000006Gl1',
-        'http://eswmessagingchat.dev.localhost.soma.force.com:6109/chatcommunity',
-        'http://npachpand-wsm.internal.salesforce.com:6109',
-        'ChatDeployment'
+        'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+        '00DRM000000HvmX',
+        'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
+        'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+        'Chat'
       );
     };
 
     if (!window.embeddedservice_bootstrap) {
       var s = document.createElement('script');
-      s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+      s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
       s.onload = function() {
         initESW();
       };
