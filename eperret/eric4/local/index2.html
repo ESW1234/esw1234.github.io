@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lightning out</title>
+        <style>
+            background:#000;
+            #content {
+                padding: 1rem;
+                background: #fff;
+                display: inline-block
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Sample Page</h1>
+            <div id="innerContent"></div>
+        </div>
+        <script src="http://communities.dev.localhost.soma.force.com:6109/cs/lightning/lightning.out.js"></script>
+        <script>
+            $Lightning.use("c:lo",    // name of the Lightning app
+                function() {                  // Callback once framework and app loaded
+                    debugger;
+                },
+                "http://communities.dev.localhost.soma.force.com:6109/cs"
+            );
+        </script>
+    </body>
+</html>
