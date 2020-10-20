@@ -14,7 +14,6 @@
   var s = document.createElement('script');
   s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
   s.onload = function() {
-  var initESW = function() {
     embeddedservice_bootstrap.init(
       '00DRM000000HvmX',
       'Chat',
@@ -31,6 +30,7 @@
       }
     );
   };
+  document.body.appendChild(s);  
 </script>
   
   <div></div>
