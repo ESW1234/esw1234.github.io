@@ -12,7 +12,7 @@
 
 <script type='text/javascript'>
   var s = document.createElement('script');
-  s.setAttribute('src', 'http://benco.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+  s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
   s.onload = function() {
   var initESW = function() {
     embeddedservice_bootstrap.init(
@@ -22,10 +22,10 @@
       'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
       {
         embeddedServiceConfig: {
-          siteUrl: "http://chatsite.dev.localhost.soma.force.com:6109/site1",
+          siteUrl: 'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
           embeddedServiceBranding: {
-            height : "500",
-            width : "460"
+            height : '500',
+            width : '460'
           }
         }
       }
