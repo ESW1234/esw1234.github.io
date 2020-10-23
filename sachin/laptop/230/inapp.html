@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		//embeddedservice_bootstrap.settings.devMode = false;
+		embeddedservice_bootstrap.init(
+			'00Dxx0000006Gl1',
+			'MyESWDeployment',
+			'scrtURL',
+			//'http://justinmacmillin.lightning.stmfa.stm.force.com',
+			'http://esw.lightning.localhost.soma.force.com:6109',
+			{},
+			//'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity'
+			'http://myfirstdomain.dev.localhost.soma.force.com:6109/sachinh'
+		);
+	};
+
+	if (!window.embeddedservice_bootstrap) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://sachinhanu-wsl1.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+		//initESW('http://sachinhanu-wsl1.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
