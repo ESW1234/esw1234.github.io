@@ -15,7 +15,7 @@
 			'MyESWDeployment',
 			'scrtURL',
 			//'http://justinmacmillin.lightning.stmfa.stm.force.com',
-			'http://mycompany2.localhost.internal.salesforce.com:6109',
+			'http://esw2.localhost.internal.salesforce.com:6109',
 			{},
 			//'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity'
 			'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109'
@@ -24,14 +24,14 @@
 
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://sachinhanu-wsl1.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
-		//initESW('http://sachinhanu-wsl1.internal.salesforce.com:6109');
+		// initESW('https://service.force.com');
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
 </body>
