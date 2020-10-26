@@ -408,6 +408,8 @@
 
 				data.messages.forEach( (message) => {
 					if(message.type === "EmbeddedServiceConfig") {
+						embeddedservice_bootstrap.settings.embeddedServiceConfig = message.message;
+						
 						mergeSettings(message);
 						return resolve();
 					} else if(message.type === "SwitchServer"){
