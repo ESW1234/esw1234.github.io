@@ -14,7 +14,7 @@
 			'00DRM000000I3Br',
 			'MyESWDeployment',
 			'scrtURL',
-			'https://esw2.lightning.stmfa.stm.force.com',
+			'https://esw.lightning.localhost.soma.force.com:6109',
 			{},
 			'https://eswmessagingchat-175482fb00f-17553391f3c.stmfa.stm.force.com/inapp'
 		);
@@ -22,7 +22,8 @@
 
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://esw2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		// s.setAttribute('src', 'https://esw2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
 		s.onload = function() {
 			initESW(null);
 		};
