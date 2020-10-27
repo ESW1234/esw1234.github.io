@@ -14,13 +14,15 @@
 </div>
 <!------------------------------------------------ SNIPPPET START ----------------------------------------------------->	
 <script type='text/javascript'>
-	embeddedservice_bootstrap.init(
-      "00DRM000000GytV", // NA44 STMFA
-      "InvitationChat",
-      "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat",
-      "https://na44.stmfa.stm.salesforce.com",
-      {}
-   );
+	var initESW = function(gslbBaseURL) {
+	    embeddedservice_bootstrap.init(
+	       "00DRM000000GytV", // NA44 STMFA
+	       "InvitationChat",
+	       "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat",
+	       "https://na44.stmfa.stm.salesforce.com",
+	       {}
+	    );
+	}
 
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
