@@ -596,7 +596,7 @@
 		window.addEventListener("message", (e) => {
 			if(e && e.data && e.origin) {
 
-				if(e.origin === "null") {
+				if(e.origin !== "null") {
 				//if(e.origin === "null" || 
 				//		(embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl.indexOf(e.origin) === 0
 				//		 && isMessageFromSalesforceDomain(e.origin))) {
