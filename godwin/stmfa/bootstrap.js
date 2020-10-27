@@ -410,7 +410,7 @@
 					if(message.type === "EmbeddedServiceConfig") {
 						//embeddedservice_bootstrap.settings = message.message;
 						
-						mergeSettings(message);
+						mergeSettings(message.message);
 						return resolve();
 					} else if(message.type === "SwitchServer"){
 						outputToConsole("log", "Your org has been migrated on the Service Cloud Real Time servers.", true);
