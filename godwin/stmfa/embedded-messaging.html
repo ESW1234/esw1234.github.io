@@ -4,24 +4,35 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="blue">230 Embedded Messaging</font></p>
-  <a align="center" href="https://github.com/ESW1234/esw1234.github.io/edit/master/godwin/stmfa/embedded-messaging.html">Link to Github page</a>
-  <br/>
-  <br/>
+   <p align="center"><font color ="blue">230 Embedded Messaging</font></p>
+   <p><a id="editThisPageLink" target="_blank" align="center" style="color:blue">Edit this page</a></p>
+   <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+   <br/>
+   <br/>
 
 <div id="button_goes_here">
 </div>
 <!------------------------------------------------ SNIPPPET START ----------------------------------------------------->	
-<script type='text/javascript' src='bootstrap.js'>
-   window.embeddedservice_bootstrap.init(
+<script type='text/javascript'>
+	embeddedservice_bootstrap.init(
       "00DRM000000GytV", // NA44 STMFA
       "InvitationChat",
       "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat",
       "https://na44.stmfa.stm.salesforce.com",
       {}
    );
-</script>
 
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://na44.stmfa.stm.salesforce.com');
+	}
+</script>
 <!------------------------------------------------ SNIPPPET END ------------------------------------------------->
    
 </body>
