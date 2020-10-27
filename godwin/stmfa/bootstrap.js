@@ -408,7 +408,7 @@
 
 				data.messages.forEach( (message) => {
 					if(message.type === "EmbeddedServiceConfig") {
-						embeddedservice_bootstrap.settings = message.message;
+						//embeddedservice_bootstrap.settings = message.message;
 						
 						mergeSettings(message);
 						return resolve();
