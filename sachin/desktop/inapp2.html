@@ -12,30 +12,30 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		//embeddedservice_bootstrap.settings.devMode = false;
-		embeddedservice_bootstrap.init(
-			'00Dxx0000006Gl1',
-			'MyESWDeployment',
-			'scrtURL',
-			'http://justinmacmillin.lightning.stmfa.stm.force.com',
-			//'http://mycompany2.localhost.internal.salesforce.com:6109',
-			{},
-			//'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity'
-			'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109'
-		);
 // 		embeddedservice_bootstrap.init(
-// 			'00DRM0000005cyu',
-// 			'Sachin',
-// 			'https://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity',
+// 			'00Dxx0000006Gl1',
+// 			'MyESWDeployment',
+// 			'scrtURL',
 // 			'http://justinmacmillin.lightning.stmfa.stm.force.com',
-// 			{
-// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-// 				deploymentId: '572RM0000004NnK',
-// 				buttonId: '573RM0000004ON1',
-// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
-// 				isOfflineSupportEnabled: true
-// 			}
+// 			//'http://mycompany2.localhost.internal.salesforce.com:6109',
+// 			{},
+// 			//'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity'
+// 			'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109'
 // 		);
+		embeddedservice_bootstrap.init(
+			'00DRM0000005cyu',
+			'Sachin',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			'http://justinmacmillin.lightning.stmfa.stm.force.com',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004NnK',
+				buttonId: '573RM0000004ON1',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
+				isOfflineSupportEnabled: true
+			}
+		);
 	};
 
 	if (!window.embeddedservice_bootstrap) {
