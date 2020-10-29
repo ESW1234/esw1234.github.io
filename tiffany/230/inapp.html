@@ -12,10 +12,10 @@
 		//embeddedservice_bootstrap.settings.devMode = false;
 		// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
 		embeddedservice_bootstrap.init(
-			'00DS7000000oo0G', //org id
+			'00DRM000000MHdZ', //org id
 			'MyESWDeployment',
 			'scrtURL',
-			'https://eswinapptesting.lightning.stmfa.stm.force.com',
+			'https://eswinapptesting2.lightning.stmfa.stm.force.com',
 			{}
 		);
 	};
@@ -23,14 +23,14 @@
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
 		// s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-		s.setAttribute('src', 'https://eswinapptesting.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'https://eswinapptesting2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 		// initESW('https://service.force.com');
-		initESW('https://eswinapptesting.lightning.stmfa.stm.force.com');
+		initESW('https://eswinapptesting2.lightning.stmfa.stm.force.com');
 		// initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
