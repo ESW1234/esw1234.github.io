@@ -44,7 +44,7 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 		// Debug mode.
-		embedded_svc.settings.devMode = false;
+		//embedded_svc.settings.devMode = false;
 
 		embedded_svc.init(
 			'https://snapins.my.stmfb.stm.salesforce.com',
@@ -65,7 +65,7 @@
 	
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://snapins.lightning.stmfb.stm.force.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://snapins.lightning.stmfb.stm.force.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
