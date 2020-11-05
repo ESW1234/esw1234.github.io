@@ -25,17 +25,17 @@
 
 		// Chat server endpoint URLs.
 		embedded_svc.menu.init(
-			'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
-			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			'https://snapins.my.stmfb.stm.salesforce.com',
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DRM000000HvmX',
-			'Channel_Menu'
+			'00DRM0000005jYI',
+			'sachin'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://service.force.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
