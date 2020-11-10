@@ -20,9 +20,13 @@
 					'http://mycompany2.localhost.internal.salesforce.com:8096/chat',
 					//'http://justinmacmillin.lightning.stmfa.stm.force.com',
 					'http://mycompany2.localhost.internal.salesforce.com:6109',
-					{},
-					//'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity'
-					'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109'
+					{
+						embeddedServiceConfig: {
+// 							siteUrl: 'http://snapins-15ef4331aa1.stmfa.stm.force.com/sachincommunity',
+							siteUrl: 'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109',
+							embeddedServiceBranding: { height: '554px', width: '344px' }
+						}
+					}
 				);
 		// 		embeddedservice_bootstrap.init(
 		// 			'00Dxx0000006GR9',
