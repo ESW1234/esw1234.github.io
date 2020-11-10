@@ -75,8 +75,8 @@
 				embeddedservice_bootstrap.init(
 					'00Dxx0000006Gcx', //org id
 					'justin', //esw config dev name
-					'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', //scrt url
-					'http://jmacmillin-wsm3.internal.salesforce.com:6109', //core url
+					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
+					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
 					{
 						embeddedServiceConfig: {
 							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
@@ -92,13 +92,13 @@
 			if (!window.embeddedservice_inapp) {
 				var s = document.createElement('script');
 
-				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
+				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
 			}
 		</script>
 	</body>
