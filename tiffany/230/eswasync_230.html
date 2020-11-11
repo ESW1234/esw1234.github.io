@@ -16,7 +16,7 @@
 			'00DRM000000MM65', //org id
 			'Chat', //esw config dev name
 			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', //scrt url
-			'https://eswasync230.lightning.stmfa.stm.salesforce.com', //core url
+			'https://eswasync230.lightning.stmfa.stm.force.com', //core url
 			{
 				embeddedServiceConfig: {
 			  		siteUrl: 'https://eswmessagingchat-175482fb00f-175b917fe59.stmfa.stm.force.com/chatcommunity',
@@ -32,14 +32,14 @@
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
 		// s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-		s.setAttribute('src', 'https://eswasync230.lightning.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'https://eswasync230.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 		// initESW('https://service.force.com');
-		initESW('https://eswasync230.stmfa.stm.salesforce.com');
+		initESW('https://eswasync230.stmfa.stm.force.com');
 		// initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
 	}
 </script>
