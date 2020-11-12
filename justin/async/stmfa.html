@@ -1,56 +1,57 @@
 <html>
-  <head>
-    <title>In App - STMFA</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  </head>
-  <body>
-    <h1>In App - STMFA</h1>
+	<head>
+		<title>In App - STMFA</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	</head>
+	<body>
+		<h1>In App - STMFA</h1>
 
-    <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-	<style>
-		.embeddedMessagingFrame {
-			display: block;
-			background-color: black;
-		}
-	</style>
-	<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> --> 
-	<script type='text/javascript'>
-		var initESW = function(gslbBaseURL) {
-			// Embedded Messaging Platform Key
-// 			embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e'; // In App
-// 			embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457'; // InAppTest
-			embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b"; // JustinInApp
+		<!-- TODO: Remove style tag after container story is complete, W-8097925 https://gus.lightning.force.com/a07B0000008dKzUIAU -->
+		<style>
+			.embeddedMessagingFrame {
+				display: block;
+				background-color: black;
+			}
+		</style>
+		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> --> 
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				// Embedded Messaging Platform Key
+// 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e'; // In App
+// 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457'; // InAppTest
+				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b"; // JustinInApp
 
-			embeddedservice_bootstrap.init(
-				'00DRM000000MLcN', // OrgID
-				'Chat', // ESConfigDevName
-				'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', // SCRT1 URL
-				'https://asyncesw.lightning.stmfa.stm.force.com', // CORE URL 
-				{
-					embeddedServiceConfig: {
-						  siteUrl: 'https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com/chatcommunity', // PUBLIC COMMUNITY
-						  embeddedServiceBranding: {
-							height : '554',
-							width : '344'
+				embeddedservice_bootstrap.init(
+					'00DRM000000MLcN', // OrgID
+					'Chat', // ESConfigDevName
+					'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', // SCRT1 URL
+					'https://asyncesw.lightning.stmfa.stm.force.com', // CORE URL 
+					{
+						embeddedServiceConfig: {
+							  siteUrl: 'https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com/chatcommunity', // PUBLIC COMMUNITY
+							  embeddedServiceBranding: {
+								height : '554',
+								width : '344'
+							}
 						}
 					}
-				}
-			);
-		};
-
-		if (!window.embeddedservice_inapp) {
-			var s = document.createElement('script');
-			s.setAttribute('src', 'https://asyncesw.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
-			s.onload = function() {
-				initESW(null);
+				);
 			};
-			document.body.appendChild(s);
-		} else {
-			// initESW('https://service.force.com');
-			initESW('https://asyncesw.lightning.stmfa.stm.force.com');
-		}
-	</script>
+
+			if (!window.embeddedservice_inapp) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://asyncesw.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				// initESW('https://service.force.com');
+				initESW('https://asyncesw.lightning.stmfa.stm.force.com');
+			}
+		</script>
   </body>
 </html>
