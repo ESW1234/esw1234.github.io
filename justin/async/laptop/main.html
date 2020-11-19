@@ -9,82 +9,29 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<!-- 		<style>
-			html {
-				height: 100%;
-				width: 100%;
-				margin: 0;
-			}
-			body {
-				max-height: calc(100% - 16px);
-				height: 100%;
-				max-width: calc(100% - 16px);
-			}
-			#embeddedMessagingFrame {
-				height: 600px;
-				width: 100%;
-				outline: none;
-				box-shadow: none;
-				background: transparent;
-			}
-		</style> -->
-
-		<!-- Open question - this doesn't work through a site? -->
-<!-- 		<iframe id="embeddedMessagingFrame"
-			class="embeddedMessagingFrame"
-			src="http://communities.dev.localhost.soma.force.com:6109/serviceOct2020/embeddedService/inApp.app">
-		</iframe> -->
-<!-- 		<iframe id="embeddedMessagingFrame"
-			class="embeddedMessagingFrame"
-			src="http://communities.dev.localhost.soma.force.com:6109/serviceOct2020/embeddedService/embeddedService.app">
-		</iframe> -->
-		
-		
-		<!-- Using bootstrap.js -->
-<!-- 		<script type='text/javascript' src='http://jmacmillin-wsm3.internal.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js'></script>
-		<script type='text/javascript'>
-		    var initESW = function() {
-				embeddedservice_bootstrap.init(
-					'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat/rest/',
-					'00Dxx0000006Gcx', //todo
-					'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
-					'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-					'Chat' //todo
-				);
-		    };
-
-		    if (!window.embeddedservice_bootstrap) {
-				var s = document.createElement('script');
-
-				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW();
-				};
-				document.body.appendChild(s);
-		    } else {
-				initESW();
-		    }
-		</script> -->
-		
 		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
-		<!-- Local laptop. OrgId: "00Dxx0000006GgB" -->
+		<!-- Local desktop. OrgId: "", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
+				// Staging.
 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b';
-				embeddedservice_bootstrap.settings.devMode = false;
+				// Local.
+// 				embeddedservice_bootstrap.settings.platformKey = '';
+
+				embeddedservice_bootstrap.settings.devMode = true;
 
 				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
 				embeddedservice_bootstrap.init(
-					'00Dxx0000006GgB', // org id
-					'Chat', // esw config dev name
+					'', //org id
+					'justin', //esw config dev name
 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
 					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
 					{
 						embeddedServiceConfig: {
-							siteUrl: 'http://eswmessagingchat-175482fb00f-175d2595f07.dev.localhost.soma.force.com:6109/chatcommunity',
-							embeddedServiceBranding: { height: '554px', width: '344px' }
+							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
+							embeddedServiceBranding: { height: '554', width: '344' }
 						}
 					}
 				);
@@ -102,5 +49,4 @@
 			}
 		</script>
 	</body>
-
 </html>
