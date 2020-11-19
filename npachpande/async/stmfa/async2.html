@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>STMFA async1.html</title>
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+  var s = document.createElement('script');
+  s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
+  s.onload = function() {
+    embeddedservice_bootstrap.init(
+      '00DRM000000HvmX',
+      'Chat',
+      'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+      'https://na44.stmfa.stm.salesforce.com',
+      {
+        embeddedServiceConfig: {
+          siteUrl: 'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
+          embeddedServiceBranding: {
+            height : '554',
+            width : '344'
+          }
+        }
+      }
+    );
+  };
+  document.body.appendChild(s);  
+</script>
+  
+  <div></div>
+  
+</body>
+</html>
