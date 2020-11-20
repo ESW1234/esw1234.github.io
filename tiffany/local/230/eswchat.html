@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		//embeddedservice_bootstrap.settings.devMode = false;
+		embeddedservice_bootstrap.init(
+			'00Dxx0000006GSl', // 00Dxx0000006GKh // 00DRM000000I3Br
+			'MyESWDeployment',
+			'scrtURL',
+			'http://eswchat.lightning.localhost.soma.force.com:6109', // https://esw.lightning.localhost.soma.force.com:6109 // http://tiffanytso-wsm.internal.salesforce.com:6109
+			{},
+			'http://eswmessagingchat-175336844ef.dev.localhost.soma.force.com:6109/chatcommunity'
+		);
+	};
+
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://service.force.com');
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
