@@ -16,7 +16,15 @@
 			'MyESWDeployment',
 			'scrtURL',
 			'http://eswchat.lightning.localhost.soma.force.com:6109', // https://esw.lightning.localhost.soma.force.com:6109 // http://tiffanytso-wsm.internal.salesforce.com:6109
-			{},
+			{
+				embeddedServiceConfig: {
+			  		siteUrl: 'http://eswmessagingchat-175336844ef.dev.localhost.soma.force.com:6109/chatcommunity'',
+			  		embeddedServiceBranding: {
+						height : '554',
+			    			width : '344'
+					}
+				}
+			},
 			'http://eswmessagingchat-175336844ef.dev.localhost.soma.force.com:6109/chatcommunity'
 		);
 	};
