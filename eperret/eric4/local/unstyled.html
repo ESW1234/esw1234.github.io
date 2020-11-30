@@ -16,14 +16,14 @@
             <h1>Sample Page</h1>
             <div id="innerContent"></div>
         </div>
-        <script src="http://communities.dev.localhost.soma.force.com:6109/blaa/lightning/lightning.out.js"></script>
+        <script src="http://communities.lightning.localhost.soma.force.com:6109/lightning/lightning.out.js"></script>
         <script>
-            $Lightning.use("c:DatePickerLightningOut",    // name of the Lightning app
-                function() {                  // Callback once framework and app loaded
+            $Lightning.use("force:unstyled",    // name of the Lightning app
+                function() {                    // Callback once framework and app loaded
                     debugger;
                     console.log("callback for $Lightning.use");
                     $Lightning.createComponent(
-                        "c:name",
+                        "force:ericsLwc",
                         {},
                         "innerContent",
                         function(cmp){
@@ -31,8 +31,10 @@
                         }
                     );
                 },
-                "http://communities.dev.localhost.soma.force.com:6109/blaa"
+                "http://communities.lightning.localhost.soma.force.com:6109"
             );
         </script>
+        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+        <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
     </body>
 </html>
