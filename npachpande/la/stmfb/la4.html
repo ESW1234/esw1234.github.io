@@ -48,6 +48,17 @@
 				"label":"Email"
 			}],
 			"entityName":"Contact"
+		}, {	
+			"entityName": "Case",
+			"showOnCreate": true,
+			"entityFieldMaps": [{
+				"isExactMatch": true,
+				"fieldName": "First_Name__c",
+				"doCreate": true,
+				"doFind": true,
+				"label": "First Name",
+				"displayToAgent": true
+			}]
 		}];
 
 		embedded_svc.init(
