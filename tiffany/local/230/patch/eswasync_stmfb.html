@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457';
+		// embeddedservice_bootstrap.settings.devMode = false;
+		// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
+		embeddedservice_bootstrap.init(
+			'00DRM000000FlSh', //org id
+			'Chat', //esw config dev name
+			'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', //scrt url
+			'https://eswasync.lightning.stmfb.stm.force.com', //core url
+			{
+				embeddedServiceConfig: {
+			  		siteUrl: 'https://eswmessagingchat-175482fb00f-1761c0658bd.stmfb.stm.force.com/chatcommunity',
+			  		embeddedServiceBranding: {
+						height : '554',
+            width : '344'
+					}
+				}
+			}
+		);
+	};
+
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		// s.setAttribute('src', 'https://eswasync.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://service.force.com');
+		// initESW('https://eswasync.lightning.stmfb.stm.force.com');
+		initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
