@@ -10,6 +10,8 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		//embeddedservice_bootstrap.settings.devMode = false;
+		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457';
+		
 		embeddedservice_bootstrap.init(
 			'00Dxx0000006Gl1',
 			'MyESWDeployment',
@@ -20,11 +22,11 @@
 			  		siteUrl: 'http://eswmessagingchat-175482fb00f-1761bb5bb56.dev.localhost.soma.force.com:6109/chatcommunity',
 			  		embeddedServiceBranding: {
 						  height : '554',
-              width : '344'
+						 width : '344'
 					}
 				}
-			},
-			'http://eswmessagingchat-175482fb00f-1761bb5bb56.dev.localhost.soma.force.com:6109/chatcommunity'
+			}
+			// 'http://eswmessagingchat-175482fb00f-1761bb5bb56.dev.localhost.soma.force.com:6109/chatcommunity'
 		);
 	};
 
