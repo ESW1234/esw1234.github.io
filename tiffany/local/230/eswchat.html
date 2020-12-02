@@ -11,6 +11,8 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		//embeddedservice_bootstrap.settings.devMode = false;
+		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e';
+		
 		embeddedservice_bootstrap.init(
 			'00Dxx0000006GSl', // 00Dxx0000006GKh // 00DRM000000I3Br
 			'MyESWDeployment',
@@ -24,8 +26,8 @@
 			    			width : '344'
 					}
 				}
-			},
-			'http://eswmessagingchat-1759b1b498c.dev.localhost.soma.force.com:6109/chatcommunity'
+			}
+			// 'http://eswmessagingchat-1759b1b498c.dev.localhost.soma.force.com:6109/chatcommunity'
 		);
 	};
 
