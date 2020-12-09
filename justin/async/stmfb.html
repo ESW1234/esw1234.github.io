@@ -12,16 +12,16 @@
 		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> --> 
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
-				embeddedservice_bootstrap.settings.platformKey = 'c0fb80d8-2003-4f8c-b3e6-43c998da6f35'; // InApp
+				embeddedservice_bootstrap.settings.platformKey = '89bc63db-9d78-4d5f-892a-b8108a85fad7'; // JustinInApp
 
 				embeddedservice_bootstrap.init(
-					'00DRM0000005jYI', // OrgID
-					'justin', // ESConfigDevName
+					'00DRM000000FmHK', // OrgID
+					'JustinEmbeddedService', // ESConfigDevName
 					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', // SCRT1 URL
-					'https://snapins.lightning.stmfb.stm.force.com', // CORE URL 
+					'https://embeddedservice2.lightning.stmfb.stm.force.com', // CORE URL 
 					{
 						embeddedServiceConfig: {
-							  siteUrl: 'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218', // PUBLIC COMMUNITY
+							  siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity', // PUBLIC COMMUNITY
 // 							  embeddedServiceBranding: { height : '554', width : '344' }
 						}
 					}
@@ -30,15 +30,15 @@
 
 			if (!window.embeddedservice_inapp) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://snapins.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+				s.setAttribute('src', 'https://embeddedservice2.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 				// initESW('https://service.force.com');
-				initESW('https://snapins.lightning.stmfb.stm.force.com');
+				initESW('https://embeddedservice2.lightning.stmfb.stm.force.comm');
 			}
 		</script>
-  </body>
+	</body>
 </html>
