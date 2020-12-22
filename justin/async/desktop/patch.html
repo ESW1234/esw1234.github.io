@@ -15,44 +15,74 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
-		<!-- Local desktop. OrgId: "00Dxx0000006Gcx", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
+		<!-- STMFB messaging org. OrgId: "00DRM000000FmHK", PlatformKey: "89bc63db-9d78-4d5f-892a-b8108a85fad7", ESC: "JustinEmbeddedService" -->
+		<!-- Local desktop 230 patch. OrgId: "00Dxx0000006GKh", PlatformKey: "" -->
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				// STMFB.
-				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b';
-				// Local.
-// 				embeddedservice_bootstrap.settings.platformKey = 'ed365417-59e6-4f04-a2b5-253edf4997ab';
+				embeddedservice_bootstrap.settings.platformKey = "89bc63db-9d78-4d5f-892a-b8108a85fad7";
+				// Local 230 patch.
+// 				embeddedservice_bootstrap.settings.platformKey = "";
 
 				embeddedservice_bootstrap.settings.devMode = true;
-
-				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
+				
+				// STMFB
 				embeddedservice_bootstrap.init(
-					'00Dxx0000006Gcx', //org id
-					'justin', //esw config dev name
-					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
-					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
+					'00DRM000000FmHK', //org id
+					'JustinEmbeddedService', //esw config dev name
+					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', //scrt url
+					'https://embeddedservice2.my.stmfb.stm.salesforce.com', //core url
 					{
 						embeddedServiceConfig: {
-							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
+							siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity',
 // 							embeddedServiceBranding: { height: '554', width: '344' }
 						}
 					}
 				);
+
+				// Local
+				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
+// 				embeddedservice_bootstrap.init(
+// 					'00DRM000000FmHK', //org id
+// 					'justin', //esw config dev name
+// 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
+// 					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
+// 					{
+// 						embeddedServiceConfig: {
+// 							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
+// // 							embeddedServiceBranding: { height: '554', width: '344' }
+// 						}
+// 					}
+// 				);
 			};
+
+			// STMFB
 			if (!window.embeddedservice_inapp) {
 				var s = document.createElement('script');
 
-				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+				s.setAttribute('src', 'https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
 			}
+			
+			// Local
+// 			if (!window.embeddedservice_inapp) {
+// 				var s = document.createElement('script');
+
+// 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+// 				s.onload = function() {
+// 					initESW(null);
+// 				};
+// 				document.body.appendChild(s);
+// 			} else {
+// 				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+// 			}
 		</script>
 	</body>
 </html>
