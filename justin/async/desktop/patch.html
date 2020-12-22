@@ -33,10 +33,12 @@
 					'00DRM000000FmHK', //org id
 					'JustinEmbeddedService', //esw config dev name
 					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', //scrt url
-					'https://embeddedservice2.my.stmfb.stm.salesforce.com', //core url
+// 					'https://embeddedservice2.my.stmfb.stm.salesforce.com', // stmfb core url
+					'http://embeddedservice2.localhost.internal.salesforce.com:6109', // local core url
 					{
 						embeddedServiceConfig: {
-							siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity',
+// 							siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity', // stmfb
+							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020', // local
 // 							embeddedServiceBranding: { height: '554', width: '344' }
 						}
 					}
@@ -59,30 +61,30 @@
 			};
 
 			// STMFB
-			if (!window.embeddedservice_inapp) {
-				var s = document.createElement('script');
-
-				s.setAttribute('src', 'https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
-			}
-			
-			// Local
 // 			if (!window.embeddedservice_inapp) {
 // 				var s = document.createElement('script');
 
-// 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+// 				s.setAttribute('src', 'https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
 // 				s.onload = function() {
 // 					initESW(null);
 // 				};
 // 				document.body.appendChild(s);
 // 			} else {
-// 				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+// 				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
 // 			}
+			
+			// Local
+			if (!window.embeddedservice_inapp) {
+				var s = document.createElement('script');
+
+				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+			}
 		</script>
 	</body>
 </html>
