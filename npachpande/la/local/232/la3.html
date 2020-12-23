@@ -34,15 +34,24 @@
 
 		embedded_svc.settings.extraPrechatInfo = [{
 			"entityFieldMaps": [{
-				"doCreate":true,
+				"doCreate":false,
 				"doFind":true,
-				"fieldName":"MyField__c",
+				"fieldName":"FirstName",
 				"isExactMatch":true,
-				"label":"Last Name",
-				"displayToAgent": true
+				"label":"First Name"
 			}],
-			"entityName":"Contact",
-			"showOnCreate": true
+			"entityName":"Contact"
+			}, {	
+			"entityName": "Case",
+			"showOnCreate": true,
+			"entityFieldMaps": [{
+				"isExactMatch": true,
+				"fieldName": "First_Name__c",
+				"doCreate": true,
+				"doFind": true,
+				"label": "First Name",
+				"displayToAgent": true
+			}]
 		}];
 
 		embedded_svc.init(
