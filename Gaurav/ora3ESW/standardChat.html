@@ -48,57 +48,57 @@
     </style>
 
     <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-    <script type='text/javascript'>
-      var initESW = function(gslbBaseURL) {
-        embedded_svc.settings.displayHelpButton = true; //Or false
-        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-    
-        //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-        //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-    
-        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-    
-        // Settings for Chat
-        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-          // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-          // Returns a valid button ID.
-        //};
-        //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-        //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-    
-        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-        embedded_svc.settings.entryFeature = 'LiveAgent';
-    
-        embedded_svc.init(
-          'https://eswtestorg.test1.my.pc-rnd.salesforce.com',
-          'https://esw-ora3.test1.pc-rnd.force.com/cs',
-          gslbBaseURL,
-          '00DR00000008alV',
-          'ESWDeployment',
-          {
-            baseLiveAgentContentURL: 'https://c.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
-            deploymentId: '572R000000000IX',
-            buttonId: '573R000000000Ic',
-            baseLiveAgentURL: 'https://d.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR0000000000aMAA_17678e0fe75',
-            isOfflineSupportEnabled: true
-          }
-        );
-      };
-    
-      if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://eswtestorg.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-          initESW(null);
-        };
-        document.body.appendChild(s);
-      } else {
-        initESW('https://service.force.com');
-      }
-    </script>
+   <script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://eswtestorg2.test1.my.pc-rnd.salesforce.com',
+			'https://eswchat.test1.pc-rnd.force.com/cs',
+			gslbBaseURL,
+			'00DR00000008alp',
+			'ESWChat',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				deploymentId: '572R000000000Im',
+				buttonId: '573R000000000Ir',
+				baseLiveAgentURL: 'https://d.la1-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'ESWChat',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://eswtestorg2.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 		<!-- end 5.0 snippet -->
 
 Cristiano Ronaldo spent the biggest moment of his international career in the Portuguese dugout with a sore left knee. Injured nearly two hours earlier, there was nothing he could do in the Euro 2016 final except pace around like a manager wearing shorts.
