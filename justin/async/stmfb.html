@@ -19,7 +19,7 @@
 					'00DRM000000FmHK', // OrgID
 					'JustinEmbeddedService', // ESConfigDevName
 					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', // SCRT1 URL
-					'https://embeddedservice2.lightning.stmfb.stm.force.com', // CORE URL 
+					'https://embeddedservice2.my.stmfb.stm.salesforce.com', // CORE URL 
 					{
 						embeddedServiceConfig: {
 							  siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity', // PUBLIC COMMUNITY
@@ -31,14 +31,14 @@
 
 			if (!window.embeddedservice_inapp) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://embeddedservice2.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+				s.setAttribute('src', 'https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 				// initESW('https://service.force.com');
-				initESW('https://embeddedservice2.lightning.stmfb.stm.force.comm');
+				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
 			}
 		</script>
 	</body>
