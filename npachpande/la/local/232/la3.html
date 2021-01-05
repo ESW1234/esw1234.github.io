@@ -32,16 +32,7 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		embedded_svc.settings.extraPrechatInfo = [{
-			"entityFieldMaps": [{
-				"doCreate":false,
-				"doFind":true,
-				"fieldName":"FirstName",
-				"isExactMatch":true,
-				"label":"First Name"
-			}],
-			"entityName":"Contact"
-			}, {	
+		embedded_svc.settings.extraPrechatInfo = [{	
 			"entityName": "Case",
 			"showOnCreate": true,
 			"entityFieldMaps": [{
