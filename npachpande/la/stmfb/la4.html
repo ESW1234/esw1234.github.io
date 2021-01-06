@@ -27,7 +27,30 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
+		
+
 		embedded_svc.settings.extraPrechatInfo = [{	
+			"entityFieldMaps": [{	
+				"doCreate":false,	
+				"doFind":true,	
+				"fieldName":"LastName",	
+				"isExactMatch":true,	
+				"label":"Last Name"	
+			}, {	
+				"doCreate":false,	
+				"doFind":true,	
+				"fieldName":"FirstName",	
+				"isExactMatch":true,	
+				"label":"First Name"	
+			}, {	
+				"doCreate":false,	
+				"doFind":true,	
+				"fieldName":"Email",	
+				"isExactMatch":true,	
+				"label":"Email"	
+			}],	
+			"entityName":"Contact"	
+		}, {		
 			"entityName": "Case",
 			"showOnCreate": true,
 			"entityFieldMaps": [{
@@ -37,23 +60,7 @@
 				"doFind": true,
 				"label": "First Name",
 				"displayToAgent": true
-			},{
-
-                "entityName": "Contact",
-
-                "entityFieldMaps": [{
-
-                    "isExactMatch": true,
-
-                    "fieldName": "FirstName",
-
-                    "doCreate": false,
-
-                    "doFind": true,
-
-                    "label": "First Name"
-
-                }]
+			}]
 		}];
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
