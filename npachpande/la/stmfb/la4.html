@@ -29,7 +29,17 @@
 		
 		
 
-		embedded_svc.settings.extraPrechatInfo = [{	
+		embedded_svc.settings.extraPrechatInfo = [{		
+			"entityName": "Case",
+			"showOnCreate": true,
+			"entityFieldMaps": [{
+				"isExactMatch": true,
+				"fieldName": "First_Name__c",
+				"doCreate": true,
+				"doFind": true,
+				"label": "First Name",
+				"displayToAgent": true
+			},{	
 			"entityFieldMaps": [{	
 				"doCreate":false,	
 				"doFind":true,	
@@ -50,17 +60,7 @@
 				"label":"Email"	
 			}],	
 			"entityName":"Contact"	
-		}, {		
-			"entityName": "Case",
-			"showOnCreate": true,
-			"entityFieldMaps": [{
-				"isExactMatch": true,
-				"fieldName": "First_Name__c",
-				"doCreate": true,
-				"doFind": true,
-				"label": "First Name",
-				"displayToAgent": true
-			}]
+		}]
 		}];
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
