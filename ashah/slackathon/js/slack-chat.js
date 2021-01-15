@@ -48,7 +48,11 @@
             if(this._options.debug) console.log('This object :', this);
 
             window.slackChat._options = mainOptions = this._options;
-
+			if(document.getElementById("Category")){
+				document.getElementById("Category").onchange = function(){
+					$('#product_div').toggle('slow');
+				};
+			}
             //validate the params
             if(this._options.apiToken == '') methods.validationError('Parameter apiToken is required.');
             if(this._options.channelId == '' && !this._options.privateChannel) methods.validationError('Parameter channelId is required.');
@@ -93,7 +97,7 @@
 					// Close the chat window
 					$('.slack-chat-box').slideUp();
 					$('.slack-chat-box').removeClass('open');
-					//clear the interval
+					//clear the interval 
 					clearInterval(window.slackChat._options.queryIntElem);
 				} else {
 					// Open the prechat form
@@ -110,7 +114,8 @@
 					$('.contact-form-page').slideUp();
 					var customMessage = "*Attention* :boom: \n>First Name: " + document.getElementById("FirstName").value +
 					 "\n>Last Name: " + document.getElementById("LastName").value + "\n>Email: " + document.getElementById("email").value + 
-					 "\n>Category:" + document.getElementById("Category").value;
+					 "\n>Category:" + document.getElementById("Category").value+
+					 "\n>Subject:" + document.getElementById("Product").value;
 					window.slackChat._options.user = document.getElementById("FirstName").value + " " + document.getElementById("LastName").value;
 					methods.postMessageToSlack(window.slackChat, customMessage);
 
