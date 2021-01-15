@@ -10,7 +10,7 @@
 	var methods = {
 		init: function (options) {
 			this._defaults = {
-        apiToken: 'xoxb-1621441820694-1628864052707-c0uPiaoaESIipLnHsjuT5T2f',		//#Slack token
+        apiToken: localStorage.getItem('slackToken');,	//#Slack token
         channelId: 'C01KG0WT3A4',		//#Slack channel ID
         user: 'Visitor',			//name of the user
         userLink: '', 		//link to the user in the application - shown in #Slack
