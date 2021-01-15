@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+		<link href="/css/slack-chat.css" rel="stylesheet" />
+		<link href="/css/demo.css" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>SlackChat</title>
+		<meta name="description" content="Provide your website visitors with help and support from #Slack">
+	</head>
+	<body>
+		<div class="bg"></div>
+		<!-- PRECHAT Code-->
+		<div class="container">
+			<div class="row">
+			 <div class="wrapper">
+					<div class="contact-form-page">
+					<div class="form-head">
+					</div>
+					<h1>Hi! How can we help you today?</h1>
+					<form id="prechat" action="javascript:handlePrechatSubmit();">
+						<div class="form-group">
+							<label for="exampleInputText">First Name</label>
+							<input name="FirstName" id="FirstName" type="text" class="form-control"  required="required">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputText">Last Name</label>
+							<input name="LastName" id="LastName" type="text" class="form-control"  required="required">
+						</div>
+		
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email</label>
+							<input name="email" id="email" type="Email" class="form-control" id="email" required="required">
+						</div>
+						
+						<div class="form-group">
+							<label for="Reason">What brings you here today ?</label>
+							<select name="Category" id="Category">
+								<option value="Sales" selected="selected">Looking to learn more about our products ?</option>
+								<option value="Service">Need help with an existing product</option>
+							</select>
+						</div>
+
+						<button type="submit" class="submit-buttom"><div class="submit-buttom"><i class="fa fa-fw fa-chevron-right"></i></div></button>
+					</form>
+					</div>
+				</div>
+		
+		
+			</div>
+		</div>
+		<!-- End of PRECHAT Code-->
+
+		<div class="message-box" data-toggle="tooltip" title="Need help?">
+			<a href="javascript:void(0);" class="message-box-icon">
+				<i class="fa fa-fw fa-question-circle"></i>
+				<div class="badge badge-danger slack-message-count"></div>
+			</a>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+		<script type="text/javascript" src="/js/slack-chat.js"></script>
+		<script>
+			$(document).ready(function () {
+
+				$('.message-box > a').slackChat('destroy');
+				$('.message-box').hide();
+
+				$('[data-toggle=tooltip]').tooltip();
+
+					slackChatOptions = {
+						apiToken: $('#apiToken').val()
+						,channelId: $('#channelId').val()
+						,user: $('#user').val()
+						,userLink: 'http://www.google.com'
+						,userId: ''
+						,userImg: '/img/user-icon-small.jpg'
+						,defaultSysImg: '/img/agent.png'
+						,defaultSysUser: $('#sysUser').val()
+						,botUser: $('#botUser').val()
+						,elementToDisable: $('.message-box')
+						,disableIfAway: false
+						,webCache: true
+						,debug:false
+						,privateChannel: false
+						,badgeElement: '.slack-message-count'
+						,useUserDetails: false
+						,defaultInvitedUsers: []
+						
+					};
+
+					$('.message-box > a').slackChat(slackChatOptions);
+
+					$('.message-box').show();
+
+					return false;
+				//load from localStorage
+				for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+
+					if(localStorage.key(i) == 'scParams') {
+						var scParams = JSON.parse(localStorage.getItem( localStorage.key( i ) ));
+
+						if(scParams.apiToken) $('#apiToken').val(scParams.apiToken);
+						if(scParams.channelId) $('#channelId').val(scParams.channelId);
+						if(scParams.user) $('#user').val(scParams.user);
+						if(scParams.defaultSysUser) $('#sysUser').val(scParams.defaultSysUser);
+						if(scParams.botUser) $('#botUser').val(scParams.botUser);
+						if(scParams.serverApiGateway) $('#serverApiGateway').val(scParams.serverApiGateway);
+						if(scParams.defaultInvitedUsers) $('#defaultInvitedUsers').val(scParams.defaultInvitedUsers);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
