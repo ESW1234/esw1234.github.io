@@ -4,8 +4,8 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-		<link href="http://esw1234.github.io/ashah/slackathon/css/slack-chat.css" rel="stylesheet" />
-		<link href="http://esw1234.github.io/ashah/slackathon/css/demo.css" rel="stylesheet" />
+		<link href="/css/slack-chat.css" rel="stylesheet" />
+		<link href="/css/demo.css" rel="stylesheet" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<title>SlackChat</title>
@@ -37,13 +37,21 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="Reason">What brings you here today ?</label>
+							<label for="Reason">What brings you here ?</label>
 							<select name="Category" id="Category">
 								<option value="Sales" selected="selected">Looking to learn more about our products ?</option>
 								<option value="Service">Need help with an existing product</option>
 							</select>
 						</div>
 
+						<div class="form-group" id="product_div">
+							<label for="Product">Which product would you need help with ?</label>
+							<select name="Product" id="Product">
+								<option value="Bike" selected="selected">Bike</option>
+								<option value="Tread">Tread</option>
+								<option value="App">App</option>
+							</select>
+						</div>
 						<button type="submit" class="submit-buttom"><div class="submit-buttom"><i class="fa fa-fw fa-chevron-right"></i></div></button>
 					</form>
 					</div>
@@ -53,7 +61,6 @@
 			</div>
 		</div>
 		<!-- End of PRECHAT Code-->
-
 		<div class="message-box" data-toggle="tooltip" title="Need help?">
 			<a href="javascript:void(0);" class="message-box-icon">
 				<i class="fa fa-fw fa-question-circle"></i>
@@ -63,7 +70,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-		<script type="text/javascript" src="http://esw1234.github.io/ashah/slackathon/js/slack-chat.js"></script>
+		<script type="text/javascript" src="/js/slack-chat.js"></script>
 		<script>
 			$(document).ready(function () {
 
@@ -78,8 +85,8 @@
 						,user: $('#user').val()
 						,userLink: 'http://www.google.com'
 						,userId: ''
-						,userImg: 'http://esw1234.github.io/ashah/slackathon/img/user-icon-small.jpg'
-						,defaultSysImg: 'http://esw1234.github.io/ashah/slackathon/img/agent.png'
+						,userImg: '/img/user-icon-small.jpg'
+						,defaultSysImg: '/img/agent.png'
 						,defaultSysUser: $('#sysUser').val()
 						,botUser: $('#botUser').val()
 						,elementToDisable: $('.message-box')
