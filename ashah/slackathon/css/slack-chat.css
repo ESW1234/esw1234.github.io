@@ -282,7 +282,7 @@ body, html {
   
   .bg {
 	/* The image used */
-	background-image: url("/img/peloton.png");
+	background-image: url("http://esw1234.github.io/ashah/slackathon/img/peloton.png");
   
 	/* Full height */
 	height: 100%; 
