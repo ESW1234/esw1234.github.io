@@ -207,10 +207,10 @@
 
 .show-profile{
 	background: #fff;
-	height: 50%;
+	height: 60%;
 	display: block;
 	width: 25%;
-	top:270px;
+	top:210px;
 	bottom: 0;
 	right: 0;
 	position: absolute;
@@ -282,7 +282,7 @@ body, html {
   
   .bg {
 	/* The image used */
-	background-image: url("http://esw1234.github.io/ashah/slackathon/img/peloton.png");
+	background-image: url("/img/peloton.png");
   
 	/* Full height */
 	height: 100%; 
@@ -296,4 +296,11 @@ body, html {
   #Category{
 	width:370px;   
 	height:35px
+   }
+   #Product{
+	width:370px;   
+	height:35px;
+   }
+   #product_div{
+	   display:none;
    }
