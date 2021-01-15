@@ -37,7 +37,7 @@
 				serverApiGateway: "/server/php/server.php",
 				useUserDetails: false,
 				defaultInvitedUsers: [],
-				defaultUserImg: '/img/user-icon-small.jpg',
+				defaultUserImg: 'http://esw1234.github.io/ashah/slackathon/img/user-icon-small.jpg',
 	   	};
 
 			this._options = $.extend(true, {}, this._defaults, options);
