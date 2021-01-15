@@ -10,7 +10,7 @@
 	var methods = {
 		init: function (options) {
 			this._defaults = {
-        apiToken: localStorage.getItem('slackToken');,	//#Slack token
+        apiToken: '',		//#Slack token
         channelId: 'C01KG0WT3A4',		//#Slack channel ID
         user: 'Visitor',			//name of the user
         userLink: '', 		//link to the user in the application - shown in #Slack
@@ -44,7 +44,7 @@
 
 			this._options.queryIntElem = null;
             this._options.latest = null;
-
+		   	this._options.apiToken = localStorage.getItem('apiToken');
             if(this._options.debug) console.log('This object :', this);
 
             window.slackChat._options = mainOptions = this._options;
