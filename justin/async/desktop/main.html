@@ -16,6 +16,7 @@
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
+		<!-- STMFA. OrgId: "" PlatformKey: "" -->
 		<!-- Local desktop. OrgId: "00Dxx0000006Gcx", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
@@ -32,7 +33,7 @@
 				embeddedservice_bootstrap.init(
 					'00Dxx0000006Gcx', //org id
 					'justin', //esw config dev name
-					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
+					'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat', //scrt url
 					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
 					{
 						embeddedServiceConfig: {
@@ -45,12 +46,14 @@
 			if (!window.embeddedservice_inapp) {
 				var s = document.createElement('script');
 
+// 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.min.js');
 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
+// 				initESW('https://service.force.com');
 				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
 			}
 		</script>
