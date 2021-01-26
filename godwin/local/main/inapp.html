@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:00913adf-02a3-42b0-a6a0-6cbb8b9ea38c';
+		embeddedservice_bootstrap.settings.devMode = true;
+		embeddedservice_bootstrap.init(
+			'00Dxx0000006GeZ', //org id
+			'Chat', //esw config dev name
+			'http://yatlaw-wsm3.internal.salesforce.com:8096/chat', //scrt url
+			'http://yatlaw-wsm3.internal.salesforce.com:6109', //core url
+			{
+				embeddedServiceConfig: {
+			  		siteUrl: 'https://eswmessagingchat-175482fb00f-17571f39388.stmfa.stm.force.com/chatcommunity',
+			  		embeddedServiceBranding: {
+						height : '554',
+			    			width : '344'
+					}
+				}
+			}
+		);
+	};
+
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'http://yatlaw-wsm3.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		// s.setAttribute('src', 'https://eswinapptesting2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://eswinapptesting2.lightning.stmfa.stm.force.com');
+		initESW('http://yatlaw-wsm3.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
