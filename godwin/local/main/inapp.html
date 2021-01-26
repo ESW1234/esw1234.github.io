@@ -8,10 +8,11 @@
 
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
-		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:2f4299b3-e2c1-42b5-a2ec-78b6570799be'; // STMFA GODWIN
+		embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:2f4299b3-e2c1-42b5-a2ec-78b6570799be'; // STMFA
 		embeddedservice_bootstrap.settings.devMode = true;
 		embeddedservice_bootstrap.init(
-			'00Dxx0000006GeZ', //org id
+			//'00Dxx0000006GeZ', // LOCAL
+			'00DRM000000MijF', // STMFA 
 			'Chat', //esw config dev name
 			'http://yatlaw-wsm3.internal.salesforce.com:8096/chat', //scrt url
 			'http://yatlaw-wsm3.internal.salesforce.com:6109', //core url
