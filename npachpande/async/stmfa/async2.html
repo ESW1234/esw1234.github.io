@@ -16,11 +16,11 @@
   s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
   s.onload = function() {
     embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e'; //Messaging platform key
-    //embeddedservice_bootstrap.settings.devMode = true;
+    embeddedservice_bootstrap.settings.devMode = true;
     embeddedservice_bootstrap.init(
       '00DRM000000HvmX', //orgId
       'Messaging', //eswConfigDevName
-      'https://d.la2-stmfa1-0-prd.stmfa.stm.com/chat', //scrtUrl
+      'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat/rest', //scrtUrl
       'https://na44.stmfa.stm.salesforce.com', //baseCoreURL 
       { //eswConfig
         embeddedServiceConfig: {
