@@ -20,28 +20,25 @@
 				// Required if you want labels in a language that’s different from your user’s context.
 				//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-				embedded_svc.menu.settings.devMode = true;
-
 				embedded_svc.menu.init(
-					'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+					'http://embeddedservice2.localhost.internal.salesforce.com:6109',
 					'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
 					gslbBaseURL,
-					'00Dxx0000006Gpr',
-					'justinMenu'
+					'00Dxx0000006Gcx',
+					'channelMenu'
 				);
 			};
 
 			if (!window.embedded_svc || !window.embedded_svc.menu) {
 				var s = document.createElement('script');
-// 				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
-				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/menu/fab.js');
+				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 // 				initESW('https://service.force.com');
-				initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
+				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
 			}
 		</script>
 	</body>
