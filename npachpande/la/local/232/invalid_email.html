@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Local LA4.html </title>
+<title>Local invalid_email.html </title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
@@ -33,21 +33,8 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 		embedded_svc.settings.extraPrechatFormDetails = [{
-		    "label":"First Name",
-		    "name":"FirstName",
-		    "value":"Jane",
-		    "displayToAgent":true
-		}, {
-		    "label":"Last Name",
-		    "value":"Doe",
-		    "displayToAgent":true
-		}, {
 		    "label":"Email",
 		    "value":"jane.doe@salesforce",
-		    "displayToAgent":true
-		}, {
-		    "label":"issue",
-		    "value":"Sales forecasts",
 		    "displayToAgent":true
 		}]; 
 
@@ -59,34 +46,11 @@
 		    "saveToTranscript":"ContactId",
 		    "entityFieldMaps": [{
 			"isExactMatch":true,
-			"fieldName":"FirstName",
-			"doCreate":true,
-			"doFind":true,
-			"label":"First Name"
-		    }, {
-			"isExactMatch":true,
-			"fieldName":"LastName",
-			"doCreate":true,
-			"doFind":true,
-			"label":"Last Name"
-		    }, {
-			"isExactMatch":true,
 			"fieldName":"Email",
 			"doCreate":true,
 			"doFind":true,
 			"label":"Email"
 		    }]
-		}, {
-		    "entityName":"Case",
-		    "showOnCreate":true,
-		    "saveToTranscript":"CaseId",
-		    "entityFieldMaps": [{
-			"isExactMatch":false,
-			"fieldName":"Subject",
-			"doCreate":true,
-			"doFind":false,
-			"label":"issue"
-		      }]
 		}];
 
 		embedded_svc.init(
