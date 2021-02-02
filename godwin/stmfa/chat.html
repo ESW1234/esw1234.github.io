@@ -27,7 +27,7 @@
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.devMode = true;
-		
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
@@ -39,7 +39,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "Godwin", LastName: "Law", Email: "jmacmillin@salesforce.com", Subject: "Help me", Company: "Salesforce"}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -57,7 +57,7 @@
 				deploymentId: '572RM0000004WnT',
 				buttonId: '573RM0000004XPl',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000033P2AQ_1772b54b10a',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000033e2AA_17760264277',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -65,7 +65,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://stmfagodwin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://stmfagodwin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
