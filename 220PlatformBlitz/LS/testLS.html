@@ -48,8 +48,8 @@ var initESW = function(gslbBaseURL) {
 	//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 	//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 	// Settings for Field Service
-	embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbvlFxx3myFiuNcMEvgNxvU9X9JH1Ar8WxKqUy5oQc9Y8Uv479PV7Fg.Y5NsLCRk.Cs.dl17';
-	embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/jp/stmfa/220-014/callback.html';
+	embedded_svc.settings.loginClientId = '3MVG9qKMKuRGRcbvVd51VY47deZQ.9p62.iMXXwhSAOu_tyR5VxJciLYRKODy2.2P7sIIjFqtYteMmXQ04ZN4';
+	embedded_svc.settings.loginRedirectURL = 'https://esw1234.github.io/220PlatformBlitz/LS/callback.html';
 	embedded_svc.settings.loginTargetQuerySelector = '#salesforce-login';
 	embedded_svc.settings.fieldServiceStartLabel = 'Schedule Appointment';
 	embedded_svc.settings.enabledFeatures = ['FieldService'];
@@ -57,10 +57,10 @@ var initESW = function(gslbBaseURL) {
   embedded_svc.settings.useCustomAuthentication = false;
 	embedded_svc.init(
 			'https://na44.stmfa.stm.salesforce.com',
-			'https://fsc-snapin-1685de937a7.stmfa.stm.force.com/jp1',
+			'https://eswlsdomain.stmfa.stm.force.com/subdomain',
 			gslbBaseURL,
-			'00DRM0000007GcT',
-			'FSC_Snapin',
+			'00DRM000000Gflb',
+			'LS',
 		  { }
 	);
 };
