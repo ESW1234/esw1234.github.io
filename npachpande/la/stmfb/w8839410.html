@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>W-8839410 Chat </title>
+  <title>W-8839410 Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
@@ -29,16 +29,18 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-    embedded_svc.settings.extraPrechatInfo = [{
-      "entityFieldMaps": [{
-        "doCreate":true,
-        "doFind":false,
-        "fieldName":"Description",
-        "isExactMatch":true,
-        "label":"Question"
-      }],
-      "entityName":"Case"
-    }];
+		// Map Case.Question field to Case.Description; this overrides setting value for Question field and assigns the user
+		// typed value to Description.
+		embedded_svc.settings.extraPrechatInfo = [{
+			"entityFieldMaps": [{
+				"doCreate":true,
+				"doFind":false,
+				"fieldName":"Description",
+				"isExactMatch":false,
+				"label":"Question"
+			}],
+			"entityName":"Case"
+		}];
 
 		embedded_svc.init(
 			'https://na44.stmfb.stm.salesforce.com',
