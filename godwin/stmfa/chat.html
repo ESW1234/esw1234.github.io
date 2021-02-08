@@ -47,7 +47,7 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://stmfagodwin.my.stmfa.stm.salesforce.com',
+			'https://godwin.my.stmfa.stm.salesforce.com',
 			'https://godwinlaw.stmfa.stm.force.com/endpoint',
 			gslbBaseURL,
 			'00DRM000000MijF',
@@ -65,7 +65,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://stmfagodwin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://godwin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
