@@ -31,20 +31,20 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-		/*
+
 		// Map Case.Question field to Case.Description; this overrides setting value for Question field and assigns the user
 		// typed value to Description.
 		embedded_svc.settings.extraPrechatInfo = [{
 			"entityFieldMaps": [{
 				"doCreate":true,
 				"doFind":false,
-				"fieldName":"Description",
+				"fieldName":"Subject",
 				"isExactMatch":false,
 				"label":"Question"
 			}],
 			"entityName":"Case"
 		}];
-		*/
+
 
 		embedded_svc.init(
 			'http://eswmessagingchat.localhost.internal.salesforce.com:6109',
