@@ -20,21 +20,19 @@
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				// Justin STMFA.
-// 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
+				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
 				// Justin STMFB.
-				embeddedservice_bootstrap.settings.platformKey = "89bc63db-9d78-4d5f-892a-b8108a85fad7";
+// 				embeddedservice_bootstrap.settings.platformKey = "89bc63db-9d78-4d5f-892a-b8108a85fad7";
 				
 				// STMFB staging.
-				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfb.scrt.sfdc.sh";
+// 				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfb.scrt.sfdc.sh";
 
 				embeddedservice_bootstrap.settings.devMode = true;
 
 				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
 				embeddedservice_bootstrap.init(
-// 					'00DRM000000MLcN', // stmfa org id
-					'00DRM000000FmHK', // stmfb
-// 					'Chat', //esw config dev name
-					'JustinEmbeddedService',
+					'00DRM000000MLcN', // stmfa org id
+					'Chat', //esw config dev name
 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
 					'http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109', //core url
 					{
