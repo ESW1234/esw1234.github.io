@@ -14,12 +14,18 @@
 		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
 		<!-- STMFA. OrgId: "00DRM000000MLcN" ESWC: "Chat" PlatformKey: "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b" -->
 		<!-- Local desktop. OrgId: "", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
+		
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				// Justin STMFA.
-				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
+// 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
+				// Justin STMFB.
+				embeddedservice_bootstrap.settings.platformKey = "89bc63db-9d78-4d5f-892a-b8108a85fad7";
+				
+				// STMFB staging.
+				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfb.scrt.sfdc.sh";
 
 				embeddedservice_bootstrap.settings.devMode = true;
 
