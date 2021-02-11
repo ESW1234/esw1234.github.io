@@ -5,27 +5,28 @@
 	</head>
 	<body>
 		<h1>Async Laptop Main</h1>
+		
+		<p><a href="main.html" style="color:red">Link to this page.</a></p>
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
+		<!-- STMFA. OrgId: "00DRM000000MLcN" ESWC: "Chat" PlatformKey: "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b" -->
 		<!-- Local desktop. OrgId: "", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
-				// Staging.
-				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b';
-				// Local.
-// 				embeddedservice_bootstrap.settings.platformKey = '';
+				// Justin STMFA.
+				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
 
 				embeddedservice_bootstrap.settings.devMode = true;
 
 				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
 				embeddedservice_bootstrap.init(
-					'', //org id
-					'justin', //esw config dev name
+					'00DRM000000MLcN', //org id
+					'Chat', //esw config dev name
 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
 					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
 					{
