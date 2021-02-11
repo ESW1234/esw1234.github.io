@@ -14,7 +14,7 @@
 		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
 		<!-- STMFA. OrgId: "00DRM000000MLcN" ESWC: "Chat" PlatformKey: "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b" -->
 		<!-- Local desktop. OrgId: "", PlatformKey: "ed365417-59e6-4f04-a2b5-253edf4997ab" -->
-		
+		<!-- STMFB. OrgId: "" ESWC: "JustinEmbeddedService" PlatformKey: "89bc63db-9d78-4d5f-892a-b8108a85fad7" -->
 
 		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
@@ -31,8 +31,10 @@
 
 				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
 				embeddedservice_bootstrap.init(
-					'00DRM000000MLcN', //org id
-					'Chat', //esw config dev name
+// 					'00DRM000000MLcN', // stmfa org id
+					'00DRM000000FmHK', // stmfb
+// 					'Chat', //esw config dev name
+					'JustinEmbeddedService',
 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
 					'http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109', //core url
 					{
