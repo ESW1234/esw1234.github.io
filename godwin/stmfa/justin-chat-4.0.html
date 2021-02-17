@@ -149,7 +149,7 @@
 		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"}; //Sets the auto-population of pre-chat form fields
 		embedded_svc.settings.devMode = true;
 
-		embedded_svc.init(
+		/*embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
 			'https://snapins-15ef4331aa1.stmfa.stm.force.com/erintest',
 			gslbBaseURL,
@@ -162,7 +162,20 @@
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2'
 			}
-		 ); 
+		 ); */
+		embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/fabAug2019',
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'godwin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004HjU',
+				buttonId: '573RM0000004GGf',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002a32AA_1705f3544b5',
+			}
 	};
 	if (!window.embedded_svc) { 
 		var s = document.createElement('script'); 
