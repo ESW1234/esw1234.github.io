@@ -26,7 +26,7 @@
 		embedded_svc.settings.externalScripts = ["CustomEvents"];
 		
 		// Debug mode.
-		embedded_svc.settings.devMode = true;
+		//embedded_svc.settings.devMode = true;
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -62,27 +62,10 @@
 			}
 		);
 	};
-		
-// 		embedded_svc.init(
-// 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
-// 			'https://snapins.stmfa.stm.force.com/sachin',
-// 			gslbBaseURL,
-// 			'00DRM0000005cyu',
-// 			'Sachin',
-// 			{
-// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-// 				deploymentId: '572RM0000004NnK',
-// 				buttonId: '573RM0000004SUa',
-// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
-// 				isOfflineSupportEnabled: true
-// 			}
-// 		);
-// 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
