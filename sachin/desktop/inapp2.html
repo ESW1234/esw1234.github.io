@@ -11,12 +11,13 @@
 		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
-				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457";
+				//embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457";
+				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457"; //Justin's
 				//embeddedservice_bootstrap.settings.devMode = false;
 
 				embeddedservice_bootstrap.init(
-					'00DRM000000I2H9',//'00Dxx0000006Gl1',
-					'MyESWDeployment',
+					'00DRM000000MLcN',//Justin's //'00DRM000000I2H9',
+					'Chat',//Justin's //'MyESWDeployment',
 					'http://mycompany2.localhost.internal.salesforce.com:8096/chat',
 					//'http://justinmacmillin.lightning.stmfa.stm.force.com',
 					'http://mycompany2.localhost.internal.salesforce.com:6109',
