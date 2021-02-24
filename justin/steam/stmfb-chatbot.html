@@ -143,6 +143,10 @@
 				    }]
 				}];
 				*/
+				
+				embedded_svc.addEventHandler("afterMaximize", function() {
+					console.log("after maximize);
+				});
 
 				embedded_svc.init(
 					'https://snapins.my.stmfb.stm.salesforce.com',
