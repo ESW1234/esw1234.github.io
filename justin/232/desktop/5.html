@@ -57,8 +57,7 @@
 					// Returns a valid button ID.
 				//};
 				
-				// Email: jmacmillin@salesforce.com
-				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "j", Subject: "I need help."};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "I need help."};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -70,10 +69,6 @@
 				embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 				embedded_svc.settings.devMode = true;
-
-				// Buttons
-				// System Admin - 573xx0000004CAe
-				// Agent - 573xx0000004GZk
 
 				// Safari
 				embedded_svc.settings.__synchronous_decrement_tab = true;
@@ -108,6 +103,5 @@
 				initESW('http://embeddedservice2.my.localhost.sfdcdev.site.com:6109');
 			}
 		</script>
-
 	</body>
 </html>
