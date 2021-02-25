@@ -29,7 +29,7 @@
 			}
 		</style> -->
 
-		<<style type='text/css'>
+		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
 				background-color: #005290;
 				font-family: "Arial", sans-serif;
@@ -92,15 +92,15 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-// 				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.site.com:6109/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.site.com:6109/embeddedservice/5.0/esw.js');
+// 				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 // 				initESW('https://service.force.com');
-				initESW('http://embeddedservice2.my.localhost.sfdcdev.site.com:6109');
+				initESW('http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109');
 			}
 		</script>
 	</body>
