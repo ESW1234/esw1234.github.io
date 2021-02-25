@@ -29,13 +29,13 @@
 			}
 		</style> -->
 
-		<style type='text/css'>
+		<<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
-				background-color: #B037C1;
+				background-color: #005290;
 				font-family: "Arial", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
-				outline: 1px solid #B037C1;
+				outline: 1px solid #005290;
 			}
 		</style>
 
@@ -79,17 +79,17 @@
 				embedded_svc.settings.__synchronous_decrement_tab = true;
 
 				embedded_svc.init(
-					'http://embeddedservice2.localhost.internal.salesforce.com:6109',
-					'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
+					'http://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6109',
+					'http://embeddedservice2.my.localhost.sfdcdev.site.com:6109/customerService0221',
 					gslbBaseURL,
-					'00Dxx0000006Gcx',
-					'chat',
+					'00Dxx0000006Gxv',
+					'justin_chat',
 					{
-						baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000004C92',
-						buttonId: '573xx0000004C92',
-						baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CIiEAM_1776436d4a1',
+						baseLiveAgentContentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000004CKK',
+						buttonId: '573xx0000004CXE',
+						baseLiveAgentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EaeEAE_177d84439d6',
 						isOfflineSupportEnabled: false
 					}
 				);
@@ -97,15 +97,15 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-// 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+// 				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.site.com:6109/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'http://embeddedservice2.my.localhost.sfdcdev.site.com:6109/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 // 				initESW('https://service.force.com');
-				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+				initESW('http://embeddedservice2.my.localhost.sfdcdev.site.com:6109');
 			}
 		</script>
 
