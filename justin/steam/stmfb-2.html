@@ -13,9 +13,9 @@
 	<body>
 
 		<p align="center"><font color = "red"><a href="stmfb-2.html">This page.</a></font></p>
-		<p align="center"><font color = "red"><a target="_blank" href="stmfb.html">This page in a new tab.</a></font></p>
-		<p align="center"><font color = "red"><a href="stmfb-2.html">STMFB page 1.</a></font></p>
-		<p align="center"><font color = "red"><a target="_blank" href="stmfb.html">STMFB page 1 in another tab.</a></font></p>
+		<p align="center"><font color = "red"><a target="_blank" href="stmfb-2.html">This page in a new tab.</a></font></p>
+		<p align="center"><font color = "red"><a href="stmfb.html">STMFB page 2.</a></font></p>
+		<p align="center"><font color = "red"><a target="_blank" href="stmfb.html">STMFB page 2 in another tab.</a></font></p>
 
 		<h1>
 			STMFB - 2
@@ -31,11 +31,11 @@
 		<!-- start 5.0 snippet -->
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
-				background-color: #005290;
+				background-color: #497EA7;
 				font-family: "Salesforce Sans", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
-				outline: 1px solid #005290;
+				outline: 1px solid #497EA7;
 			}
 			@font-face {
 				font-family: 'Salesforce Sans';
@@ -44,7 +44,7 @@
 			}
 		</style>
 
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -95,17 +95,17 @@
 					}
 				);
 			};
+
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
 				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-	// 			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW('https://service.force.com');
-	// 			initESW('https://snapins.my.stmfb.stm.salesforce.com');
+// 				initESW('https://service.force.com');
+				initESW('https://snapins.my.stmfb.stm.salesforce.com');
 			}
 		</script>
 		<!-- stop 5.0 snippet -->
