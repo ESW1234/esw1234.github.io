@@ -8,18 +8,20 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
 		<script type='text/javascript'>
-			var initESW = function(gslbBaseURL) {
-				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457";
-				//embeddedservice_bootstrap.settings.devMode = false;
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://service.force.com/embeddedservice/asyncclient/bootstrap.js');
+			s.onload = function() {
+				// Settings for Messaging for Web
+				embeddedservice_bootstrap.settings.entryFeature = 'EmbeddedMessaging';
 
 				embeddedservice_bootstrap.init(
 					'00Dxx0000006H75',
-					'Sachin',
-					'http://sachinhanu-wsl1.internal.salesforce.com:8096/chat',
+					'Messaging1',
 					'http://inapp.localhost.internal.salesforce.com:6109',
+					'http://sachinh.dev.localhost.soma.force.com:6109',
 					{
+						Scrt2URL: 'https://esw.my.stmfa.stm.salesforce-scrt.com',
 						embeddedServiceConfig: {
 							siteUrl: 'http://arvind-177b7e653a4.dev.localhost.soma.force.com:6109/sac',
 							embeddedServiceBranding: { height: '554', width: '344' }
@@ -28,18 +30,8 @@
 				);
 			};
 
-			if (!window.embeddedservice_bootstrap) {
-				var s = document.createElement('script');
-
-				s.setAttribute('src', 'http://inapp.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-		// 		initESW('https://service.force.com');
-				initESW('http://sachinhanu-wsl1.internal.salesforce.com:6109');
-			}
+			document.body.appendChild(s);
 		</script>
+		
 	</body>
 </html>
