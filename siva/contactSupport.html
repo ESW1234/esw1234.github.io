@@ -11,7 +11,7 @@
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
 				background-color: #005290;
-				font-family: “Arial”, sans-serif;
+				font-family: "Arial", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
 				outline: 1px solid #005290;
@@ -37,30 +37,30 @@
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 				embedded_svc.init(
-					‘https://sivapa1.my.stmpa.stm.salesforce.com’,
-					‘https://sivapa1di.stmpa.stm.force.com’,
+					'https://sivapa1.my.stmpa.stm.salesforce.com',
+					'https://sivapa1di.stmpa.stm.force.com',
 					gslbBaseURL,
-					‘00DR0000000LIlk’,
-					‘MyESWDep1’,
+					'00DR0000000LIlk',
+					'MyESWDep1',
 					{
 						baseLiveAgentContentURL: 'https://c.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/content',
-						deploymentId: ‘572R000000007DB’,
-						buttonId: ‘573R00000004LSl’,
-						baseLiveAgentURL: ‘https://d.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/chat’,
-						eswLiveAgentDevName: ‘EmbeddedServiceLiveAgent_Parent04IR000000000I9MAI_177fa361b56’,
+						deploymentId: '572R000000007DB',
+						buttonId: '573R00000004LSl',
+						baseLiveAgentURL: 'https://d.la2-stmpa1-0-prd.stmpa.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IR000000000I9MAI_177fa361b56',
 						isOfflineSupportEnabled: true
 					}
 				);
 			};
 			if (!window.embedded_svc) {
-				var s = document.createElement(‘script’);
-				s.setAttribute(‘src’, ‘https://sivapa1.my.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.min.js’);
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://sivapa1.my.stmpa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW(‘https://service.force.com’);
+				initESW('https://service.force.com');
 			}
 		</script>
 	</body>
