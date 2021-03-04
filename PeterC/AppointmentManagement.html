@@ -27,11 +27,11 @@
 		embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
 
 		embedded_svc.init(
-			'https://na85.salesforce.com',
-			'https://sdodemo-main-166ce2cf6b6-1681b0e1831.force.com/Consumer2',
+			'https://embeddedservicede.my.salesforce.com',
+			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
 			gslbBaseURL,
-			'00D1U000000sR0q',
-			'Optum_Field_Service',
+			'00DB0000000K6Ez',
+			'Embedded_FSL',
 			{
 				
 			}
@@ -40,7 +40,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na85.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial');
 		s.onload = function() {
 			initESW(null);
 		};
