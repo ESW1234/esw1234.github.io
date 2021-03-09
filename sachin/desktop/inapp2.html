@@ -19,7 +19,7 @@
 					'00DRM000000I2H9',//'00DRM000000MLcN',//Justin's 
 					'MyESWDeployment',//'Chat',//Justin's 
 					'http://mycompany2.localhost.internal.salesforce.com:8096/chat',
-					'http://mycompany2.localhost.internal.salesforce.com:6101',
+					'http://mycompany2.localhost.internal.salesforce.com:6109',
 					{
 						embeddedServiceConfig: {
 							siteUrl: 'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6101',
@@ -32,14 +32,14 @@
 			if (!window.embeddedservice_bootstrap) {
 				var s = document.createElement('script');
 
-				s.setAttribute('src', 'http://mycompany2.localhost.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js');
+				s.setAttribute('src', 'http://mycompany2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 		// 		initESW('https://service.force.com');
-				initESW('http://sachinhanu-wsl1.internal.salesforce.com:6101');
+				initESW('http://sachinhanu-wsl1.internal.salesforce.com:6109');
 			}
 		</script>
 	</body>
