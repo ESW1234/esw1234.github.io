@@ -8,7 +8,7 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<script type='text/javascript'>
+<!-- 		<script type='text/javascript'>
 			var s = document.createElement('script');
 			s.setAttribute('src', 'https://service.force.com/embeddedservice/asyncclient/bootstrap.js');
 			s.onload = function() {
@@ -31,7 +31,48 @@
 			};
 
 			document.body.appendChild(s);
-		</script>
+		</script> -->
+		
+		<script type='text/javascript'>
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://service.force.com/embeddedservice/asyncclient/bootstrap.js');
+			s.onload = function() {
+				// Settings for Messaging for Web
+				embeddedservice_bootstrap.settings.entryFeature = 'EmbeddedMessaging';
+
+				embeddedservice_bootstrap.init(
+					'00DRM000000I2H9',
+					'MessagingDeployment1',
+					'https://esw.my.stmfa.stm.salesforce.com',
+					'https://sachinh.stmfa.stm.force.com',
+					{
+						Scrt2URL: 'https://esw.my.stmfa.stm.salesforce-scrt.com'
+					}
+				);
+			};
+			
+			s.onerror = function() {
+				var t = document.createElement('script');
+				t.setAttribute('src', 'https://esw.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
+				t.onload = function() {
+					// Settings for Messaging for Web
+					embeddedservice_bootstrap.settings.entryFeature = 'EmbeddedMessaging';
+
+					embeddedservice_bootstrap.init(
+						'00DRM000000I2H9',
+						'MessagingDeployment1',
+						'https://esw.my.stmfa.stm.salesforce.com',
+						'https://sachinh.stmfa.stm.force.com',
+						{
+							Scrt2URL: 'https://esw.my.stmfa.stm.salesforce-scrt.com'
+						}
+					);
+				};
+				document.body.appendChild(t);
+			};
+
+			document.body.appendChild(s);
+	      </script>
 		
 	</body>
 </html>
