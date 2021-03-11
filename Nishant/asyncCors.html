@@ -1,0 +1,22 @@
+<html>
+  <script>
+      var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'https://esw.my.stmfa.stm.salesforce-scrt.com/embeddedservice/v1/embeddedservice?orgId=00DRM000000I2H9&esConfigName=MessagingDeployment1&language=es', true);
+			xhr.onload = function () {
+  				console.log('Receieved the response");
+			};
+                      
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   // Typical action to be performed when the document is ready:
+				   console.log(this.responseText);
+				}
+			};
+			xhr.send(null);
+  </script>
+  
+  <body>
+    Hello There ! 
+  </body>
+  
+</html>
