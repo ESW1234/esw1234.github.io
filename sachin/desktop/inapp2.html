@@ -46,11 +46,11 @@
     			function initEmbeddedMessaging() {
         			try {
             				embeddedservice_bootstrap.init(
-                				'00Dxx0000006H75',
-                				'Messaging1',
-                				'http://inapp.localhost.internal.salesforce.com:6109',
+                				'00DRM000000I2H9',
+                				'MyESWDeployment',
+                				'http://mycompany2.localhost.internal.salesforce.com:6109',
                 				{
-                    					Scrt2URL: 'http://inapp.my.localhost.internal.salesforce-scrt.com'
+                    					Scrt2URL: 'https://esw.my.stmfa.stm.salesforce-scrt.com'
                 				}
             				);
         			} catch (err) {
@@ -58,6 +58,6 @@
         			}
     			};
 		</script>
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+		<script type='text/javascript' src='http://mycompany2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
