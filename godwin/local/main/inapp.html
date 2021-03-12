@@ -23,7 +23,7 @@
 			'http://yatlaw-wsm3.internal.salesforce.com:6109', //core url
 			{
 				embeddedServiceConfig: {
-			  		siteUrl: 'http://eswtiffany-1702153bb98-1730bb8f941.dev.localhost.soma.force.com:6109/endpoint',
+			  		siteUrl: 'https://eswtiffany-1702153bb98-1730bb8f941.dev.localhost.soma.force.com:6101/endpoint',
 			  		embeddedServiceBranding: {
 						height : '554',
 			    			width : '344'
@@ -35,7 +35,7 @@
 
 	if (!window.embeddedservice_inapp) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://yatlaw-wsm3.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'https://yatlaw-wsm3.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js');
 		// s.setAttribute('src', 'https://eswinapptesting2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
 		s.onload = function() {
 			initESW(null);
@@ -43,7 +43,7 @@
 		document.body.appendChild(s);
 	} else {
 		// initESW('https://eswinapptesting2.lightning.stmfa.stm.force.com');
-		initESW('http://yatlaw-wsm3.internal.salesforce.com:6109');
+		initESW('https://yatlaw-wsm3.internal.salesforce.com:6101');
 	}
 </script>
 </body>
