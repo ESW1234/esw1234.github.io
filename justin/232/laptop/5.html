@@ -44,10 +44,10 @@
 					'00Dxx0000006GSl',
 					'ChatQueue',
 					{
-						baseLiveAgentContentURL: 'http://jmacmil-ltmswid.internal.salesforce.com:8095/content',
+						baseLiveAgentContentURL: 'https://jmacmil-ltmswid.internal.salesforce.com:8095/content',
 						deploymentId: '572xx0000004CDs',
 						buttonId: '573xx0000004CDs',
-						baseLiveAgentURL: 'http://jmacmil-ltmswid.internal.salesforce.com:8096/chat',
+						baseLiveAgentURL: 'https://jmacmil-ltmswid.internal.salesforce.com:8096/chat',
 						eswLiveAgentDevName: 'ChatQueue',
 						isOfflineSupportEnabled: true
 					}
@@ -56,14 +56,14 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-		// 		s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+// 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-		// 		initESW('https://service.force.com');
+// 				initESW('https://service.force.com');
 				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
 			}
 		</script>
