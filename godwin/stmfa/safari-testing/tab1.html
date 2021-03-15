@@ -4,10 +4,13 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="blue">TAB ONE</font></p>
+  <h1 align="center"><font color ="blue">TAB ONE</font></h1>
   <br/>
   <br/>
-	<a href="justin-chat-5.0-min.html">Link to same page</a>
+  <div class="tab-links-container">
+	<div class="tab-link"><a href="justin-chat-5.0-min.html">TAB ONE</a></div>
+  	<div class="tab-link"><a href="justin-chat-5.0-min.html">TAB TWO</a></div>
+  </div>
 
 <div id="button_goes_here">
 </div>
@@ -19,6 +22,10 @@
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #47AB0D;
+	}
+	.tab-links-container {
+		display: flex;
+		flex-direction: row;
 	}
 </style>
 	
