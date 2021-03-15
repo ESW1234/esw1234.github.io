@@ -71,16 +71,16 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'http://eswlocal.localhost.internal.salesforce.com:6109',
-			'http://eswtiffany-1702153bb98-1730bb8f941.dev.localhost.soma.force.com:6109/endpoint',
+			'https://eswlocal.localhost.internal.salesforce.com:6101',
+			'https://eswtiffany-1702153bb98-1730bb8f941.dev.localhost.soma.force.com:6101/endpoint',
 			gslbBaseURL,
 			'00Dxx0000006GeZ',
 			'Chat',
 			{
-				baseLiveAgentContentURL: 'http://yatlaw-wsm3.internal.salesforce.com:8095/content',
+				baseLiveAgentContentURL: 'https://yatlaw-wsm3.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004C92',
 				buttonId: '573xx0000004C92',
-				baseLiveAgentURL: 'http://yatlaw-wsm3.internal.salesforce.com:8096/chat',
+				baseLiveAgentURL: 'https://yatlaw-wsm3.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004D8KEAU_17643634107',
 				isOfflineSupportEnabled: false
 			}
@@ -89,13 +89,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://eswlocal.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://eswlocal.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('http://eswlocal.localhost.internal.salesforce.com:6109');
+		initESW('https://eswlocal.localhost.internal.salesforce.com:6101');
 	}
 </script>
 <!------------------------------------------------ 5.0 SNIPPPET END ------------------------------------------------->
