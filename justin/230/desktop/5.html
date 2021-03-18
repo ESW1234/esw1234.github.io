@@ -69,41 +69,34 @@
 
 				embedded_svc.settings.devMode = true;
 
-				// Buttons
-				// System Admin - 573xx0000004CAe
-				// Agent - 573xx0000004GZk
-
-				// Safari
-				embedded_svc.settings.__synchronous_decrement_tab = true;
-
 				embedded_svc.init(
-					'http://embeddedservice2.localhost.internal.salesforce.com:6109',
-					'http://eswmessagingchat-177735e10cf.dev.localhost.soma.force.com:6109/chatcommunity',
+					'https://esw.localhost.internal.salesforce.com:6101',
+					'https://sites.dev.localhost.soma.force.com:6101/liveAgentSetupFlow',
 					gslbBaseURL,
-					'00Dxx0000006Gl1',
-					'justin',
+					'00Dxx0000006GeZ',
+					'EmbeddedChat',
 					{
-						baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000004CCG',
-						buttonId: '573xx0000004CCG',
-						baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CIiEAM_17773ad699c',
-						isOfflineSupportEnabled: false
+						baseLiveAgentContentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000004CAe',
+						buttonId: '573xx0000004CAe',
+						baseLiveAgentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'EmbeddedChat',
+						isOfflineSupportEnabled: true
 					}
 				);
 			};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-// 				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+// 				s.setAttribute('src', 'https://esw.localhost.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://esw.localhost.internal.salesforce.com:6101/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 // 				initESW('https://service.force.com');
-				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
+				initESW('https://esw.localhost.internal.salesforce.com:6101');
 			}
 		</script>
 	</body>
