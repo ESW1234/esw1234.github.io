@@ -1,8 +1,19 @@
 <!DOCTYPE html><html lang="en">
-<head><title>Test for iframe and one.app</title></head>
+<head>
+    <title>Test for iframe and one.app</title>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        iframe {
+            border-width:0;
+        }
+    </style>
+</head>
 <body>
-    one.app embeded in an iframe.
-    <iframe src="https://signuporgtest1602879667538.lightning.localhost.soma.force.com:6101/one/one.app" title="one.app" width="400" height="300">
+    <iframe src="https://signuporgtest1602879667538.lightning.localhost.soma.force.com:6101/one/one.app" title="one.app" width="100%" height="100%">
     </iframe>
 </body>
 </html>
