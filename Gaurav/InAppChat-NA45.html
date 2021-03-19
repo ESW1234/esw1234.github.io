@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<h1>In-App Messaging Chat NA45</h1>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embeddedservice_bootstrap.settings.platformKey = '2c33a8cb-fa05-4a52-9c18-aba5a55f9589';
+		//embeddedservice_bootstrap.settings.devMode = false;
+		// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
+		embeddedservice_bootstrap.init(
+			'00DS7000000or2D', //org id
+			'InAppWebDeployment', //esw config dev name
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', //scrt url
+			'https://gkrorg.lightning.stmfa.stm.force.com', //core url
+			{
+				embeddedServiceConfig: {
+			  		siteUrl: 'https://gkrorg-17847adb133.stmfa.stm.force.com/cs',
+			  		embeddedServiceBranding: {
+						height : '554',
+			    			width : '344'
+					}
+				}
+			}
+		);
+	};
+
+	if (!window.embeddedservice_inapp) {
+		var s = document.createElement('script');
+		// s.setAttribute('src', 'http://tiffanytso-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+		s.setAttribute('src', 'https://gkrorg.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://service.force.com');
+		initESW('https://gkrorg.lightning.stmfa.stm.force.com');
+		// initESW('http://tiffanytso-wsm.internal.salesforce.com:6109');
+	}
+</script>
+</body>
+</html>
