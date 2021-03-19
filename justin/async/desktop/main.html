@@ -17,7 +17,7 @@
 		<!-- Local desktop. OrgId: "00Dxx0000006Gxv" ESWC: "justin_async" PlatformKey: "8bd92926-ad5a-4db5-9e67-6ef0d3dad886" -->
 
 		<!-- localhost: https://embeddedservice2.localhost.internal.salesforce.com:6101 -->
-		<script type='text/javascript'>
+<!-- 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				// Justin STMFA.
 				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
@@ -54,7 +54,29 @@
 				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
 			}
 		</script>
-	</body>
+	</body> -->
+		
+	<script type='text/javascript'>
+	    function initEmbeddedMessaging() {
+		try {
+		    embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+		    embeddedservice_bootstrap.init(
+			'00DRM000000I2H9',
+			'Chat',
+			'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+			{
+			    scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
+			}
+		    );
+		} catch (err) {
+		    console.error('Error loading Embedded Messaging: ', err);
+		}
+	    };
+	</script>
+<!-- 	<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+	<script type='text/javascript' src='https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+		
 	<!-- 	<style>
 		body {
 			background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
