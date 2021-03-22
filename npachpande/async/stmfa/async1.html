@@ -11,29 +11,26 @@
 </style>
 
 <script type='text/javascript'>
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
-  s.onload = function() {
-    embeddedservice_bootstrap.init(
-      '00DRM000000HvmX',
-      'Chat',
-      'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-      'https://na44.stmfa.stm.salesforce.com',
-      {
-        embeddedServiceConfig: {
-          siteUrl: 'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
-          embeddedServiceBranding: {
-            height : '554',
-            width : '344'
-          }
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.settings.devMode = true; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.init(
+                '00DRM000000HvmX',
+                'Messaging',
+                'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+                {
+                    scrt2URL: 'https://eswmessagingchat2.my.stmfa.stm.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
         }
-      }
-    );
-  };
-  document.body.appendChild(s);  
+    };
 </script>
-  
-  <div></div>
-  
+<script type='text/javascript' src='https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
 </body>
 </html>
