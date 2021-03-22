@@ -49,13 +49,13 @@
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+		
 				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
+		
 				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
+		
 				// Settings for Chat
 				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
@@ -64,30 +64,30 @@
 				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
+		
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
-
+		
 				embedded_svc.init(
-					'https://esw-na44a.my.stmfa.stm.salesforce.com',
-					'https://esw-na44a.stmfa.stm.force.com/cs',
+					'https://gkrorg.my.stmfa.stm.salesforce.com',
+					'https://gkrorg-17847adb133.stmfa.stm.force.com/defaulthelpcenter18Mar',
 					gslbBaseURL,
-					'00DRM000000Fulj',
-					'ESWDeployment1',
+					'00DS7000000or2D',
+					'ESWDeployment',
 					{
 						baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-						deploymentId: '572RM00000008Ye',
-						buttonId: '573RM000000092S',
+						deploymentId: '572S700000001qZ',
+						buttonId: '573S700000001rm',
 						baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EAY2A2_16f8748fc42',
-						isOfflineSupportEnabled: false
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS7000000007hMAA_17847c3fc8e',
+						isOfflineSupportEnabled: true
 					}
 				);
 			};
-
+		
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://esw-na44a.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://gkrorg.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
