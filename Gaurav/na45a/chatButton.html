@@ -42,6 +42,8 @@
 		
 		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 		<script type='text/javascript'>
+			var today = new Date();
+			var prefix = (today.getMonth()+1)+''+today.getDate()+'_'+today.getHours()+today.getMinutes();
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -60,7 +62,7 @@
 				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-		
+				embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "John" + prefix, LastName: "Smith" + prefix, Email: "js" +prefix +"@gmail.com", Subject: "Test ESW Chat " + prefix}
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 		
