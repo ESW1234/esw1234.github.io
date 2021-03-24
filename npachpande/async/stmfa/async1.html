@@ -15,12 +15,14 @@
     function initEmbeddedMessaging() {
         try {
             embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+          
+            embeddedservice_bootstrap.settings.prechatEnabled = true;
 
             embeddedservice_bootstrap.settings.devMode = true; // For example, enter 'en' or 'en-US'
 
             embeddedservice_bootstrap.init(
                 '00DRM000000HvmX',
-                'Messaging2',
+                'Messaging',
                 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
                 {
                     scrt2URL: 'https://eswmessagingchat2.my.stmfa.stm.salesforce-scrt.com'
