@@ -9,8 +9,8 @@
       embedded_svc.menu.settings.devMode = true;
       
       embedded_svc.menu.init(
-        'http://eswlocal.localhost.internal.salesforce.com:6109',
-        'http://yatlaw-wsm3.internal.salesforce.com:8096/chat',
+        'https://eswlocal.localhost.internal.salesforce.com:6101',
+        'https://yatlaw-wsm3.internal.salesforce.com:8096/chat',
         gslbBaseURL,
         '00Dxx0000006GeZ',
         'Channel_Menu'
@@ -19,13 +19,13 @@
 
     if (!window.embedded_svc || !window.embedded_svc.menu) {
       var s = document.createElement('script');
-      s.setAttribute('src', 'http://eswlocal.localhost.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+      s.setAttribute('src', 'https://eswlocal.localhost.internal.salesforce.com:6101/embeddedservice/menu/fab.min.js');
       s.onload = function() {
         initESW(null);
       };
       document.body.appendChild(s);
     } else {
-      initESW('http://eswlocal.localhost.internal.salesforce.com:6109');
+      initESW('https://eswlocal.localhost.internal.salesforce.com:6101');
     }
   </script>
   </body>
