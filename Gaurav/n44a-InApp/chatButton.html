@@ -16,15 +16,7 @@
 		</script>
 		<br>
 		<h2 align="center"><font color ="green">STANDARD CHAT BUTTON</font></h2>
-		<p><font color = "red"><a href="index.html">CHANNEL MENU Default Page</a></font></p> 
-		<p><font color = "red"><a target="_blank" href="channelMenuPage2.html">CHANNEL MENU PAGE-2 (New Tab)</a></font></p> 
-		<p><font color = "red"><a href="noButton.html">PAGE WITHOUT SNIPPET</a></font></p>
-		<p><font color = "red"><a href="hiddenChannelMenu.html">PAGE WITH CHANNEL MENU HIDDEN</a></font></p> 
-		<br/> 
-		<p><font color = "red"><a href="customChatButton.html">CUSTOM CHAT BUTTON</a></font></p>
-		<p><font color = "red"><a target="_blank" href="chatButtonPage2.html">STANDARD CHAT BUTTON PAGE-2 (New Tab)</a></font></p>
-		<p><font color = "red"><a href="invitationButton.html">PAGE WITH INVITATION CHAT BUTTON</a></font></p> 
-
+		<p><font color = "red"><a href="channelMenuTest.html">CHANNEL MENU Test Page</a></font></p> 
 		<br/>
 
 		<div id="button_goes_here"></div>
@@ -47,68 +39,55 @@
 
 		<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 		<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #ED3BEA;
-		font-family: "Comic Sans MS", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #ED3BEA;
-	}
-</style>
-<script type='text/javascript'>
-	var today = new Date();
-	var prefix = (today.getMonth()+1)+''+today.getDate()+'_'+today.getHours()+today.getMinutes();
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+      .embeddedServiceHelpButton .helpButton .uiButton {
+        background-color: #64C16C;
+        font-family: "Comic Sans MS", sans-serif;
+      }
+      .embeddedServiceHelpButton .helpButton .uiButton:focus {
+        outline: 1px solid #64C16C;
+      }
+    </style>
 
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		embedded_svc.settings.loadingText = 'Hang Tight....'; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "John" + prefix, LastName: "Smith" + prefix, Email: "js" +prefix +"@gmail.com", Subject: "Test ESW Chat " + prefix}
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init(
-			'https://esw-na44a.my.stmfa.stm.salesforce.com',
-			'https://esw-na44a.stmfa.stm.force.com/cs',
-			gslbBaseURL,
-			'00DRM000000Fulj',
-			'ESWDeployment1',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM00000008Ye',
-				buttonId: '573RM000000092S',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EAY2A2_16f8748fc42',
-				isOfflineSupportEnabled: false
-			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://esw-na44a.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script>
+    <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+    <script type='text/javascript'>
+      var today = new Date();
+      var prefix = (today.getMonth()+1)+''+today.getDate()+'_'+today.getHours()+today.getMinutes();
+      var initESW = function(gslbBaseURL) {
+        embedded_svc.settings.displayHelpButton = true; //Or false
+        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+    
+        //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+        //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+    
+        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+    
+        embedded_svc.settings.prepopulatedPrechatFields = { FirstName: "John" + prefix, LastName: "Smith" + prefix, Email: "js" +prefix +"@gmail.com", Subject: "Test ESW Chat " + prefix}        embedded_svc.settings.enabledFeatures = [];
+        embedded_svc.settings.entryFeature = '';
+    
+        embedded_svc.init(
+          'https://inappmessagingorg.my.stmfa.stm.salesforce.com',
+          'https://eswmessagingchat-175482fb00f-175e2b11923.stmfa.stm.force.com/chatcommunity',
+          gslbBaseURL,
+          '00DRM000000MPxL',
+          'Chat',
+          {
+            
+          }
+        );
+      };
+    
+      if (!window.embedded_svc) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://inappmessagingorg.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function() {
+          initESW(null);
+        };
+        document.body.appendChild(s);
+      } else {
+        initESW('https://service.force.com');
+      }
+    </script>
 		<!-- end 5.0 snippet -->
 
 Portugal Stuns France to Win Euro 2016 Final
@@ -138,10 +117,6 @@ For France, the defeat bordered on unthinkable. Les Bleus had convinced themselv
 </html>
 
 <style>
-	body {
-		background: url("https://esw1234.github.io/farmersinsurance.png") no-repeat;
-		background-size: 99%;
-	}
 	#button_goes_here{
 		width: 100%; 
 		height: 100%; 
