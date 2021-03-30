@@ -47,17 +47,17 @@
 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
-			'http://mycompany2.localhost.internal.salesforce.com:6109',
-			'http://sachinh-173ffabcedc.dev.localhost.soma.force.com:6109',
+			'http://inapp2.localhost.internal.salesforce.com:6109',
+			'http://arvind-1785d7cb478.dev.localhost.soma.force.com:6109/liverpool',
 			gslbBaseURL,
-			'00Dxx0000006GR9',
-			'MyESWDeployment',
+			'00Dxx0000006GSl',
+			'WebQueue',
 			{
 				baseLiveAgentContentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004C92',
+				deploymentId: '572xx0000004CCG',
+				buttonId: '573xx0000004CCG',
 				baseLiveAgentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_173554d855e',
+				eswLiveAgentDevName: 'WebQueue',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -65,7 +65,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://mycompany2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'http://inapp2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
