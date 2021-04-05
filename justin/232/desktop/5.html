@@ -6,7 +6,6 @@
 	</head>
 
 	<body>
-
 		<p align="center"><font color="red"><a href="5.html">This page.</a></font></p>
 		<p align="center"><font color="red"><a target="_blank" href="5.html">This page in new tab.</a></font></p>
 		<p align="center"><font color="red"><a href="5-2.html">Page 2.</a></font></p>
@@ -145,17 +144,17 @@
 
 				embedded_svc.init(
 					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
-					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
+					'https://embeddedservice2.my.localhost.sfdcdev.salesforce-sites.com:6101/liveAgentSetupFlow',
 					gslbBaseURL,
-					'00Dxx0000006Gxv',
-					'justin_chat',
+					'00Dxx0000006GbL',
+					'Chat',
 					{
-						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000004CKK',
-						buttonId: '573xx0000004CXE',
-						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EaeEAE_177d84439d6',
-						isOfflineSupportEnabled: false
+						baseLiveAgentContentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000004CAe',
+						buttonId: '573xx0000004CAe',
+						baseLiveAgentURL: 'http://jmacmillin-ltm.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'Chat',
+						isOfflineSupportEnabled: true
 					}
 				);
 			};
