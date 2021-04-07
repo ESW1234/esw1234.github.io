@@ -1,147 +1,144 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- From code snippet generator. -->
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> -->
+	<head>
+		<!-- From code snippet generator. -->
+	<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> -->
 
-	<!-- No iOS zoom. -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	
-	<title>STMFA - Chatbot</title>
-</head>
- 
-<body>
+		<!-- No iOS zoom. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-<p align="center"><font color = "red"><a href="stmfa-chatbot.html">This page.</a></font></p>
-<p align="center"><font color = "red"><a href="stmfa-chatbot.html" target="_blank">This page in a new tab.</a></font></p>
-<p align="center"><font color = "red"><a href="stmfaClearSessionStorage.html">STMFA page to clear session storage</a></font></p>
-<p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
+		<title>STMFA - Chatbot</title>
+	</head>
+	<body>
+		<p align="center"><font color = "red"><a href="stmfa-chatbot.html">This page.</a></font></p>
+		<p align="center"><font color = "red"><a href="stmfa-chatbot.html" target="_blank">This page in a new tab.</a></font></p>
+		<p align="center"><font color = "red"><a href="stmfaClearSessionStorage.html">STMFA page to clear session storage</a></font></p>
+		<p align="center"><font color = "red"><a href="stmfa.html">STMFA page 1.</a></font></p>
 
-<h1>
-	STMFA - Chatbot
-</h1>
+		<h1>
+			STMFA - Chatbot
+		</h1>
 
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<!-- <script>
-	// Adidas
-	var interval = setInterval(
-		function() {
-			// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
-			var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
-			
-			if(nodes.length > 0) {
-				// Once the messages are loaded, clear the interval.
-				clearInterval(interval);
-				
-				// Check each message to conditionally add CSS.
-				Array.prototype.slice.call(nodes).forEach(function(element) {
-					if(element.innerText.toLowerCase().includes("adidas")) {
-						element.style.background = "red";
-					}
-				});
-			}
-		},
-		1
-	);
-</script> -->
-
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #5494C1;
-		font-family: "Palatino Linotype", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #5494C1;
-	}
-</style>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "change password"}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-		
-		// Avatars
-		embedded_svc.settings.avatarImgURL = "../../avatar.png";
-		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-		
-		// Debug
-		embedded_svc.settings.devMode = true;
-
-		// Open post chat on chat end.
-		//embedded_svc.settings.autoOpenPostChat = true;
-		
-		// Adidas coloring messages based on payload.
-		/*
-		embedded_svc.addEventHandler("onAgentMessage", function() {
-			// Use a setTimeout to make sure the message has already rendered.
-			setTimeout(
+		<!-- <script>
+			// Adidas
+			var interval = setInterval(
 				function() {
-					// For any new message that comes in, check if message needs special CSS applied.
-					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
-					var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
-					var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+					// If we refresh the DOM, once the messages are loaded check which ones need special CSS.
+					var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent .chatContent");
 
-					if(lastMessageContent.innerText.toLowerCase().includes("adidas")) {
-						lastMessageContent.style.background = "red";
+					if(nodes.length > 0) {
+						// Once the messages are loaded, clear the interval.
+						clearInterval(interval);
+
+						// Check each message to conditionally add CSS.
+						Array.prototype.slice.call(nodes).forEach(function(element) {
+							if(element.innerText.toLowerCase().includes("adidas")) {
+								element.style.background = "red";
+							}
+						});
 					}
-			   	},
+				},
 				1
 			);
-		});
-		*/
-		
-		embedded_svc.init(
-			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
-			'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
-			gslbBaseURL,
-			'00DRM0000005cyu',
-			'justinChatbot',
-			{
- 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',	// standard
-//				baseLiveAgentContentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/content',	// my domain
-				deploymentId: '572RM0000004CDV',
-				buttonId: '573RM0000004GGf',
- 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',		// standard
-//				baseLiveAgentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat',		// my domain
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013C2AQ_165c9e77147',
-				isOfflineSupportEnabled: false
+		</script> -->
+
+		<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #5494C1;
+				font-family: "Palatino Linotype", sans-serif;
 			}
-		);
-	};
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #5494C1;
+			}
+		</style>
+		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
-// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-// 		initESW('https://service.force.com');
-		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
-	}
-</script>
+				embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
+				embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
 
-</body>
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Live Agent
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "change password"}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				// Avatars
+				embedded_svc.settings.avatarImgURL = "../../avatar.png";
+				embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+
+				// Debug
+				embedded_svc.settings.devMode = true;
+
+				// Open post chat on chat end.
+				//embedded_svc.settings.autoOpenPostChat = true;
+
+				// Adidas coloring messages based on payload.
+				/*
+				embedded_svc.addEventHandler("onAgentMessage", function() {
+					// Use a setTimeout to make sure the message has already rendered.
+					setTimeout(
+						function() {
+							// For any new message that comes in, check if message needs special CSS applied.
+							var nodes = document.querySelectorAll(".embeddedServiceLiveAgentStateChatItem.agent");
+							var lastMessageElement = Array.prototype.slice.call(nodes).slice(-1).pop();
+							var lastMessageContent = lastMessageElement.querySelector(".chatContent");
+
+							if(lastMessageContent.innerText.toLowerCase().includes("adidas")) {
+								lastMessageContent.style.background = "red";
+							}
+						},
+						1
+					);
+				});
+				*/
+
+				embedded_svc.init(
+					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+					'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
+					gslbBaseURL,
+					'00DRM0000005cyu',
+					'justinChatbot',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',	// standard
+		//				baseLiveAgentContentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/content',	// my domain
+						deploymentId: '572RM0000004CDV',
+						buttonId: '573RM0000004GGf',
+						baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',		// standard
+		//				baseLiveAgentURL: 'https://justinmacmillin.stmfa.stm.salesforcescrt.com/chat',		// my domain
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000013C2AQ_165c9e77147',
+						isOfflineSupportEnabled: false
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+		// 		initESW('https://service.force.com');
+				initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+			}
+		</script>
+	</body>
 </html>
