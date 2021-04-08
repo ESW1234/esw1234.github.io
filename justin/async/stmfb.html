@@ -10,7 +10,7 @@
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> --> 
-		<script type='text/javascript'>
+<!-- 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embeddedservice_bootstrap.settings.platformKey = '89bc63db-9d78-4d5f-892a-b8108a85fad7'; // JustinInApp
 				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfb.scrt.sfdc.sh";
@@ -41,5 +41,26 @@
 				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
 			}
 		</script>
+ -->
+		<script type='text/javascript'>
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+					embeddedservice_bootstrap.init(
+						'00DRM000000FmHK',
+						'JustinEmbeddedService',
+						'https://embeddedservice2.my.stmfb.stm.salesforce.com',
+						{
+							scrt2URL: 'https://embeddedservice2.my.stmfb.stm.salesforce-scrt.com'
+						}
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
+		</script>
+<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+		<script type='text/javascript' src='https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
