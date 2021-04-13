@@ -160,6 +160,7 @@
 		}];
 		*/
 
+		/* OLD ORG_INFO
 		embedded_svc.init(
 			'https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw',
 			'https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw',
@@ -175,19 +176,38 @@
 				isOfflineSupportEnabled: false
 			}
 		);
+		*/
+		
+		embedded_svc.init(
+			'https://snapins.my.stmfb.stm.salesforce.com',
+			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+			gslbBaseURL,
+			'00DRM0000005jYI',
+			'justinChatbot',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004DDM',
+				buttonId: '573RM0000004HAw',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+				isOfflineSupportEnabled: false
+			}
+		);
+		
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw/embeddedservice/5.0/esw.js');
+//		s.setAttribute('src', 'https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 // 		initESW('https://service.force.com');
-		initESW('https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw');
+//		initESW('https://eswtiffany-1702153bb98-173febbf2d7.stmfb.stm.force.com/esw');
+		initESW('https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 	}
 </script>
      <!-- BrightTag -->
