@@ -25,7 +25,7 @@ var initESW = function(gslbBaseURL) {
 	embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 
 	// Debug
-	embedded_svc.settings.devMode = true;
+	embedded_svc.settings.devMode = false;
 
 	embedded_svc.init(
 		'https://snapins.my.stmfb.stm.salesforce.com',
