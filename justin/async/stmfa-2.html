@@ -1,6 +1,6 @@
 <html>
-<!-- 	
-	<style>
+<!--	
+ 	<style>
 		body {
 			background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
 		}
@@ -16,53 +16,15 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
     
-    <p><a href="stmfa.html" style="color:blue">STMFA page 1.</a></p>
-    <p><a href="stmfa.html" style="color:blue" target="_blank">STMFA page 1 in a new tab.</a></p>
+		<p><a href="stmfa.html" style="color:blue">STMFA page 1.</a></p>
+		<p><a href="stmfa.html" style="color:blue" target="_blank">STMFA page 1 in a new tab.</a></p>
 
-<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js'></script>  -->
-<!-- 		<script type='text/javascript'>
-			var initESW = function(gslbBaseURL) {
-				// Embedded Messaging Platform Key
-				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b"; // JustinInApp
 
-				// Use my domain to route scrt2 requests.
-				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://asyncesw.my.stmfa.stm.salesforce-scrt.com";
-				
-				embeddedservice_bootstrap.settings.prechatEnabled = true;
-
-				embeddedservice_bootstrap.init(
-					'00DRM000000MLcN', // OrgID
-					'Chat', // ESConfigDevName
-					'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', // SCRT1 URL
-					'https://asyncesw.my.stmfa.stm.salesforce.com', // CORE URL 
-					{
-						embeddedServiceConfig: {
-							  siteUrl: 'https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com/chatcommunity', // PUBLIC COMMUNITY
-// 							  embeddedServiceBranding: { height : '554', width : '344' }
-						}
-					}
-				);
-			};
-
-			if (!window.embeddedservice_inapp) {
-				var s = document.createElement('script');
-				s.setAttribute('src', 'https://asyncesw.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-// 				initESW('https://service.force.com');
-				initESW('https://asyncesw.my.stmfa.stm.salesforce.com');
-			}
-		</script> -->
-
-		<!-- New Snippet. -->
 		<script type='text/javascript'>
 			function initEmbeddedMessaging() {
 				try {
-					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+					embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+					
 					embeddedservice_bootstrap.settings.prechatEnabled = true;
 
 					embeddedservice_bootstrap.init(
@@ -79,7 +41,6 @@
 			};
 		</script>
 <!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
-		<script type='text/javascript' src='https://asyncesw.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
