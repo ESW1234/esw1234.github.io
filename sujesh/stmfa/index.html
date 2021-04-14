@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <body>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>  
+<script src="https://signuporgtest1604110801669-dev-ed.my.stmfa.stm.salesforce.com/lightning/lightning.out.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+
+</div>
+<div id="lightning">
+  </div>
+  <script>
+            $Lightning.use("c:LODependencyApp2", function() {
+              $Lightning.createComponent("c:LODependencyApp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+            },
+
+         'https://signuporgtest1604110801669-dev-ed.lightning.stmfa.stm.force.com', // Community endpoint
+         '00DRM000000MIWi!ARYAQLH8wQBVM1150aUbdXpaeyzyNPK82asQAa_CI5PMLsRwhEzqgM82PPb1yB76X3NpnVDvgJTlmJdM.LB9vyge0COzPywd'
+        );                   
+
+</script>   
+</body>
+</html>
