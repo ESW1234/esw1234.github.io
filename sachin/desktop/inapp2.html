@@ -8,44 +8,11 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
-<!-- 		<script type='text/javascript'>
-			var initESW = function(gslbBaseURL) {
-				embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457";
-				//embeddedservice_bootstrap.settings.devMode = false;
-				//embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://esw.my.stmfa.stm.salesforce.com";
-
-				embeddedservice_bootstrap.init(
-					'00DRM000000I2H9',//'00DRM000000MLcN',//Justin's 
-					'MyESWDeployment',//'Chat',//Justin's 
-					'http://mycompany2.localhost.internal.salesforce.com:8096/chat',
-					'http://mycompany2.localhost.internal.salesforce.com:6109',
-					{
-						embeddedServiceConfig: {
-							siteUrl: 'http://myfirstdomain-173ffabcedc.dev.localhost.soma.force.com:6109',
-							embeddedServiceBranding: { height: '554', width: '344' }
-						}
-					}
-				);
-			};
-
-			if (!window.embeddedservice_bootstrap) {
-				var s = document.createElement('script');
-
-				s.setAttribute('src', 'http://mycompany2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-		// 		initESW('https://service.force.com');
-				initESW('http://sachinhanu-wsl1.internal.salesforce.com:6109');
-			}
-		</script> -->
+		<!-- Local Dev page for Desktop -->
 		<script type='text/javascript'>
     			function initEmbeddedMessaging() {
         			try {
-					embeddedservice_bootstrap.settings.prechatEnabled = false;
+					embeddedservice_bootstrap.settings.prechatEnabled = true;
 					embeddedservice_bootstrap.settings.devMode = true;
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 	
