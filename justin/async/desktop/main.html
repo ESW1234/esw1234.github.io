@@ -11,49 +11,6 @@
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-		<!-- Staging. OrgId: "00DRM000000GDoC", PlatformKey: "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b" -->
-		<!-- STMFA. OrgId: "00DRM000000MLcN" ESWC: "Chat" PlatformKey: "EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b" -->
-		<!-- Local desktop. OrgId: "00Dxx0000006Gxv" ESWC: "justin_async" PlatformKey: "8bd92926-ad5a-4db5-9e67-6ef0d3dad886" -->
-
-		<!-- localhost: https://embeddedservice2.localhost.internal.salesforce.com:6101 -->
-<!-- 		<script type='text/javascript'>
-			var initESW = function(gslbBaseURL) {
-				// Justin STMFA.
-				embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:b92d0eb3-38e1-49b3-8cd3-b7541017f83b';
-				// Local.
-// 				embeddedservice_bootstrap.settings.platformKey = '8bd92926-ad5a-4db5-9e67-6ef0d3dad886';
-
-				embeddedservice_bootstrap.settings.devMode = true;
-
-				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
-				embeddedservice_bootstrap.init(
-					'00DRM000000MLcN', //org id
-					'Chat', //esw config dev name
-					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:8096/chat', //scrt url
-					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101', //core url
-					{
-						embeddedServiceConfig: {
-							siteUrl: 'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
-// 							embeddedServiceBranding: { height: '554', width: '344' }
-						}
-					}
-				);
-			};
-			if (!window.embeddedservice_inapp) {
-				var s = document.createElement('script');
-
-// 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.min.js');
-				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-// 				initESW('https://service.force.com');
-				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
-			}
-		</script> -->
 		
 		<script type='text/javascript'>
 			function initEmbeddedMessaging() {
@@ -65,8 +22,8 @@
 						'Async_Chat',
 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
 						{
-// 							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
-							scrt2URL: 'https://staging-us-stmfa.scrt.sfdc.sh'
+							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
+// 							scrt2URL: 'https://staging-us-stmfa.scrt.sfdc.sh'
 						}
 					);
 				} catch (err) {
