@@ -1,0 +1,28 @@
+<html lang="en-US">
+<body>
+<script src="https://rpang-wsm.internal.salesforce.com:6101/lightning/lightning.out.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+
+</div>
+<div id="lightning">
+  </div>
+  <script>
+            $Lightning.use("c:OutlookActivityEmailPane", function() {
+              $Lightning.createComponent("c:OutlookTestToolbar", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+            },
+
+         'https://rpdev-dev-ed.lightning.localhost.soma.force.com:6101', // Community endpoint
+         '00Dxx0000006GRU!AQEAQE1QE.GlUG7hid.CgZfSmNzUMpQ6ujxE7yXuhfT7MkQ5HZ5ZAl4PLtATom4ESpDvZpMs5CRf8FjOAPxPHyFtE7W5IVQF'
+        );                   
+
+</script>   
+</body>
+</html>
