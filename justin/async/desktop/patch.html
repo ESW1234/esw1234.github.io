@@ -15,79 +15,25 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<!-- STMFB messaging org. OrgId: "00DRM000000FmHK", PlatformKey: "89bc63db-9d78-4d5f-892a-b8108a85fad7", ESC: "JustinEmbeddedService" -->
-		<!-- Local desktop 230 patch. OrgId: "00Dxx0000006GKh", PlatformKey: "" -->
-
-		<!-- localhost: http://embeddedservice2.localhost.internal.salesforce.com:6109 -->
 		<script type='text/javascript'>
-			var initESW = function(gslbBaseURL) {
-				// STMFB.
-				embeddedservice_bootstrap.settings.platformKey = "89bc63db-9d78-4d5f-892a-b8108a85fad7";
-				// Local 230 patch.
-// 				embeddedservice_bootstrap.settings.platformKey = "";
-				
-				// STMFB staging.
-				embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfb.scrt.sfdc.sh";
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
-// 				embeddedservice_bootstrap.settings.devMode = true;
-				
-				// STMFB
-				embeddedservice_bootstrap.init(
-					'00DRM000000FmHK', //org id
-					'JustinEmbeddedService', //esw config dev name
-					'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat', //scrt url
-// 					'https://embeddedservice2.my.stmfb.stm.salesforce.com', // stmfb core url
-					'http://embeddedservice2.localhost.internal.salesforce.com:6109', // local core url
-					{
-						embeddedServiceConfig: {
-// 							siteUrl: 'https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity', // stmfb
-							siteUrl: 'http://eswmessagingchat-175482fb00f-176680c12b9.dev.localhost.soma.force.com:6109/chatcommunity', // local
-// 							embeddedServiceBranding: { height: '554', width: '344' }
+					embeddedservice_bootstrap.init(
+						'00DRM000000FmHK',
+						'Async_Chat',
+						'https://embeddedservice2.my.stmfb.stm.salesforce.com',
+						{
+							scrt2URL: 'https://embeddedservice2.my.stmfb.stm.salesforce-scrt.com'
 						}
-					}
-				);
-
-				// Local
-				// (orgId, eswConfigDevName, scrtUrl, baseCoreURL, snippetConfig)
-// 				embeddedservice_bootstrap.init(
-// 					'00DRM000000FmHK', //org id
-// 					'justin', //esw config dev name
-// 					'http://embeddedservice2.localhost.internal.salesforce.com:8096/chat', //scrt url
-// 					'http://embeddedservice2.localhost.internal.salesforce.com:6109', //core url
-// 					{
-// 						embeddedServiceConfig: {
-// 							siteUrl: 'http://communities.dev.localhost.soma.force.com:6109/serviceOct2020',
-// 							embeddedServiceBranding: { height: '554', width: '344' }
-// 						}
-// 					}
-// 				);
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
 			};
-
-			// STMFB
-// 			if (!window.embeddedservice_inapp) {
-// 				var s = document.createElement('script');
-
-// 				s.setAttribute('src', 'https://embeddedservice2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
-// 				s.onload = function() {
-// 					initESW(null);
-// 				};
-// 				document.body.appendChild(s);
-// 			} else {
-// 				initESW('https://embeddedservice2.my.stmfb.stm.salesforce.com');
-// 			}
-			
-			// Local
-			if (!window.embeddedservice_inapp) {
-				var s = document.createElement('script');
-
-				s.setAttribute('src', 'http://embeddedservice2.localhost.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-				initESW('http://embeddedservice2.localhost.internal.salesforce.com:6109');
-			}
 		</script>
+<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
