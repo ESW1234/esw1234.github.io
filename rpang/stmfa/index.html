@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+<script src="https://irs.lightning.stmfa.stm.force.com/lightning/lightning.out.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+
+</div>
+<div id="lightning">
+  </div>
+  <script>
+            $Lightning.use("c:lightningOutApp", function() {
+              $Lightning.createComponent("c:emptyAura", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+            },
+
+         'https://irs.lightning.stmfa.stm.force.com', // Community endpoint
+         '00DRM0000007vGi!AQEAQJ_xaQLwgrV_8W8vQT6dpBoZ_gwRawaAThpSRquKebIo3Ncp9X793niEjk70mv9c8J8T4tSpiCfNZCaw9R.k7IjjJbz6'
+        );                   
+
+</script>   
+</body>
+</html>
