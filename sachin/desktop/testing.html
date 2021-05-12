@@ -47,8 +47,8 @@
 		embedded_svc.settings.devMode = true;
 		
 		embedded_svc.init(
-			'http://inapp2.localhost.internal.salesforce.com:6109',
-			'http://sachinh2.dev.localhost.soma.force.com:6109/sac',
+			'https://inapp2.localhost.internal.salesforce.com:6101',
+			'https://sachinh2.dev.localhost.soma.force.com:6101/sac',
 			gslbBaseURL,
 			'00Dxx0000006GSl',
 			'Sachin',
@@ -58,14 +58,14 @@
 				buttonId: '573xx0000004CCG',
 				baseLiveAgentURL: 'http://sachinhanu-wsl1.internal.salesforce.com:8096/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CSOEA2_1788590f218',
-				isOfflineSupportEnabled: false
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'http://inapp2.localhost.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://inapp2.localhost.internal.salesforce.com:6101/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
