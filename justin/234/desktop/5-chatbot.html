@@ -67,21 +67,56 @@
 
 				embedded_svc.settings.devMode = true;
 
+// 				// Local main.
+// 				embedded_svc.init(
+// 					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+// 					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
+// 					gslbBaseURL,
+// 					'00Dxx0000006Gxv',
+// 					'justin_chat_chatbot',
+// 					{
+// 						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
+// 						deploymentId: '572xx0000004CKK',
+// 						buttonId: '573xx0000004CYq',
+// 						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
+// 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EcGEAU_17966f53d58',
+// 						isOfflineSupportEnabled: false
+// 					}
+// 				);
+
+				// Local site, steam chatbot metadata.
 				embedded_svc.init(
-					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+					'https://snapins.my.stmfb.stm.salesforce.com',
 					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
 					gslbBaseURL,
-					'00Dxx0000006Gxv',
-					'justin_chat_chatbot',
+					'00DRM0000005jYI',
+					'justinChatbot',
 					{
-						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
-						deploymentId: '572xx0000004CKK',
-						buttonId: '573xx0000004CYq',
-						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EcGEAU_17966f53d58',
+						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004DDM',
+						buttonId: '573RM0000004HAw',
+						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
 						isOfflineSupportEnabled: false
 					}
 				);
+
+				// STMFB (232).
+// 				embedded_svc.init(
+// 					'https://snapins.my.stmfb.stm.salesforce.com',
+// 					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+// 					gslbBaseURL,
+// 					'00DRM0000005jYI',
+// 					'justinChatbot',
+// 					{
+// 						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+// 						deploymentId: '572RM0000004DDM',
+// 						buttonId: '573RM0000004HAw',
+// 						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+// 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+// 						isOfflineSupportEnabled: false
+// 					}
+// 				);
 			};
 
 			if (!window.embedded_svc) {
