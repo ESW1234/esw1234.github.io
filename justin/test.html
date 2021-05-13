@@ -1,541 +1,537 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	<title>Test Page</title>
-</head>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+		<title>Test Page</title>
+	</head>
+	<body>
+		<h1>Test Page</h1>
 
-<body>
-
-<h1>Test Page</h1>
-
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 
-<!-- Use LightningOut to load LWC w/out Embedded Service. -->
-<script type="text/javascript">
-	var lightningOutScript = document.createElement("script");
+		<!-- Use LightningOut to load LWC w/out Embedded Service. -->
+		<script type="text/javascript">
+			var lightningOutScript = document.createElement("script");
 
-	lightningOutScript.type = "text/javascript";
-	lightningOutScript.src = "http://communities.dev.localhost.soma.force.com:6109/feb2020/lightning/lightning.out.js";
-	lightningOutScript.onload = function() {
-		// Lightning Out is loaded, try creating application.
+			lightningOutScript.type = "text/javascript";
+			lightningOutScript.src = "http://communities.dev.localhost.soma.force.com:6109/feb2020/lightning/lightning.out.js";
+			lightningOutScript.onload = function() {
+				// Lightning Out is loaded, try creating application.
 
-		// STMFA
-		$Lightning.use(
-			"runtime_appointmentbooking:lightningOutGuest",
-			function() {
-				$Lightning.ready(function() {
-					$Lightning.createComponent(
-						"lightning:input",		// component to create
-						{},				// attributes
-						document.body,			// where to put component
-						function(cmp) {
-							debugger;
-						}
-					);
-				});
-			},
-			"http://communities.dev.localhost.soma.force.com:6109/feb2020", // community endpoint
-			undefined,	// oauthToken
-			undefined	// language
-		);
-	};
-	document.body.appendChild(lightningOutScript);
-</script>
-<!--  -->
-
-<!-- Test common/api.js -->
-<!--
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = false; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
-
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		// Non-standard snippet settings.
-		embedded_svc.settings.devMode = true;
-
-		embedded_svc.init(
-			'http://jmacmillin-wsm3.internal.salesforce.com:6109',
-			'http://communities.force.com:6109/customerServiceMay2019',
-			gslbBaseURL,
-			'00Dxx0000006Gz1',
-			'justin',
-			{
-				baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004C92',
-				buttonId: '573xx0000004CAe',
-				baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
-				isOfflineSupportEnabled: true
-			}
-		);
-		setTimeout(
-			function() {
-				embedded_svc.bootstrapEmbeddedService(
-					{
-						baseCoreUrl: "http://jmacmillin-wsm3.internal.salesforce.com:6109",
-						communityEndpointURL: "http://communities.force.com:6109/customerServiceMay2019",
-						paramsObj: embedded_svc.settings.language,
-						attributes: {
-							configurationData: embedded_svc.settings,
-							serializedSessionData: undefined
-						},
-						locator: document.body
-					},
+				// STMFA
+				$Lightning.use(
+					"runtime_appointmentbooking:lightningOutGuest",
 					function() {
-						console.log("snapins bootstrapped!");
-					}	
-				);		
-			},
-			2000
-		);
-	};
+						$Lightning.ready(function() {
+							$Lightning.createComponent(
+								"lightning:input",		// component to create
+								{},				// attributes
+								document.body,			// where to put component
+								function(cmp) {
+									debugger;
+								}
+							);
+						});
+					},
+					"http://communities.dev.localhost.soma.force.com:6109/feb2020", // community endpoint
+					undefined,	// oauthToken
+					undefined	// language
+				);
+			};
+			document.body.appendChild(lightningOutScript);
+		</script>
+		<!--  -->
 
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
-// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-// 		initESW('https://service.force.com');
-		initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
-	}
-</script>
--->
-<!-- Test common/api.js -->
+		<!-- Test common/api.js -->
+		<!--
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = false; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
+				embedded_svc.settings.defaultMinimizedText = 'online'; //(Defaults to Chat with an Expert)
+				embedded_svc.settings.disabledMinimizedText = 'offline'; //(Defaults to Agent Offline)
 
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com"};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
 
-<!-- Dell - Fallback Routing + Direct to Button Routing -->
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
 
-<!-- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #4380AE;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #4380AE;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
-	}
-</style> -->
-<!-- <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
+				// Non-standard snippet settings.
+				embedded_svc.settings.devMode = true;
 
-		embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
-		embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
+				embedded_svc.init(
+					'http://jmacmillin-wsm3.internal.salesforce.com:6109',
+					'http://communities.force.com:6109/customerServiceMay2019',
+					gslbBaseURL,
+					'00Dxx0000006Gz1',
+					'justin',
+					{
+						baseLiveAgentContentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000004C92',
+						buttonId: '573xx0000004CAe',
+						baseLiveAgentURL: 'http://jmacmillin-wsm3.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1658c40a7be',
+						isOfflineSupportEnabled: true
+					}
+				);
+				setTimeout(
+					function() {
+						embedded_svc.bootstrapEmbeddedService(
+							{
+								baseCoreUrl: "http://jmacmillin-wsm3.internal.salesforce.com:6109",
+								communityEndpointURL: "http://communities.force.com:6109/customerServiceMay2019",
+								paramsObj: embedded_svc.settings.language,
+								attributes: {
+									configurationData: embedded_svc.settings,
+									serializedSessionData: undefined
+								},
+								locator: document.body
+							},
+							function() {
+								console.log("snapins bootstrapped!");
+							}	
+						);		
+					},
+					2000
+				);
+			};
 
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Live Agent
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		// Avatars
-		//embedded_svc.settings.avatarImgURL = "../../avatar.png";
-		embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-
-		// Debug
-		embedded_svc.settings.devMode = true;
-
-
-		// Fallback + Direct to Button
-		// 573RM0000004KQ9 - standard agent 
-		// 573RM0000004DDR - system admin agent
-		// 573RM0000004HAw - bot
-		/*
-			This page is set up to route to the standard agent button/queue (573RM0000004KQ9) by default.
-			Direct to button routing will specify to route to the system admin agent (573RM0000004DDR).
-			Fallback routing will route to the chatbot (573RM0000004HAw) which will always succeed.
-		*/
-		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-			embedded_svc.settings.fallbackRouting = ["573RM0000004DDR", "573RM0000004HAw"];
-			return "573RM0000004DDR";
-		};
-		embedded_svc.settings.fallbackRouting = ["573RM0000004HAw"]; //An array of button IDs, user IDs, or userId_buttonId
-
-		
-		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
-			gslbBaseURL,
-			'00DRM0000005jYI',
-			'justinChatbot',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004DDM',
-				buttonId: '573RM0000004KQ9', // standard agent
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
-				isOfflineSupportEnabled: false
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.js');
+		// 		s.setAttribute('src', 'http://jmacmillin-wsm3.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+		// 		initESW('https://service.force.com');
+				initESW('http://jmacmillin-wsm3.internal.salesforce.com:6109');
 			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-// 		initESW('https://service.force.com');
-		initESW('https://na44.stmfb.stm.salesforce.com');
-	}
-</script>
- -->
-<!-- Dell - Fallback Routing + Direct to Button Routing -->
+		</script>
+		-->
+		<!-- Test common/api.js -->
 
 
 
-<!-- Debugging for Org62 passing Case ID in dynamically -->
+		<!-- Dell - Fallback Routing + Direct to Button Routing -->
 
-<!-- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #307EBA;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #307EBA;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
-/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
-	}
-</style> -->
-
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<!-- <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Subject: "help"}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		
-		embedded_svc.settings.extraPrechatFormDetails = [{
-			"label":"CaseId",
-			"transcriptFields": ["CaseId"],
-			"value":"500RM000002WNsG",
-			"displayToAgent":true
-		}];
-		embedded_svc.settings.extraPrechatInfo = [{
-			"entityName": "Case",
-			"saveToTranscript": "CaseId",
-			"showOnCreate":false,
-			"entityFieldMaps": [{
-				"isExactMatch": true,
-				"fieldName": "Id",
-				"doCreate": false,
-				"doFind": true,
-				"label": "CaseId"
-			}]
-		}];
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		document.addEventListener(
-			"updateCaseId",
-			function(event) {
-				embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.caseId;
-				// Fire callback.
-				event.detail.callback();
-			},
-			false
-		);
-
-		embedded_svc.init(
-			'https://na44.stmfb.stm.salesforce.com',
-			'https://snapins-1600942b294.stmfb.stm.force.com/napili',
-			gslbBaseURL,
-			'00DRM0000005jYI',
-			'justin',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004DDM',
-				buttonId: '573RM0000004DDR',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
-				isOfflineSupportEnabled: true
+		<!-- <style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #4380AE;
+				font-family: "Salesforce Sans", sans-serif;
 			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script> -->
-
-<!-- Debugging for Org62 passing Case ID in dynamically -->
-
-	
-<!-- <script src="https://service.force.com/embeddedservice/5.0/esw.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var initESW = function(gslbBaseURL) {
-    embedded_svc.settings.displayHelpButton = true; //Or false
-    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-    embedded_svc.settings.entryFeature = 'LiveAgent';
-    embedded_svc.settings.extraPrechatFormDetails = [{
-	    "label":"Email",
-	    "value":"xyz@gmail.com",
-	    "transcriptFields": ["Email__c"]
-	}];
-
-    embedded_svc.init(
-	'https://manish-surolia-dev-ed.my.salesforce.com',
-	'https://manish-surolia-developer-edition.ap4.force.com/',
-	gslbBaseURL,
-	'00D6F000001GK45',
-	'ChatBot',
-	{
-	    baseLiveAgentContentURL: 'https://c.la1-c2-ukb.salesforceliveagent.com/content',
-	    deploymentId: '5726F000000TwZM',
-	    buttonId: '5736F000000PaoV',
-	    baseLiveAgentURL: 'https://d.la1-c2-ukb.salesforceliveagent.com/chat',
-	    eswLiveAgentDevName: 'ChatBot',
-	    isOfflineSupportEnabled: false
-	}
-    );
-};
-
-if (!window.embedded_svc) {
-	var s = document.createElement('script');
-	s.setAttribute('src', 'https://manish-surolia-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-	s.onload = function() {
-    		initESW(null);
-	};
-	document.body.appendChild(s);
-} else {
-	initESW('https://service.force.com');
-}
-</script>
--->
-
-
-<!-- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #A13324;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #A13324;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
-	}
-</style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		embedded_svc.settings.defaultMinimizedText = 'Chat with a bot'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Live Agent
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init(
-			'https://damine-destinationbc-demo.my.salesforce.com',
-			'https://sdodemo-main-166ce2cf6b6-16a2ca7f588.force.com/consumer',
-			gslbBaseURL,
-			'00D2E000000oIVo',
-			'Snap_ins_Einstein_Bot',
-			{
-				baseLiveAgentContentURL: 'https://c.la1-c2-ia2.salesforceliveagent.com/content',
-				deploymentId: '5722E000000LCAZ',
-				buttonId: '5732E000000LCiZ',
-				baseLiveAgentURL: 'https://d.la1-c2-ia2.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1N000000000VUAQ_161f777bdfa',
-				isOfflineSupportEnabled: true
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #4380AE;
 			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://damine-destinationbc-demo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
-</script> -->
-
-
-<!-- POC Load Custom Application Using Lightning Out -->
-<!-- <script type="text/javascript">
-	var lightningOutScript = document.createElement("script");
-
-	lightningOutScript.type = "text/javascript";
-	lightningOutScript.src = "http://service.force.com/lightning/lightning.out.js";
-	lightningOutScript.onload = function() {
-		// Lightning Out is loaded, try creating application.
-
-		// STMFB
-		$Lightning.use(
-			"c:justinLightningApp",
-			function() {
-				debugger;
-			},
-			"https://snapins-1600942b294.stmfb.stm.force.com/napili", // community endpoint
-			undefined,	// oauthToken
-			undefined	// language
-		);
-
-		// Desktop, local
-		$Lightning.use(
-			"c:justinLightningApp",
-			function() {
-				debugger;
-			},
-			"http://communities.localhost.soma.force.com:6109/napiliOct152018", // community endpoint
-			undefined,	// oauthToken
-			undefined	// language
-		);
-	};
-	document.body.appendChild(lightningOutScript);
-</script> -->
-
-<!-- old snippet -->
-<!-- <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
-/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
-	}
-</style> -->
-
-
-<!-- W-6034487 Debugging -->
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<!-- <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-		embedded_svc.settings.entryFeature = 'LiveAgent';
-
-		embedded_svc.init(
-			'https://dfcapdemo.my.salesforce.com',
-			'https://portal.ssdemo.org',
-			gslbBaseURL,
-			'00DB00000005VTf',
-			'Cap_Man_Queue',
-			{
-				baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content',
-				deploymentId: '572B0000000Cx8W',
-				buttonId: '573B0000000CycF',
-				baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'Cap_Man_Queue',
-				isOfflineSupportEnabled: true
+			@font-face {
+				font-family: 'Salesforce Sans';
+		/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+				url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
 			}
-		);
-	};
+		</style> -->
+		<!-- <script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
 
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://dfcapdemo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
+				embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
+				embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Live Agent
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				// Avatars
+				//embedded_svc.settings.avatarImgURL = "../../avatar.png";
+				embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+
+				// Debug
+				embedded_svc.settings.devMode = true;
+
+
+				// Fallback + Direct to Button
+				// 573RM0000004KQ9 - standard agent 
+				// 573RM0000004DDR - system admin agent
+				// 573RM0000004HAw - bot
+				/*
+					This page is set up to route to the standard agent button/queue (573RM0000004KQ9) by default.
+					Direct to button routing will specify to route to the system admin agent (573RM0000004DDR).
+					Fallback routing will route to the chatbot (573RM0000004HAw) which will always succeed.
+				*/
+				embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+					embedded_svc.settings.fallbackRouting = ["573RM0000004DDR", "573RM0000004HAw"];
+					return "573RM0000004DDR";
+				};
+				embedded_svc.settings.fallbackRouting = ["573RM0000004HAw"]; //An array of button IDs, user IDs, or userId_buttonId
+
+
+				embedded_svc.init(
+					'https://na44.stmfb.stm.salesforce.com',
+					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+					gslbBaseURL,
+					'00DRM0000005jYI',
+					'justinChatbot',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004DDM',
+						buttonId: '573RM0000004KQ9', // standard agent
+						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+						isOfflineSupportEnabled: false
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+		// 		s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+		// 		initESW('https://service.force.com');
+				initESW('https://na44.stmfb.stm.salesforce.com');
+			}
+		</script>
+		 -->
+		<!-- Dell - Fallback Routing + Direct to Button Routing -->
+
+
+
+		<!-- Debugging for Org62 passing Case ID in dynamically -->
+
+		<!-- <style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #307EBA;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #307EBA;
+			}
+			@font-face {
+				font-family: 'Salesforce Sans';
+		/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
+		/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+			}
+		</style> -->
+
+		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<!-- <script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Chat
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Subject: "help"}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+
+				embedded_svc.settings.extraPrechatFormDetails = [{
+					"label":"CaseId",
+					"transcriptFields": ["CaseId"],
+					"value":"500RM000002WNsG",
+					"displayToAgent":true
+				}];
+				embedded_svc.settings.extraPrechatInfo = [{
+					"entityName": "Case",
+					"saveToTranscript": "CaseId",
+					"showOnCreate":false,
+					"entityFieldMaps": [{
+						"isExactMatch": true,
+						"fieldName": "Id",
+						"doCreate": false,
+						"doFind": true,
+						"label": "CaseId"
+					}]
+				}];
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				document.addEventListener(
+					"updateCaseId",
+					function(event) {
+						embedded_svc.settings.extraPrechatFormDetails[0].value = event.detail.caseId;
+						// Fire callback.
+						event.detail.callback();
+					},
+					false
+				);
+
+				embedded_svc.init(
+					'https://na44.stmfb.stm.salesforce.com',
+					'https://snapins-1600942b294.stmfb.stm.force.com/napili',
+					gslbBaseURL,
+					'00DRM0000005jYI',
+					'justin',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004DDM',
+						buttonId: '573RM0000004DDR',
+						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000000001EAA_15ec5bd2971',
+						isOfflineSupportEnabled: true
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script> -->
+
+		<!-- Debugging for Org62 passing Case ID in dynamically -->
+
+
+		<!-- <script src="https://service.force.com/embeddedservice/5.0/esw.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		var initESW = function(gslbBaseURL) {
+		    embedded_svc.settings.displayHelpButton = true; //Or false
+		    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		    embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		    embedded_svc.settings.entryFeature = 'LiveAgent';
+		    embedded_svc.settings.extraPrechatFormDetails = [{
+			    "label":"Email",
+			    "value":"xyz@gmail.com",
+			    "transcriptFields": ["Email__c"]
+			}];
+
+		    embedded_svc.init(
+			'https://manish-surolia-dev-ed.my.salesforce.com',
+			'https://manish-surolia-developer-edition.ap4.force.com/',
+			gslbBaseURL,
+			'00D6F000001GK45',
+			'ChatBot',
+			{
+			    baseLiveAgentContentURL: 'https://c.la1-c2-ukb.salesforceliveagent.com/content',
+			    deploymentId: '5726F000000TwZM',
+			    buttonId: '5736F000000PaoV',
+			    baseLiveAgentURL: 'https://d.la1-c2-ukb.salesforceliveagent.com/chat',
+			    eswLiveAgentDevName: 'ChatBot',
+			    isOfflineSupportEnabled: false
+			}
+		    );
 		};
-		document.body.appendChild(s);
-	} else {
-// 		initESW('https://service.force.com');
-		initESW('https://dfcapdemo.my.salesforce.com');
-	}
-</script> -->
+
+		if (!window.embedded_svc) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://manish-surolia-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			document.body.appendChild(s);
+		} else {
+			initESW('https://service.force.com');
+		}
+		</script>
+		-->
 
 
-</body>
+		<!-- <style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #A13324;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #A13324;
+			}
+			@font-face {
+				font-family: 'Salesforce Sans';
+				src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+				url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+			}
+		</style>
+
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				embedded_svc.settings.defaultMinimizedText = 'Chat with a bot'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Live Agent
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				embedded_svc.init(
+					'https://damine-destinationbc-demo.my.salesforce.com',
+					'https://sdodemo-main-166ce2cf6b6-16a2ca7f588.force.com/consumer',
+					gslbBaseURL,
+					'00D2E000000oIVo',
+					'Snap_ins_Einstein_Bot',
+					{
+						baseLiveAgentContentURL: 'https://c.la1-c2-ia2.salesforceliveagent.com/content',
+						deploymentId: '5722E000000LCAZ',
+						buttonId: '5732E000000LCiZ',
+						baseLiveAgentURL: 'https://d.la1-c2-ia2.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1N000000000VUAQ_161f777bdfa',
+						isOfflineSupportEnabled: true
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://damine-destinationbc-demo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script> -->
+
+
+		<!-- POC Load Custom Application Using Lightning Out -->
+		<!-- <script type="text/javascript">
+			var lightningOutScript = document.createElement("script");
+
+			lightningOutScript.type = "text/javascript";
+			lightningOutScript.src = "http://service.force.com/lightning/lightning.out.js";
+			lightningOutScript.onload = function() {
+				// Lightning Out is loaded, try creating application.
+
+				// STMFB
+				$Lightning.use(
+					"c:justinLightningApp",
+					function() {
+						debugger;
+					},
+					"https://snapins-1600942b294.stmfb.stm.force.com/napili", // community endpoint
+					undefined,	// oauthToken
+					undefined	// language
+				);
+
+				// Desktop, local
+				$Lightning.use(
+					"c:justinLightningApp",
+					function() {
+						debugger;
+					},
+					"http://communities.localhost.soma.force.com:6109/napiliOct152018", // community endpoint
+					undefined,	// oauthToken
+					undefined	// language
+				);
+			};
+			document.body.appendChild(lightningOutScript);
+		</script> -->
+
+		<!-- old snippet -->
+		<!-- <style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #005290;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #005290;
+			}
+			@font-face {
+				font-family: 'Salesforce Sans';
+		/* 		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'), */
+		/* 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype'); */
+			}
+		</style> -->
+
+
+		<!-- W-6034487 Debugging -->
+		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<!-- <script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Chat
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+
+				embedded_svc.init(
+					'https://dfcapdemo.my.salesforce.com',
+					'https://portal.ssdemo.org',
+					gslbBaseURL,
+					'00DB00000005VTf',
+					'Cap_Man_Queue',
+					{
+						baseLiveAgentContentURL: 'https://c.gla3-dfw.gus.salesforce.com/content',
+						deploymentId: '572B0000000Cx8W',
+						buttonId: '573B0000000CycF',
+						baseLiveAgentURL: 'https://d.gla3-dfw.gus.salesforce.com/chat',
+						eswLiveAgentDevName: 'Cap_Man_Queue',
+						isOfflineSupportEnabled: true
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://dfcapdemo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+		// 		initESW('https://service.force.com');
+				initESW('https://dfcapdemo.my.salesforce.com');
+			}
+		</script> -->
+	</body>
 </html>
