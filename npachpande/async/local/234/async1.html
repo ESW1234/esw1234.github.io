@@ -12,31 +12,28 @@
 </style>
   
 <script type='text/javascript'>
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://eswmessagingchat.lightning.localhost.soma.force.com:6101/embeddedservice/asyncclient/bootstrap.js');
-  s.onload = function() {
-    embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e";
-    embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://staging-us-stmfa.scrt.sfdc.sh";
-    embeddedservice_bootstrap.settings.devMode = true;
-    embeddedservice_bootstrap.settings.prechatEnabled = true;
-    embeddedservice_bootstrap.init(
-      '00DRM000000HvmX',
-      'Messaging',
-      'https://npachpand-wsm.internal.salesforce.com:8096/chat/rest',
-      'https://npachpand-wsm.internal.salesforce.com:6109',
-      {
-        embeddedServiceConfig: {
-          siteUrl: 'https://eswmessagingchat.dev.localhost.soma.force.com:6101/chatcommunity',
-          embeddedServiceBranding: {
-            height : '554',
-            width : '344'
-          }
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.settings.devMode = true;
+          
+            embeddedservice_bootstrap.settings.prechatEnabled = true;
+
+            embeddedservice_bootstrap.init(
+                '00DRM000000HvmX',
+                'Messaging',
+                'https://npachpand-wsm.internal.salesforce.com:6101',
+                {
+                    scrt2URL: 'https://eswmessagingchat2.my.stmfa.stm.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
         }
-      }
-    );
-  };
-  document.body.appendChild(s);
+    };
 </script>
+<script type='text/javascript' src='https://npachpand-wsm.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
