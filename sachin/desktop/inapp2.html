@@ -6,8 +6,7 @@
 	<body style="background-image: url('http://esw1234.github.io/sachin/background.jpg'); height: 100%; width: 100%">
 		<h1>inapp2.html</h1>
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-		<a href="http://esw1234.github.io/smallCompanyLogoImg.png" title="Test" download>
-			Download</a>
+
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 		<!-- Local Dev page for Desktop -->
@@ -17,6 +16,7 @@
 					embeddedservice_bootstrap.settings.prechatEnabled = true;
 					embeddedservice_bootstrap.settings.devMode = true;
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+					embeddedservice_bootstrap.settings.endUserAttachmentsEnabled = true;
 	
             				embeddedservice_bootstrap.init(
                 				'00DRM000000I2H9',
