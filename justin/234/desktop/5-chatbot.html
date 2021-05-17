@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-		<title>234 5.0 Desktop</title>
+		<title>234 5.0 Desktop Chatbot</title>
 	</head>
 
 	<body>
@@ -12,7 +12,7 @@
 		<p align="center"><font color="red"><a target="_blank" href="5-2.html">Page 2 in a new tab.</a></font></p>
 
 		<h1>
-			234 | desktop | justin | 5.0 - chatbot
+			234 | desktop | justin | 5.0 chatbot
 		</h1>
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -40,18 +40,6 @@
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
-
-				embedded_svc.settings.defaultMinimizedText = 'Chat with a Bot!'; //(Defaults to Chat with an Expert)
-				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-				// Settings for Chat
-				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-					// Returns a valid button ID.
-				//};
 				
 				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "I need help."};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
@@ -60,63 +48,27 @@
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
-
 				// Avatars.
-				embedded_svc.settings.avatarImgURL = "../../../avatar.png";
-				embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
+// 				embedded_svc.settings.avatarImgURL = "../../../avatar.png";
+// 				embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
 
 				embedded_svc.settings.devMode = true;
 
-// 				// Local main.
-// 				embedded_svc.init(
-// 					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
-// 					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
-// 					gslbBaseURL,
-// 					'00Dxx0000006Gxv',
-// 					'justin_chat_chatbot',
-// 					{
-// 						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
-// 						deploymentId: '572xx0000004CKK',
-// 						buttonId: '573xx0000004CYq',
-// 						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
-// 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EcGEAU_17966f53d58',
-// 						isOfflineSupportEnabled: false
-// 					}
-// 				);
-
-				// Local site, steam chatbot metadata.
 				embedded_svc.init(
-					'https://snapins.my.stmfb.stm.salesforce.com',
+					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
 					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
 					gslbBaseURL,
-					'00DRM0000005jYI',
-					'justinChatbot',
+					'00Dxx0000006Gxv',
+					'justin_chat_chatbot',
 					{
-						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-						deploymentId: '572RM0000004DDM',
-						buttonId: '573RM0000004HAw',
-						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
+						deploymentId: '572xx0000004CKK',
+						buttonId: '573xx0000004CYq',
+						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EcGEAU_17966f53d58',
 						isOfflineSupportEnabled: false
 					}
 				);
-
-				// STMFB (232).
-// 				embedded_svc.init(
-// 					'https://snapins.my.stmfb.stm.salesforce.com',
-// 					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
-// 					gslbBaseURL,
-// 					'00DRM0000005jYI',
-// 					'justinChatbot',
-// 					{
-// 						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-// 						deploymentId: '572RM0000004DDM',
-// 						buttonId: '573RM0000004HAw',
-// 						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-// 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
-// 						isOfflineSupportEnabled: false
-// 					}
-// 				);
 			};
 
 			if (!window.embedded_svc) {
