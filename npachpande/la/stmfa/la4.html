@@ -25,7 +25,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-    embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+    		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		// Standard language - en-US
 		//embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
 		// End user language
@@ -84,12 +84,12 @@
 			"showOnCreate":true,
 			"saveToTranscript":"CaseId",
 			"entityFieldMaps": [{
-        "isExactMatch":false,
-        "fieldName":"Subject",
-        "doCreate":true,
-        "doFind":false,
-        "label":"issue"
-      }]
+				"isExactMatch":false,
+				"fieldName":"Subject",
+				"doCreate":true,
+				"doFind":false,
+				"label":"issue"
+			}]
 		}];
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
