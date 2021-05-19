@@ -1,7 +1,8 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
-    <script type='text/javascript'>
+
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
@@ -11,8 +12,7 @@
 				'Messaging',
 				'https://inappesw.localhost.internal.salesforce.com:6101',
 				{
-					/* scrt2URL: 'http://inappesw.my.localhost.internal.salesforce-scrt.com', */
-					scrt2URL: 'http://ttso-ltm1.internal.salesforce-scrt.com:8096'
+					scrt2URL: 'http://inappesw.my.localhost.internal.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
