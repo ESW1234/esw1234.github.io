@@ -18,28 +18,21 @@
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-		<!-- https://help.salesforce.com/articleView?id=embedded_chat_communities_branding.htm&type=5 -->
-		<!-- <style type='text/css'>
-			.sidebarHeader {
-				background-color: #000000 !important;
-			}
-		</style> -->
-
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
-				background-color: #167B45;
+				background-color: #005290;
 				font-family: "Arial", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
-				outline: 1px solid #167B45;
+				outline: 1px solid #005290;
 			}
 		</style>
 
-		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
-				embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 				//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -52,36 +45,25 @@
 					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 					// Returns a valid button ID.
 				//};
-				
-				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin", Email: "jmacmillin@salesforce.com", Subject: "I need help."};//, Company: "Salesforce", Priority: "Medium", Subject: "Help me"}; //Sets the auto-population of pre-chat form fields
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "macmillin"}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
-
-				// Avatars.
-// 				embedded_svc.settings.avatarImgURL = "../../../avatar.png";
-// 				embedded_svc.settings.chatbotAvatarImgURL = "../../../bot-avatar.png";
-
-				embedded_svc.settings.devMode = true;
-
-				// Safari
-// 				embedded_svc.settings.__synchronous_decrement_tab = true;
-
 				embedded_svc.init(
 					'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
 					'https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/customerService0221',
 					gslbBaseURL,
 					'00Dxx0000006Gxv',
-					'justin_chat',
+					'recordTypeTesting',
 					{
 						baseLiveAgentContentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8095/content',
 						deploymentId: '572xx0000004CKK',
 						buttonId: '573xx0000004CXE',
 						baseLiveAgentURL: 'https://jmacmillin-ltm.internal.salesforce.com:8096/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004EaeEAE_177d84439d6',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004ElwEAE_179911b6aca',
 						isOfflineSupportEnabled: false
 					}
 				);
@@ -89,15 +71,13 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-// 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.js');
+				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-// 				initESW('https://service.force.com');
-				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
+				initESW('https://service.force.com');
 			}
 		</script>
 	</body>
