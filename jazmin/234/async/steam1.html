@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="blue">234 STMFA</font></p>
+	<p align="center"><font color ="red">234 STMFA</font></p>
   <br/>
   <br/>	
 	
@@ -12,7 +12,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+                        embeddedservice_bootstrap.settings.prechatEnabled  = true;     
 			embeddedservice_bootstrap.init(
 				'00DRM000000N1Kk',
 				'PrechatDemo',
