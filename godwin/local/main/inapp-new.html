@@ -6,7 +6,7 @@
   <script type='text/javascript'>
     function initEmbeddedMessaging() {
       try {
-        embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+        embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
         embeddedservice_bootstrap.init(
           '00Dxx0000006ROh',
@@ -21,6 +21,6 @@
       }
     };
   </script>
-  <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <script type='text/javascript' src='https://godwin-messaging.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
   </body>
 </html>
