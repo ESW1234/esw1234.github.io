@@ -8,13 +8,16 @@
       try {
         embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
+        embeddedservice_bootstrap.settings.devMode = true;
+          
+        embeddedservice_bootstrap.settings.betaMode = true;
+         
         embeddedservice_bootstrap.init(
           '00Dxx0000006ROh',
           'Embedded_Messaging',
-          'https://godwin-messaging.lightning.localhost.sfdcdev.force.com:6101/',
+          'https://yatlaw-wsm3.internal.salesforce.com:6101',
           {
-            //scrt2URL: 'http://godwin-messaging.my.localhost.sfdcdev.salesforce-scrt.com'
-            scrt2URL: 'http://localhost:8218'
+            scrt2URL: 'https://godwinasync.my.stmfa.stm.salesforce-scrt.com'
           }
         );
       } catch (err) {
@@ -22,6 +25,6 @@
       }
     };
   </script>
-  <script type='text/javascript' src='https://godwin-messaging.lightning.localhost.sfdcdev.force.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+  <script type='text/javascript' src='https://yatlaw-wsm3.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
   </body>
 </html>
