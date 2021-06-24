@@ -16,14 +16,24 @@
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+					// Use STMFA deployment.
+// 					embeddedservice_bootstrap.init(
+// 						'00DRM000000MLcN',
+// 						'Async_Chat',
+// 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+// 						{
+// 							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
+// 						}
+// 					);
 					
+					// Use STMFB deployment.
 					embeddedservice_bootstrap.init(
-						'00DRM000000MLcN',
+						'00DRM000000FmHK',
 						'Async_Chat',
 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
 						{
-							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
-// 							scrt2URL: 'https://staging-us-stmfa.scrt.sfdc.sh'
+							scrt2URL: 'https://embeddedservice2.my.stmfb.stm.salesforce-scrt.com'
 						}
 					);
 				} catch (err) {
