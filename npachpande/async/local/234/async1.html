@@ -21,7 +21,6 @@
             embeddedservice_bootstrap.settings.betaMode = true;
 
             // STMFA ORG
-            /*
             embeddedservice_bootstrap.init(
                 '00DRM000000HvmX',
                 'Messaging',
@@ -30,7 +29,6 @@
                     scrt2URL: 'https://eswmessagingchat2.my.stmfa.stm.salesforce-scrt.com'
                 }
             );
-            */
             // STMFB ORG
             /*
             embeddedservice_bootstrap.init(
@@ -42,7 +40,7 @@
                 }
             );
             */
-            // Nishant's local
+            /* Nishant's local
             embeddedservice_bootstrap.init(
                 '00Dxx0000006Nxn',
                 'Messaging',
@@ -51,6 +49,7 @@
                     scrt2URL: 'http://10.55.112.126:8085'
                 }
             );
+            */
         } catch (err) {
             console.error('Error loading Embedded Messaging: ', err);
         }
