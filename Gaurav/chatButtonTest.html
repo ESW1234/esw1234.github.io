@@ -72,33 +72,33 @@
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
 
-        embedded_svc.init(
-          'https://georg.my.stmfa.stm.salesforce.com',
-          'https://ge.stmfa.stm.force.com/cs',
-          gslbBaseURL,
-          '00DRM000000HmeA',
-          'ESWDep1',
-          {
-            baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-            deploymentId: '572RM0000000EvW',
-            buttonId: '573RM0000000FX2',
-            baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004ESp2AM_17446a829ff',
-            isOfflineSupportEnabled: true
-          }
-        );
-      };
+  	embedded_svc.init(
+			'https://zdtalllic.cue1.my.pc-rnd.salesforce.com',
+			'https://zdt1.cue1.pc-rnd.force.com/cs',
+			gslbBaseURL,
+			'00DU10000008aY2',
+			'Chat1_0',
+			{
+				baseLiveAgentContentURL: 'https://c.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				deploymentId: '572U1000000009Y',
+				buttonId: '573U1000000009T',
+				baseLiveAgentURL: 'https://d.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IU1000000000BMAQ_17a8278ea7b',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
 
-      if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://georg.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-          initESW(null);
-        };
-        document.body.appendChild(s);
-      } else {
-        initESW('https://service.force.com');
-      }
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://zdtalllic.cue1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
     </script>
 		<!-- end 5.0 snippet -->
 
