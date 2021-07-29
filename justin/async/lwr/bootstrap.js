@@ -575,7 +575,8 @@
 		let siteUrl = undefined;
 
 		try {
-			siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
+			//siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
+			siteUrl = "https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com";
 		} catch(err) {
 			error("Error getting Site URL: " + err);
 		}
@@ -721,7 +722,7 @@
 			const iframe = document.createElement("iframe");
 
 			//iframe.src = getSiteUrl() + "/embeddedService/embeddedService.app";
-      iframe.src = "https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com/eswlwr?lwc.mode=dev";
+      			iframe.src = "https://eswmessagingchat-175482fb00f-175afe74a0a.stmfa.stm.force.com/eswlwr?lwc.mode=dev";
 
 			iframe.title = "Chat with an Agent";
 			iframe.className = IFRAME_NAME;
