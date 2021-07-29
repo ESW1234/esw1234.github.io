@@ -733,6 +733,7 @@
 			iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads";
 			iframe.onload = () => {
 				log("Created an iframe to load the aura application.");
+				handleAfterAppLoad();
 			};
 
 			document.body.appendChild(iframe);
