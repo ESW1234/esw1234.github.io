@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  
+<h3 onclick='beginDownload()'> Click to download </h3>
+  
+<script type='text/javascript'>
+    			function beginDownload() {
+                var anchorElement = document.createElement("a");
+                anchorElement.style.display = "none";
+                anchorElement.download = "";
+                // Set anchor-element's source to the attachment's download URL, received in the message payload.
+                anchorElement.href = "https://inappmessagingorg--c.stmfa.stm.documentforce.com/sfc/dist/version/download/?oid=00DRM000000MPxL&ids=068RM00000085SV&d=%2Fa%2FRM0000004DXF%2FPy1oUEwRcUh80BGCVRENyXYup2M8rsOYfAJBHjsKMOU&asPdf=false";
+                // Attach anchor-element to the DOM.
+                document.body.appendChild(anchorElement);
+                // Perform a programmatic click to begin file download.
+                anchorElement.click();
+                // Cleanup - remove anchor-element from the DOM.
+                document.body.removeChild(anchorElement);
+          }
+</script>
+
+</body>
+</html>
