@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>STMFB async1.html</title>
+  <title>STMFB async1.html page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
@@ -12,30 +12,30 @@
 </style>
 
 <script type='text/javascript'>
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://na44.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
-  s.onload = function() {
-    embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e';
-    embeddedservice_bootstrap.init(
-      '00DRM000000Fn0E', //orgId
-      'Messaging', // ESW deployment devName
-      'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-      'https://na44.stmfb.stm.salesforce.com',
-      {
-        embeddedServiceConfig: {
-          siteUrl: 'https://eswmessagingchat-17671ef033b.stmfb.stm.force.com/chatcommunity',
-          embeddedServiceBranding: {
-            height : '554',
-            width : '344'
-          }
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.settings.devMode = true;
+          
+            embeddedservice_bootstrap.settings.betaMode = false;
+
+            embeddedservice_bootstrap.init(
+                '00DRM000000FqCE',
+                'Messaging',
+                'https://eswmessagingchat.my.stmfb.stm.salesforce.com',
+                {
+                    scrt2URL: 'https://eswmessagingchat.my.stmfb.stm.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
         }
-      }
-    );
-  };
-  document.body.appendChild(s);  
+    };
 </script>
-  
-  <div></div>
-  
+<script type='text/javascript' src='https://eswmessagingchat.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<!-- <script type='text/javascript' src='https://test-service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+
+
 </body>
 </html>
