@@ -4,19 +4,19 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="blue">234 STMFB Deployment</font></p>
+	<p align="center"><font color ="red">234 STMFB Deployment</font></p>
   <br/>
   <br/>	
 	
 
-  <script type='text/javascript'>
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
 				'00DRM000000JmUS',
-				'prechatDemo',
+				'EmbeddedMessagingWithQueueBasedRouting',
 				'https://eswasync2.my.stmfb.stm.salesforce.com',
 				{
 					scrt2URL: 'https://eswasync2.my.stmfb.stm.salesforce-scrt.com'
@@ -27,8 +27,10 @@
 		}
 	};
 </script>
+<script type='text/javascript' src='https://eswasync2.my.stmfb.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
-<script type='text/javascript' src='https://eswasync2.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<!-- <script type='text/javascript' src='https://eswasync2.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
 
 
 </body>
