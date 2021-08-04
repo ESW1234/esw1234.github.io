@@ -1,0 +1,41 @@
+
+
+<html>
+	<head>
+		<title>STMFA InApp</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	</head>
+	<body>
+		<h1>NA45: STMFA InApp</h1>
+    <h2>agent@eswinapp.test / test1234</h2>
+		<style>
+			body {
+    				background: url("https://esw1234.github.io/tesla.png") no-repeat;
+  			}
+		</style>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+		<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DS7000000oo0B',
+				'sachin',
+				'https://eswinapptesting.my.stmfa.stm.salesforce.com',
+				{
+					scrt2URL: 'https://eswinapptesting.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswinapptesting.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+	</body>
+</html>
