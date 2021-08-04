@@ -17,21 +17,21 @@
 				}
 			); */
       
-        // Use STMFB deployment.
-        embeddedservice_bootstrap.init(
-          '00DRM000000FmHK',
-          'Async_Chat',
-          'https://inappesw.localhost.internal.salesforce.com:6101',
-          {
-            scrt2URL: 'https://embeddedservice2.my.stmfb.stm.salesforce-scrt.com'
-          }
-        );
+			// Use STMFB deployment.
+			embeddedservice_bootstrap.init(
+			  '00DRM000000JoaE',
+			  'Messaging',
+			  'https://esw.my.localhost.sfdcdev.salesforce.com:6101',
+			  {
+			    scrt2URL: 'https://eswasync234p.my.stmfb.stm.salesforce-scrt.com'
+			  }
+			);
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
 </script>	  
-<script type='text/javascript' src='https://inappesw.localhost.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://esw.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
   </body>
 </html>
