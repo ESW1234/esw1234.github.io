@@ -1,96 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
-	<title>STMFB - Chatbot Pg 2</title>
-</head>
-<body> 
-	<p align="center"><font color = "red"><a href="stmfb-chatbot-2.html">This page.</a></font></p>
-	<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot-2.html">Open this page in a new tab</a></font></p>
-	<p align="center"><font color = "red"><a href="stmfb-chatbot.html">Page 1.</a></font></p>
-	<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot.html">Page 1 in a new tab</a></font></p>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, imum-scale=1, maximum-scale=1, user-scalable=0">
+		<title>STMFB - Chatbot Pg 2</title>
+	</head>
+	<body> 
+		<p align="center"><font color = "red"><a href="stmfb-chatbot-2.html">This page.</a></font></p>
+		<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot-2.html">Open this page in a new tab</a></font></p>
+		<p align="center"><font color = "red"><a href="stmfb-chatbot.html">Page 1.</a></font></p>
+		<p align="center"><font color = "red"><a target="_blank" href="stmfb-chatbot.html">Page 1 in a new tab</a></font></p>
 
-	<h1>
-		STMFB - Chatbot Page 2
-	</h1>
+		<h1>
+			STMFB - Chatbot Page 2
+		</h1>
 
-	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-	<style type='text/css'>
-		.embeddedServiceHelpButton .helpButton .uiButton {
-			background-color: #33A721;
-			font-family: "Salesforce Sans", sans-serif;
-		}
-		.embeddedServiceHelpButton .helpButton .uiButton:focus {
-			outline: 1px solid #33A721;
-		}
-		@font-face {
-			font-family: 'Salesforce Sans';
-			src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-			url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
-		}
-	</style>
+		<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #AC24AE;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #AC24AE;
+			}
+			@font-face {
+				font-family: 'Salesforce Sans';
+				src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+				url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+			}
+		</style>
 
-	<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-	<script type='text/javascript'>
-		var initESW = function(gslbBaseURL) {
-			// Avatars
-			// embedded_svc.settings.avatarImgURL = "../../avatar.png";
-			// embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				// Avatars
+				// embedded_svc.settings.avatarImgURL = "../../avatar.png";
+				// embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 
-			embedded_svc.settings.displayHelpButton = true; //Or false
-			//embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				//embedded_svc.settings.language = 'es'; //For example, enter 'en' or 'en-US'
 
-			embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
-			embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
+				embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
+				embedded_svc.settings.disabledMinimizedText = 'Offline'; //(Defaults to Agent Offline)
 
-			//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-			//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-			// Settings for Live Agent
-			//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-				// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-				// Returns a valid button ID.
-			//};
-			embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
-			//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+				// Settings for Live Agent
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-			embedded_svc.settings.avatarImgURL = "../../avatar.png";
-			embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
+				embedded_svc.settings.avatarImgURL = "../../avatar.png";
+				embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
 
-			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
-			embedded_svc.settings.entryFeature = 'LiveAgent';
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
 
-			embedded_svc.init(
-				'https://snapins.my.stmfb.stm.salesforce.com',
-				'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
-				gslbBaseURL,
-				'00DRM0000005jYI',
-				'justinChatbot',
-				{
-					baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-					deploymentId: '572RM0000004DDM',
-					buttonId: '573RM0000004HAw',
-					baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
-					isOfflineSupportEnabled: false
-				}
-			);
-		};
-
-		if (!window.embedded_svc) {
-			var s = document.createElement('script');
-			s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-			s.onload = function() {
-				initESW(null);
+				embedded_svc.init(
+					'https://snapins.my.stmfb.stm.salesforce.com',
+					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+					gslbBaseURL,
+					'00DRM0000005jYI',
+					'justinChatbot',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004DDM',
+						buttonId: '573RM0000004HAw',
+						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+						isOfflineSupportEnabled: false
+					}
+				);
 			};
-			document.body.appendChild(s);
-		} else {
-			initESW('https://service.force.com');
-		}
-	</script>
 
-</body>
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script>
+	</body>
 </html>
