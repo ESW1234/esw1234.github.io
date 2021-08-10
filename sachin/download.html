@@ -14,6 +14,7 @@
                 // Set anchor-element's source to the attachment's download URL, received in the message payload.
                 anchorElement.href = url;
                 anchorElement.target = "_blank";
+		anchorElement.rel = "noreferrer noopener";
                 // Attach anchor-element to the DOM.
                 document.body.appendChild(anchorElement);
                 // Perform a programmatic click to begin file download.
