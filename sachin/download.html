@@ -22,7 +22,7 @@
                 anchorElement.target = "_blank";
 		anchorElement.rel = "noreferrer noopener";
                 // Attach anchor-element to the DOM.
-                iframe.appendChild(anchorElement);
+                iframe.body.appendChild(anchorElement);
 		document.body.appendChild(iframe);
                 // Perform a programmatic click to begin file download.
                 anchorElement.click();
