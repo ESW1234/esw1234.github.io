@@ -31,10 +31,84 @@
 		<!-- Latest version of purify can be found here: https://cdnjs.com/libraries/dompurify -->
 		<!-- This page was originally created with 1.0.10/purify.js. -->
 		<!-- Load DOMPurify to see if there are conflicts with Embedded Service. -->
-<!-- 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.0/purify.min.js"></script> -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.0/purify.min.js"></script>
 
 		<!-- Latest version of require can be found here: https://requirejs.org/docs/download.html -->
 		<!-- On load of require.js, execute scripts/main.js -->
-		<script data-main="scripts/main.js" src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+<!-- 		<script data-main="scripts/main.js" src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
+		
+				<style type='text/css'>
+			.embeddedServiceHelpButton .helpButton .uiButton {
+				background-color: #AC24AE;
+				font-family: "Salesforce Sans", sans-serif;
+			}
+			.embeddedServiceHelpButton .helpButton .uiButton:focus {
+				outline: 1px solid #AC24AE;
+			}
+			@font-face {
+				font-family: 'Salesforce Sans';
+				src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+				url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
+			}
+		</style>
+
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+		<script type='text/javascript'>
+			var initESW = function(gslbBaseURL) {
+				embedded_svc.settings.displayHelpButton = true; //Or false
+				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+				embedded_svc.settings.defaultMinimizedText = 'Chat With a Bot'; //(Defaults to Chat with an Expert)
+				//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+				//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+				//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+				// Settings for Chat
+				//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+					// Returns a valid button ID.
+				//};
+				embedded_svc.settings.prepopulatedPrechatFields = {FirstName: "justin", LastName: "mac", Email: "jmacmillin@salesforce.com", Subject: "Change my password."}; //Sets the auto-population of pre-chat form fields
+				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+				
+				// Avatars
+				embedded_svc.settings.avatarImgURL = "http://esw1234.github.io/avatar.png";
+				embedded_svc.settings.chatbotAvatarImgURL = "http://esw1234.github.io/bot-avatar.png";
+
+				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+				embedded_svc.settings.entryFeature = 'LiveAgent';
+				
+				embedded_svc.settings.devMode = true;
+
+				embedded_svc.init(
+					'https://na44.stmfc.stm.salesforce.com',
+					'https://snapins-1629cc5b71b.stmfc.stm.force.com/theme082918',
+					gslbBaseURL,
+					'00DRM0000005lEo',
+					'justinChatbot',
+					{
+						baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+						deploymentId: '572RM0000004CgP',
+						buttonId: '573RM0000004Clp',
+						baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000001i2AA_1666a905458',
+						isOfflineSupportEnabled: false
+					}
+				);
+			};
+
+			if (!window.embedded_svc) {
+				var s = document.createElement('script');
+				s.setAttribute('src', 'https://na44.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.onload = function() {
+					initESW(null);
+				};
+				document.body.appendChild(s);
+			} else {
+				initESW('https://service.force.com');
+			}
+		</script>
 	</body>
 </html>
