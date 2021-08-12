@@ -1,5 +1,6 @@
 requirejs(
-	["util", "snippet"],
+	// Load either snippet_stmfb.js or snippet_stmfc.js
+	["util", "snippet_stmfb.js"],
 	function(util, snippet) {
 		// Success callback.
 		console.log("Snippet loaded successfully using require.js.");
