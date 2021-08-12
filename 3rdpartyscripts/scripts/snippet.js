@@ -22,16 +22,16 @@ var initESW = function(gslbBaseURL) {
 
 	embedded_svc.init(
 		'https://snapins.my.stmfb.stm.salesforce.com',
-		'https://snapins-1600942b294.stmfb.stm.force.com/tiffanytest',
+		'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
 		gslbBaseURL,
 		'00DRM0000005jYI',
-		'justinChatbotChoice',
+		'justinChatbot',
 		{
 			baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
 			deploymentId: '572RM0000004DDM',
-			buttonId: '573RM0000004JbZ',
+			buttonId: '573RM0000004HAw',
 			baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000yY2AQ_169ff8372c5',
+			eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
 			isOfflineSupportEnabled: false
 		}
 	);
