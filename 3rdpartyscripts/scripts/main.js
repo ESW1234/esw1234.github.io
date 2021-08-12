@@ -3,7 +3,7 @@ requirejs(
 	["util", "snippet_stmfc"],
 	function(util, snippetFileName) {
 		// Success callback.
-		console.log("Snippet: " + snippetFileName + "loaded successfully using require.js.");
+		console.log("Snippet loaded successfully using require.js.");
 	},
 	function(e) {
 		// Error callback.	
