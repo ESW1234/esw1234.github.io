@@ -44,7 +44,7 @@
 			}
 		</style>
 
-		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -71,9 +71,6 @@
 				// Avatars
 				embedded_svc.settings.avatarImgURL = "../../avatar.png";
 				embedded_svc.settings.chatbotAvatarImgURL = "../../bot-avatar.png";
-
-				// Debug
-				embedded_svc.settings.devMode = false;
 
 				if (window.$A && typeof window.$A.get === "undefined") {
 					console.log("window.$A.get undefined, adding method!");
@@ -102,15 +99,13 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-		// 		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+				s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-		// 		initESW('https://service.force.com');
-				initESW('https://snapins.my.stmfb.stm.salesforce.com');
+				initESW('https://service.force.com');
 			}
 		</script>
 	</body>
