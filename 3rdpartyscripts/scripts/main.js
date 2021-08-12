@@ -1,5 +1,5 @@
 requirejs(
-	// Load either snippet_stmfb.js or snippet_stmfc.js
+	// Pass in either "snippet_stmfb.js" or "snippet_stmfc.js"
 	["util", "snippet_stmfc.js"],
 	function(util, snippetJavaScript) {
 		// Success callback.
