@@ -1,9 +1,9 @@
 requirejs(
-	// Pass in either "snippet_stmfb.js" or "snippet_stmfc.js"
-	["util", "snippet_stmfc.js"],
-	function(util, snippetJavaScript) {
+	// Pass in either "snippet_stmfb" or "snippet_stmfc"
+	["util", "snippet_stmfc"],
+	function(util, snippetFileName) {
 		// Success callback.
-		console.log("Snippet: " + snippetJavaScript + "loaded successfully using require.js.");
+		console.log("Snippet: " + snippetFileName + "loaded successfully using require.js.");
 	},
 	function(e) {
 		// Error callback.	
