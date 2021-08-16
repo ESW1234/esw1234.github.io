@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lightning out</title>
+        <style>
+            #content {
+                padding: 1rem;
+                background: #fff;
+                display: inline-block
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Sample Page One</h1>
+            <div id="innerContent"></div>
+        </div>
+        <script src="https://safaritest.localhost.blitztesting.com/lightning/lightning.out.js"></script>
+        <script>
+            $Lightning.use("testwkdw:LightningApp",    // name of the Lightning app
+                function() {          // Callback once framework and app loaded
+                    debugger;
+                    console.log("callback for $Lightning.use");
+                    $Lightning.createComponent(
+                        "testwkdw:LightningComponent",
+                        {},
+                        "innerContent",
+                        function(cmp){
+                            console.log("callback for $Lightning.createComponent");
+                        }
+                    );
+                },
+                "https://safaritest.localhost.blitztesting.com",
+                "00Dxx0000006GeZ!AQEAQHN9p4zVuGTqsaQg9OIlNY8vi7hQ1n_0frTLUl.131ngWon0rHhbKFjsjktUF01tKD_WB5R0_47ivYXUTSQe8bLbpDt9"
+            );
+        </script>
+    </body>
+</html>
