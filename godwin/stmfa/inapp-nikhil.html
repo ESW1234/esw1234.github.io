@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>STMFA async1.html page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.settings.devMode = true;
+          
+            embeddedservice_bootstrap.settings.betaMode = false;
+
+            embeddedservice_bootstrap.init(
+                '00DRM000000HvmX',
+                'Messaging',
+                'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+                {
+                    scrt2URL: 'https://eswmessagingchat2.my.stmfa.stm.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
+</script>
+<script type='text/javascript' src='https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<!-- <script type='text/javascript' src='https://test-service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+
+
+</body>
+</html>
