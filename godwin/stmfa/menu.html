@@ -1,1 +1,29 @@
+<head></head>
+<body>
+  <h1>STMFA CHANNEL MENU</h1>
+  <script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+      // Required if you want labels in a language that’s different from your user’s context.
+      //embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
+      embedded_svc.menu.init(
+        'https://godwin.stmfa.my.stm.salesforce.com',
+        'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+        gslbBaseURL,
+        '00DRM000000MijF',
+        'Channel_Menu'
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://godwin.stmfa.my.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+      s.onload = function() {
+        initESW(null);
+      };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://godwin.stmfa.my.stm.salesforce.com');
+    }
+  </script>
+</body>
