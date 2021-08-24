@@ -6,13 +6,18 @@
 </head> 
 <body>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>-->
+	
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
-		//embedded_svc.menu.settings.language = 'eo'; //For example, enter 'en' or 'en-US'
-		
-		embedded_svc.menu.settings.devMode = false;
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
 			'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
@@ -25,16 +30,13 @@
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
-		//s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		//initESW('https://service.force.com');
-    initESW('https://na44.stmfa.stm.salesforce.com');
-		//initESW('http://npachpand-wsm.internal.salesforce.com:6109');
+		initESW('https://service.force.com');
 	}
 </script>
 </body>
