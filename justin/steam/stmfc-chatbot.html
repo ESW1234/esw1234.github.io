@@ -30,7 +30,7 @@
 			}
 		</style>
 
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -57,8 +57,6 @@
 
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
-				
-// 				embedded_svc.settings.devMode = true;
 
 				embedded_svc.init(
 					'https://na44.stmfc.stm.salesforce.com',
@@ -85,7 +83,8 @@
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW('https://service.force.com');
+// 				initESW('https://service.force.com');
+				initESW('https://na44.stmfc.stm.salesforce.com');
 			}
 		</script>
 	</body>
