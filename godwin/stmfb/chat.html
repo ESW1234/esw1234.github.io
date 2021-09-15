@@ -26,11 +26,10 @@
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.settings.devMode = true;
-		
+
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
- 		embedded_svc.settings.smallCompanyLogoImgURL = "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg";
+
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
@@ -47,17 +46,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://snapins.my.stmfb.stm.salesforce.com',
-			'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+			'https://stmfbgodwin.my.stmfb.stm.salesforce.com',
+			'https://godwin-experience.stmfb.stm.force.com/expcloudsite',
 			gslbBaseURL,
-			'00DRM0000005jYI',
-			'godwin',
+			'00DRM000000Fo6Y',
+			'Embedded_Chat',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004DDM',
-				buttonId: '573RM0000004HAw',
+				deploymentId: '572RM0000000Hga',
+				buttonId: '573RM0000000HrB',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Ds02AE_174bd8283e1',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EQA2A2_17b5eb33c82',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -65,13 +64,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://stmfbgodwin.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://snapins.my.stmfb.stm.salesforce.com');
+		initESW('https://stmfbgodwin.my.stmfb.stm.salesforce.com');
 	}
 </script>
 <!------------------------------------------------ 5.0 SNIPPPET END ------------------------------------------------->
