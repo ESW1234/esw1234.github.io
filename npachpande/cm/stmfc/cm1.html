@@ -1,0 +1,53 @@
+
+<html>
+<head>
+  <title>STMFC cm1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		embedded_svc.menu.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.menu.init(
+			'https://eswcom.my.stmfc.stm.salesforce.com',
+			'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM00000067Me',
+			'SachinMenu'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://eswcom.my.stmfc.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+  
+</body>
+</html>
