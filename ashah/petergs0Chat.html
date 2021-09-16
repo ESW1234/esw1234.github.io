@@ -90,7 +90,7 @@ embedded_svc.addEventHandler("onAgentMessage", function(data) {
 
 
 embedded_svc.init(
-			'https://embeddedservicede.my.salesforce.com',
+			'https://anal-shah-34073112-1-xrd.eng.sfdc.net:6101',
 			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
 			gslbBaseURL,
 			'00DB0000000K6Ez',
@@ -108,7 +108,7 @@ embedded_svc.init(
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://anal-shah-34073112-1-xrd.eng.sfdc.net:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://anal-shah-34073112-1-xrd.eng.sfdc.net:6101/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
