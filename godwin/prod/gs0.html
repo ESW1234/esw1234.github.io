@@ -72,7 +72,7 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -106,7 +106,7 @@
 				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
 				deploymentId: '572B0000000LALF',
 				buttonId: '573B0000000LANm',
-				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat/rest',
+				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
 				isOfflineSupportEnabled: true
 			}
@@ -121,7 +121,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('https://embeddedservicede.my.salesforce.com');
 	}
 </script>
 <!------------------------------------------------ 5.0 SNIPPPET END ------------------------------------------------->
