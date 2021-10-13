@@ -18,25 +18,25 @@
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 					
 					// Use SDB6.
-					embeddedservice_bootstrap.init(
-						'00DSG0000001YZ7',
-						'Async_Chat',
-						'https://justinsembeddedservices2.test1.my.pc-rnd.salesforce.com',
-						{
-							scrt2URL: 'https://justinsembeddedservices2.test1.my.pc-rnd.salesforce-scrt.com'
-						}
-					);
-
-					// Use STMFA deployment.
 // 					embeddedservice_bootstrap.init(
-// 						'00DRM000000MLcN',
+// 						'00DSG0000001YZ7',
 // 						'Async_Chat',
-// // 						'Async_Chat_Prechat',
-// 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+// 						'https://justinsembeddedservices2.test1.my.pc-rnd.salesforce.com',
 // 						{
-// 							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
+// 							scrt2URL: 'https://justinsembeddedservices2.test1.my.pc-rnd.salesforce-scrt.com'
 // 						}
 // 					);
+
+					// Use STMFA deployment.
+					embeddedservice_bootstrap.init(
+						'00DRM000000MLcN',
+						'Async_Chat',
+// 						'Async_Chat_Prechat',
+						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+						{
+							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
+						}
+					);
 					
 					// Use STMFB deployment.
 // 					embeddedservice_bootstrap.init(
