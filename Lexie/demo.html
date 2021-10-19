@@ -1,4 +1,7 @@
-<style type='text/css'>
+<html>
+	<head></head>
+	<body>
+		<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -8,7 +11,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://d5f000005wjz7eak-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -57,6 +60,8 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://d5f000005wjz7eak-dev-ed.my.salesforce.com');
+		initESW('https://service.force.com');
 	}
-</script>
+</script>	
+	</body>
+</html>
