@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+   <p align="center"><font color ="blue">SDB6 Embedded Messaging</font></p>
+   <p><a id="editThisPageLink" target="_blank" align="center" style="color:blue">Edit this page</a></p>
+   <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+   <br/>
+   <br/>
+
+<div id="button_goes_here">
+</div>
+<!------------------------------------------------ SNIPPPET START ----------------------------------------------------->
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG00000015FN',
+				'Messaging',
+				'https://inapp32.test1.my.pc-rnd.salesforce.com',
+				{
+					scrt2URL: 'https://inapp32.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inapp32.test1.my.pc-rnd.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<!------------------------------------------------ SNIPPPET END ------------------------------------------------->
+   
+</body>
+</html>
