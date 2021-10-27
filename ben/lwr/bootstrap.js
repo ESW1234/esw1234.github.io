@@ -761,6 +761,7 @@
 			iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads allow-popups";
 			iframe.onload = () => {
 				log("Created an iframe to load the aura application.");
+				handleAfterAppLoad();
 			};
 
 			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
