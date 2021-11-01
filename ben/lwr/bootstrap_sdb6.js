@@ -586,7 +586,7 @@
 
 		try {
 			//siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
-      siteUrl = "https://inapp-es-community-17ca5266dfa.test1.pc-rnd.force.com/csp1";
+      			siteUrl = "https://inapp-es-community-17ca5266dfa.test1.pc-rnd.force.com/eswlwr1/s/";
     } catch(err) {
 			error("Error getting Site URL: " + err);
 		}
