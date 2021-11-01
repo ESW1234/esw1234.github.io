@@ -9,17 +9,18 @@
   <br/>	
 	
 	
+	
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00DSG00000015FN',
-				'JazminEmbeddedMessaging',
-				'https://inapp32.test1.my.pc-rnd.salesforce.com',
+				'00DSG0000001Z5N',
+				'Web_RouteToChatbot',
+				'https://inappchatbot.test1.my.pc-rnd.salesforce.com',
 				{
-					scrt2URL: 'https://inapp32.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://inappchatbot.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -27,10 +28,12 @@
 		}
 	};
 </script>
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>-->
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
 	
-<script type='text/javascript' src='https://inapp32.test1.my.pc-rnd.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>	
-
+<script type='text/javascript' src='https://inappchatbot.test1.my.pc-rnd.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	
+	
+	
 </body>
 </html>
     <style>
