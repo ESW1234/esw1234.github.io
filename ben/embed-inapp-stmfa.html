@@ -7,25 +7,25 @@
   <p align="center"><font color = "red"><a href="embed-chat-wsl4-2.html">Link to PAGE TWO</font></p></a>
 
 <script type='text/javascript'>
-	var s = document.createElement('script');
-	s.setAttribute('src', 'https://benco1.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.js');
-	s.onload = function() {
-		embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:f80dba1e-3cb6-45fb-af11-c6b077d66457"
-		//embeddedservice_bootstrap.settings.inAppEndpointUrl = "https://asyncesw.my.stmfa.stm.salesforce-scrt.com";
-		embeddedservice_bootstrap.init( "00DRM000000MsPJ", 
-					       	"Chat",
-					       "https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat",
-					       	"https://benco1.lightning.stmfa.stm.force.com",
-						{ 
-							embeddedServiceConfig: {  
-								siteUrl: 'https://eswmessagingchat-175482fb00f-17818e90706.stmfa.stm.force.com/chatcommunity', 
-								embeddedServiceBranding: { height: '554', width: '344' } 
-							} 
-						}
-		);
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000LTfj',
+				'Web_RouteToAgent',
+				'https://benco000.my.stmfa.stm.salesforce.com',
+				{
+					scrt2URL: 'https://benco000.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
 	};
-	document.body.appendChild(s);
 </script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
    </body>
 </html>
     <style>
