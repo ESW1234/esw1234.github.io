@@ -1,10 +1,26 @@
-<!DOCTYPE html>
 <html>
 <body>
   
-<h3> Iframe Download </h3>
-<iframe src="https://esw1234.github.io/sachin/download2.html" title="Iframe Download" sandbox="allow-scripts allow-same-origin allow-modals allow-downloads allow-popups">
-</iframe>
+<h3 onclick='beginDownload()'> Click to download </h3>
+  
+<script type='text/javascript'>
+    function beginDownload() {
+	    var url = "https://inapp4--c.test1.pc-rnd.documentforce.com/sfc/dist/version/download/?oid=00DSG00000019MD&ids=068SG0000000Rmb&d=%2Fa%2FSG0000000Evp%2FoZfk8OxVe3lWhzdcavxSTCzGAnVkX_.6nfLb9mHHelg&asPdf=false";
+            
+      let anchorElement;
 
+		  anchorElement = document.createElement("iframe");
+      anchorElement.style.display = "none";
+		  anchorElement.src = url;
+		
+		  // Attach anchor-element to the DOM.
+		  document.body.appendChild(anchorElement);
+		  //window.open(url, '_blank');
+		  setTimeout(() => {
+			  // Cleanup - remove anchor-element from the DOM.
+			  document.body.removeChild(anchorElement);
+		  }, 1000);
+    }
+</script>
 </body>
 </html>
