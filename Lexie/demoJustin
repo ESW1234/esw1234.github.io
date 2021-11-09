@@ -1,9 +1,9 @@
+
+   
 <html>
-<head></head>
-
-<body>
-
-<style type='text/css'>
+	<head></head>
+	<body>
+		<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -65,9 +65,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
-
-</body>
-
-
+	</body>
 </html>
