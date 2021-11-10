@@ -9,12 +9,11 @@
          try {
             embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
             embeddedservice_bootstrap.settings.devMode = true;
-            embeddedservice_bootstrap.settings.betaMode = true;
 
             embeddedservice_bootstrap.init(
                '00DSG00000015FN',
                'Messaging',
-               'https://yatlaw-wsm3.internal.salesforce.com:6101',
+               'https://godwin.my.localhost.sfdcdev.site.com:6101/expcloudsite',
                {
                   scrt2URL: 'https://inapp32.test1.my.pc-rnd.salesforce-scrt.com'
                }
@@ -24,6 +23,6 @@
          }
       };
    </script>
-   <script type='text/javascript' src='https://yatlaw-wsm3.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+   <script type='text/javascript' src='https://godwin.my.localhost.sfdcdev.site.com:6101/expcloudsite/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
