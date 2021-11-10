@@ -4,24 +4,24 @@
    </head>
    <body>
         <script type='text/javascript'>
-		function initEmbeddedMessaging() {
-			try {
-				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
 
-				embeddedservice_bootstrap.init(
-					'00Dxx0000006GeZ',
-					'Embedded_Messaging',
-					'https://eswlocal.localhost.internal.salesforce.com:6101',
-					{
-						// https://docs.google.com/spreadsheets/d/1M1HjPVBFqp9yjRFR7EnWOkdDadbqAjroXQIUwetIBOc/edit#gid=762719942						
-						scrt2URL: 'http://localhost:8218'
-					}
-				);
-			} catch (err) {
-				console.error('Error loading Embedded Messaging: ', err);
-			}
-		};
-	</script>
-	<script type='text/javascript' src='https://yatlaw-wsm3.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-   </body>
+			embeddedservice_bootstrap.init(
+				'00DSG00000019MD',
+				'Messaging',
+				'https://godwin.my.localhost.sfdcdev.site.com:6101/expcloudsite',
+				{
+					scrt2URL: 'https://inapp4.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://godwin.my.localhost.sfdcdev.site.com:6101/expcloudsite/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	</body>
 </html>
