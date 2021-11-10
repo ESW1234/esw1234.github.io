@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Falcon-SDB6</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	</head>
+	<body style="background-image: url('http://esw1234.github.io/sachin/background.jpg'); height: 100%; width: 100%">
+		<h1>Async Client Local with Bot - Falcon/sdb6</h1>
+    <h2>sachinh_chatbot@sdb6.com/test1234</h2>
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000001Z5N',
+				'Sachin',
+				'https://inappchatbot.test1.my.pc-rnd.salesforce.com',
+				{
+					scrt2URL: 'https://inappchatbot.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inappchatbot.test1.my.pc-rnd.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
