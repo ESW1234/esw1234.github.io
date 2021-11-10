@@ -15,7 +15,7 @@
 		
 		  // Attach anchor-element to the DOM.
 		  document.body.appendChild(anchorElement);
-		  window.open(url, '_blank');
+		  window.open(url, '_blank', 'noreferrer noopener');
 		  setTimeout(() => {
 			  // Cleanup - remove anchor-element from the DOM.
 			  document.body.removeChild(anchorElement);
