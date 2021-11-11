@@ -27,7 +27,7 @@
 		<!-- W-10118745 -->
 		<script>
 			const fireEvent = () => {
-				var child = window.open(new URLSearchParams(location.search).get('target'))
+				var child = window.open(new URLSearchParams(location.search).get('target'));
 
 				child.postMessage(
 					{
@@ -35,8 +35,8 @@
 						data: {
 				     		url: 'javascript:alert(document.cookie)//'
 					}
-				}, '*')
-			});
+				}, '*');
+			};
 		</script>
 		<button id="xssTest" onclick="fireEvent()">xss test</button>
 		<!-- W-10118745 -->
