@@ -1,0 +1,28 @@
+<html>
+   <head>
+       <title>Your In-App page</title>
+   </head>
+   <body>
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en'; 
+        embeddedservice_bootstrap.settings.devMode = true; 
+
+        embeddedservice_bootstrap.init(
+          '00DSG00000015FN',
+          'Godwin_Embedded_Messaging_2',
+          'https://godwininapp.my.localhost.sfdcdev.site.com:6101',
+          {
+            scrt2URL: 'https://inapp32.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://godwininapp.my.localhost.sfdcdev.site.com:6101/DE1/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+	</body>
+</html>
