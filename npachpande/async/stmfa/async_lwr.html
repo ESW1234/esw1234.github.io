@@ -17,10 +17,7 @@
             embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
             embeddedservice_bootstrap.settings.devMode = false;
-          
-            embeddedservice_bootstrap.settings.betaMode = true;
-          
-            // STMFA ORG
+
             embeddedservice_bootstrap.init(
                 '00DS7000000ouRu',
                 'Messaging',
@@ -29,27 +26,6 @@
                     scrt2URL: 'https://asyncchat.my.stmfa.stm.salesforce-scrt.com'
                 }
             );
-            // STMFB ORG
-            /*
-            embeddedservice_bootstrap.init(
-                '00DRM000000FqCE',
-                'Messaging_2',
-                'https://asyncchat.my.stmfa.stm.salesforce.com',
-                {
-                    scrt2URL: 'https://asyncchat.my.stmfa.stm.salesforce-scrt.com'
-                }
-            );
-            */
-            /* Nishant's local
-            embeddedservice_bootstrap.init(
-                '00Dxx0000006Nxn',
-                'Messaging',
-                'https://npachpand-wsm.internal.salesforce.com:6101',
-                {
-                    scrt2URL: 'http://10.55.112.126:8085'
-                }
-            );
-            */
         } catch (err) {
             console.error('Error loading Embedded Messaging: ', err);
         }
