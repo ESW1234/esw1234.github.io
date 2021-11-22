@@ -17,29 +17,17 @@
 				try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
-					// STMFB
-					// STMFB core URL: https://embeddedservice2.my.stmfb.stm.salesforce.com
-					// Local core URL: https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101
-					// STMFB site URL: https://eswmessagingchat-175482fb00f-176437f83fe.stmfb.stm.force.com/chatcommunity
-					// Local site URL: https://embeddedservice2.my.localhost.sfdcdev.site.com:6101/helpCenterJuly2021
+// 					embeddedservice_bootstrap.settings.isAuraSite = true;
+
+					// Use SDB3.
 					embeddedservice_bootstrap.init(
-						'00DRM000000FmHK',
+						'00DSB0000001dXB',
 						'Async_Chat',
-						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
+						'https://justinsembeddedservices.test1.my.pc-rnd.salesforce.com',
 						{
-							scrt2URL: 'https://embeddedservice2.my.stmfb.stm.salesforce-scrt.com'
+							scrt2URL: 'https://justinsembeddedservices.test1.my.pc-rnd.salesforce-scrt.com'
 						}
 					);
-
- 					// STMFA
-// 					embeddedservice_bootstrap.init(
-// 						'00DRM000000MLcN',
-// 						'Async_Chat',
-// 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
-// 						{
-// 							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
-// 						}
-// 					);
 				} catch (err) {
 					console.error('Error loading Embedded Messaging: ', err);
 				}
