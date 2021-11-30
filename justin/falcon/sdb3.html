@@ -16,6 +16,9 @@
         try {
           embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
 
+          // TODO - remove this after setting up LWR site.
+          embeddedservice_bootstrap.settings.isAuraSite = true;
+
           embeddedservice_bootstrap.init(
             '00DSB0000001dXB',
             'Async_Chat',
@@ -29,6 +32,7 @@
         }
       };
     </script>
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<!--     <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+    <script type='text/javascript' src='https://justinsembeddedservices.test1.my.pc-rnd.salesforce-scrt.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
   </body>
 </html>
