@@ -19,7 +19,9 @@
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
+		
+		<!-- start 5.0 snippet -->
+<!--
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
 				background-color: #47AB0D;
@@ -30,7 +32,7 @@
 			}
 		</style>
 
-		<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -79,10 +81,12 @@
 				};
 				document.body.appendChild(s);
 			} else {
-			//	initESW('https://service.force.com');
-				initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+				initESW('https://service.force.com');
+	// 			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 			}
 		</script>
+-->
+				<!-- end 5.0 snippet -->
 
 		<!-- <script>
 			// Adidas
@@ -256,7 +260,7 @@
 
 
 		<!-- start 4.1 snippet -->
-		<!-- <style type='text/css'>
+		<style type='text/css'>
 			.embeddedServiceLiveAgentChatButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
 			.embeddedServiceLiveAgentChatButton .helpButton .uiButton:focus {outline: 2px solid #005290}
 
@@ -272,9 +276,9 @@
 				background: url("http://esw1234.github.io/Spotify-large.png") no-repeat;
 				position: relative;
 			}
-		</style> -->
-		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script> -->
-		<!-- <script type='text/javascript'>
+		</style>
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/4.1/esw.js'></script>
+		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -322,7 +326,7 @@
 				s.onload = function() { initESW(null); }; 
 				document.body.appendChild(s); 
 			} else { initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com'); }
-		</script> -->
+		</script>
 		<!-- end 4.1 snippet -->
 
 
