@@ -10,20 +10,20 @@
 
     <script type='text/javascript'>
       function initEmbeddedMessaging() {
-        try {
-          embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+	try {
+		embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
-          embeddedservice_bootstrap.init(
-            '00DSB000000200j',
-            'eswlwr',
-            'https://prodsec.test1.my.pc-rnd.salesforce.com',
-            {
-              scrt2URL: 'https://prodsec.test1.my.pc-rnd.salesforce-scrt.com'
-            }
-          );
-        } catch (err) {
-          console.error('Error loading Embedded Messaging: ', err);
-        }
+		embeddedservice_bootstrap.init(
+			'00DSB000000200j',
+			'eswlwr1',
+			'https://prodsec.test1.my.pc-rnd.salesforce.com',
+			{
+				scrt2URL: 'https://prodsec.test1.my.pc-rnd.salesforce-scrt.com'
+			}
+		);
+	} catch (err) {
+		console.error('Error loading Embedded Messaging: ', err);
+	}
       };
     </script>
     <script type='text/javascript' src='https://prodsec.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
