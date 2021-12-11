@@ -5,6 +5,7 @@
 	<body>
 		<h1>SDB3 InApp Messaging Chat</h1>
 		<h2 style="color:blue;"> For Agent:- web1@esw1.sdb3</h2>
+		<h2 style="color:blue;"> NO LWR </h2>
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
@@ -15,7 +16,7 @@
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-
+					embeddedservice_bootstrap.settings.isAuraSite = true;
 					embeddedservice_bootstrap.init(
 						'00DSB0000001THh',
 						'ESW_Web1',
