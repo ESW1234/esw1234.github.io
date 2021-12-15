@@ -15,7 +15,6 @@
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
 					embeddedservice_bootstrap.settings.isAuraSite = true;
 
 					// SDB6.
@@ -27,16 +26,6 @@
 							scrt2URL: 'https://justinsembeddedservices2.test1.my.pc-rnd.salesforce-scrt.com'
 						}
 					);
-
-					// STMFA
-// 					embeddedservice_bootstrap.init(
-// 						'00DRM000000MLcN',
-// 						'Async_Chat',
-// 						'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101',
-// 						{
-// 							scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
-// 						}
-// 					);
 				} catch (err) {
 					console.error('Error loading Embedded Messaging: ', err);
 				}
