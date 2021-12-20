@@ -15,13 +15,13 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.isAuraSite = true;
+
 			embeddedservice_bootstrap.init(
-				'00DS7000000ouey',
+				'00DS70000000SPE',
 				'e2eTestDeployment',
-				'https://inapporg2.my.stmfa.stm.salesforce.com',
+				'https://inapporg2.my.stmfb.stm.salesforce.com',
 				{
-					scrt2URL: 'https://inapporg2.my.stmfa.stm.salesforce-scrt.com'
+					scrt2URL: 'https://inapporg2.my.stmfb.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
