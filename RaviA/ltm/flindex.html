@@ -27,7 +27,10 @@
 </div>
 <div id="button_goes_here">
 
-  <style type='text/css'>
+  
+	
+	
+	<style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -55,11 +58,11 @@
 		embedded_svc.settings.entryFeature = 'Flows';
 
 		embedded_svc.init(
-			'https://ajaazorg1.my.localhost.sfdcdev.salesforce.com:6101',
-			'https://ajaazorg1.my.localhost.sfdcdev.site.com:6101/carfix',
+			'https://ra4.my.localhost.sfdcdev.salesforce.com:6101',
+			'https://ra4.my.localhost.sfdcdev.site.com:6101/site1visualforce',
 			gslbBaseURL,
-			'00Dxx0000006GcR',
-			'carfix',
+			'00Dxx0000006X4J',
+			'deployment1',
 			{
 				
 			}
@@ -68,7 +71,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ajaazorg1.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://ra4.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -77,6 +80,9 @@
 		initESW('https://service.force.com');
 	}
 </script>
+	
+	
+	
   
 </div>
 <div id="text">
