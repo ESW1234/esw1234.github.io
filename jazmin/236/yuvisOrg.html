@@ -4,20 +4,21 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="red">236 STMFB</font></p>
+	<p align="center"><font color ="blue">236 STMFB</font></p>
   <br/>
   <br/>	
 	
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US' 
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
-				'00DRM000000N1Kk',
-				'PrechatDemo',
-				'https://eswasync2.my.stmfa.stm.salesforce.com',
+				'00DRM000000G0Qd',
+				'WebDeployment',
+				'https://messagingtest.my.stmfb.stm.salesforce.com',
 				{
-					scrt2URL: 'https://eswasync2.my.stmfa.stm.salesforce-scrt.com'
+					scrt2URL: 'https://messagingtest.my.stmfb.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -26,9 +27,7 @@
 	};
 </script>
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
-<script type='text/javascript' src='https://eswasync2.lightning.stmfa.stm.force.com//embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-
-
+<script type='text/javascript' src='https://https://messagingtest.lightning.stmfb.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
