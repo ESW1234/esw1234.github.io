@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<p align="center"><font color ="red">236 STMFB</font></p>
+  <br/>
+  <br/>	
+	
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US' 
+			embeddedservice_bootstrap.init(
+				'00DRM000000N1Kk',
+				'PrechatDemo',
+				'https://eswasync2.my.stmfa.stm.salesforce.com',
+				{
+					scrt2URL: 'https://eswasync2.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+<script type='text/javascript' src='https://eswasync2.lightning.stmfa.stm.force.com//embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+</body>
+</html>
+    <style>
+       body {
+         background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+	 background-repeat: no-repeat;
+         background-size: cover;
+      }
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+      }
+    </style>
