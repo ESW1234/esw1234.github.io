@@ -158,14 +158,16 @@
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
 // 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
-				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.js');
+// 				s.setAttribute('src', 'https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.js');
+				s.setAttribute('src', 'https://1.internal.salesforce.com:6101/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
 // 				initESW('https://service.force.com');
-				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
+// 				initESW('https://embeddedservice2.my.localhost.sfdcdev.salesforce.com:6101');
+				initESW('https://1.internal.salesforce.com:6101');
 			}
 		</script>
 	</body>
