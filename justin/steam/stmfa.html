@@ -55,7 +55,8 @@
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
 				embedded_svc.init(
-					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+// 					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+					'https://na44.stmfa.stm.salesforce.com',
 					'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
 					gslbBaseURL,
 					'00DRM0000005cyu',
@@ -73,14 +74,16 @@
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+// 				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 				s.onload = function() {
 					initESW(null);
 				};
 				document.body.appendChild(s);
 			} else {
-				initESW('https://service.force.com');
-	// 			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+// 				initESW('https://service.force.com');
+// 	 			initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
+				initESW('https://na44.stmfa.stm.salesforce.com');
 			}
 		</script>
 
