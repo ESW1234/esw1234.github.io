@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>SDB6-InAppChatbot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDB6 InApp Messaging with Chatbot</h1>
+  <h2 style="color:blue;"> For Agent:- web2@ia.sdb6</h2>
+	NO LWR
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.isAuraSite = true;
+			embeddedservice_bootstrap.init(
+				'00DSG0000002ITt',
+				'web1',
+				'https://inapporg0105.test1.my.pc-rnd.salesforce.com',
+				{
+					scrt2URL: 'https://inapporg0105.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inapporg0105.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
