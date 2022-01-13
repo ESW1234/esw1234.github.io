@@ -1,7 +1,7 @@
 <html>
    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <title>SDB6-InAppChat GV ChatBot</title>
+	   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	   <title>SDB6-InAppChat GV ChatBot 2</title>
    </head>
    <body>
         <h1> -- SDB6 InApp Messaging Chat for E2E Test CHATBOT GV</h1>
@@ -9,10 +9,10 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
-      embedded_svc_bootstrap.settings.isAuraSite = true;
+			embedded_svc_bootstrap.settings.isAuraSite = true;
 			embeddedservice_bootstrap.init(
 				'00DSB0000002A9l',
-				'Embedded_Service_Deployment_Name_4_ChatBot_GV',
+				'Embedded_Service_deployment_BOT_GV_2',
 				'https://gvinapporg1.test1.my.pc-rnd.salesforce.com',
 				{
 					scrt2URL: 'https://gvinapporg1.test1.my.pc-rnd.salesforce-scrt.com'
@@ -24,6 +24,7 @@
 	};
 </script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
    </body>
 </html>
