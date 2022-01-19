@@ -14,14 +14,20 @@
 <!------------------------------------------------ 5.0 SNIPPPET ----------------------------------------------------->	
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
+		background-color: #53A318;
+		font-family: "Salesforce Sans", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #53A318;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
+		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -46,17 +52,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://godwin.my.stmfc.stm.salesforce.com',
-			'https://godwin.stmfc.stm.force.com/endpoint',
+			'https://groupon-dev.my.salesforce.com',
+			'https://grouponna.secure.force.com/livechat',
 			gslbBaseURL,
-			'00DRM000000691O',
-			'Embedded_Chat',
+			'00D80000000Khmy',
+			'AE_Chat_Snapin_Local',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004GCk',
-				buttonId: '573RM0000004GFZ',
-				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000E62AI_17beb0ffbb9',
+				baseLiveAgentContentURL: 'https://c.la3-c2-ph2.salesforceliveagent.com/content',
+				deploymentId: '572C0000000Cfhh',
+				buttonId: '573C0000000Cg4a',
+				baseLiveAgentURL: 'https://d.la3-c2-ph2.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IC0000000000kMAA_165f20ce944',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -64,13 +70,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://godwin.my.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://groupon-dev.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://godwin.my.stmfc.stm.salesforce.com');
+		initESW('https://service.force.com');
 	}
 </script>
 <!------------------------------------------------ 5.0 SNIPPPET END ------------------------------------------------->
