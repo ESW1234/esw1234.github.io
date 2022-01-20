@@ -1,1 +1,75 @@
+<html>
+<head>
+  <title>Async LWR App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
 
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+  
+<script type='text/javascript'>
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+            embeddedservice_bootstrap.settings.devMode = true;
+          
+            embeddedservice_bootstrap.settings.isAuraSite = false;
+          
+            embeddedservice_bootstrap.settings.debugMode = false;
+          
+            // SDB6 ORG
+            embeddedservice_bootstrap.init(
+                '00DSG0000001hxN',
+                'Messaging',
+                'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce.com',
+                {
+                    scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+                }
+            );
+
+            // STMFA ORG
+            /*
+            embeddedservice_bootstrap.init(
+                '00DS7000000ouRu',
+                'Messaging',
+                'https://asyncchat.my.stmfa.stm.salesforce.com',
+                {
+                    scrt2URL: 'https://asyncchat.my.stmfa.stm.salesforce-scrt.com'
+                }
+            );
+            */
+            // STMFB ORG
+            /*
+            embeddedservice_bootstrap.init(
+                '00DRM000000FqCE',
+                'Messaging_2',
+                'https://asyncchat.my.stmfa.stm.salesforce.com',
+                {
+                    scrt2URL: 'https://asyncchat.my.stmfa.stm.salesforce-scrt.com'
+                }
+            );
+            */
+            /* Nishant's local
+            embeddedservice_bootstrap.init(
+                '00Dxx0000006Nxn',
+                'Messaging',
+                'https://npachpand-wsm.internal.salesforce.com:6101',
+                {
+                    scrt2URL: 'http://10.55.112.126:8085'
+                }
+            );
+            */
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
+</script>
+<script type='text/javascript' src='https://npachpa-ltm6qlp.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
