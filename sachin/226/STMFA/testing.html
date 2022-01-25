@@ -70,11 +70,10 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		//s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
-		s.setAttribute('src', 'https://sachinhanu-wsl1.internal.salesforce.com:6101/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
-			//initESW(null);
-			initESW('https://service.force.com');
+			initESW(null);
+			//initESW('https://service.force.com');
 		};
 		document.body.appendChild(s);
 	} else {
