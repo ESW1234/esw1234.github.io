@@ -1,16 +1,15 @@
 <html>
    <head>
-        <title>NA45STMFB InApp Messaging Chat for E2E Test GV Web</title>
+        <title>NA45STMFB InApp Messaging Chat for E2E Test GV Web.</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
    </head>
    <body>
         <h1> NA45STMFB InApp Messaging Chat for E2E Test GV Web</h1>
-        <script type='text/javascript'>
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
-      embeddedservice_bootstrap.settings.isAuraSite = true;
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.isAuraSite = true;
 			embeddedservice_bootstrap.init(
 				'00DS70000000TUR',
 				'ESD_Web',
@@ -25,6 +24,5 @@
 	};
 </script>
 <script type='text/javascript' src='https://inappn45bgv.stmfb.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-   </body>
+</body>
 </html>
