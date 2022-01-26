@@ -59,7 +59,7 @@
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 		
 				embedded_svc.init(
-			'https://eswmessagingchat.my.stmfb.stm.salesforce.com',
+			'https://sachinhanu-wsl1.internal.salesforce.com:6101',
 			'https://eswmessagingchat-178579c8c3d.stmfb.stm.force.com/chatcommunity',
 			gslbBaseURL,
 			'00DRM000000FqCE',
@@ -77,7 +77,8 @@
 
 			if (!window.embedded_svc) {
 		      var s = document.createElement('script');
-		      s.setAttribute('src', 'https://eswmessagingchat.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		      //s.setAttribute('src', 'https://eswmessagingchat.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.setAttribute('src', 'https://sachinhanu-wsl1.internal.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
 		      s.onload = function() {
 			      initESW(null);
 		      };
