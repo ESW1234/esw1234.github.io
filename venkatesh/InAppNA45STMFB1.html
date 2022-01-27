@@ -1,0 +1,30 @@
+<html>
+   <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title> InAppNA45STMFB1 Web </title>
+   </head>
+   <body>
+     <h1> InAppNA45STMFB1 Web </h1>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.isAuraSite = true;
+      embeddedservice_bootstrap.settings.debugMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DS70000000TUY',
+				'ESD_Deployment',
+				'https://inappna45stmfb1.stmfb.my.stm.salesforce.com',
+				{
+					scrt2URL: 'https://inappna45stmfb1.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inappna45stmfb1.stmfb.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+   </body>
+</html>
