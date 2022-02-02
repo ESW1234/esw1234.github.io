@@ -1,0 +1,39 @@
+<html>
+   <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>Test Page</title>
+     <link href="ravivm1es1.my.localhost.sfdcdev.salesforce.com/embeddedservice/asyncclient/bootstrap.min.css" type="text/css" rel="stylesheet">
+   </head>
+   <body>
+     
+        <style>
+		   body{
+			   		   background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+		   }
+	   </style>
+     
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.isAuraSite = true;
+			embeddedservice_bootstrap.settings.debugMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00Dxx0000006GR9',
+				'deployment_1',
+				'https://ravivm1es1.my.localhost.sfdcdev.salesforce.com:6101',
+				{
+					scrt2URL: 'http://ravivm1es1.my.localhost.sfdcdev.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://ravivm1es1.my.localhost.sfdcdev.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+   </body>
+</html>
