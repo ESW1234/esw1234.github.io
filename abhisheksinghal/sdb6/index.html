@@ -4,11 +4,18 @@
         <title>Test Page</title>
    </head>
    <body>
+	   <style>
+		   body{
+			   		   background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+		   }
+	   </style>
+	   
         <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.isAuraSite = true;
+			embeddedservice_bootstrap.settings.debugMode = true;
 
 			embeddedservice_bootstrap.init(
 				'00DSG0000002Ve1',
