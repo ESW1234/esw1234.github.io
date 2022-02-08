@@ -73,6 +73,9 @@
 		// Used by VPODs
 		".force.com",
 
+		// Used by Akamai CDN
+		".site.com",
+
 		// Used by autobuild VMs
 		".sfdc.net",
 
