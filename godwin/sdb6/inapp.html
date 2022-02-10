@@ -1,0 +1,21 @@
+<html>
+  <script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+      embeddedservice_bootstrap.init(
+        '00DRO0000008l8u',
+        'Embedded_Messaging',
+        'https://godwinlaw.test1.my.pc-rnd.salesforce.com',
+        {
+          scrt2URL: 'https://godwinlaw.test1.my.pc-rnd.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
+  </script>
+  <script type='text/javascript' src='https://godwinlaw.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</html>
