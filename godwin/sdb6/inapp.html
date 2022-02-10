@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Falcon-SDB6</title>
+		<title>SDB6 INAPP</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	</head>
 	<body>
@@ -9,23 +9,24 @@
 
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-  <script type='text/javascript'>
-  function initEmbeddedMessaging() {
-    try {
-      embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+		<script type='text/javascript'>
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
 
-      embeddedservice_bootstrap.init(
-        '00DRO0000008l8u',
-        'Embedded_Messaging',
-        'https://godwinlaw.test1.my.pc-rnd.salesforce.com',
-        {
-          scrt2URL: 'https://godwinlaw.test1.my.pc-rnd.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading Embedded Messaging: ', err);
-    }
-  };
-  </script>
-  <script type='text/javascript' src='https://godwinlaw.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+					embeddedservice_bootstrap.init(
+						'00DRO0000008l8u',
+						'Embedded_Messaging',
+						'https://godwinlaw.test1.my.pc-rnd.salesforce.com',
+						{
+							scrt2URL: 'https://godwinlaw.test1.my.pc-rnd.salesforce-scrt.com'
+						}
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
+		</script>
+		<script type='text/javascript' src='https://godwinlaw.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	</body>
 </html>
