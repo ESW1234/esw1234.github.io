@@ -38,6 +38,10 @@
 		embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
 			console.log("onChatEndedByChasitor event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
 		});
+		
+		embedded_svc.addEventHandler("onChatEndedByChatbot", function(data) {
+			console.log("onChatEndedByChatbot event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
+		});
 
 		embedded_svc.addEventHandler("onPostChatPushed", function(data) {
 			console.log("onPostChatPushed event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
