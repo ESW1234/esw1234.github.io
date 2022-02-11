@@ -1,1 +1,66 @@
+<html>
+<head>
+  <title>onChatEndedbyAgent event not fired!!</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+</head>
+<body>
 
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		
+		embedded_svc.settings.devMode = true;
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://eswmessagingchat.my.stmfb.stm.salesforce.com',
+			'https://eswmessagingchat-178579c8c3d.stmfb.stm.force.com/chatcommunity',
+			gslbBaseURL,
+			'00DRM000000FqCE',
+			'Chat',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004UKZ',
+				buttonId: '573RM0000004VMD',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000003Kn2AI_17857b03f33',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://eswmessagingchat.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+		//initESW('https://eswmessagingchat.my.stmfb.stm.salesforce.com');
+	}
+</script>	
+
+
+</body>
+</html>
