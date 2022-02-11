@@ -7,7 +7,6 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
 			embeddedservice_bootstrap.init(
 				'00DS70000000TQT',
 				'EmbeddedDeploymentInAppMsg',
