@@ -48,6 +48,10 @@
 		
 		embedded_svc.settings.smallCompanyLogoImgURL = "https://esw1234.github.io/smallCompanyLogoImg.png";
 		
+		embedded_svc.addEventHandler("onSettingsCallCompleted", function(data) {
+			console.log("onSettingsCallCompleted event was fired. Agent availability status is " + data.isAgentAvailable ? "online": "offline");
+		});
+		
 		embedded_svc.init(
 			'https://inapp2.localhost.internal.salesforce.com:6101',
 			'https://sachinh2.dev.localhost.soma.force.com:6101/sac',
