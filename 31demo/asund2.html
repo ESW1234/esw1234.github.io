@@ -1,0 +1,27 @@
+<html>
+   <head>
+       <title>Your In-App page - asund</title>
+   </head>
+   <body>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000Fkd5',
+				'In_App_Web',
+				'https://scrt2org.my.stmfb.stm.salesforce.com',
+				{
+					scrt2URL: 'https://scrt2org.my.stmfb.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
