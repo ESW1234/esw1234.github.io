@@ -1,0 +1,31 @@
+<html>
+   <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>WebGV Head</title>
+   </head>
+   <body>
+     <title>WebGV body</title>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+ embeddedservice_bootstrap.settings.isAuraSite = true;
+embeddedservice_bootstrap.settings.debugMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000002geH',
+				'WebGV',
+				'https://inappchatorg.test1.my.pc-rnd.salesforce.com',
+				{
+					scrt2URL: 'https://inappchatorg.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inappchatorg.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
