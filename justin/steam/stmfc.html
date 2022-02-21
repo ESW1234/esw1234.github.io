@@ -49,7 +49,19 @@
 					// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 					// Returns a valid button ID.
 				//};
+				    embedded_svc.addEventHandler("onChatEndedByAgent", function(data) {
+					console.log("onChatEndedByAgent event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
+				    });
 
+				    embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+					console.log("onChatEndedByChasitor event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
+				    });
+
+				    embedded_svc.addEventHandler("onPostChatPushed", function(data) {
+					console.log("onPostChatPushed event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
+				    });
+
+				    embedded_svc.settings.autoOpenPostChat = true;
 				//embedded_svc.settings.autoOpenPostChat = true;
 				//embedded_svc.settings.__synchronous_decrement_tab = true;
 
