@@ -2,34 +2,37 @@
    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <title>Test Page</title>
-      <link href="https://ra4es1.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.css" type="text/css" rel="stylesheet">
+	   <link href="https://ra4es1.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.css" type="text/css" rel="stylesheet">
    </head>
    <body>
-     
-      <style>
+	   
+	   
+	   <style>
 		   body{
 			   		   background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
 		   }
 	   </style>
-     
-        <script type='text/javascript'>
-            function initEmbeddedMessaging() {
-              try {
-                embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.settings.isAuraSite = true;
-                embeddedservice_bootstrap.init(
-                  '00DRM000000LbFc',
-                  'web_depl_1',
-                  'https://ra4es1.my.stmfa.stm.salesforce.com',
-                  {
-                    scrt2URL: 'https://ra4es1.my.stmfa.stm.salesforce-scrt.com'
-                  }
-                );
-              } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-              }
-            };
-          </script>
-          <script type='text/javascript' src='https://ra4es1.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	   
+	   
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.isAuraSite = true;
+				embeddedservice_bootstrap.settings.debugMode = true;
+				embeddedservice_bootstrap.init(
+					'00DRM000000LbFc',
+					'web_depl_2',
+					'https://ra4es1.my.stmfa.stm.salesforce.com',
+					{
+						scrt2URL: 'https://ra4es1.my.stmfa.stm.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://ra4es1.my.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
