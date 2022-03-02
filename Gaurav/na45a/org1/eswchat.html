@@ -15,7 +15,7 @@
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		</script>
 		<br>
-		<h2 align="center"><font color ="green">ESW CHAT BUTTON</font></h2>
+		<h2 align="center"><font color ="green">ESW CHAT BUTTON.</font></h2>
 		
 		<br/>
 
@@ -60,7 +60,7 @@
 
 		embedded_svc.init(
 			'https://iana45a.stmfa.my.stm.salesforce.com',
-			'https://iana45a.stmfa.my.stm.site.com/ESWweb1646178519148visualforce',
+			'https://iana45a.stmfa.my.stm.site.com/cs',
 			gslbBaseURL,
 			'00DS7000000owIT',
 			'ESW_Chat',
@@ -69,23 +69,23 @@
 				deploymentId: '572S70000004CuA',
 				buttonId: '573S700000002HR',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000004CFBMA2_17f48d36939',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000004CFGMA2_17f48eb81f5',
 				isOfflineSupportEnabled: false
 			}
 		);
 	};
-		
-			if (!window.embedded_svc) {
-				var s = document.createElement('script');
-				s.setAttribute('src', 'https://gkrorg.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
-				s.onload = function() {
-					initESW(null);
-				};
-				document.body.appendChild(s);
-			} else {
-				initESW('https://service.force.com');
-			}
-		</script>
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://iana45a.stmfa.my.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 		<!-- end 5.0 snippet -->
 
 	</body>
