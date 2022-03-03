@@ -15,14 +15,13 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.isAuraSite = true;
-			embeddedservice_bootstrap.settings.debugMode = true; 
+                        embeddedservice_bootstrap.settings.debugMode = true;
 			embeddedservice_bootstrap.init(
-				'00DS7000000ouey',
-				'e2eTestDeployment',
-				'https://inapporg2.my.stmfa.stm.salesforce.com',
+				'00DS7000000lnfG',
+				'web1',
+				'https://testeswga.stmfa.my.stm.salesforce.com',
 				{
-					scrt2URL: 'https://inapporg2.my.stmfa.stm.salesforce-scrt.com'
+					scrt2URL: 'https://testeswga.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -30,6 +29,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://inapporg2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://testeswga.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
