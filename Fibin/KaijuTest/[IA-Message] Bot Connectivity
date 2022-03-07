@@ -22,8 +22,7 @@
          "section":"core",
          "tracing":"NONE",
          "httpMethod":"POST",
-         "postContent":"{\"orgId\":\"<replaceable.OrgId>\",\n\"developerName\":\"Bots\"}",
-         "iconName":"action:close"
+         "postContent":"{\"orgId\":\"<replaceable.OrgId>\",\n\"developerName\":\"Bots\"}"
       },
       {
          "testStepId":55163,
@@ -45,8 +44,7 @@
          "headers":{
             "Authorization":"Bearer <JWT>"
          },
-         "postContent":"{\n \"developerName\": \"Bots\",\n\"contextParamMap\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n    }\n}",
-         "iconName":"action:info"
+         "postContent":"{\n \"developerName\": \"<replaceable.ESConfigDevName2>\",\n\"contextParamMap\": {\n        \"key1\": \"value1\",\n        \"key2\": \"value2\"\n    }\n}"
       },
       {
          "testStepId":55164,
@@ -68,8 +66,7 @@
          "headers":{
             "Authorization":"Bearer <JWT>"
          },
-         "postContent":"{\n  \"conversationId\": \"<ConvId>\",\n    \"includeClosedConversations\": true\n}\n",
-         "iconName":"action:info"
+         "postContent":"{\n  \"conversationId\": \"<ConvId>\",\n    \"includeClosedConversations\": true\n}\n"
       },
       {
          "testStepId":55168,
@@ -88,8 +85,7 @@
          "headers":{
             "Authorization":"Bearer <JWT>"
          },
-         "postContent":"{ \"conversationId\": \"<ConvId>\" }",
-         "iconName":"action:info"
+         "postContent":"{ \"conversationId\": \"<ConvId>\" }"
       }
    ],
    "testCaseId":31600,
@@ -131,14 +127,15 @@
       "description":" Info about core orgs and their corresponding scrt2 instance",
       "shared":false,
       "createdTime":"2021-09-28T05:24:29.869+0000",
-      "updatedTime":"2022-03-03T18:01:00.170+0000",
+      "updatedTime":"2022-03-07T19:36:57.562+0000",
       "fields":[
          "<Core- Instance>",
          "<OrgId>",
          "<MyDomainURL>",
          "<ESConfigDevName>",
          "<Language>",
-         "<SCRT2InstanceURL>"
+         "<SCRT2InstanceURL>",
+         "<ESConfigDevName2>"
       ],
       "values":{
          "Falcon Test instance - sdb6":[
@@ -146,64 +143,63 @@
             "https://esw-platform3.test1.my.pc-rnd.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net"
+            "https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net",
+            "Bots"
          ],
          "1st party - na45stmfb":[
             "00DS70000000ScU",
             "https://esw-platform3.my.stmfb.stm.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://stmfb.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net"
+            "https://stmfb.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net",
+            "Bots"
          ],
          "Falcon Test instance - sdb3":[
             "00DSB0000001cHl",
             "https://esw-platform2.test1.my.pc-rnd.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net"
+            "https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net",
+            "Bots"
          ],
          "Falcon perf instance - ora4":[
             "00Dpk0000008aSJ",
             "https://esw-platform.perf1g.my.pc-rnd.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://perf01.unified-engagement.sfdc-x579t5.svc.sfdcfc.net"
+            "https://perf01.unified-engagement.sfdc-x579t5.svc.sfdcfc.net",
+            "Bots"
          ],
          "1st party - na45stmfa":[
             "00DS7000000ouQ4",
             "https://esw-platform.my.stmfa.stm.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://stmfa.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net"
+            "https://stmfa.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net",
+            "Bots"
          ],
          "Falcon stage instance - stg1":[
             "00Dab0000008d4S",
             "https://esw-platform2.stagecom.my.pc-rnd.salesforce-scrt.com",
             "EmbeddedMessaging1",
             "en_US",
-            "https://scrt01.uengage1.sfdc-shbmgi.svc.sfdcfc.net"
-         ],
-         "sachin":[
-            "00DSG0000001Z5N",
-            "https://inappchatbot.test1.my.pc-rnd.salesforce-scrt.com",
-            "Sachin_Scrt2_2",
-            "en_US",
-            "https://scrt01.uengage1.sfdc-shbmgi.svc.sfdcfc.net"
+            "https://scrt01.uengage1.sfdc-shbmgi.svc.sfdcfc.net",
+            "Bots"
          ]
       },
       "type":"UI"
    },
    "statefulHttpClient":false,
    "createdTime":"2022-03-04T00:19:20.101+0000",
-   "updatedTime":"2022-03-07T19:25:11.283+0000",
+   "updatedTime":"2022-03-07T19:38:39.603+0000",
    "distributeReplaceableRuns":false,
    "adHocEnabled":false,
    "numSteps":4,
-   "updatedDateTime":"2022-03-07T19:25:11.283Z",
+   "updatedDateTime":"2022-03-07T19:38:39.603Z",
    "createdDateTime":"2022-03-04T00:19:20.101Z",
    "frequencyInMin":5,
    "testType":"API",
-   "replaceable":"Core-SCRT2 info (<Core- Instance> - 7 values)",
+   "replaceable":"Core-SCRT2 info (<Core- Instance> - 6 values)",
    "secretStr":"",
    "teamName":"Embedded Service for Web - Platform",
    "tip":"",
