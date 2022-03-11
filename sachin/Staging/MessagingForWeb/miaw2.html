@@ -5,7 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	</head>
 	<body style="background-image: url('http://esw1234.github.io/sachin/background.jpg'); height: 100%; width: 100%">
-		<h1>Async Client - Falcon/sdb6</h1>
+		<h1>MIAW - Falcon/Staging</h1>
+		<h2>sachin.h@falconstaging.com/test123456
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 
 		<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
@@ -17,11 +18,11 @@
 			embeddedservice_bootstrap.settings.debugMode = true;
 
 			embeddedservice_bootstrap.init(
-				'00Dab0000008dAp',
-				'Sachin',
-				'https://inapp.lightning.localhost.soma.force.com:6101',
+				'00Dab0000008dAp', // OrgId
+				'Sachin', // Developer name
+				'https://inapp.lightning.localhost.soma.force.com:6101', // Local instance base core URL
 				{
-					scrt2URL: 'https://miaw2.stagecom.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://miaw2.stagecom.my.pc-rnd.salesforce-scrt.com' // Staging instance SCRT2 URL
 				}
 			);
 		} catch (err) {
