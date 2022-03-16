@@ -1,10 +1,10 @@
+
 <html><head>
   
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   
   </head><body>
-  
-<style type='text/css'>
+  <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
 		font-family: "Arial", sans-serif;
@@ -39,17 +39,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://compname012.stmfa.my.stm.salesforce.com',
-			'https://compname012.stmfa.my.stm.salesforce-sites.com/',
+			'https://q3na45com.stmfa.my.stm.salesforce.com',
+			'https://q3na45com.stmfa.my.stm.salesforce-sites.com/',
 			gslbBaseURL,
-			'00DS7000000lnJI',
-			'EmbeddedDepESW',
+			'00DS7000000ow73',
+			'ESWDeployment',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572S70000004Ctv',
-				buttonId: '573S70000004Cu5',
+				deploymentId: '572S70000004CuU',
+				buttonId: '573S700000002HW',
 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS700000000DrMAI_17f32edf500',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000004CHqMAM_17f9037ff59',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -57,7 +57,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://compname012.stmfa.my.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://q3na45com.stmfa.my.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
