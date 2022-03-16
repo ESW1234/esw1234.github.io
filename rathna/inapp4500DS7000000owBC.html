@@ -1,0 +1,29 @@
+<html>
+<head>
+
+<title>inapp45napp4500DS7000000owBC </title>
+</head>
+<body>
+  <h1>napp4500DS7000000owBC</h1>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+       embeddedservice_bootstrap.settings.debugMode = true
+			embeddedservice_bootstrap.init(
+				'00DS7000000owBC',
+				'inappweb45',
+				'https://testcompany4.stmfa.my.stm.salesforce.com',
+				{
+					scrt2URL: 'https://testcompany4.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://testcompany4.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
