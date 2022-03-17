@@ -581,7 +581,8 @@
 		let siteUrl = undefined;
 
 		try {
-			siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
+//			siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
+			siteUrl = "https://perfco1.test1.my.pc-rnd.site.com/esw1/";
 		} catch(err) {
 			error("Error getting Site URL: " + err);
 		}
