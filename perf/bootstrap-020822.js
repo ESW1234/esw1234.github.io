@@ -20,7 +20,6 @@
 	const CONVERSATION_BUTTON_LOADING_CLASS = CONVERSATION_BUTTON_CLASS + "Loading";
 	const CONVERSATION_BUTTON_WRAPPER_CLASS = CONVERSATION_BUTTON_CLASS + "Wrapper";
 	const CONVERSATION_BUTTON_POSITION_CLASS = "embeddedMessagingButtonPosition";
-	const CONVERSATION_BUTTON_BOTTOM_TAB_BAR_CLASS = "embeddedMessagingBottomTabBar";
 
 	/**
 	 * Iframe class constants.
@@ -28,8 +27,6 @@
 	const IFRAME_NAME = "embeddedMessagingFrame";
 	const IFRAME_ROUNDED_CLASS = IFRAME_NAME + "Rounded";
 	const IFRAME_NO_SHADOW_CLASS = IFRAME_NAME + "NoShadow";
-	const IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS = IFRAME_NAME + "MaximizedBottomTabBar";
-	const IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS = IFRAME_NAME + "MinimizedBottomTabBar";
 
 	/**
 	 * Styling constants.
@@ -64,7 +61,6 @@
 	const APP_REQUEST_CONFIG_SERVICE_DATA_EVENT_NAME = "ESW_APP_SEND_CONFIG_SERVICE_DATA";
 	const APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME = "ESW_APP_RECEIVE_CONFIG_SERVICE_DATA";
 	const APP_RESET_INITIAL_STATE_EVENT_NAME = "ESW_APP_RESET_INITIAL_STATE";
-	const EMBEDDED_MESSAGING_DOWNLOAD_FILE = "ESW_DOWNLOAD_FILE";
 
 	const SALESFORCE_DOMAINS = [
 		// Used by dev, blitz, and prod instances
@@ -72,9 +68,6 @@
 
 		// Used by VPODs
 		".force.com",
-
-		// Used by Akamai CDN
-		".site.com",
 
 		// Used by autobuild VMs
 		".sfdc.net",
@@ -481,15 +474,11 @@
 							sendPostMessageToIframeWindow(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME,
 								Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
 									jwt: getJwtIfExists(),
-									...(embeddedservice_bootstrap.settings.standardLabels && {standardLabels: embeddedservice_bootstrap.settings.standardLabels}),
-									...(embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels && {customLabels: embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels})
+									labels: handleLabelsData()
 								}));
 							break;
 						case APP_LOADED_EVENT_NAME:
-							// TODO W-10165756 - Remove handling for the event when we no longer support the aura app.
-							if(embeddedservice_bootstrap.settings.isAuraSite) {
-								handleAfterAppLoad();
-							}
+							handleAfterAppLoad();
 							break;
 						case APP_MINIMIZE_EVENT_NAME:
 							embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
@@ -506,9 +495,6 @@
 						case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
 							cleanUpJWT();
 							break;
-						case EMBEDDED_MESSAGING_DOWNLOAD_FILE:
-							downloadFile(e.data.data);
-							break;
 						default:
 							warning("Unrecognized event name: " + e.data.method);
 							break;
@@ -518,33 +504,6 @@
 				}
 			}
 		});
-	}
-
-	/**
-	 * Downloads a file to the local file system, from the URL in event data.
-	 * Temporarily creates and attaches an iframe to the parent page's DOM to achieve this. Removes the temporary iframe from the DOM as cleanup, post download.
-	 */
-	function downloadFile(downloadData) {
-		let fileDownloadIframe;
-
-		fileDownloadIframe = document.createElement("iframe");
-		fileDownloadIframe.style.display = "none";
-		fileDownloadIframe.src = downloadData.attachmentDownloadURL || "";
-
-		// Add iframe to the DOM.
-		document.body.appendChild(fileDownloadIframe);
-		// Open the file in a new tab if the app requires it to.
-		if(downloadData.shouldOpenFileInNewTab) {
-			window.open(fileDownloadIframe.src, '_blank', 'noreferrer noopener');
-		}
-		/**
-		 * Add a small delay before executing Javascript execution queue, to avoid page navigation interruption.
-		 * https://kb.webtrends.com/articles/Information/NS-BINDING-ABORTED-status-message-in-http-debugger/?l=en_US&fs=RelatedArticle
-		 */
-		setTimeout(() => {
-			// Cleanup - remove iframe from the DOM.
-			document.body.removeChild(fileDownloadIframe);
-		}, 1000);
 	}
 
 	/**
@@ -561,9 +520,8 @@
 	 * Validate all the necessary attributes on the settings object after making a request to InApp Config Service.
 	 */
 	function validateSettings() {
-		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig) throw new Error("Embedded Service Config settings not present in configuration response.");
-		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig.name) throw new Error("Embedded Service Config developer name not present in configuration response.");
-		if(typeof getSiteUrl() !== "string") throw new Error(`Expected Site URL value in configuration response to be a string but received: ${getSiteUrl()}.`);
+		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig) throw new Error("Embedded Service Config Settings not present");
+		if(typeof getSiteUrl() !== "string") throw new Error(`Expected Site URL value to be a string but received: ${getSiteUrl()}.`);
 	}
 
 	/**
@@ -592,15 +550,15 @@
 	function getConfigurationData() {
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
-			const configURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_CONFIG_API_PREFIX + "/" + IN_APP_CONFIG_API_VERSION +
-				"/embedded-service-config?orgId=" + embeddedservice_bootstrap.settings.orgId + "&esConfigName=" +
+			const configURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_CONFIG_API_PREFIX + "/" + IN_APP_CONFIG_API_VERSION + 
+				"/embedded-service-config?orgId=" + embeddedservice_bootstrap.settings.orgId + "&esConfigName=" + 
 				embeddedservice_bootstrap.settings.eswConfigDevName + "&language=" + embeddedservice_bootstrap.settings.language;
 
 			xhr.open("GET", configURL, true);
 
 			xhr.onreadystatechange = (response) => {
 				const state = response.target;
-
+ 
 				// DONE === The operation is complete, per https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState.
 				if(state && state.readyState === state.DONE) {
 					if(state.status === 200) {
@@ -623,8 +581,7 @@
 		let siteUrl = undefined;
 
 		try {
-			//siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
-			siteUrl = "https://perfco1.test1.my.pc-rnd.site.com/esw1/";
+			siteUrl = embeddedservice_bootstrap.settings.embeddedServiceConfig.siteUrl;
 		} catch(err) {
 			error("Error getting Site URL: " + err);
 		}
@@ -700,24 +657,6 @@
 	}
 
 	/**
-	 * Determines whether the user is on an iOS 15+ Safari browser.
-	 *
-	 * This is what navigator.userAgent returns for iOS Safari:
-	 * 1) Mozilla/5.0 (iPhone; CPU iPhone OS 14_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1
-	 * 2) Mozilla/5.0 (iPad; CPU OS 13_0 like Mac OS X) AppleWebKit / 605.1.15 (KHTML, like Gecko) Mobile / 15E148
-	 *
-	 * @return {boolean} Is the user agent on iOS 15+ Safari?
-	 */
-	function isUseriOS15plusSafari() {
-		const iOS = Boolean(navigator.userAgent.match(/iP(hone|ad|od)/i));
-		const versionMatchArray = navigator.userAgent.match(/(?!=OS)(([0-9]){2})/i);
-		const version = versionMatchArray && versionMatchArray.length > 0 ? Number(versionMatchArray[0]) : -1;
-		const safari = Boolean(navigator.userAgent.match(/WebKit/i)) &&
-			!Boolean(navigator.userAgent.match(/CriOS/i));
-		return iOS && safari && version >= 15;
-	}
-
-	/**
 	 * Apply styles to iframe depending on current browser client.
 	 * @param {Object} frame - Reference to iframe DOM element.
 	 */
@@ -787,6 +726,8 @@
 		try {
 			const iframe = document.createElement("iframe");
 
+			iframe.src = getSiteUrl() + "/embeddedService/embeddedService.app";
+
 			iframe.title = "Chat with an Agent";
 			iframe.className = IFRAME_NAME;
 			iframe.id = IFRAME_NAME;
@@ -795,56 +736,14 @@
 			// TODO: remove allow-same-origin when Aura/LWR allows
 			// Add allow-modals to throw alert for unauthenticated user losing session.
 			iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads allow-popups";
-
-			// Handle Aura/LWR site endpoints separately until W-10165756 is implemented.
-			if(embeddedservice_bootstrap.settings.isAuraSite) {
-				handleAuraSite(iframe);
-			} else {
-				handleLWRSite(iframe);
-			}
-
-			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
-			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-				iframe.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-				iframe.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-			}
+			iframe.onload = () => {
+				log("Created an iframe to load the aura application.");
+			};
 
 			document.body.appendChild(iframe);
 		} catch(e) {
 			throw new Error(e);
 		}
-	}
-
-	/**
-	 * Handles Aura site endpoint. Sets iframe.src and logs success message on iframe load.
-	 * TODO W-10165756 - Remove support for aura sites & the aura app.
-	 * @param iframe - iframe element
-	 */
-	function handleAuraSite(iframe) {
-		if(!iframe) {
-			error("Failed to load aura app. Iframe is undefined.");
-		}
-
-		iframe.src = getSiteUrl() + "/embeddedService/embeddedService.app";
-		iframe.onload = () => {
-			log("Created an iframe to load the aura application.");
-		};
-	}
-
-	/**
-	 * Handles LWR site endpoint. Sets iframe.src and updates FAB and iframe styling on site load.
-	 * @param iframe - iframe element
-	 */
-	function handleLWRSite(iframe) {
-		if(!iframe) {
-			error("Failed to load LWR site. Iframe is undefined.");
-		}
-
-		iframe.src = getSiteUrl() + "?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
-		iframe.onload = () => {
-			log("Created an iframe to load LWR site.");
-			handleAfterAppLoad();
-		};
 	}
 
 	/**
@@ -886,8 +785,7 @@
 	}
 
 	/**
-	 * Handle updates to FAB and Iframe after app loaded event is received from container with the aura app
-	 * OR after a LWR site is loaded.
+	 * Handle updates to FAB and Iframe after app loaded event is received from container.
 	 */
 	function handleAfterAppLoad() {
 		let button = document.getElementById(CONVERSATION_BUTTON_CLASS);
@@ -947,6 +845,28 @@
 	}
 
 	/**
+	 * Handles processing labels from Config Service response into a nested map structure for ease of access.
+	 * Each key is a label sectionName and its corresponding value is a nested object containing key-value pairs of labels under that sectionName.
+	 */
+	function handleLabelsData() {
+		let labelsMap = {};
+
+		try {
+			for (const label of embeddedservice_bootstrap.settings.standardLabels) {
+				if(labelsMap.hasOwnProperty(label.sectionName)) {
+					labelsMap[label.sectionName][label.labelName] = label.labelValue;
+				} else {
+					labelsMap[label.sectionName] = {};
+					labelsMap[label.sectionName][label.labelName] = label.labelValue;
+				}
+			}
+		} catch(err) {
+			error("Error processing Embedded Messaging labels: " + err);
+		}
+		return labelsMap;
+	}
+
+	/**
 	 * Show a button when the container page is loaded.
 	 */
 	EmbeddedServiceBootstrap.prototype.showConversationButton = function showConversationButton() {
@@ -960,12 +880,7 @@
 		conversationButton.id = CONVERSATION_BUTTON_CLASS;
 		conversationButton.href = "javascript:void(0)";
 		// Update the color of FAB to match the color of Chat Header i.e. --headerColor branding token from setup.
-		conversationButton.style.background = getFABColorToUpdateAfterAppLoad();
-
-		// Adjust button height if browser has bottom tab bar.
-		if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-			conversationButton.classList.add(CONVERSATION_BUTTON_BOTTOM_TAB_BAR_CLASS);
-		}
+		conversationButton.style.backgroundColor = getFABColorToUpdateAfterAppLoad();
 
 		// Click event handler for the conversation button.
 		conversationButton.addEventListener("click", (e) => handleClick());
@@ -991,12 +906,6 @@
 	EmbeddedServiceBootstrap.prototype.maximizeIframe = function maximizeIframe(frame) {
 		let button = document.getElementById(CONVERSATION_BUTTON_CLASS);
 
-		// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
-		if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-			frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-			frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-		}
-
 		applyDynamicStylesToIframe(frame);
 		frame.classList.remove(CONVERSATION_BUTTON_POSITION_CLASS);
 		frame.classList.remove(IFRAME_ROUNDED_CLASS);
@@ -1015,13 +924,6 @@
 		if(height === width) {
 			frame.classList.add(IFRAME_ROUNDED_CLASS);
 		}
-
-		// Adjust iframe distance from bottom to minimized position if browser has bottom tab bar.
-		if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-			frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-			frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-		}
-
 		frame.style.height = height;
 		frame.style.width = width;
 		frame.classList.add(IFRAME_NO_SHADOW_CLASS);
@@ -1057,12 +959,6 @@
 
 			addEventHandlers();
 
-			// Check to see whether browser has bottom tab bar.
-			embeddedservice_bootstrap.settings.hasBottomTabBar = isUseriOS15plusSafari();
-
-			// isAuraSite - Temporary setting to fallback to Aura embeddedService.app. To be removed in W-10165756.
-			embeddedservice_bootstrap.settings.isAuraSite = Boolean(embeddedservice_bootstrap.settings.isAuraSite);
-
 			// Load css file for bootstrap.js.
 			const cssPromise = loadCSS().then(
 				Promise.resolve.bind(Promise),
@@ -1088,6 +984,8 @@
 					// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
 					embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = embeddedservice_bootstrap.settings.scrt2URL;
 					embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
+					// Temporary snippet setting to enable beta features. Remove the setting and related code in W-9361073.
+					embeddedservice_bootstrap.settings.embeddedServiceConfig.betaMode = Boolean(embeddedservice_bootstrap.settings.betaMode);
 				},
 				responseStatus => {
 					// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
