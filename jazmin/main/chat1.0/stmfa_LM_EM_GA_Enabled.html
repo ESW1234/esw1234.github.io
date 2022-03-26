@@ -4,7 +4,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">STMFA Org that has both EM GA and LM Perms Enabled</font></p>
+  <p align="center"><font color ="blue">STMFA Org that has both EM GA and LM Perms Enabled</font></p>
   <br/>
   <br/>
 
@@ -14,15 +14,10 @@
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
-		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -38,7 +33,7 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Live Agent
+		// Settings for Chat
 		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
@@ -51,25 +46,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://eu19.salesforce.com',
-			'https://liveagenteu3-140e5d5f57c-141-16424563925.secure.force.com',
+			'https://foresw-b.stmfa.my.stm.salesforce.com',
+			'https://foresw-b.stmfa.my.stm.site.com/ESWEM21648251108347vforcesite',
 			gslbBaseURL,
-			'00D1i000000CmW9',
-			'Snap_In_Deployment',
+			'00DS7000000lo1o',
+			'githubGroup',
 			{
-				baseLiveAgentContentURL: 'https://c.la1-c2-cdg.salesforceliveagent.com/content',
-				deploymentId: '5721i000000GmaF',
-				buttonId: '5731i000000fxTE',
-				baseLiveAgentURL: 'https://d.la1-c2-cdg.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1i000000GmanEAC_1685d99ee11',
-				isOfflineSupportEnabled: false
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572S700000002Gn',
+				buttonId: '573S700000002Hq',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'githubGroup',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eu19.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://foresw-b.stmfa.my.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
