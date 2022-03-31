@@ -4,8 +4,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 </head>
 <body>
-  <p align="center"><font color ="red">STMFA Org has EM GA Disabled</font></p>
-<p align="center"><font color ="red">Admin/Agent Creds: jazmin@EMDisabled.com/test1234</font></p>
+  <p align="center"><font color ="blue">STMFA Org has EM GA Disabled</font></p>
+<p align="center"><font color ="blue">Admin/Agent Creds: jazmin@EMDisabled.com/test1234</font></p>
 
   <br/>
   <br/>
@@ -14,7 +14,32 @@
 </div>
 <!------------------------------------------------ 5.0 SNIPPPET ----------------------------------------------------->	
 
-	
+<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.menu.init(
+			'https://foresw-e.stmfa.my.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DS7000000owc8',
+			'cm1'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://foresw-e.stmfa.my.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 <!------------------------------------------------------------------------------------------------------------------->
 
    
