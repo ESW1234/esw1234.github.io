@@ -16,14 +16,13 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.isAuraSite = true;
 			embeddedservice_bootstrap.settings.debugMode = true; 
 			embeddedservice_bootstrap.init(
-				'00DS7000000ouey',
+				'00DS7000000lo8y',
 				'web1',
-				'https://inapporg2.my.stmfa.stm.salesforce.com',
+				'https://asyncchat2.my.stmfa.stm.salesforce.com',
 				{
-					scrt2URL: 'https://inapporg2.my.stmfa.stm.salesforce-scrt.com'
+					scrt2URL: 'https://asyncchat2.my.stmfa.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -31,6 +30,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://inapporg2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://asyncchat2.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
