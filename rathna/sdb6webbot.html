@@ -10,10 +10,10 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-       embeddedservice_bootstrap.settings.debugMode = true
+			embeddedservice_bootstrap.settings.debugMode = true
 			embeddedservice_bootstrap.init(
 				'00DSG0000003FfF',
-				'test',
+				'chatapp',
 				'https://vgsdb61.test1.my.pc-rnd.salesforce.com',
 				{
 					scrt2URL: 'https://vgsdb61.test1.my.pc-rnd.salesforce-scrt.com'
@@ -25,6 +25,7 @@
 	};
 </script>
 <script type='text/javascript' src='https://vgsdb61.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 </html>
