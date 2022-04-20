@@ -5,13 +5,34 @@
 </head>
 <body>
   <p align="center"><font color ="blue">STMFB Org that has EM GA Enabled and LM Perms Disabled</font></p>
-<p align="center"><font color ="red">Admin/Agent Creds: </font></p>
+<p align="center"><font color ="red">Admin/Agent Creds: jazmin@EM_GA_ENABLED_LM_DISABLED.com/test1234</font></p>
   <br/>
   <br/>
 
 <div id="button_goes_here">
 </div>
 <!------------------------------------------------ SNIPPPET ----------------------------------------------------->		
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DS70000000UK3',
+				'EM1_Web',
+				'https://foresw2.stmfb.my.stm.salesforce.com',
+				{
+					scrt2URL: 'https://foresw2.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+<script type='text/javascript' src='https://foresw2.stmfb.my.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 <!------------------------------------------------------------------------------------------------------------------->
 
