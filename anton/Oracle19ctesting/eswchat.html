@@ -32,6 +32,10 @@ ESW Chat
 		    console.log("onChatEndedByChasitor event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 		});
 
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			return "573x0000000PHeB";
+		}
+		
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
