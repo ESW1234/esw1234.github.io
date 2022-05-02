@@ -179,22 +179,36 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+	
+	
 
-		embedded_svc.init(
-					'https://snapins.my.stmfb.stm.salesforce.com',
-					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
-					gslbBaseURL,
-					'00DRM0000005jYI',
-					'justinChatbot',
-					{
-						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-						deploymentId: '572RM0000004DDM',
-						buttonId: '573RM0000004HAw',
-						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
-						isOfflineSupportEnabled: false
-					}
-				);
+				embedded_svc.init(
+			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
+			gslbBaseURL,
+			'00DRM0000005cyu',
+			'justin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CDV',
+				buttonId: '573RM0000004CDc',
+				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000006c2AA_161070c45e2',
+				isOfflineSupportEnabled: true
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		// initESW('https://service.force.com');
+    		initESW('https://justinmacmillin.my.stmfa.stm.salesforce.com');
 	};
 
 	if (!window.embedded_svc) {
