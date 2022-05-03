@@ -60,18 +60,16 @@
 
 		embedded_svc.init(
 			'https://benco00.localhost.internal.salesforce.com:6101',
+			'https://bdrasin-wsl4.internal.salesforce.com:8096/chat',
+			'https://bdrasin-wsl4.internal.salesforce.com:8095/content',
 			'https://eswmessagingchat-1758a328499.dev.localhost.soma.force.com:6101/chatcommunity',
-			gslbBaseURL,
+			'572xx0000004CCG',
 			'00Dxx0000006GSl',
+			'573xx0000004CCG',
+			2.2,
+			gslbBaseURL,
+			55.0,
 			'Chat',
-			{
-				baseLiveAgentContentURL: 'https://bdrasin-wsl4.internal.salesforce.com:8095/content',
-				deploymentId: '572xx0000004CCG',
-				buttonId: '573xx0000004CCG',
-				baseLiveAgentURL: 'https://bdrasin-wsl4.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1743cd61ebc',
-				isOfflineSupportEnabled: true
-			}
 		);
 	};
 
