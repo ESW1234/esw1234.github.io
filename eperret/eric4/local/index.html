@@ -12,8 +12,9 @@
     </head>
     <body>
         <div id="content">
-            <h1>S̡̙͙a͕̞m̡͕̫p̢̢̘l̡̘̝e̪̞ P̢̫͉a̟̙͍g̡̡͎e̝͕̘ 3̪̻̦9.4</h1>
+            <h1>S̡̙͙a͕̞m̡͕̫p̢̢̘l̡̘̝e̪̞ P̢̫͉a̟̙͍g̡̡͎e̝͕̘ 3̪̻̦9.5</h1>
             <div id="innerContent"></div>
+            <div id="innerContent2"></div>
         </div>
         <script src="https://signuporgtest1649132740399.lightning.localhost.sfdcdev.force.com:6101/lightning/lightning.out.js"></script>
         <script>
@@ -29,10 +30,18 @@
                             console.log("callback for $Lightning.createComponent");
                         }
                     );
+                    $Lightning.createComponent(
+                        "c:staticResources",
+                        {},
+                        "innerContent2",
+                        function(cmp){
+                            console.log("callback for $Lightning.createComponent2");
+                        }
+                    );
                 },
                 //"https://safaritest.localhost.blitztesting.com",
                 "https://signuporgtest1649132740399.lightning.localhost.sfdcdev.force.com:6101",
-                "00Dxx0000006Gcx!AQEAQKBqDBljeB9_vbsNizZ39rEYZzBMacxVsokQ8PR7Shmn8WR_TF.VqgPi_nekdPO7fydSO1ZTmxbRpoWPmBry9KEqXUYQ"
+                "00Dxx0000006Gcx!AQEAQD3hQFpeSRN.Wxb2RTLGJH958K0z9ApSQMxpecJLPwD4Gobf5U0fJP5r3eqWUI92L5Q6RRSj0rWjlKrsGun4HxgP5PpG"
             );
         </script>
     </body>
