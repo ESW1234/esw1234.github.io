@@ -34,6 +34,135 @@
 
 		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 		<script type='text/javascript'>
+		function startChatExtraPrechat() {
+			embedded_svc.liveAgentAPI.startChat({
+				extraPrechatInfo: [{
+					"entityName":"Contact",
+					"showOnCreate":true,
+					"linkToEntityName":"Case",
+					"linkToEntityField":"ContactId",
+					"saveToTranscript":"ContactId",
+					"entityFieldMaps": [{
+						"isExactMatch":true,
+						"fieldName":"FirstName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"First Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"LastName",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Last Name"
+					}, {
+						"isExactMatch":true,
+						"fieldName":"Email",
+						"doCreate":true,
+						"doFind":true,
+						"label":"Email"
+					}]
+				}, {
+					"entityName":"Case",
+					"showOnCreate":true,
+					"saveToTranscript":"CaseId",
+					"entityFieldMaps": [{
+						"isExactMatch":false,
+						"fieldName":"Subject",
+						"doCreate":true,
+						"doFind":false,
+						"label":"issue"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Status",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Status"
+					}, {
+						"isExactMatch":false,
+						"fieldName":"Origin",
+						"doCreate":true,
+						"doFind":false,
+						"label":"Origin"
+					}]
+				}],
+				extraPrechatFormDetails: [{
+					"label":"First Name",
+					"name":"FirstName",
+					"value":"Jane",
+					"displayToAgent":true
+				}, {
+					"label":"Last Name",
+					"value":"Doe",
+					"displayToAgent":true
+				}, {
+					"label":"Email",
+					"value":"jane.doe@salesforce.com",
+					"displayToAgent":true
+				}, {
+					"label":"issue",
+					"value":"Sales forecasts",
+					"displayToAgent":true
+				}]
+			});
+		}
+		  
+		function startChatD2A() {
+			embedded_svc.liveAgentAPI.startChat({
+				buttonId: "573RM0000004CDd",
+ 				userId: "005RM000001c45x",
+				fallback: false
+			});
+		}
+	  	function startChatD2B() {
+			embedded_svc.liveAgentAPI.startChat({
+				directToButtonRouting: function(prechatFormData) {
+			//Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+					if(prechatFormData[4].value === "High") {
+						console.log("d2b invoked");
+
+						return "573xx0000004C93";
+					}},
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com",
+					Priority: "High"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+	  	function startChatWithFallback() {
+			embedded_svc.liveAgentAPI.startChat({
+				// "573xx0000004C94"
+				fallbackRouting: ["005RM000001c45x","573RM0000004CDd"]
+			});
+		}	  
+		function startChat() {
+			embedded_svc.liveAgentAPI.startChat();
+		}
+		function bootstrapChat() {
+			embedded_svc.bootstrapEmbeddedService();
+		}
+		function endChat() {
+			embedded_svc.liveAgentAPI.endChat();
+		}
+		  
+		function clearSession() {
+			embedded_svc.liveAgentAPI.clearSession();
+		}
+		function startChatPrepop() {
+			embedded_svc.liveAgentAPI.startChat({
+				prepopulatedPrechatFields: {
+					FirstName: "Porter",
+					LastName: "Robinson",
+					Subject: "Second Sky",
+					Email: "porter@nurture.com"
+				} //Sets the auto-population of pre-chat form fields
+			});
+		}
+
+			
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				//embedded_svc.settings.language = 'pt_BR'; //For example, enter 'en' or 'en-US'
