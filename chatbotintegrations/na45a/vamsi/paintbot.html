@@ -8,18 +8,17 @@
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.debugMode = true; 
+
 			embeddedservice_bootstrap.init(
-				'00DS7000000lnbK',
-				'web1',
-				'https://na45org2.stmfa.my.stm.salesforce.com',
+				'00DS7000000lnte',
+				'Paintshopbody',
+				'https://vamsystmfatest1.stmfa.my.stm.salesforce.com',
 				{
-					scrt2URL: 'https://na45org2.stmfa.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://vamsystmfatest1.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -27,6 +26,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://na45org2.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-  </body>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
   </html>
