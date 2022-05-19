@@ -618,7 +618,7 @@
 			let baseURL = url ? url : (embeddedservice_bootstrap.settings.debugMode ? CORE_BASE_URL : GSLB_BASE_URL);
 			let link = document.createElement("link");
 
-			link.href = baseURL + "./bootstrap.css";
+			link.href = baseURL + "./bootstrap-backport.css";
 			link.type = "text/css";
 			link.rel = "stylesheet";
 
