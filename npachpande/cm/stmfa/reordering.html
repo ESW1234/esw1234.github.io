@@ -7,36 +7,11 @@
   
 <button onclick="endChat()">End Chat</button>
 	
-<script>
-function endChat() {
-	if(embedded_svc) {
-		embedded_svc.menu.hideButtonAndMenu();
-		embedded_svc.liveAgentAPI.clearSession();
-		embedded_svc.menu.destroy();
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "https://service.force.com/embeddedservice/menu/fab.min.js";
-		document.body.appendChild(script);
-		embedded_svc.menu.settings.language = 'de';
-		embedded_svc.menu.init(
-			'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
-			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-			gslbBaseURL,
-			'00DRM000000HvmX',
-			'Reordering',
-			{
-				pageName: "GermanChatSettings"
-			}
-		);
-	}
-}
-</script>
-	
-	
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
+	var initESW = function(language, gslbBaseURL) {
 		embedded_svc.menu.settings.devMode = true;
+		embedded_svc.menu.settings.language = language;
 
 		embedded_svc.menu.init(
 			'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
@@ -50,15 +25,41 @@ function endChat() {
 		);
 	};
 
+	function endChat() {
+		if(embedded_svc) {
+			embedded_svc.menu.hideButtonAndMenu();
+			embedded_svc.liveAgentAPI.clearSession();
+			embedded_svc.menu.destroy();
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = "https://service.force.com/embeddedservice/menu/fab.min.js";
+			s.onload = function() {
+				initESW("de", "'https://service.force.com'");
+			};
+			document.body.appendChild(script);
+			
+			embedded_svc.menu.init(
+				'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+				'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+				gslbBaseURL,
+				'00DRM000000HvmX',
+				'Reordering',
+				{
+					pageName: "GermanChatSettings"
+				}
+			);
+		}
+	}
+	
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
 		s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
-			initESW(null);
+			initESW(""null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW("en", "https://service.force.com");
 	}
 </script>
   
