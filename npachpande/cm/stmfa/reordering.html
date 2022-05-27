@@ -10,10 +10,20 @@
 <script>
 function endChat() {
 	if(embedded_svc) {
-		embedded_svc.menu.settings.language = 'de';
 		embedded_svc.menu.hideButtonAndMenu();
 		embedded_svc.liveAgentAPI.clearSession();
-		embedded_svc.menu.reorder(["Call", "Chat"]);
+		embedded_svc.menu.destroy();
+		embedded_svc.menu.settings.language = 'de';
+		embedded_svc.menu.init(
+			'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM000000HvmX',
+			'Reordering',
+			{
+				pageName: "GermanChatSettings"
+			}
+		);
 	}
 }
 </script>
