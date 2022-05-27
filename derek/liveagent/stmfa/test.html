@@ -50,20 +50,37 @@
 		
 		//embedded_svc.settings.smallCompanyLogoImg = "http://esw1234.github.io/smallCompanyLogoImg.png";
 
+		// for 2.x+
+// 		embedded_svc.init(
+// 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+// 			'https://snapins.stmfa.stm.force.com/sachin',
+// 			gslbBaseURL,
+// 			'00DRM0000005cyu',
+// 			'Sachin',
+// 			{
+// 				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
+// 				deploymentId: '572RM0000004NnK',
+// 				buttonId: '573RM0000004XU3',
+// 				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
+// 				isOfflineSupportEnabled: true
+// 			}
+// 		);
+		
+		
+		// for 2.0
 		embedded_svc.init(
 			'https://justinmacmillin.my.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content'
 			'https://snapins.stmfa.stm.force.com/sachin',
-			gslbBaseURL,
+			'572RM0000004NnK',
 			'00DRM0000005cyu',
-			'Sachin',
-			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000004NnK',
-				buttonId: '573RM0000004XU3',
-				baseLiveAgentURL: 'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000002jj2AA_1710f059652',
-				isOfflineSupportEnabled: true
-			}
+			'573RM0000004XU3',
+			2.0,
+			gslbBaseURL,
+			55.0,
+			'Chat',
 		);
 	};
 
