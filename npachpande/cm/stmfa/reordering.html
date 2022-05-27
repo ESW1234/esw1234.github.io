@@ -33,7 +33,7 @@
 			var script = document.createElement("script");
 			script.type = "text/javascript";
 			script.src = "https://service.force.com/embeddedservice/menu/fab.min.js";
-			s.onload = function() {
+			script.onload = function() {
 				initESW("de", "'https://service.force.com'");
 			};
 			document.body.appendChild(script);
