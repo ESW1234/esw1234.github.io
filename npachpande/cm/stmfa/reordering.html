@@ -10,7 +10,9 @@
 <script>
 function endChat() {
 	if(embedded_svc) {
+		embedded_svc.menu.hideButtonAndMenu();
 		embedded_svc.liveAgentAPI.clearSession();
+		embedded_svc.menu.reorder(["Call", "Chat"]);
 	}
 }
 </script>
