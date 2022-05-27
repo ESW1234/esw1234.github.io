@@ -4,14 +4,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
   
-  
+<button onclick="endChat()">End Chat</button>
+	
+<script>
+function endChat() {
+	if(embedded_svc) {
+		embedded_svc.liveAgentAPI.clearSession();
+	}
+}
+</script>
+	
+	
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
