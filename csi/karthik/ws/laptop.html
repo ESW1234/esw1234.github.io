@@ -17,9 +17,8 @@
          	try {
          		embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
          		embeddedservice_bootstrap.settings.debugMode = true;
-         		embeddedservice_bootstrap.init('00DRM000000MLcN','Async_Chat', 'https://csi.my.localhost.sfdcdev.salesforce.com:6101',{
-                  scrt2URL: 'https://asyncesw.my.stmfa.stm.salesforce-scrt.com'
-				    });
+         		embeddedservice_bootstrap.init('00Dxx0000006GZj','esw','https://csi.my.localhost.sfdcdev.salesforce.com:6101',{
+				scrt2URL: 'http://csi.my.localhost.sfdcdev.salesforce-scrt.com'});
          	} catch(err) {
          		console.error('Error loading Embedded Messaging: ', err);
          	}
