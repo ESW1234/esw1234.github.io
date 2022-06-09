@@ -17,19 +17,15 @@
          	try {
          		embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
          		embeddedservice_bootstrap.settings.debugMode = true;
-         		embeddedservice_bootstrap.init('00Dxx0000006GZj',
-				      'esw',
-				      'https://csi.my.localhost.sfdcdev.salesforce.com:6101',
-                  {
-                     scrt2URL: 'http://csi.my.localhost.sfdcdev.salesforce-scrt.com'
-                  }
-               );
+         		embeddedservice_bootstrap.init('00DS7000000lo03', 'user3_esw', 'https://decsi2.stmfa.my.stm.salesforce.com', {
+         			scrt2URL: 'https://decsi2.stmfa.my.stm.salesforce-scrt.com'
+         		});
          	} catch(err) {
          		console.error('Error loading Embedded Messaging: ', err);
          	}
          };
       </script>
       <!-- Replace the source url with the org's domain url from the above script(the url that doesn't end with scrt.com) -->
-      <script type='text/javascript' src='https://csi.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+      <script type='text/javascript' src='https://decsi2.stmfa.my.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
