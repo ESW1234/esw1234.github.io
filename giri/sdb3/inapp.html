@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>SDB3 Test1 Enhanced (Inapp Async) Bot</h1>
+
+        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		<style type='text/css'>
+            .embeddedServiceHelpButton .helpButton .uiButton {
+                background-color: #005290;
+                font-family: "Arial", sans-serif;
+            }
+            .embeddedServiceHelpButton .helpButton .uiButton:focus {
+                outline: 1px solid #005290;
+            }
+        </style>
+        
+        <script type='text/javascript'>
+            function initEmbeddedMessaging() {
+                try {
+                    embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+        
+                    embeddedservice_bootstrap.init(
+                        '00DSB00000030pt',
+                        'Inapp_Enhanced_Bot',
+                        'https://sdb32.test1.my.pc-rnd.salesforce.com',
+                        {
+                            scrt2URL: 'https://sdb32.test1.my.pc-rnd.salesforce-scrt.com'
+                        }
+                    );
+                } catch (err) {
+                    console.error('Error loading Embedded Messaging: ', err);
+                }
+            };
+        </script>
+        <script type='text/javascript' src='https://service.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+        
+        
+    </body>
+</html>
