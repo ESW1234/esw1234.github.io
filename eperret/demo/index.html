@@ -1,1 +1,39 @@
-d
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lightning out</title>
+        <style>
+            #content {
+                padding: 1rem;
+                background: #fff;
+                display: inline-block
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Demo Page</h1>
+            <div id="innerContent"></div>
+        </div>
+        <script src="https://mailappsna45eacoutlook2.test1.lightning.pc-rnd.force.com/lightning/lightning.out.js"></script>
+        <script>
+            $Lightning.use("c:lo",    // name of the Lightning app
+                function() {          // Callback once framework and app loaded
+                    debugger;
+                    console.log("callback for $Lightning.use");
+                    $Lightning.createComponent(
+                        "c:helloworld",
+                        {},
+                        "innerContent",
+                        function(cmp){
+                            console.log("callback for $Lightning.createComponent");
+                        }
+                    );
+                },
+                //"https://safaritest.localhost.blitztesting.com",
+                "https://mailappsna45eacoutlook2.test1.lightning.pc-rnd.force.com",
+                "00DRN0000008b04!ARcAQJpVfSmugixaaQn.B5heY7KA0mtC6gqnMhHrK8DljfN.re4RH_lRkN0mHLxLuzbUEJcWuBHYIR6yDTDK6Gx5CtlXhklj"
+            );
+        </script>
+    </body>
+</html>
