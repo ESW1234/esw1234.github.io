@@ -14,22 +14,22 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			      embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-      			embeddedservice_bootstrap.settings.devMode = true;
-      			embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.debugMode = true;
 
-            // STMFA ORG
-            embeddedservice_bootstrap.init(
-              '00DS7000000ouRu',
-              'Messaging',
-              'https://asyncchat.stmfa.my.stm.salesforce.com',
-              {
-                scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
-              }
-            );
-          } catch (err) {
-              console.error('Error loading Embedded Messaging: ', err);
-          }
+			// STMFA ORG
+			embeddedservice_bootstrap.init(
+				'00DS7000000ouRu',
+				'Messaging',
+				'https://asyncchat.stmfa.my.stm.salesforce.com',
+				{
+				scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		  } catch (err) {
+		      console.error('Error loading Embedded Messaging: ', err);
+		  }
 	};
 </script>
 <script type='text/javascript' src='https://npachpa-wsmkvfh.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
