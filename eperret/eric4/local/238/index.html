@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lightning out</title>
+        <style>
+            background:#000;
+            #content {
+                padding: 1rem;
+                background: #fff;
+                display: inline-block
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Sample Page, Guest User: 0</h1>
+            <div id="innerContent"></div>
+        </div>
+        <script src="https://signuporgtest1649132740399.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js"></script>
+        <script>
+            $Lightning.use("c:guestLo",        // name of the Lightning app
+                function() {              // Callback once framework and app loaded
+                    debugger;
+                    console.log("callback for $Lightning.use");
+                    $Lightning.createComponent(
+                        "c:callServer",
+                        {},
+                        "innerContent",
+                        function(cmp){
+                            console.log("callback for $Lightning.createComponent");
+                        }
+                    );
+                },
+                "https://signuporgtest1649132740399.my.localhost.sfdcdev.site.com:6101"
+            );
+        </script>
+    </body>
+</html>
+Footer
