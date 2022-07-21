@@ -15,7 +15,8 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = false;
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.debugMode = true;
 
 			// STMFA ORG
 			embeddedservice_bootstrap.init(
@@ -43,7 +44,7 @@
 		  }
 	};
 </script>
-<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAuthSite31658444939099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAuthSite31658444939099/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
