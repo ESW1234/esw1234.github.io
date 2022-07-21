@@ -15,13 +15,13 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.devMode = false;
 
 			// STMFA ORG
 			embeddedservice_bootstrap.init(
 				'00DS7000000ouRu',
 				'Messaging',
-				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWESWAuthSite21658347630088',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAuthSite31658444939099',
 				{
 				scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
 				}
@@ -43,7 +43,7 @@
 		  }
 	};
 </script>
-<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWESWAuthSite21658347630088/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAuthSite31658444939099/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
