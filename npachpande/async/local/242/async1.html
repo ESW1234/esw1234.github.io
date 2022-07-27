@@ -18,6 +18,7 @@
       			embeddedservice_bootstrap.settings.devMode = true;
 
 
+			/*
 			// STMFA ORG
 			embeddedservice_bootstrap.init(
 				'00DS7000000ouRu',
@@ -25,6 +26,17 @@
 				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAsyncChat1648767194326',
 				{
 				  scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+			*/
+			
+			// SDB6 ORG
+			embeddedservice_bootstrap.init(
+				'00DSG0000001hxN',
+				'Messaging',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWAsyncChat1648767194326',
+				{
+					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 
