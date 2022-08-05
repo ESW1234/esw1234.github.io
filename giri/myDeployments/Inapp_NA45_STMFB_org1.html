@@ -14,12 +14,12 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true; 
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
 				'00DS70000000V2j',
-				'InAppDep',
-				'https://org32.stmfb.my.stm.salesforce.com',
+				'X240_inapp',
+				'https://org32.stmfb.my.stm.site.com/ESWX240inapp1659736924223',
 				{
 					scrt2URL: 'https://org32.stmfb.my.stm.salesforce-scrt.com'
 				}
@@ -29,7 +29,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://org32.stmfb.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://org32.stmfb.my.stm.site.com/ESWX240inapp1659736924223/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
