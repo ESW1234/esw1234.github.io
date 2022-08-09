@@ -1,0 +1,31 @@
+##############################################################################################################################################
+# DO NOT EDIT. Code generated and maintained by Armada. Changes to this file may be overwriten by armada                                     #
+# To make changes to this file, use module metadata to own this file                                                                         #
+# https://confluence.internal.salesforce.com/display/ARMADA/Customize+%28Offroad%29+Armada#Customize(Offroad)Armada-HelmChartOffroading      #
+##############################################################################################################################################
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    app.armada.sfdc.com/ownership: "true"
+  labels:
+    app: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+    name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+    release: {{ .Release.Name | quote}}
+    heritage: {{ .Release.Service | quote}}
+    helm.sh/chart: {{ .Chart.Name }}
+    {{- if .Values.deployment.labels }}
+      {{- toYaml .Values.deployment.labels | nindent 4 -}}
+    {{- end }}
+  {{- range $label_name, $label_value := .Values.platform_labels }}
+    {{ $label_name }}: {{ $label_value }}
+  {{- end }}
+spec:
+  {{- include "armada.podDisruptionBudget.spec" . | indent 2 }}
+  selector:
+    matchLabels:
+      app: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+

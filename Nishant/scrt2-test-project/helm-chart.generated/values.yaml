@@ -1,0 +1,114 @@
+##############################################################################################################################################
+# DO NOT EDIT. Code generated and maintained by Armada. Changes to this file may be overwriten by armada                                     #
+# To make changes to this file, use module metadata to own this file                                                                         #
+# https://confluence.internal.salesforce.com/display/ARMADA/Customize+%28Offroad%29+Armada#Customize(Offroad)Armada-HelmChartOffroading      #
+##############################################################################################################################################
+
+deployment:
+  annotations: {}
+  labels: {}
+  command: []
+  args: []
+  name: scrt2-embeddedservice
+  replicas: 3
+  image:
+    repository: 331455399823.dkr.ecr.us-east-2.amazonaws.com/sfci/service-cloud-realtime/scrt2-ia-esw-config-service
+    tag: latest
+    pullPolicy: Always
+  resources:
+    limits:
+      cpu: 8
+      memory: 16G
+      ephemeral-storage: 200Mi
+    requests:
+      cpu: 4
+      memory: 16G
+      ephemeral-storage: 200Mi
+  podDisruptionBudget:
+    maxUnavailable: 1
+  livenessProbe:
+    containerPort: 7080
+    path: /actuator/health/liveness
+  readinessProbe:
+    containerPort: 7080
+    path: /actuator/health/readiness
+  ports:
+    - externalPort: 7442
+      name: http
+      port: 7442
+      type: Internal
+    - externalPort: 7080
+      name: http-admin
+      port: 7080
+      type: Internal
+  mesh:
+    enabled: "true"
+  meshEgress:
+    enabled: "false"
+  env:
+    SETTINGS_ENV: placeholder
+    SETTINGS_SUBENV: '-'
+    SETTINGS_DC: placeholder
+    SETTINGS_POD: '-'
+    SETTINGS_SI: scrt2-embeddedservice
+    SETTINGS_SUPERPOD: '-'
+
+pod:
+  annotations: {}
+  labels: {}
+  automountServiceAccountToken: 
+  terminationGracePeriodSeconds: 
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 7447
+    fsGroup: 7447
+  nodeSelector: {}
+  tolerations: []
+
+stunnel:
+  enabled: "true"
+  image:
+    pullPolicy: IfNotPresent
+    repository: 331455399823.dkr.ecr.us-east-2.amazonaws.com/dva/stunnel
+    tag: 82
+  resources:
+    requests:
+      cpu: "1"
+      memory: 1Gi
+      ephemeralStorage: 200Mi
+    limits:
+      cpu: "1"
+      memory: 1Gi
+      ephemeralStorage: 200Mi
+
+falcon:
+  falcon_instance: placeholder
+  obfuscated_fi_name: placeholder
+  cloud_provider: placeholder
+  environment: placeholder
+  environment_type: placeholder
+  region: placeholder
+  functional_domain: placeholder
+  cluster_name: placeholder
+  service_name: placeholder
+  service_instance: placeholder
+  namespace: placeholder
+  docker_image_tag: placeholder
+  cell_instance: placeholder
+
+service:
+  name: scrt2-embeddedservice
+  annotations: {}
+  labels: {}
+
+vault:
+  customized_enabled: "false"
+  # current default armada setup for backward compatibility
+  enabled: "false"
+  rootPath: scrt2-embeddedservice
+  secretkeys:
+
+serviceAccount: placeholder-sa
+armadaSanbox: "false"
+
+platform_labels: {}

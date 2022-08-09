@@ -1,0 +1,36 @@
+##############################################################################################################################################
+# DO NOT EDIT. Code generated and maintained by Armada. Changes to this file may be overwriten by armada                                     #
+# To make changes to this file, use module metadata to own this file                                                                         #
+# https://confluence.internal.salesforce.com/display/ARMADA/Customize+%28Offroad%29+Armada#Customize(Offroad)Armada-HelmChartOffroading      #
+##############################################################################################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    app.armada.sfdc.com/ownership: "true"
+    docker_image_tag: {{ .Values.falcon.docker_image_tag | quote }}
+    {{- if .Values.deployment.annotations }}
+      {{- toYaml .Values.deployment.annotations | nindent 4 -}}
+    {{- end }}
+  labels:
+    app: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+    name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+    release: {{ .Release.Name | quote}}
+    heritage: {{ .Release.Service | quote}}
+    helm.sh/chart: {{ .Chart.Name }}
+    {{- if .Values.deployment.labels }}
+      {{- toYaml .Values.deployment.labels | nindent 4 -}}
+    {{- end }}
+  {{- range $label_name, $label_value := .Values.platform_labels }}
+    {{ $label_name }}: {{ $label_value }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+  template: {{ include "armada.pod" . | nindent 4}}
+

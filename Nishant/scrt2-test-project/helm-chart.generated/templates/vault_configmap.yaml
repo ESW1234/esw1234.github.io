@@ -1,0 +1,103 @@
+##############################################################################################################################################
+# DO NOT EDIT. Code generated and maintained by Armada. Changes to this file may be overwriten by armada                                     #
+# To make changes to this file, use module metadata to own this file                                                                         #
+# https://confluence.internal.salesforce.com/display/ARMADA/Customize+%28Offroad%29+Armada#Customize(Offroad)Armada-HelmChartOffroading      #
+##############################################################################################################################################
+{{- if or (eq (.Values.vault.customized_enabled | toString) "true") (eq (.Values.vault.enabled | toString) "true") }}
+apiVersion: v1
+data:
+  {{- if eq (.Values.vault.enabled | toString) "true" }}
+  consul-template-config.hcl: |
+    template {
+      left_delimiter = "{:"
+      right_delimiter = ":}"
+      contents = <<EOH
+        {:- with secret "kv/{{ $.Values.vault.rootPath }}/secrets/armadasecret" -:}
+          {: .Data.data | toJSON :}
+        {:- end -:}
+        EOH
+      destination = "/vault-secrets/secrets.json"
+      error_on_missing_key = true
+    }
+    template {
+        left_delimiter = "{:"
+        right_delimiter = ":}"
+        contents = <<EOH
+            {:- with secret "kv/{{ $.Values.vault.rootPath }}/secrets/armadasecret" -:}
+              {:- range $k, $v := .Data.data -:}
+              export {: $k | toUpper :}={: $v :}
+              {: end -:}
+            {:- end -:}
+           EOH
+        destination = "/vault-secrets/app.env"
+        error_on_missing_key = true
+    }
+    {{- range $key := .Values.vault.secretkeys }}
+    template {
+        left_delimiter = "{:"
+        right_delimiter = ":}"
+        contents = <<EOH
+            {:- with secret "kv/{{ $.Values.vault.rootPath }}/secrets/armadasecret" -:}
+            {:- index .Data.data  {{ $key | quote }} -:}
+            {:- end -:}
+           EOH
+        destination = "/vault-secrets/{{ $key }}"
+        error_on_missing_key = true
+    }
+    {{- end }}
+  {{- end }}
+  {{- if eq (.Values.vault.customized_enabled | toString) "true" }}
+  consul-template-config.hcl: |
+    {{- range $vaultPath := .Values.vault.vaultPaths }}
+      {{- range $subPath := $vaultPath.subPaths }}
+        {{- range $secret := $subPath.vaultSecrets }}
+        template {
+          left_delimiter = "{:"
+          right_delimiter = ":}"
+          contents = <<EOH
+            {:- with secret "kv/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}" -:}
+              {: .Data.data | toJSON :}
+            {:- end -:}
+            EOH
+          destination = "/vault-secrets/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}.json"
+          error_on_missing_key = true
+        }
+        template {
+            left_delimiter = "{:"
+            right_delimiter = ":}"
+            contents = <<EOH
+                {:- with secret "kv/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}" -:}
+                  {:- range $k, $v := .Data.data -:}
+                  export {: $k | toUpper :}={: $v :}
+                  {: end -:}
+                {:- end -:}
+               EOH
+            destination = "/vault-secrets/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}.env"
+            error_on_missing_key = true
+        }
+        {{- range $key := $secret.keys }}
+        template {
+            left_delimiter = "{:"
+            right_delimiter = ":}"
+            contents = <<EOH
+                {:- with secret "kv/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}" -:}
+                {:- index .Data.data  {{ $key | quote }} -:}
+                {:- end -:}
+               EOH
+            destination = "/vault-secrets/{{ $vaultPath.rootPath }}/{{ $subPath.name }}/{{ $secret.name }}/{{ $key }}"
+            error_on_missing_key = true
+        }
+        {{- end }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+kind: ConfigMap
+metadata:
+  name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}-consul-template
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    app.armada.sfdc.com/ownership: "true"
+    strategy.spinnaker.io/versioned: "false"
+{{- end }}
+

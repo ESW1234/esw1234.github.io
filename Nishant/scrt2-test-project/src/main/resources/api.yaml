@@ -1,0 +1,48 @@
+openapi: "3.0.0"
+info:
+    title: Embedded Service Test API
+    description: This is a API for Testing
+    version: 1.0.0
+    contact:
+        name: Embedded Service For Web - Platform
+        email: esw_platform@salesforce.com
+security: [{}]
+paths:
+    /authorization/unauthenticated/accessToken:
+        get:
+            summary: Provides access token to anonymous users with restricted access.
+            operationId: unAuthenticatedAccessToken
+            security: [ ]
+            responses:
+                '200':
+                    description: JWT issued.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/AccessTokensResponse'
+                '400':
+                    description: Bad request.
+                '401':
+                    description: Unauthorized request.
+components:
+    schemas:
+        UnauthenticatedAuthorizationRequest:
+            title: Request from an unauthenticated client for (limited) authorization to access API.
+            type: "object"
+            properties:
+                orgId:
+                    type: string
+                    description: "Salesforce Organization ID."
+                developerName:
+                    type: string
+                    description: "Developer name for the EmbeddedServiceConfig entity."
+        AccessTokensResponse:
+            type: object
+            description: "Access Tokens response payload"
+            properties:
+                accessToken:
+                    type: string
+                    description: JWT for getting access to the APIs
+            required:
+                - accessToken
+

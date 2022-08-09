@@ -1,0 +1,18 @@
+asyncapi: '1.0.0'
+info:
+  title: eswconfig Events
+  version: '1.0'
+  description: The events published by eswconfig
+components:
+  messages:
+    TestMessage:
+      payload:
+        type: object
+        properties:
+          content:
+            type: object
+            properties:
+              text:
+                type: string
+        required:
+          - content

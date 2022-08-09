@@ -1,0 +1,231 @@
+
+{{- define "armada.pod" }}
+{{- $ports := include "armada.ports-json" . | fromJson }}
+{{- $inDevEnv := eq (.Values.falcon.environment_type | lower) "dev" -}}
+
+{{/* ingress gateway is enabled if ingress gateway dns prefix is set or we are not in dev env */}}
+{{- $ingressGatewayEnabled := or (ne (include "service.ingressGateway.dnsprefix" .) "") (not $inDevEnv) -}}
+
+{{/* if ingress is not enabled add all external ports to the mesh ignore list so that the NLB can access them */}}
+{{- $mesh_ignore := list }}
+{{- if not $ingressGatewayEnabled }}
+{{- range $ports.external}}
+  {{- $mesh_ignore = append $mesh_ignore .port }}
+{{- end }}
+{{- end -}}
+
+{{/* set proxy port based on if mesh or stunnel is being used */}}
+{{- $httpProxyHost := "localhost" -}}
+{{- $httpProxyPort := "3128" -}}
+{{- if (eq (.Values.deployment.meshEgress.enabled | default "false" | toString) "true") -}}
+  {{- $httpProxyHost = "publicproxy.local.sfdc.net" -}}
+  {{- $httpProxyPort = "8443" -}}
+{{- end -}}
+{{- $httpProxyURL := printf "%s:%s" $httpProxyHost $httpProxyPort -}}
+
+metadata:
+  annotations:
+    app.armada.sfdc.com/ownership: "true"
+    docker_image_tag: {{ .Values.falcon.docker_image_tag | quote }}
+{{- if or (eq (.Values.vault.enabled | toString) "true") (eq (.Values.vault.customized_enabled | toString) "true") }}
+    vault.k8s-integration.sfdc.com/inject: "true"
+    vault.k8s-integration.sfdc.com/refreshSecrets: "true"
+    {{- if eq (.Values.vault.customized_enabled | toString) "true" }}
+    vault.k8s-integration.sfdc.com/role: {{ .Values.vault.rolename }}
+    {{- else if eq (.Values.vault.enabled | toString) "true" }}
+    vault.k8s-integration.sfdc.com/role: kv_{{ .Values.vault.rootPath }}_secrets-ro
+    {{- end }}
+    vault.k8s-integration.sfdc.com/template-configmap-name: "{{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}-consul-template"
+{{- end }}
+{{- if eq (.Values.deployment.mesh.enabled | toString) "true" }}
+    sidecar.istio.io/inject: "true"
+    {{- if gt (len $mesh_ignore) 0 }}
+    traffic.sidecar.istio.io/excludeInboundPorts: "{{ join "," $mesh_ignore }}"
+    {{- end }}
+    {{- if eq (.Values.deployment.meshEgress.enabled | toString) "true" }}
+    traffic.sidecar.istio.io/includeOutboundPorts: "8443"
+    {{- end }}
+{{- end }}
+{{- if .Values.pod.annotations }}
+  {{- toYaml .Values.pod.annotations | nindent 4 -}}
+{{- end }}
+  labels:
+    name: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+    app: {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+  {{- range $label_name, $label_value := .Values.platform_labels }}
+    {{ $label_name }}: {{ $label_value }}
+  {{- end }}
+  {{- if .Values.pod.labels }}
+    {{- toYaml .Values.pod.labels | nindent 4 -}}
+  {{- end }}
+spec:
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - {{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+          topologyKey: failure-domain.beta.kubernetes.io/zone
+        weight: 100
+  nodeSelector: {{ .Values.pod.nodeSelector | toYaml | nindent 4 }}
+  tolerations: {{ .Values.pod.tolerations | toYaml | nindent 4 }}
+  securityContext: {{ .Values.pod.securityContext | toYaml | nindent 4 }}
+  containers:
+ {{- include "armada.containers" . | nindent 2 }}
+  - name: {{ .Values.deployment.name }}
+    image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}
+    imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+    {{- if .Values.deployment.env.ARMADA_CONTAINER_COMMAND }}
+    command: [ {{ .Values.deployment.env.ARMADA_CONTAINER_COMMAND | quote }} ]
+    {{- else if .Values.deployment.command }}
+    command: {{ .Values.deployment.command | toJson }}
+    {{- end }}
+    {{- if .Values.deployment.env.ARMADA_CONTAINER_ARGS }}
+    args:
+      {{- range split " " .Values.deployment.env.ARMADA_CONTAINER_ARGS }}
+      - {{ . | quote }}
+      {{- end }}
+    {{- else if .Values.deployment.args }}
+    args: {{ .Values.deployment.args | toJson }}
+    {{- end }}
+    ports:
+    {{- range .Values.deployment.ports}}
+    - containerPort: {{ .port }}
+      name: {{ .name | default (join "-" (list "http" .port)) }}
+    {{- end}}
+    livenessProbe: {{ include "armada.probes.livenessProbe" . | nindent 6 }}
+    readinessProbe: {{ include "armada.probes.readinessProbe" . | nindent 6 }}
+    env:
+    - name: SETTINGS_PATH
+      value:   {{- include "mesh.settings_path" . }}
+    - name: SCONE_DEV_MODE
+      value: "false"
+    - name: SERVER_PORT
+      value: "7442"
+  {{- if or (eq (.Values.stunnel.enabled | toString) "true") (eq (.Values.deployment.meshEgress.enabled | toString) "true") }}
+    - name: HTTP_PROXY
+      value: {{ $httpProxyURL }}
+    - name: HTTPS_PROXY
+      value: {{ $httpProxyURL }}
+    - name: http_proxy
+      value: {{ $httpProxyURL }}
+    - name: https_proxy
+      value: {{ $httpProxyURL }}
+    - name: HTTPS_PROXY_PROTOCOL
+      value: http
+    - name: HTTPS_PROXY_HOST
+      value: {{ $httpProxyHost }}
+    - name: HTTPS_PROXY_PORT
+      value: {{ $httpProxyPort | quote }}
+    - name: no_proxy
+      value: mesh.sfdc.net,localhost,127.0.0.1
+    - name: NO_PROXY
+      value: mesh.sfdc.net,localhost,127.0.0.1
+  {{- end }}
+  {{- if eq (.Values.deployment.mesh.enabled | toString) "true" }}
+    - name: MESH_ISTIO_MODE
+      value: "true"
+    - name: GRPC_SERVER_PORT
+      value: "7443"
+    - name: GRPC_SERVER_BIND_ENDPOINT
+      value: tcp://127.0.0.1:7443
+    - name: METRICS_FUNNELENDPOINTURL
+      value: http://ajnafunneldirecttls.funnel.svc.mesh.sfdc.net:7442
+  {{- end }}
+  {{- if not (hasKey .Values.deployment.env "AWS_SHARED_CREDENTIALS_FILE") }}
+    - name: AWS_SHARED_CREDENTIALS_FILE
+      value: /meta/aws-iam/credentials.process
+  {{- end }}
+  {{- if not (hasKey .Values.deployment.env "AWS_CREDENTIAL_PROFILES_FILE") }}
+    - name: AWS_CREDENTIAL_PROFILES_FILE
+      value: /meta/aws-iam/credentials
+  {{- end }}
+  {{- range $key, $value := .Values.deployment.env }}
+    - name: {{ $key }}
+    {{- if kindIs "map" $value }}
+      {{- if (or (hasKey $value "configMapKeyRef") (hasKey $value "fieldRef") (hasKey $value "resourceFieldRef") (hasKey $value "secretKeyRef")) }}
+      valueFrom: {{ $value | toYaml | nindent 8 }}
+      {{- end }}
+    {{- else }}
+      value: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+  {{- range $key, $value := .Values.falcon }}
+    {{- if not (hasKey $.Values.deployment.env ($key | upper)) }}
+    - name: {{ $key | upper }}
+      value: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+    volumeMounts:
+    - mountPath: /meta/aws-iam
+      name: iam-credentials
+      readOnly: true
+    {{- include "armada.deployment.main_container.volume_mounts" . | nindent 4 }}
+    resources: {{ toYaml .Values.deployment.resources | nindent 6 }}
+  {{- if eq (.Values.stunnel.enabled | toString) "true" }}
+  - name: stunnel
+    image: {{ .Values.stunnel.image.repository }}:{{ .Values.stunnel.image.tag }}
+    imagePullPolicy: {{ .Values.stunnel.image.pullPolicy }}
+    command: ["stunnel", "/etc/stunnel/stunnel.conf"]
+    volumeMounts:
+      - name: stunnel-config
+        mountPath: /etc/stunnel
+      - name: stunnel-pid
+        mountPath: /var/run
+      - name: stunnel-liveness-check
+        mountPath: /scripts/liveness-checks
+    livenessProbe:
+      exec:
+        command: ["sh", "/scripts/liveness-checks/stunnel-liveness-check.sh"]
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    readinessProbe:
+      exec:
+        command: ["sh", "/scripts/liveness-checks/stunnel-liveness-check.sh"]
+      initialDelaySeconds: 10
+      periodSeconds: 30
+    resources:
+      requests:
+        cpu: {{ .Values.stunnel.resources.requests.cpu }}
+        memory: {{ .Values.stunnel.resources.requests.memory }}
+        ephemeral-storage: {{ .Values.stunnel.resources.requests.ephemeralStorage }}
+      limits:
+        cpu: {{ .Values.stunnel.resources.limits.cpu }}
+        memory: {{ .Values.stunnel.resources.limits.memory }}
+        ephemeral-storage: {{ .Values.stunnel.resources.limits.ephemeralStorage }}
+  {{- end }}
+  volumes:
+  - name: iam-credentials
+    secret:
+      secretName: 'aws-iam-{{ .Values.serviceAccount }}'
+{{- if eq (.Values.stunnel.enabled | toString) "true" }}
+  - name: stunnel-config
+    configMap:
+      name: stunnel-config-{{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+      items:
+      - key: stunnel.config
+        path: stunnel.conf
+  - name: stunnel-liveness-check
+    configMap:
+      name: stunnel-config-{{ include "armada.cell-prefix" . }}{{ .Values.deployment.name }}
+      items:
+      - key: stunnel.liveness-check
+        path: stunnel-liveness-check.sh
+  - name: stunnel-pid
+    emptyDir: {}
+{{- end }}
+  {{- include "armada.deployment.volumes" . | nindent 2 }}
+  serviceAccountName: {{ .Values.serviceAccount }}
+  {{- if .Values.pod.terminationGracePeriodSeconds }}
+  terminationGracePeriodSeconds: {{ .Values.pod.terminationGracePeriodSeconds }}
+  {{- end }}
+{{/* normal if value doesnt work since the value "false" will cause the if statement to get skipped */}}
+{{- if not (kindIs "invalid" .Values.pod.automountServiceAccountToken) }}
+  automountServiceAccountToken: {{ .Values.pod.automountServiceAccountToken }}
+{{- end }}
+{{- end }}
+
