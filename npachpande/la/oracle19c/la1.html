@@ -29,6 +29,10 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		
+		embedded_svc.addEventHandler("onChatEstablished", function(data) {
+		    console.log("onChatEstablished event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+		});
 
 		embedded_svc.init(
 			'https://omniorg1.mist82.my.stm.salesforce.com',
