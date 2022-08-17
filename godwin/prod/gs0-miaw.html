@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>NA45A-Async Chat Web Client </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> NA45A Async Chat Web Client. </h1>
+	Agent: godwin@na45.org
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DB0000000gcgU',
+				'webDeploymentTest',
+				'https://lexie-summer22-gs0-esw.my.site.com/ESWwebDeploymentTest1660756836089',
+				{
+					scrt2URL: 'https://lexie-summer22-gs0-esw.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://lexie-summer22-gs0-esw.my.site.com/ESWwebDeploymentTest1660756836089/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	 </body>
+  </html>
