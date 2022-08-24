@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>NA45A-Async Chat Web Client </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> GS0 Async Chat Web Client. </h1>
+	Agent: a1@gs0.miaw
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DB0000000gY9H',
+				'cWeb',
+				'https://miaw.my.site.com/ESWcWeb1661361985764',
+				{
+					scrt2URL: 'https://miaw.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miaw.my.site.com/ESWcWeb1661361985764/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	 </body>
+  </html>
