@@ -19,18 +19,18 @@
 					embeddedservice_bootstrap.settings.debugMode = true;
 	
             				embeddedservice_bootstrap.init(
-                				'00DSG00000019MD',
-						'Sachin_LWR',
-                				'https://inapp.lightning.localhost.soma.force.com:6101',
-                				{
-                    					scrt2URL: 'https://inapp4.test1.my.pc-rnd.salesforce-scrt.com'
-                				}
-            				);
+						'00DSG0000001Z5N',
+						'Sachin_Scrt2_2',
+						'https://miaw.my.localhost.sfdcdev.site.com:6101',
+						{
+							scrt2URL: 'https://inappchatbot.test1.my.pc-rnd.salesforce-scrt.com'
+						}
+					);
         			} catch (err) {
             				console.error('Error loading Embedded Messaging: ', err);
         			}
     			};
 		</script>
-		<script type='text/javascript' src='https://inapp.localhost.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+		<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
