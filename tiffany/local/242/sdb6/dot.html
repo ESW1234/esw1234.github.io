@@ -1,0 +1,25 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx0000006Gpr',
+				'eswlwr1',
+				'https://dot.my.localhost.sfdcdev.site.com:6101/ESWeswlwr11661356984093',
+				{
+					scrt2URL: 'http://dot.my.localhost.sfdcdev.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dot.my.localhost.sfdcdev.site.com:6101/ESWeswlwr11661356984093/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+  </body>
+</html>
