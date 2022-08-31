@@ -5,13 +5,16 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+			embeddedservice_bootstrap.settings.devMode = true;
+			
+			// scrt2URL: http://dot.my.localhost.sfdcdev.salesforce-scrt.com
+			
 			embeddedservice_bootstrap.init(
 				'00Dxx0000006Gpr',
 				'eswlwr1',
 				'https://dot.my.localhost.sfdcdev.site.com:6101/ESWeswlwr11661356984093',
 				{
-					scrt2URL: 'http://dot.my.localhost.sfdcdev.salesforce-scrt.com'
+					scrt2URL: 'https://inappteam.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
