@@ -4,14 +4,14 @@
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
-<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+<div ng-bind-html="rawHtml">Testing iconPicker</div>
 
 </div>
 <div id="lightning">
   </div>
   <script>
-            $Lightning.use("c:loApp", function() {
-              $Lightning.createComponent("c:hello", 
+            $Lightning.use("c:testlo1", function() {
+              $Lightning.createComponent("c:iconPicker", 
               { },
               "lightning",
               function(cmp) {
