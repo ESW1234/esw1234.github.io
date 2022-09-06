@@ -14,10 +14,18 @@ Agent: web1@na45a.org1
 		try {
 			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
       			embeddedservice_bootstrap.settings.debugMode = true; 
+// 			embeddedservice_bootstrap.init(
+// 				'00DS7000000owIT',
+// 				'web1',
+// 				'https://iana45a.stmfa.my.stm.salesforce.com',
+// 				{
+// 					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
+// 				}
+// 			);
 			embeddedservice_bootstrap.init(
 				'00DS7000000owIT',
 				'web1',
-				'https://iana45a.stmfa.my.stm.salesforce.com',
+				'https://iana45a.stmfa.my.stm.site.com/ESWweb11646285857104visualforce',
 				{
 					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
 				}
@@ -27,6 +35,7 @@ Agent: web1@na45a.org1
 		}
 	};
 </script>
-<script type='text/javascript' src='https://iana45a.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<!-- <script type='text/javascript' src='https://iana45a.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
+<script type='text/javascript' src='https://iana45a.stmfa.my.stm.site.com/ESWweb11646285857104visualforce/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
   </body>
   </html>
