@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>Prod14 Test Org</h1>
+        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.init(
+				'00DJP00000006LZ',
+				'web1',
+				'https://testorgkor115--testmiaw1.sandbox.my.salesforce.com',
+				{
+					scrt2URL: 'https://testorgkor115--testmiaw1.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://testorgkor115--testmiaw1.sandbox.my.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>        
+    </body>
+</html>
