@@ -46,9 +46,13 @@
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 		
+		embedded_svc.addEventHandler("onHelpButtonClick", function(data) {
+    			console.log("onHelpButtonClick event was fired.");
+		});
+		
 		
 		embedded_svc.init(
-			'https://ctl-enterprise--test4.my.salesforce.com',
+			'https://service.force.com',//'https://ctl-enterprise--test4.my.salesforce.com',
 			'https://test4-ctl-enterprise.cs69.force.com/InternalChat',
 			gslbBaseURL,
 			'00D2D000000E5yY',
