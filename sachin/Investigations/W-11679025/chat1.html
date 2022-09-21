@@ -19,6 +19,7 @@
 	    
 </style>
 
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -65,7 +66,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://service.force.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://ctl-enterprise--test4.my.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
