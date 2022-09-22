@@ -5,14 +5,16 @@
    </head>
    <body>
   <script type='text/javascript'>
-    document.addEventListener();
+	document.addEventListener("afterEmbeddedMessagingBootstrapInit", () => {
+		console.log("afterInit emitted");
+	});
   </script>
      
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-        embeddedservice_bootstrap.settings.authMode = true;
+        			embeddedservice_bootstrap.settings.authMode = true;
         
 				embeddedservice_bootstrap.init(
 					'00Dxx0000006Gnj',
