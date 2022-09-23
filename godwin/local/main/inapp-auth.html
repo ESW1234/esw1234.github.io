@@ -7,6 +7,12 @@
   <script type='text/javascript'>
 	window.addEventListener("afterEmbeddedMessagingBootstrapInit", () => {
 		console.log("afterInit emitted");
+		
+		embeddedservice_bootstrap.authAPI.setIdentityToken({
+			"authorizationType":"JWT",
+			"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NjM5Njc1Njl9.uGMthPIWlaYRCvnZY8DkUZ8pYn7E09K7v05tuHa_1fU",
+			"persistToken": true
+		});
 	});
   </script>
      
