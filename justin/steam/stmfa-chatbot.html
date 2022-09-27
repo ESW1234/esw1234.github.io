@@ -54,8 +54,8 @@
 				outline: 1px solid #5494C1;
 			}
 		</style>
-		<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-		<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'>
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- 		<script type='text/javascript' src='https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js'> -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -112,7 +112,7 @@
 				embedded_svc.init(
 					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
 					'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
-					gslbBaseURL,
+					'https://service.force.com',//gslbBaseURL,
 					'00DRM0000005cyu',
 					'justinChatbot',
 					{
