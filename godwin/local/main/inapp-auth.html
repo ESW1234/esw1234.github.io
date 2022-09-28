@@ -31,7 +31,11 @@
                 		embeddedservice_bootstrap.settings.devMode = true;
 				
 				// Mock authorization mode on.
-				embeddedservice_bootstrap.settings["embeddedServiceConfig"]["embeddedServiceMessagingChannel"]["authType"] = "Auth";
+				embeddedservice_bootstrap.settings.embeddedServiceConfig = {
+					"embeddedServiceMessagingChannel": {
+						"authType": "Auth"
+					}
+				};
 
 				embeddedservice_bootstrap.init(
 					'00DS7000000owqD',
