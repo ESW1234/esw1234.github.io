@@ -17,14 +17,14 @@
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 					
 					 window.addEventListener("onEmbeddedMessagingReady", () => {
-    						console.log("Received afterEmbeddedMessagingBootstrapInit event!!!");
+    						console.log("Received onEmbeddedMessagingReady event!!!");
 				         	embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Hidden1" : "value one", "Hidden2" : "value two", "Hidden3" : "value three", "Hidden4" : "value four"});
   					 });
 	
             				embeddedservice_bootstrap.init(
 						'00DSG0000001Z5N',
 						'SachinMIAW',
-						'https://inapp.my.localhost.sfdcdev.site.com:6101/ESWSachin1661978872397',
+						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWSachin1664331194919',
 						{
 							scrt2URL: 'https://inappchatbot.test1.my.pc-rnd.salesforce-scrt.com'
 						}
@@ -34,6 +34,6 @@
         			}
     			};
 		</script>
-		<script type='text/javascript' src='https://inapp.my.localhost.sfdcdev.site.com:6101/ESWSachin1661978872397/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+		<script type='text/javascript' src='https://esw.my.localhost.sfdcdev.site.com:6101/ESWSachin1664331194919/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
