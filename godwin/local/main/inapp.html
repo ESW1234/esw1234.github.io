@@ -8,13 +8,14 @@
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+				embeddedservice_bootstrap.settings.devMode = true; 
+				
 				embeddedservice_bootstrap.init(
-					'00Dxx0000006Gnj',
+					'00DS7000000owqD',
 					'MIAW',
 					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1662736838977',
 					{
-						scrt2URL: 'http://godwinlaw.my.localhost.sfdcdev.salesforce-scrt.com'
+						scrt2URL: 'https://godwinlaw.stmfa.my.stm.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
@@ -22,6 +23,6 @@
 			}
 		};
 	</script>
-	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1662736838977/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1662736838977/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
