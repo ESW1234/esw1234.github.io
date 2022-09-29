@@ -14,18 +14,23 @@
       <!-- This script tag is generated from Setup > Embedded service deployment > view one of the deployments > Code Snippet -->
       <script type='text/javascript'>
          function initEmbeddedMessaging() {
-         	try {
-         		embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-         		embeddedservice_bootstrap.settings.debugMode = true;
-         		embeddedservice_bootstrap.init('00DS7000000lo03', 'user1_esw', 'https://decsi2.stmfa.my.stm.salesforce.com', {
-         			scrt2URL: 'https://decsi2.stmfa.my.stm.salesforce-scrt.com'
-         		});
-         	} catch(err) {
-         		console.error('Error loading Embedded Messaging: ', err);
-         	}
+            try {
+               embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+               embeddedservice_bootstrap.init(
+                  '00DS7000000lo03',
+                  'user1_esw',
+                  'https://decsi2.stmfa.my.stm.site.com/ESWuser1esw1648173499325',
+                  {
+                     scrt2URL: 'https://decsi2.stmfa.my.stm.salesforce-scrt.com'
+                  }
+               );
+            } catch (err) {
+               console.error('Error loading Embedded Messaging: ', err);
+            }
          };
       </script>
-      <!-- Replace the source url with the org's domain url from the above script(the url that doesn't end with scrt.com) -->
-      <script type='text/javascript' src='https://decsi2.stmfa.my.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+      <script type='text/javascript' src='https://decsi2.stmfa.my.stm.site.com/ESWuser1esw1648173499325/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
    </body>
 </html>
