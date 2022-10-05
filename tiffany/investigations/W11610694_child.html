@@ -17,7 +17,7 @@
     }
     </style>
 
-    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
       // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
       function helpButtonLoaded() {
@@ -45,16 +45,16 @@
         embedded_svc.settings.enabledFeatures = ['LiveAgent'];
         embedded_svc.settings.entryFeature = 'LiveAgent';
         embedded_svc.init(
-          'http://localhost.internal.salesforce.com:6109',
-          'http://localhost.force.com:6109/test1',
+          'https://snapins.my.stmfb.stm.salesforce.com',
+          'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
           gslbBaseURL,
-          '00Dxx0000001gEW',
+          '00DRM0000005jYI',
           'omni_1', {
-            baseLiveAgentContentURL: 'path/to/baseLiveAgentContentURL',
-            deploymentId: '572xx0000000001',
-            buttonId: '573xx0000000001',
-            baseLiveAgentURL: 'path/to/baseLiveAgentURL',
-            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004Dv12AE_16c4e028e49',
+            baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+            deploymentId: '572RM0000004DDM',
+            buttonId: '573RM0000004HAw',
+            baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+            eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
             isOfflineSupportEnabled: true
           }
         );
@@ -91,13 +91,13 @@
 
       if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', '<yourcoreurl>/embeddedservice/5.0/esw.js');
+        s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() {
           initESW(null);
         };
         document.body.appendChild(s);
       } else {
-        initESW('<yourcoreurl>/to/esw.js');
+        initESW('https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
       }
 
     </script>
