@@ -49,7 +49,7 @@
           'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
           gslbBaseURL,
           '00DRM0000005jYI',
-          'omni_1', {
+          'justinChatbot', {
             baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
             deploymentId: '572RM0000004DDM',
             buttonId: '573RM0000004HAw',
@@ -91,13 +91,13 @@
 
       if (!window.embedded_svc) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.setAttribute('src', '/embeddedservice/5.0/esw.min.js');
         s.onload = function() {
           initESW(null);
         };
         document.body.appendChild(s);
       } else {
-        initESW('https://snapins.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+        initESW('https://snapins.my.stmfb.stm.salesforce.com');
       }
 
     </script>
