@@ -1687,20 +1687,17 @@
 			 */
 			if(payload && payload.method && embedded_svc.isMessageFromSalesforceDomain(messageOrigin) && isMessageOriginValidProtocol) {
 				// W-10187599 - confirm that iframe URLs that redirect can still send messages with new messageOrigin === iframeOrigin change in W-10118745.
-				if(messageOrigin === iframeOrigin && payload.method === "session.onLoad" && this.settings.iframeURL.indexOf(messageOrigin) === -1) {
+				if(payload.method === "session.onLoad" && messageOrigin === iframeOrigin && this.settings.iframeURL.indexOf(messageOrigin) === -1) {
 					// Iframe may have been redirected due to org cookie w/ myDomain
 					oldHost = this.settings.iframeURL.split("/")[2];
 					newHost = message.origin.split("/")[2];
 					this.settings.iframeURL = this.settings.iframeURL.replace(oldHost, newHost);
-				} else if (messageOrigin !== iframeOrigin && message.source === this.getESWFrame()) {
+				} else if (payload.method === "session.frameReady" && messageOrigin !== iframeOrigin && message.source === this.getESWFrame()) {
 					// special carveout for frame.ready as it could have been redirected - otherwise verify origin
-					if(payload.method === "session.frameReady"){
-						//iframe has been redirected. We've already verified that the message is from the expected frame
-						//and is a salesforce URL, so we can just update the domain
-						this.settings.iframeURL = this.settings.iframeURL.replace(iframeOrigin, messageOrigin);
-					} else {
-						return;
-					}
+					this.settings.iframeURL = this.settings.iframeURL.replace(iframeOrigin, messageOrigin);
+					// iframe has been redirected. We've already verified that the message is from the expected frame and is a salesforce URL, so we can just update the domain
+				} else {
+					return;
 				}
 
 				feature = payload.method.split(".")[0].toLowerCase();
