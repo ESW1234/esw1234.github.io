@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html lang="en-US">
 <body>
-<script src="https://esw1234.github.io/ssz/lightning/v1/lightning.out.js"></script>
+<script src="https://sisi-lcs-imac-dev-ed.develop.my.localhost.sfdcdev.salesforce.com:6101/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -11,17 +10,16 @@
 <div id="lightning">
   </div>
   <script>
-            $Lightning.use("c:lightningOutApp", function() {
-              $Lightning.createComponent("c:helloWorld", 
+            $Lightning.use("c:LightningOutAppTest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
               { },
               "lightning",
               function(cmp) {
-                
+                // do some stuff
               });
             },
 
-         'https://rpstmfa2-dev-ed.stmfa.my.stm.site.com/accountPortal' // Community endpoint
-         
+         'https://sisi-lcs-imac-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/help' // Community endpoint
         );                   
 
 </script>   
