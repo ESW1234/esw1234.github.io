@@ -117,8 +117,9 @@ $Lightning._delegate = (function() {
         if (lightningEndPointURI) {
             url = lightningEndPointURI + "/" + url;
         } else {
+            //Throw error to let customer know lightningEndPointURI is required now
             // Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
-            var scripts = document.getElementsByTagName("script");
+           /* var scripts = document.getElementsByTagName("script");
             for (var m = 0; m < scripts.length; m++) {
                 var script = scripts[m].src;
                 var i = script.indexOf("/lightning.out.js");
@@ -127,7 +128,7 @@ $Lightning._delegate = (function() {
                     url = basePath + "/" + url;
                     break;
                 }
-            }
+            }*/
         }
 
         var xhr = new XMLHttpRequest();
