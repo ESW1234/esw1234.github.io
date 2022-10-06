@@ -166,6 +166,9 @@
 				parent.postMessage({ method: "session.onLoad" }, this.parentOrigin);
 			}
 		}.bind(this));
+		
+		//notify parent frame that we've finished loading
+		parent.postMessage({ method: "session.frameReady" }, this.parentOrigin);
 	};
 
 	/**
@@ -378,4 +381,3 @@
 
 	window.esw = new ESW();
 })();
-
