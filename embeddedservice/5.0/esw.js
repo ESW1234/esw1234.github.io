@@ -515,7 +515,7 @@
 	 * {Object} directToAgentRouting - NOTE: this setting is only supported via API.
 	 * 	- {String} buttonId - The ID of the chat button to request a chat to in the Embedded Chat Snap-in (required).
 	 * 	- {String} userId - The ID of the agent to directly route chats from the button specified (optional).
-	 * 	- {Boolean} fallback - Whether to fall back to the buttonâ€™s fallbackRouting rules if the button/agent specified is unavailable.
+	 * 	- {Boolean} fallback - Whether to fall back to the button’s fallbackRouting rules if the button/agent specified is unavailable.
 	 *
 	 * @param {Object} attributes - Map of attributes for this Embedded Service start chat request.
 	 * @returns {Object} chatAPISettings
@@ -1692,12 +1692,15 @@
 					oldHost = this.settings.iframeURL.split("/")[2];
 					newHost = message.origin.split("/")[2];
 					this.settings.iframeURL = this.settings.iframeURL.replace(oldHost, newHost);
-				} else if (payload.method === "session.frameReady" && messageOrigin !== iframeOrigin && message.source === this.getESWFrame()) {
+				} else if (messageOrigin !== iframeOrigin && message.source === this.getESWFrame()) {
 					// special carveout for frame.ready as it could have been redirected - otherwise verify origin
-					this.settings.iframeURL = this.settings.iframeURL.replace(iframeOrigin, messageOrigin);
-					// iframe has been redirected. We've already verified that the message is from the expected frame and is a salesforce URL, so we can just update the domain
-				} else {
-					return;
+					if(payload.method === "session.frameReady"){
+						//iframe has been redirected. We've already verified that the message is from the expected frame
+						//and is a salesforce URL, so we can just update the domain
+						this.settings.iframeURL = this.settings.iframeURL.replace(iframeOrigin, messageOrigin);
+					} else {
+						return;
+					}
 				}
 
 				feature = payload.method.split(".")[0].toLowerCase();
