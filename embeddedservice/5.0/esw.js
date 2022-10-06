@@ -26,7 +26,13 @@
 		".force.com",
 
 		// Used by autobuild VMs
-		".sfdc.net"
+		".sfdc.net",
+
+		// Used by local environments and Enhanced Domain Sites
+		".site.com",
+
+		// Enhanced domains on sandbox
+		".salesforce-sites.com"
 	];
 
 	// IDs of DOM elements we create/use
@@ -509,7 +515,7 @@
 	 * {Object} directToAgentRouting - NOTE: this setting is only supported via API.
 	 * 	- {String} buttonId - The ID of the chat button to request a chat to in the Embedded Chat Snap-in (required).
 	 * 	- {String} userId - The ID of the agent to directly route chats from the button specified (optional).
-	 * 	- {Boolean} fallback - Whether to fall back to the button’s fallbackRouting rules if the button/agent specified is unavailable.
+	 * 	- {Boolean} fallback - Whether to fall back to the buttonâ€™s fallbackRouting rules if the button/agent specified is unavailable.
 	 *
 	 * @param {Object} attributes - Map of attributes for this Embedded Service start chat request.
 	 * @returns {Object} chatAPISettings
@@ -813,10 +819,12 @@
 	 * @returns {HTMLElement} A reference to the iframe.
 	 */
 	Snapins.prototype.getESWFrame = function getESWFrame() {
-		var element = document.getElementById(STORAGE_IFRAME_ID);
+		if(!this.eswFrame) {
+			var element = document.getElementById(STORAGE_IFRAME_ID);
 
-		if(!this.eswFrame && element) {
-			this.eswFrame = element.contentWindow;
+			if(element && element.contentWindow) {
+				this.eswFrame = element.contentWindow;
+			}
 		}
 
 		return this.eswFrame;
@@ -931,8 +939,6 @@
 
 		child.onload = function() {
 			var frame = this.getESWFrame();
-
-			this.isIframeReady = true;
 
 			// Send all messages that were awaiting the iframe to load.
 			this.outboundMessagesAwaitingIframeLoad.forEach(function(message) {
@@ -1183,6 +1189,10 @@
 					embedded_svc.liveAgentAPI.browserSessionInfo = data;
 				}
 			}
+		}.bind(this));
+
+		this.addMessageHandler("session.frameReady", function() {
+			this.isIframeReady = true;
 		}.bind(this));
 	};
 
@@ -1675,13 +1685,18 @@
 			 * 3. Has an origin with a protocol of "http:" or "https:".
 			 * 4. Is from the iframe this esw.js file created.
 			 */
-			if(payload && payload.method && embedded_svc.isMessageFromSalesforceDomain(messageOrigin) && isMessageOriginValidProtocol && messageOrigin === iframeOrigin) {
-				// W-10187599 - confirm that iframe URLs that redirect can still send messages with new messageOrigin === iframeOrigin change in W-10118745.
-				if(payload.method === "session.onLoad" && this.settings.iframeURL.indexOf(messageOrigin) === -1) {
-					// Iframe may have been redirected due to org cookie w/ myDomain
-					oldHost = this.settings.iframeURL.split("/")[2];
-					newHost = message.origin.split("/")[2];
-					this.settings.iframeURL = this.settings.iframeURL.replace(oldHost, newHost);
+			if(payload && payload.method && embedded_svc.isMessageFromSalesforceDomain(messageOrigin) && isMessageOriginValidProtocol 
+				&& message.source === this.getESWFrame()) {
+				
+				// special carveout for frame.ready as it could have been redirected - otherwise verify origin
+				if(messageOrigin !== iframeOrigin){
+					if(payload.method === "session.frameReady"){
+						//iframe has been redirected. We've already verified that the message is from the expected frame
+						//and is a salesforce URL, so we can just update the domain
+						this.settings.iframeURL = this.settings.iframeURL.replace(iframeOrigin, messageOrigin);
+					} else {
+						return;
+					}
 				}
 
 				feature = payload.method.split(".")[0].toLowerCase();
