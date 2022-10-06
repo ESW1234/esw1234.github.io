@@ -23,9 +23,6 @@
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript' src='https://eswmiaw.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -60,8 +57,7 @@
 		};
 		document.body.appendChild(s);
 	} else {
-		//initESW('https://service.force.com');
-		initESW('https://esw1234.github.io');
+		initESW('https://service.force.com');
 	}
 </script>
 
