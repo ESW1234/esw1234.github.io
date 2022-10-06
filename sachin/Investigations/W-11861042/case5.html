@@ -35,20 +35,35 @@
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
-		embedded_svc.settings.devMode = true;
+		//embedded_svc.settings.devMode = true;
 
+// 		embedded_svc.init(
+// 			'https://eswmiaw.my.stmfb.stm.salesforce.com',
+// 			'https://eswmiaw-1812acd3bfb.stmfb.stm.force.com/chatcommunity',
+// 			gslbBaseURL,
+// 			'00DS70000000Uae',
+// 			'Chat',
+// 			{
+// 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+// 				deploymentId: '572S700000002dV',
+// 				buttonId: '573S700000002od',
+// 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS700000000FWMAY_1812b6b5a5e',
+// 				isOfflineSupportEnabled: true
+// 			}
+// 		);
 		embedded_svc.init(
-			'https://eswmiaw.my.stmfb.stm.salesforce.com',
-			'https://eswmiaw-1812acd3bfb.stmfb.stm.force.com/chatcommunity',
+			'https://embeddedservicede.my.salesforce.com',
+			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
 			gslbBaseURL,
-			'00DS70000000Uae',
-			'Chat',
+			'00DB0000000K6Ez',
+			'Bright',
 			{
-				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572S700000002dV',
-				buttonId: '573S700000002od',
-				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS700000000FWMAY_1812b6b5a5e',
+				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
+				deploymentId: '572B0000000LALF',
+				buttonId: '573B0000000LANm',
+				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -56,14 +71,13 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswmiaw.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		//initESW('https://service.force.com');
-		initESW('https://eswmiaw.my.stmfb.stm.salesforce.com');
+		initESW('https://na94.salesforce.com/');
 	}
 </script>
 
