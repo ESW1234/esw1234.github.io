@@ -8,6 +8,25 @@
 	Agent: godwin@na45.org
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script type='text/javascript'>
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+
+			// Valid JWT
+			console.log("Setting prechat hidden fields.");
+			embeddedservice_bootstrap.authAPI.setHiddenPrechatFields({
+				"authorizationType":"JWT",
+				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
+			});
+
+			// Expired JWT
+			console.log("Removing prechat hidden fields.");
+			embeddedservice_bootstrap.authAPI.removeHiddenPrechatFields({
+				"authorizationType":"JWT",
+				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NjQzODY3NzR9.4rgYM-UhMq5krby44l1E9ABe_HCUrLcJ2x15__ItC2w",
+			});
+		});
+	</script>
+	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
