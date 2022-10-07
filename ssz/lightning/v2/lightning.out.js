@@ -30,7 +30,7 @@ if (!window.$Lightning) {
 		function getDelegateScriptVersion(){
 			try {
 				if(localStorage.lightningOutDelegateVersion){
-					return localStorage.lightningOutDelegateVersion + +"/lightning.out.delegate.js';
+					return localStorage.lightningOutDelegateVersion + +"/lightning.out.delegate.js";
 				}
 			} catch (e) {}
 			
