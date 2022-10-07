@@ -33,7 +33,7 @@ if (!window.$Lightning) {
 					return localStorage.lightningOutDelegateVersion;
 				}
 			} catch (e) {}
-			return 'v1';
+			return "v2";
 		}
 		
 		function loadDelegateScript() {
