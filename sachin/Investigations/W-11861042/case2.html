@@ -28,7 +28,7 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <!-- <script type='text/javascript' src='https://esw1234.github.io/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript' src='https://na94.salesforce.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://justinmacmillin.my.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -53,33 +53,48 @@
 // 				isOfflineSupportEnabled: true
 // 			}
 // 		);
+// 		embedded_svc.init(
+// 			'https://embeddedservicede.my.salesforce.com',
+// 			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
+// 			gslbBaseURL,
+// 			'00DB0000000K6Ez',
+// 			'Bright',
+// 			{
+// 				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
+// 				deploymentId: '572B0000000LALF',
+// 				buttonId: '573B0000000LANm',
+// 				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
+// 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
+// 				isOfflineSupportEnabled: true
+// 			}
+// 		);
 		embedded_svc.init(
-			'https://embeddedservicede.my.salesforce.com',
-			'https://win19ss-test1-165c68767ee-16bddf06200.force.com/brightfinancial',
+			'https://na44.stmfc.stm.salesforce.com',
+			'https://justinstmfc.stmfc.stm.force.com/site1',
 			gslbBaseURL,
-			'00DB0000000K6Ez',
-			'Bright',
+			'00DRM0000005lEo',
+			'MyESWDeployment_Sachin',
 			{
-				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
-				deploymentId: '572B0000000LALF',
-				buttonId: '573B0000000LANm',
-				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
-				isOfflineSupportEnabled: true
+				baseLiveAgentContentURL: 'https://c.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004CgP',
+				buttonId: '573RM0000004DCh',
+				baseLiveAgentURL: 'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM000000007U2AQ_1718511b177',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://justinmacmillin.my.stmfc.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 		//initESW('https://service.force.com');
-		initESW('https://embeddedservicede.my.salesforce.com');
+		initESW('https://cs249.salesforce.com');
 	}
 </script>
 
