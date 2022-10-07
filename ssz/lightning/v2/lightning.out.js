@@ -10,7 +10,7 @@ if (!window.$Lightning) {
 		// util methods
 		function getDelegateScriptUrl() {
 			// load the delegate script based on stored version (got from aura nonce) or get latest version
-			var url = "/lightning/"+ getDelegateScriptVersion();
+			var url = "/lightning/"+ getDelegateScriptVersion()++ "/lightning.out.delegate.js";
 			
 			// Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
 			var scripts = document.getElementsByTagName("script");
@@ -30,13 +30,13 @@ if (!window.$Lightning) {
 		function getDelegateScriptVersion(){
 			try {
 				if(localStorage.lightningOutDelegateVersion){
-					return localStorage.lightningOutDelegateVersion + "/lightning.out.delegate.js";
+					return localStorage.lightningOutDelegateVersion;
 				}
 			} catch (e) {}
 			
 			//here it can return the version same folder of lightning.out.js
 			//or ...
-			return "v2/lightning.out.delegate.js";
+			return "v2";
 		}
 		
 		function loadDelegateScript() {
