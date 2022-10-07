@@ -27,7 +27,7 @@
 
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
-<script type='text/javascript' src='https://cs249.salesforce.com/embeddedservice/5.0/esw.js'></script>
+<script type='text/javascript' src='https://na94.salesforce.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -56,14 +56,14 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://cs249.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://na94.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
 		//initESW('https://service.force.com');
-		initESW('https://cs249.salesforce.com');
+		initESW('https://na94.salesforce.com');
 	}
 </script>
 
