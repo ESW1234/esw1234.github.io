@@ -1,5 +1,4 @@
 
-#wrong version
 $Lightning = $Lightning || {};
 $Lightning._delegate = (function() {
 
