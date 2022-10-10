@@ -12,7 +12,7 @@
 			console.log("onEmbeddedMessagingReady emitted");
 
 			// Adding prechat hidden fields
-			console.log("Setting invalid prechat hidden fields.");
+			console.log("Setting prechat hidden fields - invalid inputs.");
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
 				"Invalid_1": "string",
 				"Invalid_1": 123,
@@ -27,7 +27,7 @@
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(true);
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(false);
 
-			console.log("Setting valid prechat hidden fields.");
+			console.log("Setting prechat hidden fields - valid inputs.");
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
 				"Favorite_Color": "Yellow",
 				"Favorite_Food": "Sushi"
@@ -39,7 +39,14 @@
 			});
 
 			// Removing prechat hidden fields
-			console.log("Removing prechat hidden fields.");
+			console.log("Removing prechat hidden fields - invalid inputs.");
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields("invalid");
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields({"invalid":"invalid"});
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(1);
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(true);
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(false);
+			
+			console.log("Removing prechat hidden fields - valid inputs.");
 			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields([
 				"Favorite_Color",
 				"Favorite_Food"
