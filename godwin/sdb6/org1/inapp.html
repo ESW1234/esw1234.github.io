@@ -11,19 +11,39 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("onEmbeddedMessagingReady emitted");
 
-			// Valid JWT
-			console.log("Setting prechat hidden fields.");
+			// Adding prechat hidden fields
+			console.log("Setting invalid prechat hidden fields.");
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+				"Invalid_1": "string",
+				"Invalid_1": 123,
+				"Invalid_2": null,
+				"Invalid_3": true,
+				"Invalid_4": undefined
+			});
+			
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(["invalid"]);
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields("invalid");
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(1);
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(true);
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(false);
+
+			console.log("Setting valid prechat hidden fields.");
 			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
 				"Favorite_Color": "Yellow",
 				"Favorite_Food": "Sushi"
 			});
-
-			// Expired JWT
-			console.log("Removing prechat hidden fields.");
-			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields({
-				"Favorite_Color": "Yellow",
+			
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+				"Favorite_Color": "Pink",
 				"Favorite_Food": "Sushi"
 			});
+
+			// Removing prechat hidden fields
+			console.log("Removing prechat hidden fields.");
+			embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields([
+				"Favorite_Color",
+				"Favorite_Food"
+			]);
 			
 // 			// Valid JWT
 // 			console.log("Setting prechat hidden fields.");
