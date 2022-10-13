@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2> ISE async chat without chatbot Mayank </h2>
+
+  <script type='text/javascript'>
+	 function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en';
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000GDif',
+				'EmbeddedServiceDepForWebWithOutBot',
+				'https://orgforapp.stmfb.stm.force.com/ESWEmbeddedServiceDepForW1665665778472',
+				{
+					scrt2URL: 'https://isestmfbna44.my.stmfb.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	 };
+  </script>
+<script type='text/javascript' src='https://orgforapp.stmfb.stm.force.com/ESWEmbeddedServiceDepForW1665665778472/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
