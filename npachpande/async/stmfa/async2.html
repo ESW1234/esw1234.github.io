@@ -1,45 +1,37 @@
 <html>
 <head>
-  <title>STMFA async2.html</title>
+  <title>STMFA async2.html page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
 
-<a href="async2-copy.html">async2-copy.html in same tab</a>
-  
 <style>
   body {
-    /*background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;*/
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
   }
 </style>
 
 <script type='text/javascript'>
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
-  s.onload = function() {
-    embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e'; //Messaging platform key
-    embeddedservice_bootstrap.settings.devMode = true;
-    embeddedservice_bootstrap.settings.prechatEnabled = false;
-    embeddedservice_bootstrap.init(
-      '00DRM000000HvmX', //orgId
-      'Messaging', //eswConfigDevName
-      'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', //scrtUrl
-      'https://na44.stmfa.stm.salesforce.com', //baseCoreURL 
-      { //eswConfig
-        embeddedServiceConfig: {
-          siteUrl: 'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
-          embeddedServiceBranding: {
-            height : '554',
-            width : '344'
-          }
-        }
-      }
-    );
-  };
-  document.body.appendChild(s);  
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DS7000000ouRu',
+				'Messaging_7',
+				'https://asyncchat.stmfa.my.stm.site.com/ESWMessaging71664902809479',
+				{
+					scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
-  
-  <div></div>
-  
+<script type='text/javascript' src='https://asyncchat.stmfa.my.stm.site.com/ESWMessaging71664902809479/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
 </body>
 </html>
