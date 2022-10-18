@@ -45,6 +45,13 @@
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true;
+								
+				// Mock authorization mode on.
+				embeddedservice_bootstrap.settings.embeddedServiceConfig = {
+					"embeddedServiceMessagingChannel": {
+						"authMode": "Auth"
+					}
+				};
 				
 				embeddedservice_bootstrap.init(
 					'00DS7000000owqD',
