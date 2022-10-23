@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>In APP on NA45 STMFB for Org: org-stmfbna45</h1>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DS70000000Vte',
+				'In_App',
+				'https://org-stmfbna45.stmfb.my.stm.site.com/ESWInApp1666559183131',
+				{
+					scrt2URL: 'https://org-stmfbna45.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://org-stmfbna45.stmfb.my.stm.site.com/ESWInApp1666559183131/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+    </body>
+</html>
