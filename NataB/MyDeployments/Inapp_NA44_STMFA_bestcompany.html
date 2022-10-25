@@ -10,11 +10,11 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+			embeddedservice_bootstrap.settings.debugMode = true;
 			embeddedservice_bootstrap.init(
 				'00DRM000000NtB0',
-				'In_App',
-				'https://bestcompany.stmfa.stm.force.com/ESWInApp1666056015301',
+				'all',
+				'https://bestcompany.lightning.stmfa.stm.force.com',
 				{
 					scrt2URL: 'https://bestcompany.my.stmfa.stm.salesforce-scrt.com'
 				}
@@ -24,7 +24,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://bestcompany.stmfa.stm.force.com/ESWInApp1666056015301/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://bestcompany.lightning.stmfa.stm.force.com/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 
     </body>
