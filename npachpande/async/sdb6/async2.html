@@ -10,15 +10,17 @@
     background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
   }
 </style>
+
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = false;
 
 			embeddedservice_bootstrap.init(
 				'00DSG0000001hxN',
-				'Messaging_3',
-				'https://eswmessagingchat-174dc858640-17cc94d6008.test1.pc-rnd.force.com/ESWMessaging31659743111994/s',
+				'Messaging_6',
+				'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging61666734758097',
 				{
 					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -28,7 +30,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswmessagingchat-174dc858640-17cc94d6008.test1.pc-rnd.force.com/ESWMessaging31659743111994/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging61666734758097/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
