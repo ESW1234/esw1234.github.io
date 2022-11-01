@@ -25,15 +25,18 @@
 // 				"Favorite_Food": "Sushi"
 // 			});
 			
-// 			// Valid JWT
+ 			// Valid JWT
 			console.log("Setting identity token.");
 			embeddedservice_bootstrap.authAPI.setIdentityToken({
 				"authorizationType":"JWT",
 				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
 			});
+			
+			console.log("Clearing authorization session.");
+			embeddedservice_bootstrap.authAPI.clearAuthorizationSession();
 
-// 			// Expired JWT
-// 			console.log("Removing prechat hidden fields.");
+ 			// Expired JWT
+// 			console.log("Setting invalid identity token.");
 // 			embeddedservice_bootstrap.authAPI.setIdentityToken({
 // 				"authorizationType":"JWT",
 // 				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NjQzODY3NzR9.4rgYM-UhMq5krby44l1E9ABe_HCUrLcJ2x15__ItC2w",
