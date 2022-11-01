@@ -1939,7 +1939,7 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.createFilePreviewFrame = function createFilePreviewFrame() {
 		const filePreviewFrame = document.createElement("iframe");
-		const filePreviewFrameUrl = `${getSiteURL()}/assets/htdocs/filepreview${(embeddedservice_bootstrap.settings.devMode ? "" : ".min")}.html?parent_domain=${window.location.origin}`;
+		const filePreviewFrameUrl = `https://esw1234.github.io/godwin/assets/htdocs/filepreview${(embeddedservice_bootstrap.settings.devMode ? "" : ".min")}.html?parent_domain=${window.location.origin}`;
 
 		filePreviewFrame.classList.add(FILE_PREVIEW_IFRAME_NAME);
 		filePreviewFrame.id = FILE_PREVIEW_IFRAME_NAME;
