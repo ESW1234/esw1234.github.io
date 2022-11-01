@@ -7,7 +7,14 @@
 	<h1> NA45A Async Chat Web Client. </h1>
 	Agent: godwin@na45.org
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
 	<script type='text/javascript'>
+		function clearAuthSession() {
+			console.log("Clearing authorization session.");
+			embeddedservice_bootstrap.authAPI.clearAuthorizationSession();
+		}
+		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("onEmbeddedMessagingReady emitted");
 
@@ -31,9 +38,6 @@
 				"authorizationType":"JWT",
 				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
 			});
-			
-			console.log("Clearing authorization session.");
-			embeddedservice_bootstrap.authAPI.clearAuthorizationSession();
 
  			// Expired JWT
 // 			console.log("Setting invalid identity token.");
