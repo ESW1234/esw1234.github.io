@@ -984,7 +984,7 @@
 	function loadCSS(url) {
 
 		return new Promise((resolve, reject) => {
-			let baseURL = getSiteURL();
+			let baseURL = "https://esw1234.github.io/godwin";
 			let link = document.createElement("link");
 
 			link.href = baseURL + "/assets/styles/bootstrap" + (embeddedservice_bootstrap.settings.devMode ? "" : ".min") + ".css";
