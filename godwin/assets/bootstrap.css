@@ -1,0 +1,494 @@
+/*
+ * Copyright 2020 salesforce.com, inc.
+ * All Rights Reserved
+ * Company Confidential
+ */
+/* Default iframe specs. */
+.embeddedMessagingFrame {
+	/* hide iframe on initial page load by having 0x0 height & width */
+	height: 0px;
+	width: 0px;
+	position: fixed;
+	background: transparent;
+	/* iframe border */
+	border: none;
+	outline: none;
+	border-radius: 8px;
+	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* minimized iframe is re-positioned above static button on both mobile and tablets/desktops */
+.embedded-messaging > .embeddedMessagingFrame[class~="isMinimized"] {
+	/* positioning */
+	bottom: 25px;
+	right: 30px;
+	/* padding */
+	margin: 0;
+	/* sizing of button and notification */
+	height: 215px;
+	width: 206px;
+	/* do not show shadow when minimized */
+	box-shadow: none;
+	display: inline-block;
+	visibility: visible;
+}
+
+.embedded-messaging > .embeddedMessagingFrame[class~="isDismissed"] {
+	/* sizing of button */
+	height: 62px;
+	width: 62px;
+	/* rounded corners to surround minimized button */
+	border-radius: 50%;
+}
+
+/* Ensure that our chat button and modal floats above other components */
+.embeddedMessagingFrame,
+.embeddedMessagingConversationButtonWrapper {
+	/* TODO: W-10995140 - Expose styling control to customers. */
+	z-index: 999;
+}
+
+/*
+ * [Mobile] This mobile-only rule prevents the page from scrolling in the background while the widget is maximize.
+ * This class on document.body is toggled by embeddedservice_bootstrap.minimizeIframe and embeddedservice_bootstrap.maximizeIframe.
+ */
+.embeddedMessagingPreventScrolling {
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+/* Container div for the button */
+.embeddedMessagingConversationButtonWrapper {
+	display: block;
+	position: fixed;
+	background: transparent;
+	box-shadow: none;
+	overflow: visible;
+	font-family: sans-serif;
+	top: 0;
+	left: 0;
+}
+
+/* Button default specs */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton {
+	/* button position on page */
+	position: fixed;
+	bottom: 25px;
+	right: 30px;
+	/* button size - if changed, update minimizedState.css */
+	width: 56px;
+	height: 56px;
+	/* button border */
+	outline: 0;
+	border: none;
+	border-radius: 50%;
+	box-shadow: 2px 2px 5px 0 rgba(45, 45, 45, 0.5);
+	text-align: center;
+	overflow: hidden;
+	pointer-events: all;
+	cursor: pointer;
+}
+
+/* [A11Y] Elements on parent page consumes custom branding tokens from config */
+.embeddedMessagingConversationButton {
+	background-color: var(--eswHeaderColor, #1A1B1E);
+}
+
+.embeddedMessagingConversationButton:focus {
+	box-shadow: 0 0 3px 3px var(--eswSecondaryColor, #005290);
+}
+
+/* Ensures that the conversation button isn't obstructed by bottom-floating tab bars */
+@supports not (-ms-high-contrast: none) {
+	.embeddedMessagingConversationButton.embeddedMessagingBottomTabBar,
+	.embeddedMessagingFrameMinimizedBottomTabBar {
+		bottom: calc(1.56rem + env(safe-area-inset-bottom, 0));
+	}
+
+	.embeddedMessagingFrameMaximizedBottomTabBar {
+		bottom: calc(6.25rem + env(safe-area-inset-bottom, 0));
+	}
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton:not(.no-hover):hover {
+	/* TODO: Check with UX for including hover color since we removed hardcoded default button color #222222. */
+	opacity: 0.6;
+	outline: 0;
+	transition-timing-function: ease-in-out;
+	transition: all 0.2s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton:active:after {
+	transform: scale(0, 0);
+	opacity: 0.3;
+	transition: 0s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[class~="embeddedMessagingConversationButtonLoading"] {
+	pointer-events: none;
+	cursor: none;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[class~="embeddedMessagingConversationButtonLoaded"] {
+	box-shadow: 2px 2px 5px 2px rgba(45, 45, 45, 0.5);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] {
+	/* centers icon container on button */
+	display: inline-block;
+	vertical-align: middle;
+	/* fit icon container to button size */
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* Default chat icon shown on button, on page load. */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] > svg.embeddedMessagingIconChat {
+	/* button icon size */
+	width: 100%;
+	height: 100%;
+	max-height: 30px;
+	max-width: 30px;
+	/* default button icon svg color */
+	fill: #ffffff;
+	transform: scale(1) translate(0px, 1.5px);
+	overflow: visible;
+}
+
+/* Loading icon shown on button, on button click. */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner {
+	margin: 12px 6px;
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle:before {
+	content: "";
+	display: block;
+	margin: 0 auto;
+	width: 15%;
+	height: 15%;
+	/* default loading icon color */
+	background-color: #ffffff;
+	border-radius: 100%;
+	/* loading circles animation */
+	-webkit-animation: embeddedmessaging-loading-circle-fade-delay 1.2s infinite ease-in-out both;
+	animation: embeddedmessaging-loading-circle-fade-delay 1.2s infinite ease-in-out both;
+}
+
+.embeddedMessagingFilePreviewFrame {
+	position: fixed;
+	z-index: 99999999999;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: transparent;
+	display: none;
+}
+
+.embeddedMessagingFilePreviewFrame[class~="show"] {
+	display: block;
+}
+
+/***************************
+	Animations (Classes)
+***************************/
+/* Loading animation based off www.tobiasahlin.com/spinkit - sk-fading-circle */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle2 {
+	-webkit-transform: rotate(30deg);
+			transform: rotate(30deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle3 {
+	-webkit-transform: rotate(60deg);
+			transform: rotate(60deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle4 {
+	-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle5 {
+	-webkit-transform: rotate(120deg);
+			transform: rotate(120deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle6 {
+	-webkit-transform: rotate(150deg);
+			transform: rotate(150deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle7 {
+	-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle8 {
+	-webkit-transform: rotate(210deg);
+			transform: rotate(210deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle9 {
+	-webkit-transform: rotate(240deg);
+			transform: rotate(240deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle10{
+	-webkit-transform: rotate(270deg);
+			transform: rotate(270deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle11 {
+	-webkit-transform: rotate(300deg);
+			transform: rotate(300deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle12 {
+	-webkit-transform: rotate(330deg);
+			transform: rotate(330deg);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle2:before {
+	-webkit-animation-delay: -1.1s;
+			animation-delay: -1.1s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle3:before {
+	-webkit-animation-delay: -1s;
+			animation-delay: -1s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle4:before {
+	-webkit-animation-delay: -0.9s;
+			animation-delay: -0.9s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle5:before {
+	-webkit-animation-delay: -0.8s;
+			animation-delay: -0.8s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle6:before {
+	-webkit-animation-delay: -0.7s;
+			animation-delay: -0.7s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle7:before {
+	-webkit-animation-delay: -0.6s;
+			animation-delay: -0.6s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle8:before {
+	-webkit-animation-delay: -0.5s;
+			animation-delay: -0.5s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle9:before {
+	-webkit-animation-delay: -0.4s;
+			animation-delay: -0.4s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle10:before {
+	-webkit-animation-delay: -0.3s;
+			animation-delay: -0.3s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle11:before {
+	-webkit-animation-delay: -0.2s;
+			animation-delay: -0.2s;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle12:before {
+	-webkit-animation-delay: -0.1s;
+			animation-delay: -0.1s;
+}
+
+/***************************
+	Animations (Keyframes)
+***************************/
+@keyframes embeddedmessaging-loading-circle-fade-delay {
+	/* Loading circles fade delay. */
+	0%,
+	39%,
+	100% {
+		opacity: 0;
+	}
+
+	40% {
+		opacity: 1;
+	}
+}
+
+/***************************
+Responsive styles for the iframe
+(mobile vs desktop/tablet)
+***************************/
+/* mobile phones (320px-767px) */
+@media only screen and (min-width: 20em) and (max-width: 47.9375em) {
+	/* maximized iframe takes up entire viewport on mobile devices */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"] {
+		/* positioning */
+		bottom: 0;
+		right: 0;
+		/* padding */
+		margin: 16px;
+		/* default iframe dimensions */
+		height: 100vh;
+		width: 100vw;
+		max-height: calc(100vh - 7em);
+		max-width: calc(100vw - 2em);
+		display: inline-block;
+		visibility: visible;
+	}
+
+	/* hide static button if chat is maximized */
+	#embeddedMessagingModalOverlay[class~="isMaximized"]~div.embeddedMessagingConversationButtonWrapper {
+		display: none;
+	}
+
+	/* Loading icon shown on button, on button click. */
+	.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] > div.embeddedMessagingIconLoading {
+		/* loading icon size */
+		width: 33px;
+		margin: 35% auto;
+	}
+
+	/* hide background modal on mobile when client is minimized */
+	.embedded-messaging > #embeddedMessagingModalOverlay {
+		display: none;
+	}
+
+	/* show background modal on mobile when client is maximized */
+	.embedded-messaging > #embeddedMessagingModalOverlay.isMaximized {
+		background-color: rgba(51, 51, 51, 0.48);
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
+		pointer-events: none;
+		cursor: none;
+		overflow: hidden;
+		-webkit-transition: opacity 400ms ease-in;
+		-moz-transition: opacity 400ms ease-in;
+		transition: opacity 400ms ease-in;
+	}
+
+	/* do not allow background clicks or scrolling on mobile devices when client is maximized */
+	.embeddedMessagingPreventScrolling {
+		overflow: hidden;
+		cursor: none;
+	}
+}
+
+/* tablets and desktops (768px+) */
+@media only screen and (min-width: 48em) {
+	/* maximized iframe is re-positioned above static button on tablets and desktops */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"] {
+		/* positioning */
+		bottom: 100px;
+		right: 30px;
+		/* padding */
+		margin: 0;
+		/* default iframe dimensions */
+		height: 554px;
+		width: 344px;
+		display: inline-block;
+		visibility: visible;
+	}
+
+	/* show button if chat is maximized on tablets and desktops */
+	#embeddedMessagingModalOverlay[class~="isMaximized"]~div.embeddedMessagingConversationButtonWrapper {
+		display: block;
+	}
+
+	/* hide background modal on tablets and desktops */
+	.embedded-messaging > #esw-modaloverlay,
+	.embedded-messaging > #esw-modaloverlay.isMaximized {
+		display: none;
+	}
+
+	/* allow background clicks and scrolling on tablets/desktop when client is maximized */
+	.embeddedMessagingPreventScrolling {
+		pointer-events: auto;
+		cursor: auto;
+	}
+}
+
+/*
+	These devices' widths happen to be within the bounds of the tablet/desktop media query, but should behave like mobile phones.
+	In order to override it, this media query targets specific devices and must always be preceded by the tablet/desktop media query.
+	-  iPhone X (370px-816px) in landscape mode
+*/
+@media only screen and (min-width: 23.125em) and (max-width: 51em) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+	/* maximized iframe takes up entire viewport on mobile devices */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"] {
+		/* positioning */
+		bottom: 0;
+		right: 0;
+		/* padding */
+		margin: 16px;
+		/* default iframe dimensions */
+		height: 100vh;
+		width: 100vw;
+		max-height: calc(100vh - 7em);
+		max-width: calc(100vw - 2em);
+		display: inline-block;
+		visibility: visible;
+	}
+
+	/* hide static button if client is maximized */
+	#embeddedMessagingModalOverlay[class~="isMaximized"]~div.embeddedMessagingConversationButtonWrapper {
+		display: none;
+	}
+
+	/* Loading icon shown on button, on button click. */
+	.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] > div.embeddedMessagingIconLoading {
+		/* loading icon size */
+		margin: 12px 0;
+	}
+
+	/* hide background modal on mobile when client is minimized */
+	.embedded-messaging > #embeddedMessagingModalOverlay {
+		display: none;
+	}
+
+	/* show background modal on mobile when client is maximized */
+	.embedded-messaging > #embeddedMessagingModalOverlay.isMaximized {
+		background-color: rgba(51, 51, 51, 0.48);
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
+		pointer-events: none;
+		cursor: none;
+		overflow: hidden;
+		-webkit-transition: opacity 400ms ease-in;
+		-moz-transition: opacity 400ms ease-in;
+		transition: opacity 400ms ease-in;
+	}
+
+	/* do not allow background clicks or scrolling on mobile devices when client is maximized */
+	.embeddedMessagingPreventScrolling {
+		overflow: hidden;
+		cursor: none;
+	}
+}
