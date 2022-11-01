@@ -98,12 +98,6 @@
 	const IN_APP_CONFIG_API_VERSION = "v1";
 
 	/**
- 	 * Local storage key to store failed outbound message entries.
- 	 * @type {string}
- 	 */
-	const FAILED_OUTBOUND_MESSAGE_ENTRIES = "ESW_FAILED_MESSAGES";
-
-	/**
 	 * Default document title of the page.
 	 * @type {string}
 	 */
@@ -140,10 +134,267 @@
 	let customerIdentityToken;
 
 	/**
+	 * This variable holds the top level storage key
+	 */
+ 	let storageKey;
+
+	/**
 	 * Internal property to track the current conversation id, which to be used in web storage
 	 * @type {string}
 	 */
 	let conversationId;
+
+	/**
+	 * Web storage keys
+	 * @type {object}
+	 */
+	const STORAGE_KEYS = {
+		JWT: "JWT",
+		FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES",
+	};
+
+	/**
+	 * Object consists of fallback web storage keys (i.e. previously used web storage key)
+	 * Only applicable to 240 and earlier release
+	 */
+	const STORAGE_FALLBACK_KEYS = {
+		JWT: () => embeddedservice_bootstrap.settings.orgId,
+		FAILED_MESSAGES: "ESW_FAILED_MESSAGES",
+	};
+
+	/******************************************************
+						Web storage functions
+		This is copied from embeddedService:webStorageUtils.js.
+		If you change this method, please update the corresponding method in webStorageUtils.js
+	******************************************************/
+	function isFallbackKeyTypeFunction(key) {
+		return typeof STORAGE_FALLBACK_KEYS[key] === "function";
+	}
+	
+	function getFallbackKeyFromExistingKey(key) {
+		return isFallbackKeyTypeFunction(key) ? STORAGE_FALLBACK_KEYS[key]() : STORAGE_FALLBACK_KEYS[key];
+	}
+
+	/**
+	 * Determine the type of web storage (local vs. session) to be used
+	 * It will prioritize localStorage if specify, otherwise sessionStorage
+	 */
+	function determineStorageType(inLocalStorage = false) {
+		return embeddedservice_bootstrap.isLocalStorageAvailable && inLocalStorage ? localStorage : embeddedservice_bootstrap.isSessionStorageAvailable ? sessionStorage : undefined;
+	}
+
+	/**
+	 * Get the existing conversationId from web storage
+	 * We currently only support 1 active conversation per org
+	 * With this assumption valid, anything aside from storage keys will be the conversationId
+	 */
+	function getConversationIdFromWebStorage() {
+		let storageObjArray = [];
+		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+			storageObjArray.push(localStorage.getItem(storageKey) || '{}');
+		}
+		if (embeddedservice_bootstrap.isSessionStorageAvailable) {
+			storageObjArray.push(sessionStorage.getItem(storageKey) || '{}');
+		}
+
+		for (const storageObj of storageObjArray) {
+			for (const key of Object.keys(JSON.parse(storageObj))) {
+				if (!Object.hasOwn(STORAGE_KEYS, key)) {
+					return key;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Initialize the web storage object for both localStorage & sessionStorage.
+	 */
+	function initializeWebStorage() {
+		// Only create the structure if this is a new chat session
+		const storageObj = JSON.stringify({
+			[conversationId]: {}
+		});
+	
+		// Initialize the web storage object
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && !localStorage.getItem(storageKey)) {
+			localStorage.setItem(storageKey, storageObj);
+		}
+		if (embeddedservice_bootstrap.isSessionStorageAvailable && !sessionStorage.getItem(storageKey)) {
+			sessionStorage.setItem(storageKey, storageObj);
+		}
+
+		log("web storage initialized");
+	}
+
+	/**
+	 * Returns the item in web storage by the key in this current conversation.
+	 * It prioritizes getting the object in localStorage if exists in both
+	 * Returns undefined if not found
+	 */
+	function getItemInWebStorageByKey(key, inLocalStorage = true) {
+		let item;
+		const fallbackKey = getFallbackKeyFromExistingKey(key);
+		const storage = determineStorageType(inLocalStorage);
+
+		if (storage) {
+			const storageObj = (storage.getItem(storageKey) && JSON.parse(storage.getItem(storageKey))) || {};
+			if (key === STORAGE_KEYS.JWT) {
+				item = storageObj[key];
+			} else {
+				item = storageObj[conversationId] && storageObj[conversationId][key];
+			}
+	
+			// Check fallback
+			if (!item && storage.getItem(fallbackKey)) {
+				item = storage.getItem(fallbackKey);
+				log(`${key} found in fallback location in localStorage`);
+			}
+		}
+		return item;
+	}
+
+	/**
+	 * Set the item in web storage by the key in this current conversation.
+	 * If inLocalStorage is true, then first try to store in localStorage, otherwise sessionStorage
+	 */
+	function setItemInWebStorage(key, value, inLocalStorage = true) {
+		const storage = determineStorageType(inLocalStorage);
+	
+		if (storage) {
+			const storageObj = (storage.getItem(storageKey) && JSON.parse(storage.getItem(storageKey))) || {};
+			// Setting JWT at top level so other conversations from same org can access the JWT
+			if (key === STORAGE_KEYS.JWT) {
+				storageObj[key] = value;
+			} else {
+				// Storage for this deployment does not exist yet,
+				// create a new one without overwriting storage for other conversations
+				if (!storageObj[conversationId]) {
+					storageObj[conversationId] = {};
+				}
+	
+				storageObj[conversationId][key] = value;
+			}
+			storage.setItem(storageKey, JSON.stringify(storageObj));
+			log(`${key} set in ${inLocalStorage ? "localStorage" : "sessionStorage"}`);
+		}
+	}
+
+	/**
+	 * Remove item from both localStorage and sessionStorage that match that given key
+	 * As well as item that was originally stored in fallback location
+	 */
+	function removeItemInWebStorage(key) {
+		const fallbackKey = getFallbackKeyFromExistingKey(key);
+	
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
+			const storageObj = JSON.parse(localStorage.getItem(storageKey)) || {};
+			// Remove top level stored item (e.g. JWT, conversationId)
+			delete storageObj[key];
+			if (storageObj[conversationId]) {
+				delete storageObj[conversationId][key];
+			}
+			localStorage.setItem(storageKey, JSON.stringify(storageObj));
+	
+			// remove item stored in fallback location
+			localStorage.removeItem(fallbackKey);
+		}
+		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
+			const storageObj = JSON.parse(sessionStorage.getItem(storageKey)) || {};
+			// Remove top level stored item (e.g. JWT, conversationId)
+			delete storageObj[key];
+			if (storageObj[conversationId]) {
+				delete storageObj[conversationId][key];
+			}
+			sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
+	
+			// remove item stored in fallback location
+			sessionStorage.removeItem(fallbackKey);
+		}
+
+		log(`${key} removed from web storage`);
+	}
+
+	/**
+	 * Clear all client side stored item in both localStorage & sessionStorage as well as at the fallback location
+	 */
+	function clearWebStorage() {
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
+			localStorage.removeItem(storageKey);
+		}
+		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
+			sessionStorage.removeItem(storageKey);
+		}
+
+		// Clear all items stored in fallback location
+		Object.keys(STORAGE_FALLBACK_KEYS).forEach(key => {
+			if (isFallbackKeyTypeFunction(key)) {
+				key = STORAGE_FALLBACK_KEYS[key]();
+			}
+			if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+				localStorage.removeItem(key);
+			}
+			if (embeddedservice_bootstrap.isSessionStorageAvailable) {
+				sessionStorage.removeItem(key);
+			}
+		});
+
+		log(`web storage cleared`);
+	}
+
+	/**
+	 * Update the conversation id in web storage and in-memory
+	 * @param {string} updatedConversationId 
+	 */
+	function updateConversationIdInWebStorage(updatedConversationId) {
+		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
+			const storageObj = JSON.parse(sessionStorage.getItem(storageKey));
+			if (storageObj[conversationId]) {
+				storageObj[updatedConversationId] = storageObj[conversationId];
+				delete storageObj[conversationId];
+
+				sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
+
+				log(`conversationId updated in sessionStorage`);
+			}
+		}
+
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
+			const storageObj = JSON.parse(localStorage.getItem(storageKey));
+			if (storageObj[conversationId]) {
+				storageObj[updatedConversationId] = storageObj[conversationId];
+				delete storageObj[conversationId];
+
+				localStorage.setItem(storageKey, JSON.stringify(storageObj));
+
+				log(`conversationId updated in localStorage`);
+			}
+		}
+
+		// Finally, update in-memory conversation id
+		conversationId = updatedConversationId;
+	}
+
+	/**
+	 * Handle initializing conversationId, before passing it to the Iframe
+	 */
+	function initializeConversationId() {
+		storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+		// Check for existing conversation id or generate a new one
+		conversationId = getConversationIdFromWebStorage();
+
+		if (!conversationId) {
+			log("No current conversationId found, generating a new one");
+			conversationId = generateUUID();
+			initializeWebStorage();
+		}
+	}
+
+  	/**
+	 * Resolve function for the promise returned by the embeddedservice_bootstrap.authAPI.clearAuthorizationSession() API.
+	 * Tracking the function as an internal property allows us to resolve the promise outside clearAuthorizationSession().
+	 * @type {function}
+	 */
+	let clearAuthSessionPromiseResolve;
 
 	/**
 	 * Merge a key-value mapping into the setting object, such that the provided
@@ -425,40 +676,11 @@
 	 * @param {String} jwt - JWT to store in web storage.
 	 */
 	function storeJWTInWebStorage(jwt) {
-		let storage;
-
 		if(typeof jwt !== "string") {
 			error(`Expected to receive string, instead received: ${jwt}.`);
 		}
 
-		if(embeddedservice_bootstrap.isLocalStorageAvailable) {
-			storage = localStorage;
-		} else if(embeddedservice_bootstrap.isSessionStorageAvailable) {
-			storage = sessionStorage;
-		} else {
-			// Do nothing if storage is not available.
-			return;
-		}
-
-		storage.setItem(embeddedservice_bootstrap.settings.orgId, jwt);
-	}
-
-	/**
-	 * Remove the JWT from web storage.
-	 */
-	function cleanUpJWT() {
-		let storage;
-
-		if(embeddedservice_bootstrap.isLocalStorageAvailable) {
-			storage = localStorage;
-		} else if(embeddedservice_bootstrap.isSessionStorageAvailable) {
-			storage = sessionStorage;
-		} else {
-			// Do nothing if storage is not available.
-			return;
-		}
-
-		storage.removeItem(embeddedservice_bootstrap.settings.orgId);
+		setItemInWebStorage(STORAGE_KEYS.JWT, jwt);
 	}
 
 	/**
@@ -467,29 +689,12 @@
 	 * @param {Object} failedMessages - Failed end-user conversation messages.
 	 */
 	function storeFailedMessagesInWebStorage(failedMessages) {
-		let storage;
-
 		if (typeof failedMessages !== "object") {
 			error(`Expected to receive object, instead received: ${failedMessages}.`);
 			return;
 		}
-		if(embeddedservice_bootstrap.isSessionStorageAvailable) {
-			storage = sessionStorage;
-		} else {
-			// Do nothing if storage is not available.
-			return;
-		}
-
-		storage.setItem(FAILED_OUTBOUND_MESSAGE_ENTRIES, JSON.stringify(failedMessages));
-	}
-
-	/**
-	 * Clears the failed messages from parent frame's web storage when the iframe notifies the parent.
-	 */
-	function cleanUpFailedMessagesInWebStorage() {
-		if(embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(FAILED_OUTBOUND_MESSAGE_ENTRIES)) {
-			sessionStorage.removeItem(FAILED_OUTBOUND_MESSAGE_ENTRIES);
-		}
+	
+		setItemInWebStorage(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES, failedMessages, false);
 	}
 
 	/**
@@ -499,8 +704,8 @@
 	 * @return {object}
 	 */
 	function prepareConfigurationDataForIframeWindow() {
-		const iaMessageJwt = getJwtIfExists();
-		const failedConversationMessages = getFailedMessagesIfExists();
+		const iaMessageJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+		const failedConversationMessages = getItemInWebStorageByKey(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES, false);
 		const conversationRoutingAttributes = hiddenPrechatFields;
 		const standardLabelsFromConfiguration = embeddedservice_bootstrap.settings.standardLabels;
 		const customLabelsFromConfiguration = embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels;
@@ -519,89 +724,120 @@
 	}
 
 	/**
-	 * Event handlers for resizing the iframe dynamically, based on size/state of the aura application.
+	 * Adds Message and Storage event listeners on host window.
+	 * Message event handlers are used to communicate between the iframe and the host window.
+	 * Storage event handlers are used to sync local storage changes across tabs/windows on the same domain.
 	 */
 	function addEventHandlers() {
+		addMessageEventHandlers();
+		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+			addStorageEventHandlers();
+		}
+	}
+
+	/**
+	 *  Adds Message event listeners on host window. Message event handlers are used to communicate between the iframe and the host window.
+	 */
+	function addMessageEventHandlers() {
 		window.addEventListener("message", (e) => {
 			if(e && e.data && e.origin) {
 				if(embeddedservice_bootstrap.filePreviewFrame.contentWindow === e.source) {
 					// Handle events from File Preview Iframe window.
 					switch(e.data.method) {
 						case EMBEDDED_MESSAGING_SHOW_FILE_PREVIEW_FRAME_EVENT_NAME:
-								setFilePreviewFrameVisibility(true);
-								break;
+							setFilePreviewFrameVisibility(true);
+							break;
 						case EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME:
-								setFilePreviewFrameVisibility(false);
-								break;
+							setFilePreviewFrameVisibility(false);
+							break;
 						default:
 							warning("Unrecognized event name: " + e.data.method);
 							break;
 					}
 				} else if(e.origin === "null" ||
-						(getSiteURL().indexOf(e.origin) === 0
+					(getSiteURL().indexOf(e.origin) === 0
 						&& embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)
 						&& getEmbeddedMessagingFrame().contentWindow === e.source)) {
-						let frame = getEmbeddedMessagingFrame();
+					let frame = getEmbeddedMessagingFrame();
 
-						// TODO: Confirm event names with product.
-						switch(e.data.method) {
-							case APP_REQUEST_CONFIG_SERVICE_DATA_EVENT_NAME:
-								/**
-								 * Send Configuration Settings to the container (iframe window).
-								 */
-								sendPostMessageToIframeWindow(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME, prepareConfigurationDataForIframeWindow());
-								break;
-							case APP_LOADED_EVENT_NAME:
-								// TODO W-10165756 - Remove handling for the event when we no longer support the aura app.
-								if(embeddedservice_bootstrap.settings.isAuraSite) {
-									handleAfterAppLoad();
-								}
-								break;
-							case APP_MINIMIZE_EVENT_NAME:
-								embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
-								break;
-							case APP_MAXIMIZE_EVENT_NAME:
-								embeddedservice_bootstrap.maximizeIframe(frame);
-								break;
-							case APP_RESET_INITIAL_STATE_EVENT_NAME:
-								handleResetClientToInitialState();
-								break;
-							case EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME:
-								storeJWTInWebStorage(e.data.data);
-								break;
-							case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
-								cleanUpJWT();
-								break;
-							case EMBEDDED_MESSAGING_DOWNLOAD_FILE:
-								downloadFile(e.data.data);
-								break;
-							case EMBEDDED_MESSAGING_UPDATE_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
-								storeFailedMessagesInWebStorage(e.data.data);
-								break;
-							case EMBEDDED_MESSAGING_CLEAN_UP_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
-								cleanUpFailedMessagesInWebStorage();
-								break;
-							case EMBEDDED_MESSAGING_UPDATE_TITLE_NOTIFICATION:
-								updateTitleNotification(e.data.data);
-								break;
-							case APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME:
-								/**
-								 * Send Hidden Prechat fields to the container when they are requested, to ensure most recent values are received in the container
-								 * at the time of submitting Prechat form (if enabled).
-								 * This event is exchanged only when Prechat is enabled in the setup.
-								 */
-								sendPostMessageToIframeWindow(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
-								break;
-							case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
-								// TODO: Update web storage key
-								conversationId = e.data.data;
-								break;
-							default:
-								warning("Unrecognized event name: " + e.data.method);
-								break;
-						}
+					switch(e.data.method) {
+						case APP_REQUEST_CONFIG_SERVICE_DATA_EVENT_NAME:
+							/**
+							 * Send Configuration Settings to the container (iframe window).
+							 */
+							sendPostMessageToIframeWindow(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME, prepareConfigurationDataForIframeWindow());
+							break;
+						case APP_LOADED_EVENT_NAME:
+							// TODO W-10165756 - Remove handling for the event when we no longer support the aura app.
+							if(embeddedservice_bootstrap.settings.isAuraSite) {
+								handleAfterAppLoad();
+							}
+							break;
+						case APP_MINIMIZE_EVENT_NAME:
+							embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
+							break;
+						case APP_MAXIMIZE_EVENT_NAME:
+							embeddedservice_bootstrap.maximizeIframe(frame);
+							break;
+						case APP_RESET_INITIAL_STATE_EVENT_NAME:
+							handleResetClientToInitialState();
+							break;
+						case EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME:
+							storeJWTInWebStorage(e.data.data);
+							break;
+						case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
+							clearWebStorage();
+							break;
+						case EMBEDDED_MESSAGING_DOWNLOAD_FILE:
+							downloadFile(e.data.data);
+							break;
+						case EMBEDDED_MESSAGING_UPDATE_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
+							storeFailedMessagesInWebStorage(e.data.data);
+							break;
+						case EMBEDDED_MESSAGING_CLEAN_UP_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
+							removeItemInWebStorage(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES);
+							break;
+						case EMBEDDED_MESSAGING_UPDATE_TITLE_NOTIFICATION:
+							updateTitleNotification(e.data.data);
+							break;
+						case APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME:
+							/**
+							 * Send Hidden Prechat fields to the container when they are requested, to ensure most recent values are received in the container
+							 * at the time of submitting Prechat form (if enabled).
+							 * This event is exchanged only when Prechat is enabled in the setup.
+							 */
+							sendPostMessageToIframeWindow(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
+							break;
+						case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
+							// TODO: Update web storage key
+							updateConversationIdInWebStorage(e.data.data);
+							break;
+						default:
+							warning("Unrecognized event name: " + e.data.method);
+							break;
+					}
 				} else {
 					error("Unexpected message origin: " + e.origin);
+				}
+			}
+		});
+	}
+
+	/**
+	 * Adds Storage event listeners on host window.
+	 * Storage event handlers are used to sync local storage changes across tabs/windows on the same domain.
+	 * Storage event handlers are not executed on the same tab/window that is making the changes.
+	 */
+	function addStorageEventHandlers() {
+		window.addEventListener("storage", (e) => {
+			// Compare e.key with our storage key
+			if (e && e.key && e.key === storageKey) {
+				// Handle clear web storage event
+				if (e.newValue === null) {
+					// If we're in Auth mode, clear authorization session for current tab/window.
+					if (getAuthMode() === AUTH_MODE.AUTH) {
+						handleClearAuthorizationSession(false);
+					}
 				}
 			}
 		});
@@ -963,34 +1199,6 @@
 	}
 
 	/**
-	 * If a JWT exists in first party web storage, get it.
-	 * @returns {String} JWT - JWT or undefined.
-	 */
-	function getJwtIfExists() {
-		const orgId = embeddedservice_bootstrap.settings.orgId;
-
-		if(embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(orgId)) {
-			return localStorage.getItem(orgId);
-		} else if(embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(orgId)) {
-			return sessionStorage.getItem(orgId);
-		}
-
-		return undefined;
-	}
-
-	/**
-	 * If Failed Conversation Messages exists in first party web storage, get it.
-	 * @returns {object} Failed Conversation Messages object or undefined.
-	 */
-	function getFailedMessagesIfExists() {
-		if(embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(FAILED_OUTBOUND_MESSAGE_ENTRIES)) {
-			return JSON.parse(sessionStorage.getItem(FAILED_OUTBOUND_MESSAGE_ENTRIES));
-		}
-
-		return undefined;
-	}
-
-	/**
 	 * Handles Aura site endpoint. Sets iframe.src and logs success message on iframe load.
 	 * TODO W-10165756 - Remove support for aura sites & the aura app.
 	 * @param iframe - iframe element
@@ -1036,6 +1244,7 @@
 		// eslint-disable-next-line no-negated-condition
 		if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
 			setLoadingStatusForButton();
+			initializeConversationId();
 
 			try {
 				// Generate markup for File Preview frame.
@@ -1074,7 +1283,7 @@
 	 * If Web Storage is available, check if there's an existing session to show.
 	 */
 	function bootstrapIfSessionExists() {
-		if(getJwtIfExists()) {
+		if(getItemInWebStorageByKey(STORAGE_KEYS.JWT)) {
 			handleClick();
 		}
 	}
@@ -1108,7 +1317,9 @@
 	}
 
 	/**
-	 * Handles cleanup after closing the client (once the conversation is closed). This resets the client to its initial state (State Zero).
+	 * Handles cleanup after closing the client, i.e after closing a conversation in Unauth mode OR
+	 * clearing the authorization session in Auth mode.
+	 * This method resets the client to the initial state (State Zero) for Auth/Unauth modes.
 	 */
 	function handleResetClientToInitialState() {
 		const iframe = getEmbeddedMessagingFrame();
@@ -1116,8 +1327,10 @@
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
 
 		try {
-			// Clear existing JWT created for the previous conversation.
-			cleanUpJWT();
+			// Clear existing items stored in current conversation
+			clearWebStorage();
+			// Reset conversationId
+			conversationId = undefined;
 		} catch(err) {
 			error("Error on clearing web storage for the previously ended conversation: " + err);
 		}
@@ -1167,6 +1380,11 @@
 			}
 		} else {
 			warning("Embedded Messaging static button not available for resetting the client to initial state.");
+		}
+
+		// Resolve clearAuthorizationSession() promise, if we are in Auth mode.
+		if (getAuthMode() === AUTH_MODE.AUTH) {
+			resolveClearAuthSessionPromise();
 		}
 	}
 
@@ -1326,6 +1544,9 @@
 		// Render conversation button if identity token passes basic validation.
 		embeddedservice_bootstrap.generateMarkup();
 
+		// Bootstrap if an authorized session already exists.
+		bootstrapIfSessionExists();
+
 		return true;
 	}
 
@@ -1335,24 +1556,39 @@
 	 * Per the authorization contract, the customer is responsible for invoking this API method when
 	 * 1) the end-user logs out of the current session or
 	 * 2) the current session expires.
+	 * @return {Promise} - Promise that resolves after a session is successfully cleared OR is rejected with relevant error message.
 	 */
 	EmbeddedMessagingAuthorization.prototype.clearAuthorizationSession = function clearAuthorizationSession() {
+		return new Promise((resolve, reject) => {
+			clearAuthSessionPromiseResolve = resolve;
+
+			// Cannot be invoked before `afterInit` event has been emitted.
+			if (!hasEmbeddedMessagingReadyEventFired) {
+				reject(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+				return;
+			}
+
+			// Check whether we are in authorization mode.
+			if (getAuthMode() !== AUTH_MODE.AUTH) {
+				reject(`Authorization mode isn't enabled in the Messaging Channel setup.`);
+				return;
+			}
+
+			handleClearAuthorizationSession(true);
+		});
+	}
+
+	/**
+	 * Clear authorization session in the same tab/window.
+	 * This method is called by -
+	 * 1. embeddedservice_bootstrap.authAPI.clearAuthorizationSession() API to clear authorization session in primary tab.
+	 * 2. Storage event handler to clean authorization session across secondary tabs.
+	 * @param shouldRevokeJwt - Whether to revoke the ia-message jwt.
+	 */
+	function handleClearAuthorizationSession(shouldRevokeJwt) {
 		const iframe = getEmbeddedMessagingFrame();
-
-		// Cannot be invoked before `afterInit` event has been emitted.
-		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
-			return false;
-		}
-
-		// Check whether we are in authorization mode.
-		if (getAuthMode() !== AUTH_MODE.AUTH) {
-			error(`Authorization mode isn't enabled in the Messaging Channel setup.`);
-			return false;
-		}
-
 		if (iframe) {
-			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_AUTH_SESSION_EVENT_NAME);
+			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_AUTH_SESSION_EVENT_NAME, shouldRevokeJwt);
 		} else {
 			handleResetClientToInitialState();
 		}
@@ -1445,6 +1681,16 @@
 		return authMode || AUTH_MODE.UNAUTH;
 	}
 
+	/**
+	 * Helper function to resolve the promise returned by embeddedservice_bootstrap.authAPI.clearAuthorizationSession(), if it exists.
+	 */
+	function resolveClearAuthSessionPromise() {
+		if (clearAuthSessionPromiseResolve && typeof clearAuthSessionPromiseResolve === "function") {
+			clearAuthSessionPromiseResolve();
+			clearAuthSessionPromiseResolve = undefined;
+		}
+	}
+
 	/****************************************
 	 *		    HIDDEN PRECHAT API          *
 	/****************************************/	
@@ -1518,7 +1764,7 @@
 			error(`Can't call ${caller} before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
-		if (getJwtIfExists()) {
+		if (getItemInWebStorageByKey(STORAGE_KEYS.JWT)) {
 			error(`Can't call ${caller} during an active conversation.`);
 			return false;
 		}
@@ -1966,21 +2212,21 @@
 
 			// Show button when we've loaded everything.
 			Promise.all([cssPromise, configPromise]).then(() => {
-				// Generate conversation id
-				conversationId = generateUUID();
+				initializeConversationId();
 
 				initializeFeatureObjects();
 
 				// Fire 'onEmbeddedMessagingReady' event.
 				emitEmbeddedMessagingReadyEvent();
 
-				// Generate button markup if we are in unauthenticated mode.
+				// In Unauth mode, generate button markup & bootstrap if session exists.
+				// In auth mode, button markup and bootstrap of existing session occurs via #setIdentityToken() API.
 				if (getAuthMode() === AUTH_MODE.UNAUTH) {
 					embeddedservice_bootstrap.generateMarkup();
-				}
 
-				// Check if there's an existing session to show.
-				bootstrapIfSessionExists();
+					// Check if there's an existing session to show.
+					bootstrapIfSessionExists();
+				}
 			});
 		} catch(err) {
 			error("Error: " + err);
