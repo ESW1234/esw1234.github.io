@@ -13,14 +13,14 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-      			embeddedservice_bootstrap.settings.debugMode = true;
+      			embeddedservice_bootstrap.settings.devMode = true;
 			
 			embeddedservice_bootstrap.init(
-				'00DS7000000owIT',
-				'web10',
-				'https://iana45a.stmfa.my.stm.salesforce.com',
+				'00DS7000000lqNL',
+				'Derek',
+				'https://test-1d4.stmfa.my.stm.site.com/ESWDerek1667347771548',
 				{
-					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -28,6 +28,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://hello.localhost.internal.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>  
+<script type='text/javascript' src='https://hello.my.localhost.sfdcdev.site.com:6101/ESWlwr21666306449009/s/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>  
 </body>
 </html>
