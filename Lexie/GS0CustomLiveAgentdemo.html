@@ -77,11 +77,23 @@
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
+		//Settings for Chat
+		embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+// 			Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+// 			Returns a valid button ID.
+			
+			// Route to LiveAgentQueue if 3rd pre-chat item (subject) is demo1, 
+			if (prechatFormData[2].value === "demo1"){
+				return "573B00000006ZLg"; 
+			}else{	
+				return "573B0000000QFcA";
+			}
+			
+
+		};
+		
+			
+		
 		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
