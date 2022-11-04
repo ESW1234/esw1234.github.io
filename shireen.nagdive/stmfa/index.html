@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+
+<div id="lightningout"></div>
+
+<script src="https://242com2-dev-ed.stmfa.my.stm.salesforce.com/lightning/lightning.out.js"></script>
+<script>
+    $Lightning.use(
+        'c:LightningOutTest', // name of the Lightning app
+        function () {
+            // Callback once framework and app loaded
+            $Lightning.createComponent(
+                'diFileUploadButton', // top-level component of your app
+                {}, // attributes to set on the component when created
+                'lightningout', // the DOM location to insert the component
+                function (cmp) {
+                    // callback when component is created and active on the page.
+                }
+            );
+        },
+        'https://242com2-dev-ed.stmfa.my.stm.salesforce-sites.com' // Site endpoint
+    );
+</script>
+</body>
+</html>
