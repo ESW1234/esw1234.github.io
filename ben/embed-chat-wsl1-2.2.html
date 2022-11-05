@@ -6,19 +6,19 @@
 </head>
 <body>
   <p align="center"><font color ="red">PAGE ONE</font></p>
-  <p align="center"><font color = "red"><a href="embed-chat-wsl4-2.html">Link to PAGE TWO</font></p></a>
-  <p align="center"><font color = "red"><a href="embed-chat-wsl4-2.html" target="_blank">Link to PAGE TWO (new tab)</font></p></a>
+  <p align="center"><font color = "red"><a href="embed-chat-wsl1-2.html">Link to PAGE TWO</font></p></a>
+  <p align="center"><font color = "red"><a href="embed-chat-wsl1-2.html" target="_blank">Link to PAGE TWO (new tab)</font></p></a>
 	<div>
-	<a href="http://websnapins.com/ben/embed-chat-wsl4.html">http://websnapins.com/ben/embed-chat-wsl4.html (this window)</a>
+	<a href="http://websnapins.com/ben/embed-chat-wsl1.html">http://websnapins.com/ben/embed-chat-wsl4.html (this window)</a>
 	</div>
 	<div>
-	<a href="http://websnapins.com/ben/embed-chat-wsl4.html" target="win2">http://websnapins.com/ben/embed-chat-wsl4.html (new window)</a>
+	<a href="http://websnapins.com/ben/embed-chat-wsl1.html" target="win2">http://websnapins.com/ben/embed-chat-wsl4.html (new window)</a>
 	</div>
 	<div>
-	<a href="http://help.websnapins.com/ben/embed-chat-wsl4.html">http://help.websnapins.com/ben/embed-chat-wsl4.html (this window)</a>
+	<a href="http://help.websnapins.com/ben/embed-chat-wsl1.html">http://help.websnapins.com/ben/embed-chat-wsl4.html (this window)</a>
 	</div>
 	<div>
-	<a href="http://help.websnapins.com/ben/embed-chat-wsl4.html" target="win2">http://help.websnapins.com/ben/embed-chat-wsl4.html (new window)</a>
+	<a href="http://help.websnapins.com/ben/embed-chat-wsl1.html" target="win2">http://help.websnapins.com/ben/embed-chat-wsl4.html (new window)</a>
 	</div>
 
 <div id="button_goes_here">
@@ -59,23 +59,23 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://benco00.localhost.internal.salesforce.com:6101',
-			'https://bdrasin-wsl4.internal.salesforce.com:8096/chat',
-			'https://bdrasin-wsl4.internal.salesforce.com:8095/content',
-			'https://eswmessagingchat-1758a328499.dev.localhost.soma.force.com:6101/chatcommunity',
-			'572xx0000004CCG',
-			'00Dxx0000006GSl',
-			'573xx0000004CCG',
+			'https://benco0.my.localhost.sfdcdev.salesforce.com:6101'
+			'https://bdrasin-wsl1.internal.salesforce.com:8096/chat',
+			'https://bdrasin-wsl1.internal.salesforce.com:8095/content',
+			'https://benco0.my.localhost.sfdcdev.salesforce-sites.com:6101/site1',
+			'572xx0000004Ck8',
+			'00Dxx0000006KOp',
+			'573xx0000004Cdg',
 			2.2,
 			gslbBaseURL,
 			55.0,
-			'Chat',
+			'chat1',
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://benco00.localhost.internal.salesforce.com:6101/embeddedservice/2.2/esw.js');
+		s.setAttribute('src', 'https://benco0.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/2.2/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
