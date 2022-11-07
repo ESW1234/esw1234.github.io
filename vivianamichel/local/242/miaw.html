@@ -4,24 +4,25 @@
 </head>
 <body>
     <script type='text/javascript'>
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.settings.devMode = true;
-                embeddedservice_bootstrap.init(
-                    '00DS7000000lqNL',
-				    'Viviana_Deployment',
-                    'https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWVivianasDeployment1660605914199',
-                    {
-                        scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
-    <script type='text/javascript' src='https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWVivianasDeployment1660605914199/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			
+			embeddedservice_bootstrap.init(
+				'00DS7000000lqlV',
+				'Viviana',
+				'https://na45co.stmfa.my.stm.site.com/ESWViviana1667800127964',
+				{
+					scrt2URL: 'https://na45co.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://na45co.stmfa.my.stm.site.com/ESWViviana1667800127964/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
    
 </body>
 </html>
