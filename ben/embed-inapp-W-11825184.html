@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+     <script type='text/javascript'>       
+      function runPostTimeout() {
+        timeout = setTimeout(doPost, 3000);
+      }
+
+      window.addEventListener('load', (event) => {
+        console.log('page is fully loaded');
+        runPostTimeout();
+      });
+       
+      function doPost() {
+        window.postMessage("this is a test message that doesn't do anything");
+      }
+      
+      window.addEventListener("message", (event) => {
+        console.log(event.data);
+      }, false);
+     </script>
+</head>
+<body>
+  <p align="center"><font color ="red">PAGE ONE</font></p>
+  <p align="center"><font color = "red"><a href="embed-chat-wsl4-2.html">Link to PAGE TWO</font></p></a>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000LTfj',
+				'Web_RouteToAgent',
+				'https://benco000.my.stmfa.stm.salesforce.com',
+				{
+					scrt2URL: 'https://benco000.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inapp-es-community-17ca502fe64.stmfa.stm.force.com/DE1/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
+    <style>
+       body {
+          
+         background: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+      #button_goes_here{
+            width: 100%; 
+            height: 100%; 
+            margin: 0 auto;
+            position: relative;
+            
+      }
+    </style>
