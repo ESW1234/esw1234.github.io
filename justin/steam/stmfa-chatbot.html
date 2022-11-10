@@ -112,7 +112,7 @@
 				embedded_svc.init(
 					'https://justinmacmillin.my.stmfa.stm.salesforce.com',
 					'https://snapins-15ef4331aa1.stmfa.stm.force.com/cypress071118',
-					'https://service.force.com',//gslbBaseURL,
+					gslbBaseURL,
 					'00DRM0000005cyu',
 					'justinChatbot',
 					{
@@ -131,7 +131,6 @@
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
 				s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.js');
-		// 		s.setAttribute('src', 'https://justinmacmillin.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
