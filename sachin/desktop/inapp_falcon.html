@@ -28,7 +28,11 @@
 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW31667871563203',
 						{
 							scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com',
-							authMode: "Unauth"
+							embeddedServiceConfig: {
+								embeddedServiceMessagingChannel: {
+									authMode: "Unauth"
+								}
+							}
 						}
 					);
         			} catch (err) {
