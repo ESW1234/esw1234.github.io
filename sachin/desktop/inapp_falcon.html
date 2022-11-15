@@ -19,15 +19,15 @@
 					// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 					 window.addEventListener("onEmbeddedMessagingReady", () => {
     						console.log("Received onEmbeddedMessagingReady event!!!");
-				         	//embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Hidden1" : "value one", "Hidden2" : "value two", "Hidden3" : "value three", "Hidden4" : "value four"});
+				         	//embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"OS" : "Linux", "Browser" : "Chrome", "Hidden3" : "value three"});
   					 });
 	
             				embeddedservice_bootstrap.init(
-						'00DS7000000owIT',
-						'web11',
+						'00DRM000000LoTg',
+						'MIAWDep44a_with_bot',
 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW31667871563203',
 						{
-							scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com',
+							scrt2URL: 'https://44stmfagv1.my.stmfa.stm.salesforce-scrt.com',
 							embeddedServiceConfig: {
 								embeddedServiceMessagingChannel: {
 									authMode: "Unauth"
