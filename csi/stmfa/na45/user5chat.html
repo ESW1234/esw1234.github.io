@@ -11,26 +11,24 @@
       <script>
          document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
       </script>
-      <!-- This script tag is generated from Setup > Embedded service deployment > view one of the deployments > Code Snippet -->
       <script type='text/javascript'>
-        function initEmbeddedMessaging() {
+	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00DSG0000001DXt',
-				'csi1',
-				'https://decsifalcon.test1.pc-rnd.force.com/ESWcsi11666125990283',
+				'00DS7000000lo03',
+				'user5_esw',
+				'https://decsi2.stmfa.my.stm.site.com/ESWuser5esw1648174182935',
 				{
-					scrt2URL: 'https://decsifalcon.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://decsi2.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
-      </script>
-      <!-- Replace the source url with the org's domain url from the above script(the url that doesn't end with scrt.com) -->
-      <script type='text/javascript' src='https://decsifalcon.test1.pc-rnd.force.com/ESWcsi11666125990283/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</script>
+<script type='text/javascript' src='https://decsi2.stmfa.my.stm.site.com/ESWuser5esw1648174182935/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
