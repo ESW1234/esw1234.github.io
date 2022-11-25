@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2> Inapp chat 2.0 without chatbot Neha </h2>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000GD9g',
+				'EmbeddedServiceDepForWebWithoutBot',
+				'https://orgforinapp.stmfb.stm.force.com/ESWEmbeddedServiceDepForW1669385855959',
+				{
+					scrt2URL: 'https://ise-messaging-14-09-22salesforc-3d.my.stmfb.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgforinapp.stmfb.stm.force.com/ESWEmbeddedServiceDepForW1669385855959/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+</body>
+</html>
