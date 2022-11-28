@@ -19,7 +19,12 @@
 				'web11', // 'Default',
 				'https://miaw.my.localhost.sfdcdev.site.com:8117/ESWDefault1669384491832',
 				{
-					scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com',
+					embeddedServiceConfig: {
+						embeddedServiceMessagingChannel: {
+							authMode: "UnAuth"
+						}
+					}
 				}
 			);
 		} catch (err) {
