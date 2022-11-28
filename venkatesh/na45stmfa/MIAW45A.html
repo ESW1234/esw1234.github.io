@@ -3,16 +3,21 @@
 <title>InApp</title>
 <meta name=“viewport” content=“width=device-width, initial-scale=1, minimum-scale=1”>
 </head>
-<body>
-<h1> In APP Web Client for Org: “admin username”</h1>
+<body style="background-image: url('http://esw1234.github.io/sachin/background.jpg'); height: 100%; width: 100%">
+<h1> MIAW (NA45 STMFA) </h1>
 <p><a id=“editThisPageLink” target=“_blank” style=“color:blue”>Edit this page</a></p>
-<!--<script>document.getElementById(‘editThisPageLink’).href = “https://github.com/ESW1234/esw1234.github.io/edit/master” + window.location.pathname;</script>-->
-<!-- <script type=‘text/javascript’ src=’https://service.force.com/asyncclient/bootstrap.js'>> -->
+<script>document.getElementById(‘editThisPageLink’).href = “https://github.com/ESW1234/esw1234.github.io/edit/master” + window.location.pathname;</script>
 
   <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+    				console.log("Received onEmbeddedMessagingReady event!!!");
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "Location" : "California, United States"});
+  			});
 
 			embeddedservice_bootstrap.init(
 				'00DS7000000owAP',
@@ -25,6 +30,26 @@
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
+	};
+	  
+	function getBrowserInfo() {
+		navigator.browserInfo= (function(){
+   			var ua= navigator.userAgent;
+    			var tem; 
+    			var M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    			if(/trident/i.test(M[1])){
+        			tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+        			return 'IE '+(tem[1] || '');
+    			}
+    			if(M[1]=== 'Chrome'){
+        			tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        			if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    			}
+    			M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    			if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+    			return M.join(' ');
+		})();
+		return navigator.browserInfo;
 	};
 </script>
 <script type='text/javascript' src='https://scvstmfatest.stmfa.my.stm.site.com/ESWMIAWEmbeddedDep1667295734262/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
