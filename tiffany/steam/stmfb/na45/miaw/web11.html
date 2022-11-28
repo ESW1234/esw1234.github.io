@@ -12,7 +12,12 @@
 				'web11',
 				'https://asyncchatorg1.stmfb.my.stm.site.com/ESWweb111652668894340',
 				{
-					scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com',
+					embeddedServiceConfig: {
+						embeddedServiceMessagingChannel: {
+							authMode: "UnAuth"
+						}
+					}
 				}
 			);
 		} catch (err) {
