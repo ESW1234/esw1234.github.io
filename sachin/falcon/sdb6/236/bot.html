@@ -13,7 +13,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.settings.devMode = true;
 			
 			// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 			window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -36,6 +36,5 @@
 	};
 </script>
 <script type='text/javascript' src='https://inapp-es-community-17c5c13d2db.test1.pc-rnd.force.com/ESWSachinMIAW1662050733610/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-<!-- <script type='text/javascript' src='https://godwinlaw.stmfa.my.stm.site.com/ESWMIAWTest1665088916770/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
 </body>
 </html>
