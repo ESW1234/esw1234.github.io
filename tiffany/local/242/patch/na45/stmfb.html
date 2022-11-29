@@ -8,10 +8,18 @@
     <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
     <script type='text/javascript'>
+	    
+	    
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
+			
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("Received onEmbeddedMessagingReady event.");
+				embeddedservice_bootstrap.postchatAPI.setPostchatParameters({"cartValue": "$123", "userName": "test", "pageViews": "1"});
+				embeddedservice_bootstrap.postchatAPI.removePostchatParameters(["pageViews"]);
+			});
 
       			// scrt2URL: 'http://miaw.my.localhost.sfdcdev.salesforce-scrt.com'
 			embeddedservice_bootstrap.init(
