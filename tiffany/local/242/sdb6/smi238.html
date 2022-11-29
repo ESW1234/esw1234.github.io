@@ -2,42 +2,21 @@
   <!-- SDB6 - https://smi238.test1.lightning.pc-rnd.force.com/ - syoung@smi238.com / Salesforce1 --> 
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
-    <script type='text/javascript'>
+      <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
 			
-			
-			// scrt2URL: http://dot.my.localhost.sfdcdev.salesforce-scrt.com
-			embeddedservice_bootstrap.init(
-				'00DSG0000003vL7', // '00Dxx0000006Gpr',
-				'test_postchat', // 'eswlwr1',
-				'https://dot.my.localhost.sfdcdev.site.com:6101/ESWeswlwr11661356984093', // https://smi238.test1.my.pc-rnd.site.com/ESWtestpostchat1668608220141/s
-				{
-					scrt2URL: 'https://smi238.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<!-- <script type='text/javascript' src='https://dot.my.localhost.sfdcdev.site.com:6101/ESWeswlwr11661356984093/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
-<script type='text/javascript' src='https://dot.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-  </body>
-</html>
-
-
-<!-- <script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("Received onEmbeddedMessagingReady event.");
+				embeddedservice_bootstrap.postchatAPI.setPostchatParameters({"cartValue": "$123", "userName": "test", "pageViews": "1"});
+				embeddedservice_bootstrap.postchatAPI.removePostchatParameters(["pageViews"]);
+			});
 
 			embeddedservice_bootstrap.init(
 				'00DSG0000003vL7',
-				'test_postchat',
-				'https://smi238.test1.my.pc-rnd.site.com/ESWtestpostchat1668608220141/s',
+				'web_postchat_demo',
+				'https://miaw.my.localhost.sfdcdev.site.com:8117/ESWDefault1669384491832', // 'https://smi238.test1.my.pc-rnd.site.com/ESWwebpostchatdemo1669661330631/s',
 				{
 					scrt2URL: 'https://smi238.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -46,6 +25,8 @@
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
-</script>
-<script type='text/javascript' src='https://smi238.test1.my.pc-rnd.site.com/ESWtestpostchat1668608220141/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
---> 
+	</script>
+	<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:8117/ESWDefault1669384491832/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<!-- <script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:8117/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
+  </body>
+</html>
