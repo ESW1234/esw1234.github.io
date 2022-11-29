@@ -18,7 +18,12 @@
 				'MIAWDepWithQueue',
 				'https://miaw45bdigital.stmfb.stm.force.com/ESWMIAWDepWithQueue1669355864416',
 				{
-					scrt2URL: 'https://45bmiawname.my.stmfb.stm.salesforce-scrt.com'
+					scrt2URL: 'https://45bmiawname.my.stmfb.stm.salesforce-scrt.com',
+		                        embeddedServiceConfig: {
+			                 embeddedServiceMessagingChannel: {
+				          authMode: "UnAuth"
+			                                                  }
+		                                                }
 				}
 			);
 		} catch (err) {
