@@ -12,7 +12,10 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+                            console.log("Received onEmbeddedMessagingReady event!!!");
+                             embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"OS" : "OS_ValueHtml", "Browser" : "Browser_ValueHtml", "Location" : "Location_ValueHtml", "Age" : "Age_ValueHtml"});
+                       });
 			embeddedservice_bootstrap.init(
 				'00DS70000000W0Z',
 				'MIAWDepWithFlow',
