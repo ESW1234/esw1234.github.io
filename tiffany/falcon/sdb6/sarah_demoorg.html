@@ -6,6 +6,13 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("Received onEmbeddedMessagingReady event.");
+				
+				embeddedservice_bootstrap.postchatAPI.setPostchatParameters({"cartValue": "$123.99", "userName": "Tiffany", "pageViews": "1"});
+				embeddedservice_bootstrap.postchatAPI.removePostchatParameters(["pageViews"]);
+			});
+			
 			embeddedservice_bootstrap.init(
 				'00DSG0000003vL7',
 				'web_postchat_demo',
