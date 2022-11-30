@@ -4,7 +4,7 @@
  * Company Confidential
  */
 /**
- * Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms to avoid any effect on customer implementations. 
+ * Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms to avoid any effect on customer implementations.
  */
 (() => {
 	/**
@@ -37,6 +37,7 @@
 	const EMBEDDED_MESSAGING_ICON_CHAT = EMBEDDED_MESSAGING_ICON + "Chat";
 	const EMBEDDED_MESSAGING_ICON_CONTAINER = EMBEDDED_MESSAGING_ICON + "Container";
 	const EMBEDDED_MESSAGING_ICON_LOADING = EMBEDDED_MESSAGING_ICON + "Loading";
+	const EMBEDDED_MESSAGING_ICON_MINIMIZE = EMBEDDED_MESSAGING_ICON + "Minimize";
 
 	/**
 	 * Loading constants.
@@ -64,8 +65,28 @@
 	const EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME = "ESW_APP_HIDE_FILE_PREVIEW_FRAME";
 	const APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME = "ESW_APP_SEND_HIDDEN_PRECHAT_FIELDS";
 	const APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME = "ESW_APP_RECEIVE_HIDDEN_PRECHAT_FIELDS";
+	const APP_REQUEST_POSTCHAT_PARAMETERS_EVENT_NAME = "ESW_APP_SEND_POSTCHAT_PARAMETERS";
+	const APP_RECEIVE_POSTCHAT_PARAMETER_EVENT_NAME = "ESW_APP_RECEIVE_POSTCHAT_PARAMETERS";
 	const EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE = "EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE";
-	const EMBEDDED_MESSAGING_CLEAR_AUTH_SESSION_EVENT_NAME = "EMBEDDED_MESSAGING_CLEAR_AUTH_SESSION_EVENT";
+	const EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME = "EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT";
+	const EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME = "trapfocustolast";
+	const EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME = "EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT";
+	const EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME = "EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT";
+
+	/*********************************************************
+	 *		Embedded Messaging Public Events		*
+	 **********************************************************/
+	/**
+	 * Event dispatched after the client successfully completes bootstrap.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_READY_EVENT_NAME = "onEmbeddedMessagingReady";
+
+	/**
+	 * Event dispatched to notify the customer that the user identity token has expired.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME = "onEmbeddedMessagingIdentityTokenExpired";
 
 	const SALESFORCE_DOMAINS = [
 		// Used by dev, blitz, and prod instances
@@ -79,15 +100,15 @@
 
 		// Used by local environments and Enhanced Domains CDN
 		".site.com",
-		
+
 		// Enhanced domains on sandbox
 		".salesforce-sites.com"
 	];
 
 	/**
-	 * Authorization types supported by our application.
+	 * Identity token types supported by our application.
 	 */
-	const AUTHORIZATION_TYPE = {
+	const ID_TOKEN_TYPE = {
 		JWT: "JWT"
 	};
 
@@ -128,15 +149,21 @@
 	let hiddenPrechatFields = {};
 
 	/**
-	 * The identity token set by the customer for authenticating the current end user.
-	 * The token is set via the `embeddedservice_bootstrap.authAPI.setIdentityToken` method.
+	 * Internal property to track page-specific parameters set by a customer for appending query strings of the Post-Chat URL.
+	 * @type {Object} - f.e. { parameterName1: parameterValue2, parameterName2: parameterValue2 }
 	 */
-	let customerIdentityToken;
+	let postchatParameters = {};
+
+	/**
+	 * The identity token set by the customer for authenticating the current end user.
+	 * The token is set via the `embeddedservice_bootstrap.userVerificationAPI.setIdentityToken` method.
+	 */
+	let identityToken;
 
 	/**
 	 * This variable holds the top level storage key
 	 */
- 	let storageKey;
+	let storageKey;
 
 	/**
 	 * Internal property to track the current conversation id, which to be used in web storage
@@ -151,15 +178,17 @@
 	const STORAGE_KEYS = {
 		JWT: "JWT",
 		FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES",
+		HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS",
+		POSTCHAT_PARAMETERS: "POSTCHAT_PARAMETERS"
 	};
 
 	/**
-	 * Object consists of fallback web storage keys (i.e. previously used web storage key)
-	 * Only applicable to 240 and earlier release
+	 * Dictionary of keyboard code mappings for identifying keydown events.
 	 */
-	const STORAGE_FALLBACK_KEYS = {
-		JWT: () => embeddedservice_bootstrap.settings.orgId,
-		FAILED_MESSAGES: "ESW_FAILED_MESSAGES",
+	const KEY_CODES = {
+		"ENTER": "Enter",
+		"TAB": "Tab",
+		"SPACE": " "
 	};
 
 	/******************************************************
@@ -167,14 +196,6 @@
 		This is copied from embeddedService:webStorageUtils.js.
 		If you change this method, please update the corresponding method in webStorageUtils.js
 	******************************************************/
-	function isFallbackKeyTypeFunction(key) {
-		return typeof STORAGE_FALLBACK_KEYS[key] === "function";
-	}
-	
-	function getFallbackKeyFromExistingKey(key) {
-		return isFallbackKeyTypeFunction(key) ? STORAGE_FALLBACK_KEYS[key]() : STORAGE_FALLBACK_KEYS[key];
-	}
-
 	/**
 	 * Determine the type of web storage (local vs. session) to be used
 	 * It will prioritize localStorage if specify, otherwise sessionStorage
@@ -184,37 +205,46 @@
 	}
 
 	/**
-	 * Get the existing conversationId from web storage
-	 * We currently only support 1 active conversation per org
-	 * With this assumption valid, anything aside from storage keys will be the conversationId
+	 * Get conversationId from payload from web storage
 	 */
-	function getConversationIdFromWebStorage() {
-		let storageObjArray = [];
-		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
-			storageObjArray.push(localStorage.getItem(storageKey) || '{}');
-		}
-		if (embeddedservice_bootstrap.isSessionStorageAvailable) {
-			storageObjArray.push(sessionStorage.getItem(storageKey) || '{}');
-		}
-
-		for (const storageObj of storageObjArray) {
-			for (const key of Object.keys(JSON.parse(storageObj))) {
+	function getConversationIdFromPayload(payload) {
+		if (payload) {
+			for (const key of Object.keys(JSON.parse(payload))) {
 				if (!Object.hasOwn(STORAGE_KEYS, key)) {
 					return key;
 				}
 			}
 		}
+		return undefined;
 	}
 
 	/**
-	 * Initialize the web storage object for both localStorage & sessionStorage.
+	 * Get the existing conversationId from web storage or from provided payload
+	 * We currently only support 1 active conversation per org
+	 * With this assumption valid, anything aside from storage keys will be the conversationId
+	 */
+	function getConversationIdFromWebStorage() {
+		// Prioritize localStorage if available, use sessionStorage as a backup.
+		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+			return getConversationIdFromPayload(localStorage.getItem(storageKey) || '{}');
+		} else if (embeddedservice_bootstrap.isSessionStorageAvailable) {
+			return getConversationIdFromPayload(sessionStorage.getItem(storageKey) || '{}');
+		}
+		return undefined;
+	}
+
+	/**
+	 * Initialize the web storage object for both localStorage & sessionStorage if it doesn't already exist.
 	 */
 	function initializeWebStorage() {
+		storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+		conversationId = getConversationIdFromWebStorage() || generateUUID();
+
 		// Only create the structure if this is a new chat session
 		const storageObj = JSON.stringify({
 			[conversationId]: {}
 		});
-	
+
 		// Initialize the web storage object
 		if (embeddedservice_bootstrap.isLocalStorageAvailable && !localStorage.getItem(storageKey)) {
 			localStorage.setItem(storageKey, storageObj);
@@ -233,7 +263,6 @@
 	 */
 	function getItemInWebStorageByKey(key, inLocalStorage = true) {
 		let item;
-		const fallbackKey = getFallbackKeyFromExistingKey(key);
 		const storage = determineStorageType(inLocalStorage);
 
 		if (storage) {
@@ -242,12 +271,6 @@
 				item = storageObj[key];
 			} else {
 				item = storageObj[conversationId] && storageObj[conversationId][key];
-			}
-	
-			// Check fallback
-			if (!item && storage.getItem(fallbackKey)) {
-				item = storage.getItem(fallbackKey);
-				log(`${key} found in fallback location in localStorage`);
 			}
 		}
 		return item;
@@ -259,19 +282,20 @@
 	 */
 	function setItemInWebStorage(key, value, inLocalStorage = true) {
 		const storage = determineStorageType(inLocalStorage);
-	
+
 		if (storage) {
 			const storageObj = (storage.getItem(storageKey) && JSON.parse(storage.getItem(storageKey))) || {};
+
 			// Setting JWT at top level so other conversations from same org can access the JWT
 			if (key === STORAGE_KEYS.JWT) {
 				storageObj[key] = value;
 			} else {
-				// Storage for this deployment does not exist yet,
+				// Storage for this conversations does not exist yet,
 				// create a new one without overwriting storage for other conversations
 				if (!storageObj[conversationId]) {
 					storageObj[conversationId] = {};
 				}
-	
+
 				storageObj[conversationId][key] = value;
 			}
 			storage.setItem(storageKey, JSON.stringify(storageObj));
@@ -284,8 +308,6 @@
 	 * As well as item that was originally stored in fallback location
 	 */
 	function removeItemInWebStorage(key) {
-		const fallbackKey = getFallbackKeyFromExistingKey(key);
-	
 		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
 			const storageObj = JSON.parse(localStorage.getItem(storageKey)) || {};
 			// Remove top level stored item (e.g. JWT, conversationId)
@@ -294,9 +316,6 @@
 				delete storageObj[conversationId][key];
 			}
 			localStorage.setItem(storageKey, JSON.stringify(storageObj));
-	
-			// remove item stored in fallback location
-			localStorage.removeItem(fallbackKey);
 		}
 		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
 			const storageObj = JSON.parse(sessionStorage.getItem(storageKey)) || {};
@@ -306,9 +325,6 @@
 				delete storageObj[conversationId][key];
 			}
 			sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
-	
-			// remove item stored in fallback location
-			sessionStorage.removeItem(fallbackKey);
 		}
 
 		log(`${key} removed from web storage`);
@@ -318,83 +334,70 @@
 	 * Clear all client side stored item in both localStorage & sessionStorage as well as at the fallback location
 	 */
 	function clearWebStorage() {
-		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
+		// Checking if current in-memory conversationId exists before deleting to ensure we don't wipe data from another conversation
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && conversationId === getConversationIdFromPayload(localStorage.getItem(storageKey))) {
 			localStorage.removeItem(storageKey);
 		}
-		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
+		if (embeddedservice_bootstrap.isSessionStorageAvailable && conversationId === getConversationIdFromPayload(sessionStorage.getItem(storageKey))) {
 			sessionStorage.removeItem(storageKey);
 		}
-
-		// Clear all items stored in fallback location
-		Object.keys(STORAGE_FALLBACK_KEYS).forEach(key => {
-			if (isFallbackKeyTypeFunction(key)) {
-				key = STORAGE_FALLBACK_KEYS[key]();
-			}
-			if (embeddedservice_bootstrap.isLocalStorageAvailable) {
-				localStorage.removeItem(key);
-			}
-			if (embeddedservice_bootstrap.isSessionStorageAvailable) {
-				sessionStorage.removeItem(key);
-			}
-		});
 
 		log(`web storage cleared`);
 	}
 
 	/**
-	 * Update the conversation id in web storage and in-memory
-	 * @param {string} updatedConversationId 
+	 * Clear all in-memory data tracked on the client side, for the current conversation.
 	 */
-	function updateConversationIdInWebStorage(updatedConversationId) {
-		if (embeddedservice_bootstrap.isSessionStorageAvailable && sessionStorage.getItem(storageKey)) {
-			const storageObj = JSON.parse(sessionStorage.getItem(storageKey));
-			if (storageObj[conversationId]) {
-				storageObj[updatedConversationId] = storageObj[conversationId];
-				delete storageObj[conversationId];
+	function clearInMemoryData() {
+		// Reset in-memory hidden prechat fields.
+		hiddenPrechatFields = {};
 
-				sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
+		// Reset identityToken
+		identityToken = undefined;
 
-				log(`conversationId updated in sessionStorage`);
-			}
-		}
-
-		if (embeddedservice_bootstrap.isLocalStorageAvailable && localStorage.getItem(storageKey)) {
-			const storageObj = JSON.parse(localStorage.getItem(storageKey));
-			if (storageObj[conversationId]) {
-				storageObj[updatedConversationId] = storageObj[conversationId];
-				delete storageObj[conversationId];
-
-				localStorage.setItem(storageKey, JSON.stringify(storageObj));
-
-				log(`conversationId updated in localStorage`);
-			}
-		}
-
-		// Finally, update in-memory conversation id
-		conversationId = updatedConversationId;
+		log(`Cleared in-memory data.`);
 	}
 
 	/**
-	 * Handle initializing conversationId, before passing it to the Iframe
+	 * Update the conversation id in web storage and in-memory
+	 * @param {string} updatedConversationId
 	 */
-	function initializeConversationId() {
-		storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
-		// Check for existing conversation id or generate a new one
-		conversationId = getConversationIdFromWebStorage();
+	function updateConversationIdInWebStorage(updatedConversationId) {
+		if (conversationId !== updatedConversationId) {
+			if (embeddedservice_bootstrap.isSessionStorageAvailable) {
+				const storageObj = sessionStorage.getItem(storageKey) ? JSON.parse(sessionStorage.getItem(storageKey)) : {};
+				if (storageObj[conversationId]) {
+					storageObj[updatedConversationId] = storageObj[conversationId];
+					delete storageObj[conversationId];
+				} else {
+					storageObj[updatedConversationId] = {};
+				}
+				sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
+				log(`conversationId updated in sessionStorage`);
+			}
 
-		if (!conversationId) {
-			log("No current conversationId found, generating a new one");
-			conversationId = generateUUID();
-			initializeWebStorage();
+			if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+				const storageObj = localStorage.getItem(storageKey) ? JSON.parse(localStorage.getItem(storageKey)) : {};
+				if (storageObj[conversationId]) {
+					storageObj[updatedConversationId] = storageObj[conversationId];
+					delete storageObj[conversationId];
+				} else {
+					storageObj[updatedConversationId] = {};
+				}
+				localStorage.setItem(storageKey, JSON.stringify(storageObj));
+				log(`conversationId updated in localStorage`);
+			}
+
+			conversationId = updatedConversationId;
 		}
 	}
 
   	/**
-	 * Resolve function for the promise returned by the embeddedservice_bootstrap.authAPI.clearAuthorizationSession() API.
-	 * Tracking the function as an internal property allows us to resolve the promise outside clearAuthorizationSession().
+	 * Resolve function for the promise returned by the embeddedservice_bootstrap.userVerificationAPI.clearSession() API.
+	 * Tracking the function as an internal property allows us to resolve the promise outside clearSession().
 	 * @type {function}
 	 */
-	let clearAuthSessionPromiseResolve;
+	let clearUserSessionPromiseResolve;
 
 	/**
 	 * Merge a key-value mapping into the setting object, such that the provided
@@ -693,14 +696,14 @@
 			error(`Expected to receive object, instead received: ${failedMessages}.`);
 			return;
 		}
-	
+
 		setItemInWebStorage(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES, failedMessages, false);
 	}
 
 	/**
 	 * Prepares a final version of configuration response object to be sent to the iframe window.
 	 * Note: IA-Message Jwt, Failed Conversation Messages, Hidden Prechat values and Labels are not stored on the original Configuration Settings object.
-	 * 
+	 *
 	 * @return {object}
 	 */
 	function prepareConfigurationDataForIframeWindow() {
@@ -712,7 +715,7 @@
 
 		const finalConfigurationData = Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
 			jwt: iaMessageJwt,
-			customerIdentityToken: customerIdentityToken,
+			identityToken: identityToken,
 			failedMessages: failedConversationMessages,
 			routingAttributes: conversationRoutingAttributes,
 			conversationId,
@@ -808,9 +811,14 @@
 							 */
 							sendPostMessageToIframeWindow(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
 							break;
+						case APP_REQUEST_POSTCHAT_PARAMETERS_EVENT_NAME:
+							sendPostMessageToIframeWindow(APP_RECEIVE_POSTCHAT_PARAMETER_EVENT_NAME, postchatParameters);
+							break;
 						case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
-							// TODO: Update web storage key
 							updateConversationIdInWebStorage(e.data.data);
+							break;
+						case EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME:
+							handleIdentityTokenExpiry();
 							break;
 						default:
 							warning("Unrecognized event name: " + e.data.method);
@@ -834,9 +842,20 @@
 			if (e && e.key && e.key === storageKey) {
 				// Handle clear web storage event
 				if (e.newValue === null) {
-					// If we're in Auth mode, clear authorization session for current tab/window.
+					// If we're in Auth mode, clear user session for current tab/window.
 					if (getAuthMode() === AUTH_MODE.AUTH) {
-						handleClearAuthorizationSession(false);
+						handleClearUserSession(false);
+					}
+				} else {
+					// Handle conversationId change, if new value is non-null and different than old value
+					const oldConversationId = getConversationIdFromPayload(e.oldValue);
+					const newConversationId = getConversationIdFromPayload(e.newValue);
+
+					// Updating only when both old & new id is non-null
+					// So that it doesn't overwrite data on other tabs after reset
+					if (oldConversationId && newConversationId && oldConversationId !== newConversationId) {
+						log("ConversationId change detected in web storage");
+						updateConversationIdInWebStorage(newConversationId);
 					}
 				}
 			}
@@ -846,14 +865,10 @@
 	/**
 	 * Fires an event 'onEmbeddedMessagingReady' to the host (i.e. customer) window to indicate the host that bootstrap initialization is complete.
 	 */
-	function emitEmbeddedMessagingReadyEvent() {
+	 EmbeddedServiceBootstrap.prototype.emitEmbeddedMessagingReadyEvent = function emitEmbeddedMessagingReadyEvent() {
 		hasEmbeddedMessagingReadyEventFired = true;
 		try {
-			window.dispatchEvent(new CustomEvent("onEmbeddedMessagingReady"), {
-				detail: {
-					bubbles: true
-				}
-			});
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_READY_EVENT_NAME);
 		} catch(err) {
 			hasEmbeddedMessagingReadyEventFired = false;
 			error(`Something went wrong in firing onEmbeddedMessagingReady event ${err}.`);
@@ -861,7 +876,23 @@
 	}
 
 	/**
-	 * Updates the title notification on new messages received when page is backgrounded 
+	 * Dispatches a custom event with the given name to the host window. Throws an error if something goes wrong while
+	 * dispatching the event.
+	 * @param eventName - Name of event to dispatch.
+	 */
+	function dispatchEventToHost(eventName) {
+		if (!eventName) {
+			throw new Error(`Expected an eventName parameter with a string value. Instead received ${eventName}.`);
+		}
+		try {
+			window.dispatchEvent(new CustomEvent(eventName));
+		} catch(err) {
+			throw new Error("Something went wrong while dispatching the event " + eventName + ":" + err);
+		}
+	}
+
+	/**
+	 * Updates the title notification on new messages received when page is backgrounded
 	 * - If data is defined, then set interval to blink between 2 notifications
 	 * - Otherwise, clear the interval and reset to default page title
 	 */
@@ -976,6 +1007,9 @@
 	function validateSettings() {
 		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig) throw new Error("Embedded Service Config settings not present in configuration response.");
 		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig.name) throw new Error("Embedded Service Config developer name not present in configuration response.");
+		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel) throw new Error("Embedded Service Messaging Channel settings not present in configuration response.");
+		if(!embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode) throw new Error("Auth mode setting not present in configuration response.");
+		if(!Object.values(AUTH_MODE).includes(embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode)) throw new Error("Auth mode in configuration response is invalid.");
 	}
 
 	/**
@@ -984,7 +1018,7 @@
 	function loadCSS(url) {
 
 		return new Promise((resolve, reject) => {
-			let baseURL = "https://esw1234.github.io/godwin";
+			let baseURL = getSiteURL();
 			let link = document.createElement("link");
 
 			link.href = baseURL + "/assets/styles/bootstrap" + (embeddedservice_bootstrap.settings.devMode ? "" : ".min") + ".css";
@@ -1244,7 +1278,6 @@
 		// eslint-disable-next-line no-negated-condition
 		if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
 			setLoadingStatusForButton();
-			initializeConversationId();
 
 			try {
 				// Generate markup for File Preview frame.
@@ -1270,11 +1303,19 @@
 	 * @param evt
 	 */
 	function handleKeyDown(evt) {
+		let frame = getEmbeddedMessagingFrame();
+
 		if (evt && evt.key) {
-			if (evt.key === " " || evt.key === "Enter") {
+			if (evt.key === KEY_CODES.SPACE || evt.key === KEY_CODES.ENTER) {
 				evt.preventDefault();
 				// SPACE or ENTER fires onclick handler for the button.
 				handleClick();
+			} else if (evt.key === KEY_CODES.TAB && evt.shiftKey) {
+				if (frame && frame.classList && frame.classList.contains("isMaximized")) {
+					// SHIFT + TAB: Trap focus to last element in client.
+					evt.preventDefault();
+					sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME);
+				}
 			}
 		}
 	}
@@ -1308,7 +1349,7 @@
 		} else {
 			// Reset the Conversation button once the aura application is loaded in the iframe. Ifame/Chat window is rendered on top of FAB.
 			iconContainer.removeChild(loadingSpinner);
-			chatIcon.style.display = "block";
+			chatIcon.style.display = "none";
 			button.disabled = false;
 			button.classList.remove(CONVERSATION_BUTTON_LOADING_CLASS);
 			button.classList.add(CONVERSATION_BUTTON_LOADED_CLASS);
@@ -1318,22 +1359,27 @@
 
 	/**
 	 * Handles cleanup after closing the client, i.e after closing a conversation in Unauth mode OR
-	 * clearing the authorization session in Auth mode.
+	 * clearing the user session in Auth mode.
 	 * This method resets the client to the initial state (State Zero) for Auth/Unauth modes.
 	 */
 	function handleResetClientToInitialState() {
 		const iframe = getEmbeddedMessagingFrame();
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
+		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
+		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
 
 		try {
 			// Clear existing items stored in current conversation
 			clearWebStorage();
-			// Reset conversationId
-			conversationId = undefined;
+			// Re-init web storage, for subsequent conversations
+			initializeWebStorage();
 		} catch(err) {
 			error("Error on clearing web storage for the previously ended conversation: " + err);
 		}
+
+		// Clear existing items stored in current conversation from in-memory
+		clearInMemoryData();
 
 		if(iframe) {
 			// Remove the iframe from DOM. This should take care of clearing Conversation Entries as well.
@@ -1377,12 +1423,20 @@
 
 				// [A11Y] Focus on static button after container is closed.
 				button.focus();
+
+				// Remove minimize icon.
+				if(minimizeIcon) {
+					minimizeIcon.remove();
+				}
+
+				// Display the chat icon.
+				chatIcon.style.display = "block";
 			}
 		} else {
 			warning("Embedded Messaging static button not available for resetting the client to initial state.");
 		}
 
-		// Resolve clearAuthorizationSession() promise, if we are in Auth mode.
+		// Resolve clearSession() promise, if we are in Auth mode.
 		if (getAuthMode() === AUTH_MODE.AUTH) {
 			resolveClearAuthSessionPromise();
 		}
@@ -1473,15 +1527,15 @@
 		return topContainerElement;
 	}
 
-	/*********************************************************
-	*		Embedded Messaging Authorization Public API      *
-	**********************************************************/
+	/*************************************************************
+	*		Embedded Messaging User Verification Public API      *
+	**************************************************************/
 	/**
 	 * Parameters for the identity token data object passed in via 
-	 * embeddedservice_bootstrap.authAPI.setIdentityToken API call.
+	 * embeddedservice_bootstrap.userVerificationAPI.setIdentityToken API call.
 	 */
 	const IDENTITY_TOKEN_PARAM = {
-		AUTH_TYPE: "authorizationType",
+		ID_TOKEN_TYPE: "identityTokenType",
 		ID_TOKEN: "identityToken"
 	};
 
@@ -1490,77 +1544,94 @@
 	 */
 	const AUTH_MODE = {
 		AUTH: "Auth",
-		UNAUTH: "Unauth"
+		UNAUTH: "UnAuth"
 	}
 
 	/**
-	 * Embedded Messaging Authorization exposed in window.embeddedservice_bootstrap.authAPI 
+	 * Embedded Messaging User Verification exposed in window.embeddedservice_bootstrap.userVerificationAPI 
 	 * for managing authorized conversation sessions.
 	 * @class
 	 */
-	function EmbeddedMessagingAuthorization() {}
+	function EmbeddedMessagingUserVerification() {}
 
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE
-	 * Auth API method for setting the identity token used to authorize the end user's session.
-	 * For 242, the only authorization type supported is JWT-based authorization.
+	 * User verification API method for setting the identity token used to authorize the end user's session.
+	 * This API is used to set the initial identity token as well as any subsequent tokens generated by the customer
+	 * to extend the end user's session.
+	 *
+	 * For 242, only JWT-based identity tokens are accepted.
 	 * @param {Object} identityTokenData - The customer-supplied identity token data object.
-	 * Per the authorization contract, the object contains the following fields:
-	 * 		- {String} authorizationType : the authorization scheme of the identity token.
+	 * Per the user verification contract, the object contains the following fields:
+	 * 		- {String} identityTokenType : the verification scheme of the identity token.
 	 *      - {Object} identityToken : the identity token used to authorize the user session.
 	 * @return {Boolean} true if identity token provided is valid and false otherwise.
 	 */
-	EmbeddedMessagingAuthorization.prototype.setIdentityToken = function setIdentityToken(identityTokenData) {
-		const authorizationType = identityTokenData[IDENTITY_TOKEN_PARAM.AUTH_TYPE];
-		const token = identityTokenData[IDENTITY_TOKEN_PARAM.ID_TOKEN];
+	EmbeddedMessagingUserVerification.prototype.setIdentityToken = function setIdentityToken(identityTokenData) {
+		let identityTokenType;
+		let token;
 
 		// Cannot be invoked before `afterInit` event has been emitted.
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+			error(`Method can’t be invoked before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
 		// Check whether we are in authorization mode.
 		if (getAuthMode() !== AUTH_MODE.AUTH) {
-			error(`Authorization mode isn't enabled in the Messaging Channel setup.`);
+			error(`User Verification isn’t enabled in Messaging Settings.`);
 			return false;
 		}
 
-		// Only JWT-based authorization type supported in 242.
-		if (typeof authorizationType !== "string" || authorizationType.trim().toUpperCase() !== AUTHORIZATION_TYPE.JWT) {
-			error(`Unsupported authorization type. Only JWT-based identity tokens are supported.`);
+		// Perform validation on the identity token data supplied.
+		if (!validateIdentityTokenData(identityTokenData)) {
+			error(`Invalid identity token parameter passed into the setIdentityToken method. Specify a valid object containing the token data.`);
+			return false;
+		}
+
+		// Set the identityTokenType and token fields.
+		identityTokenType = identityTokenData[IDENTITY_TOKEN_PARAM.ID_TOKEN_TYPE];
+		token = identityTokenData[IDENTITY_TOKEN_PARAM.ID_TOKEN];
+
+		// Only JWT-based identity tokens are supported in 242.
+		if (typeof identityTokenType !== "string" || identityTokenType.trim().toUpperCase() !== ID_TOKEN_TYPE.JWT) {
+			error(`Unsupported identity token. Only JWT-based identity tokens are supported.`);
 			return false;
 		}
 
 		// Perform validation on the identity token received.
-		if (!validateIdentityToken(authorizationType, token)) {
+		if (!validateIdentityToken(identityTokenType, token)) {
 			error(`Invalid identity token passed into the setIdentityToken method.`);
 			return false;
 		}
-		
-		// Store customer identity token in memory.
-		customerIdentityToken = token;
 
-		// Render conversation button if identity token passes basic validation.
-		embeddedservice_bootstrap.generateMarkup();
+		// Store (or replace existing) customer identity token in memory.
+		identityToken = token;
 
-		// Bootstrap if an authorized session already exists.
-		bootstrapIfSessionExists();
+		if (getEmbeddedMessagingFrame()) {
+			// If iframe is initialized, replace the identity token passed down during initialization.
+			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
+		} else if (!getEmbeddedMessagingConversationButton()) {
+			// Render conversation button if identity token passes basic validation.
+			embeddedservice_bootstrap.generateMarkup();
+			// Bootstrap if an authorized session already exists.
+			bootstrapIfSessionExists();
+		}
 
 		return true;
 	}
 
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE
-	 * Auth API method for clearing the current user's authorization session.
-	 * Per the authorization contract, the customer is responsible for invoking this API method when
+	 * User verification API method for clearing the current user's session.
+	 * Per the user verification contract, the customer is responsible for invoking this API method when
 	 * 1) the end-user logs out of the current session or
 	 * 2) the current session expires.
 	 * @return {Promise} - Promise that resolves after a session is successfully cleared OR is rejected with relevant error message.
 	 */
-	EmbeddedMessagingAuthorization.prototype.clearAuthorizationSession = function clearAuthorizationSession() {
+	EmbeddedMessagingUserVerification.prototype.clearSession = function clearSession() {
 		return new Promise((resolve, reject) => {
-			clearAuthSessionPromiseResolve = resolve;
+			clearUserSessionPromiseResolve = resolve;
 
 			// Cannot be invoked before `afterInit` event has been emitted.
 			if (!hasEmbeddedMessagingReadyEventFired) {
@@ -1570,41 +1641,66 @@
 
 			// Check whether we are in authorization mode.
 			if (getAuthMode() !== AUTH_MODE.AUTH) {
-				reject(`Authorization mode isn't enabled in the Messaging Channel setup.`);
+				reject(`User Verification isn’t enabled in Messaging Settings.`);
 				return;
 			}
 
-			handleClearAuthorizationSession(true);
+			handleClearUserSession(true);
 		});
 	}
 
 	/**
-	 * Clear authorization session in the same tab/window.
+	 * Clear user session in the same tab/window.
 	 * This method is called by -
-	 * 1. embeddedservice_bootstrap.authAPI.clearAuthorizationSession() API to clear authorization session in primary tab.
-	 * 2. Storage event handler to clean authorization session across secondary tabs.
+	 * 1. embeddedservice_bootstrap.userVerificationAPI.clearSession() API to clear user session in primary tab.
+	 * 2. Storage event handler to clear user session across secondary tabs.
 	 * @param shouldRevokeJwt - Whether to revoke the ia-message jwt.
 	 */
-	function handleClearAuthorizationSession(shouldRevokeJwt) {
+	function handleClearUserSession(shouldRevokeJwt) {
 		const iframe = getEmbeddedMessagingFrame();
 		if (iframe) {
-			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_AUTH_SESSION_EVENT_NAME, shouldRevokeJwt);
+			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
 		} else {
 			handleResetClientToInitialState();
 		}
 	}
 
 	/**
+	 * Handle customer identity token expiry. This method does the following -
+	 * 1. Dispatch "onEmbeddedMessagingTokenExpired" event to notify the customer that their token has expired.
+	 * 2. Error log token expiry.
+	 * 3. Clear user session in all tabs.
+	 */
+	function handleIdentityTokenExpiry() {
+		if (getAuthMode() !== AUTH_MODE.AUTH) {
+			warning(`User Verification isn’t enabled in Messaging Settings.`);
+			return;
+		}
+		dispatchEventToHost(ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME);
+		error(`Identity token has expired. Closing the chat window and clearing the user session in all tabs.`);
+		handleClearUserSession(false);
+	}
+
+	/**
+	 * Validation method for customer supplied identity token data to the setIdentityToken call.
+	 * @param {Object} identityTokenData - The identity token data parameter to be validated.
+	 * @returns true if identity token data parameter is well formed and false otherwise.
+	 */
+	function validateIdentityTokenData(identityTokenData) {
+		return identityTokenData && identityTokenData !== null && typeof identityTokenData === "object";
+	}
+
+	/**
 	 * Validation method for customer supplied identity token.
-	 * For 242, the only authorization scheme supported is JWT-based authorization.
+	 * For 242, the only verification scheme supported is JWT-based verification.
 	 * @param {Object} identityToken 
 	 * @returns true if identity token is valid and false otherwise.
 	 */
-	function validateIdentityToken(authorizationType, identityToken) {
+	function validateIdentityToken(identityTokenType, identityToken) {
 		let isValid = false;
 
-		switch(authorizationType) {
-			case AUTHORIZATION_TYPE.JWT:
+		switch(identityTokenType) {
+			case ID_TOKEN_TYPE.JWT:
 				isValid = validateJWT(identityToken);
 				break;
 			default:
@@ -1645,7 +1741,7 @@
 			jwtPayload = parseJWT(jwt);
 
 			// Validate that the JWT has not expired.
-			// Per RFC 7519, a JWT is valid if the current time (in seconds) is before 
+			// Per RFC 7519, a JWT is valid if the current time (in seconds) is before
 			// the `exp` claim value.
 			// See: https://www.rfc-editor.org/rfc/rfc7519#section-4.1.4
 			isValid = Math.floor(Date.now()/1000) < jwtPayload.exp;
@@ -1667,7 +1763,7 @@
 	/**
 	 * Helper function for determining the authorization mode set in Messaging Channel configuration.
 	 * 
-	 * @returns {String} The authorization mode ("Auth" / "Unauth"). Defaults to "Unauth" if the setting is not found.
+	 * @returns {String} The authorization mode ("Auth" / "UnAuth").
 	 */
 	function getAuthMode() {
 		let authMode = null;
@@ -1675,30 +1771,32 @@
 		try {
 			authMode = embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode;
 		} catch (e) {
-			log(`Failed to retrieve auth mode flag: ${e.message}`);
+			error(`Failed to retrieve auth mode flag: ${e.message}`);
 		}
-		// TODO: Remove Unauth default when W-11618286 is complete
-		return authMode || AUTH_MODE.UNAUTH;
+		return authMode;
 	}
 
 	/**
-	 * Helper function to resolve the promise returned by embeddedservice_bootstrap.authAPI.clearAuthorizationSession(), if it exists.
+	 * Helper function to resolve the promise returned by embeddedservice_bootstrap.userVerificationAPI.clearSession(), if it exists.
 	 */
 	function resolveClearAuthSessionPromise() {
-		if (clearAuthSessionPromiseResolve && typeof clearAuthSessionPromiseResolve === "function") {
-			clearAuthSessionPromiseResolve();
-			clearAuthSessionPromiseResolve = undefined;
+		if (clearUserSessionPromiseResolve && typeof clearUserSessionPromiseResolve === "function") {
+			clearUserSessionPromiseResolve();
+			clearUserSessionPromiseResolve = undefined;
 		}
 	}
 
 	/****************************************
 	 *		    HIDDEN PRECHAT API          *
-	/****************************************/	
+	/****************************************/
 	/* Hidden Prechat functions exposed in window.embeddedservice_bootstrap.prechatAPI for setting/updating and removing hidden prechat fields.
 	 *
 	 * @class
 	 */
-	function EmbeddedMessagingPrechat() {}
+	function EmbeddedMessagingPrechat() {
+		// Restore/Re-Initialize Hidden Prechat fields property on page reload from Session Storage.
+		hiddenPrechatFields = getItemInWebStorageByKey(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, false) || {};
+	}
 
 	/**
 	 * Validates the Hidden Prechat fields from the configuration response object.
@@ -1775,7 +1873,7 @@
 	 * EXTERNAL API - DO NOT CHANGE SHAPE
 	 * A publicly exposed api for the host (i.e. customer) to invoke and set/update Hidden Prechat fields.
 	 * Sets a new Hidden Prechat field or updates an existing field with the passed in value.
-	 * 
+	 *
 	 * @param {object} hiddenFields - an object (in the form of a Map) of key-value pairs (e.g. { HiddenPrechatFieldName1 : HiddenPrechatFieldValue1, HiddenPrechatFieldName2 : HiddenPrechatFieldValue2 }) of Hidden Prechat fields as set by the host.
 	 */
 	EmbeddedMessagingPrechat.prototype.setHiddenPrechatFields = function setHiddenPrechatFields(hiddenFields) {
@@ -1787,6 +1885,8 @@
 			for (const [fieldName, fieldValue] of Object.entries(hiddenFields)) {
 				if (validateHiddenPrechatField(fieldName, fieldValue)) {
 					hiddenPrechatFields[fieldName] = fieldValue;
+					// Store/Update Session storage with Hidden Prechat fields object for a valid field.
+					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false);
 					// Log successful update action on Hidden Prechat fields for debugging purposes.
 					log(`[setHiddenPrechatFields] Successfully updated Hidden Pre-Chat field ${fieldName}.`);
 				}
@@ -1800,7 +1900,7 @@
 	 * EXTERNAL API - DO NOT CHANGE SHAPE
 	 * A publicly exposed api for the host (i.e. customer) to invoke and remove Hidden Prechat fields.
 	 * Removes an existing Hidden Prechat field with the passed in key name.
-	 * 
+	 *
 	 * @param {object} hiddenFields - an object (in the form of an Array) of Hidden Prechat field names (e.g. [ HiddenPrechatFieldName1, HiddenPrechatFieldName2 ]) to be removed/deleted.
 	 */
 	EmbeddedMessagingPrechat.prototype.removeHiddenPrechatFields = function removeHiddenPrechatFields(hiddenFields) {
@@ -1812,6 +1912,8 @@
 			hiddenFields.forEach(function(fieldName) {
 				if (hiddenPrechatFields.hasOwnProperty(fieldName)) {
 					delete hiddenPrechatFields[fieldName];
+					// Update Session storage with Hidden Prechat fields object for a valid field.
+					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false);
 					// Log successful remove action on Hidden Prechat fields for debugging purposes.
 					log(`[removeHiddenPrechatFields] Successfully removed Hidden Pre-Chat field ${fieldName}.`);
 				} else {
@@ -1820,6 +1922,113 @@
 			});
 		} else {
 			error(`When calling removeHiddenPrechatFields, you must pass in an array of fields.`);
+		}
+	};
+
+	/****************************************
+	 * .           POSTCHAT API             *
+	/****************************************/
+	/**
+	 * Post-Chat API methods exposed in window.embeddedservice_bootstrap.postchatAPI
+	 * for setting/updating/removing post-chat parameters on the host domain.
+	 *
+	 * @class
+	 */
+	function EmbeddedMessagingPostchat() {
+		// Restore post-chat API parameter map on page reload from session storage.
+		postchatParameters = getItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, false) || {};
+	}
+
+	/**
+	 * Determine whether the client is ready for the host (customer) to invoke public Post-Chat API methods.
+	 *
+	 * @param {String} caller - Name of caller method which invokes `shouldProcessPostchatParametersFromHost`
+	 * @returns {Boolean} true if client is ready for host to update/remove post-chat page parameters. Otherwise, false.
+	 */
+	function shouldProcessPostchatParametersFromHost(caller) {
+		if (!hasEmbeddedMessagingReadyEventFired) {
+			error(`[${caller}] Cannot invoke Post-Chat API before the onEmbeddedMessagingReady event is fired.`);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Validate a post-chat page query string parameter set by host via the `setPostchatParameters` API method
+	 * @param {String} parameterName - Key of post-chat page parameter provided by host.
+	 * @param {String} parameterValue - Value of post-chat page parameter provided by host.
+	 * @returns {Boolean} Returns true if parameter key and/or value are valid. Otherwise, returns false.
+	 */
+	function validatePostchatParameter(parameterName, parameterValue) {
+		if (typeof parameterName !== "string" || parameterName.trim().length < 1) {
+			error(`Expected a non-empty string for the parameter name, but received ${typeof parameterName}`);
+			return false;
+		}
+
+		if (typeof parameterValue !== "string" || parameterValue.trim().length < 1) {
+			error(`Expected a non-empty string for the parameter value, but received ${typeof parameterValue}`);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly exposed API for the host (i.e. customer) to set/update post-chat page parameters.
+	 * Sets a new parameter (key-value pair) or updates an existing parameter with the same key to a new value.
+	 *
+	 * @param {Object} pageParameters - Map containing key-value pairs of query string parameters as invoked by the host.
+	 * (e.g. { parameterName1: parameterValue2, parameterName2: parameterValue2 })
+	 */
+	EmbeddedMessagingPostchat.prototype.setPostchatParameters = function setPostchatParameters(pageParameters) {
+		if (!shouldProcessPostchatParametersFromHost("setPostchatParameters")) {
+			return;
+		}
+
+		if (pageParameters && typeof pageParameters === "object") {
+			for (const [paramKey, paramValue] of Object.entries(pageParameters)) {
+				// Validate parameters are valid non-empty strings.
+				if (validatePostchatParameter(paramKey, paramValue)) {
+					postchatParameters[paramKey] = paramValue;
+					setItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
+					// Log successfully updated post-chat parameters for debugging purposes.
+					log(`[setPostchatParameters] Successfully updated post-chat parameter ${paramKey}`);
+				} else {
+					warning(`[setPostchatParameters] Failed to validate post-chat parameter ${paramKey}`)
+				}
+			}
+		} else {
+			error(`[setPostchatParameters] Must pass in an object of parameters as key-value pairs.`);
+		}
+	};
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly exposed API for the host (i.e. customer) to remove post-chat page parameters.
+	 * Removes an existing parameter with the specified key.
+	 *
+	 * @param {Array} pageParameters - Array containing parameter names/keys (e.g. [ parameterName1, parameterName2 ])
+	 */
+	EmbeddedMessagingPostchat.prototype.removePostchatParameters = function removePostchatParameters(pageParameters) {
+		if (!shouldProcessPostchatParametersFromHost("removePostchatParameters")) {
+			return;
+		}
+
+		if (pageParameters && Array.isArray(pageParameters)) {
+			pageParameters.forEach(function(paramKey) {
+				if (postchatParameters.hasOwnProperty(paramKey)) {
+					delete postchatParameters[paramKey];
+					setItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
+					// Log successfully removed post-chat page parameter for debugging purposes.
+					log(`[removePostchatParameters] Successfully removed post-chat parameter ${paramKey}`);
+				} else {
+					warning(`[removePostchatParameters] Failed to validate post-chat parameter ${paramKey}`);
+				}
+			});
+		} else {
+			error(`[removePostchatParameters] Must pass in an array of parameter names.`);
 		}
 	};
 
@@ -1845,6 +2054,9 @@
 		Object.defineProperties(DEFAULT_ICONS, {
 			CHAT: {
 				value: "M50 0c27.614 0 50 20.52 50 45.833S77.614 91.667 50 91.667c-8.458 0-16.425-1.925-23.409-5.323-13.33 6.973-21.083 9.839-23.258 8.595-2.064-1.18.114-8.436 6.534-21.767C3.667 65.54 0 56.08 0 45.833 0 20.52 22.386 0 50 0zm4.583 61.667H22.917a2.917 2.917 0 000 5.833h31.666a2.917 2.917 0 000-5.833zm12.5-15.834H22.917a2.917 2.917 0 000 5.834h44.166a2.917 2.917 0 000-5.834zM79.583 30H22.917a2.917 2.917 0 000 5.833h56.666a2.917 2.917 0 000-5.833z"
+			},
+			MINIMIZE_MODAL: {
+				value: "M47.6,17.8L27.1,38.5c-0.6,0.6-1.6,0.6-2.2,0L4.4,17.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2 c0.6-0.6,1.6-0.6,2.2,0l16.1,16.3c0.6,0.6,1.6,0.6,2.2,0l16.1-16.2c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2C48.1,16.3,48.1,17.2,47.6,17.8z"
 			}
 		});
 
@@ -1921,7 +2133,7 @@
 	/**
 	 * Generate markup and render on parent page.
 	 */
-	 EmbeddedServiceBootstrap.prototype.generateMarkup = function generateMarkup() {
+	EmbeddedServiceBootstrap.prototype.generateMarkup = function generateMarkup() {
 		const markupFragment = document.createDocumentFragment();
 		const topContainer = createTopContainer();
 		const conversationButton = createConversationButton();
@@ -1939,7 +2151,7 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.createFilePreviewFrame = function createFilePreviewFrame() {
 		const filePreviewFrame = document.createElement("iframe");
-		const filePreviewFrameUrl = `https://esw1234.github.io/godwin/assets/htdocs/filepreview${(embeddedservice_bootstrap.settings.devMode ? "" : ".min")}.html?parent_domain=${window.location.origin}`;
+		const filePreviewFrameUrl = `${getSiteURL()}/assets/htdocs/filepreview${(embeddedservice_bootstrap.settings.devMode ? "" : ".min")}.html?parent_domain=${window.location.origin}`;
 
 		filePreviewFrame.classList.add(FILE_PREVIEW_IFRAME_NAME);
 		filePreviewFrame.id = FILE_PREVIEW_IFRAME_NAME;
@@ -1952,7 +2164,7 @@
 		embeddedservice_bootstrap.filePreviewFrame = filePreviewFrame;
 		document.body.appendChild(filePreviewFrame);
 	};
-	
+
 	/**
 	 * On click of conversation button,
 	 * (i) Create an iframe and set source as the aura application, loaded through the experienceSiteEndpointURL.
@@ -2009,6 +2221,9 @@
 	EmbeddedServiceBootstrap.prototype.maximizeIframe = function maximizeIframe(frame) {
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
+		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
+		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
+		let minimizeButton;
 
 		if(frame) {
 			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
@@ -2036,6 +2251,15 @@
 
 			// [A11Y] Button is not focusable when maximized.
 			button.setAttribute("tabindex", -1);
+
+			// Hide the default chat icon on the button.
+			chatIcon.style.display = "none";
+
+			// Create the minimize button markup and insert into the DOM.
+			minimizeButton = renderSVG(DEFAULT_ICONS.MINIMIZE_MODAL);
+			minimizeButton.setAttribute("id", EMBEDDED_MESSAGING_ICON_MINIMIZE);
+			minimizeButton.setAttribute("class", EMBEDDED_MESSAGING_ICON_MINIMIZE);
+			iconContainer.insertBefore(minimizeButton, chatIcon);
 		}
 
 		// [Mobile] `isMaximized` controls showing the background modal. This class is constrained by media queries
@@ -2049,7 +2273,7 @@
 		// Also storing document body's scroll position so we can restore when chat gets minimized for mobile devices only
 		if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
 			// Most browsers will have scrollElement to keep track of scroll positions
-			// Some older browsers do not, so using getBoundingClientRect() for those older brosers 
+			// Some older browsers do not, so using getBoundingClientRect() for those older brosers
 			if (document.scrollingElement) {
 				embeddedservice_bootstrap.documentScrollPosition = document.scrollingElement.scrollTop;
 			} else {
@@ -2067,6 +2291,7 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.minimizeIframe = function minimizeIframe(frame, data) {
 		const button = getEmbeddedMessagingConversationButton();
+		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
 		const isDismissed = data.isMinimizedNotificationDismissed;
 
@@ -2098,6 +2323,11 @@
 			}
 		}
 
+		// Remove the minimize icon from the button.
+		if(minimizeIcon) {
+			minimizeIcon.remove();
+		}
+
 		if(button) {
 			// Hide the default FAB when chat client is minimized so that only the minimized FAB is shown.
 			button.style.display = "none";
@@ -2122,16 +2352,16 @@
 
 		sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 	};
-	
+
 	/**
 	 * Initialize feature specific objects on the global bootstrap object 'embeddedservice_bootstrap' to expose certain feature related APIs/properties externally.
 	 */
-	function initializeFeatureObjects() {
+	 EmbeddedServiceBootstrap.prototype.initializeFeatureObjects = function initializeFeatureObjects() {
 		// Initialize a prechat object 'prechatAPI' on 'embeddedservice_bootstrap' global object for Hidden Prechat feature.
 		embeddedservice_bootstrap.prechatAPI = new EmbeddedMessagingPrechat();
 
-		// Initialize authentication API
-		embeddedservice_bootstrap.authAPI = new EmbeddedMessagingAuthorization();
+		// Initialize user verification API
+		embeddedservice_bootstrap.userVerificationAPI = new EmbeddedMessagingUserVerification();
 	}
 
 	/**
@@ -2212,12 +2442,12 @@
 
 			// Show button when we've loaded everything.
 			Promise.all([cssPromise, configPromise]).then(() => {
-				initializeConversationId();
+				initializeWebStorage();
 
-				initializeFeatureObjects();
+				embeddedservice_bootstrap.initializeFeatureObjects();
 
 				// Fire 'onEmbeddedMessagingReady' event.
-				emitEmbeddedMessagingReadyEvent();
+				embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
 
 				// In Unauth mode, generate button markup & bootstrap if session exists.
 				// In auth mode, button markup and bootstrap of existing session occurs via #setIdentityToken() API.
