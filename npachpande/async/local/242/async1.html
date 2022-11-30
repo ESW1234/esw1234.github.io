@@ -29,6 +29,7 @@
 			);
 			*/
 			
+			/*
 			// SDB6 ORG
 			embeddedservice_bootstrap.init(
 				'00DSG0000001hxN',
@@ -38,6 +39,18 @@
 					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
+			*/
+
+			// SDB3 ORG
+			embeddedservice_bootstrap.init(
+				'00DSB0000002LA1',
+				'Messaging_4',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11669144223156',
+				{
+					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+			
 
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
