@@ -15,7 +15,7 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("Received onEmbeddedMessagingReady event!!!");	
-			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Location" : "() Hyd", "Browser" : new Date(), "OS" : "California, United StatesGV"});});
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Location" : "() Hyd", "Browser" : Math.random().toString(), "OS" : "California, United StatesGV"});});
 			embeddedservice_bootstrap.init(
 				'00DS70000000W0Z',
 				'MIAWDepWithBotWithFlow2',
