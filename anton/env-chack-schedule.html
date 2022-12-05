@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{
+   margin: 5%;
+margin-left: 20%;}
+h1 {
+  color: blue;
+  font-family: verdana;
+  font-size: 200%;
+}
+p {
+  color: rgb(0, 0, 0);
+  font-family: courier;
+  font-size: 100%;
+  margin: 3px;
+}
+</style>
+
+<body>
+
+<h1>Env Helth Check Schedule</h1>
+
+<p id="demo"></p>
+
+
+<script>
+
+
+var getDaysArray = function(start, end) {
+    names = ["Anusha", "Yuliia", "Anton", "Nataliia"];
+    holidays = ["Fri Dec 23 2022", "Mon Dec 26 2022", "Mon Jan 02 2023", "Mon Jan 16 2023"];
+    counter = 0;
+    j= 0;
+    for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+        let tmp = new Date(dt).toDateString();
+        arr.push(tmp);
+        if(!(tmp.split(" ")[0] == "Sun" || tmp.split(" ")[0] == "Sat"|| holidays.includes(tmp))){ 
+            if (counter == 0 || counter == 1){j = 0;}
+            else if (counter == 2 || counter == 3){j = 1;}
+            else if (counter == 4 || counter == 5){j = 2;}
+            else if (counter == 6 || counter == 7){j = 3;}
+            else {counter = 0; j= 0;}
+            counter +=1;
+            if(tmp == new Date().toDateString()){document.write(`<p style = "color: green"/> Today --> ${tmp} - ${names[j]}<br />`);}
+            else {document.write(`<p />${tmp} - ${names[j]}<br />`);
+          }   
+      }
+     
+
+    }
+    return arr;
+};
+
+
+var daylist = getDaysArray(new Date("2022-11-30"),new Date("2023-02-01"));
+
+</script>
+
+</body>
+</html>
