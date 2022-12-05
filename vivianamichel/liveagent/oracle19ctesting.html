@@ -41,10 +41,6 @@
 		embedded_svc.addEventHandler("onChatEstablished", function(data) {
 		    console.log("onChatEstablished event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 		});
-		
-		//embedded_svc.liveAgentAPI.startChat({directToAgentRouting: {buttonId: “573SA00000005XZ”,userId: “”,fallback: true}, 
-								//extraPrechatInfo: [],
-								//extraPrechatFormDetails: []});
 
 		embedded_svc.init(
 			'https://org2.dev1.my.pc-rnd.salesforce.com',
@@ -61,7 +57,10 @@
 				isOfflineSupportEnabled: true
 			}
 		);
-		embedded_svc.liveAgentAPI.endChat();
+		embedded_svc.liveAgentAPI.startChat({directToAgentRouting: {buttonId: “573SA00000005XZ”,userId: “”,fallback: true}, 
+								extraPrechatInfo: [],
+								extraPrechatFormDetails: []});
+		//embedded_svc.liveAgentAPI.endChat();
 	};
 
 	if (!window.embedded_svc) {
