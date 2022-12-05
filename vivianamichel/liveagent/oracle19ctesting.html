@@ -57,7 +57,15 @@
 				isOfflineSupportEnabled: true
 			}
 		);
-		embedded_svc.liveAgentAPI.startChat({directToAgentRouting: {buttonId: “573SA00000005XZ”}});
+		embedded_svc.liveAgentAPI.startChat({
+	directToAgentRouting: {
+	buttonId: “573xx0000000000”,
+	// userId: “”,
+	fallback: true
+},
+extraPrechatInfo: [],
+extraPrechatFormDetails: []
+});
 		//embedded_svc.liveAgentAPI.endChat();
 	};
 
