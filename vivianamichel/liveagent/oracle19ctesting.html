@@ -17,8 +17,16 @@
 <form action="https://webto.dev1.pc-rnd.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
 
 <input type=hidden name="orgid" value="00DSA0000000Ycn">
-<input type=hidden name="retURL" value="http://https://esw1234.github.io/vivianamichel/liveagent/oracle19ctesting.html">
+<input type=hidden name="retURL" value="https://esw1234.github.io/vivianamichel/liveagent/oracle19ctesting.html">
+	
+<label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
+	
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
+<input type="hidden"  id="external" name="external" value="1" /><br>
+
+<input type="submit" name="submit">
+	
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
