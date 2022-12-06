@@ -8,8 +8,8 @@
 
 	<script type='text/javascript'>
 		function clearAuthSession() {
-			console.log("Clearing authorization session.");
-			embeddedservice_bootstrap.authAPI.clearAuthorizationSession();
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
 		}
 		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
