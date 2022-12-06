@@ -16,6 +16,15 @@
 	
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
+	
+	function startChat() { embedded_svc.liveAgentAPI.startChat({
+	directToAgentRouting: {
+	buttonId: “573SA00000005XZ”
+},
+extraPrechatInfo: [],
+extraPrechatFormDetails: []
+});}
+	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
@@ -41,7 +50,7 @@
 		embedded_svc.addEventHandler("onChatEstablished", function(data) {
 		    console.log("onChatEstablished event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
 		});
-
+		embedded_svc.addEventListener("onSettingsCallCompleted", () => startChat());
 		embedded_svc.init(
 			'https://org2.dev1.my.pc-rnd.salesforce.com',
 			'https://org2.dev1.my.pc-rnd.salesforce-sites.com/',
