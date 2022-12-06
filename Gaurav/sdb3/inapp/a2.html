@@ -15,10 +15,10 @@
                 embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                 
                 // Customers add such standard Javascript event listeners for specific MIAW events to act on them.
-				window.addEventListener("onEmbeddedMessagingReady", () => {
-    				console.log("Received onEmbeddedMessagingReady event!!!");
-                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
-  				});
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("Received onEmbeddedMessagingReady event!!!");
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
+		});
                 
                 embeddedservice_bootstrap.init(
                     '00DSB0000002q7N',
