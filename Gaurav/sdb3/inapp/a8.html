@@ -17,7 +17,8 @@
                 // Customers add such standard Javascript event listeners for specific MIAW events to act on them.
                 window.addEventListener("onEmbeddedMessagingReady", () => {
                     console.log("Received onEmbeddedMessagingReady event!!!");
-                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
+	    	    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "", "OS" : "macOS", "Favorite_Food": "Sushi"});
+	            embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields({"Browser" : "", "OS" : "macOS"});
                 });
     
                 embeddedservice_bootstrap.init(
