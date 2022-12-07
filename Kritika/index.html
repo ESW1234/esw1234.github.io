@@ -14,7 +14,13 @@
 				'MIAW',
 				'https://stmfbes2.stmfb.stm.force.com/ESWMIAW1670389164437',
 				{
-					scrt2URL: 'https://stmfbes2.my.stmfb.stm.salesforce-scrt.com'
+					scrt2URL: 'https://stmfbes2.my.stmfb.stm.salesforce-scrt.com',
+					embeddedServiceConfig: {
+			        embeddedServiceMessagingChannel: {
+				        authMode: "UnAuth"
+			                              }
+		                                            }
+				}
 				}
 			);
 		} catch (err) {
