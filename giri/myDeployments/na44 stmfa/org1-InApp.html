@@ -16,11 +16,11 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true; 
-		embeddedservice_bootstrap.init(
+
+			embeddedservice_bootstrap.init(
 				'00DRM000000NpgT',
 				'InAppDep',
-				'https://org1.my.stmfa.stm.salesforce.com',
+				'https://org15.stmfa.stm.force.com/ESWInAppDep1657835189027',
 				{
 					scrt2URL: 'https://org1.my.stmfa.stm.salesforce-scrt.com'
 				}
@@ -30,7 +30,8 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://org1.lightning.stmfa.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://org15.stmfa.stm.force.com/ESWInAppDep1657835189027/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	
 
 </body>
 </html>
