@@ -5,14 +5,17 @@
 </head>
 
 <body>
-    <h1>In-App Messaging Chat SDB3 with CSS Enabled.</h1>
+    <h1>In-App Messaging Chat SDB3 with CSS Enabled</h1>
     Agent: a10@sdb3.inapp
     <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
     <script type='text/javascript'>
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
+                window.addEventListener("onEmbeddedMessagingReady", () => {
+    				console.log("Received onEmbeddedMessagingReady event!!!");
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
+ });
                 embeddedservice_bootstrap.init(
                     '00DSB0000002q7N',
                     'aa10',
