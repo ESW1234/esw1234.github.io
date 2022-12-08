@@ -12,7 +12,7 @@
 	<script type='text/javascript'>
 		function clearAuthSession() {
 			console.log("Clearing authorization session.");
-			embeddedservice_bootstrap.authAPI.clearAuthorizationSession();
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
 		}
 		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -26,11 +26,11 @@
 // 			});
 			
  			// Valid JWT
-			console.log("Setting identity token.");
-			embeddedservice_bootstrap.authAPI.setIdentityToken({
-				"authorizationType":"JWT",
-				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
-			});
+// 			console.log("Setting identity token.");
+// 			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+// 				"authorizationType":"JWT",
+// 				"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
+// 			});
 		});
 	</script>
 	<script type='text/javascript'>
@@ -38,13 +38,6 @@
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true;
-								
-				// Mock authorization mode on.
-				embeddedservice_bootstrap.settings.embeddedServiceConfig = {
-					embeddedServiceMessagingChannel: {
-						authMode: "Auth"
-					}
-				};
 				
 				embeddedservice_bootstrap.init(
 					'00DS7000000owqD',
