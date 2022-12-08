@@ -12,23 +12,20 @@
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.settings.debugMode = true;
-                embeddedservice_bootstrap.init(
-                    '00DSB0000002q7N',
-                    'a9',
-                    'https://miaw1.test1.my.pc-rnd.salesforce.com',
-                    {
-                        scrt2URL: 'https://miaw1.test1.my.pc-rnd.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
-    <script type='text/javascript'
-        src='https://miaw1.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js'
-        onload='initEmbeddedMessaging()'></script>
+			embeddedservice_bootstrap.init(
+				'00DSB0000002q7N',
+				'a13',
+				'https://miaw1.test1.pc-rnd.force.com/ESWa131670478950396/s',
+				{
+					scrt2URL: 'https://miaw1.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miaw1.test1.pc-rnd.force.com/ESWa131670478950396/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 
