@@ -18,7 +18,6 @@
                 window.addEventListener("onEmbeddedMessagingReady", () => {
                     console.log("Received onEmbeddedMessagingReady event!!!");
 	    	    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "", "OS" : "macOS", "FavoriteFood": "Sushi"});
-	            embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields({"Browser" : "", "OS" : "macOS"});
                 });
     
                 embeddedservice_bootstrap.init(
