@@ -27,7 +27,12 @@
 				'MIAW',
 				'https://neilwinter21.my.salesforce.com',
 				{
-					scrt2URL: 'https://neilwinter21.my.salesforce-scrt.com'
+					scrt2URL: 'https://neilwinter21.my.salesforce-scrt.com',
+					embeddedServiceConfig: {
+			                     embeddedServiceMessagingChannel: {
+				                  authMode: "UnAuth"
+			                     }
+		                        }
 				}
 			);
 		} catch (err) {
