@@ -3,10 +3,20 @@
 	<!-- godwin@sdb3.org / 123456 --> 
   <body>
   <script type='text/javascript'>
+	    // Customers add such standard Javascript event listeners for specific MIAW events to act on them.
+	    window.addEventListener("onEmbeddedMessagingReady", () => {
+		console.log("Received onEmbeddedMessagingReady event!!!");
+
+		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"OS" : "macOS"});
+		embeddedservice_bootstrap.postchatAPI.setPostchatParameters({"userName" : "Guest"}, {"cartValue": "1000"});
+	    });  
+	  
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.devMode = true;
+      			embeddedservice_bootstrap.settings.devMode = true;
+			
+			embeddedservice_bootstrap.settings.omitSandbox = true;
 
 			embeddedservice_bootstrap.init(
 				'00DSB0000004st3',
