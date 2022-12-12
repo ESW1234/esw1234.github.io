@@ -27,7 +27,7 @@
 			}
 		</style>
 
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- 		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 		<script type='text/javascript'>
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
@@ -129,21 +129,36 @@
 
 				embedded_svc.settings.devMode = true;
 
+// 				embedded_svc.init(
+// 					'https://snapins.my.stmfb.stm.salesforce.com',
+// 					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
+// 					gslbBaseURL,
+// 					'00DRM0000005jYI',
+// 					'justinChatbot',
+// 					{
+// 						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+// 						deploymentId: '572RM0000004DDM',
+// 						buttonId: '573RM0000004HAw',
+// 						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+// 						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
+// 						isOfflineSupportEnabled: false
+// 					}
+// 				);
 				embedded_svc.init(
-					'https://snapins.my.stmfb.stm.salesforce.com',
-					'https://snapins-1600942b294.stmfb.stm.force.com/cypress071218',
-					gslbBaseURL,
-					'00DRM0000005jYI',
-					'justinChatbot',
-					{
-						baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-						deploymentId: '572RM0000004DDM',
-						buttonId: '573RM0000004HAw',
-						baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000000Z42AI_165ca0519a9',
-						isOfflineSupportEnabled: false
-					}
-				);
+			'https://snapins.my.stmfb.stm.salesforce.com',
+			'https://snapins.stmfb.my.stm.site.com/cypress071218',
+			gslbBaseURL,
+			'00DRM0000005jYI',
+			'MyESWDeployment_Sachin',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
+				deploymentId: '572RM0000004DDM',
+				buttonId: '573RM0000000BgH',
+				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004CFl2AM_17179b05e29',
+				isOfflineSupportEnabled: true
+			}
+		);
 			};
 
 			if (!window.embedded_svc) {
