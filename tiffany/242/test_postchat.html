@@ -2,12 +2,16 @@
   <head></head>
   <body>
     <script type='text/javascript'>
+      const queryString = window.location.search;   
+      const urlParams = new URLSearchParams(queryString);
+      
+      document.getElementById("body").innerHTML = queryString;
+      
       const keys = urlParams.keys();
       const values = urlParams.values();
       const entries = urlParams.entries();
 
       for(const entry of entries) {
-        // document.getElementById("body").innerHTML += ${entry[0]}: ${entry[1]};
         console.log(`${entry[0]}: ${entry[1]}`);
       }
     </script>
