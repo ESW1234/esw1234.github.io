@@ -1,0 +1,15 @@
+<html>
+  <head></head>
+  <body>
+    <script type='text/javascript'>
+      const keys = urlParams.keys();
+      const values = urlParams.values();
+      const entries = urlParams.entries();
+
+      for(const entry of entries) {
+        // document.getElementById("body").innerHTML += ${entry[0]}: ${entry[1]};
+        console.log(`${entry[0]}: ${entry[1]}`);
+      }
+    </script>
+  </body>
+</html>
