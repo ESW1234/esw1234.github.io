@@ -4,13 +4,13 @@
     <script type='text/javascript'>
       const queryString = window.location.search;   
       const urlParams = new URLSearchParams(queryString);
-      
-      document.getElementById("body").innerHTML = queryString;
-      
+
       const keys = urlParams.keys();
       const values = urlParams.values();
       const entries = urlParams.entries();
 
+      document.body.innerHTML = queryString;
+      
       for(const entry of entries) {
         console.log(`${entry[0]}: ${entry[1]}`);
       }
