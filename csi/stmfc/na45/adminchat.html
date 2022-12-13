@@ -1,11 +1,9 @@
 <!-- Async client url: https://esw1234.github.io/csi/stmfc/na45/adminchat.html -->
 <html>
-
-	<head>
-		<title>CSI in STMFC</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-	</head>
-
+    <head>
+        <title>CSI in STMFC</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
 	<body>
 		<h1>CSI in STMFC environment</h1>
 		<p><a href="https://login.stmfc.stm.salesforce.com" target="_blank" style="color:blue">Click here into login as agent</a> csiadmin@stmfc.na45</p>
@@ -18,8 +16,8 @@
 		<script type='text/javascript'>
             function initEmbeddedMessaging() {
                 try {
-                    embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-
+                    embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+         		    embeddedservice_bootstrap.settings.debugMode = true;
                     embeddedservice_bootstrap.init(
                         '00DS70000000PGb',
                         'decsi_stmfc',
@@ -33,6 +31,6 @@
                 }
             };
         </script>
-        <script type='text/javascript' src='https://decsi.stmfc.stm.force.com/ESWdecsistmfc1670942926760/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+        <script type='text/javascript' src='https://decsi.stmfc.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
