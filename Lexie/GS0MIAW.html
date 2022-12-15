@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+  <meta charset="UTF-8">
+  <title>Widget Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head> 
+<body>
+	
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DB0000000gcgU',
+				'webDeployment',
+				'https://lexie-summer22-gs0-esw.my.site.com/ESWwebDeployment1657146401191',
+				{
+					scrt2URL: 'https://lexie-summer22-gs0-esw.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://lexie-summer22-gs0-esw.my.site.com/ESWwebDeployment1657146401191/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	
+
+</body>
+	</html>
