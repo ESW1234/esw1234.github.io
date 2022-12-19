@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>In APP on NA44 STMFA for Org: automorg3</h1>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000LqAE',
+				'In_App',
+				'https://automorg3.my.stmfa.stm.salesforce.com',
+				{
+					scrt2URL: 'https://autoorg3.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://automorg3.my.stmfa.stm.salesforce.com/embeddedservice/5.0/esw.min.js'
+onload='initEmbeddedMessaging()'></script>
+   
+
+
+    </body>
+</html>
