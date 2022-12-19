@@ -17,12 +17,12 @@
         </div>
         <script src="https://wonderful.test1.pc-rnd.force.com/lightning/lightning.out.js"></script>
         <script>
-            $Lightning.use("c:myApp",    // name of the Lightning app
+            $Lightning.use("c:DemoApp",    // name of the Lightning app
                 function() {          // Callback once framework and app loaded
                     debugger;
                     console.log("callback for $Lightning.use");
                     $Lightning.createComponent(
-                        "c:welcomeHome",
+                        "c:accountLC",
                         {},
                         "innerContent",
                         function(cmp){
