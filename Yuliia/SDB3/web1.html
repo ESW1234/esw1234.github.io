@@ -1,33 +1,23 @@
 <html>
-
 <head>
-
 <title>InApp</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
+<meta name=“viewport” content=“width=device-width, initial-scale=1, minimum-scale=1”>
 </head>
-
 <body>
-
-
-
 <h1> In APP Web Client for Org: web1Deployment: web1User@test.com</h1>
-
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'> (https://service.force.com/asyncclient/bootstrap.js'%3E%3C/script)> -->
-
-
-
-
+<p><a id=“editThisPageLink” target=“_blank” style=“color:blue”>Edit this page</a></p>
+<script>document.getElementById(‘editThisPageLink’).href = “https://github.com/ESW1234/esw1234.github.io/edit/master” + window.location.pathname;</script>
+<!-- <script type=‘text/javascript’ src=’https://service.force.com/asyncclient/bootstrap.js'>> -->
+	
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
+      window.addEventListener("onEmbeddedMessagingReady", () => {
+            embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "getBrowserInfo web1", "Location" : "California web1", "OS" : "Mac OS web1"});});
+
+      
 			embeddedservice_bootstrap.init(
 				'00DSB0000002XW9',
 				'web1Deployment',
@@ -42,13 +32,6 @@
 	};
 </script>
 <script type='text/javascript' src='https://de3.test1.my.pc-rnd.site.com/ESWweb1Deployment1671580907290/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-window.addEventListener("onEmbeddedMessagingReady", () => {
-                            console.log("Received onEmbeddedMessagingReady event!!!");
-                             embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Hidden1" : "value one", "Hidden2" : "value two", "Hidden3" : "value three", "Hidden4" : "value four"});
-                       });
-
 </body>
-
 </html>
 
