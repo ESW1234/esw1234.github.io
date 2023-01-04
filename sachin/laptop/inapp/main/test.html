@@ -19,15 +19,25 @@
 					// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 					 window.addEventListener("onEmbeddedMessagingReady", () => {
     						console.log("Received onEmbeddedMessagingReady event!!!");
-						embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
+						//embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : getBrowserInfo(), "OS" : "macOS"});
   					 });
 	
-            				embeddedservice_bootstrap.init(
-						'00DSB0000002q7N',
-						'aa2',
+//             				embeddedservice_bootstrap.init(
+// 						'00DSB0000002q7N',
+// 						'aa2',
+// 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11672789024201',
+// 						{
+// 							scrt2URL: 'https://miaw1.test1.my.pc-rnd.salesforce-scrt.com'
+// 						}
+// 					);
+
+					// Q3 org - NA45 STMFA
+					embeddedservice_bootstrap.init(
+						'00DS7000000owIT',
+						'MIAW1',
 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11672789024201',
 						{
-							scrt2URL: 'https://miaw1.test1.my.pc-rnd.salesforce-scrt.com'
+							scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
 						}
 					);
         			} catch (err) {
