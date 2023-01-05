@@ -12,7 +12,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			
+			embeddedservice_bootstrap.settings.devMode = true;
       window.addEventListener("onEmbeddedMessagingReady", () => {
             embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "getBrowserInfo web10", "Location" : "California web10", "OS" : "Mac OS web10"});});
       
