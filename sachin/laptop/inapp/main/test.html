@@ -32,26 +32,26 @@
 // 					);
 
 					// Q3 org - NA45 STMFA
-// 					embeddedservice_bootstrap.init(
-// 						'00DS7000000owIT',
-// 						'MIAW1',
-// 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11672789024201',
-// 						{
-// 							scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com',
-// 							baseCoreUrl: 'https://esw.my.localhost.sfdcdev.salesforce.com:6101'
-// 						}
-// 					);
-					
-					// GS0 - Peter (https://salesforce.quip.com/lWHHAMx0Kp8u)
 					embeddedservice_bootstrap.init(
-						'00DB0000000EvEe',
-						'MIAW',
+						'00DS7000000owIT',
+						'MIAW1',
 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11672789024201',
 						{
-							scrt2URL: 'https://neilwinter21.my.salesforce-scrt.com',
+							scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com',
 							baseCoreUrl: 'https://esw.my.localhost.sfdcdev.salesforce.com:6101'
 						}
 					);
+					
+					// GS0 - Peter (https://salesforce.quip.com/lWHHAMx0Kp8u)
+// 					embeddedservice_bootstrap.init(
+// 						'00DB0000000EvEe',
+// 						'MIAW',
+// 						'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11672789024201',
+// 						{
+// 							scrt2URL: 'https://neilwinter21.my.salesforce-scrt.com',
+// 							baseCoreUrl: 'https://esw.my.localhost.sfdcdev.salesforce.com:6101'
+// 						}
+// 					);
         			} catch (err) {
             				console.error('Error loading Embedded Messaging: ', err);
         			}
