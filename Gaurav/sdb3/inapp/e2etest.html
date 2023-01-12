@@ -1,20 +1,23 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    </head>
-    <body>
-<h1>In-App Messaging Chat SDB3 E2ETest.</h1>
-        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-        <script type='text/javascript'>
+<head>
+<title>InApp</title>
+<meta name=“viewport” content=“width=device-width, initial-scale=1, minimum-scale=1”>
+</head>
+<body>
+<h1> In APP Web Client for Org: “Embedded Bot in app messaging”</h1>
+<p><a id=“editThisPageLink” target=“_blank” style=“color:blue”>Edit this page</a></p>
+<script>document.getElementById(‘editThisPageLink’).href = “https://github.com/ESW1234/esw1234.github.io/edit/master” + window.location.pathname;</script>
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
-				'00DSB0000002q7N',
+				'00DSB0000003dJN',
 				'e2eTest',
-				'https://miaw1.test1.pc-rnd.force.com/ESWe2eTest1669964379202/s',
+				'https://eswtestorg.test1.pc-rnd.force.com/ESWe2eTest1660327116988',
 				{
-					scrt2URL: 'https://miaw1.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://eswtestorg.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -22,7 +25,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://miaw1.test1.pc-rnd.force.com/ESWe2eTest1669964379202/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-      
-    </body>
-</html>   
+<script type='text/javascript' src='https://eswtestorg.test1.pc-rnd.force.com/ESWe2eTest1660327116988/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
