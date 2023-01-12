@@ -1,6 +1,6 @@
 <html>
    <head>
-       <title>Local 242/patch Messaging page</title>
+       <title>W12197823</title>
        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
    <body>
@@ -33,21 +33,17 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
-				embeddedservice_bootstrap.init(
-					'00DSB0000004st3',
-					'MIAW_Local',
-					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619',
-					{
-						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
-					}
-				);
-			} catch (err) {
-				console.error('Error loading Embedded Messaging: ', err);
-			}
-		};
-	</script>
-	<!--
-	<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWLocal1669917994477/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-	-->	
-	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>   </body>
-</html>
+			embeddedservice_bootstrap.init(
+				'00DSB0000004st3',
+				'MIAW',
+				'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAW1669757366500',
+				{
+					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAW1669757366500/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
