@@ -4,10 +4,9 @@
 <meta name=“viewport” content=“width=device-width, initial-scale=1, minimum-scale=1”>
 </head>
 <body>
-<h1> In APP Web Client for Org: “admin username”</h1>
+<h1> In APP Web Client for Org: “admin username with bot”</h1>
 <p><a id=“editThisPageLink” target=“_blank” style=“color:blue”>Edit this page</a></p>
 <script>document.getElementById(‘editThisPageLink’).href = “https://github.com/ESW1234/esw1234.github.io/edit/master” + window.location.pathname;</script>
-<!-- <script type=‘text/javascript’ src=’https://service.force.com/asyncclient/bootstrap.js'>> -->
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -15,8 +14,8 @@
 
 			embeddedservice_bootstrap.init(
 				'00DSB00000058TB',
-				'EmbeddedServiceDepForWithOutBot',
-				'https://orgfoninapp.test1.pc-rnd.force.com/ESWEmbeddedServiceDepForW1670509944280',
+				'ESDForWebWithBot',
+				'https://orgfoninapp.test1.pc-rnd.force.com/ESWESDForWebWithBot1673498709493',
 				{
 					scrt2URL: 'https://sdb3com-b3.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -26,7 +25,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://orgfoninapp.test1.pc-rnd.force.com/ESWEmbeddedServiceDepForW1670509944280/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfoninapp.test1.pc-rnd.force.com/ESWESDForWebWithBot1673498709493/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
