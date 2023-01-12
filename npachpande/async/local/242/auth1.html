@@ -17,6 +17,7 @@
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
       			embeddedservice_bootstrap.settings.devMode = true;
 			
+			/*
 			// STMFB ORG
 			embeddedservice_bootstrap.init(
 				'00DS70000000Uae',
@@ -24,6 +25,17 @@
 				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11669144223156',
 				{
 					scrt2URL: 'https://eswmiaw.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+			*/
+			
+			// SDB3 ORG
+			embeddedservice_bootstrap.init(
+				'00DSB0000002LA1',
+				'Auth_1',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11669144223156',
+				{
+					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 			
