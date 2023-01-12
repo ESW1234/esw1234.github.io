@@ -1,0 +1,52 @@
+<html>
+   <head>
+       <title>Local 242/patch Messaging page</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+  <h2>W-12197823</h2>
+	<script type='text/javascript'>
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+
+			// Setting identity token
+			console.log("Setting identity token.");
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": `
+          eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3QiLCJleHAiOjE2NzM2MDM2ODUsImlhdCI6MTY3MzU2MDQ4NX0.B5aF-KbE9tWvM0nT2FDjcuuv_VldPZLMq94QM18mggqdNLkm3_Ko7PvEZhx3WESTlBhDIRAaeNMhGNJgoLYegUTfUq6CPcqF83gfg7gNtj2BSXx39d5aMkU-iSKf3iFYNtbZj7X4X1v8kDlV7WEn9UOVTIdTdQtPc81ZYBLDUE_Gp5tKCF19gmKk0LPccjZhdxl3FR7XpljMrpvKLBYiTBbU-l4JxxIrIpfcPaIMF-iDFOR163P1PVl84rRHgWej01gZR020OOPyJprQrq5heyd1INB1FOtn6tYWTEDAZpWxxyuuP48NLChWt_oXV03cwckEc6PrGZ6VucCDoeRTMg        `
+			  `
+      });
+		});
+	  </script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true; 
+				
+				embeddedservice_bootstrap.init(
+					'00DSB0000004st3',
+					'MIAW_Local',
+					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619',
+					{
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<!--
+	<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWLocal1669917994477/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	-->	
+	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>   </body>
+</html>
