@@ -9,16 +9,15 @@
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
-				embeddedservice_bootstrap.settings.omitSandbox = true; 
 				
-			embeddedservice_bootstrap.init(
-				'00DSB0000004st3',
-				'MIAW_Unauth',
-				'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWUnauth1670436416165',
-				{
-					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
+				embeddedservice_bootstrap.init(
+					'00DSB0000004st3',
+					'MIAW_Unauth',
+					'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWUnauth1670436416165',
+					{
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
