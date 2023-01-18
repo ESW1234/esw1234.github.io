@@ -21,6 +21,10 @@
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
 
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				identityTokenType : "JWT",
+				identityToken : "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoibWV1NSIsImV4cCI6MTY3NDExMTgwNywiaWF0IjoxNjc0MDY4NjA3fQ.SlCgwkv6NY0DCkkB8qGEH-tc2JzptgWUdSVpi-f0mhMT12Xizi-H2HyH8W73Qr35td4xEN3eAl36Ci5DhoHKVj34SMjaamkrzJm1L9xwqc3H6QoPuRbobtMulox6VLC0N7RdZTYFKccB-fYSncHEgtjiyjZnM4OJFWacwSya2sSxb6NWqVjgbqar0WWgPLRF5a0YAoZR5xYhpXubT1otcoOJMLOtOLjK9ntdFsjo6Y0gJiVc0QXys_W8_29H4ppl2xa4a3tAUY0Ssd8AtG1KncJllrK9AF0FFrLjHGOIJa2s7P-kqNlWHmW_vvArkY90Q1lWQb3qc1VeVp9XXxgqzw"
+			});
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
 				console.log("onEmbeddedMessagingReady emitted");
