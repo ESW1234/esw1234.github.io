@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Kaiju Scrt Bot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1>Kaiju Scrt Bot</h1>
+
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.debugMode = true
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000GGfD',
+				'scrtkaiju',
+				'https://scrtkaiju.stmfb.stm.force.com/ESWscrtkaiju1674074892325',
+				{
+					scrt2URL: 'https://botsorg.my.stmfb.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://scrtkaiju.stmfb.stm.force.com/ESWscrtkaiju1674074892325/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+  </html>
