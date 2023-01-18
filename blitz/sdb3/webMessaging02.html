@@ -25,10 +25,12 @@
 				// Embedded Messaging app ready
 				console.log("onEmbeddedMessagingReady emitted");
 				
-// 				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-// 					identityTokenType: "JWT",
-// 					identityToken: "eyJraWQiOiI0MzQ0N2FjNy03OGY1LTQwYzUtODhjMS1jMTVjMTUwY2QyZmYiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3QiLCJleHAiOjE2NzQwNzM4NTUsImlhdCI6MTY3NDA2Nzg1NX0.MhZNpwjc_fuK1qkWNDCaD1eigKinYlzB6rZi-nTbbtk6nBnV9B4f4yBaOCjDeirE6c9cI4rL-jbrusAUHkxBOcMbM-2ry0t3qsfY3v6qKxh8z6y1UIDpvHJ_uHUS1f7vJ2E-LUorigXM47egtAcTV8ww-gwsn5u2NUKMIMX_yUdlcE0VTxJoxGKI8vWUvFo2yMXmDU3O876hkbAWDLQr-nW0ATkW1JAZ0vOH0f9HFwALKcw9qEITx-V_awlXOXkReCp5lQ9DdQJGcjZyNDlvulnsyG0TKW_kNhr2LmXo_cqHQ2gRGXmKYQJMeIDNe-gWIK0pH5ggnJJPV_iFVvOQ7A"
-// 				});
+				// KID #5 - subject: tiffanytest
+				// https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=tiffanytest&jwtExpInSeconds=6000&keyId=addf6f51-5815-482b-b8af-9fbe60dd558e
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+					identityTokenType: "JWT",
+					identityToken: "eyJraWQiOiJhZGRmNmY1MS01ODE1LTQ4MmItYjhhZi05ZmJlNjBkZDU1OGUiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGlmZmFueXRlc3QiLCJleHAiOjE2NzQwNzQ0NjUsImlhdCI6MTY3NDA2ODQ2NX0.YPcOTxBiK9A0jt_DqykwL4fCVkNtfgGzCw11zrMCOE9QKWBztooNdbB0SkrmuXafqcqXG2kHrZoWVoFtB5E2PhuR-_ljYAdciQsq84RhkhwkgenpkxR0h1Mcxwcya1MHJL2TKv3UQ9mmVk-Rl6EJDSWB71gVDylXPXJucaajtdEu6ZWVdA_QkBNGolUo0lZ6w9LXwKY1LyqnreCmq3HTabXGVjeahLT0tzFE-mR1SqvotipbKKUeed3lmLbexH9FEiNAmffq-cCEPQ-69Kt8O1MivjiEE9c3B5VuAmWqYH7ovRkP9gLhz58m9TLblmdLDKvDaurfqDS-U5LxyezGQw"
+				});
 			});
 			
 			window.addEventListener("onEmbeddedMessagingTokenExpired", () => {
