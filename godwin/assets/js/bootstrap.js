@@ -1891,7 +1891,9 @@
 			button.style.setProperty("cursor", "default");
 
 			// Hide the default chat icon on the button.
-			chatIcon.style.display = "none";
+			if (iconContainer && chatIcon) {
+				iconContainer.removeChild(chatIcon);
+			}
 
 			if (loadingSpinner) {
 				iconContainer.removeChild(loadingSpinner);
