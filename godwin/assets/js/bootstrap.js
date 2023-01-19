@@ -1877,6 +1877,7 @@
 	function handleJwtRetrievalFailure() {
 		const button = getEmbeddedMessagingConversationButton();
 		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
+		const modal = document.getElementById(BACKGROUND_MODAL_ID);
 		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		const loadingSpinner = document.getElementById("embeddedMessagingLoadingSpinner");
 		let refreshIcon;
@@ -1893,6 +1894,11 @@
 			// Hide the default chat icon on the button.
 			if (iconContainer && chatIcon) {
 				iconContainer.removeChild(chatIcon);
+			}
+			
+			if (modal) {
+				// [Mobile] Remove the background modal overlay from the DOM.
+				modal.parentNode.removeChild(modal);
 			}
 
 			if (loadingSpinner) {
