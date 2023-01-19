@@ -15,6 +15,8 @@
 	const CONVERSATION_BUTTON_LOADED_CLASS = CONVERSATION_BUTTON_CLASS + "Loaded";
 	const CONVERSATION_BUTTON_LOADING_CLASS = CONVERSATION_BUTTON_CLASS + "Loading";
 	const CONVERSATION_BUTTON_BOTTOM_TAB_BAR_CLASS = "embeddedMessagingBottomTabBar";
+	const CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT = "Hello, have a question? Let’s chat.";
+	const CONVERSATION_BUTTON_MINIMIZE_ASSISTIVE_TEXT = "Minimize the chat window";
 
 	/**
 	 * Parent page elements class constants.
@@ -28,6 +30,17 @@
 	const IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS = IFRAME_NAME + "MinimizedBottomTabBar";
 	const FILE_PREVIEW_IFRAME_NAME = "embeddedMessagingFilePreviewFrame";
 	const FILE_PREVIEW_IFRAME_DEFAULT_TITLE = "Enlarged image preview";
+	const SLDS_ASSISTIVE_TEXT = "slds-assistive-text";
+	const MINIMIZED_NOTIFICATION_AREA_CLASS = "embeddedMessagingMinimizedNotification";
+	const MINIMIZED_NOTIFICATION_AREA_TEXT_WRAPPER_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "TextWrapper";
+	const MINIMIZED_NOTIFICATION_AREA_TEXT_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "Text";
+	const MINIMIZED_NOTIFICATION_AREA_DEFAULT_TEXT = "Something went wrong. Log in again to continue your messaging conversation.";
+	const MINIMIZED_NOTIFICATION_AREA_DEFAULT_ASSISTIVE_TEXT = "Expand the text.";
+	const MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "DismissButton";
+	const MINIMIZED_NOTIFICATION_DISMISS_BTN_ID = "dismissButton-help";
+	const MINIMIZED_NOTIFICATION_DISMISS_BTN_TEXT_CLASS = MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS + "Text";
+	const MINIMIZED_NOTIFICATION_DISMISS_BTN_DEFAULT_TEXT = "Dismiss";
+	const MINIMIZED_NOTIFICATION_DISMISS_BTN_DEFAULT_ASSISTIVE_TEXT = "Close the chat notification";
 
 	/**
 	 * Icon constants.
@@ -38,6 +51,7 @@
 	const EMBEDDED_MESSAGING_ICON_CONTAINER = EMBEDDED_MESSAGING_ICON + "Container";
 	const EMBEDDED_MESSAGING_ICON_LOADING = EMBEDDED_MESSAGING_ICON + "Loading";
 	const EMBEDDED_MESSAGING_ICON_MINIMIZE = EMBEDDED_MESSAGING_ICON + "Minimize";
+	const EMBEDDED_MESSAGING_ICON_REFRESH = EMBEDDED_MESSAGING_ICON + "Refresh";
 
 	/**
 	 * Loading constants.
@@ -72,6 +86,7 @@
 	const EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME = "trapfocustolast";
 	const EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME = "EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT";
 	const EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME = "EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT";
+	const EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME = "EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT";
 
 	/*********************************************************
 	 *		Embedded Messaging Public Events		*
@@ -170,6 +185,18 @@
 	 * @type {string}
 	 */
 	let conversationId;
+
+	/**
+	 * Store the value of the original viewport meta tag for iOS devices.
+	 * @type {string}
+	 */
+	let originalViewportMetaTag;
+
+	/**
+	 * Viewport meta tag that disables autozoom for iOS devices
+	 * @type {string}
+	 */
+	const IOS_VIEWPORT_META_TAG = "width=device-width, initial-scale=1, maximum-scale=1";
 
 	/**
 	 * Web storage keys
@@ -331,17 +358,19 @@
 	}
 
 	/**
-	 * Clear all client side stored item in both localStorage & sessionStorage as well as at the fallback location
+	 * Clear all client side stored items in both localStorage & sessionStorage.
+	 * @param isSecondaryTab - Whether we are clearing the web storage in a secondary tab after a primary tab has already
+	 * 						   cleared localStorage. Don't clear localStorage again in this case to avoid re-triggering
+	 * 						   storage event listeners for Auth mode. In UnAuth mode, we don't have storage event listeners
+	 * 						   so isSecondaryTab value doesn't matter.
 	 */
-	function clearWebStorage() {
-		// Checking if current in-memory conversationId exists before deleting to ensure we don't wipe data from another conversation
-		if (embeddedservice_bootstrap.isLocalStorageAvailable && conversationId === getConversationIdFromPayload(localStorage.getItem(storageKey))) {
+	function clearWebStorage(isSecondaryTab) {
+		if (embeddedservice_bootstrap.isLocalStorageAvailable && !Boolean(isSecondaryTab)) {
 			localStorage.removeItem(storageKey);
 		}
-		if (embeddedservice_bootstrap.isSessionStorageAvailable && conversationId === getConversationIdFromPayload(sessionStorage.getItem(storageKey))) {
+		if (embeddedservice_bootstrap.isSessionStorageAvailable) {
 			sessionStorage.removeItem(storageKey);
 		}
-
 		log(`web storage cleared`);
 	}
 
@@ -351,6 +380,9 @@
 	function clearInMemoryData() {
 		// Reset in-memory hidden prechat fields.
 		hiddenPrechatFields = {};
+
+		// Reset in-memory post-chat parameters.
+		postchatParameters = {};
 
 		// Reset identityToken
 		identityToken = undefined;
@@ -719,6 +751,7 @@
 			failedMessages: failedConversationMessages,
 			routingAttributes: conversationRoutingAttributes,
 			conversationId,
+			devMode: Boolean(embeddedservice_bootstrap.settings.devMode),
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration})
 		});
@@ -820,6 +853,9 @@
 						case EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME:
 							handleIdentityTokenExpiry();
 							break;
+						case EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME:
+							handleJwtRetrievalFailure();
+							break;
 						default:
 							warning("Unrecognized event name: " + e.data.method);
 							break;
@@ -844,7 +880,7 @@
 				if (e.newValue === null) {
 					// If we're in Auth mode, clear user session for current tab/window.
 					if (getAuthMode() === AUTH_MODE.AUTH) {
-						handleClearUserSession(false);
+						handleClearUserSession(false, true);
 					}
 				} else {
 					// Handle conversationId change, if new value is non-null and different than old value
@@ -938,6 +974,15 @@
 	 */
 	function getEmbeddedMessagingConversationButton() {
 		return document.getElementById(CONVERSATION_BUTTON_CLASS);
+	}
+
+	/**
+	 * Returns a DOM reference to the viewport meta tag
+	 *
+	 * @returns {object}
+	 */
+	function getViewportMetaTag() {
+		return document.querySelector('meta[name="viewport"]');
 	}
 
 	/**
@@ -1138,6 +1183,14 @@
 	}
 
 	/**
+	 * Returns the font branding token value for minimized notification area.
+	 * @return {String}
+	 */
+	function getFontFamilyFromBrandingConfig() {
+		return getTokenValueFromBrandingConfig("font");
+	}
+
+	/**
 	 * Set loading status for the button after clicking on it. This is to show the loading status of creating an iframe which would load an aura application.
 	 */
 	function setLoadingStatusForButton() {
@@ -1181,6 +1234,15 @@
 	}
 
 	/**
+	 * Determines whether the user is on iOS device.
+	 *
+	 * @returns {boolean} True if the user is on iOS Device
+	 */
+	function isUseriOS() {
+		return Boolean(navigator.userAgent.match(/iP(hone|ad|od)/i));
+	}
+
+	/**
 	 * Determines whether the user is on an iOS 15+ Safari browser.
 	 *
 	 * This is what navigator.userAgent returns for iOS Safari:
@@ -1190,7 +1252,7 @@
 	 * @return {boolean} Is the user agent on iOS 15+ Safari?
 	 */
 	function isUseriOS15plusSafari() {
-		const iOS = Boolean(navigator.userAgent.match(/iP(hone|ad|od)/i));
+		const iOS = isUseriOS();
 		const versionMatchArray = navigator.userAgent.match(/(?!=OS)(([0-9]){2})/i);
 		const version = versionMatchArray && versionMatchArray.length > 0 ? Number(versionMatchArray[0]) : -1;
 		const safari = Boolean(navigator.userAgent.match(/WebKit/i)) &&
@@ -1205,6 +1267,20 @@
 	 */
 	function isUserFirefox() {
 		return navigator.userAgent && navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	}
+
+	/**
+	 * Sets viewport meta content back to the original value
+	 *
+	 */
+	function restoreViewportMetaTag() {
+		const viewportMetaTag = getViewportMetaTag();
+
+		if (viewportMetaTag) {
+			viewportMetaTag.setAttribute("content", originalViewportMetaTag);
+			originalViewportMetaTag = undefined;
+
+		}	
 	}
 
 	/**
@@ -1321,6 +1397,35 @@
 	}
 
 	/**
+	 * Handles notification area dismiss button click.
+	 */
+	function handleNotificationDimissButtonClick() {
+		const notificationArea = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
+		const button = getEmbeddedMessagingConversationButton();
+
+		// Removes the notification area.
+		if (notificationArea) {
+			notificationArea.parentNode.removeChild(notificationArea);
+		}
+		// Move focus to minimized button in minimized state.
+		if (button) {
+			button.focus();
+		}
+	}
+
+	/**
+	 * Handles notification area dismiss button key down.
+	 * @param evt 
+	 */
+	function handleDimissButtonKeyDown(evt) {
+		if (evt.key === KEY_CODES.ENTER || evt.key === KEY_CODES.SPACE) {
+            // ENTER or SPACE dismisses the minimized notification
+            evt.preventDefault();
+            this.handleNotificationDimissButtonClick();
+        }
+	}
+
+	/**
 	 * If Web Storage is available, check if there's an existing session to show.
 	 */
 	function bootstrapIfSessionExists() {
@@ -1348,8 +1453,14 @@
 			warning("Embedded Messaging static button not available for post-app-load updates.");
 		} else {
 			// Reset the Conversation button once the aura application is loaded in the iframe. Ifame/Chat window is rendered on top of FAB.
-			iconContainer.removeChild(loadingSpinner);
-			chatIcon.style.display = "none";
+			if (iconContainer && loadingSpinner) {
+				iconContainer.removeChild(loadingSpinner);
+			}
+
+			if (chatIcon) {
+				chatIcon.style.display = "none";
+			}
+
 			button.disabled = false;
 			button.classList.remove(CONVERSATION_BUTTON_LOADING_CLASS);
 			button.classList.add(CONVERSATION_BUTTON_LOADED_CLASS);
@@ -1361,17 +1472,19 @@
 	 * Handles cleanup after closing the client, i.e after closing a conversation in Unauth mode OR
 	 * clearing the user session in Auth mode.
 	 * This method resets the client to the initial state (State Zero) for Auth/Unauth modes.
+	 * @param isSecondaryTab - Whether we are trying to reset the client to initial state in a secondary tab. Only used by Auth mode.
 	 */
-	function handleResetClientToInitialState() {
+	function handleResetClientToInitialState(isSecondaryTab) {
 		const iframe = getEmbeddedMessagingFrame();
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
 		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
 		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
+		const minimizedNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
 
 		try {
 			// Clear existing items stored in current conversation
-			clearWebStorage();
+			clearWebStorage(isSecondaryTab);
 			// Re-init web storage, for subsequent conversations
 			initializeWebStorage();
 		} catch(err) {
@@ -1388,7 +1501,7 @@
 			warning("Embedded Messaging iframe not available for resetting the client to initial state.");
 		}
 
-		if(embeddedservice_bootstrap.filePreviewFrame) {
+		if(embeddedservice_bootstrap.filePreviewFrame && embeddedservice_bootstrap.filePreviewFrame.parentNode) {
 			// Remove the file preview iframe from DOM.
 			embeddedservice_bootstrap.filePreviewFrame.parentNode.removeChild(embeddedservice_bootstrap.filePreviewFrame);
 		} else {
@@ -1418,6 +1531,9 @@
 				button.classList.remove(CONVERSATION_BUTTON_LOADED_CLASS);
 				button.classList.remove("no-hover");
 
+				// [A11Y] Button assistive text
+				button.setAttribute("title", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
+
 				// [A11Y] Button is focusable again after container is closed.
 				button.setAttribute("tabindex", 0);
 
@@ -1436,9 +1552,17 @@
 			warning("Embedded Messaging static button not available for resetting the client to initial state.");
 		}
 
-		// Resolve clearSession() promise, if we are in Auth mode.
-		if (getAuthMode() === AUTH_MODE.AUTH) {
-			resolveClearAuthSessionPromise();
+		// Remove the minimized notification area if exists.
+		if (minimizedNotification) {
+			minimizedNotification.parentNode.removeChild(minimizedNotification);
+		}
+
+		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
+		resolveClearSessionPromise();
+
+		// [iOS Devices] Restore the meta viewport tag to its original value
+		if (originalViewportMetaTag) {
+			restoreViewportMetaTag();
 		}
 	}
 
@@ -1485,6 +1609,9 @@
 		// [A11Y] Button is focusable when initially loaded.
 		buttonElement.setAttribute("tabindex", 0);
 
+		// [A11Y] Assistive text
+		buttonElement.setAttribute("title", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
+
 		// Update the color of FAB to match the color of Chat Header, i.e. --headerColor branding token from setup.
 		buttonElement.style.setProperty("--eswHeaderColor", getButtonColorFromBrandingConfig());
 		// Update the focus border color to match the Secondary Color, i.e. --secondaryColor branding token from setup.
@@ -1527,11 +1654,72 @@
 		return topContainerElement;
 	}
 
+	/**
+	 * Generates markup for the minimized notification area element.
+	 * @returns {HTMLElement}
+	 */
+	function createMinimizedNotifaction() {
+		const notificationElement = document.createElement("div");
+		const notificationTextWrapperElement = document.createElement("div");
+		const notificationTextElement = document.createElement("span");
+		const notificationAssistiveTextElement = document.createElement("span");
+		const notificationDismissButton = createMinimizedNotificationDimissButton();
+
+		notificationElement.id = MINIMIZED_NOTIFICATION_AREA_CLASS;
+		notificationElement.className = MINIMIZED_NOTIFICATION_AREA_CLASS;
+
+		notificationTextWrapperElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_WRAPPER_CLASS;
+
+		notificationTextElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_CLASS;
+		notificationTextElement.role = "status";
+		notificationTextElement.title = getLabel("EmbeddedMessagingMinimizedState", "JWTRetrievalFailureText") || MINIMIZED_NOTIFICATION_AREA_DEFAULT_TEXT;
+		notificationTextElement.innerHTML = getLabel("EmbeddedMessagingMinimizedState", "JWTRetrievalFailureText") || MINIMIZED_NOTIFICATION_AREA_DEFAULT_TEXT;
+		notificationTextElement.style.setProperty("font-family", getFontFamilyFromBrandingConfig());
+
+		notificationAssistiveTextElement.className = SLDS_ASSISTIVE_TEXT;
+		notificationAssistiveTextElement.innerHTML = getLabel("EmbeddedMessagingMinimizedState", "MinimizedNotificationAssistiveText") || MINIMIZED_NOTIFICATION_AREA_DEFAULT_ASSISTIVE_TEXT;
+
+		notificationTextWrapperElement.appendChild(notificationTextElement);
+		notificationTextWrapperElement.appendChild(notificationAssistiveTextElement);
+		notificationElement.appendChild(notificationTextWrapperElement);
+		notificationElement.appendChild(notificationDismissButton);
+
+		return notificationElement;		
+	}
+
+	/**
+	 * Generates markup for the minimized notification area dismiss button element.
+	 * @returns {HTMLElement}
+	 */
+	function createMinimizedNotificationDimissButton() {
+		const buttonElement = document.createElement("button");
+		const buttonTextElement = document.createElement("span");
+		const buttonAssistiveTextElement = document.createElement("span");
+
+		buttonElement.className = MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS;
+		buttonElement.addEventListener("click", handleNotificationDimissButtonClick);
+		buttonElement.addEventListener("keydown", handleDimissButtonKeyDown);
+		buttonElement.setAttribute("aria-describedby", MINIMIZED_NOTIFICATION_DISMISS_BTN_ID);
+
+		buttonTextElement.className = MINIMIZED_NOTIFICATION_DISMISS_BTN_TEXT_CLASS;
+		buttonTextElement.title = getLabel("EmbeddedMessagingMinimizedState", "NotificationDismissButtonText") || MINIMIZED_NOTIFICATION_DISMISS_BTN_DEFAULT_TEXT;
+		buttonTextElement.innerHTML = getLabel("EmbeddedMessagingMinimizedState", "NotificationDismissButtonText") || MINIMIZED_NOTIFICATION_DISMISS_BTN_DEFAULT_TEXT;
+		buttonTextElement.style.setProperty("font-family", getFontFamilyFromBrandingConfig());
+		buttonAssistiveTextElement.className = SLDS_ASSISTIVE_TEXT;
+		buttonAssistiveTextElement.id = MINIMIZED_NOTIFICATION_DISMISS_BTN_ID;
+		buttonAssistiveTextElement.innerHTML = getLabel("EmbeddedMessagingMinimizedState", "MinimizedNotificationDismissButtonAssistiveText") || MINIMIZED_NOTIFICATION_DISMISS_BTN_DEFAULT_ASSISTIVE_TEXT;
+
+		buttonElement.appendChild(buttonTextElement);
+		buttonElement.appendChild(buttonAssistiveTextElement);
+		
+		return buttonElement;
+	}
+
 	/*************************************************************
 	*		Embedded Messaging User Verification Public API      *
 	**************************************************************/
 	/**
-	 * Parameters for the identity token data object passed in via 
+	 * Parameters for the identity token data object passed in via
 	 * embeddedservice_bootstrap.userVerificationAPI.setIdentityToken API call.
 	 */
 	const IDENTITY_TOKEN_PARAM = {
@@ -1548,7 +1736,7 @@
 	}
 
 	/**
-	 * Embedded Messaging User Verification exposed in window.embeddedservice_bootstrap.userVerificationAPI 
+	 * Embedded Messaging User Verification exposed in window.embeddedservice_bootstrap.userVerificationAPI
 	 * for managing authorized conversation sessions.
 	 * @class
 	 */
@@ -1624,9 +1812,12 @@
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE
 	 * User verification API method for clearing the current user's session.
-	 * Per the user verification contract, the customer is responsible for invoking this API method when
-	 * 1) the end-user logs out of the current session or
-	 * 2) the current session expires.
+	 * Per the user verification contract, the customer is responsible for invoking this API method when the end-user
+	 * logs out of the current session.
+	 *
+	 * NOTE: W-12338093 - This API is also extended to UnAuth mode. In UnAuth mode, clearSession will close the current
+	 * 					  conversation (if it's active) and reset the client to the initial state (in the same tab).
+	 *
 	 * @return {Promise} - Promise that resolves after a session is successfully cleared OR is rejected with relevant error message.
 	 */
 	EmbeddedMessagingUserVerification.prototype.clearSession = function clearSession() {
@@ -1639,13 +1830,8 @@
 				return;
 			}
 
-			// Check whether we are in authorization mode.
-			if (getAuthMode() !== AUTH_MODE.AUTH) {
-				reject(`User Verification isn’t enabled in Messaging Settings.`);
-				return;
-			}
-
-			handleClearUserSession(true);
+			// Revoke JWT only for Auth mode.
+			handleClearUserSession(getAuthMode() === AUTH_MODE.AUTH, false);
 		});
 	}
 
@@ -1653,15 +1839,19 @@
 	 * Clear user session in the same tab/window.
 	 * This method is called by -
 	 * 1. embeddedservice_bootstrap.userVerificationAPI.clearSession() API to clear user session in primary tab.
-	 * 2. Storage event handler to clear user session across secondary tabs.
+	 * 2. Storage event handler to clear user session across secondary tabs (Auth mode only).
 	 * @param shouldRevokeJwt - Whether to revoke the ia-message jwt.
+	 * @param isSecondaryTab - Whether we are trying to clear user session in a secondary tab.
+	 * 						   To clear a user session,
+	 * 						   in primary tab - use the clearSession() API.
+	 * 						   in secondary tab - use storage event handlers.
 	 */
-	function handleClearUserSession(shouldRevokeJwt) {
+	function handleClearUserSession(shouldRevokeJwt, isSecondaryTab) {
 		const iframe = getEmbeddedMessagingFrame();
 		if (iframe) {
 			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
 		} else {
-			handleResetClientToInitialState();
+			handleResetClientToInitialState(isSecondaryTab);
 		}
 	}
 
@@ -1682,6 +1872,48 @@
 	}
 
 	/**
+	 * Handle the scenario where the client failed to retrieve an authenticated jwt or renew a jwt.
+	 */
+	function handleJwtRetrievalFailure() {
+		const button = getEmbeddedMessagingConversationButton();
+		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
+		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
+		const loadingSpinner = document.getElementById("embeddedMessagingLoadingSpinner");
+		let refreshIcon;
+		let minimizedNotification;
+
+		if(button) {
+			// Static button is displayed under client when maximized.
+			button.style.display = "block";
+
+			// [A11Y] Button is not focusable when maximized.
+			button.setAttribute("tabindex", -1);
+			button.style.setProperty("cursor", "default");
+
+			// Hide the default chat icon on the button.
+			chatIcon.style.display = "none";
+
+			if (loadingSpinner) {
+				iconContainer.removeChild(loadingSpinner);
+				button.classList.remove(CONVERSATION_BUTTON_LOADING_CLASS);
+				button.classList.add(CONVERSATION_BUTTON_LOADED_CLASS);
+			}
+
+			// Create the minimize button markup and insert into the DOM.
+			refreshIcon = renderSVG(DEFAULT_ICONS.REFRESH);
+			refreshIcon.setAttribute("id", EMBEDDED_MESSAGING_ICON_REFRESH);
+			refreshIcon.setAttribute("class", EMBEDDED_MESSAGING_ICON_REFRESH);
+			iconContainer.insertBefore(refreshIcon, chatIcon);
+
+			minimizedNotification = createMinimizedNotifaction();
+			
+			button.disabled = true;
+
+			embeddedservice_bootstrap.settings.targetElement.appendChild(minimizedNotification);
+		}
+	}
+
+	/**
 	 * Validation method for customer supplied identity token data to the setIdentityToken call.
 	 * @param {Object} identityTokenData - The identity token data parameter to be validated.
 	 * @returns true if identity token data parameter is well formed and false otherwise.
@@ -1693,7 +1925,7 @@
 	/**
 	 * Validation method for customer supplied identity token.
 	 * For 242, the only verification scheme supported is JWT-based verification.
-	 * @param {Object} identityToken 
+	 * @param {Object} identityToken
 	 * @returns true if identity token is valid and false otherwise.
 	 */
 	function validateIdentityToken(identityTokenType, identityToken) {
@@ -1762,7 +1994,7 @@
 
 	/**
 	 * Helper function for determining the authorization mode set in Messaging Channel configuration.
-	 * 
+	 *
 	 * @returns {String} The authorization mode ("Auth" / "UnAuth").
 	 */
 	function getAuthMode() {
@@ -1779,7 +2011,7 @@
 	/**
 	 * Helper function to resolve the promise returned by embeddedservice_bootstrap.userVerificationAPI.clearSession(), if it exists.
 	 */
-	function resolveClearAuthSessionPromise() {
+	function resolveClearSessionPromise() {
 		if (clearUserSessionPromiseResolve && typeof clearUserSessionPromiseResolve === "function") {
 			clearUserSessionPromiseResolve();
 			clearUserSessionPromiseResolve = undefined;
@@ -1992,7 +2224,7 @@
 				// Validate parameters are valid non-empty strings.
 				if (validatePostchatParameter(paramKey, paramValue)) {
 					postchatParameters[paramKey] = paramValue;
-					setItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
+					setItemInWebStorage(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
 					// Log successfully updated post-chat parameters for debugging purposes.
 					log(`[setPostchatParameters] Successfully updated post-chat parameter ${paramKey}`);
 				} else {
@@ -2020,7 +2252,7 @@
 			pageParameters.forEach(function(paramKey) {
 				if (postchatParameters.hasOwnProperty(paramKey)) {
 					delete postchatParameters[paramKey];
-					setItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
+					setItemInWebStorage(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
 					// Log successfully removed post-chat page parameter for debugging purposes.
 					log(`[removePostchatParameters] Successfully removed post-chat parameter ${paramKey}`);
 				} else {
@@ -2057,6 +2289,9 @@
 			},
 			MINIMIZE_MODAL: {
 				value: "M47.6,17.8L27.1,38.5c-0.6,0.6-1.6,0.6-2.2,0L4.4,17.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2 c0.6-0.6,1.6-0.6,2.2,0l16.1,16.3c0.6,0.6,1.6,0.6,2.2,0l16.1-16.2c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2C48.1,16.3,48.1,17.2,47.6,17.8z"
+			},
+			REFRESH: {
+				value: "M46.5,4h-3C42.7,4,42,4.7,42,5.5v7c0,0.9-0.5,1.3-1.2,0.7l0,0c-0.3-0.4-0.6-0.7-1-1c-5-5-12-7.1-19.2-5.7 c-2.5,0.5-4.9,1.5-7,2.9c-6.1,4-9.6,10.5-9.7,17.5c-0.1,5.4,2,10.8,5.8,14.7c4,4.2,9.4,6.5,15.2,6.5c5.1,0,9.9-1.8,13.7-5 c0.7-0.6,0.7-1.6,0.1-2.2l-2.1-2.1c-0.5-0.5-1.4-0.6-2-0.1c-3.6,3-8.5,4.2-13.4,3c-1.3-0.3-2.6-0.9-3.8-1.6 C11.7,36.6,9,30,10.6,23.4c0.3-1.3,0.9-2.6,1.6-3.8C15,14.7,19.9,12,25.1,12c4,0,7.8,1.6,10.6,4.4c0.5,0.4,0.9,0.9,1.2,1.4 c0.3,0.8-0.4,1.2-1.3,1.2h-7c-0.8,0-1.5,0.7-1.5,1.5v3.1c0,0.8,0.6,1.4,1.4,1.4h18.3c0.7,0,1.3-0.6,1.3-1.3V5.5 C48,4.7,47.3,4,46.5,4z"
 			}
 		});
 
@@ -2223,6 +2458,8 @@
 		const modal = document.getElementById(BACKGROUND_MODAL_ID);
 		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
 		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
+		const viewportMetaTag = getViewportMetaTag();
+		const isiOS = isUseriOS();
 		let minimizeButton;
 
 		if(frame) {
@@ -2251,6 +2488,9 @@
 
 			// [A11Y] Button is not focusable when maximized.
 			button.setAttribute("tabindex", -1);
+
+			// [A11Y] Assistive text
+			button.setAttribute("title", getLabel("EmbeddedMessagingChatHeader", "MinimizeButtonAssistiveText") || CONVERSATION_BUTTON_MINIMIZE_ASSISTIVE_TEXT);
 
 			// Hide the default chat icon on the button.
 			chatIcon.style.display = "none";
@@ -2281,6 +2521,12 @@
 				embeddedservice_bootstrap.documentScrollPosition = Math.abs(docElementRect.top);
 			}
 			document.body.classList.add(PREVENT_SCROLLING_CLASS);
+		}
+
+		// Only on iOS devices modify the meta viewport tag
+		if (isiOS && viewportMetaTag) {
+			originalViewportMetaTag = viewportMetaTag.content;
+			viewportMetaTag.setAttribute("content", IOS_VIEWPORT_META_TAG);
 		}
 
 		sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME);
@@ -2332,6 +2578,7 @@
 			// Hide the default FAB when chat client is minimized so that only the minimized FAB is shown.
 			button.style.display = "none";
 			button.setAttribute("tabindex", -1);
+			button.removeAttribute("title");
 		}
 
 		// [Mobile] `isMaximized` controls showing the background modal. This class is constrained by media queries
@@ -2350,6 +2597,11 @@
 			}
 		}
 
+		// [iOS Devices] Restore the meta viewport tag to its original value
+		if (originalViewportMetaTag) {
+			restoreViewportMetaTag();
+		}
+
 		sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 	};
 
@@ -2359,6 +2611,9 @@
 	 EmbeddedServiceBootstrap.prototype.initializeFeatureObjects = function initializeFeatureObjects() {
 		// Initialize a prechat object 'prechatAPI' on 'embeddedservice_bootstrap' global object for Hidden Prechat feature.
 		embeddedservice_bootstrap.prechatAPI = new EmbeddedMessagingPrechat();
+
+		// Initialize a postchat object 'postchatAPI' on 'embeddedservice_bootstrap' global object for Post-Chat URL feature.
+		embeddedservice_bootstrap.postchatAPI = new EmbeddedMessagingPostchat();
 
 		// Initialize user verification API
 		embeddedservice_bootstrap.userVerificationAPI = new EmbeddedMessagingUserVerification();
