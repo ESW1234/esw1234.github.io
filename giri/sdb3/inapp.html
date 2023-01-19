@@ -17,26 +17,26 @@
             }
         </style>
         
-        <script type='text/javascript'>
-            function initEmbeddedMessaging() {
-                try {
-                    embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-        
-                    embeddedservice_bootstrap.init(
-                        '00DSB00000030pt',
-                        'Inapp_Enhanced_Bot',
-                        'https://sdb32.test1.my.pc-rnd.salesforce.com',
-                        {
-                            scrt2URL: 'https://sdb32.test1.my.pc-rnd.salesforce-scrt.com'
-                        }
-                    );
-                } catch (err) {
-                    console.error('Error loading Embedded Messaging: ', err);
-                }
-            };
-        </script>
-        <script type='text/javascript' src='https://sdb32.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-        
+      <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB00000036Lp',
+				'InApp',
+				'https://org18.test1.pc-rnd.force.com/ESWInApp1673650343554/s',
+				{
+					scrt2URL: 'https://org18.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://org18.test1.pc-rnd.force.com/ESWInApp1673650343554/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
         
     </body>
 </html>
