@@ -1,56 +1,49 @@
 <html>
    <head>
-       <title>Local Messaging page - Auth testing</title>
+       <title>LOCAL INAPP</title>
        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
    <body>
-  <script type='text/javascript'>
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-		console.log("onEmbeddedMessagingReady emitted");
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
 		
-		// Setting identity token
-		console.log("Setting expired token.");
-		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-			"authorizationType":"JWT",
-			// Expired JWT
-			// "identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2NjQzODc4OTd9.XQCMxR4KkGEbPNIUu6optJBWzop4QhGKSKtZ-mscV0A",
-			// Valid JWT
-			"identityToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI2NjQzODc4OTd9.XfcDuJNg3xq7Ue8fxNY1lPsoD-Hzc2dabrVeDzSzV7Q",
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+
+			// Setting identity token
+			console.log("Setting identity token.");
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": `
+eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3QiLCJleHAiOjE2NzM1NTg4NTQsImlhdCI6MTY3MzU1Nzk1NH0.Hjs-KF9I_BT0ihDwaK2kNJtvnFRwlMQ14Xl3ZN2ugCLw06tVVJeXBfrLwVJaVvgxXauf3fhZeXPK4XtKh3twga6cM4nMxbgYa6fg5M8kYoAXzPNLbllUhjcKa46KrpO1co5p5tzdOLPx4oH_0dSJnOHk6tSXTP1YCvDZPqBqaYe4jZDCD2azFjGA5tBQvAPSmjB8bS4tPlzgm-yFgns5pFvPKIJVhldQIOvgO4Otq7J1nBiYHVgYdl242b35a_BARvIWtm7Q7WrD3kg1COmsZfOcJoSMeOHDih05AV88DfkVF8r7wMyHc70l7rQ8HYWzIAX32QTYKngLbG24ol1OWA
+`
+			});
 		});
-	});
-  </script>
-     
+	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-                		embeddedservice_bootstrap.settings.devMode = true;
+				embeddedservice_bootstrap.settings.devMode = true; 
 				
-				// Mock authorization mode on.
-				embeddedservice_bootstrap.settings.embeddedServiceConfig = {
-					embeddedServiceMessagingChannel: {
-						authMode: "Auth"
-					}
-				};
-
 				embeddedservice_bootstrap.init(
-					'00DS7000000owqD',
-					'MIAW',
-					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAWv1667619548633',
+					'00DSB0000004st3',
+					'MIAW_Local',
+					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619',
 					{
-						scrt2URL: 'https://godwinlaw.stmfa.my.stm.salesforce-scrt.com'
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
 		};
-	</script>
-
-	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAWv1667619548633/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-
-	<!--
-	<script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-	-->
-   </body>
+	</script>	
+	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAW1669750683619/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>   </body>
 </html>
