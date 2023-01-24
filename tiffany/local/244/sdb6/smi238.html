@@ -9,14 +9,14 @@
 			
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				console.log("Received onEmbeddedMessagingReady event.");
-				embeddedservice_bootstrap.postchatAPI.setPostchatParameters({"cartValue": "$123.99", "userName": "Tiffany", "pageViews": "1"});
-				embeddedservice_bootstrap.postchatAPI.removePostchatParameters(["pageViews"]);
+				embeddedservice_bootstrap.autoResponseAPI.setPostchatParameters({"cartValue": "$123.99", "userName": "Tiffany", "pageViews": "1"});
+				embeddedservice_bootstrap.autoResponseAPI.removePostchatParameters(["pageViews"]);
 			});
 
 			embeddedservice_bootstrap.init(
 				'00DSG0000003vL7',
 				'web_postchat_demo',
-        'https://main.my.localhost.sfdcdev.site.com:6101/ESWDefaultWeb1674049150374', // MAIN
+        			'https://main.my.localhost.sfdcdev.site.com:6101/ESWDefaultWeb1674049150374', // MAIN
 				// 'https://miaw.my.localhost.sfdcdev.site.com:8117/ESWDefault1669384491832', // PATCH 
         // 'https://smi238.test1.my.pc-rnd.site.com/ESWwebpostchatdemo1669661330631/s', // OG
 				{
@@ -35,5 +35,3 @@
   <script type='text/javascript' src='https://main.my.localhost.sfdcdev.site.com:6101/ESWDefaultWeb1674049150374/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'><
   </body>
 </html>
-
-<script type='text/javascript' src='https://main.my.localhost.sfdcdev.site.com:6101/ESWDefaultWeb1674049150374/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'><
