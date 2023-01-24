@@ -2,23 +2,18 @@
 <html> 
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<title>Test Chat</title> 
+<title>Honu Testing</title> 
 
 </head> 
 <body> 
-<h2>Testing our chat.</h2> 
+<h2>Honu Testing</h2> 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
-		font-family: "Salesforce Sans", sans-serif;
+		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
 		outline: 1px solid #005290;
-	}
-	@font-face {
-		font-family: 'Salesforce Sans';
-		src: url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.woff') format('woff'),
-		url('https://c1.sfdcstatic.com/etc/clientlibs/sfdc-aem-master/clientlibs_base/fonts/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
 
@@ -47,17 +42,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://servicedf18.my.salesforce.com',
-			'https://win19ss-test1-165c67c1dba.force.com/service',
+			'https://scrt1asttest.my.salesforce.com',
+			'https://scrt1asttest.my.site.com/ht',
 			gslbBaseURL,
-			'00DB00000005VPy',
-			'Cap_Man_Queue',
+			'00D7O0000008aMk',
+			'Chat_Agents',
 			{
-				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
-				deploymentId: '572B0000000CwTE',
-				buttonId: '573B0000000Cxwx',
-				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'Cap_Man_Queue',
+				baseLiveAgentContentURL: 'https://c.la1-c1-ast.salesforceliveagent.com/content',
+				deploymentId: '5727O000000001h',
+				buttonId: '5737O000000002V',
+				baseLiveAgentURL: 'https://d.la1-c1-ast.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'Chat_Agents',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -65,7 +60,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://servicedf18.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://scrt1asttest.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -74,6 +69,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
 </body> 
 </html> 
