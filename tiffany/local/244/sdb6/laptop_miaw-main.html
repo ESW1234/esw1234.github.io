@@ -6,6 +6,12 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("Received onEmbeddedMessagingReady event.");
+				embeddedservice_bootstrap.autoResponseAPI.setPostchatParameters({"customValue": "12345", "userName": "Tiffany", "pageViews": "1"});
+				embeddedservice_bootstrap.autoResponseAPI.removePostchatParameters(["pageViews"]);
+			});
 
 			embeddedservice_bootstrap.init(
 				'00DSG0000009Emv',
