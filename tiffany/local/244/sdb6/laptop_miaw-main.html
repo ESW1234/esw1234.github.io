@@ -9,8 +9,8 @@
 			
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				console.log("Received onEmbeddedMessagingReady event.");
-				embeddedservice_bootstrap.autoResponseAPI.setPostchatParameters({"customValue": "12345", "userName": "Tiffany", "pageViews": "1"});
-				embeddedservice_bootstrap.autoResponseAPI.removePostchatParameters(["pageViews"]);
+				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({"customValue": "12345", "userName": "Tiffany", "pageViews": "1"});
+				embeddedservice_bootstrap.autoResponseAPI.removeAutoResponseParameters(["pageViews"]);
 			});
 
 			embeddedservice_bootstrap.init(
