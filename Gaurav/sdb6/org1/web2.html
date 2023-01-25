@@ -13,6 +13,12 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			
+			// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+    				console.log("Received onEmbeddedMessagingReady event!!!");
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Favorite_Food" : "Pasta"});
+  			});
 
 			embeddedservice_bootstrap.init(
 				'00DSG00000039tB',
