@@ -3,14 +3,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     </head>
     <body>
-<h1>E2E MIAW Chat Test on GS0 .</h1>
+<h1>E2E MIAW Chat Test on GS0</h1>
 
         <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
 			embeddedservice_bootstrap.init(
 				'00DB0000000gY9H',
 				'e2eBot_myDomain',
