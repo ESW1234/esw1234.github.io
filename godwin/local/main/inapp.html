@@ -35,16 +35,6 @@
 		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("onEmbeddedMessagingReady emitted");
-
-			// Setting identity token
-			console.log("Setting identity token.");
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				// Valid JWT
-				"identityToken": `
-					eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoibWUiLCJleHAiOjE2NzQ1MzA3NzUsImlhdCI6MTY3NDQ4NzU3NX0.fxBaaBOydccYSsa-DjFLkotDMH7KHSvS8pUYxq5Ic5fuHuC0cKaPKESb82_o8wjdsljg6I4NlX86uo_wwdxipf1bJDxHsmsjjSr4IGikGifCnbRbC0MrnYJv5Q2OvheTvpI5_0Sl7GtcXSsr6Tdcfl8Ivd1UggeHWXso8QqkrKHbF43Slo2yYom5oPPE9zu0NwVdVjClKRTxi65UHCAwORxUQbZqKa8Hw9PO2ReiEBnTAO70asSgP8VbnStvifzYT8Y4pnNDbpCOVRhgaEon_RzVk1_2jZWVG64KNLcoyqGb3J_Fh-yNWVo6du86ura1k1Ke1q-hI_N_FaKzCBSrSg
-				`
-			});
 		});
 	  </script>
 	<script type='text/javascript'>
