@@ -1,0 +1,39 @@
+<html>
+  <style type='text/css'>
+    html {
+      background-image: url('CapHelpCenter.png');
+      background-size: cover;
+    }
+  </style>
+  <meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  </meta>
+  <body>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.menu.init(
+			'https://stmfana44org2.my.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM000000NlCV',
+			'Channel_Menu'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://stmfana44org2.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+  </body>
+</html>
