@@ -19,16 +19,16 @@
 	function hideChatButton() {
 		embeddedservice_bootstrap.utilAPI.hideChatButton();
 	}
-  function clearAuthSession() {
-			embeddedservice_bootstrap.userVerificationAPI.clearSession();
-  }
+  	function clearAuthSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+  	}
 
 	function setIdentityToken(token) {
-      var token = document.getElementById("idToken").value;
-      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-          "identityTokenType":"JWT",
-				  "identityToken": token
-			});
+      		var token = document.getElementById("idToken").value;
+      		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+          		"identityTokenType":"JWT",
+			"identityToken": token
+		});
 	}
 
 </script>
