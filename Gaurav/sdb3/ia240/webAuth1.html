@@ -13,6 +13,8 @@ Agent: a1@sdb3.ia240
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
 			embeddedservice_bootstrap.init(
 				'00DSB0000003a8b',
 				'WebAuth1',
