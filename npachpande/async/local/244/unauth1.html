@@ -15,7 +15,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.devMode = true;
+      			embeddedservice_bootstrap.settings.devMode = true;
 
 			/*
 			// STMFA ORG 
@@ -49,7 +49,7 @@
 					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
-      */
+     			*/
       
 
 			// SDB6 ORG
@@ -61,7 +61,6 @@
 					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
-			*/
 
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
