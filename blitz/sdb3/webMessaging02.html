@@ -31,10 +31,11 @@
 					identityTokenType: "JWT",
 					identityToken: "eyJraWQiOiJhZGRmNmY1MS01ODE1LTQ4MmItYjhhZi05ZmJlNjBkZDU1OGUiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGlmZmFueXRlc3QiLCJleHAiOjE2NzQwNzQ0NjUsImlhdCI6MTY3NDA2ODQ2NX0.YPcOTxBiK9A0jt_DqykwL4fCVkNtfgGzCw11zrMCOE9QKWBztooNdbB0SkrmuXafqcqXG2kHrZoWVoFtB5E2PhuR-_ljYAdciQsq84RhkhwkgenpkxR0h1Mcxwcya1MHJL2TKv3UQ9mmVk-Rl6EJDSWB71gVDylXPXJucaajtdEu6ZWVdA_QkBNGolUo0lZ6w9LXwKY1LyqnreCmq3HTabXGVjeahLT0tzFE-mR1SqvotipbKKUeed3lmLbexH9FEiNAmffq-cCEPQ-69Kt8O1MivjiEE9c3B5VuAmWqYH7ovRkP9gLhz58m9TLblmdLDKvDaurfqDS-U5LxyezGQw"
 				});
-			});
-			
-			window.addEventListener("onEmbeddedMessagingTokenExpired", () => {
-				console.log("Received the onEmbeddedMessagingTokenExpired event…");
+				
+				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+				    "userName" : "Guest",
+				    "cartValue": "1000"
+				});
 			});
 		</script>
 		
