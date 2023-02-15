@@ -6,33 +6,39 @@
 <body>
 	<h1> NA45A Async Chat Web Client. </h1>
 	Agent: godwin@stmfa.org
+	<!-- Edit page link -->
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
 	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 
 	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
 		function clearAuthSession() {
-			console.log("Clearing authorization session.");
+			console.log("Clearing user session.");
 			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
 		}
 		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("onEmbeddedMessagingReady emitted");
-
-			// Valid JWT
-			console.log("Setting prechat hidden fields.");
-			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-				"Favorite_Color": "Yellow",
-				"Favorite_Food": "Sushi"
-			});
-			
- 			// Valid JWT
-			console.log("Setting identity token.");
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				"identityToken": "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3QiLCJleHAiOjE2NzM2NTY3MzMsImlhdCI6MTY3MzYxMzUzM30.yd_MZjv2zRggpKl6VHd_5BUqZzJfowC7mQWwtcYGI8KPM26rDkGL-fbFN09G1jSokM7JWatFk6g6WYrJaFdHvKzZgSwAstk8ttuv8SvU7Pg86E0UZvHdWrqwhIkJUESpQwaHztoJgmFPuBwUFfB0RqBzyVGtmkO3zlCjXhgftes-3DwJ2f4nBrYU-cx8uhsfbIESFswTSJxRdR7hPzMz3qTnBTu0O5aaPzSHEijxZ42xrgzpfXFeFOFb-l5eV9MA2BB_Im4IiTlQccBk249svyxQbcX2_0sBO_cAdMdP3jmmruXk1h2QYYBmstOH-CcLAzdwl4QLLab0KYTDb_DLTw"
-			});
 		});
-	</script>
+	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
