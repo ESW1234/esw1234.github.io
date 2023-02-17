@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>STG1-MIAW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> STG1 MIAW Chat - Queue Transfer using Flow</h1>
+Agent: sa1@stg1.inapp
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
+			embeddedservice_bootstrap.init(
+				'00Dab0000008m4p',
+				'InApp1',
+				'https://inappstg1.stagecom.my.pc-rnd.site.com/ESWInApp11676660999967',
+				{
+					scrt2URL: 'https://inappstg1.stagecom.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inappstg1.stagecom.my.pc-rnd.site.com/ESWInApp11676660999967/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+  </html>
