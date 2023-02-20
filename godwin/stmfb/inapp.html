@@ -1,31 +1,84 @@
 <html>
-<head>
-	<title>NA45A-Async Chat Web Client </title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-</head>
-<body>
-	<h1> NA45B Async Chat Web Client. </h1>
-	Agent: ac@na45b.ee
-	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+   <head>
+       <title>STMFB Messaging page</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>STMFB Messaging page</h1>
+	<h2>godwin@stmfb.org</h2>
 
-			embeddedservice_bootstrap.init(
-				'00DS70000000UFH',
-				'MIAW',
-				'https://asyncchatorg1.stmfb.my.stm.site.com/ESWMIAW1660250567549',
-				{
-					scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com'
-				}
-			);
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+	  </script>
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady emitted");
+			
+			// Setting identity token
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoibWUiLCJleHAiOjE2NzQxOTg5NzEsImlhdCI6MTY3NDE1NTc3MX0.lSrokLoNUFhnfM4p7yTo79D8Kf_CyGJJyjmc0Tut_Aa7wYhAK32m0antFaeP8W-xbUXqSieQg846tORKcrS2TuplcADsrMjs_2U7x0u7qZq7lL9xzDfwFJdBezHjqjwkefTabQ3L-CwjM12vGBpb466g0oMd5YcJSKY39c6PpL-vcuEP10OxPde_Ynzy1A-xhVgt9tJpsgsjxNbXUtloJu9rr5aYHO_pcg5dA4EZIjxHu2r2yHR8EIxvyWL9dVb4dO9AWjeh5howdPd1VApEfRj3Ycu-cxT7y8zZ7rNeEhV06PKRpdEn2xyGfLyBnlm3NvNPB8sT8V79VTKOSa6PXw"
+			});
+		});
+	</script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true; 
+				
+				embeddedservice_bootstrap.init(
+					'00DSB0000004st3',
+					'MIAW',
+					'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAW1669757366500',
+					{
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
-</script>
-<script type='text/javascript' src='https://asyncchatorg1.stmfb.my.stm.site.com/ESWMIAW1660250567549/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	   </script>
+	   <script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>  
+	</body>
 
-	 </body>
-  </html>
+	<!--<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAW1669757366500/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>  </body>-->
+</html>
