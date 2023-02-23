@@ -47,22 +47,12 @@
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
 				// STMFA
-// 				embeddedservice_bootstrap.init(
-// 					'00DS7000000owqD',
-// 					'MIAW',
-// 					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAWv1667619548633',
-// 					{
-// 						scrt2URL: 'https://godwinlaw.stmfa.my.stm.salesforce-scrt.com'
-// 					}
-// 				);
-				
-				// SDB3
 				embeddedservice_bootstrap.init(
-					'00DSB0000004st3',
-					'MIAW_Unauth',
+					'00DS7000000owqD',
+					'MIAW',
 					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMIAWv1667619548633',
 					{
-						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://godwinlaw.stmfa.my.stm.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
