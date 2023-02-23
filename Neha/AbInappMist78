@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2> ISE CHAT 2.0 (async chat without chatbot)-Mist78-Perf </h2>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dx00000000MSs',
+				'EmbeddedServiceDepForWebWithoutBot',
+				'https://orgforinapp1.mist78.stm.force.com/ESWEmbeddedServiceDepForW1677065924203',
+				{
+					scrt2URL: 'https://ise240.my.mist78.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgforinapp1.mist78.stm.force.com/ESWEmbeddedServiceDepForW1677065924203/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
