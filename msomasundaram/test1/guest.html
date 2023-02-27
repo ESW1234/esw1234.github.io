@@ -2,17 +2,17 @@
 <html lang="en">
 <body>
     <div id="content">
-        <h1>Welcome to fun city with lightning out 8</h1>
+        <h1>Welcome to ram dev with lightning out 1</h1>
         <div id="innerContent"></div>
     </div>
-    <script src="https://funcity-dev-ed.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script>
+    <script src="https://ram-dev-ed.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script>
     <script>
         $Lightning.use("c:myApp",    // name of the Lightning app
             function() {          // Callback once framework and app loaded
                 debugger;
                 console.log("callback for $Lightning.use");
                 $Lightning.createComponent(
-                    "c:helloWorld",
+                    "c:welcome",
                     {},
                     "innerContent",
                     function(cmp){
@@ -21,7 +21,7 @@
                 );
             },
             //"https://safaritest.localhost.blitztesting.com",
-            'https://funcity-dev-ed.test1.my.pc-rnd.site.com'
+            'https://ram-dev-ed.test1.my.pc-rnd.site.com'
             //'https://wonderful.test1.pc-rnd.force.com'
 
         );
