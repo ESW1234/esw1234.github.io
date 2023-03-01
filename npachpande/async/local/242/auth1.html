@@ -22,6 +22,13 @@
 			"identityToken": token
 		});
 	}
+	
+	window.addEventListener("onEmbeddedMessagingTokenExpired", () => {
+		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			identityTokenType: "JWT",
+			identityToken: "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3Q2QGVzdy5jb20iLCJleHAiOjE2Nzc2MzU3MTUsImlhdCI6MTY3NzYyOTcxNX0.ote8oIel6-rGosYfo76TMtP4Mg6k-p4bddU6433PwEUCElr5yMm1q3Y1rPkHrLy9hakWQOMyqImglwlqFH5SUYRK9GX8KbF8T5u2SY8SBoGR5ueSjeBMekS2yxhdl97lCpk4ONIWSOEpNdWDSIAtwXozQ8p8g0hVRLC4FbRymaco8s3u_A3VN4X0Li2UR2QskvCede_k3lt9SFA4nBeKUvGox3d_mgMquvwRPhMxuAjH8drHdsAqU29xwM4P1lbJf8A9RlxG1X4XkAUaScKK-uIQMjmNcMamjZxAXwcwDXwkvTdf-uZOiHKAOpzsaXyzH4i34aP76uPmUPcvk4EqfQ"
+		});
+	});
 </script>
 
 <script type='text/javascript'>
