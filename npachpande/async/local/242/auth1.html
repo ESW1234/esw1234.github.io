@@ -22,19 +22,6 @@
 			"identityToken": token
 		});
 	}
-	
-	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
-	    // 2 min expiry token
-	    var url = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=120&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-
-	    var xmlHttp = new XMLHttpRequest();
-	    xmlHttp.open( "GET", url, false ); // false for synchronous request
-	    xmlHttp.send( null );
-	    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                "identityTokenType": "JWT",
-                "identityToken": xmlHttp.responseText.accessToken
-            });
-	});
 </script>
 
 <script type='text/javascript'>
