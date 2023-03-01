@@ -23,7 +23,7 @@
 		});
 	}
 	
-	window.addEventListener("onEmbeddedMessagingTokenExpired", () => {
+	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
 			identityTokenType: "JWT",
 			identityToken: "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3Q2QGVzdy5jb20iLCJleHAiOjE2Nzc2NDE5MDQsImlhdCI6MTY3NzYzNTkwNH0.MzoaL_zlbDt50cOLGm3pw2tWvUyHTN0Ulrq_op4Z7CH-NXcTskXJdGfv_jDkCU_XpFYrCzPbSpopGPd3yTIva2ApWHD9Gwen3YttDtZ65yerEVLX_r80JlOnykaX1oQvbbtNcuPp0KE4mcbjhLGmiomp41sL7UiyflxwQWFcErC5mj_-tZt5IPHaTF1IAIcKqCWq-2-cXsZGNu31TZSvUTEJOO3nYFsB0nc8b6NSktq1yh5eAkZIFW9UGGR6kzbIYREpp5L-JtuAksqze7mg05eGehelgOU-KZR6HGRaI1uajmvof3W4faYpZ0h8U6cpKpVxAFOwDTCBORBvdJXjNA"
