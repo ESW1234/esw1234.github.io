@@ -1,0 +1,26 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DS7000000lseC',
+				'Queue_ExternalSite',
+				'https://na45stmfa-miaw.stmfa.my.stm.site.com/ESWQueueExternalSite1677628906420',
+				{
+					scrt2URL: 'https://na45stmfa-miaw.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://na45stmfa-miaw.stmfa.my.stm.site.com/ESWQueueExternalSite1677628906420/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+  </body>
+</html>
+
