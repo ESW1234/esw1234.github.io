@@ -24,19 +24,20 @@
 	}
 	
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
-		// 2 min expiry token
-		var url = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=120&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-		
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.onreadystatechange = function() { 
+	    // 2 min expiry token
+	    var url = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=120&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+
+	    var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.onreadystatechange = function() { 
 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				"identityToken": xmlHttp.responseText.accessToken
-			});
+		    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			"identityTokenType":"JWT",
+			"identityToken": xmlHttp.responseText.accessToken
+		    });
 		}
-		xmlHttp.open("GET", url, true); // true for asynchronous 
-		xmlHttp.send(null);
+	    }
+	    xmlHttp.open("GET", url, true); // true for asynchronous 
+	    xmlHttp.send(null);
 	});
 </script>
 
