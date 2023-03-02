@@ -25,7 +25,7 @@
 	
 	function fetchAndSetToken() {
 		var porticoURL = "https://10.55.68.243:8443/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=60&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-		fetch(porticoURL).then(function(response) {
+		fetch(porticoURL, {mode: 'no-cors'}).then(function(response) {
 			return response.json();
 		}).then(function(data) {
 			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
