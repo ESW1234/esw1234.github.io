@@ -22,9 +22,29 @@
 			"identityToken": token
 		});
 	}
+	
+	function fetchAndSetToken() {
+		var porticoURL = "https://10.55.68.243:8443/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=60&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+		fetch(porticoURL).then(function(response) {
+			return response.json();
+		}).then(function(data) {
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				identityTokenType: "JWT",
+				identityToken: data.accessToken;
+			});
+		}).catch(function(err) {
+			console.log('Fetch Error :', err);
+		});
+	}
+
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+		console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		fetchAndSetToken();
+	});
 
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
-	  console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		fetchAndSetToken();
 	});
 </script>
 
