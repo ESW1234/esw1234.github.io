@@ -30,7 +30,7 @@
 		}).then(function(data) {
 			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
 				identityTokenType: "JWT",
-				identityToken: data.accessToken;
+				identityToken: data.accessToken
 			});
 		}).catch(function(err) {
 			console.log('Fetch Error :', err);
