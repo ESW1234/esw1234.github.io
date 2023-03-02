@@ -22,6 +22,10 @@
 			"identityToken": token
 		});
 	}
+
+	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+	  console.log("Received the onEmbeddedMessagingTokenExpired event…");
+	});
 </script>
 
 <script type='text/javascript'>
