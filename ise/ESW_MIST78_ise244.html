@@ -1,0 +1,19 @@
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DN80000000MZ0',
+				'In_App',
+				'https://ise244.mist78.my.stm.site.com/ESWInApp1677859556807',
+				{
+					scrt2URL: 'https://ise244.mist78.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://ise244.mist78.my.stm.site.com/ESWInApp1677859556807/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
