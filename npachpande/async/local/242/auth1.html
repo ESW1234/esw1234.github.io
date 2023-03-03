@@ -45,7 +45,9 @@
 
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		console.log("Received the onEmbeddedMessagingTokenExpired event…");
-		// fetchAndSetToken();
+		setTimeout(() => {
+			fetchAndSetToken();
+		}, 5000);
 	});
 </script>
 
