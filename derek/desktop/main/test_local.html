@@ -15,11 +15,11 @@
                 try {
                   embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                   embeddedservice_bootstrap.settings.devMode = true;
+		embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 			
 		// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 		 window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("Received onEmbeddedMessagingReady event!!!");
-			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Hidden1" : "value one", "Hidden2" : "value two", "Hidden3" : "value three", "Hidden4" : "value four"});
 		 });
 
                   embeddedservice_bootstrap.init(
