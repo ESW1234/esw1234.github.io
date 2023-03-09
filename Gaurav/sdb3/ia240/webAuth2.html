@@ -7,11 +7,17 @@
 	<h1> SDB3 MIAW Chat - Queue Transfer using Flow - Web Auth 2.</h1>
 Agent: a1@sdb3.ia240
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+<button type="button" id="authBtn" onclick="authenticate()"> Clear User Session </button>
+<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 
 			function clearAuthSession() {
 				console.log("Clearing user session.");
+				embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			}
+	
+			function authenticate() {
+				console.log("Authenticating User.");
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
 	</script>
