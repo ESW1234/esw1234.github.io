@@ -9,13 +9,11 @@ Agent: a1@sdb3.ia240
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	
 <textarea id="jwtToken" name="jwtToken"
-          rows="5" cols="33">
+          rows="5" cols="100">
 </textarea>
 <button type="button" id="authBtn" onclick="authenticate()"> Authenticate User </button><br>
 <button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-var firstName = "John";
-var lastName = "Smith";
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname
 
 			function clearAuthSession() {
 				console.log("Clearing user session.");
@@ -28,7 +26,7 @@ var lastName = "Smith";
 				  identityToken: document.getElementById("jwtToken").value
 				}
 				console.log("Authenticating User.");
-				console.log("JWT Token: " + jst);
+				console.log("JWT Token: " + jwt);
 				//embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
 	</script>
