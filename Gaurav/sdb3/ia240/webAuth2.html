@@ -27,7 +27,7 @@ Agent: a1@sdb3.ia240
 				}
 				console.log("Authenticating User.");
 				console.log("JWT Token: " + JSON.stringify(jwt));
-				//embeddedservice_bootstrap.userVerificationAPI.clearSession();
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(jwt);
 			}
 	</script>
 <script type='text/javascript'>
