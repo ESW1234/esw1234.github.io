@@ -15,7 +15,6 @@
                 try {
                   embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                   embeddedservice_bootstrap.settings.devMode = true;
-		embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 			
 		// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 		 window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -23,11 +22,11 @@
 		 });
 
                   embeddedservice_bootstrap.init(
-			'00DSG00000039tB',
-			'web1',
+			'00DSG0000001hxN',
+			'Messaging_9',
 			'https://hello.my.localhost.sfdcdev.site.com:6101/ESWderek1667422860240/s',
 			{
-				scrt2URL: 'https://sdb6org1.test1.my.pc-rnd.salesforce-scrt.com'
+				scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 			}
 		);
                 } catch (err) {
