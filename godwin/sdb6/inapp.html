@@ -13,13 +13,14 @@
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+					//embeddedservice_bootstrap.settings.devMode = true;
 
 					embeddedservice_bootstrap.init(
-						'00DRO0000008l8u',
-						'Embedded_Messaging',
-						'https://godwinlaw.test1.my.pc-rnd.salesforce.com',
+						'00DSG0000008LaL',
+						'MIAW',
+						'https://godwinlaw-sdb6.test1.my.pc-rnd.site.com/ESWMIAW1674676884164',
 						{
-							scrt2URL: 'https://godwinlaw.test1.my.pc-rnd.salesforce-scrt.com'
+							scrt2URL: 'https://godwinlaw-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
 						}
 					);
 				} catch (err) {
