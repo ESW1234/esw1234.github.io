@@ -1,0 +1,28 @@
+<html>
+   <head>
+        <!-- paste meta head tag -->
+        <title>agent perm test</title>
+   </head>
+   <body>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000NxTt',
+				'web2',
+				'https://miawagent1.stmfa.stm.force.com/ESWweb21679869366349',
+				{
+					scrt2URL: 'https://testmiawagent1.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miawagent1.stmfa.stm.force.com/ESWweb21679869366349/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
