@@ -24,12 +24,13 @@
 	const TOP_CONTAINER_NAME = "embedded-messaging";
 	const BACKGROUND_MODAL_ID = "embeddedMessagingModalOverlay";
 	const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
-	const IFRAME_NAME = "embeddedMessagingFrame";
+	const LWR_IFRAME_NAME = "embeddedMessagingFrame";
 	const IFRAME_DEFAULT_TITLE = "Chat with an Agent";
-	const IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS = IFRAME_NAME + "MaximizedBottomTabBar";
-	const IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS = IFRAME_NAME + "MinimizedBottomTabBar";
+	const IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS = LWR_IFRAME_NAME + "MaximizedBottomTabBar";
+	const IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS = LWR_IFRAME_NAME + "MinimizedBottomTabBar";
 	const FILE_PREVIEW_IFRAME_NAME = "embeddedMessagingFilePreviewFrame";
 	const FILE_PREVIEW_IFRAME_DEFAULT_TITLE = "Enlarged image preview";
+	const SITE_CONTEXT_IFRAME_NAME = "embeddedMessagingSiteContextFrame";
 	const SLDS_ASSISTIVE_TEXT = "slds-assistive-text";
 	const MINIMIZED_NOTIFICATION_AREA_CLASS = "embeddedMessagingMinimizedNotification";
 	const MINIMIZED_NOTIFICATION_AREA_TEXT_WRAPPER_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "TextWrapper";
@@ -60,6 +61,29 @@
 	const EMBEDDED_MESSAGING_LOADING_SPINNER = EMBEDDED_MESSAGING_LOADING + "Spinner";
 	const EMBEDDED_MESSAGING_LOADING_CIRCLE = EMBEDDED_MESSAGING_LOADING + "Circle";
 
+	/**
+	 * SCRT Paths
+	 */
+	const IN_APP_API_PREFIX = "/iamessage";
+	const IN_APP_API_VERSION = "/v1";
+	const ACCESS_TOKEN_PATH = "/accessToken";
+	const AUTHORIZATION_PATH = "/authorization";
+	const UNAUTHENTICATED_PATH = "/unauthenticated";
+	const AUTHENTICATED_PATH = "/authenticated";
+	const QUERIES_PATH = "/queries";
+	const UNAUTHENTICATED_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH + UNAUTHENTICATED_PATH + ACCESS_TOKEN_PATH;
+	const AUTHENTICATED_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH + AUTHENTICATED_PATH + ACCESS_TOKEN_PATH;
+	const CONVERSATION_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + "/conversation";
+	const CONTINUITY_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH +  "/continuityAccessToken";
+	const LIST_CONVERSATIONS_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + QUERIES_PATH + "/conversation/list";
+
+	 /**
+	  * Capabilities version to be passed as part of Access Token request to register capabilities of the app.
+	  * Note: The version number is merely a representation and a contract with the IA-Message service and does not necessarily represent the core version. Bump this number when new capabilities are introduced to be supported.
+	  * @type {string}
+ 	  */
+	 const capabilitiesVersion = "240";
+
 	// TODO: confirm these as they will be APIs.
 	const APP_LOADED_EVENT_NAME = "ESW_APP_LOADED";
 	const APP_MINIMIZE_EVENT_NAME = "ESW_APP_MINIMIZE";
@@ -75,18 +99,23 @@
 	const EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME = "ESW_APP_MAXIMIZATION_RESIZING_COMPLETED";
 	const EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME = "ESW_APP_MINIMIZATION_RESIZING_COMPLETED";
 	const EMBEDDED_MESSAGING_UPDATE_TITLE_NOTIFICATION = "ESW_APP_UPDATE_TITLE_NOTIFICATION";
+	const EMBEDDED_MESSAGING_3P_STORAGE_READY_EVENT_NAME = "ESW_3RDPARTY_STORAGE_READY";
 	const EMBEDDED_MESSAGING_SHOW_FILE_PREVIEW_FRAME_EVENT_NAME = "ESW_APP_SHOW_FILE_PREVIEW_FRAME";
 	const EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME = "ESW_APP_HIDE_FILE_PREVIEW_FRAME";
 	const APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME = "ESW_APP_SEND_HIDDEN_PRECHAT_FIELDS";
 	const APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME = "ESW_APP_RECEIVE_HIDDEN_PRECHAT_FIELDS";
-	const APP_REQUEST_POSTCHAT_PARAMETERS_EVENT_NAME = "ESW_APP_SEND_POSTCHAT_PARAMETERS";
-	const APP_RECEIVE_POSTCHAT_PARAMETER_EVENT_NAME = "ESW_APP_RECEIVE_POSTCHAT_PARAMETERS";
+	const APP_REQUEST_AUTORESPONSE_PARAMETERS_EVENT_NAME = "ESW_APP_SEND_AUTORESPONSE_PARAMETERS";
+	const APP_RECEIVE_AUTORESPONSE_PARAMETERS_EVENT_NAME = "ESW_APP_RECEIVE_AUTORESPONSE_PARAMETERS";
 	const EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE = "EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE";
+	const EMBEDDED_MESSAGING_CONVERSATION_DATA = "EMBEDDED_MESSAGING_CONVERSATION_DATA";
 	const EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME = "EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT";
 	const EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME = "trapfocustolast";
 	const EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME = "EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT";
 	const EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME = "EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT";
 	const EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME = "EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT";
+    const EMBEDDED_MESSAGING_3P_STORAGE_RESPONSE_EVENT_NAME = "ESW_3RDPARTY_STORAGE_RESPONSE";
+	const EMBEDDED_MESSAGING_3P_STORAGE_REQUEST_EVENT_NAME = "ESW_3RDPARTY_STORAGE_REQUEST";
+
 
 	/*********************************************************
 	 *		Embedded Messaging Public Events		*
@@ -128,10 +157,10 @@
 	};
 
 	/**
-	 * Attributes required to construct SCRT 2.0 Config Service URL.
+	 * Attributes required to construct SCRT 2.0 Service URL.
 	 */
-	const IN_APP_CONFIG_API_PREFIX = "embeddedservice";
-	const IN_APP_CONFIG_API_VERSION = "v1";
+	const IN_APP_SCRT2_API_PREFIX = "embeddedservice";
+	const IN_APP_SCRT2_API_VERSION = "v1";
 
 	/**
 	 * Default document title of the page.
@@ -164,10 +193,10 @@
 	let hiddenPrechatFields = {};
 
 	/**
-	 * Internal property to track page-specific parameters set by a customer for appending query strings of the Post-Chat URL.
+	 * Internal property to track page-specific parameters set by a customer for appending query strings to the Auto-Response URL.
 	 * @type {Object} - f.e. { parameterName1: parameterValue2, parameterName2: parameterValue2 }
 	 */
-	let postchatParameters = {};
+	let autoResponseParameters = {};
 
 	/**
 	 * The identity token set by the customer for authenticating the current end user.
@@ -187,10 +216,61 @@
 	let conversationId;
 
 	/**
+	 * This is a resolver function for when the iframe is
+	 * ready for data. Used so we can supply the jwt/connectionId when
+	 * it becomes available
+	 */
+	let resolveLwrIframeReady;
+
+	/**
+	 * Promise to be resolved when LWR iframe is ready for data
+	 */
+	let lwrIframeReadyPromise = new Promise((resolve) => {
+		resolveLwrIframeReady = resolve;
+	});
+
+	/**
+	 * resolver function called when iframe for sitecontext.html is ready
+	 */
+	let siteContextReady;
+
+	/**
+	 * Promise resolved when iframe for sitecontext.html is ready
+	 */
+	const siteContextReadyPromise = new Promise((resolve) => {
+		siteContextReady = resolve;
+	});
+
+	/**
+	 * Resolver function called when we have checked both 3rd and 1st party
+	 * web storage for existing session
+	 */
+	let sessionDataReady;
+
+	/**
+	 * Promise resolved when sessionDataReady function called 
+	 * (i.e. when we have checked 3rd & 1st party web storage
+	 * cor existing session)
+	 */
+	let sessionDataPromise = new Promise((resolve) => {
+		sessionDataReady = resolve;
+	});
+
+	/**
 	 * Store the value of the original viewport meta tag for iOS devices.
 	 * @type {string}
 	 */
 	let originalViewportMetaTag;
+
+	/**
+	 * Store the business hours intervals.
+	 */
+	let businessHoursInterval;
+
+	/**
+	 * Store the business hours timer, determines the visibility of the chat button when invoked.
+	 */
+	let businessHoursTimer;
 
 	/**
 	 * Viewport meta tag that disables autozoom for iOS devices
@@ -206,7 +286,7 @@
 		JWT: "JWT",
 		FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES",
 		HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS",
-		POSTCHAT_PARAMETERS: "POSTCHAT_PARAMETERS"
+		AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS"
 	};
 
 	/**
@@ -217,6 +297,21 @@
 		"TAB": "Tab",
 		"SPACE": " "
 	};
+
+	/**
+	 * Resolve function for the promise returned by the embeddedservice_bootstrap.userVerificationAPI.clearSession() API.
+	 * Tracking the function as an internal property allows us to resolve the promise outside clearSession().
+	 * @type {function}
+	 */
+	let clearUserSessionPromiseResolve;
+
+	/**
+	 * Max time (in milliseconds) to wait for an identity token, after one has expired. Token is set in setIdentityToken() method.
+	 * @type {number}
+	 */
+	const SET_IDENTITY_TOKEN_TIMEOUT_IN_MS = 30 * 1000;
+
+	let setIdentityTokenResolve;
 
 	/******************************************************
 						Web storage functions
@@ -264,7 +359,6 @@
 	 * Initialize the web storage object for both localStorage & sessionStorage if it doesn't already exist.
 	 */
 	function initializeWebStorage() {
-		storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
 		conversationId = getConversationIdFromWebStorage() || generateUUID();
 
 		// Only create the structure if this is a new chat session
@@ -301,6 +395,21 @@
 			}
 		}
 		return item;
+	}
+
+	/**
+	 * Set items in web storage based on an object map of keys to values
+	 */
+	function setItemsInWebStorage(values, storage) {
+		if(storage && values) {
+			const storageObj = (storage.getItem(storageKey) && JSON.parse(storage.getItem(storageKey))) || {};
+
+			Object.keys(values).forEach((key) => {
+				let value = values[key];
+				storageObj[key] = value;
+			});
+			storage.setItem(storageKey, JSON.stringify(storageObj));
+		}
 	}
 
 	/**
@@ -381,11 +490,14 @@
 		// Reset in-memory hidden prechat fields.
 		hiddenPrechatFields = {};
 
-		// Reset in-memory post-chat parameters.
-		postchatParameters = {};
+		// Reset in-memory auto-response parameters.
+		autoResponseParameters = {};
 
 		// Reset identityToken
 		identityToken = undefined;
+
+		// Reset hasEmbeddedMessagingReadyEventFired.
+		hasEmbeddedMessagingReadyEventFired = false;
 
 		log(`Cleared in-memory data.`);
 	}
@@ -423,13 +535,6 @@
 			conversationId = updatedConversationId;
 		}
 	}
-
-  	/**
-	 * Resolve function for the promise returned by the embeddedservice_bootstrap.userVerificationAPI.clearSession() API.
-	 * Tracking the function as an internal property allows us to resolve the promise outside clearSession().
-	 * @type {function}
-	 */
-	let clearUserSessionPromiseResolve;
 
 	/**
 	 * Merge a key-value mapping into the setting object, such that the provided
@@ -522,7 +627,7 @@
 	 *
 	 * @return {boolean} True if this page is a Salesforce Site.
 	 */
-	function isSiteContext() {
+	function pageIsSiteContext() {
 		return window.$A && typeof window.$A.get === "function" && window.$A.get("$Site");
 	}
 
@@ -681,7 +786,8 @@
 			"removeEventListener",
 			"requestAnimationFrame",
 			"setInterval",
-			"setTimeout"
+			"setTimeout",
+			"fetch"
 		];
 		let objectsToCheck = [{
 			name: "document",
@@ -710,7 +816,7 @@
 	 * If the iframe is responsible for getting a new JWT, it will send a post message here to notify the parent of the new JWT. Store this new JWT in web storage for session continuity.
 	 * @param {String} jwt - JWT to store in web storage.
 	 */
-	function storeJWTInWebStorage(jwt) {
+	function storeJwtInWebStorage(jwt) {
 		if(typeof jwt !== "string") {
 			error(`Expected to receive string, instead received: ${jwt}.`);
 		}
@@ -744,6 +850,19 @@
 		const conversationRoutingAttributes = hiddenPrechatFields;
 		const standardLabelsFromConfiguration = embeddedservice_bootstrap.settings.standardLabels;
 		const customLabelsFromConfiguration = embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels;
+		let imageCompressionOptions;
+
+		if (embeddedservice_bootstrap.settings.imageCompressionOptions) {
+			const option = embeddedservice_bootstrap.settings.imageCompressionOptions;
+
+			imageCompressionOptions = {
+				...(option.quality && !isNaN(Number(option.quality)) && Number(option.quality) >= 0 && Number(option.quality) <= 1 && {quality: Number(option.quality)}),
+				...(option.maxHeight && !isNaN(Number(option.maxHeight)) && Number(option.maxHeight) > 0 && {maxHeight: Number(option.maxHeight)}),
+				...(option.maxWidth && !isNaN(Number(option.maxWidth)) && Number(option.maxWidth) > 0 && {maxWidth: Number(option.maxWidth)}),
+				...(option.convertTypes && (typeof option.convertTypes === 'string' || Array.isArray(option.convertTypes)) && {convertTypes: option.convertTypes}),
+				...(option.convertSize && !isNaN(Number(option.convertSize)) && Number(option.convertSize) >= 0 && {convertSize: option.convertSize})
+			};
+		}
 
 		const finalConfigurationData = Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
 			jwt: iaMessageJwt,
@@ -752,6 +871,7 @@
 			routingAttributes: conversationRoutingAttributes,
 			conversationId,
 			devMode: Boolean(embeddedservice_bootstrap.settings.devMode),
+			imageCompressionOptions,
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration})
 		});
@@ -777,7 +897,7 @@
 	function addMessageEventHandlers() {
 		window.addEventListener("message", (e) => {
 			if(e && e.data && e.origin) {
-				if(embeddedservice_bootstrap.filePreviewFrame.contentWindow === e.source) {
+				if(embeddedservice_bootstrap.filePreviewFrame && embeddedservice_bootstrap.filePreviewFrame.contentWindow === e.source) {
 					// Handle events from File Preview Iframe window.
 					switch(e.data.method) {
 						case EMBEDDED_MESSAGING_SHOW_FILE_PREVIEW_FRAME_EVENT_NAME:
@@ -785,6 +905,24 @@
 							break;
 						case EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME:
 							setFilePreviewFrameVisibility(false);
+							break;
+						default:
+							warning("Unrecognized event name: " + e.data.method);
+							break;
+					}
+				} else if(embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.contentWindow === e.source) {
+					switch(e.data.method) {
+						case EMBEDDED_MESSAGING_3P_STORAGE_READY_EVENT_NAME:
+							siteContextReady();
+							break;
+						case EMBEDDED_MESSAGING_3P_STORAGE_RESPONSE_EVENT_NAME:
+							if (e.data.data && e.data.data.localStorage){
+								setItemsInWebStorage(e.data.data.localStorage, localStorage);
+							}
+							if (e.data.data && e.data.data.sessionStorage){
+								setItemsInWebStorage(e.data.data.sessionStorage, sessionStorage);
+							}
+							sessionDataReady();
 							break;
 						default:
 							warning("Unrecognized event name: " + e.data.method);
@@ -801,13 +939,12 @@
 							/**
 							 * Send Configuration Settings to the container (iframe window).
 							 */
-							sendPostMessageToIframeWindow(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME, prepareConfigurationDataForIframeWindow());
+							sendPostMessageToAppIframe(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME, prepareConfigurationDataForIframeWindow());
+							//resolve the promise, this may cause waiting messages to be sent to iframe window
+							resolveLwrIframeReady();
 							break;
 						case APP_LOADED_EVENT_NAME:
-							// TODO W-10165756 - Remove handling for the event when we no longer support the aura app.
-							if(embeddedservice_bootstrap.settings.isAuraSite) {
-								handleAfterAppLoad();
-							}
+							handleAfterAppLoad();
 							break;
 						case APP_MINIMIZE_EVENT_NAME:
 							embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
@@ -816,10 +953,11 @@
 							embeddedservice_bootstrap.maximizeIframe(frame);
 							break;
 						case APP_RESET_INITIAL_STATE_EVENT_NAME:
-							handleResetClientToInitialState();
+							resetClientToInitialState();
 							break;
+						//TODO: remove this when we no longer obtain JWT in LWR App (prechat scenario)
 						case EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME:
-							storeJWTInWebStorage(e.data.data);
+							storeJwtInWebStorage(e.data.data);
 							break;
 						case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
 							clearWebStorage();
@@ -842,16 +980,16 @@
 							 * at the time of submitting Prechat form (if enabled).
 							 * This event is exchanged only when Prechat is enabled in the setup.
 							 */
-							sendPostMessageToIframeWindow(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
+							sendPostMessageToAppIframe(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
 							break;
-						case APP_REQUEST_POSTCHAT_PARAMETERS_EVENT_NAME:
-							sendPostMessageToIframeWindow(APP_RECEIVE_POSTCHAT_PARAMETER_EVENT_NAME, postchatParameters);
+						case APP_REQUEST_AUTORESPONSE_PARAMETERS_EVENT_NAME:
+							sendPostMessageToAppIframe(APP_RECEIVE_AUTORESPONSE_PARAMETERS_EVENT_NAME, autoResponseParameters);
 							break;
 						case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
 							updateConversationIdInWebStorage(e.data.data);
 							break;
 						case EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME:
-							handleIdentityTokenExpiry();
+							handleIdentityTokenExpiredEvent();
 							break;
 						case EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME:
 							handleJwtRetrievalFailure();
@@ -964,9 +1102,9 @@
 	 * @returns {object}
 	 */
 	function getEmbeddedMessagingFrame() {
-		return document.getElementById(IFRAME_NAME);
+		return document.getElementById(LWR_IFRAME_NAME);
 	}
-
+	
 	/**
 	 * Returns a DOM reference to the embedded messaging conversation button.
 	 *
@@ -1081,23 +1219,64 @@
 	 * Load the config settings from SCRT 2.0 stack.
 	 */
 	function getConfigurationData() {
-		return new Promise((resolve, reject) => {
-			const xhr = new XMLHttpRequest();
-			const configURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_CONFIG_API_PREFIX + "/" + IN_APP_CONFIG_API_VERSION +
+			const configURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION +
 				"/embedded-service-config?orgId=" + embeddedservice_bootstrap.settings.orgId + "&esConfigName=" +
 				embeddedservice_bootstrap.settings.eswConfigDevName + "&language=" + embeddedservice_bootstrap.settings.language;
 
-			xhr.open("GET", configURL, true);
+		return sendXhrRequest(configURL, "GET");
+	}
+
+	/**
+	 * Get business hours data from the business hours endpoint.
+	 * The API will always retuns the next 2 BH intervals,
+	 * so with that being true, the intervals will never start off stale.
+	 * But for sake of simplification, we are only storing one interval at a time.
+	 */
+	function getBusinessHoursInterval() {
+		const eswConfigDevName = embeddedservice_bootstrap.settings.eswConfigDevName;
+		const orgId = embeddedservice_bootstrap.settings.orgId;
+
+		const endpoint = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION +
+				"/businesshours?orgId=" + orgId + "&esConfigName=" + eswConfigDevName;
+
+		return sendXhrRequest(endpoint, "GET").then(
+			response => {
+				const businessHoursInfo = response && response.businessHoursInfo;
+				if (businessHoursInfo && Array.isArray(businessHoursInfo.businessHours) && businessHoursInfo.businessHours.length > 0 && typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad !== "boolean") {
+					businessHoursInterval = {
+						startTime: businessHoursInfo.businessHours[0].startTime,
+						endTime: businessHoursInfo.businessHours[0].endTime
+					};
+					setupBusinessHoursTimer();
+				}
+			}
+		).catch(
+			(e) => {
+				error("Error loading business hours metadata.", e);
+			}
+		);
+	}
+
+	/**
+	 * Send an HTTP request using fetch with a specified path, and method.
+	 * @returns {Promise}
+	 */
+	function sendXhrRequest(apiPath, method) {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest();
+
+			xhr.open(method, apiPath, true);
 
 			xhr.onreadystatechange = (response) => {
 				const state = response.target;
 
 				// DONE === The operation is complete, per https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState.
-				if(state && state.readyState === state.DONE) {
-					if(state.status === 200) {
-						const configSettings = JSON.parse(state.responseText);
+				// Business hours return 204 if no business hours is associated with the deployment.
+				if(state && state.readyState === state.DONE || state.status === 204) {
+					if(state.status === 200 || state.status === 204) {
+						const responseJson = state.responseText ? JSON.parse(state.responseText) : state.responseText;
 
-						resolve(configSettings);
+						resolve(responseJson);
 					} else {
 						reject(state.status);
 					}
@@ -1106,6 +1285,519 @@
 			xhr.send();
 		});
 	}
+
+	/**
+	 * Initializes the active state by creating a JWT.
+	 * This method does the following -
+	 * 1. Create a JWT if in AUTH mode OR if prechat is disabled, ELSE resolve the promise.
+	 * 2. If we are in AUTH mode, use the JWT from Step 1 to list existing open conversations of this end-user.
+	 * @returns {Promise<unknown>}
+	 */
+	function initializeConversationState() {
+		if (getAuthMode() === AUTH_MODE.AUTH) {
+			handleGetAuthenticatedJwt().then(() => {
+				handleListConversation().then(() => {
+				log("finished joining verified user conversation")
+			})});
+		} else if (!isPrechatEnabled()) {
+			handleGetUnauthenticatedJwt().then(() => {
+				handleCreateNewConversation().then(() => {
+					log("finished creating conversation");
+				}
+			)});
+		}
+	}
+
+    /**
+     * Handle getting a continuity JWT.
+     * @returns {Promise}
+     */
+    function handleGetContinuityJwt() {
+		// Check if jwt exists in web storage, that will be used to fetch a continuityAccessToken.
+        if (!getItemInWebStorageByKey(STORAGE_KEYS.JWT)) {
+            return Promise.reject(undefined);
+        }
+
+        return new Promise(resolve => {
+            getContinuityJwt().then(response => {
+				storeJwtInWebStorage(response.accessToken);
+				sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
+                resolve(response);
+            })
+            .catch(e => {
+                error(`Failed to get continuity JWT: ${e && e.message ? e.message : e}.`);
+				// Reset the client to the initial state when we fail to fetch a continuity jwt.
+				// This will mainly occur when a user returns to unverified conversation after the messaging jwt expires.
+				resetClientToInitialState();
+            });
+        });
+    }
+
+	/**
+	 * Get a JWT with the same subjectId but new clientId as the existing inAppService JWT. This function is used for session continuity across tabs.
+	 *
+	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#/paths/~1authorization~1continuityAccessToken/get
+	 *
+	 * @returns {Promise}
+	 */
+	function getContinuityJwt() {
+		const apiPath = embeddedservice_bootstrap.settings.scrt2URL.concat(CONTINUITY_ACCESS_TOKEN_PATH);
+		return sendRequest(
+			apiPath,
+			"GET",
+			"cors"
+		).then(response => {
+			if (!response.ok) {
+				throw response;
+			}
+			return response.json();
+		});
+	}
+
+	/**
+     * Handle getting an unauthenicated JWT.
+     *
+     * @returns {Promise}
+     */
+	function handleGetUnauthenticatedJwt() {
+		return new Promise(resolve => {
+			getUnauthenticatedJwt()
+				.then(response => {
+					storeJwtInWebStorage(response.accessToken);
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
+					resolve(response.accessToken);
+				})
+				.catch(e => {
+					return handleGetJwtError(e);
+				});
+		});
+	}
+
+	/**
+	 * Get a JWT for an anonymous user. This JWT is used for unauthenticated conversations.
+	 *
+	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#operation/unAuthenticatedAccessToken
+	 *
+	 * @returns {Promise}
+	 */
+	 function getUnauthenticatedJwt() {
+		const orgId = embeddedservice_bootstrap.settings.orgId;
+		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+		const deviceInfoAsQueryParams = getDeviceInfoAsQueryParams();
+		const endpoint = deviceInfoAsQueryParams ?
+			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH, "?", deviceInfoAsQueryParams):
+			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH);
+	
+		return fetch(
+			endpoint,
+			{
+				method: "POST",
+				mode: "cors",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					orgId,
+					developerName,
+					capabilitiesVersion
+				})
+			}
+		).then(response => {
+			if (!response.ok) {
+				throw response;
+			}
+			return response.json();
+		});
+	}
+
+    /**
+     * Handle getting an authenticated jwt.
+     *
+     * @param deviceId - (Optional) Device Id to request the JWT. If not provided, the service generates one and adds
+     *                   it as a claim in the JWT.
+     * @returns {Promise<unknown>}
+     */
+    function handleGetAuthenticatedJwt(deviceId) {
+        return new Promise(resolve => {
+            getAuthenticatedJwt(deviceId)
+                .then(response => {
+					storeJwtInWebStorage(response.accessToken);
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
+					resolve(response.accessToken);
+                })
+                .catch(e => {
+                    error(`Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
+					handleJwtRetrievalFailure();
+                });
+        });
+    }
+
+	/**
+	 * Get a JWT for an authenticated user. This JWT is used for authenticated conversations.
+	 *
+	 * @param deviceId - Device Id.
+	 * @returns {Promise}
+	 */
+	function getAuthenticatedJwt(deviceId) {
+		const orgId = embeddedservice_bootstrap.settings.orgId;
+		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+		const customerIdentityToken = identityToken;
+		const deviceInfoAsQueryParams = getDeviceInfoAsQueryParams();
+		const apiPath = deviceInfoAsQueryParams ?
+			embeddedservice_bootstrap.settings.scrt2URL.concat(AUTHENTICATED_ACCESS_TOKEN_PATH, "?", deviceInfoAsQueryParams) :
+			embeddedservice_bootstrap.settings.scrt2URL.concat(AUTHENTICATED_ACCESS_TOKEN_PATH);
+		const method = "POST";
+		const mode = "cors";
+		const requestHeaders = { "Content-Type": "application/json" };
+		const requestBody = {
+			orgId,
+			developerName,
+			capabilitiesVersion,
+			...(deviceId && { deviceId }),
+			"authorizationType": ID_TOKEN_TYPE.JWT,
+			customerIdentityToken
+		};
+
+		if (customerIdentityToken && validateJwt(customerIdentityToken)) {
+			// Send fetch request if identity token has not expired.
+			return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody)
+				.then(response => {
+					if (!response.ok) {
+						throw response;
+					}
+					return response.json();
+				});
+		}
+
+		// Identity token has expired, return a promise that's resolved after a valid token is obtained and the request is executed.
+		return new Promise(resolve => {
+			handleIdentityTokenExpiry({ apiPath, method, mode, requestHeaders, requestBody, resolve });
+		}).then(response => {
+			if (!response.ok) {
+				throw response;
+			}
+			return response.json();
+		});
+	}
+
+    /**
+     * List existing open conversations for this end-user.
+     *
+     * If this end user is a part of 0 open conversations, create a new one.
+     * If this end user is a part of more than 1 open conversation, throw an error.
+     * If this end user is a part of exactly 1 open conversation, re-join the conversation.
+     *
+     * TODO - W-11772963 Gracefully handle the error thrown when the end-user is a part of more than 1 open conversation.
+     * @returns {*}
+     */
+    function handleListConversation() {
+        return listConversation(false).then(response => {
+            return new Promise(resolve => {
+                if (response.conversations && response.conversations.length === 1 && response.conversations[0].endTimestamp === 0) {
+                    /**
+                     * It's possible there's a delay in scrt2 propagating conversation information to core if this conversation has just ended.
+                     * Check for an endTimestamp for both open and closed conversations.
+                     * If the conversation's `endTimestamp` value is not 0, the conversation is closed.
+                     */
+                    let existingOpenConversationData = response.conversations[0];
+
+                    if (!isString(existingOpenConversationData.conversationId)) {
+                        // To restore conversation status and entries, conversationId must be set!
+                        throw new Error(`Invalid conversation identifier: ${existingOpenConversationData.conversationId}.`);
+                    }
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CONVERSATION_DATA, existingOpenConversationData);
+
+					resolve();
+                } else if (response.conversations && response.conversations.length === 0) {
+					// no existing conversation - start a new one
+					warning("No existing conversation found. Will start a new conversation.");
+					handleCreateNewConversation().then(() => {
+						log("finished creating new conversation");
+					});
+                    resolve();
+                } else if (response.conversations && response.conversations.length > 1) {
+                    throw new Error(`Expected the end user to be a participant of one open conversation, instead they are participating in ${response.conversations.length} conversations.`);
+                }
+            });
+        }).catch(e => {
+            throw new Error(`Failed to list conversation entries: ${e && e.message ? e.message : e}.`);
+        });
+    }
+
+	/**
+	 * Get a list of all conversations the current subjectId is participating in.
+	 * Returns:
+	 * - number of open conversations
+	 * - number of closed conversations
+	 * - array of conversations
+	 *
+	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#operation/listConversation
+	 *
+	 * @param {Boolean} includeClosedConversations - Whether to include closed conversations in list. Optional.
+	 * @returns {Promise}
+	 */
+	function listConversation(includeClosedConversations){
+		const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat(LIST_CONVERSATIONS_PATH);
+
+		return sendRequest(
+			endpoint,
+			"POST",
+			"cors",
+			null,
+			{ includeClosedConversations }
+		).then(response => response.json());
+	};
+
+	/**
+     * Handle error scenarios for getting unauthenticated JWT.
+     *
+     * @param {Error} e - Error received from getUnauthenticatedJWT endpoint.
+     */
+	function handleGetJwtError(e) {
+		if (e && e.status && e.status === 401) {
+			// "Unauthorized" error caused by JWT expiration. Attempt to get another JWT.
+			return handleGetUnauthenticatedJwt().catch(err => {
+				throw new Error(err);
+			});
+		}
+
+		throw new Error(`Error retrieving unauthenticated token: ${error}.`);
+	}
+
+    /**
+     * Returns true if configuration has a form of type "PreChat" with at-least 1 field; false otherwise.
+     * When pre-chat is disabled in Setup, configuration doesn't include a pre-chat form.
+     *
+     * @returns {boolean}
+     */
+    function isPrechatEnabled() {
+		const forms = embeddedservice_bootstrap.settings.embeddedServiceConfig.forms || [];
+        return forms.some((form) => {
+            form.formFields = form.formFields || [];
+            return form.formType === "PreChat" && form.formFields.length > 0;
+        });
+    }	
+
+    /**
+     * Handle creating a new conversation for this end user.
+	 * Stores the result and pushes data to iframe.
+	 * 
+     * @returns {Promise}
+     */
+    function handleCreateNewConversation() {
+        return createNewConversation(hiddenPrechatFields).then((conversationResponse) => {
+			updateConversationIdInWebStorage(conversationResponse.conversationId);
+			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE, {"conversationId" : conversationResponse.conversationId, "participants" : conversationResponse.participants});
+			return conversationResponse;
+		});
+    }
+
+	/**
+	 * Create a new conversation.
+	 *
+	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#operation/createConversation
+	 *
+	 * @param {Object} routingAttributes - Optional. Prechat data to be used while routing the conversation request.
+	 * @returns {Promise}
+	 */
+	function createNewConversation(routingAttributes) {
+		const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat(CONVERSATION_PATH);
+
+		return sendRequest(
+			endpoint,
+			"POST",
+			"cors",
+			null,
+			{
+				...(routingAttributes && { routingAttributes }),
+				conversationId
+			}
+		).then(response => response.json());
+	};
+
+
+	/**
+	 * Send an HTTP request using fetch with a specified path, method, mode, headers, and body.
+	 *
+	 * @param {String} apiPath - Endpoint to make request to.
+	 * @param {String} method - HTTP request method (POST, GET, DELETE).
+	 * @param {String} mode - HTTP mode (cors, no-cors, same-origin, navigate).
+	 * @param {Object} requestHeaders - Headers to include with request.
+	 * @param {Object} requestBody - Body to include with request. This method stringifies the object passed in, except when
+	 *                               uploading a file. For file attachments, request body must be binary data.
+	 * @returns {Promise}
+	 */
+	function sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody) {
+		const messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+		const headers = requestHeaders ?
+			requestHeaders :
+			{
+				"Content-Type": "application/json",
+				...(messagingJwt && { "Authorization": "Bearer " + messagingJwt })
+			};
+		const body = requestBody ? JSON.stringify(requestBody) : undefined;
+
+		return fetch(
+			apiPath,
+			{
+				method,
+				mode,
+				headers,
+				...(body && { body })
+			}
+		).then((response) => {
+			if (response.status === 401) {
+				clearWebStorage();
+			}
+			if (!response.ok) {
+				throw response;
+			}
+			return response;
+		});
+	};
+
+	/**
+	 * Send an HTTP request using fetch with a specified path, method, mode, headers, and body.
+	 *
+	 * @param {String} apiPath - Endpoint to make request to.
+	 * @param {String} method - HTTP request method (POST, GET, DELETE).
+	 * @param {String} mode - HTTP mode (cors, no-cors, same-origin, navigate).
+	 * @param {Object} requestHeaders - Headers to include with request.
+	 * @param {Object} requestBody - Body to include with request. This method stringifies the object passed in, except when
+	 *                               uploading a file. For file attachments, request body must be binary data.
+	 * @param {string} jwt - (Optional) JWT Token to use. If none provided will look in web storage for one
+	 * @returns {Promise}
+	 */
+	function sendRequest(apiPath, method, mode, requestHeaders, requestBody) {
+		const messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+
+		if (getAuthMode() === AUTH_MODE.AUTH) {
+			// Send fetch request if ia-message jwt has not expired.
+			if (messagingJwt && validateJwt(messagingJwt)) {
+				return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody);
+			}
+
+			// If the ia-message JWT has expired, check whether the identity token has expired.
+			if (identityToken && validateJwt(identityToken)) {
+				// Identity token is still valid, return a pending request promise that's resolved after ia-message JWT is renewed.
+				return new Promise(resolve => {
+					// Handle ia-message JWT expiry along with the pending request details.
+					handleAuthenticatedJwtExpiry({apiPath, method, mode, requestHeaders, requestBody, resolve});
+				});
+			}
+
+			// Identity token has expired, return a promise that's resolved after a valid token is obtained and the request is executed.
+			return new Promise(resolve => {
+				// Dispatch event to container to notify that token has expired along with request details and the promise resolver.
+				handleIdentityTokenExpiry({apiPath, method, mode, requestHeaders, requestBody, resolve});
+			});
+		}
+		return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody);
+	};
+
+	/**
+     * Returns end-user device information (OS and browser details) in the form of URL query parameters. This utility method
+     * is mainly used by the capabilities registration feature.
+     *
+     * @returns {string} OS and browser details as query params.
+     */
+	function getDeviceInfoAsQueryParams() {
+		let deviceInfo = "";
+		const userEnvironmentDetails = getUserEnvironmentDetails();
+		if (userEnvironmentDetails) {
+			deviceInfo = new URLSearchParams({
+				os: userEnvironmentDetails.os.name,
+				osVersion: userEnvironmentDetails.os.version,
+				browser: userEnvironmentDetails.browser.name,
+				browserVersion: userEnvironmentDetails.browser.version
+			}).toString();
+		}
+		return deviceInfo;
+	}	
+
+	/**
+     * Get User Environment details, specifically Browser and OS details using navigator.userAgent.
+     * Based on an existing JS implementation (https://jsfiddle.net/kmturley/Gd6c8/).
+     *
+     * @returns {object} - returns OS and Browser info.
+     */
+	function getUserEnvironmentDetails() {
+		const header = [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera];
+		const dataos = [
+			{ name: 'Windows Phone', value: 'Windows Phone', version: 'OS' },
+			{ name: 'Windows', value: 'Win', version: 'NT' },
+			{ name: 'iPhone', value: 'iPhone', version: 'OS' },
+			{ name: 'iPad', value: 'iPad', version: 'OS' },
+			{ name: 'Kindle', value: 'Silk', version: 'Silk' },
+			{ name: 'Android', value: 'Android', version: 'Android' },
+			{ name: 'PlayBook', value: 'PlayBook', version: 'OS' },
+			{ name: 'BlackBerry', value: 'BlackBerry', version: '/' },
+			{ name: 'Macintosh', value: 'Mac', version: 'OS X' },
+			{ name: 'Linux', value: 'Linux', version: 'rv' },
+			{ name: 'Palm', value: 'Palm', version: 'PalmOS' }
+		];
+		const databrowser = [
+			{ name: 'Edge', value: 'Edg', version: 'Edg' },
+			{ name: 'Chrome', value: 'Chrome', version: 'Chrome' },
+			{ name: 'Firefox', value: 'Firefox', version: 'Firefox' },
+			{ name: 'Safari', value: 'Safari', version: 'Version' },
+			{ name: 'Internet Explorer', value: 'MSIE', version: 'MSIE' },
+			{ name: 'Opera', value: 'Opera', version: 'Opera' },
+			{ name: 'BlackBerry', value: 'CLDC', version: 'CLDC' },
+			{ name: 'Mozilla', value: 'Mozilla', version: 'Mozilla' }
+		];
+
+		const agent = header.join(' ');
+		const os = matchItem(agent, dataos);
+		const browser = matchItem(agent, databrowser);
+
+		return { os, browser };
+	}
+
+    /**
+     * Performs regex operations on navigator.userAgent when invoked by #getUserEnvironmentDetails to extract Browser info (name & version) and OS info (name & version).
+     */
+	function matchItem(string, data) {
+        let i = 0;
+        let j = 0;
+        let regex;
+        let regexv;
+        let match;
+        let matches;
+        let version;
+
+        for (i = 0; i < data.length; i += 1) {
+            regex = new RegExp(data[i].value, 'i');
+            match = regex.test(string);
+            if (match) {
+                regexv = new RegExp(data[i].version + '[- /:;]([\\d._]+)', 'i');
+                matches = string.match(regexv);
+                version = '';
+                if (matches) {
+                    if (matches[1]) {
+                        matches = matches[1];
+                    }
+                }
+                if (matches) {
+                    matches = matches.split(/[._]+/);
+                    for (j = 0; j < matches.length; j += 1) {
+                        if (j === 0) {
+                            version += matches[j] + '.';
+                        } else {
+                            version += matches[j];
+                        }
+                    }
+                } else {
+                    version = '0';
+                }
+                return {
+                    name: data[i].name,
+                    version: parseFloat(version)
+                };
+            }
+        }
+        return { name: 'unknown', version: 0 };
+    }
 
 	/**
 	 * Gets the Site URL from In-App Config Service Response.
@@ -1243,6 +1935,96 @@
 	}
 
 	/**
+	 * Check if either static settings is present
+	 * OR business hours to determine visibility
+	 * @returns {boolean} True if chat button should be hidden on pageload.
+	 */
+	function shouldHideChatButtonInInitialState() {
+		return (typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad === "boolean") ? embeddedservice_bootstrap.settings.hideChatButtonOnLoad : !isWithinBusinessHours();
+	}
+
+	/**
+	 * Determines whether we are currently within business hours
+	 * @returns {boolean} True if within business hours, or business hours is not configured
+	 */
+	function isWithinBusinessHours() {
+		// Interval is empty, then it is ALWAYS in business hours.
+		if (!businessHoursInterval) {
+			return true;
+		}
+
+		const startTime = Number(businessHoursInterval.startTime);
+		const endTime = Number(businessHoursInterval.endTime);
+		const currentTime = Date.now();
+
+		// Current time is within this interval
+		if (currentTime >= startTime && currentTime < endTime) {
+			return true;
+		}
+
+		// The current time is either before this interval or after.
+		return false;
+	}
+
+	/**
+	 * Set a business hours timer that invoke a callback when crosses business hours interval.
+	 */
+	function setupBusinessHoursTimer() {
+		let targetTime;
+
+		if (!businessHoursInterval) {
+			return;
+		}
+
+		const isCurrentlyWithinBH = isWithinBusinessHours();
+
+		// Determine which interval to use based on business hours
+		// If current time is not within BH, then it is before the first interval
+		// Otherwise, it is within a BH interval.
+		if (!isCurrentlyWithinBH) {
+			targetTime = Number(businessHoursInterval.startTime);
+		} else {
+			targetTime = Number(businessHoursInterval.endTime);
+		}
+
+		if (!isNaN(targetTime)) {
+			// Clear previous timer, if exists
+			if (businessHoursTimer) {
+				clearTimeout(businessHoursTimer);
+			}
+
+			businessHoursTimer = setTimeout(() => {
+				// Clean up this executed timer
+				clearTimeout(businessHoursTimer);
+				businessHoursTimer = undefined;
+
+				businessHoursTimerCallback(isCurrentlyWithinBH);
+			}, (targetTime - Date.now()));
+		}
+	}
+
+	/**
+	 * Callback function for business hours timer, to change the visibility of the chat button.
+	 * @param {boolean} wasWithinBusinessHours - If the app was within business hours when the timer was set.
+	 */
+	function businessHoursTimerCallback(wasWithinBusinessHours) {
+		if (wasWithinBusinessHours) {
+			// Clean up stale interval
+			businessHoursInterval = undefined;
+
+			embeddedservice_bootstrap.utilAPI.hideChatButton();
+
+			// Get more intervals before we set another timer since we were within BH.
+			getBusinessHoursInterval().then(setupBusinessHoursTimer());
+		} else {
+			embeddedservice_bootstrap.utilAPI.showChatButton();
+
+			// Attempt to set subsequent business hours timer.
+			setupBusinessHoursTimer();
+		}
+	}
+
+	/**
 	 * Determines whether the user is on an iOS 15+ Safari browser.
 	 *
 	 * This is what navigator.userAgent returns for iOS Safari:
@@ -1280,32 +2062,63 @@
 			viewportMetaTag.setAttribute("content", originalViewportMetaTag);
 			originalViewportMetaTag = undefined;
 
-		}	
+		}
 	}
 
 	/**
-	 * Send a post message to the iframe window.
+	 * Send a post message to the LWR App iframe window. If the frame is not ready, wait for it.
+	 * 
 	 * @param {String} method - Name of method.
 	 * @param {Object} data - Data to send with message. Only included in post message if data is defined.
 	 */
-	function sendPostMessageToIframeWindow(method, data) {
-		const iframe = getEmbeddedMessagingFrame();
+	function sendPostMessageToAppIframe(method, data) {
+		lwrIframeReadyPromise.then(() => {
+			const iframe = getEmbeddedMessagingFrame();
 
-		if(typeof method !== "string") {
-			throw new Error(`Expected a string to use as message param in post message, instead received ${method}.`);
-		}
+			if(typeof method !== "string") {
+				throw new Error(`Expected a string to use as message param in post message, instead received ${method}.`);
+			}
 
-		if(iframe && iframe.contentWindow) {
-			iframe.contentWindow.postMessage(
-				{
-					method,
-					...data && { data }
-				},
-				getSiteURL()
-			);
-		} else {
-			warning(`Embedded Messaging iframe not available for post message with method ${method}.`);
-		}
+			if(iframe && iframe.contentWindow) {
+				iframe.contentWindow.postMessage(
+					{
+						method,
+						...data && { data }
+					},
+					getSiteURL()
+				);
+			} else {
+				warning(`Embedded Messaging iframe not available for post message with method ${method}.`);
+			}
+		});
+	}
+
+	/**
+	 * Send a post message to the LWR App iframe window. If the frame is not ready, wait for it.
+	 * 
+	 * @param {String} method - Name of method.
+	 * @param {Object} data - Data to send with message. Only included in post message if data is defined.
+	 */
+	function sendPostMessageToSiteContextIframe(method, data) {
+		siteContextReadyPromise.then(() => {
+			const iframe = embeddedservice_bootstrap.siteContextFrame;
+
+			if(typeof method !== "string") {
+				throw new Error(`Expected a string to use as message param in post message, instead received ${method}.`);
+			}
+
+			if(iframe && iframe.contentWindow) {
+				iframe.contentWindow.postMessage(
+					{
+						method,
+						...data && { data }
+					},
+					getSiteURL()
+				);
+			} else {
+				warning(`Embedded Messaging iframe not available for post message with method ${method}.`);
+			}
+		});
 	}
 
 	/**
@@ -1341,14 +2154,20 @@
 		iframe.src = siteURL + "?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
 		iframe.onload = () => {
 			log("Created an iframe to load LWR site.");
-			handleAfterAppLoad();
 		};
 	}
 
 	/**
-	 * On clicking the button, create an iframe with a site endpoint as experienceSiteEndpointURL along with passing necessary config values as query params.
+	 * On clicking the button, initiate a conversation and load the iframe concurrently
 	 */
 	function handleClick() {
+		initializeConversationState();
+		loadIframeApp();
+	}
+	/**
+	 * create an iframe with a site endpoint as experienceSiteEndpointURL along with passing necessary config values as query params.
+	 */
+	function loadIframeApp(){
 		let button = getEmbeddedMessagingConversationButton();
 
 		// eslint-disable-next-line no-negated-condition
@@ -1367,7 +2186,7 @@
 
 			if(iFrame) {
 				// Minimize the chat if it is already maximized.
-				sendPostMessageToIframeWindow(APP_MINIMIZE_EVENT_NAME);
+				sendPostMessageToAppIframe(APP_MINIMIZE_EVENT_NAME);
 			} else {
 				error("Failed to locate the iframe/chat widget");
 			}
@@ -1390,7 +2209,7 @@
 				if (frame && frame.classList && frame.classList.contains("isMaximized")) {
 					// SHIFT + TAB: Trap focus to last element in client.
 					evt.preventDefault();
-					sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME);
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME);
 				}
 			}
 		}
@@ -1415,7 +2234,7 @@
 
 	/**
 	 * Handles notification area dismiss button key down.
-	 * @param evt 
+	 * @param evt
 	 */
 	function handleDimissButtonKeyDown(evt) {
 		if (evt.key === KEY_CODES.ENTER || evt.key === KEY_CODES.SPACE) {
@@ -1426,11 +2245,22 @@
 	}
 
 	/**
+	 * Returns true if there is an existing session (i.e. JWT exists in web storage).
+	 */
+	function sessionExists() {
+		return Boolean(getItemInWebStorageByKey(STORAGE_KEYS.JWT));
+	}
+
+	/**
 	 * If Web Storage is available, check if there's an existing session to show.
 	 */
-	function bootstrapIfSessionExists() {
-		if(getItemInWebStorageByKey(STORAGE_KEYS.JWT)) {
-			handleClick();
+	function bootstrapExistingSession() {
+		let existingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+		if(existingJwt) {
+			loadIframeApp();
+			handleGetContinuityJwt().then(() => {
+				handleListConversation().then();
+			});
 		}
 	}
 
@@ -1442,7 +2272,7 @@
 		let button = getEmbeddedMessagingConversationButton();
 		let iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		let chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
-		let loadingSpinner = document.getElementById("embeddedMessagingLoadingSpinner");
+		let loadingSpinner = document.getElementById(EMBEDDED_MESSAGING_LOADING_SPINNER);
 		let iframe = getEmbeddedMessagingFrame();
 
 		if(!iframe) {
@@ -1469,19 +2299,12 @@
 	}
 
 	/**
-	 * Handles cleanup after closing the client, i.e after closing a conversation in Unauth mode OR
+	 * Cleanup after closing the client, i.e after closing a conversation in Unauth mode OR
 	 * clearing the user session in Auth mode.
 	 * This method resets the client to the initial state (State Zero) for Auth/Unauth modes.
 	 * @param isSecondaryTab - Whether we are trying to reset the client to initial state in a secondary tab. Only used by Auth mode.
-	 */
-	function handleResetClientToInitialState(isSecondaryTab) {
-		const iframe = getEmbeddedMessagingFrame();
-		const button = getEmbeddedMessagingConversationButton();
-		const modal = document.getElementById(BACKGROUND_MODAL_ID);
-		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
-		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
-		const minimizedNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
-
+	*/
+	function resetClientToInitialState(isSecondaryTab) {
 		try {
 			// Clear existing items stored in current conversation
 			clearWebStorage(isSecondaryTab);
@@ -1493,6 +2316,34 @@
 
 		// Clear existing items stored in current conversation from in-memory
 		clearInMemoryData();
+
+		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
+		resolveClearSessionPromise();
+
+		// [iOS Devices] Restore the meta viewport tag to its original value
+		if (originalViewportMetaTag) {
+			restoreViewportMetaTag();
+		}
+
+		// Remove markup from the page.
+		removeMarkup();
+
+		// Regenerate markup if we are in unverified user mode.
+		if (getAuthMode() === AUTH_MODE.UNAUTH) {
+			embeddedservice_bootstrap.generateMarkup();
+		}
+	}
+
+
+	/**
+	 * Remove all markup from the page.
+	 */
+	function removeMarkup() {
+		const iframe = getEmbeddedMessagingFrame();
+		const button = getEmbeddedMessagingConversationButton();
+		const modal = document.getElementById(BACKGROUND_MODAL_ID);
+		const minimizedNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
+		const topContainer = document.getElementById(TOP_CONTAINER_NAME);
 
 		if(iframe) {
 			// Remove the iframe from DOM. This should take care of clearing Conversation Entries as well.
@@ -1523,47 +2374,22 @@
 		}
 
 		if (button) {
-			if (getAuthMode() === AUTH_MODE.AUTH) {
-				// Remove button from DOM.
-				button.parentNode.removeChild(button);
-			} else {
-				// Reset button to initial state.
-				button.classList.remove(CONVERSATION_BUTTON_LOADED_CLASS);
-				button.classList.remove("no-hover");
-
-				// [A11Y] Button assistive text
-				button.setAttribute("title", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
-
-				// [A11Y] Button is focusable again after container is closed.
-				button.setAttribute("tabindex", 0);
-
-				// [A11Y] Focus on static button after container is closed.
-				button.focus();
-
-				// Remove minimize icon.
-				if(minimizeIcon) {
-					minimizeIcon.remove();
-				}
-
-				// Display the chat icon.
-				chatIcon.style.display = "block";
-			}
+			// Remove button from DOM.
+			button.parentNode.removeChild(button);
 		} else {
 			warning("Embedded Messaging static button not available for resetting the client to initial state.");
 		}
-
+		
 		// Remove the minimized notification area if exists.
 		if (minimizedNotification) {
 			minimizedNotification.parentNode.removeChild(minimizedNotification);
 		}
 
-		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
-		resolveClearSessionPromise();
+		// Remove the top container element.
+		topContainer.parentNode.removeChild(topContainer);
 
-		// [iOS Devices] Restore the meta viewport tag to its original value
-		if (originalViewportMetaTag) {
-			restoreViewportMetaTag();
-		}
+		// Emit onEmbeddedMessagingReady event again after resetting the client to initial state for subsequent conversations/sessions.
+		embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
 	}
 
 	/***************************
@@ -1609,6 +2435,10 @@
 		// [A11Y] Button is focusable when initially loaded.
 		buttonElement.setAttribute("tabindex", 0);
 
+		// [A11Y] Accessible name
+		buttonElement.setAttribute("role", "button");
+		buttonElement.setAttribute("aria-label", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
+
 		// [A11Y] Assistive text
 		buttonElement.setAttribute("title", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
 
@@ -1620,6 +2450,11 @@
 		// Adjust button height if browser has bottom tab bar.
 		if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
 			buttonElement.classList.add(CONVERSATION_BUTTON_BOTTOM_TAB_BAR_CLASS);
+		}
+
+		// Check if the chat button should be hidden in initial state.
+		if (shouldHideChatButtonInInitialState() && !sessionExists()) {
+			buttonElement.style.display = "none";
 		}
 
 		// Construct the static conversation button.
@@ -1684,7 +2519,7 @@
 		notificationElement.appendChild(notificationTextWrapperElement);
 		notificationElement.appendChild(notificationDismissButton);
 
-		return notificationElement;		
+		return notificationElement;
 	}
 
 	/**
@@ -1711,7 +2546,7 @@
 
 		buttonElement.appendChild(buttonTextElement);
 		buttonElement.appendChild(buttonAssistiveTextElement);
-		
+
 		return buttonElement;
 	}
 
@@ -1802,8 +2637,10 @@
 		} else if (!getEmbeddedMessagingConversationButton()) {
 			// Render conversation button if identity token passes basic validation.
 			embeddedservice_bootstrap.generateMarkup();
-			// Bootstrap if an authorized session already exists.
-			bootstrapIfSessionExists();
+		} else if (getEmbeddedMessagingConversationButton() && document.getElementById(EMBEDDED_MESSAGING_ICON_REFRESH)) {
+			// Remove existing markup on the page if we're in error state before regenerating the button markup.
+			removeMarkup();
+			embeddedservice_bootstrap.generateMarkup();
 		}
 
 		return true;
@@ -1849,39 +2686,154 @@
 	function handleClearUserSession(shouldRevokeJwt, isSecondaryTab) {
 		const iframe = getEmbeddedMessagingFrame();
 		if (iframe) {
-			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
+			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
 		} else {
-			handleResetClientToInitialState(isSecondaryTab);
+			resetClientToInitialState(isSecondaryTab);
 		}
 	}
 
 	/**
-	 * Handle customer identity token expiry. This method does the following -
-	 * 1. Dispatch "onEmbeddedMessagingTokenExpired" event to notify the customer that their token has expired.
-	 * 2. Error log token expiry.
-	 * 3. Clear user session in all tabs.
+	 * Handles authenticated JWT expiry.
+	 *
+	 * @param eventData - Data containing details about the pending request along with it's resolver function.
 	 */
-	function handleIdentityTokenExpiry() {
+	function handleAuthenticatedJwtExpiry(pendingRequest) {
+		if (pendingRequest) {
+			renewAuthenticatedJwt(pendingRequest);
+		}
+	}
+
+	/**
+	 * Renews authenticated JWT. This method does the following -
+	 * 1. Extract deviceId from expired JWT.
+	 * 2. Renew authenticated jwt using the same deviceId as the expired JWT.
+	 * 3. Set the renewed JWT on inAppService lib and in web storage (1P and 3P).
+	 * 4. Reconnect to the SSE with the renewed JWT.
+	 * 5. Handle pending ia-message requests generated while JWT was being renewed.
+	 *
+	 * @param pendingRequestQueue - Queues that stores pending requests generated during renewal.
+	 * @returns {Promise<unknown>}
+	 */
+	function renewAuthenticatedJwt(pendingRequest) {
+		const expiredJWT = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+		const deviceId = extractDeviceId(expiredJWT);
+		return new Promise(resolve => {
+			handleGetAuthenticatedJwt(deviceId).then(() => {
+				handlePendingRequest(pendingRequest);
+				resolve();
+			});
+		});
+	}
+
+	/**
+	 * Handles pending ia-message request. A request is marked as pending while we renew the authenticated JWT and re-connect to the SSE.
+	 *
+	 * @param pendingRequest - Pending request details. Request should include a resolver function (generated by messagingService).
+	 *                         Request is resolved after we have finished renewing the JWT and re-connecting to the SSE.
+
+	 */
+	function handlePendingRequest(pendingRequest) {
+		if (pendingRequest) {
+			sendFetchRequest(
+				pendingRequest.apiPath,
+				pendingRequest.method,
+				pendingRequest.mode,
+				pendingRequest.requestHeaders,
+				pendingRequest.requestBody
+			).then(response => {
+				if (pendingRequest.resolve && typeof pendingRequest.resolve === "function") {
+					pendingRequest.resolve(response);
+				}
+			}).catch(err => {
+				throw err;
+			});
+		}
+	}
+
+	/**
+	 * Handles customer identity token expiry. This method does the following -
+	 * 1. Notifies parent page about token expiry and waits for a valid token.
+	 * 2. Enqueues ia-message requests generated while waiting.
+	 * 3. If token is provided (before timeout), this method -
+	 *      a. Renews authenticated JWT
+	 *      b. Re-connects to the SSE
+	 *      c. Execute pending requests.
+	 * 4. If timeout occurs, clears the messaging session on all tabs.
+	 */
+	function handleIdentityTokenExpiry(pendingRequest) {
+		if (!pendingRequest) {
+			return;
+		}
+
+		dispatchEventToHost(ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME);
+
+		// Promise to be resolved when a new valid token is supplied by the host page.
+		const setIdentityTokenPromise = new Promise((resolve) => {
+			setIdentityTokenResolve = resolve;
+		});
+		// Apply timeout for waiting on a new token.
+		const setIdentityTokenPromiseTimeout = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				reject();
+			}, SET_IDENTITY_TOKEN_TIMEOUT_IN_MS);
+		});
+		// Promise returned by Promise.race is resolved if a valid token is received before timeout, else it's rejected.
+		Promise.race([setIdentityTokenPromise, setIdentityTokenPromiseTimeout])
+			.then(() => {
+				log(`Valid identity token found. Fetch authenticated JWT.`);
+				// Process pending request(s).
+				if (pendingRequest.apiPath.includes(ACCESS_TOKEN_PATH)) {
+					// Handle authenticated JWT request separately, because we only need to fetch the JWT in this case.
+					// This request is generated on button click with an expired token.
+					// Set new token before fetching authenticated JWT.
+					pendingRequest.requestBody.customerIdentityToken = identityToken;
+					handlePendingRequest(pendingRequest);
+				} else {
+					// Handle other requests (i.e, not that ACCESS_TOKEN_PATH request).
+					// Renew authenticate JWT before executing pending requests.
+					renewAuthenticatedJwt(pendingRequest);
+				}
+			})
+			.catch(() => {
+				error(`Failed to fetch authenticated JWT due to setIdentityToken timeout or other error. Clearing the messaging session on all tabs.`);
+				handleClearUserSession(false, false);
+			});
+	}
+
+	/**
+	 * Handle customer identity token expired event from app iframe. This method does the following -
+	 * 1. Check whether User Verification is enabled.
+	 * 2. If enabled, dispatch "onEmbeddedMessagingIdentityTokenExpired" event to notify the customer that their token has expired.
+	 */
+	function handleIdentityTokenExpiredEvent() {
 		if (getAuthMode() !== AUTH_MODE.AUTH) {
-			warning(`User Verification isn’t enabled in Messaging Settings.`);
+			warning(`handleIdentityTokenExpiredEvent method called but User Verification isn’t enabled in Messaging Settings.`);
 			return;
 		}
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME);
-		error(`Identity token has expired. Closing the chat window and clearing the user session in all tabs.`);
-		handleClearUserSession(false);
 	}
 
 	/**
 	 * Handle the scenario where the client failed to retrieve an authenticated jwt or renew a jwt.
 	 */
 	function handleJwtRetrievalFailure() {
-		const button = getEmbeddedMessagingConversationButton();
-		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
-		const modal = document.getElementById(BACKGROUND_MODAL_ID);
-		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
-		const loadingSpinner = document.getElementById("embeddedMessagingLoadingSpinner");
+		let button;
+		let chatIcon;
+		let iconContainer;
 		let refreshIcon;
 		let minimizedNotification;
+
+		// Handle client reset and surface error state only in the primary tab. 
+		// In clearing the web storage, this should trigger user session clearing in secondary tabs.
+		resetClientToInitialState(false);
+		
+		// Generate markup for button.
+		embeddedservice_bootstrap.generateMarkup();
+		
+		// Use selectors to find DOM elements.
+		button = getEmbeddedMessagingConversationButton();
+		chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
+		iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 
 		if(button) {
 			// Static button is displayed under client when maximized.
@@ -1890,31 +2842,21 @@
 			// [A11Y] Button is not focusable when maximized.
 			button.setAttribute("tabindex", -1);
 			button.style.setProperty("cursor", "default");
+			button.classList.add("no-hover");
 
-			// Hide the default chat icon on the button.
+			// Remove the chat icon from the icon container.
 			if (iconContainer && chatIcon) {
 				iconContainer.removeChild(chatIcon);
-			}
-			
-			if (modal) {
-				// [Mobile] Remove the background modal overlay from the DOM.
-				modal.parentNode.removeChild(modal);
-			}
-
-			if (loadingSpinner) {
-				iconContainer.removeChild(loadingSpinner);
-				button.classList.remove(CONVERSATION_BUTTON_LOADING_CLASS);
-				button.classList.add(CONVERSATION_BUTTON_LOADED_CLASS);
 			}
 
 			// Create the minimize button markup and insert into the DOM.
 			refreshIcon = renderSVG(DEFAULT_ICONS.REFRESH);
 			refreshIcon.setAttribute("id", EMBEDDED_MESSAGING_ICON_REFRESH);
 			refreshIcon.setAttribute("class", EMBEDDED_MESSAGING_ICON_REFRESH);
-			iconContainer.insertBefore(refreshIcon, chatIcon);
+			iconContainer.appendChild(refreshIcon);
 
 			minimizedNotification = createMinimizedNotifaction();
-			
+
 			button.disabled = true;
 
 			embeddedservice_bootstrap.settings.targetElement.appendChild(minimizedNotification);
@@ -1941,7 +2883,7 @@
 
 		switch(identityTokenType) {
 			case ID_TOKEN_TYPE.JWT:
-				isValid = validateJWT(identityToken);
+				isValid = validateJwt(identityToken);
 				break;
 			default:
 				break;
@@ -1954,7 +2896,7 @@
 	 * @param {Object} jwt - The JWT to be parsed.
 	 * @returns JSON payload of the jwt
 	 */
-	function parseJWT(jwt) {
+	function parseJwt(jwt) {
 		// Split out the payload from the header
 		var base64Url = jwt.split('.')[1];
 		// Convert base64Url string to base64
@@ -1972,13 +2914,13 @@
 	 * @param {*} jwt - The JWT to be validated.
 	 * @returns true if JWT is valid and false otherwise.
 	 */
-	function validateJWT(jwt) {
+	function validateJwt(jwt) {
 		let jwtPayload;
 		let isValid;
 
 		try {
 			// Extract JWT payload.
-			jwtPayload = parseJWT(jwt);
+			jwtPayload = parseJwt(jwt);
 
 			// Validate that the JWT has not expired.
 			// Per RFC 7519, a JWT is valid if the current time (in seconds) is before
@@ -1997,6 +2939,26 @@
 				error(`JWT validation failed: ${e.message}`);
 			}
 			return false;
+		}
+	}
+
+	/**
+	 * Method for extracting deviceId from the ia-message JWT.
+	 * @param {Object} jwt - The JWT to be parsed.
+	 * @returns the deviceId of the jwt.
+	 */
+	function extractDeviceId(jwt) {
+		let jwtPayload;
+
+		try {
+			// Extract JWT payload.
+			jwtPayload = parseJwt(jwt);
+
+			// Return deviceId if found on JWT payload.
+			return Object.keys(jwtPayload).includes("deviceId") && jwtPayload.deviceId ? jwtPayload.deviceId : null;
+		} catch (e) {
+			// Fail silently and return null.
+			return null;
 		}
 	}
 
@@ -2102,11 +3064,25 @@
 			error(`Can't call ${caller} before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
-		if (getItemInWebStorageByKey(STORAGE_KEYS.JWT)) {
+		if (sessionExists()) {
 			error(`Can't call ${caller} during an active conversation.`);
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Whether or not the supplied value is a non-empty String.
+	 * @param str - The value to be checked.
+	 * @return {boolean} - True if value is a non-empty String.
+	 */
+	function isString(str) {
+		if (typeof str === "string") {
+			if (str.trim().length > 0) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -2166,28 +3142,28 @@
 	};
 
 	/****************************************
-	 * .           POSTCHAT API             *
+	 * .           AUTO-RESPONSE API        *
 	/****************************************/
 	/**
-	 * Post-Chat API methods exposed in window.embeddedservice_bootstrap.postchatAPI
-	 * for setting/updating/removing post-chat parameters on the host domain.
+	 * Auto-Response API methods exposed in window.embeddedservice_bootstrap.autoResponseAPI
+	 * for setting/updating/removing query string parameters on the Auto-Response Web View URL from the host domain.
 	 *
 	 * @class
 	 */
-	function EmbeddedMessagingPostchat() {
-		// Restore post-chat API parameter map on page reload from session storage.
-		postchatParameters = getItemInWebStorageByKey(STORAGE_KEYS.POSTCHAT_PARAMETERS, false) || {};
+	function EmbeddedMessagingAutoResponse() {
+		// Restore Auto-Response API parameter map on page reload from session storage.
+		autoResponseParameters = getItemInWebStorageByKey(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, false) || {};
 	}
 
 	/**
-	 * Determine whether the client is ready for the host (customer) to invoke public Post-Chat API methods.
+	 * Determine whether the client is ready for the host (customer) to invoke public Auto-Response API methods.
 	 *
-	 * @param {String} caller - Name of caller method which invokes `shouldProcessPostchatParametersFromHost`
-	 * @returns {Boolean} true if client is ready for host to update/remove post-chat page parameters. Otherwise, false.
+	 * @param {String} caller - Name of caller method which invokes `shouldProcessAutoResponseParametersFromHost`
+	 * @returns {Boolean} true if client is ready for host to update/remove auto-response parameters. Otherwise, false.
 	 */
-	function shouldProcessPostchatParametersFromHost(caller) {
+	function shouldProcessAutoResponseParametersFromHost(caller) {
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`[${caller}] Cannot invoke Post-Chat API before the onEmbeddedMessagingReady event is fired.`);
+			error(`[${caller}] Cannot invoke Auto-Response API before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
@@ -2195,12 +3171,12 @@
 	}
 
 	/**
-	 * Validate a post-chat page query string parameter set by host via the `setPostchatParameters` API method
-	 * @param {String} parameterName - Key of post-chat page parameter provided by host.
-	 * @param {String} parameterValue - Value of post-chat page parameter provided by host.
+	 * Validate an auto-response's page query string parameter set by host via the `setAutoResponseParameters` API method
+	 * @param {String} parameterName - Key of auto-response page parameter provided by host.
+	 * @param {String} parameterValue - Value of auto-response page parameter provided by host.
 	 * @returns {Boolean} Returns true if parameter key and/or value are valid. Otherwise, returns false.
 	 */
-	function validatePostchatParameter(parameterName, parameterValue) {
+	function validateAutoResponseParameter(parameterName, parameterValue) {
 		if (typeof parameterName !== "string" || parameterName.trim().length < 1) {
 			error(`Expected a non-empty string for the parameter name, but received ${typeof parameterName}`);
 			return false;
@@ -2216,60 +3192,122 @@
 
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE!
-	 * A publicly exposed API for the host (i.e. customer) to set/update post-chat page parameters.
+	 * A publicly exposed API for the host (i.e. customer) to set/update auto-response page parameters.
 	 * Sets a new parameter (key-value pair) or updates an existing parameter with the same key to a new value.
 	 *
 	 * @param {Object} pageParameters - Map containing key-value pairs of query string parameters as invoked by the host.
 	 * (e.g. { parameterName1: parameterValue2, parameterName2: parameterValue2 })
 	 */
-	EmbeddedMessagingPostchat.prototype.setPostchatParameters = function setPostchatParameters(pageParameters) {
-		if (!shouldProcessPostchatParametersFromHost("setPostchatParameters")) {
+	EmbeddedMessagingAutoResponse.prototype.setAutoResponseParameters = function setAutoResponseParameters(pageParameters) {
+		if (!shouldProcessAutoResponseParametersFromHost("setAutoResponseParameters")) {
 			return;
 		}
 
 		if (pageParameters && typeof pageParameters === "object") {
 			for (const [paramKey, paramValue] of Object.entries(pageParameters)) {
 				// Validate parameters are valid non-empty strings.
-				if (validatePostchatParameter(paramKey, paramValue)) {
-					postchatParameters[paramKey] = paramValue;
-					setItemInWebStorage(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
-					// Log successfully updated post-chat parameters for debugging purposes.
-					log(`[setPostchatParameters] Successfully updated post-chat parameter ${paramKey}`);
+				if (validateAutoResponseParameter(paramKey, paramValue)) {
+					autoResponseParameters[paramKey] = paramValue;
+					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false);
+					// Log successfully updated auto-response parameters for debugging purposes.
+					log(`[setAutoResponseParameters] Successfully updated auto-response parameter ${paramKey}`);
 				} else {
-					warning(`[setPostchatParameters] Failed to validate post-chat parameter ${paramKey}`)
+					warning(`[setAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`)
 				}
 			}
 		} else {
-			error(`[setPostchatParameters] Must pass in an object of parameters as key-value pairs.`);
+			error(`[setAutoResponseParameters] Must pass in an object of parameters as key-value pairs.`);
 		}
 	};
 
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE!
-	 * A publicly exposed API for the host (i.e. customer) to remove post-chat page parameters.
+	 * A publicly exposed API for the host (i.e. customer) to remove auto-response page parameters.
 	 * Removes an existing parameter with the specified key.
 	 *
 	 * @param {Array} pageParameters - Array containing parameter names/keys (e.g. [ parameterName1, parameterName2 ])
 	 */
-	EmbeddedMessagingPostchat.prototype.removePostchatParameters = function removePostchatParameters(pageParameters) {
-		if (!shouldProcessPostchatParametersFromHost("removePostchatParameters")) {
+	EmbeddedMessagingAutoResponse.prototype.removeAutoResponseParameters = function removeAutoResponseParameters(pageParameters) {
+		if (!shouldProcessAutoResponseParametersFromHost("removeAutoResponseParameters")) {
 			return;
 		}
 
 		if (pageParameters && Array.isArray(pageParameters)) {
 			pageParameters.forEach(function(paramKey) {
-				if (postchatParameters.hasOwnProperty(paramKey)) {
-					delete postchatParameters[paramKey];
-					setItemInWebStorage(STORAGE_KEYS.POSTCHAT_PARAMETERS, postchatParameters, false);
-					// Log successfully removed post-chat page parameter for debugging purposes.
-					log(`[removePostchatParameters] Successfully removed post-chat parameter ${paramKey}`);
+				if (autoResponseParameters.hasOwnProperty(paramKey)) {
+					delete autoResponseParameters[paramKey];
+					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false);
+					// Log successfully removed auto-response page parameter for debugging purposes.
+					log(`[removeAutoResponseParameters] Successfully removed auto-response parameter ${paramKey}`);
 				} else {
-					warning(`[removePostchatParameters] Failed to validate post-chat parameter ${paramKey}`);
+					warning(`[removeAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`);
 				}
 			});
 		} else {
-			error(`[removePostchatParameters] Must pass in an array of parameter names.`);
+			error(`[removeAutoResponseParameters] Must pass in an array of parameter names.`);
 		}
+	};
+
+	/*********************************************************
+	*		    Util API         *
+	**********************************************************/
+
+	/**
+	 * Embedded Messaging Hide/Show exposed in window.embeddedservice_bootstrap.utilAPI
+	 * for managing visibility of chat button dynamically.
+	 * @class
+	 */
+	function EmbeddedMessagingUtil() {}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly exposed API for the host (i.e. customer) to display chat button dynamically.
+	 */
+	EmbeddedMessagingUtil.prototype.showChatButton = function showChatButton() {
+		const authMode = getAuthMode();
+
+		if (!hasEmbeddedMessagingReadyEventFired) {
+			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+			return false;
+		}
+
+		// Only show button if it is unauth, or identityToken is present in auth
+		if (authMode === AUTH_MODE.UNAUTH || identityToken) {
+			const conversationButton = getEmbeddedMessagingConversationButton();
+			if (conversationButton) {
+				conversationButton.style.display = "block";
+				return true;
+			}
+		} else {
+			error("Can’t call showChatButton for a verified user before calling the setIdentity method with a valid token.");
+		}
+
+		return false;
+	};
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly exposed API for the host (i.e. customer) to hide chat button dynamically.
+	 *
+	 */
+	EmbeddedMessagingUtil.prototype.hideChatButton = function hideChatButton() {
+		if (!hasEmbeddedMessagingReadyEventFired) {
+			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+			return false;
+		}
+
+		// We only hide the button if iframe is not present
+		if (!getEmbeddedMessagingFrame()) {
+			const conversationButton = getEmbeddedMessagingConversationButton();
+			if (conversationButton) {
+				conversationButton.style.display = "none";
+				return true;
+			} 
+		} else {
+			error("Can’t call hideChatButton once the messaging window is showing.");
+		}
+
+		return false;
 	};
 
 	/*********************************************************
@@ -2350,7 +3388,7 @@
 		/**
 		 * 1st check - if on Experience Cloud platform, and endpoint is same as hosting site, message origin will be from same domain as document.
 		 */
-		if(isSiteContext() && messageOrigin === document.domain) {
+		if(pageIsSiteContext() && messageOrigin === document.domain) {
 			return true;
 		}
 
@@ -2389,6 +3427,36 @@
 	};
 
 	/**
+	 * Create an iframe on the parent window for executing code in site (3rd party) context
+	 * withot loading entire LWR app. See sitecontext.js
+	 */
+	function createSiteContextFrame() {
+		const siteContextFrame = document.createElement("iframe");
+		const siteContextFrameUrl = `${getSiteURL()}/assets/htdocs/sitecontext${(embeddedservice_bootstrap.settings.devMode ? "" : ".min")}.html?parent_domain=${window.location.origin}`;
+
+		siteContextFrame.classList.add(SITE_CONTEXT_IFRAME_NAME);
+		siteContextFrame.id = SITE_CONTEXT_IFRAME_NAME;
+		siteContextFrame.name = SITE_CONTEXT_IFRAME_NAME;
+		siteContextFrame.src = siteContextFrameUrl;
+		siteContextFrame.onload = () => {
+			log("Created an iframe for siteContext.");
+		};
+		embeddedservice_bootstrap.siteContextFrame = siteContextFrame;
+		document.body.appendChild(siteContextFrame);
+	}
+
+	/**
+	 * Remove the sitecontext.html iframe when we are done with it
+	 */
+	function destroySiteContextFrame() {
+		var frame = embeddedservice_bootstrap.siteContextFrame;
+		if(frame) {
+			delete embeddedservice_bootstrap.siteContextFrame;
+			frame.remove();
+		}
+	}
+
+	/**
 	 * Create an iframe on the parent window for rendering a full size File Preview.
 	 * Set the source of this iframe to an objectUrl generated by #getGeneratedPageURLForFilePreviewFrame.
 	 */
@@ -2423,8 +3491,8 @@
 			const modal = createBackgroundModalOverlay();
 
 			iframe.title = getLabel("EmbeddedMessagingIframesAndContents", "MessagingIframeTitle") || IFRAME_DEFAULT_TITLE;
-			iframe.className = IFRAME_NAME;
-			iframe.id = IFRAME_NAME;
+			iframe.className = LWR_IFRAME_NAME;
+			iframe.id = LWR_IFRAME_NAME;
 			iframe.style.backgroundColor = "transparent";
 			iframe.allowTransparency = "true";
 
@@ -2471,12 +3539,6 @@
 		let minimizeButton;
 
 		if(frame) {
-			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
-			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-				frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-				frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-			}
-
 			if(!frame.classList.contains("isMaximized")) {
 				frame.classList.add("isMaximized");
 			}
@@ -2488,6 +3550,12 @@
 			if(frame.classList.contains("isDismissed")) {
 				frame.classList.remove("isDismissed");
 			}
+
+			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
+			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
+				frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
+				frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
+			}
 		}
 
 		if(button) {
@@ -2496,6 +3564,9 @@
 
 			// [A11Y] Button is not focusable when maximized.
 			button.setAttribute("tabindex", -1);
+
+			// [A11Y] Accessible name
+			button.setAttribute("aria-label", getLabel("EmbeddedMessagingChatHeader", "MinimizeButtonAssistiveText") || CONVERSATION_BUTTON_MINIMIZE_ASSISTIVE_TEXT);
 
 			// [A11Y] Assistive text
 			button.setAttribute("title", getLabel("EmbeddedMessagingChatHeader", "MinimizeButtonAssistiveText") || CONVERSATION_BUTTON_MINIMIZE_ASSISTIVE_TEXT);
@@ -2537,7 +3608,7 @@
 			viewportMetaTag.setAttribute("content", IOS_VIEWPORT_META_TAG);
 		}
 
-		sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME);
+		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 	};
 
 	/**
@@ -2550,12 +3621,6 @@
 		const isDismissed = data.isMinimizedNotificationDismissed;
 
 		if(frame) {
-			// Adjust iframe distance from bottom to minimized position if browser has bottom tab bar.
-			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-				frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-				frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-			}
-
 			if(frame.classList.contains("isMaximized")) {
 				frame.classList.remove("isMaximized");
 			}
@@ -2575,6 +3640,12 @@
 					frame.classList.add("isMinimized");
 				}
 			}
+
+			// Adjust iframe distance from bottom to minimized position if browser has bottom tab bar.
+			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
+				frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
+				frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
+			}
 		}
 
 		// Remove the minimize icon from the button.
@@ -2587,6 +3658,7 @@
 			button.style.display = "none";
 			button.setAttribute("tabindex", -1);
 			button.removeAttribute("title");
+			button.removeAttribute("aria-label");
 		}
 
 		// [Mobile] `isMaximized` controls showing the background modal. This class is constrained by media queries
@@ -2610,21 +3682,24 @@
 			restoreViewportMetaTag();
 		}
 
-		sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
+		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 	};
 
 	/**
 	 * Initialize feature specific objects on the global bootstrap object 'embeddedservice_bootstrap' to expose certain feature related APIs/properties externally.
 	 */
-	 EmbeddedServiceBootstrap.prototype.initializeFeatureObjects = function initializeFeatureObjects() {
+	EmbeddedServiceBootstrap.prototype.initializeFeatureObjects = function initializeFeatureObjects() {
 		// Initialize a prechat object 'prechatAPI' on 'embeddedservice_bootstrap' global object for Hidden Prechat feature.
 		embeddedservice_bootstrap.prechatAPI = new EmbeddedMessagingPrechat();
 
-		// Initialize a postchat object 'postchatAPI' on 'embeddedservice_bootstrap' global object for Post-Chat URL feature.
-		embeddedservice_bootstrap.postchatAPI = new EmbeddedMessagingPostchat();
+		// Initialize an auto-response object 'autoResponseAPI' on 'embeddedservice_bootstrap' global object fo Auto-Response Web View feature.
+		embeddedservice_bootstrap.autoResponseAPI = new EmbeddedMessagingAutoResponse();
 
 		// Initialize user verification API
 		embeddedservice_bootstrap.userVerificationAPI = new EmbeddedMessagingUserVerification();
+
+		// Initialize util API
+		embeddedservice_bootstrap.utilAPI = new EmbeddedMessagingUtil();
 	}
 
 	/**
@@ -2663,12 +3738,15 @@
 			// Default app to use sandbox on iframe unless the flag is turned on.
 			embeddedservice_bootstrap.settings.omitSandbox = Boolean(embeddedservice_bootstrap.settings.omitSandbox);
 
+			// hideChatButtonOnLoad - Static setting for visibility of chat button on page load.
+			embeddedservice_bootstrap.settings.hideChatButtonOnLoad = embeddedservice_bootstrap.settings.hideChatButtonOnLoad;
+
 			// Load CSS file for bootstrap.js from GSLB.
 			const cssPromise = loadCSS().then(
 				Promise.resolve.bind(Promise),
 				() => {
 					// Retry loading CSS file from Core, if failed to load from GSLB.
-					return loadCSS(embeddedservice_bootstrap.settings.siteURL);
+					return loadCSS(getSiteURL());
 				}
 			).catch(
 				() => {
@@ -2690,6 +3768,10 @@
 					embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
 
 					validateSettings();
+
+					// We have to wait until we have configuration to do this
+					storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+					createSiteContextFrame();
 				},
 				responseStatus => {
 					// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
@@ -2703,22 +3785,29 @@
 				}
 			);
 
+			//once we have config we can check 3rd party storage
+			configPromise.then(() => {
+				sendPostMessageToSiteContextIframe(
+					EMBEDDED_MESSAGING_3P_STORAGE_REQUEST_EVENT_NAME, {orgId : embeddedservice_bootstrap.settings.orgId})
+			});
+
 			// Show button when we've loaded everything.
-			Promise.all([cssPromise, configPromise]).then(() => {
+			Promise.all([cssPromise, configPromise, getBusinessHoursInterval()]).then(() => {
 				initializeWebStorage();
+
+				destroySiteContextFrame();
 
 				embeddedservice_bootstrap.initializeFeatureObjects();
 
-				// Fire 'onEmbeddedMessagingReady' event.
 				embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
 
-				// In Unauth mode, generate button markup & bootstrap if session exists.
-				// In auth mode, button markup and bootstrap of existing session occurs via #setIdentityToken() API.
-				if (getAuthMode() === AUTH_MODE.UNAUTH) {
+				// If session exists in web storage, generate button markup and bootstrap the session.
+				// Else, generate button markup only for unauth mode. For auth mode, markup is generated in #setIdentityToken() API.
+				if (sessionExists()) {
 					embeddedservice_bootstrap.generateMarkup();
-
-					// Check if there's an existing session to show.
-					bootstrapIfSessionExists();
+					bootstrapExistingSession();
+				} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
+					embeddedservice_bootstrap.generateMarkup();
 				}
 			});
 		} catch(err) {
