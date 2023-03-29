@@ -5,45 +5,45 @@
 </head>
 <body>
 	
-	<label for="idToken">Set identity token:</label></br>
-	<input type="text" id="idToken" name="idToken" size="50"></br>
-	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
-	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+<label for="idToken">Set identity token:</label></br>
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 
-	<script type='text/javascript'>
-		function clearAuthSession() {
-			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+<script type='text/javascript'>
+	function clearAuthSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+
+	function setIdentityToken(token) {
+		var token = document.getElementById("idToken").value;
+		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			"identityTokenType":"JWT",
+			"identityToken": token
+		});
+	}
+</script>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000001hxN',
+				'Auth_4',
+				'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWAuth41679529792491',
+				{
+					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
 		}
-
-		function setIdentityToken(token) {
-			var token = document.getElementById("idToken").value;
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				"identityToken": token
-			});
-		}
-	</script>
-
-  <script type='text/javascript'>
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-        embeddedservice_bootstrap.settings.devMode = true;
-
-        embeddedservice_bootstrap.init(
-          '00DSG0000001hxN',
-          'Auth_1',
-          'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWAuth11675115045641',
-          {
-            scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
-  </script>
-  <script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWAuth11675115045641/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	};
+</script>
+<script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWAuth41679529792491/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
