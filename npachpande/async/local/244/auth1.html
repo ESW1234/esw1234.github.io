@@ -44,8 +44,8 @@
 	     console.log("Received the onEmbeddedMessagingReady event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		//fetchAndSetToken();
-	     }, 1);
+		fetchAndSetToken();
+	     }, 5000);
 	});
 
 
@@ -53,7 +53,7 @@
 	     console.log("Received the onEmbeddedMessagingTokenExpired event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		//fetchAndSetToken();
+		fetchAndSetToken();
 	     }, 5000);
 	});
 </script>
