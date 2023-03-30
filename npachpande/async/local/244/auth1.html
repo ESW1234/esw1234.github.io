@@ -5,13 +5,26 @@
 </head>
 <body>
 
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
+<label for="idToken">Set identity token:</label></br>
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 	
 <script type='text/javascript'>
+	function setIdentityToken() {
+		var token = document.getElementById("idToken").value;
+
+		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			"identityTokenType":"JWT",
+			"identityToken": token
+		});
+	}
+	
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+	
 	function fetchAndSetToken() {
 	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=30&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 	     fetch(porticoURL).then(function(response) {
@@ -31,7 +44,7 @@
 	     console.log("Received the onEmbeddedMessagingReady event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		fetchAndSetToken();
+		//fetchAndSetToken();
 	     }, 1);
 	});
 
@@ -40,7 +53,7 @@
 	     console.log("Received the onEmbeddedMessagingTokenExpired event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		fetchAndSetToken();
+		//fetchAndSetToken();
 	     }, 5000);
 	});
 </script>
