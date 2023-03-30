@@ -11,7 +11,7 @@
 <button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 <script type='text/javascript'>
 	function fetchAndSetToken() {
-	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=30&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject7@esw.com&jwtExpInSeconds=30&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 	     fetch(porticoURL).then(function(response) {
 		  return response.json();
 	     }).then(function(data) {
@@ -29,7 +29,7 @@
 	     console.log("Received the onEmbeddedMessagingReady event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		fetchAndSetToken();
+		// fetchAndSetToken();
 	     }, 5000);
 	});
 
@@ -38,7 +38,7 @@
 	     console.log("Received the onEmbeddedMessagingTokenExpired event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		fetchAndSetToken();
+		// fetchAndSetToken();
 	     }, 5000);
 	});
 </script>
