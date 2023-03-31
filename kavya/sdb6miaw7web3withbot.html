@@ -11,11 +11,12 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
-
+                        embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.settings.devMode = true;
 			embeddedservice_bootstrap.init(
 				'00DSG0000008E5p',
 				'web_bot3',
-				'https://miawtest7.test1.my.pc-rnd.site.com/ESWwebbot31680013835398',
+				'https://miawtest7.test1.my.pc-rnd.site.com/ESWweb31679272296612',
 				{
 					scrt2URL: 'https://miawtest7.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -25,6 +26,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://miawtest7.test1.my.pc-rnd.site.com/ESWwebbot31680013835398/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://miawtest7.test1.my.pc-rnd.site.com/ESWweb31679272296612/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
