@@ -30,7 +30,7 @@ p {
 
 var getDaysArray = function(start, end) {
     names = ["Yuliia", "Anton", "Nataliia", "Anusha"];
-    holidays = ["Fri Dec 23 2022", "Mon Dec 26 2022", "Mon Jan 02 2023", "Mon Jan 16 2023"];
+    holidays = ["Fri Dec 23 2022", "Mon Dec 26 2022", "Mon Jan 02 2023", "Mon Jan 16 2023", "Mon May 29 2023"];
     counter = 0;
     j= 0;
     for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
@@ -54,7 +54,7 @@ var getDaysArray = function(start, end) {
 };
 
 
-var daylist = getDaysArray(new Date("2023-02-02"),new Date("2023-04-01"));
+var daylist = getDaysArray(new Date("2023-03-30"),new Date("2023-07-01"));
 
 </script>
 
