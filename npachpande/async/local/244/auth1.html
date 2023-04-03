@@ -88,36 +88,37 @@
 					scrt2URL: 'https://eswmiaw.stmfb.my.stm.salesforce-scrt.com'
 				}
 			);
-
+			*/
 
 			
 			// SDB3 ORG
 			embeddedservice_bootstrap.init(
 				'00DSB0000002LA1',
 				'Auth_1',
-				'https://miaw.my.localhost.sfdcdev.site.com:6101/ESWUnauth11675223717958',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
 				{
 					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
-			*/
 
+			/*
 			// SDB6 ORG
 			embeddedservice_bootstrap.init(
 				'00DSG0000001hxN',
 				'Auth_4',
-				'https://miaw.my.localhost.sfdcdev.site.com:6101/ESWUnauth11675223717958',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
 				{
 					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
+			*/
 
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
 </script>
-<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:6101/ESWUnauth11675223717958/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
