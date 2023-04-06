@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <!-- paste meta head tag -->
+    <title>Test Page</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+  </head>
+  <body>
+    <!-- paste code snippet here -->
+    <script type='text/javascript'>
+        function initEmbeddedMessaging() {
+            try {
+                embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+    
+                embeddedservice_bootstrap.init(
+                    '00DRM000000NzJc',
+                    'ESW1',
+                    'https://srimessaging.stmfa.stm.force.com/ESWESW11680815004161',
+                    {
+                        scrt2URL: 'https://messageorg.my.stmfa.stm.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        };
+    </script>
+    <script type='text/javascript' src='https://srimessaging.stmfa.stm.force.com/ESWESW11680815004161/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>
