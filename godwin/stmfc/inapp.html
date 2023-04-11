@@ -44,20 +44,20 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true;
         
-        embeddedservice_bootstrap.init(
-		'00DRM000000GGRR',
-		'MIAW',
-		'https://godwinlaw.stmfc.stm.force.com/ESWMessaging1681179350889',
-		{
-			scrt2URL: 'https://godwinlaw.my.stmfa.stm.salesforce-scrt.com'
-			// scrt2URL: 'https://stmfc.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
-		}
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
-  </script>
-  <script type='text/javascript' src='https://godwinlaw.stmfc.stm.force.com/ESWMessaging1681179350889/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+				embeddedservice_bootstrap.init(
+					'00DRM000000GGRR',
+					'MIAW',
+					'https://godwinlaw.stmfc.stm.force.com/ESWMessaging1681179350889',
+					{
+						scrt2URL: 'https://godwinlaw.my.stmfa.stm.salesforce-scrt.com'
+						// scrt2URL: 'https://stmfc.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
+					}
+				);
+			} catch (err) {
+			  console.error('Error loading Embedded Messaging: ', err);
+		        }
+    		};
+	  </script>
+	  <script type='text/javascript' src='https://godwinlaw.stmfc.stm.force.com/ESWMessaging1681179350889/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
