@@ -12,7 +12,7 @@
   }
 </style>
 	
-<script type='text/javascript'>
+<!-- <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -31,8 +31,33 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswchat.stmfc.stm.force.com/ESWMIAW11680631083150/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswchat.stmfc.stm.force.com/ESWMIAW11680631083150/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
 
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.menu.init(
+			'https://eswchat.my.stmfc.stm.salesforce.com',
+			'https://d.la2-stmfc1-0-prd.stmfc.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM0000006B0K',
+			'CM1'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://service.force.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
   
 </body>
 </html>
