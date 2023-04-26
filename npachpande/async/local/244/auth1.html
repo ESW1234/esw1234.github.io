@@ -26,7 +26,7 @@
 	}
 	
 	function fetchAndSetToken() {
-	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=30&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 	     fetch(porticoURL).then(function(response) {
 		  return response.json();
 	     }).then(function(data) {
@@ -44,7 +44,7 @@
 	     console.log("Received the onEmbeddedMessagingReady event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		//fetchAndSetToken();
+		fetchAndSetToken();
 	     }, 5000);
 	});
 
@@ -53,7 +53,7 @@
 	     console.log("Received the onEmbeddedMessagingTokenExpired event…");
 	     // Add some fake delay
 	     setTimeout(() => {
-		//fetchAndSetToken();
+		fetchAndSetToken();
 	     }, 5000);
 	});
 </script>
@@ -93,7 +93,7 @@
 			// SDB3 ORG
 			embeddedservice_bootstrap.init(
 				'00DSB0000002LA1',
-				'Auth_1',
+				'Auth_2',
 				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
 				{
 					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
