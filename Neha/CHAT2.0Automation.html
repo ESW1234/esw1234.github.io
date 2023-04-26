@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2> CHAT2.0 Automation </h2>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000O05L',
+				'EmbeddedServiceDepForWebWithoutBot',
+				'https://orgforinapp4.stmfa.stm.force.com/ESWEmbeddedServiceDepW1681713957436vf/s',
+				{
+					scrt2URL: 'https://na44org-1e.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgforinapp4.stmfa.stm.force.com/ESWEmbeddedServiceDepW1681713957436vf/s/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>
