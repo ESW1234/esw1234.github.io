@@ -28,20 +28,17 @@
 //        };
         
         embedded_svc.menu.init(
-          'https://embeddedservicede.my.salesforce.com',
-          'https://d.gla3-phx.gus.salesforce.com/chat',
-          gslbBaseURL,
-          '00DB0000000K6Ez',
-          'Channel_Menu',
-          {
-            pageName: "aaa_ChannelMenu"
-          }
-        );
+			'https://deevo-demo.my.salesforce.com',
+			'https://d.gla3-phx.gus.salesforce.com/chat',
+			gslbBaseURL,
+			'00DB0000000gb6A',
+			'DEEVO_Channel_Menu'
+		);
       };
 
       if (!window.embedded_svc || !window.embedded_svc.menu) {
         var s = document.createElement('script');
-        s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/menu/fab.js');
+        s.setAttribute('src', 'https://deevo-demo.my.salesforce.com/embeddedservice/menu/fab.min.js');
         s.onload = function() {
           initESW(null);
         };
