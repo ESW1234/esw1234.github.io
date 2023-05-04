@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>NA45 STMFC MIAW Test</h1>
+        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.init(
+				'00DRM0000006B0K',
+				'TestMIAW1',
+				'https://eswchat.stmfc.stm.force.com/ESWTestMIAW11681772042486',
+				{
+					scrt2URL: 'https://eswchat.my.stmfc.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+	    </script>
+	    <script type='text/javascript' src='https://eswchat.stmfc.stm.force.com/ESWTestMIAW11681772042486/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+    </body>
+</html>
