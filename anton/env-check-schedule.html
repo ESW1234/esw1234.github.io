@@ -29,7 +29,7 @@ p {
 
 
 var getDaysArray = function(start, end) {
-    names = ["Yuliia", "Anton", "Nataliia", "Anusha"];
+    names = ["Yuliia", "Anton", "Anusha"];
     holidays = ["Fri Dec 23 2022", "Mon Dec 26 2022", "Mon Jan 02 2023", "Mon Jan 16 2023", "Mon May 29 2023"];
     counter = 0;
     j= 0;
@@ -40,7 +40,6 @@ var getDaysArray = function(start, end) {
             if (counter == 0 || counter == 1){j = 0;}
             else if (counter == 2 || counter == 3){j = 1;}
             else if (counter == 4 || counter == 5){j = 2;}
-            else if (counter == 6 || counter == 7){j = 3;}
             else {counter = 0; j= 0;}
             counter +=1;
             if(tmp == new Date().toDateString()){document.write(`<p style = "color: green"/> Today --> ${tmp} - ${names[j]}<br />`);}
