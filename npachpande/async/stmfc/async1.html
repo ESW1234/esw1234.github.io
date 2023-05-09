@@ -15,15 +15,14 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = false;
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00DRM0000006B0K',
-				'MIAW1',
-				'https://eswchat.stmfc.stm.force.com/ESWMIAW11680631083150',
+				'00DSB0000002LA1',
+				'Messaging_13',
+				'https://eswmessagingchat.test1.my.pc-rnd.site.com/ESWMessaging131683666132791',
 				{
-					scrt2URL: 'https://eswchat.my.stmfc.stm.salesforce-scrt.com'
+					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -31,7 +30,8 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswchat.stmfc.stm.force.com/ESWMIAW11680631083150/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessagingchat.test1.my.pc-rnd.site.com/ESWMessaging131683666132791/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
   
 </body>
 </html>
