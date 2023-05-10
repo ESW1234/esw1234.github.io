@@ -27,14 +27,6 @@
                 try {
                   embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                   embeddedservice_bootstrap.settings.devMode = true;
-		  embeddedservice_bootstrap.settings.enableImageCompression = true;
-		embeddedservice_bootstrap.settings.imageCompressionOptions = {
-			convertTypes: 'image/png',
-			convertSize: 200,
-			quality: 0.6,
-			maxWidth: 500,
-			maxHeight: 500
-		}
 			
 		// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 		 window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -50,11 +42,11 @@
 // 			}
 // 		);
 			embeddedservice_bootstrap.init(
-				'00DS7000000owIT',
+				'00DS7000000lqNL',
 				'MIAW3',
 				'https://hello.my.localhost.sfdcdev.site.com:6101/ESWderek1667422860240/s',
 				{
-					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
                 } catch (err) {
