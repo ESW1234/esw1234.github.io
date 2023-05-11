@@ -66,50 +66,148 @@
 </script>
 <!-- End of Invitations -->
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
+	function getSalesforceConfig() {
+	  var SF_CHAT_CONFIG = {
+	    prd: {
+	      eswJSUrl: "https://matchesfashion.my.salesforce.com/embeddedservice/5.0/esw.js",
+	      gslbBaseUrl: "https://service.force.com",
+	      myUrl: "https://matchesfashion.my.salesforce.com",
+	      liveChatUrl: "https://matchesfashion.secure.force.com/livechat",
+	      id: "00Db0000000KhGx",
+	      en: {
+		configName: "Live_Chat",
+		defaultMinimizedText: 'Can We help?',
+		loadingText: 'Loading...',
+		config:{
+		  baseLiveAgentURL: "https://d.la3-c2-cdg.salesforceliveagent.com/chat",
+		  deploymentId: "57267000000XfMT",
+		  baseLiveAgentContentURL: "https://c.la3-c2-cdg.salesforceliveagent.com/content",
+		  buttonId: "57367000000XfX2",
+		  eswLiveAgentDevName: "Live_Chat",
+		  isOfflineSupportEnabled: false,
+		},
+		extraPrechatInfo : [
+		  {
+		    entityFieldMaps: [
+		      {
+			doCreate: false,
+			doFind: true,
+			fieldName: "LastName",
+			isExactMatch: true,
+			label: "Last Name",
+		      },
+		      {
+			doCreate: false,
+			doFind: true,
+			fieldName: "FirstName",
+			isExactMatch: true,
+			label: "First Name",
+		      },
+		      {
+			doCreate: false,
+			doFind: true,
+			fieldName: "Email",
+			isExactMatch: true,
+			label: "Email",
+		      },
+		    ],
+		    entityName: "Contact",
+		    saveToTranscript: "Contact", // This is the important field
+		  },
+		  {
+		    entityFieldMaps: [
+		      {
+			doCreate: true,
+			doFind: false,
+			fieldName: "Subject",
+			isExactMatch: false,
+			label: "Subject",
+		      },
+		      {
+			doCreate: true,
+			doFind: false,
+			fieldName: "SuppliedEmail",
+			isExactMatch: false,
+			label: "Email",
+		      },
+		      {
+			doCreate: true,
+			doFind: false,
+			fieldName: "Origin",
+			isExactMatch: false,
+			label: "Origin",
+		      },
+		    ],
+		    entityName: "Case",
+		    saveToTranscript: "Case",
+		  },
+		],
+		extraPrechatFormDetails : [
+		  {"label":"Last Name", "transcriptFields": ["Visitor_Last_Name__c"]},
+		  {"label":"Origin", value: "Live Chat", displayToAgent: true},
+		  {"label":"First Name", "transcriptFields": ["Visitor_First_Name__c"]},
+		  {"label":"Email", "transcriptFields": ["Visitor_Email__c"]},
+		  {"label":"Subject", "transcriptFields": ["Subject__c"]},
+		  {"label":"Type of Enquiry", "transcriptFields": ["Type_of_Enquiry__c"]},
+		],
+	      }
+	    }
+	  };
+
+	  return {
+	    language: 'en',
+	    eswJSUrl: SF_CHAT_CONFIG.prd.eswJSUrl,
+	    gslbBaseUrl: SF_CHAT_CONFIG.prd.gslbBaseUrl,
+	    myUrl: SF_CHAT_CONFIG.prd.myUrl,
+	    liveChatUrl: SF_CHAT_CONFIG.prd.liveChatUrl,
+	    configName: SF_CHAT_CONFIG.prd.en.configName,
+	    defaultMinimizedText: SF_CHAT_CONFIG.prd.en.defaultMinimizedText,
+	    loadingText: SF_CHAT_CONFIG.prd.en.loadingText,
+	    extraPrechatFormDetails: SF_CHAT_CONFIG.prd.en.extraPrechatFormDetails,
+	    extraPrechatInfo: SF_CHAT_CONFIG.prd.en.extraPrechatInfo,
+	    config:{
+	      baseLiveAgentContentURL: SF_CHAT_CONFIG.prd.en.config.baseLiveAgentContentURL,
+	      deploymentId: SF_CHAT_CONFIG.prd.en.config.deploymentId,
+	      buttonId: SF_CHAT_CONFIG.prd.en.config.buttonId,
+	      baseLiveAgentURL: SF_CHAT_CONFIG.prd.en.config.baseLiveAgentURL,
+	      eswLiveAgentDevName: SF_CHAT_CONFIG.prd.en.config.eswLiveAgentDevName,
+	      isOfflineSupportEnabled: SF_CHAT_CONFIG.prd.en.config.isOfflineSupportEnabled,
+	    },
+	    id: SF_CHAT_CONFIG.prd.id,
+	  }
+	}
+	embedded_svc.settings = getSalesforceConfig();
+	
 	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Chat
-		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
-			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
-			// Returns a valid button ID.
-		//};
-		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
-		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
-		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
+		embedded_svc.settings.devMode = true;
 
 		embedded_svc.init(
-			'https://matchesfashion.my.salesforce.com',
-			'https://matchesfashion.my.salesforce-sites.com/livechat',
-			gslbBaseURL,
-			'00Db0000000KhGx',
-			'Live_Chat',
+			embedded_svc.settings.myUrl, //'https://matchesfashion.my.salesforce.com',
+			embedded_svc.settings.liveChatUrl, //'https://matchesfashion.my.salesforce-sites.com/livechat',
+			embedded_svc.settings.gslbBaseUrl, //gslbBaseURL,
+			embedded_svc.settings.id, //'00Db0000000KhGx',
+			embedded_svc.settings.configName, //'Live_Chat',
+			embedded_svc.settings.config
+			/**
 			{
-				baseLiveAgentContentURL: 'https://c.la3-c2-cdg.salesforceliveagent.com/content',
-				deploymentId: '57267000000XfMT',
-				buttonId: '57367000000XfX2',
-				baseLiveAgentURL: 'https://d.la3-c2-cdg.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'Live_Chat',
-				isOfflineSupportEnabled: false
-			}
+			  baseLiveAgentURL: "https://d.la3-c2-cdg.salesforceliveagent.com/chat",
+			  deploymentId: "57267000000XfMT",
+			  baseLiveAgentContentURL: "https://c.la3-c2-cdg.salesforceliveagent.com/content",
+			  buttonId: "57367000000XfX2",
+			  eswLiveAgentDevName: "Live_Chat",
+			  isOfflineSupportEnabled: false,
+			}**/
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://matchesfashion.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', embedded_svc.settings.eswJSUrl);
 		s.onload = function() {
 			initESW(null);
 		};
