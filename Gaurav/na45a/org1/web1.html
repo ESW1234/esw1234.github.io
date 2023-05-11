@@ -19,8 +19,9 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
 
-		embeddedservice_bootstrap.init(
+			embeddedservice_bootstrap.init(
 				'00DS7000000owIT',
 				'MIAW1',
 				'https://iana45a.stmfa.my.stm.site.com/ESWMIAW11672876345145',
@@ -34,6 +35,6 @@
 	};
 </script>
 <!-- <script type='text/javascript' src='https://iana45a.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script> -->
-<script type='text/javascript' src='https://iana45a.stmfa.my.stm.site.com/ESWMIAW11672876345145/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://iana45a.stmfa.my.stm.site.com/ESWMIAW11672876345145/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
   </body>
   </html>
