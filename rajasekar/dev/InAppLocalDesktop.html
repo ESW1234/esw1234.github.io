@@ -4,5 +4,25 @@
    </head>
    <body>
      <h1>Hello world</h1>
+      <script type='text/javascript'>
+         function initEmbeddedMessaging() {
+            try {
+               embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+               embeddedservice_bootstrap.init(
+                  '00Dxx0000006Gpr',
+                  'ESW_Enhanced',
+                  'https://devorg-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/ESWESWEnhanced1683916064429',
+                  {
+                     scrt2URL: 'http://devorg-dev-ed.develop.my.localhost.sfdcdev.salesforce-scrt.com'
+                  }
+               );
+            } catch (err) {
+               console.error('Error loading Embedded Messaging: ', err);
+            }
+         };
+   </script>
+   <script type='text/javascript' src='https://devorg-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/ESWESWEnhanced1683916064429/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
    </body>
 </html>
