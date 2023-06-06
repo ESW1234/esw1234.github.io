@@ -4,14 +4,16 @@
 </head>
 <body>
 <button type="button" id="showChatButton" onclick="showChatButton()"> Show </button></br></br>
-<button type="button" id="hideChatButton" onclick="hideChatButton()"> Hide </button>
+<button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
 <script type='text/javascript'>
 	function showChatButton() {
 		embeddedservice_bootstrap.utilAPI.showChatButton();
 	}
-	function hideChatButton() {
-		embeddedservice_bootstrap.utilAPI.hideChatButton();
+	
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
 </script>
