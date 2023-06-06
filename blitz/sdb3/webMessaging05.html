@@ -39,7 +39,7 @@
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
 				console.log("onEmbeddedMessagingReady emitted");
-				embeddedservice_bootstrap.autoResponseAPI.setHiddenPrechatFields({
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
 				    "city" : "Vancouver"
 				});
 				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
