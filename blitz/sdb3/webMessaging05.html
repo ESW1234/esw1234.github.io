@@ -39,6 +39,9 @@
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
 				console.log("onEmbeddedMessagingReady emitted");
+				embeddedservice_bootstrap.autoResponseAPI.setHiddenPrechatFields({
+				    "city" : "Vancouver"
+				});
 				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
 				    "userName" : "Guest",
 				    "cartValue": "1000"
