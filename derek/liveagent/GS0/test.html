@@ -22,7 +22,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -35,7 +35,7 @@
 			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
 			// Returns a valid button ID.
 		//};
-		embedded_svc.settings.prepopulatedPrechatFields =  { FirstName: 'Derek', LastName: 'Chan', Email: 'chakngai.chan@salesforce.com' }; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -43,25 +43,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://db0000000ckmpmam.my.salesforce.com',
-			'https://eswsanity-16d27685298.force.com',
+			'https://lexie-summer22-gs0-esw.my.salesforce.com',
+			'https://lexie-summer22-gs0-esw.my.site.com/testLiveAgent',
 			gslbBaseURL,
-			'00DB0000000cKMp',
-			'X240ESW',
+			'00DB0000000gcgU',
+			'LiveAgentDeployment',
 			{
 				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
-				deploymentId: '572B0000000Tv3c',
-				buttonId: '573B0000000TvP2',
+				deploymentId: '572B0000000QFGJ',
+				buttonId: '573B0000000QFcA',
 				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000H0jHMAS_1827f93a1da',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000LSbJMAW_182e71b6d83',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://db0000000ckmpmam.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://lexie-summer22-gs0-esw.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
