@@ -1,7 +1,7 @@
 
 <html>
 	<head>
-		<title>Desktop/iMac - SDB3 Blitz</title>
+		<title>Local - SDB3 Blitz</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 	<body>
@@ -21,15 +21,6 @@
 				console.log("Clearing user session.");
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
-
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-				console.log("onEmbeddedMessagingReady emitted");
-				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-				    "userName" : "Guest",
-				    "cartValue": "1000"
-				});
-			});
 		</script>
 		
 		<!-- Snippet -->
@@ -37,21 +28,25 @@
     function initEmbeddedMessaging() {
       try {
         embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	embeddedservice_bootstrap.settings.devMode = true; // load un-minified component code
 
         embeddedservice_bootstrap.init(
-          '00Dxx0000006Gz1',
-          'PleaseGodLetThisWork',
-          'https://miaw2.my.localhost.sfdcdev.site.com:6101/ESWPleaseGodLetThisWork1686096441446',
+          '00DSB0000005YCL', // Org ID
+          'webMessaging05', // Embedded Service Deployment Name
+          'https://miaw2.my.localhost.sfdcdev.site.com:6101/ESWPleaseGodLetThisWork1686096441446', // Salesforce (LWR) site associated w/ deployment
+	  // we use a site from a local org instead of a testing site so that we load component and boostrap code from our local code instead of a test environment (SDB3)
           {
-            scrt2URL: 'http://miaw2.my.localhost.sfdcdev.salesforce-scrt.com'
-          }
-        );
+            scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+          } // SCRT service url (service fetches org config via HTTP request), and network calls for conversation events on the backend via Messaging Service (on a diff. endpoint)
+            // note that we do not need to load the SCRT service from local as we do not actively develop those apps, and instead load them from a Testing org
+	);
       } catch (err) {
         console.error('Error loading Embedded Messaging: ', err);
       }
     };
   </script>
-  <script type='text/javascript' src='https://miaw2.my.localhost.sfdcdev.site.com:6101/ESWPleaseGodLetThisWork1686096441446/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <!-- load un-minified bootstrap code for local dev (swapping bootstrap.min.js to bootstrap.js) -->
+  <script type='text/javascript' src='https://miaw2.my.localhost.sfdcdev.site.com:6101/ESWPleaseGodLetThisWork1686096441446/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 	</body>
 </html>
