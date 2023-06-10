@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>SDB6-AsyncChat</title>
+	<title>SDB6-MIAW</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
@@ -13,6 +13,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
 			
 			// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 			window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -22,8 +23,8 @@
 
 			embeddedservice_bootstrap.init(
 				'00DSG00000039tB',
-				'SachinMIAW',
-				'https://sdb6org1.test1.my.pc-rnd.site.com/ESWSachinMIAW1673652614852',
+				'TestMIAW1',
+				'https://sdb6org1.test1.my.pc-rnd.site.com/ESWTestMIAW11686359901706',
 				{
 					scrt2URL: 'https://sdb6org1.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -33,7 +34,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://sdb6org1.test1.my.pc-rnd.site.com/ESWSachinMIAW1673652614852/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://sdb6org1.test1.my.pc-rnd.site.com/ESWTestMIAW11686359901706/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 	
 </body>
