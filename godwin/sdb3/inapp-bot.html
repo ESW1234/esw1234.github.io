@@ -28,17 +28,18 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
-			embeddedservice_bootstrap.init(
-				'00DSB0000004st3',
-				'MIAW_Bot',
-				'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWBot1669761781112',
-				{
-					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWMIAWBot1669761781112/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script></html>
+				embeddedservice_bootstrap.init(
+					'00DSB0000004st3',
+					'EmbeddedMessaging_ExternalBot',
+					'https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWEmbeddedMessagingExte1686585334466',
+					{
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://godwinlaw-sdb3.test1.pc-rnd.force.com/ESWEmbeddedMessagingExte1686585334466/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</html>
