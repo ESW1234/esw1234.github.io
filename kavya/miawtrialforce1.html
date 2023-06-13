@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>Test MIAW Trialforce1</h1>
+        <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+        <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.debugMode = true;
+			embeddedservice_bootstrap.init(
+				'00DRM000000O3B9',
+				'JP_Web_UnAuth',
+				'https://miaw7-188b5aa05f4.stmfa.stm.force.com/ESWJPWebUnAuth1673022407963',
+				{
+					scrt2URL: 'https://miawtrialforcetest.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miaw7-188b5aa05f4.stmfa.stm.force.com/ESWJPWebUnAuth1673022407963/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>      
+    </body>
+</html>
