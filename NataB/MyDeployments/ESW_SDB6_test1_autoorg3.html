@@ -4,8 +4,7 @@
     </head>
     <body>
 <h1>ESW on SDB6 TEST1 for Org: autoorg3</h1>
-
-   
+  
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -20,7 +19,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'en-US'; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -42,16 +41,16 @@
 
 		embedded_svc.init(
 			'https://autoorg3.test1.my.pc-rnd.salesforce.com',
-			'https://autoorg3.test1.my.pc-rnd.salesforce-sites.com/liveAgentSetupFlow',
+			'https://autoorg3.test1.my.pc-rnd.site.com/ESWWebEnhanced1686667272644vforcesite',
 			gslbBaseURL,
 			'00DSG0000008Vt3',
-			'chat_team',
+			'ESW',
 			{
 				baseLiveAgentContentURL: 'https://c.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
 				deploymentId: '572SG0000001QdB',
 				buttonId: '573SG0000001Sgb',
 				baseLiveAgentURL: 'https://d.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'chat_team',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISG0000000IRZ2A2_188bb90aaf9',
 				isOfflineSupportEnabled: false
 			}
 		);
