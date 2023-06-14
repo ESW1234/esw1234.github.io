@@ -45,25 +45,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://benco11.my.stmfb.stm.salesforce.com',
-			'https://benco11de.stmfb.stm.force.com/helpcenter1',
+			'https://benco1.my.stmfb.stm.salesforce.com',
+			'https://chatsite.stmfb.stm.force.com/site1',
 			gslbBaseURL,
-			'00DRM000000GDda',
+			'00DS30000000khm',
 			'chat1',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000000RA1',
-				buttonId: '573RM0000000RVB',
+				deploymentId: '572S30000004C9S',
+				buttonId: '573S30000004C9w',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS70000004CJDMA2_17fdcda29f3',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS30000004C9IMAU_188bb9e996b',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://benco11.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://benco1.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
