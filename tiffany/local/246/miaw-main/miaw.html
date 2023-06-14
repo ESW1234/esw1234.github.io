@@ -1,0 +1,24 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000009Emv',
+				'Default_Web',
+				'https://cm-main.my.localhost.sfdcdev.site.com:6101/ESWMIAW2461686136996007', // 'https://miaw-main.test1.my.pc-rnd.site.com/ESWDefaultWeb1674049150374',
+				{
+					scrt2URL: 'https://miaw-main.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://cm-main.my.localhost.sfdcdev.site.com:6101/ESWMIAW2461686136996007/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>
