@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://randev-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js"></script>
+<script src="https://dev1-dev-ed.develop.lightning.localhost.sfdcdev.force.com:6101/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -11,7 +11,7 @@
   </div>
   <script>
             $Lightning.use("c:loApp", function() {
-              $Lightning.createComponent("c:hello", 
+              $Lightning.createComponent("c:graphql", 
               { },
               "lightning",
               function(cmp) {
@@ -19,7 +19,7 @@
               });
             },
 
-         'https://randev-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
+         'https://dev1-dev-ed.develop.lightning.localhost.sfdcdev.force.com:6101/accountPortal' // Community endpoint
         );                   
 
 </script>   
