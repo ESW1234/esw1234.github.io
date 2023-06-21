@@ -6,9 +6,13 @@
           const script = document.createElement("SCRIPT");
           script.type = "text/javascript";
           script.src = "https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js";
+          script.onload = function() {
+            let timeTaken = Date.now() - start;
+            console.log("Total time taken: " + timeTaken + " milliseconds");
+          }
           document.head.appendChild(script);
-          let timeTaken = Date.now() - start;
-          console.log("Total time taken: " + timeTaken + " milliseconds");
+          
+          
   
   
   </script>
