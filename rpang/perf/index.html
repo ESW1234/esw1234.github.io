@@ -9,21 +9,24 @@
           document.head.appendChild(script);      
     script.onload = () => {
             let timeTaken = Date.now() - start;
-            console.log("Total time taken: " + timeTaken + " milliseconds");
+            console.log("Script loaded: " + timeTaken + " milliseconds");
             
              $Lightning.use("c:loApp", function() {
+               timeTaken = Date.now() - start;
+               console.log("App loaded: " + timeTaken + " milliseconds");
               $Lightning.createComponent("c:auraCmp", 
               { },
               "lightning",
               function(cmp) {
                 // do some stuff
+                timeTaken = Date.now() - start;
+                console.log("Component added: " + timeTaken + " milliseconds");
               });
             },
 
          'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
         );                   
-             timeTaken = Date.now() - start;
-             console.log("Total time taken: " + timeTaken + " milliseconds");
+             
           }
           
           
