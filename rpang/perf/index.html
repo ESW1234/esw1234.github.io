@@ -8,19 +8,19 @@
           script.src = "https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js";
           document.head.appendChild(script);      
     script.onload = () => {
-            let timeTaken = Date.now() - start;
-            console.log("Script loaded: " + timeTaken + " milliseconds");
+            let scriptTime = Date.now() - start;
+            console.log("Script loaded: " + scriptTime + " milliseconds");
             
              $Lightning.use("c:loApp", function() {
-               timeTaken = Date.now() - start;
-               console.log("App loaded: " + timeTaken + " milliseconds");
+               let appTime = Date.now() - scriptTime;
+               console.log("App loaded: " + appTime + " milliseconds");
               $Lightning.createComponent("c:auraCmp", 
               { },
               "lightning",
               function(cmp) {
                 // do some stuff
-                timeTaken = Date.now() - start;
-                console.log("Component added: " + timeTaken + " milliseconds");
+                let cmpTime = Date.now() - appTime - scriptTime;
+                console.log("Component loaded: " + cmpTime + " milliseconds");
               });
             },
 
