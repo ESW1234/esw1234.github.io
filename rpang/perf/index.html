@@ -6,7 +6,8 @@
           const script = document.createElement("SCRIPT");
           script.type = "text/javascript";
           script.src = "https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js";
-          script.onload = () => {
+          document.head.appendChild(script);      
+    script.onload = () => {
             let timeTaken = Date.now() - start;
             console.log("Total time taken: " + timeTaken + " milliseconds");
             
@@ -24,7 +25,7 @@
              timeTaken = Date.now() - start;
              console.log("Total time taken: " + timeTaken + " milliseconds");
           }
-          document.head.appendChild(script);
+          
           
           
   
