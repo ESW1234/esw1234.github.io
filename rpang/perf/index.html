@@ -12,14 +12,14 @@
             console.log("Script loaded: " + scriptTime + " milliseconds");
             
              $Lightning.use("c:loApp", function() {
-               let appTime = Date.now() - scriptTime;
+               let appTime = Date.now() - scriptTime - start;
                console.log("App loaded: " + appTime + " milliseconds");
               $Lightning.createComponent("c:auraCmp", 
               { },
               "lightning",
               function(cmp) {
                 // do some stuff
-                let cmpTime = Date.now() - appTime - scriptTime;
+                let cmpTime = Date.now() - appTime - scriptTime - start;
                 console.log("Component loaded: " + cmpTime + " milliseconds");
               });
             },
