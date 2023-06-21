@@ -1,0 +1,38 @@
+<html lang="en-US">
+<body>
+<!-- <script src="https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js"></script> -->
+  <script> 
+          let start = Date.now();
+          const script = document.createElement("SCRIPT");
+          script.type = "text/javascript";
+          script.src = "https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js";
+          document.head.appendChild(script);
+          let timeTaken = Date.now() - start;
+          console.log("Total time taken: " + timeTaken + " milliseconds");
+  
+  
+  </script>
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+
+</div>
+<div id="lightning">
+  </div>
+  <script>
+            $Lightning.use("c:loApp", function() {
+              $Lightning.createComponent("c:auraCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+            },
+
+         'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
+        );                   
+
+</script>   
+</body>
+</html>
