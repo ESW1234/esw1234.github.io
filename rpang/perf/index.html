@@ -9,6 +9,20 @@
           script.onload = function() {
             let timeTaken = Date.now() - start;
             console.log("Total time taken: " + timeTaken + " milliseconds");
+            
+             $Lightning.use("c:loApp", function() {
+              $Lightning.createComponent("c:auraCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+            },
+
+         'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
+        );                   
+             timeTaken = Date.now() - start;
+             console.log("Total time taken: " + timeTaken + " milliseconds");
           }
           document.head.appendChild(script);
           
@@ -24,7 +38,7 @@
 </div>
 <div id="lightning">
   </div>
-<!--   <script>
+  <script>
             $Lightning.use("c:loApp", function() {
               $Lightning.createComponent("c:auraCmp", 
               { },
@@ -37,6 +51,6 @@
          'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
         );                   
 
-</script>    -->
+</script>   
 </body>
 </html>
