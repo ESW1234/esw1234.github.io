@@ -1,26 +1,20 @@
 
 <html>
 	<head>
-		<title>Desktop/iMac - SDB3 Blitz</title>
+		<title>Desktop/iMac - NA45 STMFA</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 	<body>
-		<h1>SDB3 BLITZ MIAW | WebMessaging 05 - BOT</h1>
-		<h2>agent5@sdb3.blitz.org</h2>
+		<h1>NA45 STMFA</h1>
+		<h2>web1@na45a.org1</h2>
+		<a href="https://salesforce.quip.com/wkswAYpfZt8B#temp:C:ccC9943708394e844a7b65f1451c" target="_blank">Q3 orgs detail sheet</a>
 
 		<!-- Edit page link -->
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 		</br>
-		<!-- Clear user session button -->
-		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
 		
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-			
-			function clearAuthSession() {
-				console.log("Clearing user session.");
-				embeddedservice_bootstrap.userVerificationAPI.clearSession();
-			}
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
@@ -40,11 +34,11 @@
 				embeddedservice_bootstrap.settings.devMode = true;
 
 				embeddedservice_bootstrap.init(
-					'00DSB0000005YCL',
-					'webMessaging05',
+					'00DS7000000owIT',
+					'MIAW1',
 					'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11682970424371',
 					{
-						scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
@@ -52,8 +46,7 @@
 			}
 		};
 	</script>
-<!-- 	<script type='text/javascript' src='https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11682970424371/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
-	<script type='text/javascript' src='https://git.soma.salesforce.com/pages/sachin-hanumantha/test/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-
+	<script type='text/javascript' src='https://esw.my.localhost.sfdcdev.site.com:6101/ESWMIAW11682970424371/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<!-- 	<script type='text/javascript' src='https://git.soma.salesforce.com/pages/sachin-hanumantha/test/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
 	</body>
 </html>
