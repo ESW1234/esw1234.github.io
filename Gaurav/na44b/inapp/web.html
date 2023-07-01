@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<h1> NA44B MIAW Chat</h1>
+	<h1> NA44B MIAW Chat.</h1>
 Agent: a1@na44b.inapp
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
@@ -13,9 +13,12 @@ Agent: a1@na44b.inapp
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+					embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({ "ChatStart": new Date().toLocaleString() });
+				});
 			embeddedservice_bootstrap.init(
 				'00DRM000000GEbw',
-				'aMIAWDeployment',
+				'MIAWDeployment',
 				'https://inapptestorg.stmfb.stm.force.com/ESWaMIAWDeployment1688163750143',
 				{
 					scrt2URL: 'https://inapptestorg.my.stmfb.stm.salesforce-scrt.com'
