@@ -3,18 +3,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 
-<button type="button" id="showChatButton" onclick="showChatButton()"> Show </button></br></br>
-<button type="button" id="hideChatButton" onclick="hideChatButton()"> Hide </button>
+<button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
-<script type='text/javascript'>
-	function showChatButton() {
-		embeddedservice_bootstrap.utilAPI.showChatButton();
+<script type='text/javascript'>	
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
-	function hideChatButton() {
-		embeddedservice_bootstrap.utilAPI.hideChatButton();
-	}
-
 </script>
+	
 <body>
     <script type='text/javascript'>
         function initEmbeddedMessaging() {
@@ -24,7 +21,7 @@
                 embeddedservice_bootstrap.init(
 				'00DS7000000lqNL',
 				'MIAW3',
-				'https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWMIAW1684266793642',
+				'https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWMIAW31688676585548',
 				{
 					scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
 				}
@@ -34,7 +31,7 @@
             }
         };
     </script>
-    <script type='text/javascript' src='https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWMIAW1684266793642/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+    <script type='text/javascript' src='https://vivianaenterprise.my.localhost.sfdcdev.site.com:6101/ESWMIAW31688676585548/assets/js/bootstrap.js'  onload='initEmbeddedMessaging()'></script>
    
 </body>
 </html>
