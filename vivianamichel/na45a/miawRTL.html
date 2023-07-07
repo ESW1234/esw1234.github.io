@@ -3,14 +3,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-<button type="button" id="showChatButton" onclick="showChatButton()"> Show </button></br></br>
 <button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
-<script type='text/javascript'>
-	function showChatButton() {
-		embeddedservice_bootstrap.utilAPI.showChatButton();
-	}
-	
+<script type='text/javascript'>	
 	function clearAuthSession() {
 		console.log("Clearing user session.");
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
@@ -22,11 +17,11 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'ar'; // For example, enter 'en' or 'en-US'
       			embeddedservice_bootstrap.settings.devMode = true;
-      
+
 			embeddedservice_bootstrap.init(
 				'00DS7000000lqNL',
-				'MIAW_w_bot',
-				'https://test-1d4.stmfa.my.stm.site.com/ESWMIAWwbot1684190665407',
+				'MIAW4',
+				'https://test-1d4.stmfa.my.stm.site.com/ESWMIAW41688664495955',
 				{
 					scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
 				}
@@ -36,7 +31,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://test-1d4.stmfa.my.stm.site.com/ESWMIAWwbot1684190665407/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://test-1d4.stmfa.my.stm.site.com/ESWMIAW41688664495955/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
    
