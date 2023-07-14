@@ -1,39 +1,29 @@
 <html lang="en-US">
+  <head>
+    <title>Example JSP</title>
+    <link rel="stylesheet" type="text/css" href="/qa/css/ftest.css" />
+</head>
 <body>
-<!-- <script src="https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js"></script> -->
-  <script> 
-          let start = Date.now();
-          const script = document.createElement("SCRIPT");
-          script.type = "text/javascript";
-          script.src = "https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js";
-          document.head.appendChild(script);      
-    script.onload = () => {
-            let scriptTime = Date.now() - start;
-            console.log("Script loaded: " + scriptTime + " milliseconds");
-            
-             $Lightning.use("c:loApp", function() {
-               let appTime = Date.now() - scriptTime - start;
-               console.log("App loaded: " + appTime + " milliseconds");
-              $Lightning.createComponent("c:auraCmp", 
-              { },
-              "lightning",
-              function(cmp) {
-                // do some stuff
-                let cmpTime = Date.now() - appTime - scriptTime - start;
-                console.log("Component loaded: " + cmpTime + " milliseconds");
-              });
-            },
 
-         'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
-        );                   
-             
-          }
-          
-          
-          
-  
-  
-  </script>
+  <%
+    // Get the VPod ID from the request
+    String vpodId = request.getParameter("vpodId");
+ %>
+    <%
+    if (null == vpodId) {
+ %>
+    and no value was specified for that parameter.</p>
+<% } else { %>    
+    and its value is <tt><%= vpodId %></tt>.</p>
+<% } %>
+    
+<p>To specify a value for the parameter, give it as a query-string parameter,
+such as <tt><a href="parameterExample.jsp?vpodId=12345678">parameterExample.jsp?vpodId=12345678</a></tt>.</p>    
+<%
+  String url = "https://perftesting999-corsa04-perfeng2-" + vpodId + ".vpod.t.salesforce-communities.com"
+   %>
+<script src= url + "/lightning/lightning.out.js"></script>
+ 
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -42,7 +32,7 @@
 </div>
 <div id="lightning">
   </div>
-<!--   <script>
+<script>
             $Lightning.use("c:loApp", function() {
               $Lightning.createComponent("c:auraCmp", 
               { },
@@ -52,9 +42,9 @@
               });
             },
 
-         'https://dev1-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/accountPortal' // Community endpoint
+         url + 'accountPortal' // Community endpoint
         );                   
 
-</script>    -->
+</script>
 </body>
 </html>
