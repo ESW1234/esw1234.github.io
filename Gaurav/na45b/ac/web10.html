@@ -15,22 +15,23 @@
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-                embeddedservice_bootstrap.settings.debugMode = true
+                embeddedservice_bootstrap.settings.devMode = true
+
                 embeddedservice_bootstrap.init(
-                    '00DS70000000UFH',
-                    'web10',
-                    'https://asyncchatorg1.stmfb.my.stm.salesforce.com',
-                    {
-                        scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com'
-                    }
-                );
+				    '00DS70000000UFH',
+				    'Sachin',
+				    'https://asyncchatorg1.stmfb.my.stm.site.com/ESWSachin1689385816281',
+				    {
+					    scrt2URL: 'https://asyncchatorg1.stmfb.my.stm.salesforce-scrt.com'
+				    }
+			    );
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
             }
         };
     </script>
     <script type='text/javascript'
-        src='https://asyncchatorg1.stmfb.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js'
+        src='https://asyncchatorg1.stmfb.my.stm.site.com/ESWSachin1689385816281/assets/js/bootstrap.js'
         onload='initEmbeddedMessaging()'></script>
 </body>
 
