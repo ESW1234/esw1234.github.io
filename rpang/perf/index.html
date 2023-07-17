@@ -1,0 +1,34 @@
+<html lang="en-US">
+<body>
+<script src="https://perftesting999-corsa04-perfeng2-2015803159.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<div ng-bind-html="rawHtml">{{myWelcome}}</div>
+
+</div>
+<div id="lightning">
+  </div>
+  <script>
+            $Lightning.use("c:loApp", function() {
+              $Lightning.createComponent("c:emptyLwc", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+              $Lightning.createComponent("c:emptyLwc2", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              });
+          
+            },
+
+         'https://perftesting999-corsa04-perfeng2-2015803159.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
+        );                   
+
+</script>   
+</body>
+</html>
