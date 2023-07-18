@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://perftesting999-corsa04-perfeng2-2015803159.vpod.lightning.t.force.com/lightning/lightning.out.js"></script>
+<script src="https://perftest886.twist1.soma.force.com/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -11,22 +11,16 @@
   </div>
   <script>
             $Lightning.use("c:loApp", function() {
-              $Lightning.createComponent("c:emptyLwc", 
+              $Lightning.createComponent("c:auraTextCmp1", 
               { },
               "lightning",
               function(cmp) {
                 // do some stuff
               });
-              $Lightning.createComponent("c:emptyLwc2", 
-              { },
-              "lightning",
-              function(cmp) {
-                // do some stuff
-              });
-          
+            
             },
 
-         'https://perftesting999-corsa04-perfeng2-2015803159.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
+         'https://perftest886.twist1.soma.force.com/accountPortal' // Community endpoint
         );                   
 
 </script>   
