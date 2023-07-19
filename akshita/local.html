@@ -1,22 +1,23 @@
 <html>
    <head>
+<!--local hosted on stmfa na44 -->
         <!-- paste meta head tag -->
      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <title>Test Page</title>
    </head>
    <body>
         <!-- paste code snippet here -->
-     <script type='text/javascript'>
+    <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00Dxx0000006Utv',
+				'00DRM000000O1AG',
 				'web1',
 				'https://site-saas-3407.my.localhost.sfdcdev.site.com:6101/ESWweb11689715805895',
 				{
-					scrt2URL: 'https://site-saas-3407.my.localhost.sfdcdev.salesforce-scrt.com'
+					scrt2URL: 'https://stmfana44org2.my.stmfa.stm.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -25,6 +26,7 @@
 	};
 </script>
 <script type='text/javascript' src='https://site-saas-3407.my.localhost.sfdcdev.site.com:6101/ESWweb11689715805895/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
    </body>
 </html>
