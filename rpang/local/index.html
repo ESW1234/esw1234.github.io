@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://perftesting999-corsa04-perfeng2-2015803842.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script>
+<script src="https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -10,18 +10,19 @@
 <div id="lightning">
   </div>
  <script>
-            $Lightning.use("c:loApp", function() {
-              // $Lightning.createComponent("c:emptyLwc", 
-              // { },
-              // "lightning",
-              // function(cmp) {
-                
-              // });
-            },
-
-         'https://perftesting999-corsa04-perfeng2-2015803842.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
-        );                   
-
+    $Lightning.use("c:loApp",    // name of the Lightning app
+        function() {                  // Callback once framework and app loaded
+            $Lightning.createComponent(
+                "c:emptyLwc", // top-level component of your app
+                { },                  // attributes to set on the component when created
+                "lightning",   // the DOM location to insert the component
+                function(cmp) {
+                    // callback when component is created and active on the page
+                }
+            );
+        },
+        'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal'  // Experience Cloud site endpoint
+    );
 </script>
 </body>
 </html>
