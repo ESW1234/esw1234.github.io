@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script>
+<!-- <script src="https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script> -->
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -10,19 +10,45 @@
 <div id="lightning">
   </div>
  <script>
-    $Lightning.use("c:loApp",    // name of the Lightning app
-        function() {                  // Callback once framework and app loaded
-            $Lightning.createComponent(
-                "c:emptyLwc", // top-level component of your app
-                { },                  // attributes to set on the component when created
-                "lightning",   // the DOM location to insert the component
-                function(cmp) {
-                    // callback when component is created and active on the page
-                }
-            );
-        },
-        'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal'  // Experience Cloud site endpoint
-    );
+    // $Lightning.use("c:loApp",    // name of the Lightning app
+    //     function() {                  // Callback once framework and app loaded
+    //         $Lightning.createComponent(
+    //             "c:emptyLwc", // top-level component of your app
+    //             { },                  // attributes to set on the component when created
+    //             "lightning",   // the DOM location to insert the component
+    //             function(cmp) {
+    //                 // callback when component is created and active on the page
+    //             }
+    //         );
+    //     },
+    //     'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal'  // Experience Cloud site endpoint
+    // );
+
+    const script = document.createElement("SCRIPT");
+          script.type = "text/javascript";
+          script.src = "https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js";
+          document.head.appendChild(script);      
+    script.onload = () => {
+            // let scriptTime = Date.now() - start;
+            // console.log("Script loaded: " + scriptTime + " milliseconds");
+
+             $Lightning.use("c:loApp", function() {
+               // let appTime = Date.now() - scriptTime - start;
+               // console.log("App loaded: " + appTime + " milliseconds");
+              $Lightning.createComponent("c:emptyLwc", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+                // let cmpTime = Date.now() - appTime - scriptTime - start;
+                // console.log("Component loaded: " + cmpTime + " milliseconds");
+              });
+            },
+
+         'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
+        );                   
+
+          }
 </script>
 </body>
 </html>
