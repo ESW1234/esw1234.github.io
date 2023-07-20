@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<!-- <script src="https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script> -->
+<script src="https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -9,46 +9,119 @@
 </div>
 <div id="lightning">
   </div>
- <script>
-    // $Lightning.use("c:loApp",    // name of the Lightning app
-    //     function() {                  // Callback once framework and app loaded
-    //         $Lightning.createComponent(
-    //             "c:emptyLwc", // top-level component of your app
-    //             { },                  // attributes to set on the component when created
-    //             "lightning",   // the DOM location to insert the component
-    //             function(cmp) {
-    //                 // callback when component is created and active on the page
-    //             }
-    //         );
-    //     },
-    //     'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal'  // Experience Cloud site endpoint
-    // );
-
-    const script = document.createElement("SCRIPT");
-          script.type = "text/javascript";
-          script.src = "https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js";
-          document.head.appendChild(script);      
-    script.onload = () => {
-            // let scriptTime = Date.now() - start;
-            // console.log("Script loaded: " + scriptTime + " milliseconds");
-
-             $Lightning.use("c:loApp", function() {
-               // let appTime = Date.now() - scriptTime - start;
-               // console.log("App loaded: " + appTime + " milliseconds");
-              $Lightning.createComponent("c:emptyLwc", 
+  <script>
+            $Lightning.use("c:loApp", function() {
+              $Lightning.createComponent("c:auraTextCmp1", 
               { },
               "lightning",
               function(cmp) {
                 // do some stuff
-                // let cmpTime = Date.now() - appTime - scriptTime - start;
-                // console.log("Component loaded: " + cmpTime + " milliseconds");
-              });
+              }
+             );
+            $Lightning.createComponent("c:auraTextCmp2", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraTextCmp3", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraTextCmp4", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraTextCmp5", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraButtonCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraProgressCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraBadgeCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraAvatarCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraPillCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraTabCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraClickToDialCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraIconCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraInputCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+                $Lightning.createComponent("c:auraSelectCmp", 
+              { },
+              "lightning",
+              function(cmp) {
+                // do some stuff
+              }
+             );
+          
             },
 
-         'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
+         'https://perftesting999-corsa04-perfeng2-2015803875.vpod.t.salesforce-communities.com/lightning/lightning.out.js' // Community endpoint
         );                   
 
-          }
-</script>
+</script>   
 </body>
 </html>
