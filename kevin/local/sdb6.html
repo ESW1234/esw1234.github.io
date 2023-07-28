@@ -30,12 +30,12 @@
 	embeddedservice_bootstrap.settings.devMode = true; // load un-minified component code
 
         embeddedservice_bootstrap.init(
-          '00DS7000000ouey', // Org ID
-          'Sachin', // Embedded Service Deployment Name
+          '00DRM000000HvmX', // Org ID
+          'Messaging_2', // Embedded Service Deployment Name
           'https://miaw2.my.localhost.sfdcdev.site.com:6101/ESWPleaseGodLetThisWork1686096441446', // Salesforce (LWR) site associated w/ deployment
 	  // we use a site from a local org instead of a testing site so that we load component and boostrap code from our local code instead of a test environment (SDB3)
           {
-            scrt2URL: 'https://inapporg2.stmfa.my.stm.salesforce-scrt.com'
+            scrt2URL: 'https://eswmessagingchat2.stmfa.my.stm.salesforce-scrt.com'
           } // SCRT service url (service fetches org config via HTTP request), and network calls for conversation events on the backend via Messaging Service (on a diff. endpoint)
             // note that we do not need to load the SCRT service from local as we do not actively develop those apps, and instead load them from a Testing org
 	);
