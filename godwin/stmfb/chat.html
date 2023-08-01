@@ -46,31 +46,31 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://stmfbgodwin.my.stmfb.stm.salesforce.com',
-			'https://godwin-experience.stmfb.stm.force.com/expcloudsite',
+			'https://godwinlaw.my.stmfb.stm.salesforce.com',
+			'https://godwinlaw.stmfb.stm.force.com/endpoint',
 			gslbBaseURL,
-			'00DRM000000Fo6Y',
-			'Embedded_Chat',
+			'00DRM000000GGRR',
+			'EmbeddedChat',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-				deploymentId: '572RM0000000Hga',
-				buttonId: '573RM0000000HrB',
+				deploymentId: '572RM0000004hxc',
+				buttonId: '573RM0000004jE6',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM0000004EQA2A2_17b5eb33c82',
-				isOfflineSupportEnabled: false
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IRM00000004Pi2AI_188b12f4a6c',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://stmfbgodwin.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://godwinlaw.my.stmfb.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://stmfbgodwin.my.stmfb.stm.salesforce.com');
+		initESW('https://service.force.com');
 	}
 </script>
 <!------------------------------------------------ 5.0 SNIPPPET END ------------------------------------------------->
