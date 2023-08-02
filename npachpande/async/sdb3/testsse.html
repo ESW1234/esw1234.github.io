@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>sdb3 Test SSE Response</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+	<label for="jwtToken">Set JWT:</label></br>
+	<input type="text" id="jwtToken" name="jwtToken" size="50"></br>
+	<button type="button" onclick="subscribeToSSE()"> Subscribe to SSE </button></br></br>
+
+  <script type='text/javascript'>
+		function subscribeToSSE() {
+			const jwt = document.getElementById("jwtToken").value;
+      const endpoint = "https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com/eventrouter/v1/sse";
+      
+      fetch(endpoint, {
+			  method: "GET",
+			  mode: "cors",
+			  headers: {
+			    "Authorization": "Bearer " + jwt,
+          
+        }
+      })
+      .then(function(data) {
+        console.log('Fetch Response :', data);
+      })
+      .catch(function(err) {
+			  console.log('Fetch Error :', err);
+      });
+		}
+	</script>
+
+
+</body>
+</html>
