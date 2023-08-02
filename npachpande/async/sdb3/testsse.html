@@ -32,11 +32,11 @@
 				}
 			})
 			.then(function(response) {
-				console.log(response);
+				console.log('Response : ', response);
 				response.json();
 			})
 			.then(function(responseData) {
-				console.log(responseData);
+				console.log('Response data : ', responseData);
 			})
 			.catch(function(err) {
 				console.log('Fetch Error :', err);
