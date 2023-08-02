@@ -33,9 +33,9 @@
 			})
 			.then(function(response) {
 				console.log(response);
-				response.json();
+				return response.json();
 			})
-		    	.then(function(responseData) {
+			.then(function(responseData) {
 				console.log(responseData);
 			})
 			.catch(function(err) {
