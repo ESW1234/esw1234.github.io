@@ -26,9 +26,8 @@
 					"X-Org-Id": "00DSB0000002LA1"
 				}
 			})
-			.then(function(data) {
-				console.log('Fetch Response :', data);
-			})
+			.then(response => response.json())
+		    	.then(responseData => console.log(responseData))
 			.catch(function(err) {
 				console.log('Fetch Error :', err);
 			});
