@@ -1,6 +1,34 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
+
+	  	<button id="launchChat" onclick="launchChat()">UTIL API: LAUNCH CHAT</button>
+	  <script>
+		function launchChat() {
+			embeddedservice_bootstrap.utilAPI.launchChat()
+			.then(() => {
+				console.log("launchChat success");
+			}).catch(() => {
+				console.log("launchChat failure");
+			}).finally(() => {
+				console.log("launchChat finally");
+			});
+		}
+	  </script>
+	<br>
+	<button id="bootstrapChat" onclick="bootstrapChat()">BOOTSTRAP CHAT</button>
+	  <script>
+		function launchChat() {
+			embeddedservice_bootstrap.bootstrapEmbeddedMessaging()
+			.then(() => {
+				console.log("bootstrap success");
+			}).catch(() => {
+				console.log("bootstrap failure");
+			}).finally(() => {
+				console.log("bootstrap finally");
+			});
+		}
+	  </script>
     <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
