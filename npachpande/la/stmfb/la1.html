@@ -21,7 +21,7 @@
 	}
 </style>
 
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -45,27 +45,11 @@
 				isOfflineSupportEnabled: true
 			}
 		);
-
-		// embedded_svc.init(
-		// 	'https://eswmiaw.stmfb.my.stm.salesforce.com',
-		// 	'https://eswmiaw.stmfb.my.stm.salesforce-sites.com/forcedotcomsite',
-		// 	gslbBaseURL,
-		// 	'00DS70000000Uae',
-		// 	'ESWTest1',
-		// 	{
-		// 		baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
-		// 		deploymentId: '572S700000002dV',
-		// 		buttonId: '573S700000002od',
-		// 		baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-		// 		eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS700000000LEMAY_18897c215c2',
-		// 		isOfflineSupportEnabled: false
-		// 	}
-		// );
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswmiaw.stmfb.my.stm.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://eswmiaw.stmfb.my.stm.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
