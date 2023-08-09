@@ -17,6 +17,20 @@
 	const CONVERSATION_BUTTON_BOTTOM_TAB_BAR_CLASS = "embeddedMessagingBottomTabBar";
 	const CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT = "Hello, have a question? Let’s chat.";
 	const CONVERSATION_BUTTON_MINIMIZE_ASSISTIVE_TEXT = "Minimize the chat window";
+	const CHAT_WINDOW_ASSISTIVE_TEXT = "Chat Window";
+
+	/**
+	 * Conversation modal state class constants.
+	 */
+	const MODAL_ISMAXIMIZED_CLASS = "isMaximized";
+	const MODAL_ISMINIMIZED_CLASS = "isMinimized";
+	const MODAL_HASMINIMIZEDNOTIFICATION_CLASS = "hasMinimizedNotification";
+
+	/**
+	 * Iframe platform class constants.
+	 */
+	const EXPERIENCE_SITE = "experienceSite";
+	const MOBILE_PUBLISHER = "mobilePublisher";
 
 	/**
 	 * Parent page elements class constants.
@@ -25,6 +39,7 @@
 	const BACKGROUND_MODAL_ID = "embeddedMessagingModalOverlay";
 	const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
 	const LWR_IFRAME_NAME = "embeddedMessagingFrame";
+	const BOOTSTRAP_CSS_NAME = "embeddedMessagingBootstrapStyles";
 	const IFRAME_DEFAULT_TITLE = "Chat with an Agent";
 	const IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS = LWR_IFRAME_NAME + "MaximizedBottomTabBar";
 	const IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS = LWR_IFRAME_NAME + "MinimizedBottomTabBar";
@@ -71,27 +86,32 @@
 	const UNAUTHENTICATED_PATH = "/unauthenticated";
 	const AUTHENTICATED_PATH = "/authenticated";
 	const QUERIES_PATH = "/queries";
+	const CAPABILITIES_PATH = "/device/registerDeviceCapabilities";
 	const UNAUTHENTICATED_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH + UNAUTHENTICATED_PATH + ACCESS_TOKEN_PATH;
 	const AUTHENTICATED_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH + AUTHENTICATED_PATH + ACCESS_TOKEN_PATH;
 	const CONVERSATION_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + "/conversation";
 	const CONTINUITY_ACCESS_TOKEN_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + AUTHORIZATION_PATH +  "/continuityAccessToken";
 	const LIST_CONVERSATIONS_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + QUERIES_PATH + "/conversation/list";
+	const REGISTER_DEVICE_CAPABILITIES_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + CAPABILITIES_PATH;
 
-	 /**
+	/**
 	  * Capabilities version to be passed as part of Access Token request to register capabilities of the app.
-	  * Note: The version number is merely a representation and a contract with the IA-Message service and does not necessarily represent the core version. Bump this number when new capabilities are introduced to be supported.
+	  * Notes: 
+	  * 1. The version number is merely a representation and a contract with the IA-Message service and does not necessarily represent the core version. Bump this number when new capabilities are introduced to be supported.
+	  * 2. Ensure the version number passed in Access Token request to match the version passed in RegisterDeviceCapabilities endpoint request.
 	  * @type {string}
  	  */
-	 const capabilitiesVersion = "240";
+	 const capabilitiesVersion = "246";
 
-	// TODO: confirm these as they will be APIs.
+	// TODO: W-13475085 - confirm event names with CX.
 	const APP_LOADED_EVENT_NAME = "ESW_APP_LOADED";
+	const APP_INIT_ERROR_EVENT_NAME = "ESW_APP_INITIALIZATION_ERROR";
 	const APP_MINIMIZE_EVENT_NAME = "ESW_APP_MINIMIZE";
 	const APP_MAXIMIZE_EVENT_NAME = "ESW_APP_MAXIMIZE";
 	const EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME = "ESW_SET_JWT_EVENT";
 	const EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME = "ESW_CLEAN_UP_JWT_EVENT";
-	const APP_REQUEST_CONFIG_SERVICE_DATA_EVENT_NAME = "ESW_APP_SEND_CONFIG_SERVICE_DATA";
-	const APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME = "ESW_APP_RECEIVE_CONFIG_SERVICE_DATA";
+	const EMBEDDED_MESSAGING_APP_READY_EVENT_NAME = "ESW_APP_READY_EVENT";
+	const EMBEDDED_MESSAGING_SET_CONFIG_EVENT_NAME = "ESW_SET_CONFIG_EVENT";
 	const APP_RESET_INITIAL_STATE_EVENT_NAME = "ESW_APP_RESET_INITIAL_STATE";
 	const EMBEDDED_MESSAGING_DOWNLOAD_FILE = "ESW_DOWNLOAD_FILE";
 	const EMBEDDED_MESSAGING_UPDATE_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME = "ESW_SET_WEBSTORAGE_FAILEDMESSAGES_EVENT";
@@ -107,7 +127,7 @@
 	const APP_REQUEST_AUTORESPONSE_PARAMETERS_EVENT_NAME = "ESW_APP_SEND_AUTORESPONSE_PARAMETERS";
 	const APP_RECEIVE_AUTORESPONSE_PARAMETERS_EVENT_NAME = "ESW_APP_RECEIVE_AUTORESPONSE_PARAMETERS";
 	const EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE = "EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE";
-	const EMBEDDED_MESSAGING_CONVERSATION_DATA = "EMBEDDED_MESSAGING_CONVERSATION_DATA";
+	const EMBEDDED_MESSAGING_SET_CONVERSATION_DATA_EVENT_NAME = "EMBEDDED_MESSAGING_SET_CONVERSATION_DATA_EVENT";
 	const EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME = "EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT";
 	const EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME = "trapfocustolast";
 	const EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME = "EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT";
@@ -115,6 +135,10 @@
 	const EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME = "EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT";
     const EMBEDDED_MESSAGING_3P_STORAGE_RESPONSE_EVENT_NAME = "ESW_3RDPARTY_STORAGE_RESPONSE";
 	const EMBEDDED_MESSAGING_3P_STORAGE_REQUEST_EVENT_NAME = "ESW_3RDPARTY_STORAGE_REQUEST";
+	const EMBEDDED_MESSAGING_3P_STORAGE_SET_ITEMS_EVENT_NAME = "ESW_3RDPARTY_STORAGE_SET_ITEMS";
+	const EMBEDDED_MESSAGING_3P_STORAGE_CLEAR_ITEMS_EVENT_NAME = "ESW_3RDPARTY_STORAGE_CLEAR";
+	const EMBEDDED_MESSAGING_3P_STORAGE_SET_OBJECTS_EVENT_NAME = "ESW_3RDPARTY_STORAGE_SET_OBJECTS";
+	const APP_PRECHAT_SUBMIT = "ESW_APP_PRECHAT_SUBMIT";
 
 
 	/*********************************************************
@@ -127,10 +151,34 @@
 	const ON_EMBEDDED_MESSAGING_READY_EVENT_NAME = "onEmbeddedMessagingReady";
 
 	/**
+	 * Event dispatched after the client is successfully initialized and rendered.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME = "onEmbeddedMessagingInitSuccess";
+
+	/**
+	 * Event dispatched after the client failed to be initialized and rendered.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME = "onEmbeddedMessagingInitError";
+
+	/**
 	 * Event dispatched to notify the customer that the user identity token has expired.
 	 * @type {string}
 	 */
 	const ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME = "onEmbeddedMessagingIdentityTokenExpired";
+
+	/**
+	 * Event dispatched to notify the host that it is currently inside business hours.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_STARTED_EVENT_NAME = "onEmbeddedMessagingBusinessHoursStarted";
+
+	/**
+	 * Event dispatched to notify the host that it is currently outside business hours.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_ENDED_EVENT_NAME = "onEmbeddedMessagingBusinessHoursEnded";
 
 	const SALESFORCE_DOMAINS = [
 		// Used by dev, blitz, and prod instances
@@ -185,6 +233,12 @@
 	 * @type {boolean}
 	 */
 	let hasEmbeddedMessagingReadyEventFired = false;
+
+	/**
+	 * Internal property to track whether the embedded messaging initialization event is fired already.
+	 * @type {boolean}
+	 */
+	let hasEmbeddedMessagingInitEventFired = false;
 
 	/**
 	 * Internal property to track Hidden Prechat fields from configuration response as well as the fields set by a customer.
@@ -248,7 +302,7 @@
 	let sessionDataReady;
 
 	/**
-	 * Promise resolved when sessionDataReady function called 
+	 * Promise resolved when sessionDataReady function called
 	 * (i.e. when we have checked 3rd & 1st party web storage
 	 * cor existing session)
 	 */
@@ -311,6 +365,11 @@
 	 */
 	const SET_IDENTITY_TOKEN_TIMEOUT_IN_MS = 30 * 1000;
 
+	/**
+	 * Resolver function for setIdentityToken promise created after the identity token expires.
+	 * Promise is resolved after a valid token is set via embeddedservice_bootstrap.userVerificationAPI.setIdentityToken() API.
+	 * @type {function}
+	 */
 	let setIdentityTokenResolve;
 
 	/******************************************************
@@ -359,6 +418,8 @@
 	 * Initialize the web storage object for both localStorage & sessionStorage if it doesn't already exist.
 	 */
 	function initializeWebStorage() {
+		let localStorageObj, sessionStorageObj;
+
 		conversationId = getConversationIdFromWebStorage() || generateUUID();
 
 		// Only create the structure if this is a new chat session
@@ -368,10 +429,19 @@
 
 		// Initialize the web storage object
 		if (embeddedservice_bootstrap.isLocalStorageAvailable && !localStorage.getItem(storageKey)) {
-			localStorage.setItem(storageKey, storageObj);
+			localStorageObj = storageObj;
+			localStorage.setItem(storageKey, localStorageObj);
 		}
 		if (embeddedservice_bootstrap.isSessionStorageAvailable && !sessionStorage.getItem(storageKey)) {
-			sessionStorage.setItem(storageKey, storageObj);
+			sessionStorageObj = storageObj;
+			sessionStorage.setItem(storageKey, sessionStorageObj);
+		}
+
+		// Initialize 3P storage
+		if (localStorageObj || sessionStorageObj) {
+			sendPostMessageToSiteContextIframe(EMBEDDED_MESSAGING_3P_STORAGE_SET_OBJECTS_EVENT_NAME,
+			{"orgId" : embeddedservice_bootstrap.settings.orgId, "localStorageObj" : localStorageObj,
+				"sessionStorageObj" : sessionStorageObj});
 		}
 
 		log("web storage initialized");
@@ -408,15 +478,22 @@
 				let value = values[key];
 				storageObj[key] = value;
 			});
-			storage.setItem(storageKey, JSON.stringify(storageObj));
+
+			if (Object.keys(storageObj).length !== 0) {
+				storage.setItem(storageKey, JSON.stringify(storageObj));
+			}
 		}
 	}
 
 	/**
 	 * Set the item in web storage by the key in this current conversation.
-	 * If inLocalStorage is true, then first try to store in localStorage, otherwise sessionStorage
+	 *
+	 * @param key the storage key, within storageObj
+	 * @param value the storage value, within storageObj
+	 * @param inLocalStorage if true, first try to store in localStorage, otherwise sessionStorage
+	 * @param sendToThirdParty if true, send the key/value pair to 3rd party storage to set there
 	 */
-	function setItemInWebStorage(key, value, inLocalStorage = true) {
+	function setItemInWebStorage(key, value, inLocalStorage = true, sendToThirdParty = false) {
 		const storage = determineStorageType(inLocalStorage);
 
 		if (storage) {
@@ -436,6 +513,11 @@
 			}
 			storage.setItem(storageKey, JSON.stringify(storageObj));
 			log(`${key} set in ${inLocalStorage ? "localStorage" : "sessionStorage"}`);
+
+			if (sendToThirdParty) {
+				sendPostMessageToSiteContextIframe(EMBEDDED_MESSAGING_3P_STORAGE_SET_ITEMS_EVENT_NAME,
+					{"orgId" : embeddedservice_bootstrap.settings.orgId, "conversationId" : conversationId, "key" : key, "value" : value, "inLocalStorage" : inLocalStorage});
+			}
 		}
 	}
 
@@ -467,7 +549,7 @@
 	}
 
 	/**
-	 * Clear all client side stored items in both localStorage & sessionStorage.
+	 * Clear all client side stored items in both localStorage & sessionStorage. Post message to clear 3rd party web storage.
 	 * @param isSecondaryTab - Whether we are clearing the web storage in a secondary tab after a primary tab has already
 	 * 						   cleared localStorage. Don't clear localStorage again in this case to avoid re-triggering
 	 * 						   storage event listeners for Auth mode. In UnAuth mode, we don't have storage event listeners
@@ -480,6 +562,7 @@
 		if (embeddedservice_bootstrap.isSessionStorageAvailable) {
 			sessionStorage.removeItem(storageKey);
 		}
+		sendPostMessageToSiteContextIframe(EMBEDDED_MESSAGING_3P_STORAGE_CLEAR_ITEMS_EVENT_NAME, embeddedservice_bootstrap.settings.orgId);
 		log(`web storage cleared`);
 	}
 
@@ -487,6 +570,11 @@
 	 * Clear all in-memory data tracked on the client side, for the current conversation.
 	 */
 	function clearInMemoryData() {
+		// Reset LWR iframe ready promise.
+		lwrIframeReadyPromise = new Promise((resolve) => {
+			resolveLwrIframeReady = resolve;
+		});
+
 		// Reset in-memory hidden prechat fields.
 		hiddenPrechatFields = {};
 
@@ -498,6 +586,12 @@
 
 		// Reset hasEmbeddedMessagingReadyEventFired.
 		hasEmbeddedMessagingReadyEventFired = false;
+
+		// Reset hasEmbeddedMessagingInitEventFired.
+		hasEmbeddedMessagingInitEventFired = false;
+
+		// Reset title notification
+		updateTitleNotification();
 
 		log(`Cleared in-memory data.`);
 	}
@@ -845,9 +939,7 @@
 	 * @return {object}
 	 */
 	function prepareConfigurationDataForIframeWindow() {
-		const iaMessageJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
 		const failedConversationMessages = getItemInWebStorageByKey(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES, false);
-		const conversationRoutingAttributes = hiddenPrechatFields;
 		const standardLabelsFromConfiguration = embeddedservice_bootstrap.settings.standardLabels;
 		const customLabelsFromConfiguration = embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels;
 		let imageCompressionOptions;
@@ -865,12 +957,11 @@
 		}
 
 		const finalConfigurationData = Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
-			jwt: iaMessageJwt,
 			identityToken: identityToken,
 			failedMessages: failedConversationMessages,
-			routingAttributes: conversationRoutingAttributes,
 			conversationId,
 			devMode: Boolean(embeddedservice_bootstrap.settings.devMode),
+			language: embeddedservice_bootstrap.settings.language,
 			imageCompressionOptions,
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration})
@@ -892,160 +983,211 @@
 	}
 
 	/**
-	 *  Adds Message event listeners on host window. Message event handlers are used to communicate between the iframe and the host window.
+	 * Adds message event listeners on host window.
 	 */
 	function addMessageEventHandlers() {
-		window.addEventListener("message", (e) => {
-			if(e && e.data && e.origin) {
-				if(embeddedservice_bootstrap.filePreviewFrame && embeddedservice_bootstrap.filePreviewFrame.contentWindow === e.source) {
-					// Handle events from File Preview Iframe window.
-					switch(e.data.method) {
-						case EMBEDDED_MESSAGING_SHOW_FILE_PREVIEW_FRAME_EVENT_NAME:
-							setFilePreviewFrameVisibility(true);
-							break;
-						case EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME:
-							setFilePreviewFrameVisibility(false);
-							break;
-						default:
-							warning("Unrecognized event name: " + e.data.method);
-							break;
-					}
-				} else if(embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.contentWindow === e.source) {
-					switch(e.data.method) {
-						case EMBEDDED_MESSAGING_3P_STORAGE_READY_EVENT_NAME:
-							siteContextReady();
-							break;
-						case EMBEDDED_MESSAGING_3P_STORAGE_RESPONSE_EVENT_NAME:
-							if (e.data.data && e.data.data.localStorage){
-								setItemsInWebStorage(e.data.data.localStorage, localStorage);
-							}
-							if (e.data.data && e.data.data.sessionStorage){
-								setItemsInWebStorage(e.data.data.sessionStorage, sessionStorage);
-							}
-							sessionDataReady();
-							break;
-						default:
-							warning("Unrecognized event name: " + e.data.method);
-							break;
-					}
-				} else if(e.origin === "null" ||
-					(getSiteURL().indexOf(e.origin) === 0
-						&& embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)
-						&& getEmbeddedMessagingFrame().contentWindow === e.source)) {
-					let frame = getEmbeddedMessagingFrame();
-
-					switch(e.data.method) {
-						case APP_REQUEST_CONFIG_SERVICE_DATA_EVENT_NAME:
-							/**
-							 * Send Configuration Settings to the container (iframe window).
-							 */
-							sendPostMessageToAppIframe(APP_RECEIVE_CONFIG_SERVICE_DATA_EVENT_NAME, prepareConfigurationDataForIframeWindow());
-							//resolve the promise, this may cause waiting messages to be sent to iframe window
-							resolveLwrIframeReady();
-							break;
-						case APP_LOADED_EVENT_NAME:
-							handleAfterAppLoad();
-							break;
-						case APP_MINIMIZE_EVENT_NAME:
-							embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
-							break;
-						case APP_MAXIMIZE_EVENT_NAME:
-							embeddedservice_bootstrap.maximizeIframe(frame);
-							break;
-						case APP_RESET_INITIAL_STATE_EVENT_NAME:
-							resetClientToInitialState();
-							break;
-						//TODO: remove this when we no longer obtain JWT in LWR App (prechat scenario)
-						case EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME:
-							storeJwtInWebStorage(e.data.data);
-							break;
-						case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
-							clearWebStorage();
-							break;
-						case EMBEDDED_MESSAGING_DOWNLOAD_FILE:
-							downloadFile(e.data.data);
-							break;
-						case EMBEDDED_MESSAGING_UPDATE_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
-							storeFailedMessagesInWebStorage(e.data.data);
-							break;
-						case EMBEDDED_MESSAGING_CLEAN_UP_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
-							removeItemInWebStorage(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES);
-							break;
-						case EMBEDDED_MESSAGING_UPDATE_TITLE_NOTIFICATION:
-							updateTitleNotification(e.data.data);
-							break;
-						case APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME:
-							/**
-							 * Send Hidden Prechat fields to the container when they are requested, to ensure most recent values are received in the container
-							 * at the time of submitting Prechat form (if enabled).
-							 * This event is exchanged only when Prechat is enabled in the setup.
-							 */
-							sendPostMessageToAppIframe(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
-							break;
-						case APP_REQUEST_AUTORESPONSE_PARAMETERS_EVENT_NAME:
-							sendPostMessageToAppIframe(APP_RECEIVE_AUTORESPONSE_PARAMETERS_EVENT_NAME, autoResponseParameters);
-							break;
-						case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
-							updateConversationIdInWebStorage(e.data.data);
-							break;
-						case EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME:
-							handleIdentityTokenExpiredEvent();
-							break;
-						case EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME:
-							handleJwtRetrievalFailure();
-							break;
-						default:
-							warning("Unrecognized event name: " + e.data.method);
-							break;
-					}
-				} else {
-					error("Unexpected message origin: " + e.origin);
-				}
-			}
-		});
+		window.addEventListener("message", handleMessageEvent);
 	}
 
 	/**
-	 * Adds Storage event listeners on host window.
-	 * Storage event handlers are used to sync local storage changes across tabs/windows on the same domain.
-	 * Storage event handlers are not executed on the same tab/window that is making the changes.
+	 * Adds storage event listeners on host window.
 	 */
 	function addStorageEventHandlers() {
-		window.addEventListener("storage", (e) => {
-			// Compare e.key with our storage key
-			if (e && e.key && e.key === storageKey) {
-				// Handle clear web storage event
-				if (e.newValue === null) {
-					// If we're in Auth mode, clear user session for current tab/window.
-					if (getAuthMode() === AUTH_MODE.AUTH) {
-						handleClearUserSession(false, true);
-					}
-				} else {
-					// Handle conversationId change, if new value is non-null and different than old value
-					const oldConversationId = getConversationIdFromPayload(e.oldValue);
-					const newConversationId = getConversationIdFromPayload(e.newValue);
+		window.addEventListener("storage", handleStorageEvent);
+	}
 
-					// Updating only when both old & new id is non-null
-					// So that it doesn't overwrite data on other tabs after reset
-					if (oldConversationId && newConversationId && oldConversationId !== newConversationId) {
-						log("ConversationId change detected in web storage");
-						updateConversationIdInWebStorage(newConversationId);
-					}
+	/**
+	 * Remove event listeners on host window including
+	 * - message events
+	 * - storage events
+	 */
+	EmbeddedServiceBootstrap.prototype.removeEventHandlers = function removeEventHandlers() {
+		window.removeEventListener("message", handleMessageEvent);
+		window.removeEventListener("storage", handleStorageEvent);
+	}
+
+	/**
+	 * Handle message events on the window object.
+	 * Message event handlers are used to communicate between the iframe and the host window.
+	 * @param {Object} e - Message event
+	 */
+	function handleMessageEvent(e) {
+		if(e && e.data && e.origin) {
+			if(embeddedservice_bootstrap.filePreviewFrame && embeddedservice_bootstrap.filePreviewFrame.contentWindow === e.source) {
+				// Handle events from File Preview Iframe window.
+				switch(e.data.method) {
+					case EMBEDDED_MESSAGING_SHOW_FILE_PREVIEW_FRAME_EVENT_NAME:
+						setFilePreviewFrameVisibility(true);
+						break;
+					case EMBEDDED_MESSAGING_HIDE_FILE_PREVIEW_FRAME_EVENT_NAME:
+						setFilePreviewFrameVisibility(false);
+						break;
+					default:
+						warning("Unrecognized event name: " + e.data.method);
+						break;
+				}
+			} else if(embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.contentWindow === e.source) {
+				switch(e.data.method) {
+					case EMBEDDED_MESSAGING_3P_STORAGE_READY_EVENT_NAME:
+						siteContextReady();
+						break;
+					case EMBEDDED_MESSAGING_3P_STORAGE_RESPONSE_EVENT_NAME:
+						if (e.data.data && e.data.data.localStorage){
+							setItemsInWebStorage(e.data.data.localStorage, localStorage);
+						}
+						if (e.data.data && e.data.data.sessionStorage){
+							setItemsInWebStorage(e.data.data.sessionStorage, sessionStorage);
+						}
+						sessionDataReady();
+						break;
+					default:
+						warning("Unrecognized event name: " + e.data.method);
+						break;
+				}
+			} else if(e.origin === "null" ||
+				(getSiteURL().indexOf(e.origin) === 0
+					&& embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)
+					&& getEmbeddedMessagingFrame().contentWindow === e.source)) {
+				let frame = getEmbeddedMessagingFrame();
+
+				switch(e.data.method) {
+					case EMBEDDED_MESSAGING_APP_READY_EVENT_NAME:
+						//resolve the promise, this may cause waiting messages to be sent to iframe window
+						resolveLwrIframeReady();
+						break;
+					case APP_LOADED_EVENT_NAME:
+						handleAfterAppLoad();
+						break;
+					case APP_INIT_ERROR_EVENT_NAME:
+						handleInitializationError();
+						break;
+					case APP_MINIMIZE_EVENT_NAME:
+						embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
+						break;
+					case APP_MAXIMIZE_EVENT_NAME:
+						embeddedservice_bootstrap.maximizeIframe(frame);
+						break;
+					case APP_RESET_INITIAL_STATE_EVENT_NAME:
+						resetClientToInitialState();
+						break;
+					//TODO: W-12546287 remove this when we no longer renew authenticated jwt in container.
+					case EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME:
+						storeJwtInWebStorage(e.data.data);
+						break;
+					case EMBEDDED_MESSAGING_CLEAN_UP_JWT_EVENT_NAME:
+						clearWebStorage();
+						break;
+					case EMBEDDED_MESSAGING_DOWNLOAD_FILE:
+						downloadFile(e.data.data);
+						break;
+					case EMBEDDED_MESSAGING_UPDATE_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
+						storeFailedMessagesInWebStorage(e.data.data);
+						break;
+					case EMBEDDED_MESSAGING_CLEAN_UP_WEBSTORAGE_FAILEDMESSAGES_EVENT_NAME:
+						removeItemInWebStorage(STORAGE_KEYS.FAILED_OUTBOUND_MESSAGE_ENTRIES);
+						break;
+					case EMBEDDED_MESSAGING_UPDATE_TITLE_NOTIFICATION:
+						updateTitleNotification(e.data.data);
+						break;
+					case APP_REQUEST_HIDDEN_PRECHAT_FIELDS_EVENT_NAME:
+						/**
+						 * Send Hidden Prechat fields to the container when they are requested, to ensure most recent values are received in the container
+						 * at the time of submitting Prechat form (if enabled).
+						 * This event is exchanged only when Prechat is enabled in the setup.
+						 */
+						sendPostMessageToAppIframe(APP_RECEIVE_HIDDEN_PRECHAT_FIELDS_EVENT_NAME, hiddenPrechatFields);
+						break;
+					case APP_REQUEST_AUTORESPONSE_PARAMETERS_EVENT_NAME:
+						sendPostMessageToAppIframe(APP_RECEIVE_AUTORESPONSE_PARAMETERS_EVENT_NAME, autoResponseParameters);
+						break;
+					case EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE:
+						updateConversationIdInWebStorage(e.data.data);
+						break;
+					case EMBEDDED_MESSAGING_IDENTITY_TOKEN_EXPIRED_EVENT_NAME:
+						handleIdentityTokenExpiredEvent();
+						break;
+					case EMBEDDED_MESSAGING_JWT_RETRIEVAL_FAILURE_EVENT_NAME:
+						handleJwtRetrievalFailure();
+						break;
+					case APP_PRECHAT_SUBMIT:
+						handlePrechatSubmit(e.data.data);
+						break;
+					default:
+						warning("Unrecognized event name: " + e.data.method);
+						break;
+				}
+			} else {
+				error("Unexpected message origin: " + e.origin);
+			}
+		}
+	}
+
+	/**
+	 * Handle storage events on the window object.
+	 * Storage event handlers are used to sync local storage changes across tabs/windows on the same domain.
+	 * Storage event handlers are not executed on the same tab/window that is making the changes.
+	 * @param {Object} e - Storage event
+	 */
+	function handleStorageEvent(e) {
+		// Compare e.key with our storage key
+		if (e && e.key && e.key === storageKey) {
+			// Handle clear web storage event
+			if (e.newValue === null) {
+				// If we're in Auth mode, clear user session for current tab/window.
+				if (getAuthMode() === AUTH_MODE.AUTH) {
+					handleClearUserSession(false, true);
+				}
+			} else {
+				// Handle conversationId change, if new value is non-null and different than old value
+				const oldConversationId = getConversationIdFromPayload(e.oldValue);
+				const newConversationId = getConversationIdFromPayload(e.newValue);
+
+				// Updating only when both old & new id is non-null
+				// So that it doesn't overwrite data on other tabs after reset
+				if (oldConversationId && newConversationId && oldConversationId !== newConversationId) {
+					log("ConversationId change detected in web storage");
+					updateConversationIdInWebStorage(newConversationId);
 				}
 			}
-		});
+		}
 	}
 
 	/**
 	 * Fires an event 'onEmbeddedMessagingReady' to the host (i.e. customer) window to indicate the host that bootstrap initialization is complete.
 	 */
-	 EmbeddedServiceBootstrap.prototype.emitEmbeddedMessagingReadyEvent = function emitEmbeddedMessagingReadyEvent() {
+	EmbeddedServiceBootstrap.prototype.emitEmbeddedMessagingReadyEvent = function emitEmbeddedMessagingReadyEvent() {
 		hasEmbeddedMessagingReadyEventFired = true;
 		try {
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_READY_EVENT_NAME);
 		} catch(err) {
 			hasEmbeddedMessagingReadyEventFired = false;
 			error(`Something went wrong in firing onEmbeddedMessagingReady event ${err}.`);
+		}
+	}
+
+	/**
+	 * Fires an event 'onEmbeddedMessagingInitSuccess' to the host (i.e. customer) window to indicate the client is rendered.
+	 */
+	function emitEmbeddedMessagingInitSuccessEvent() {
+		hasEmbeddedMessagingInitEventFired = true;
+		try {
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME);
+		} catch(err) {
+			hasEmbeddedMessagingInitEventFired = false;
+			error(`Something went wrong in firing onEmbeddedMessagingInitSuccess event ${err}.`);
+		}
+	}
+
+	/**
+	 * Fires an event 'onEmbeddedMessagingInitError' to the host (i.e. customer) window to indicate the client is not rendered.
+	 */
+	function emitEmbeddedMessagingInitErrorEvent() {
+		hasEmbeddedMessagingInitEventFired = true;
+		try {
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME);
+		} catch(err) {
+			hasEmbeddedMessagingInitEventFired = false;
+			error(`Something went wrong in firing onEmbeddedMessagingInitError event ${err}.`);
 		}
 	}
 
@@ -1097,6 +1239,15 @@
 	}
 
 	/**
+	 * Returns a DOM reference to the embedded messaging top level container.
+	 *
+	 * @returns {object}
+	 */
+	function getEmbeddedMessagingTopContainer() {
+		return document.getElementById(TOP_CONTAINER_NAME);
+	}
+
+	/**
 	 * Returns a DOM reference to the embedded messaging iframe.
 	 *
 	 * @returns {object}
@@ -1104,7 +1255,16 @@
 	function getEmbeddedMessagingFrame() {
 		return document.getElementById(LWR_IFRAME_NAME);
 	}
-	
+
+	/**
+	 * Returns a DOM reference to the embedded messaging modal.
+	 *
+	 * @returns {object}
+	 */
+	function getEmbeddedMessagingModal() {
+		return document.getElementById(BACKGROUND_MODAL_ID);
+	}
+
 	/**
 	 * Returns a DOM reference to the embedded messaging conversation button.
 	 *
@@ -1199,11 +1359,12 @@
 	 * Load the bootstrap.css file for this static file.
 	 */
 	function loadCSS(url) {
-
 		return new Promise((resolve, reject) => {
 			let baseURL = getSiteURL();
 			let link = document.createElement("link");
 
+			link.id = BOOTSTRAP_CSS_NAME;
+			link.class = BOOTSTRAP_CSS_NAME;
 			link.href = baseURL + "/assets/styles/bootstrap" + (embeddedservice_bootstrap.settings.devMode ? "" : ".min") + ".css";
 			link.type = "text/css";
 			link.rel = "stylesheet";
@@ -1242,7 +1403,7 @@
 		return sendXhrRequest(endpoint, "GET").then(
 			response => {
 				const businessHoursInfo = response && response.businessHoursInfo;
-				if (businessHoursInfo && Array.isArray(businessHoursInfo.businessHours) && businessHoursInfo.businessHours.length > 0 && typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad !== "boolean") {
+				if (businessHoursInfo && Array.isArray(businessHoursInfo.businessHours) && businessHoursInfo.businessHours.length > 0 && (isChannelMenuDeployment() || typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad !== "boolean")) {
 					businessHoursInterval = {
 						startTime: businessHoursInfo.businessHours[0].startTime,
 						endTime: businessHoursInfo.businessHours[0].endTime
@@ -1291,21 +1452,87 @@
 	 * This method does the following -
 	 * 1. Create a JWT if in AUTH mode OR if prechat is disabled, ELSE resolve the promise.
 	 * 2. If we are in AUTH mode, use the JWT from Step 1 to list existing open conversations of this end-user.
-	 * @returns {Promise<unknown>}
+	 *
+	 * @returns {Promise}
 	 */
 	function initializeConversationState() {
 		if (getAuthMode() === AUTH_MODE.AUTH) {
-			handleGetAuthenticatedJwt().then(() => {
-				handleListConversation().then(() => {
-				log("finished joining verified user conversation")
-			})});
-		} else if (!isPrechatEnabled()) {
-			handleGetUnauthenticatedJwt().then(() => {
-				handleCreateNewConversation().then(() => {
-					log("finished creating conversation");
-				}
-			)});
+			return handleGetAuthenticatedJwt().then((jwtData) => {
+				handleListConversation().then((conversationData) => {
+					log("finished joining verified user conversation");
+					sendConfigurationToAppIframe(jwtData, conversationData);
+				})
+			});
+		} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
+			if (!isPrechatStateEnabled()) {
+				return handleGetUnauthenticatedJwt().then((jwtData) => {
+					handleCreateNewConversation(hiddenPrechatFields).then((conversationData) => {
+						log("finished creating conversation");
+						sendConfigurationToAppIframe(jwtData, conversationData);
+					})
+				});
+			} else {
+				// Pre-chat is enabled, send configuration to app without jwt & conversation data.
+				sendConfigurationToAppIframe();
+				return Promise.resolve();
+			}
 		}
+		return Promise.reject(new Error("Something went wrong initializing conversation state."));
+	}
+
+	/**
+	 * Sends configuration data to LWR app. Optional - Adds jwt & conversation data to configuration before sending if specified.
+	 * @param jwtData - Optional jwtData (accessToken & lastEventId).
+	 * @param conversationData - Optional new or existing conversation data.
+	 */
+	function sendConfigurationToAppIframe(jwtData, conversationData) {
+		let configData = prepareConfigurationDataForIframeWindow();
+		if (jwtData) {
+			configData = Object.assign(configData, { jwtData });
+		}
+		if (conversationData) {
+			configData = Object.assign(configData, { conversationData });
+		}
+		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_CONFIG_EVENT_NAME, configData);
+	}
+
+	/**
+	 * Handles pre-chat form submit event from app iframe. This method does the following -
+	 * 1. Add hidden pre-chat to visible fields.
+	 * 2. In UNAUTH mode, create a jwt and a conversation.
+	 * 3. In AUTH mode, create a conversation.
+	 * Finally, send jwt and/or conversation data to LWR app.
+	 *
+	 * @param visiblePrechatFields - Visible pre-chat fields in the format - {fieldName: fieldValue}
+	 */
+	function handlePrechatSubmit(visiblePrechatFields) {
+		const prechatFields = Object.assign(visiblePrechatFields, hiddenPrechatFields);
+		if (getAuthMode() === AUTH_MODE.AUTH) {
+			handleCreateNewConversation(prechatFields).then((conversationData) => {
+				sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_CONVERSATION_DATA_EVENT_NAME, conversationData);
+			});
+		} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
+			handleGetUnauthenticatedJwt().then((jwtData) => {
+				sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, jwtData);
+				handleCreateNewConversation(prechatFields).then((conversationData) => {
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_CONVERSATION_DATA_EVENT_NAME, conversationData);
+				});
+			});
+		}
+	}
+
+	/**
+	 * Generate the file preview and application iframe and load the resources.
+	 * @returns {Promise}
+	 */
+	function generateIframes() {
+		return new Promise(resolve => {
+			// Generate markup for iframes.
+			embeddedservice_bootstrap.createFilePreviewFrame();
+			embeddedservice_bootstrap.createIframe().then(() => {
+				resolve("Created Embedded Messaging frame.");
+			});
+		});
 	}
 
     /**
@@ -1318,19 +1545,17 @@
             return Promise.reject(undefined);
         }
 
-        return new Promise(resolve => {
-            getContinuityJwt().then(response => {
+		return getContinuityJwt()
+			.then(response => {
 				storeJwtInWebStorage(response.accessToken);
-				sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
-                resolve(response);
-            })
-            .catch(e => {
-                error(`Failed to get continuity JWT: ${e && e.message ? e.message : e}.`);
+				return response;
+			})
+			.catch(e => {
+				error(`Failed to get continuity JWT: ${e && e.message ? e.message : e}.`);
 				// Reset the client to the initial state when we fail to fetch a continuity jwt.
 				// This will mainly occur when a user returns to unverified conversation after the messaging jwt expires.
 				resetClientToInitialState();
-            });
-        });
+			});
     }
 
 	/**
@@ -1355,22 +1580,19 @@
 	}
 
 	/**
-     * Handle getting an unauthenicated JWT.
+     * Handle getting an unauthenticated JWT.
      *
      * @returns {Promise}
      */
 	function handleGetUnauthenticatedJwt() {
-		return new Promise(resolve => {
-			getUnauthenticatedJwt()
-				.then(response => {
-					storeJwtInWebStorage(response.accessToken);
-					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
-					resolve(response.accessToken);
-				})
-				.catch(e => {
-					return handleGetJwtError(e);
-				});
-		});
+		return getUnauthenticatedJwt()
+			.then(response => {
+				storeJwtInWebStorage(response.accessToken);
+				return response;
+			})
+			.catch(e => {
+				return handleGetJwtError(e);
+			});
 	}
 
 	/**
@@ -1387,7 +1609,7 @@
 		const endpoint = deviceInfoAsQueryParams ?
 			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH, "?", deviceInfoAsQueryParams):
 			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH);
-	
+
 		return fetch(
 			endpoint,
 			{
@@ -1418,18 +1640,15 @@
      * @returns {Promise<unknown>}
      */
     function handleGetAuthenticatedJwt(deviceId) {
-        return new Promise(resolve => {
-            getAuthenticatedJwt(deviceId)
-                .then(response => {
-					storeJwtInWebStorage(response.accessToken);
-					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_JWT_EVENT_NAME, response);
-					resolve(response.accessToken);
-                })
-                .catch(e => {
-                    error(`Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
-					handleJwtRetrievalFailure();
-                });
-        });
+        return getAuthenticatedJwt(deviceId)
+			.then(response => {
+				storeJwtInWebStorage(response.accessToken);
+				return response;
+			})
+			.catch(e => {
+				error(`Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
+				handleJwtRetrievalFailure();
+			});
     }
 
 	/**
@@ -1480,45 +1699,110 @@
 		});
 	}
 
+	/**
+	 * Handles registering device capabilities with RegisterDeviceCapabilities ia-message endpoint.
+	 */
+	function handleRegisterDeviceCapabilities() {
+		registerDeviceCapabilities()
+		.then(() => {
+			log("Successfully Registered Device Capabilities.");
+		})
+		.catch(err => {
+			handleRegisterDeviceCapabilitiesError(err);
+		});
+	}
+
+	/**
+	 * Handles failure from registering device capabilities the first time. If the first request fails for any reason, it is retried once.
+	 */
+	function handleRegisterDeviceCapabilitiesError(err) {
+		if (err && err.status && err.status >= 500 && err.status <= 599) {
+			error(`Something went wrong in Registering Device Capabilities: ${err && err.statusText ? err.statusText : err.status}. Retrying the request.`);
+			registerDeviceCapabilities()
+			.then(() => {
+				log("Successfully Registered Device Capabilities after retrying.");
+			})
+			.catch(err => {
+				error(`Failed to Register Device Capabilities after retrying: ${err && err.statusText ? err.statusText : err.status}`);
+				return;
+			});
+		}
+		error(`Something went wrong while registering device capabilities: ${err && err.statusText ? err.statusText : (err.status ? err.status : err)}`);
+	}
+
+	/**
+	 * Makes a network request to RegisterDeviceCapabilities ia-message endpoint to register device capabilities for the version specified in the request.
+	 *
+	 * Endpoint info: https://salesforce.quip.com/HaarAI2rvqLD#temp:C:CVQc9b0aaa5ff5f4d1694dc223b0
+	 */
+	function registerDeviceCapabilities() {
+		const apiPath = embeddedservice_bootstrap.settings.scrt2URL.concat(REGISTER_DEVICE_CAPABILITIES_PATH);
+
+		return sendRequest(
+			apiPath,
+			"POST",
+			"cors",
+			null,
+			{
+				capabilitiesVersion
+			}
+		);
+	}
+
     /**
      * List existing open conversations for this end-user.
      *
-     * If this end user is a part of 0 open conversations, create a new one.
+     * If this end user is a part of 0 open conversations and pre-chat is not enabled, create a new one.
      * If this end user is a part of more than 1 open conversation, throw an error.
      * If this end user is a part of exactly 1 open conversation, re-join the conversation.
      *
      * TODO - W-11772963 Gracefully handle the error thrown when the end-user is a part of more than 1 open conversation.
+	 *
+	 * @param isPageLoad - we are attempting to continue an existing session on script load
      * @returns {*}
      */
-    function handleListConversation() {
+    function handleListConversation(isPageLoad) {
         return listConversation(false).then(response => {
-            return new Promise(resolve => {
-                if (response.conversations && response.conversations.length === 1 && response.conversations[0].endTimestamp === 0) {
-                    /**
-                     * It's possible there's a delay in scrt2 propagating conversation information to core if this conversation has just ended.
-                     * Check for an endTimestamp for both open and closed conversations.
-                     * If the conversation's `endTimestamp` value is not 0, the conversation is closed.
-                     */
-                    let existingOpenConversationData = response.conversations[0];
+			if (response.conversations && response.conversations.length === 1 && response.conversations[0].endTimestamp === 0) {
+				/**
+				 * It's possible there's a delay in scrt2 propagating conversation information to core if this conversation has just ended.
+				 * Check for an endTimestamp for both open and closed conversations.
+				 * If the conversation's `endTimestamp` value is not 0, the conversation is closed.
+				 */
+				let existingConversationData = response.conversations[0];
 
-                    if (!isString(existingOpenConversationData.conversationId)) {
-                        // To restore conversation status and entries, conversationId must be set!
-                        throw new Error(`Invalid conversation identifier: ${existingOpenConversationData.conversationId}.`);
-                    }
-					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CONVERSATION_DATA, existingOpenConversationData);
+				if (!isString(existingConversationData.conversationId)) {
+					// To restore conversation status and entries, conversationId must be set!
+					throw new Error(`Invalid conversation identifier: ${existingConversationData.conversationId}.`);
+				}
 
-					resolve();
-                } else if (response.conversations && response.conversations.length === 0) {
-					// no existing conversation - start a new one
-					warning("No existing conversation found. Will start a new conversation.");
-					handleCreateNewConversation().then(() => {
-						log("finished creating new conversation");
+				existingConversationData.isExistingConversation = true;
+				return existingConversationData;
+			} else if (response.conversations && response.conversations.length === 0) {
+				// No existing conversation. If this is page load, it means we have stale data;
+
+				if (isPageLoad) {
+					//delete stale data, show button as on normal page load
+					let existingConversationId = getConversationIdFromWebStorage();
+					warning("No open conversation found, deleting stale data with conversationId " + existingConversationId + " from web storage");
+					resetClientToInitialState();
+
+					throw new Error(`Invalid conversation identifier: ${existingConversationId}.`);
+				}
+
+				if (!isPrechatStateEnabled()) {
+					// Pre-chat state is not enabled - start a new conversation.
+					warning("No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
+					return handleCreateNewConversation(hiddenPrechatFields).then((newConversationData) => {
+						return newConversationData;
 					});
-                    resolve();
-                } else if (response.conversations && response.conversations.length > 1) {
-                    throw new Error(`Expected the end user to be a participant of one open conversation, instead they are participating in ${response.conversations.length} conversations.`);
-                }
-            });
+				} else {
+					// No-op since pre-chat is enabled.
+					return null;
+				}
+			} else if (response.conversations && response.conversations.length > 1) {
+				throw new Error(`Expected the end user to be a participant of one open conversation, instead they are participating in ${response.conversations.length} conversations.`);
+			}
         }).catch(e => {
             throw new Error(`Failed to list conversation entries: ${e && e.message ? e.message : e}.`);
         });
@@ -1561,36 +1845,85 @@
 			});
 		}
 
-		throw new Error(`Error retrieving unauthenticated token: ${error}.`);
+		throw new Error(`Error retrieving unauthenticated token: ${e}.`);
 	}
 
     /**
+     * Returns true if prechat has at least one visible field or if terms and conditions is enabled
+     *
+     * @returns {boolean}
+     */
+    function isPrechatStateEnabled() {
+		return hasVisiblePrechatFields() || hasTermsAndConditions();
+    }
+
+	/**
      * Returns true if configuration has a form of type "PreChat" with at-least 1 field; false otherwise.
      * When pre-chat is disabled in Setup, configuration doesn't include a pre-chat form.
      *
      * @returns {boolean}
      */
-    function isPrechatEnabled() {
-		const forms = embeddedservice_bootstrap.settings.embeddedServiceConfig.forms || [];
+    function hasVisiblePrechatFields() {
+        const forms = embeddedservice_bootstrap.settings.embeddedServiceConfig.forms || [];
         return forms.some((form) => {
             form.formFields = form.formFields || [];
             return form.formType === "PreChat" && form.formFields.length > 0;
         });
-    }	
+    }
 
     /**
-     * Handle creating a new conversation for this end user.
-	 * Stores the result and pushes data to iframe.
-	 * 
-     * @returns {Promise}
+     * Returns true if terms and conditions is enabled; false otherwise.
+     *
+     * @returns {boolean}
      */
-    function handleCreateNewConversation() {
-        return createNewConversation(hiddenPrechatFields).then((conversationResponse) => {
-			updateConversationIdInWebStorage(conversationResponse.conversationId);
-			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CONVERSATION_ID_UPDATE, {"conversationId" : conversationResponse.conversationId, "participants" : conversationResponse.participants});
-			return conversationResponse;
-		});
+    function hasTermsAndConditions() {
+        const termsAndConditions = embeddedservice_bootstrap.settings.embeddedServiceConfig.termsAndConditions || {};
+        return Boolean(termsAndConditions.isTermsAndConditionsEnabled)
     }
+
+	/**
+	 * Handle creating a new conversation for this end user. Also handles registering device capabilities if the conversation creation is successful. 
+	 *
+	 * @param prechatFields - Pre-chat data to be sent with the request. Includes visible and/or hidden pre-chat fields
+	 * 							based on pre-chat setup.
+	 * @returns {Promise<*>} - Promise which is resolved when creatConversation call completes.
+	 */
+	function handleCreateNewConversation(prechatFields) {
+		return createNewConversation(prechatFields)
+            .then((conversationResponse) => {
+                handleRegisterDeviceCapabilities();
+                return conversationResponse;
+            }).catch(e => {
+                return handleCreateNewConversationError(e, prechatFields);
+            });
+	}
+
+	/**
+	 * Handles createConversation error response. This method does the following -
+	 * 1. Retry createConversation once in case of server-side error response (5xx response).
+	 * 2. Throw error in case of all other errors.
+	 * @param e - ia-message createConversation error response.
+	 * @param prechatFields - Pre-chat data to be sent with the retry request. Includes visible and/or hidden pre-chat fields
+	 * 							based on pre-chat setup.
+	 * @returns {*} - createConversation request promise.
+	 */
+	function handleCreateNewConversationError(e, prechatFields) {
+		if (e && e.status && e.status >= 500 && e.status <= 599) {
+			// Retry createConversation in case of server-side errors
+			error(`Something went wrong while creating a conversation: ${e && e.message ? e.message : e}. Re-trying the request.`);
+			return createNewConversation(prechatFields).then((conversationResponse) => {
+				handleRegisterDeviceCapabilities();
+				return conversationResponse;
+			}).catch(err => {
+				error(`Create conversation request failed again: ${err && err.message ? err.message : err}.`);
+				throw err;
+			});
+		}
+		// Throw error in case of other errors.
+		error(`Something went wrong while creating a conversation: ${e && e.message ? e.message : e}`);
+		throw e;
+	}
+
 
 	/**
 	 * Create a new conversation.
@@ -1713,7 +2046,7 @@
 			}).toString();
 		}
 		return deviceInfo;
-	}	
+	}
 
 	/**
      * Get User Environment details, specifically Browser and OS details using navigator.userAgent.
@@ -1817,17 +2150,13 @@
 	 */
 	function getLabel(sectionName, labelName) {
 		for(const label of embeddedservice_bootstrap.settings.embeddedServiceConfig.customLabels) {
-			if(label.hasOwnProperty(sectionName)) {
-				if(label.hasOwnProperty(labelName) && label["labelName"] === labelName) {
-					return label["labelValue"] || "";
-				}
+			if(label.sectionName === sectionName && label.labelName === labelName) {
+				return label.labelValue || "";
 			}
 		}
 		for(const label of embeddedservice_bootstrap.settings.standardLabels) {
-			if(label.hasOwnProperty(sectionName)) {
-				if(label.hasOwnProperty(labelName) && label["labelName"] === labelName) {
-					return label["labelValue"] || "";
-				}
+			if(label.sectionName === sectionName && label.labelName === labelName) {
+				return label.labelValue || "";
 			}
 		}
 		return "";
@@ -1937,10 +2266,11 @@
 	/**
 	 * Check if either static settings is present
 	 * OR business hours to determine visibility
+	 * OR if its a channel menu deployment
 	 * @returns {boolean} True if chat button should be hidden on pageload.
 	 */
 	function shouldHideChatButtonInInitialState() {
-		return (typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad === "boolean") ? embeddedservice_bootstrap.settings.hideChatButtonOnLoad : !isWithinBusinessHours();
+		return (typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad === "boolean") ? embeddedservice_bootstrap.settings.hideChatButtonOnLoad : isChannelMenuDeployment() || !isWithinBusinessHours();
 	}
 
 	/**
@@ -1981,8 +2311,10 @@
 		// Determine which interval to use based on business hours
 		// If current time is not within BH, then it is before the first interval
 		// Otherwise, it is within a BH interval.
+		// If initally outside of business hours fire an event to the host to handle outside of business hours on page load
 		if (!isCurrentlyWithinBH) {
 			targetTime = Number(businessHoursInterval.startTime);
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_ENDED_EVENT_NAME);
 		} else {
 			targetTime = Number(businessHoursInterval.endTime);
 		}
@@ -1999,6 +2331,14 @@
 				businessHoursTimer = undefined;
 
 				businessHoursTimerCallback(isCurrentlyWithinBH);
+
+				// Fires an event to the host to indicate business hours interval change.
+				if (isCurrentlyWithinBH) {
+					dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_ENDED_EVENT_NAME);
+				} else {
+					dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_STARTED_EVENT_NAME);
+				}
+
 			}, (targetTime - Date.now()));
 		}
 	}
@@ -2017,7 +2357,9 @@
 			// Get more intervals before we set another timer since we were within BH.
 			getBusinessHoursInterval().then(setupBusinessHoursTimer());
 		} else {
-			embeddedservice_bootstrap.utilAPI.showChatButton();
+			if (!isChannelMenuDeployment()) {
+				embeddedservice_bootstrap.utilAPI.showChatButton();
+			}
 
 			// Attempt to set subsequent business hours timer.
 			setupBusinessHoursTimer();
@@ -2052,6 +2394,43 @@
 	}
 
 	/**
+	 * Determines whether the deployment is a channel menu deployment
+	 *
+	 * @returns {boolean} True if its a channel menu
+	 */
+	function isChannelMenuDeployment() {
+		// Always throws an error for non-CM MIAW deployments
+		try {
+			if (embedded_svc && embedded_svc.menu) {
+				return true;
+			}
+			return false;
+		} catch (e) {
+			return false;
+		}
+	}
+
+	/**
+     * Check if web client is being used in a Mobile Publisher context.
+     * Detect Mobile Publisher (https://sourcegraph.soma.salesforce.com/perforce.soma.salesforce.com/app/main/core@HEAD/-/blob/sites/java/src/sites/communities/hybridapp/util/CoreCommunityHybridAppUtilImpl.java?L25).
+     * Update this check in W-12462964.
+     *
+     * @returns {boolean} - return 'true' if we are in a Mobile Publisher context and 'false' otherwise.
+     */
+    function isMobilePublisherApp() {
+        return navigator.userAgent.includes("CommunityHybridContainer") || navigator.userAgent.includes("playgroundcommunity");
+    }
+
+	/**
+	 * Check if web client is being used in a experience site (LWR & Aura)
+	 *
+	 * @returns {boolean} - return 'true' if we are in a LWR or Aura experience site and false otherwise.
+	 */
+	function isExperienceSite() {
+		return window.LWR !== undefined || pageIsSiteContext();
+	}
+
+	/**
 	 * Sets viewport meta content back to the original value
 	 *
 	 */
@@ -2067,7 +2446,7 @@
 
 	/**
 	 * Send a post message to the LWR App iframe window. If the frame is not ready, wait for it.
-	 * 
+	 *
 	 * @param {String} method - Name of method.
 	 * @param {Object} data - Data to send with message. Only included in post message if data is defined.
 	 */
@@ -2075,7 +2454,7 @@
 		lwrIframeReadyPromise.then(() => {
 			const iframe = getEmbeddedMessagingFrame();
 
-			if(typeof method !== "string") {
+			if (typeof method !== "string") {
 				throw new Error(`Expected a string to use as message param in post message, instead received ${method}.`);
 			}
 
@@ -2095,7 +2474,7 @@
 
 	/**
 	 * Send a post message to the LWR App iframe window. If the frame is not ready, wait for it.
-	 * 
+	 *
 	 * @param {String} method - Name of method.
 	 * @param {Object} data - Data to send with message. Only included in post message if data is defined.
 	 */
@@ -2132,9 +2511,6 @@
 		}
 
 		iframe.src = getSiteURL() + "/embeddedService/embeddedService.app";
-		iframe.onload = () => {
-			log("Created an iframe to load the aura application.");
-		};
 	}
 
 	/**
@@ -2152,45 +2528,48 @@
 		if(!siteURL.endsWith("/")) siteURL += "/";
 
 		iframe.src = siteURL + "?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
-		iframe.onload = () => {
-			log("Created an iframe to load LWR site.");
-		};
 	}
 
 	/**
-	 * On clicking the button, initiate a conversation and load the iframe concurrently
+	 * Handle the click action on the conversation button.
+	 * If the button is in its initial state and iframe hasn't been loaded, initialize the conversation state and create the iframes.
+	 * If iframe has already been loaded and the modal is maximized, minimize the client.
+	 *
+	 * In all other cases, throw a generic error indicating something went wrong.
 	 */
 	function handleClick() {
-		initializeConversationState();
-		loadIframeApp();
-	}
-	/**
-	 * create an iframe with a site endpoint as experienceSiteEndpointURL along with passing necessary config values as query params.
-	 */
-	function loadIframeApp(){
-		let button = getEmbeddedMessagingConversationButton();
-
-		// eslint-disable-next-line no-negated-condition
-		if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
-			setLoadingStatusForButton();
-
+		return new Promise((resolve, reject) => {
 			try {
-				// Generate markup for File Preview frame.
-				embeddedservice_bootstrap.createFilePreviewFrame();
-				embeddedservice_bootstrap.createIframe();
-			} catch(err) {
-				error(err);
-			}
-		} else {
-			let iFrame = getEmbeddedMessagingFrame();
+				let button = getEmbeddedMessagingConversationButton();
+				let frame = getEmbeddedMessagingFrame();
 
-			if(iFrame) {
-				// Minimize the chat if it is already maximized.
-				sendPostMessageToAppIframe(APP_MINIMIZE_EVENT_NAME);
-			} else {
-				error("Failed to locate the iframe/chat widget");
+				// eslint-disable-next-line no-negated-condition
+				if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
+					// Change the button to a loading icon.
+					setLoadingStatusForButton();
+
+					// Create iframes and load app.
+					generateIframes().then(() => {
+						resolve();
+					}).catch((err) => {
+						reject(err);
+					});
+
+					// Initialize conversation state and fetch messaging JWTs.
+					initializeConversationState().catch((err) => {
+						reject(err);
+					});
+				} else if((button && button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) && (frame && frame.classList && frame.classList.contains(MODAL_ISMAXIMIZED_CLASS))) {
+					// Minimize the chat if it is already maximized.
+					sendPostMessageToAppIframe(APP_MINIMIZE_EVENT_NAME);
+				} else {
+					error("Something went wrong handling button click event.");
+				}
+			} catch(e) {
+				reject(e);
 			}
-		}
+		});
+
 	}
 
 	/**
@@ -2206,7 +2585,7 @@
 				// SPACE or ENTER fires onclick handler for the button.
 				handleClick();
 			} else if (evt.key === KEY_CODES.TAB && evt.shiftKey) {
-				if (frame && frame.classList && frame.classList.contains("isMaximized")) {
+				if (frame && frame.classList && frame.classList.contains(MODAL_ISMAXIMIZED_CLASS)) {
 					// SHIFT + TAB: Trap focus to last element in client.
 					evt.preventDefault();
 					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_FOCUS_ON_LAST_FOCUSABLE_ELEMENT_EVENT_NAME);
@@ -2256,11 +2635,20 @@
 	 */
 	function bootstrapExistingSession() {
 		let existingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
-		if(existingJwt) {
-			loadIframeApp();
-			handleGetContinuityJwt().then(() => {
-				handleListConversation().then();
-			});
+		if (existingJwt) {
+			// Change the button to a loading icon.
+			setLoadingStatusForButton();
+
+			// Create iframes and load app.
+			generateIframes().catch(error);
+
+			// Fetch a continuity jwt, load the conversation & send config data to app.
+			return handleGetContinuityJwt().then((jwtData) => {
+				handleListConversation(true).then((conversationData) => {
+					sendConfigurationToAppIframe(jwtData, conversationData);
+				});
+			})
+			.catch(error);
 		}
 	}
 
@@ -2296,6 +2684,24 @@
 			button.classList.add(CONVERSATION_BUTTON_LOADED_CLASS);
 			button.classList.add("no-hover");
 		}
+
+		handleInitializationSuccess();
+	}
+
+	/**
+	 * Handles initialization success from the components.
+	 * See container.js#finishInitialization.
+	 */
+	function handleInitializationSuccess() {
+		emitEmbeddedMessagingInitSuccessEvent();
+	}
+
+	/**
+	 * Handles initialization error from the components.
+	 * See container.js#beginInitialization.
+	 */
+	function handleInitializationError() {
+		emitEmbeddedMessagingInitErrorEvent();
 	}
 
 	/**
@@ -2326,7 +2732,7 @@
 		}
 
 		// Remove markup from the page.
-		removeMarkup();
+		embeddedservice_bootstrap.removeMarkup();
 
 		// Regenerate markup if we are in unverified user mode.
 		if (getAuthMode() === AUTH_MODE.UNAUTH) {
@@ -2337,13 +2743,14 @@
 
 	/**
 	 * Remove all markup from the page.
+	 * @param {Boolean} isExperienceSiteContext - Indicates whether we are in the experience site context.
 	 */
-	function removeMarkup() {
+	EmbeddedServiceBootstrap.prototype.removeMarkup = function removeMarkup(isExperienceSiteContext) {
 		const iframe = getEmbeddedMessagingFrame();
 		const button = getEmbeddedMessagingConversationButton();
-		const modal = document.getElementById(BACKGROUND_MODAL_ID);
+		const modal = getEmbeddedMessagingModal();
 		const minimizedNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
-		const topContainer = document.getElementById(TOP_CONTAINER_NAME);
+		const topContainer = getEmbeddedMessagingTopContainer();
 
 		if(iframe) {
 			// Remove the iframe from DOM. This should take care of clearing Conversation Entries as well.
@@ -2357,6 +2764,13 @@
 			embeddedservice_bootstrap.filePreviewFrame.parentNode.removeChild(embeddedservice_bootstrap.filePreviewFrame);
 		} else {
 			warning("Embedded Messaging file preview iframe not available for resetting the client to initial state.");
+		}
+
+		if(Boolean(isExperienceSiteContext) && embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.parentNode) {
+			// Remove the site context iframe from DOM if we are in experience site context.
+			embeddedservice_bootstrap.siteContextFrame.parentNode.removeChild(embeddedservice_bootstrap.siteContextFrame);
+		} else {
+			warning("Embedded Messaging site context iframe not available for resetting the client to initial state.");
 		}
 
 		if (modal) {
@@ -2379,14 +2793,16 @@
 		} else {
 			warning("Embedded Messaging static button not available for resetting the client to initial state.");
 		}
-		
+
 		// Remove the minimized notification area if exists.
 		if (minimizedNotification) {
 			minimizedNotification.parentNode.removeChild(minimizedNotification);
 		}
 
 		// Remove the top container element.
-		topContainer.parentNode.removeChild(topContainer);
+		if (topContainer) {
+			topContainer.parentNode.removeChild(topContainer);
+		}
 
 		// Emit onEmbeddedMessagingReady event again after resetting the client to initial state for subsequent conversations/sessions.
 		embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
@@ -2455,6 +2871,16 @@
 		// Check if the chat button should be hidden in initial state.
 		if (shouldHideChatButtonInInitialState() && !sessionExists()) {
 			buttonElement.style.display = "none";
+		}
+
+		// Set HTML direction based on language
+		if (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection && typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string") {
+			buttonElement.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
+		}
+
+		// Check if it is on experience site
+		if (isExperienceSite()) {
+			buttonElement.classList.add(EXPERIENCE_SITE);
 		}
 
 		// Construct the static conversation button.
@@ -2631,15 +3057,21 @@
 		// Store (or replace existing) customer identity token in memory.
 		identityToken = token;
 
+		// Resolve setIdentityTokenPromise created while handling identity token expiry.
+		if (setIdentityTokenResolve && typeof setIdentityTokenResolve === "function") {
+			setIdentityTokenResolve();
+			setIdentityTokenResolve = undefined;
+		}
+
 		if (getEmbeddedMessagingFrame()) {
 			// If iframe is initialized, replace the identity token passed down during initialization.
-			sendPostMessageToIframeWindow(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
+			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
 		} else if (!getEmbeddedMessagingConversationButton()) {
 			// Render conversation button if identity token passes basic validation.
 			embeddedservice_bootstrap.generateMarkup();
 		} else if (getEmbeddedMessagingConversationButton() && document.getElementById(EMBEDDED_MESSAGING_ICON_REFRESH)) {
 			// Remove existing markup on the page if we're in error state before regenerating the button markup.
-			removeMarkup();
+			embeddedservice_bootstrap.removeMarkup();
 			embeddedservice_bootstrap.generateMarkup();
 		}
 
@@ -2718,11 +3150,11 @@
 		const expiredJWT = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
 		const deviceId = extractDeviceId(expiredJWT);
 		return new Promise(resolve => {
-			handleGetAuthenticatedJwt(deviceId).then(() => {
-				handlePendingRequest(pendingRequest);
-				resolve();
-			});
-		});
+            handleGetAuthenticatedJwt(deviceId).then(() => {
+                handlePendingRequest(pendingRequest);
+                resolve();
+            });
+        });
 	}
 
 	/**
@@ -2823,13 +3255,13 @@
 		let refreshIcon;
 		let minimizedNotification;
 
-		// Handle client reset and surface error state only in the primary tab. 
+		// Handle client reset and surface error state only in the primary tab.
 		// In clearing the web storage, this should trigger user session clearing in secondary tabs.
 		resetClientToInitialState(false);
-		
+
 		// Generate markup for button.
 		embeddedservice_bootstrap.generateMarkup();
-		
+
 		// Use selectors to find DOM elements.
 		button = getEmbeddedMessagingConversationButton();
 		chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
@@ -3064,10 +3496,6 @@
 			error(`Can't call ${caller} before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
-		if (sessionExists()) {
-			error(`Can't call ${caller} during an active conversation.`);
-			return false;
-		}
 		return true;
 	}
 
@@ -3102,7 +3530,7 @@
 				if (validateHiddenPrechatField(fieldName, fieldValue)) {
 					hiddenPrechatFields[fieldName] = fieldValue;
 					// Store/Update Session storage with Hidden Prechat fields object for a valid field.
-					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false);
+					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false, true);
 					// Log successful update action on Hidden Prechat fields for debugging purposes.
 					log(`[setHiddenPrechatFields] Successfully updated Hidden Pre-Chat field ${fieldName}.`);
 				}
@@ -3129,7 +3557,7 @@
 				if (hiddenPrechatFields.hasOwnProperty(fieldName)) {
 					delete hiddenPrechatFields[fieldName];
 					// Update Session storage with Hidden Prechat fields object for a valid field.
-					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false);
+					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false, true);
 					// Log successful remove action on Hidden Prechat fields for debugging purposes.
 					log(`[removeHiddenPrechatFields] Successfully removed Hidden Pre-Chat field ${fieldName}.`);
 				} else {
@@ -3208,7 +3636,7 @@
 				// Validate parameters are valid non-empty strings.
 				if (validateAutoResponseParameter(paramKey, paramValue)) {
 					autoResponseParameters[paramKey] = paramValue;
-					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false);
+					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false, true);
 					// Log successfully updated auto-response parameters for debugging purposes.
 					log(`[setAutoResponseParameters] Successfully updated auto-response parameter ${paramKey}`);
 				} else {
@@ -3302,7 +3730,7 @@
 			if (conversationButton) {
 				conversationButton.style.display = "none";
 				return true;
-			} 
+			}
 		} else {
 			error("Can’t call hideChatButton once the messaging window is showing.");
 		}
@@ -3446,17 +3874,6 @@
 	}
 
 	/**
-	 * Remove the sitecontext.html iframe when we are done with it
-	 */
-	function destroySiteContextFrame() {
-		var frame = embeddedservice_bootstrap.siteContextFrame;
-		if(frame) {
-			delete embeddedservice_bootstrap.siteContextFrame;
-			frame.remove();
-		}
-	}
-
-	/**
 	 * Create an iframe on the parent window for rendering a full size File Preview.
 	 * Set the source of this iframe to an objectUrl generated by #getGeneratedPageURLForFilePreviewFrame.
 	 */
@@ -3485,43 +3902,129 @@
 	 * (iv) Hide the conversation button once iframe is loaded.
 	 */
 	EmbeddedServiceBootstrap.prototype.createIframe = function createIframe() {
-		try {
-			const parent = document.getElementById(TOP_CONTAINER_NAME);
-			const iframe = document.createElement("iframe");
-			const modal = createBackgroundModalOverlay();
+		return new Promise((resolve, reject) => {
+			try {
+				const parent = getEmbeddedMessagingTopContainer();
+				const iframe = document.createElement("iframe");
+				const modal = createBackgroundModalOverlay();
 
-			iframe.title = getLabel("EmbeddedMessagingIframesAndContents", "MessagingIframeTitle") || IFRAME_DEFAULT_TITLE;
-			iframe.className = LWR_IFRAME_NAME;
-			iframe.id = LWR_IFRAME_NAME;
-			iframe.style.backgroundColor = "transparent";
-			iframe.allowTransparency = "true";
+				iframe.title = getLabel("EmbeddedMessagingIframesAndContents", "MessagingIframeTitle") || IFRAME_DEFAULT_TITLE;
+				iframe.className = LWR_IFRAME_NAME;
+				iframe.id = LWR_IFRAME_NAME;
+				iframe.onload = resolve;
+				iframe.onerror = reject;
+				iframe.style.backgroundColor = "transparent";
+				iframe.allowTransparency = "true";
+				iframe.setAttribute("aria-label", getLabel("EmbeddedMessagingChatHeader", "ChatWindowAssistiveText") || CHAT_WINDOW_ASSISTIVE_TEXT);
 
-			// Set sandbox attributes on iframe unless omitSandbox flag is on.
-			if(!embeddedservice_bootstrap.settings.omitSandbox) {
-				// TODO: remove allow-same-origin when Aura/LWR allows
-				// Add allow-modals to throw alert for unauthenticated user losing session.
-				// Add allow-popups-to-escape-sandbox to enable links to escape sandbox context.
-				iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads allow-popups allow-popups-to-escape-sandbox";
+				// Set sandbox attributes on iframe unless omitSandbox flag is on.
+				if(!embeddedservice_bootstrap.settings.omitSandbox) {
+					// TODO: remove allow-same-origin when Aura/LWR allows
+					// Add allow-modals to throw alert for unauthenticated user losing session.
+					// Add allow-popups-to-escape-sandbox to enable links to escape sandbox context.
+					iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads allow-popups allow-popups-to-escape-sandbox";
+				}
+
+				// Handle Aura/LWR site endpoints separately until W-10165756 is implemented.
+				if(embeddedservice_bootstrap.settings.isAuraSite) {
+					handleAuraSite(iframe);
+				} else {
+					handleLWRSite(iframe);
+				}
+
+				// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
+				if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
+					iframe.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
+					iframe.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
+				}
+
+				// Adjust iframe size based on platform the app is on.
+				if (isMobilePublisherApp()) {
+					iframe.classList.add(MOBILE_PUBLISHER);
+				} else if (isExperienceSite()) {
+					iframe.classList.add(EXPERIENCE_SITE);
+				}
+
+				// Set HTML direction based on language
+				if (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection && typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string") {
+					iframe.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
+				}
+
+				parent.appendChild(modal);
+				parent.appendChild(iframe);
+			} catch(e) {
+				reject(e);
 			}
+		});
+	};
 
-			// Handle Aura/LWR site endpoints separately until W-10165756 is implemented.
-			if(embeddedservice_bootstrap.settings.isAuraSite) {
-				handleAuraSite(iframe);
-			} else {
-				handleLWRSite(iframe);
+	/**
+	 * Handles simulating button click to bootstrap Embedded Messaging client.
+	 * - If existing session, no-op. embeddedservice_bootstrap.init() will take care of restoring the session.
+	 *
+	 * NOTE: this API is invoked by Channel Menu (see channelMenu.js#bootstrapEmbeddedMessagingInChannelMenu)
+	 *
+	 * @returns {Promise} - Resolves if iframe is created successfully OR rejected if error creating iframe.
+	 */
+	EmbeddedServiceBootstrap.prototype.bootstrapEmbeddedMessaging = function bootstrapEmbeddedMessaging() {
+		return new Promise((resolve, reject) => {
+			const handleBootstrapSuccess = () => {
+				if (!hasEmbeddedMessagingInitEventFired) {
+					warning(`[Bootstrap API] onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.`);
+					reject();
+					return;
+				}
+
+				resolve(`[Bootstrap API] Successfully bootstrapped Embedded Messaging.`);
+
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
+			};
+
+			const handleBootstrapError = () => {
+				if (!hasEmbeddedMessagingInitEventFired) {
+					warning(`[Bootstrap API] onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.`);
+					reject();
+					return;
+				}
+
+				error(`[Bootstrap API] Error bootstrapping Embedded Messaging.`);
+				reject();
+
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
+			};
+
+			try {
+				// Cannot be invoked before `afterInit` event has been emitted.
+				if (!hasEmbeddedMessagingReadyEventFired) {
+					warning(`[Bootstrap API] Cannot invoke Bootstrap API before the onEmbeddedMessagingReady event is fired.`);
+					reject();
+					return;
+				}
+
+				if (!getEmbeddedMessagingConversationButton()) {
+					warning(`[Bootstrap API] Conversation button element is not present.`);
+					reject();
+					return;
+				}
+
+				if (getEmbeddedMessagingFrame()) {
+					warning(`[Bootstrap API] Client is already present.`);
+					resolve();
+					return;
+				}
+
+				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
+				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
+
+				handleClick().catch((err) => {
+					error(`[Bootstrap API] Error handling button click: ${err}`);
+					reject();
+				});
+			} catch(e) {
+				error(`[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: ${e}`);
+				reject();
 			}
-
-			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
-			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
-				iframe.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
-				iframe.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
-			}
-
-			parent.appendChild(modal);
-			parent.appendChild(iframe);
-		} catch(e) {
-			throw new Error(e);
-		}
+		});
 	};
 
 	/**
@@ -3531,7 +4034,7 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.maximizeIframe = function maximizeIframe(frame) {
 		const button = getEmbeddedMessagingConversationButton();
-		const modal = document.getElementById(BACKGROUND_MODAL_ID);
+		const modal = getEmbeddedMessagingModal();
 		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
 		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		const viewportMetaTag = getViewportMetaTag();
@@ -3539,17 +4042,11 @@
 		let minimizeButton;
 
 		if(frame) {
-			if(!frame.classList.contains("isMaximized")) {
-				frame.classList.add("isMaximized");
-			}
+			frame.classList.add(MODAL_ISMAXIMIZED_CLASS);
 
-			if(frame.classList.contains("isMinimized")) {
-				frame.classList.remove("isMinimized");
-			}
+			frame.classList.remove(MODAL_ISMINIMIZED_CLASS);
 
-			if(frame.classList.contains("isDismissed")) {
-				frame.classList.remove("isDismissed");
-			}
+			frame.classList.remove(MODAL_HASMINIMIZEDNOTIFICATION_CLASS);
 
 			// Adjust iframe distance from bottom to maximized position if browser has bottom tab bar.
 			if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
@@ -3574,17 +4071,19 @@
 			// Hide the default chat icon on the button.
 			chatIcon.style.display = "none";
 
-			// Create the minimize button markup and insert into the DOM.
-			minimizeButton = renderSVG(DEFAULT_ICONS.MINIMIZE_MODAL);
-			minimizeButton.setAttribute("id", EMBEDDED_MESSAGING_ICON_MINIMIZE);
-			minimizeButton.setAttribute("class", EMBEDDED_MESSAGING_ICON_MINIMIZE);
-			iconContainer.insertBefore(minimizeButton, chatIcon);
+			if (!document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE)) {
+				// Create the minimize button markup and insert into the DOM.
+				minimizeButton = renderSVG(DEFAULT_ICONS.MINIMIZE_MODAL);
+				minimizeButton.setAttribute("id", EMBEDDED_MESSAGING_ICON_MINIMIZE);
+				minimizeButton.setAttribute("class", EMBEDDED_MESSAGING_ICON_MINIMIZE);
+				iconContainer.insertBefore(minimizeButton, chatIcon);
+			}
 		}
 
 		// [Mobile] `isMaximized` controls showing the background modal. This class is constrained by media queries
 		// (against the screen's max-width) in CSS, so there's no need to check isDesktop() before adding/removing the class.
-		if(modal && !modal.classList.contains("isMaximized")) {
-			modal.classList.add("isMaximized");
+		if(modal && !modal.classList.contains(MODAL_ISMAXIMIZED_CLASS)) {
+			modal.classList.add(MODAL_ISMAXIMIZED_CLASS);
 		}
 
 		// The `embeddedMessagingPreventScrolling` class is appended/removed from the document.body
@@ -3616,29 +4115,20 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.minimizeIframe = function minimizeIframe(frame, data) {
 		const button = getEmbeddedMessagingConversationButton();
+		const modal = getEmbeddedMessagingModal();
 		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
-		const modal = document.getElementById(BACKGROUND_MODAL_ID);
-		const isDismissed = data.isMinimizedNotificationDismissed;
+		const hasMinimizedNotification = data.hasMinimizedNotification;
 
 		if(frame) {
-			if(frame.classList.contains("isMaximized")) {
-				frame.classList.remove("isMaximized");
-			}
+			frame.classList.remove(MODAL_ISMAXIMIZED_CLASS);
+			frame.classList.add(MODAL_ISMINIMIZED_CLASS);
 
-			if(isDismissed) {
-				// Resize and style iframe to render minimized button only.
-				if(!frame.classList.contains("isMinimized")) {
-					frame.classList.add("isMinimized");
-				}
-
-				if(!frame.classList.contains("isDismissed")) {
-					frame.classList.add("isDismissed");
-				}
-			} else {
+			if(hasMinimizedNotification) {
 				// Resize and style iframe to render minimized button and notification.
-				if(!frame.classList.contains("isMinimized")) {
-					frame.classList.add("isMinimized");
-				}
+				frame.classList.add(MODAL_HASMINIMIZEDNOTIFICATION_CLASS);
+			} else {
+				// Resize and style iframe to render minimized button only.
+				frame.classList.remove(MODAL_HASMINIMIZEDNOTIFICATION_CLASS);
 			}
 
 			// Adjust iframe distance from bottom to minimized position if browser has bottom tab bar.
@@ -3663,8 +4153,8 @@
 
 		// [Mobile] `isMaximized` controls showing the background modal. This class is constrained by media queries
 		// (against the screen max width) in CSS, so there's no need to check isDesktop() before adding/removing the class.
-		if(modal && modal.classList.contains("isMaximized")) {
-			modal.classList.remove("isMaximized");
+		if(modal && modal.classList.contains(MODAL_ISMAXIMIZED_CLASS)) {
+			modal.classList.remove(MODAL_ISMAXIMIZED_CLASS);
 		}
 
 		// [Mobile] The `embeddedMessagingPreventScrolling` class is appended/removed from the
@@ -3792,10 +4282,8 @@
 			});
 
 			// Show button when we've loaded everything.
-			Promise.all([cssPromise, configPromise, getBusinessHoursInterval()]).then(() => {
+			Promise.all([cssPromise, configPromise, getBusinessHoursInterval(), sessionDataPromise]).then(() => {
 				initializeWebStorage();
-
-				destroySiteContextFrame();
 
 				embeddedservice_bootstrap.initializeFeatureObjects();
 
