@@ -194,7 +194,9 @@
 		".site.com",
 
 		// Enhanced domains on sandbox
-		".salesforce-sites.com"
+		".salesforce-sites.com",
+
+		".w.crm.dev"
 	];
 
 	/**
