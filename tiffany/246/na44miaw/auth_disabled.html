@@ -1,0 +1,52 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <button onclick="clearSession()">Clear Auth Session</button>
+    <script type='text/javascript'>
+     window.addEventListener("onEmbeddedMessagingReady", () => {
+          console.log("onEmbeddedMessagingReady emitted");
+          // Setting identity token
+          console.log("Setting identity token.");
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+              "identityTokenType": "JWT",
+              "identityToken": `eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MTU1OTQwNSwiaWF0IjoxNjkxNTUzNDA1fQ.D2nDb4vpVM3zcC1WAWZ4oYuvAOilCWt0I9B8zYfIOD4Xx3VSET6X6sCh7r2HtzE9LcF_r06b1u0-jWa31b3vkF--e2_dpuy6w2-plzxUQCmtDUhgcKZTx0LnkhOGWzEjRqSvF5P_Uk1PId7NeV6v7dT4pc-Z7rEF5I5N8B4LcDy4DFHD9NWffDRFlc0IsL6b-COmOXDSmcxQOtsSJE-zvYpsriCXM3Vr6436239tlGUpgk9l190aAPKYYg3-yhtJRNSUHR405jJUQOfS8iOEhvi1Hk5NtLZAdrSozwgVO8GnNyBPvLliGv7n5djAbEJ64NbnwzSBvvCP8QJpBzzsYw`
+          });
+      });
+
+    window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+        console.log("Received the onEmbeddedMessagingIdentityTokenExpired event…");
+    
+        // Refresh token and then send the new token to Salesforce
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        "identityTokenType": "JWT", "identityToken": refreshed_jwt });
+    
+        // Or, instead of refreshing the token, call
+        // embeddedservice_bootstrap.userVerificationAPI.clearSession()
+        // to clear all session data…
+    });
+
+      function clearSession() {
+        embeddedservice_bootstrap.userVerificationAPI.clearSession();
+      }
+    </script>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000Nt88',
+				'AUTH_PRECHAT_DISABLED',
+				'https://na44miaw.stmfa.stm.force.com/ESWAUTHPRECHATDISABLED1691479579187',
+				{
+					scrt2URL: 'https://na44miaw.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://na44miaw.stmfa.stm.force.com/ESWAUTHPRECHATDISABLED1691479579187/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>
