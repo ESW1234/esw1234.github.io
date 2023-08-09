@@ -1,6 +1,34 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
+    <button onclick="clearSession()">Clear Auth Session</button>
+    <script type='text/javascript'>
+     window.addEventListener("onEmbeddedMessagingReady", () => {
+          console.log("onEmbeddedMessagingReady emitted");
+          // Setting identity token
+          console.log("Setting identity token.");
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+              "identityTokenType": "JWT",
+              "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3MDk1MCwiaWF0IjoxNjkxNTcwOTUwfQ.Gev0YHbyGTHnWPiDCQ_2ogWhp11BwWliS68G7pWBujRQGDzlQemxq875ti2tu_R8FCwd7u17DexWge7iAICUpnbLkMp1yIe_35ftHA9V8YhzA3pryMBicPtD496-DcGNToN8_m-LVNFNkMV-ZIX-mEHrZwzMcMuGKTMLf3DgYV4uy4ouzvuuQN_qIIA7sT8a0AWPasnRxWWqks1AAugxCRn4fOzxz5aXE1QyHgbBmnlOXJikHrVFks7Mg_85Mt6cVY03a3FiEu8DXI7PplN6-2dCHA_bF8hq-lb0SkkS7B5sLRT001LeolaYyztWN0pAqOCfxQtPtPtfvsdbiBf8Lg"
+          });
+      });
+
+    window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+        console.log("Received the onEmbeddedMessagingIdentityTokenExpired event…");
+    
+        // Refresh token and then send the new token to Salesforce
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        "identityTokenType": "JWT", "identityToken": refreshed_jwt });
+    
+        // Or, instead of refreshing the token, call
+        // embeddedservice_bootstrap.userVerificationAPI.clearSession()
+        // to clear all session data…
+    });
+
+      function clearSession() {
+        embeddedservice_bootstrap.userVerificationAPI.clearSession();
+      }
+    </script>
   <!--  <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.js'></script> --> 
   <script type='text/javascript' src='https://cm-main.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/menu/fab.js'></script>
   <script type='text/javascript'>
