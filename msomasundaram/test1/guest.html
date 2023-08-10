@@ -2,12 +2,12 @@
 <html lang="en">
 <body>
     <div id="content">
-        <h1>Welcome to ram environment with lightning out Translation 3</h1>
+        <h1>Welcome to LO for Blitz to support HTTP 2 test - 1</h1>
         <div id="innerContent"></div>
     </div>
-    <script src="https://ram-dev-ed.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script>
+    <script src="https://test39-dev-ed.lightning.stmfb.stm.force.com/lightning/lightning.out.js"></script>
     <script>
-        $Lightning.use("c:myApp",    // name of the Lightning app
+        $Lightning.use("c:testCmp",    // name of the Lightning app
             function() {          // Callback once framework and app loaded
                 debugger;
                 console.log("callback for $Lightning.use");
@@ -17,16 +17,12 @@
                     "innerContent",
                     function(cmp){
                         console.log("callback for $Lightning.createComponent");
-                    }
-                   
+                    }            
                 );
             },
-            //"https://safaritest.localhost.blitztesting.com",
-            'https://ram-dev-ed.test1.my.pc-rnd.site.com',
-            //'https://wonderful.test1.pc-rnd.force.com'
+            'https://test39-dev-ed.lightning.stmfb.stm.force.com',
 		        null,
 	                    { "aura.altLang": 'FR' }
-
         );
     </script>
 </body>
