@@ -1,1 +1,65 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+  <button id="launchChat" onclick="launchChat()">LAUNCH CHAT API</button>
+  <script>
+	function launchChat() {
+		embeddedservice_bootstrap.utilAPI.launchChat()
+		.then(() => {
+			console.log("bootstrap success");
+		}).catch(() => {
+			console.log("bootstrap failure");
+		}).finally(() => {
+			console.log("bootstrap finally");
+		});
+	}
+  </script>
+    <button onclick="clearSession()">Clear Auth Session</button>
+    <script type='text/javascript'>
+     window.addEventListener("onEmbeddedMessagingReady", () => {
+          console.log("onEmbeddedMessagingReady emitted");
+          // Setting identity token
+          console.log("Setting identity token.");
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+              "identityTokenType": "JWT",
+              "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A"
+          });
+      });
 
+    window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+        console.log("Received the onEmbeddedMessagingIdentityTokenExpired event…");
+    
+        // Refresh token and then send the new token to Salesforce
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        "identityTokenType": "JWT", "identityToken": refreshed_jwt });
+    
+        // Or, instead of refreshing the token, call
+        // embeddedservice_bootstrap.userVerificationAPI.clearSession()
+        // to clear all session data…
+    });
+
+      function clearSession() {
+        embeddedservice_bootstrap.userVerificationAPI.clearSession();
+      }
+    </script>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.init(
+				'00DRM000000Nt88',
+				'AUTH_PRECHAT_DISABLED',
+				'https://na44miaw.stmfa.stm.force.com/ESWAUTHPRECHATDISABLED1691479579187',
+				{
+					scrt2URL: 'https://na44miaw.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='<script type='text/javascript' src='https://localhost:6101/embeddedservice/asyncclient/bootstrap.js' onload='initEmbeddedMessaging()'></script>' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>
