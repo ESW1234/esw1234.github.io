@@ -1,6 +1,19 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
+  <button id="launchChat" onclick="launchChat()">LAUNCH CHAT API</button>
+  <script>
+	function launchChat() {
+		embeddedservice_bootstrap.utilAPI.launchChat()
+		.then(() => {
+			console.log("bootstrap success");
+		}).catch(() => {
+			console.log("bootstrap failure");
+		}).finally(() => {
+			console.log("bootstrap finally");
+		});
+	}
+  </script>
     <button onclick="clearSession()">Clear Auth Session</button>
     <script type='text/javascript'>
      window.addEventListener("onEmbeddedMessagingReady", () => {
