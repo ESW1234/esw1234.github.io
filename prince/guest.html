@@ -2,7 +2,7 @@
 <html lang="en">
 <body>
     <div id="content">
-        <h1>LightningOut Blitz HTTP-2 test 6F- 5F </h1>
+        <h1>LightningOut Blitz HTTP-2 test 6F- 6F </h1>
         <div id="innerContent"></div>
     </div>
     <script src="https://test-6f-dev-ed.my.stmfb.stm.salesforce.com/lightning/lightning.out.js"></script>
@@ -11,15 +11,12 @@
             function() {          // Callback once framework and app loaded
                 debugger;
                 console.log("callback for $Lightning.use");
-                $Lightning.createComponent(
-                    "c:lightningCmp",
-                    {},
-                    "innerContent",
-                    function(cmp){
-                        console.log("callback for $Lightning.createComponent");
-                    }
-
-                );
+                $Lightning.createComponent("c:helloWorld", 
+                  { },
+                  "lightning",
+                  function(cmp) {
+                    
+                  });
             },
             //Expereince Site 
             "https://test-6f-dev-ed.lightning.stmfb.stm.force.com",
