@@ -1,16 +1,13 @@
 <html>
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
+	<button onclick="setIdentityToken()">Set Auth Token</button>
 	<button onclick="clearSession()">Clear Auth Session</button>
+	  
     <script type='text/javascript'>
      window.addEventListener("onEmbeddedMessagingReady", () => {
           console.log("onEmbeddedMessagingReady emitted");
-          // Setting identity token
-          // console.log("Setting identity token.");
-          // embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-          //     "identityTokenType": "JWT",
-          //     "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A"
-          // });
+
       });
 
     window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
@@ -24,8 +21,17 @@
         // embeddedservice_bootstrap.userVerificationAPI.clearSession()
         // to clear all session data…
     });
-   
+function setIdentityToken() {
+          // Setting identity token
+          console.log("Setting identity token.");
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+              "identityTokenType": "JWT",
+              "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A"
+          });
+      }
+	    
       function clearSession() {
+	       console.log("Clearing identity token.");
         embeddedservice_bootstrap.userVerificationAPI.clearSession();
       }
     </script>
