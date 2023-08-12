@@ -1,0 +1,61 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+	<button onclick="clearSession()">Clear Auth Session</button>
+    <script type='text/javascript'>
+     window.addEventListener("onEmbeddedMessagingReady", () => {
+          console.log("onEmbeddedMessagingReady emitted");
+          // Setting identity token
+          // console.log("Setting identity token.");
+          // embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+          //     "identityTokenType": "JWT",
+          //     "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A"
+          // });
+      });
+
+    window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+        console.log("Received the onEmbeddedMessagingIdentityTokenExpired event…");
+
+        // Refresh token and then send the new token to Salesforce
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        "identityTokenType": "JWT", "identityToken": refreshed_jwt });
+    
+        // Or, instead of refreshing the token, call
+        // embeddedservice_bootstrap.userVerificationAPI.clearSession()
+        // to clear all session data…
+    });
+   
+      function clearSession() {
+        embeddedservice_bootstrap.userVerificationAPI.clearSession();
+      }
+    </script>
+	  
+    <script type='text/javascript' src='https://cm-main.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/menu/fab.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+    embedded_svc.menu.settings.devMode = true;
+		embedded_svc.menu.init(
+			'https://na44miaw.my.stmfa.stm.salesforce.com',
+			'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DRM000000Nt88',
+			'CM_MIAW_AUTH_MULTI'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://cm-main.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/menu/fab.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://cm-main.my.localhost.sfdcdev.salesforce.com:6101');
+	}
+</script>
+  </body>
+</html>
