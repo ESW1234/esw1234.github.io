@@ -11,15 +11,15 @@
             function() {          // Callback once framework and app loaded
                 debugger;
                 console.log("callback for $Lightning.use");
-                $Lightning.createComponent("c:auraCmp", 
+                $Lightning.createComponent("c:auraCmp", //Component we created in our org
                   { },
-                  "lightning",
+                  "lightning", //Div with ID above
                   function(cmp) {
                     
                   });
             },
             //Expereince Site 
-            "https://test-6f-dev-ed.lightning.stmfb.stm.force.com",
+            "https://test-6f-dev-ed.lightning.stmfb.stm.force.com", //Should be force.com URL not salesforce.com
             "00DC30000000Naj!ASAAQHG.a5w4TLQMIh92YzUwMRj.6mSfmtoN25B6T97N.cveIwVE1Nk4RHOyRoyF3OeO7OSVS3WTBi24vrY2HAjwKTWOOecV"
         );
     </script>
