@@ -96,7 +96,7 @@
 
 	/**
 	  * Capabilities version to be passed as part of Access Token request to register capabilities of the app.
-	  * Notes: 
+	  * Notes:
 	  * 1. The version number is merely a representation and a contract with the IA-Message service and does not necessarily represent the core version. Bump this number when new capabilities are introduced to be supported.
 	  * 2. Ensure the version number passed in Access Token request to match the version passed in RegisterDeviceCapabilities endpoint request.
 	  * @type {string}
@@ -196,6 +196,7 @@
 		// Enhanced domains on sandbox
 		".salesforce-sites.com",
 
+		// Used by Salesforce Workspaces environments
 		".w.crm.dev"
 	];
 
@@ -1463,7 +1464,9 @@
 				handleListConversation().then((conversationData) => {
 					log("finished joining verified user conversation");
 					sendConfigurationToAppIframe(jwtData, conversationData);
-				})
+				}).catch(() => {
+					emitEmbeddedMessagingInitErrorEvent();
+				});	
 			});
 		} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
 			if (!isPrechatStateEnabled()) {
@@ -1471,7 +1474,9 @@
 					handleCreateNewConversation(hiddenPrechatFields).then((conversationData) => {
 						log("finished creating conversation");
 						sendConfigurationToAppIframe(jwtData, conversationData);
-					})
+					}).catch(() => {
+						emitEmbeddedMessagingInitErrorEvent();
+					});
 				});
 			} else {
 				// Pre-chat is enabled, send configuration to app without jwt & conversation data.
@@ -1479,6 +1484,7 @@
 				return Promise.resolve();
 			}
 		}
+
 		return Promise.reject(new Error("Something went wrong initializing conversation state."));
 	}
 
@@ -1636,13 +1642,11 @@
 
     /**
      * Handle getting an authenticated jwt.
-     *
-     * @param deviceId - (Optional) Device Id to request the JWT. If not provided, the service generates one and adds
-     *                   it as a claim in the JWT.
+     * 
      * @returns {Promise<unknown>}
      */
-    function handleGetAuthenticatedJwt(deviceId) {
-        return getAuthenticatedJwt(deviceId)
+    function handleGetAuthenticatedJwt() {
+        return getAuthenticatedJwt()
 			.then(response => {
 				storeJwtInWebStorage(response.accessToken);
 				return response;
@@ -1655,11 +1659,10 @@
 
 	/**
 	 * Get a JWT for an authenticated user. This JWT is used for authenticated conversations.
-	 *
-	 * @param deviceId - Device Id.
+	 * 
 	 * @returns {Promise}
 	 */
-	function getAuthenticatedJwt(deviceId) {
+	function getAuthenticatedJwt() {
 		const orgId = embeddedservice_bootstrap.settings.orgId;
 		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
 		const customerIdentityToken = identityToken;
@@ -1674,7 +1677,6 @@
 			orgId,
 			developerName,
 			capabilitiesVersion,
-			...(deviceId && { deviceId }),
 			"authorizationType": ID_TOKEN_TYPE.JWT,
 			customerIdentityToken
 		};
@@ -1735,7 +1737,7 @@
 	/**
 	 * Makes a network request to RegisterDeviceCapabilities ia-message endpoint to register device capabilities for the version specified in the request.
 	 *
-	 * Endpoint info: https://salesforce.quip.com/HaarAI2rvqLD#temp:C:CVQc9b0aaa5ff5f4d1694dc223b0
+	 * Endpoint info: https://salesforce.quip.com/HaarAI2rvqLD#temp:C:CVQ1633b46f83d44f95a681db466
 	 */
 	function registerDeviceCapabilities() {
 		const apiPath = embeddedservice_bootstrap.settings.scrt2URL.concat(REGISTER_DEVICE_CAPABILITIES_PATH);
@@ -1743,11 +1745,7 @@
 		return sendRequest(
 			apiPath,
 			"POST",
-			"cors",
-			null,
-			{
-				capabilitiesVersion
-			}
+			"cors"
 		);
 	}
 
@@ -1884,7 +1882,7 @@
     }
 
 	/**
-	 * Handle creating a new conversation for this end user. Also handles registering device capabilities if the conversation creation is successful. 
+	 * Handle creating a new conversation for this end user. Also handles registering device capabilities if the conversation creation is successful.
 	 *
 	 * @param prechatFields - Pre-chat data to be sent with the request. Includes visible and/or hidden pre-chat fields
 	 * 							based on pre-chat setup.
@@ -1902,7 +1900,7 @@
 
 	/**
 	 * Handles createConversation error response. This method does the following -
-	 * 1. Retry createConversation once in case of server-side error response (5xx response).
+	 * 1. Retry createConversation once in case of server-side error response (5xx response). OR if error/status code is not defined, happens on gateway timed out.
 	 * 2. Throw error in case of all other errors.
 	 * @param e - ia-message createConversation error response.
 	 * @param prechatFields - Pre-chat data to be sent with the retry request. Includes visible and/or hidden pre-chat fields
@@ -1910,7 +1908,7 @@
 	 * @returns {*} - createConversation request promise.
 	 */
 	function handleCreateNewConversationError(e, prechatFields) {
-		if (e && e.status && e.status >= 500 && e.status <= 599) {
+		if (!e || !e.status || (e.status >= 500 && e.status <= 599)) {
 			// Retry createConversation in case of server-side errors
 			error(`Something went wrong while creating a conversation: ${e && e.message ? e.message : e}. Re-trying the request.`);
 			return createNewConversation(prechatFields).then((conversationResponse) => {
@@ -2554,11 +2552,14 @@
 					generateIframes().then(() => {
 						resolve();
 					}).catch((err) => {
+						error(err);
 						reject(err);
 					});
 
 					// Initialize conversation state and fetch messaging JWTs.
 					initializeConversationState().catch((err) => {
+						emitEmbeddedMessagingInitErrorEvent();
+						error(err);
 						reject(err);
 					});
 				} else if((button && button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) && (frame && frame.classList && frame.classList.contains(MODAL_ISMAXIMIZED_CLASS))) {
@@ -2738,7 +2739,7 @@
 
 		// Regenerate markup if we are in unverified user mode.
 		if (getAuthMode() === AUTH_MODE.UNAUTH) {
-			embeddedservice_bootstrap.generateMarkup();
+			embeddedservice_bootstrap.generateMarkup();	
 		}
 	}
 
@@ -2813,6 +2814,19 @@
 	/***************************
 	 Markup generation functions
 	 ***************************/
+	/**
+	 * Generate markup for the top-level container element on the parent page.
+	 * @return {HTMLElement}
+	 */
+	function createTopContainer() {
+		const topContainerElement = document.createElement("div");
+
+		topContainerElement.id = TOP_CONTAINER_NAME;
+		topContainerElement.className = TOP_CONTAINER_NAME;
+
+		return topContainerElement;
+	}
+
 	/**
 	 * Generate markup for the static conversation button's icon.
 	 * @return {HTMLElement}
@@ -2902,19 +2916,6 @@
 		modal.id = BACKGROUND_MODAL_ID;
 
 		return modal;
-	}
-
-	/**
-	 * Generate markup for the top-level container element on the parent page.
-	 * @return {HTMLElement}
-	 */
-	function createTopContainer() {
-		const topContainerElement = document.createElement("div");
-
-		topContainerElement.id = TOP_CONTAINER_NAME;
-		topContainerElement.className = TOP_CONTAINER_NAME;
-
-		return topContainerElement;
 	}
 
 	/**
@@ -3068,7 +3069,7 @@
 		if (getEmbeddedMessagingFrame()) {
 			// If iframe is initialized, replace the identity token passed down during initialization.
 			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
-		} else if (!getEmbeddedMessagingConversationButton()) {
+		} else if (!getEmbeddedMessagingConversationButton()) {	
 			// Render conversation button if identity token passes basic validation.
 			embeddedservice_bootstrap.generateMarkup();
 		} else if (getEmbeddedMessagingConversationButton() && document.getElementById(EMBEDDED_MESSAGING_ICON_REFRESH)) {
@@ -3139,20 +3140,17 @@
 
 	/**
 	 * Renews authenticated JWT. This method does the following -
-	 * 1. Extract deviceId from expired JWT.
-	 * 2. Renew authenticated jwt using the same deviceId as the expired JWT.
-	 * 3. Set the renewed JWT on inAppService lib and in web storage (1P and 3P).
-	 * 4. Reconnect to the SSE with the renewed JWT.
-	 * 5. Handle pending ia-message requests generated while JWT was being renewed.
+	 * 1. Renew authenticated jwt.
+	 * 2. Set the renewed JWT on inAppService lib and in web storage (1P and 3P).
+	 * 3. Reconnect to the SSE with the renewed JWT.
+	 * 4. Handle pending ia-message requests generated while JWT was being renewed.
 	 *
 	 * @param pendingRequestQueue - Queues that stores pending requests generated during renewal.
 	 * @returns {Promise<unknown>}
 	 */
 	function renewAuthenticatedJwt(pendingRequest) {
-		const expiredJWT = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
-		const deviceId = extractDeviceId(expiredJWT);
 		return new Promise(resolve => {
-            handleGetAuthenticatedJwt(deviceId).then(() => {
+            handleGetAuthenticatedJwt().then(() => {
                 handlePendingRequest(pendingRequest);
                 resolve();
             });
@@ -3373,26 +3371,6 @@
 				error(`JWT validation failed: ${e.message}`);
 			}
 			return false;
-		}
-	}
-
-	/**
-	 * Method for extracting deviceId from the ia-message JWT.
-	 * @param {Object} jwt - The JWT to be parsed.
-	 * @returns the deviceId of the jwt.
-	 */
-	function extractDeviceId(jwt) {
-		let jwtPayload;
-
-		try {
-			// Extract JWT payload.
-			jwtPayload = parseJwt(jwt);
-
-			// Return deviceId if found on JWT payload.
-			return Object.keys(jwtPayload).includes("deviceId") && jwtPayload.deviceId ? jwtPayload.deviceId : null;
-		} catch (e) {
-			// Fail silently and return null.
-			return null;
 		}
 	}
 
@@ -3740,6 +3718,119 @@
 		return false;
 	};
 
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly expose API for the host (i.e. customer) to launch the client dynamically.
+	 * @returns {Promise}
+	 */
+	EmbeddedMessagingUtil.prototype.launchChat = function launchChat() {
+		return new Promise((resolve, reject) => {
+			let consoleMessage;
+
+			/**
+			 * onEmbeddedMessagingInitSuccess event listener to handle resolving Promise.
+			 */
+			const handleBootstrapSuccess = () => {
+				let successMessage;
+
+				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
+				if (!hasEmbeddedMessagingInitEventFired) {
+					successMessage = `[Launch Chat API] Web chat client initialized successfully or failed event isn’t fired.`;
+
+					warning(successMessage);
+					reject(successMessage);
+
+					return;
+				}
+
+				successMessage = `[Launch Chat API] Successfully initialized web chat client.`;
+				log(successMessage);
+				resolve(successMessage);
+
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
+			};
+
+			/**
+			 * onEmbeddedMessagingInitError event listener to handle rejecting Promise.
+			 */
+			const handleBootstrapError = () => {
+				let errorMessage;
+
+				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
+				if (!hasEmbeddedMessagingInitEventFired) {
+					errorMessage = `[Launch Chat API] Web chat client initialized successfully or failed event isn’t fired.`;
+
+					warning(errorMessage);
+					reject(errorMessage);
+
+					return;
+				}
+
+				errorMessage = `[Launch Chat API] Error launching web chat client.`;
+				error(errorMessage);
+				reject(errorMessage);
+
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
+				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
+
+				resetClientToInitialState();
+			};
+
+			try {
+				// Cannot be invoked before `afterInit` event has been emitted.
+				if (!hasEmbeddedMessagingReadyEventFired) {
+					consoleMessage = `[Launch Chat API] Can’t invoke Launch Chat API before the onEmbeddedMessagingReady event is fired.`;
+
+					warning(consoleMessage);
+					reject(consoleMessage);
+
+					return;
+				}
+
+				// Cannot be invoked if static button is not present.
+				if (!getEmbeddedMessagingConversationButton()) {
+					consoleMessage = `[Launch Chat API] Default chat button isn’t present. Check if the web chat client initialized successfully.`;
+
+					warning(consoleMessage);
+					reject(consoleMessage);
+
+					return;
+				}
+
+				// Cannot be invoked if iframe is already present.
+				if (getEmbeddedMessagingFrame()) {
+					let iframe = getEmbeddedMessagingFrame();
+
+					consoleMessage = `[Launch Chat API] Web chat client window is already present.`;
+
+					warning(consoleMessage);
+					resolve(consoleMessage);
+
+					return;
+				}
+
+				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
+				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
+
+				// Simulate button click to initiate app.
+				handleClick().catch((err) => {
+					consoleMessage = `[Launch Chat API] Error handling simulating clicking the custom web chat client button: ${err}`;
+
+					error(consoleMessage);
+					reject(consoleMessage);
+
+					return;
+				});
+			} catch(e) {
+				consoleMessage = `[Launch Chat API] Something went wrong launching the web chat client: ${e}`;
+
+				error(consoleMessage);
+				reject(consoleMessage);
+			}
+		});
+	}
+
 	/*********************************************************
 	*		    Embedded Messaging Bootstrap Object          *
 	**********************************************************/
@@ -3842,15 +3933,29 @@
 	};
 
 	/**
-	 * Generate markup and render on parent page.
+	 * Generate markup and render static conversation button on parent page.
+	 * @param {boolean} generateMarkupInChannelMenu - Whether or not method is invoked by #bootstrapEmbeddedMessaging() API
 	 */
-	EmbeddedServiceBootstrap.prototype.generateMarkup = function generateMarkup() {
+	EmbeddedServiceBootstrap.prototype.generateMarkup = function generateMarkup(generateMarkupInChannelMenu = false) {
 		const markupFragment = document.createDocumentFragment();
-		const topContainer = createTopContainer();
-		const conversationButton = createConversationButton();
+		let topContainerElement = getEmbeddedMessagingTopContainer();
+		let conversationButtonElement = getEmbeddedMessagingConversationButton();
 
-		topContainer.appendChild(conversationButton);
-		markupFragment.appendChild(topContainer);
+		// Do not generate markup for channel menu deployments unless invoked by bootstrapEmbeddedMessaging API.
+		if (isChannelMenuDeployment() && !generateMarkupInChannelMenu) {
+			return;
+		}
+
+		if (topContainerElement && conversationButtonElement) {
+			return;
+		}
+
+		// Generate markup, if not found in DOM.
+		topContainerElement = createTopContainer();
+		conversationButtonElement = createConversationButton();
+
+		markupFragment.appendChild(topContainerElement);
+		topContainerElement.appendChild(conversationButtonElement);
 
 		// Render static conversation button.
 		embeddedservice_bootstrap.settings.targetElement.appendChild(markupFragment);
@@ -3961,72 +4066,25 @@
 	};
 
 	/**
-	 * Handles simulating button click to bootstrap Embedded Messaging client.
-	 * - If existing session, no-op. embeddedservice_bootstrap.init() will take care of restoring the session.
-	 *
+	 * Handles simulating button click to bootstrap Embedded Messaging and launch the chat client.
+	 * - embeddedservice_bootstrap.init() will take care of restoring the session.
+	 * 
 	 * NOTE: this API is invoked by Channel Menu (see channelMenu.js#bootstrapEmbeddedMessagingInChannelMenu)
+	 * - For Channel Menu deployments only, this also generates button markup on channel click.
 	 *
-	 * @returns {Promise} - Resolves if iframe is created successfully OR rejected if error creating iframe.
+	 * @returns {Promise} - Resolves if chat client is launched successfully, or rejects if there was an error launching chat.
 	 */
 	EmbeddedServiceBootstrap.prototype.bootstrapEmbeddedMessaging = function bootstrapEmbeddedMessaging() {
-		return new Promise((resolve, reject) => {
-			const handleBootstrapSuccess = () => {
-				if (!hasEmbeddedMessagingInitEventFired) {
-					warning(`[Bootstrap API] onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.`);
-					reject();
-					return;
-				}
-
-				resolve(`[Bootstrap API] Successfully bootstrapped Embedded Messaging.`);
-
-				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
-			};
-
-			const handleBootstrapError = () => {
-				if (!hasEmbeddedMessagingInitEventFired) {
-					warning(`[Bootstrap API] onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.`);
-					reject();
-					return;
-				}
-
-				error(`[Bootstrap API] Error bootstrapping Embedded Messaging.`);
-				reject();
-
-				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
-			};
-
-			try {
-				// Cannot be invoked before `afterInit` event has been emitted.
-				if (!hasEmbeddedMessagingReadyEventFired) {
-					warning(`[Bootstrap API] Cannot invoke Bootstrap API before the onEmbeddedMessagingReady event is fired.`);
-					reject();
-					return;
-				}
-
-				if (!getEmbeddedMessagingConversationButton()) {
-					warning(`[Bootstrap API] Conversation button element is not present.`);
-					reject();
-					return;
-				}
-
-				if (getEmbeddedMessagingFrame()) {
-					warning(`[Bootstrap API] Client is already present.`);
-					resolve();
-					return;
-				}
-
-				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
-				window.addEventListener(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME, handleBootstrapError);
-
-				handleClick().catch((err) => {
-					error(`[Bootstrap API] Error handling button click: ${err}`);
-					reject();
-				});
-			} catch(e) {
-				error(`[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: ${e}`);
-				reject();
+		try {
+			// Only generate button markup if it is unauth, or identityToken is present in auth.
+			if (getAuthMode() === AUTH_MODE.UNAUTH) {
+				embeddedservice_bootstrap.generateMarkup(true);
 			}
-		});
+
+			return embeddedservice_bootstrap.utilAPI.launchChat();
+		} catch(e) {
+			throw new Error("[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: " + e);
+		}
 	};
 
 	/**
@@ -4293,8 +4351,9 @@
 
 				// If session exists in web storage, generate button markup and bootstrap the session.
 				// Else, generate button markup only for unauth mode. For auth mode, markup is generated in #setIdentityToken() API.
+				// For MIAW in Channel Menu, static button markup is generated on menu item click in #bootstrapEmbeddedMessaging() API
 				if (sessionExists()) {
-					embeddedservice_bootstrap.generateMarkup();
+					embeddedservice_bootstrap.generateMarkup(true);
 					bootstrapExistingSession();
 				} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
 					embeddedservice_bootstrap.generateMarkup();
