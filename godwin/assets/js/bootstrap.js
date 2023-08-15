@@ -1745,7 +1745,9 @@
 		return sendRequest(
 			apiPath,
 			"POST",
-			"cors"
+			"cors",
+			null,
+			{}
 		);
 	}
 
