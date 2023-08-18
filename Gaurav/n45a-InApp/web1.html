@@ -13,13 +13,13 @@
 	window.addEventListener("onEmbeddedMessagingReady", () => {
 		console.log("Received 'onEmbeddedMessagingReady' event");
 
-		embeddedservice_bootstrap.bootstrapEmbeddedMessaging()
-		.then((res) => {
-  			console.log(`Successfully executed Embedded Messaging Bootstrap API: ${res}`);
-		})
-		.catch((err) => {
-  			console.log(`Something went wrong while executing Embedded Messaging Bootstrap API: ${err}`);
-		});
+		// embeddedservice_bootstrap.bootstrapEmbeddedMessaging()
+		// .then((res) => {
+  // 			console.log(`Successfully executed Embedded Messaging Bootstrap API: ${res}`);
+		// })
+		// .catch((err) => {
+  // 			console.log(`Something went wrong while executing Embedded Messaging Bootstrap API: ${err}`);
+		// });
 	});
 
 	window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
