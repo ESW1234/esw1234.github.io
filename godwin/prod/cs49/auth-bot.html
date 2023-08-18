@@ -46,18 +46,18 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
-  			embeddedservice_bootstrap.init(
-  				'00D0u0000008bRL',
-  				'MessagingforWeb_UnauthAgent',
-  				'https://cssmigration6com.sfdctest.my.site.com/ESWMessagingforWebUnauth1692327948531',
-  				{
-  					scrt2URL: 'https://cssmigration6com.sfdctest.my.salesforce-scrt.com'
-  				}
-  			);
+				embeddedservice_bootstrap.init(
+					'00D0u0000008bRL',
+					'MessagingforWeb_AuthBot',
+					'https://cssmigration6com.sfdctest.my.site.com/ESWMessagingforWebAuthBo1692308962423',
+					{
+						scrt2URL: 'https://cssmigration6com.sfdctest.my.salesforce-scrt.com'
+					}
+				);
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
 		};
 	</script>
-  <script type='text/javascript' src='https://cssmigration6com.sfdctest.my.site.com/ESWMessagingforWebUnauth1692327948531/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://cssmigration6com.sfdctest.my.site.com/ESWMessagingforWebAuthBo1692308962423/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </html>
