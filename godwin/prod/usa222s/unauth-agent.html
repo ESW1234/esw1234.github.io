@@ -1,10 +1,10 @@
 <html>
    <head>
-       <title>USA222S Agent auth page</title>
+       <title>USA222S Agent unauth page</title>
        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
    </head>
    <body>
-	<h1>USA222S Agent auth page</h1>
+	<h1>USA222S Agent unauth page</h1>
 	<h2>a1lm-admin@cssorgm1usa222s.com</h2>
 
 	<!-- Edit page link -->
@@ -46,18 +46,17 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
-  			embeddedservice_bootstrap.init(
-  				'00DMN0000000jl7',
-  				'MessagingforWeb_AuthAgent',
-  				'https://cssorgm1usa222s.sfdctest.my.site.com/ESWMessagingforWebAuthAg1692330189169',
-  				{
-  					scrt2URL: 'https://cssorgm1usa222s.sfdctest.my.salesforce-scrt.com'
-  				}
-  			);
-  		} catch (err) {
-  			console.error('Error loading Embedded Messaging: ', err);
-  		}
-  	};
-  </script>
-<script type='text/javascript' src='https://cssorgm1usa222s.sfdctest.my.site.com/ESWMessagingforWebAuthAg1692330189169/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-</html>
+				embeddedservice_bootstrap.init(
+					'00DMN0000000jl7',
+					'MessagingforWeb_UnauthAgent',
+					'https://cssorgm1usa222s.sfdctest.my.site.com/ESWMessagingforWebUnauth1692330028608',
+					{
+						scrt2URL: 'https://cssorgm1usa222s.sfdctest.my.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+<script type='text/javascript' src='https://cssorgm1usa222s.sfdctest.my.site.com/ESWMessagingforWebUnauth1692330028608/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
