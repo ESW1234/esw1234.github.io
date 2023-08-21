@@ -39,6 +39,15 @@
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
 				console.log("onEmbeddedMessagingReady emitted");
+
+				embeddedservice_bootstrap.utilAPI.launchChat()
+				.then((success) => {
+    					console.log("Successfully initialized Embedded Messaging: ", success);
+				})
+				.catch((err) => {
+    					console.log("Failed to initialize Embedded Messaging: ", err);
+				});
+				
 				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
 				    "city" : "Vancouver"
 				});
