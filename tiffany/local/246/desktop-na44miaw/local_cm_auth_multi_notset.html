@@ -15,7 +15,7 @@
 
         // Refresh token and then send the new token to Salesforce
         embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-        "identityTokenType": "JWT", "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A" });
+        "identityTokenType": "JWT", "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5NDE5OTkzNSwiaWF0IjoxNjkzNTk5OTM1fQ.OotiTgZuhVOTk4X0ZXZ324hcJlLTKKt6bhDWkjYiUqSBF3Rt2djjpubPvLECVx5vQaOGVB00SCyN6DFYq-6h1Pz6dE4_d4aFKVDenkEbiLjBykplo6KkPVXhav4LNR55b-eNvMgem77GX_Gl9OCTdCjt6DHDx2WrKXw_plrjQJ6WTcwKMGXAUzOf_OzApl5gnM0MkI-HH4r9MXzJnN4kNv9mYUma6U25vZoIuhYy1lfTDOHkKqJYNJxPooXRzTPzSKTBeWQn-39NbhIo86RVLJeuK93_qRw5qsQyY8RWM_EHzzgABw7-72Bhwtg4UnCdMG22xmdUILm9JFYHh3kbeg" });
     
         // Or, instead of refreshing the token, call
         // embeddedservice_bootstrap.userVerificationAPI.clearSession()
@@ -26,7 +26,7 @@ function setIdentityToken() {
           console.log("Setting identity token.");
           embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
               "identityTokenType": "JWT",
-              "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5MjE3NDk2NiwiaWF0IjoxNjkxNTc0OTY2fQ.dqtUKqR0Nm7vTEaMCndbXKhWoM2bR4oDYyJ_IMCs0KoA-PaxadcFulAIkouru9bOEG-UPOqDZSEyixFgwWQjweAD_qurxSuWuIqUI6_-kFfx_S-py54La-ACRHJuRB9Recms9cWiC-spVHpe3nPDSGjRHUZ6Rebit620zvqnqQx0qEO69vaCWs2Bb-Fvw9U2YQXrpIK2yMXvhFRwaFnxNhhGD7gOSWesfc5Kyc5AbNIpOS2EnFASKZ8rjDf94paTwUD3N9NR1cYL1ELm7zs0NkJ9XEr0ObPk0_N7_zsHDWPlxpPi1MXMNvJBAapLENFRA20Ide0zXr12GNx6-sIx4A"
+              "identityToken": "eyJraWQiOiI4OWI5MThlYi0wMzAzLTQ4YjYtYjliOS03NTYyNThjMzYzYTkiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0aWZmYW55Iiwic3ViIjoidGlmZmFueSIsImV4cCI6MTY5NDE5OTkzNSwiaWF0IjoxNjkzNTk5OTM1fQ.OotiTgZuhVOTk4X0ZXZ324hcJlLTKKt6bhDWkjYiUqSBF3Rt2djjpubPvLECVx5vQaOGVB00SCyN6DFYq-6h1Pz6dE4_d4aFKVDenkEbiLjBykplo6KkPVXhav4LNR55b-eNvMgem77GX_Gl9OCTdCjt6DHDx2WrKXw_plrjQJ6WTcwKMGXAUzOf_OzApl5gnM0MkI-HH4r9MXzJnN4kNv9mYUma6U25vZoIuhYy1lfTDOHkKqJYNJxPooXRzTPzSKTBeWQn-39NbhIo86RVLJeuK93_qRw5qsQyY8RWM_EHzzgABw7-72Bhwtg4UnCdMG22xmdUILm9JFYHh3kbeg"
           });
       }
 	    
