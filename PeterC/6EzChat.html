@@ -299,32 +299,32 @@ Launch chat from button, not snap-in: <br>
 	embedded_svc.settings.devMode = false;
 
 	embedded_svc.init(
-				'https://embeddedservicede.my.salesforce.com',
-				'https://win19ss-test1-165c68767ee-16bddf06200.force.com/chc',
-				gslbBaseURL,
-				'00DB0000000K6Ez',
-				'Bright',
-				{
-					baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
-					deploymentId: '572B0000000LALF',
-					buttonId: '573B0000000LANm',
-					baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
-					eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB00000008PJVMA2_16571f7ccc2',
-					isOfflineSupportEnabled: true
-				}
-			);
-		};
+			'https://deevo-demo.my.salesforce.com',
+			'https://deevo-demo.my.site.com/ESWVincetest31662661955389vforcesite',
+			gslbBaseURL,
+			'00DB0000000gb6A',
+			'Chat_no_bot',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1-ia2.salesforceliveagent.com/content',
+				deploymentId: '572B0000000UaoL',
+				buttonId: '573B0000000UbBD',
+				baseLiveAgentURL: 'https://d.la1-c1-ia2.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'asdf',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
 
-		if (!window.embedded_svc) {
-			var s = document.createElement('script');
-			s.setAttribute('src', 'https://embeddedservicede.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-			s.onload = function() {
-				initESW(null);
-			};
-			document.body.appendChild(s);
-		} else {
-			initESW('https://test-service.force.com');
-		}
-	</script>
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://deevo-demo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </body>
 </html>
