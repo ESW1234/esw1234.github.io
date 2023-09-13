@@ -4,44 +4,37 @@
   <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 </head>
 <body>
-
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
-
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #FD0373;
+		background-color: #005290;
 		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #FD0373;
+		outline: 1px solid #005290;
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
-		
+		embedded_svc.settings.devMode = true;
+
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
 			'https://eswmiaw.stmfb.my.stm.salesforce.com',
-			'https://eswmiaw.stmfb.my.stm.salesforce-sites.com/forcedotcomsite',
+			'https://eswmiaw.stmfb.my.stm.site.com/ESWListViewTest1658771137056',
 			gslbBaseURL,
 			'00DS70000000Uae',
-			'Chat',
+			'ChatGroup2',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/content',
 				deploymentId: '572S700000002dV',
-				buttonId: '573S700000002od',
+				buttonId: '573S7000000036Q',
 				baseLiveAgentURL: 'https://d.la2-stmfb1-0-prd.stmfb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IS700000000FWMAY_1812b6b5a5e',
+				eswLiveAgentDevName: 'ChatGroup2',
 				isOfflineSupportEnabled: true
 			}
 		);
