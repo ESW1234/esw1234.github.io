@@ -4,12 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
+<h1>Disable Enhanced Omni-Channel Routing for agent availability</h1>
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
@@ -21,7 +16,6 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -43,7 +37,7 @@
 				buttonId: '573SB0000000jd6',
 				baseLiveAgentURL: 'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000000Vwf2AE_189d2d3d40a',
-				isOfflineSupportEnabled: true
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
