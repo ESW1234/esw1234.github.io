@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
+
+<script type='text/javascript'>	
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+
+</script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSG000000rQdt',
+				'MIAW',
+				'https://viviana-desktop-local.my.localhost.sfdcdev.site.com:7443/ESWMIAW1695163018059',
+				{
+					scrt2URL: 'https://viviana-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://viviana-desktop-local.my.localhost.sfdcdev.site.com:7443/ESWMIAW1695163018059/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+   
+</body>
+</html>
