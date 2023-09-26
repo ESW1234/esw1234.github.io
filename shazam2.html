@@ -1,0 +1,29 @@
+
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx0000006Ha7',
+				'Shaployment',
+				'https://shazam2.my.localhost.sfdcdev.site.com:6101/ESWShaployment1694826907347',
+				{
+					scrt2URL: 'http://shazam2.my.localhost.sfdcdev.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://shazam2.my.localhost.sfdcdev.site.com:6101/ESWShaployment1694826907347/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
