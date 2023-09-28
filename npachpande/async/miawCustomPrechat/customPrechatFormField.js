@@ -3,6 +3,10 @@ import { track, api, LightningElement } from "lwc";
 export default class CustomPrechatFormField extends LightningElement {
     choiceListDefaultValue;
 
+    /**
+     * Form field data.
+     * @type {Object}
+     */
     @api fieldInfo = {};
 
     @api
@@ -45,6 +49,10 @@ export default class CustomPrechatFormField extends LightningElement {
         return this.type === "ChoiceList".toLowerCase();
     }
 
+    /**
+     * Formats choiceList options and sets the default value.
+     * @type {Array}
+     */
     get choiceListOptions() {
         let choiceListOptions = [];
         const choiceListValues = [...this.fieldInfo.choiceListValues];
