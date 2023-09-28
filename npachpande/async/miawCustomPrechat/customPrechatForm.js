@@ -1,6 +1,10 @@
 import { track, api, LightningElement } from "lwc";
 
 export default class CustomPrechatForm extends LightningElement {
+    /**
+     * Deployment configuration data.
+     * @type {Object}
+     */
     @api configuration = {};
 
     startConversationLabel;
@@ -14,6 +18,10 @@ export default class CustomPrechatForm extends LightningElement {
         return this.prechatForm.formFields || [];
     }
 
+    /**
+     * Returns prechat form fields in a sorted display order.
+     * @type {Object[]}
+     */
     get fields() {
         let fields =  JSON.parse(JSON.stringify(this.prechatFormFields));
         this.addChoiceListValues(fields);
@@ -24,6 +32,9 @@ export default class CustomPrechatForm extends LightningElement {
         this.startConversationLabel = "Start Conversation";
     }
 
+    /**
+     * Adds choicelist values to fields of type choiceList (dropdown).
+     */
     addChoiceListValues(fields) {
         for (let field of fields) {
             if (field.type === "ChoiceList") {
@@ -33,6 +44,10 @@ export default class CustomPrechatForm extends LightningElement {
         }
     }
 
+    /**
+     * Iterates over and reports validity for each form field. Returns true if all the fields are valid.
+     * @type {boolean}
+     */
     isValid() {
         let isFormValid = true;
         this.template.querySelectorAll("c-custom-prechat-form-field").forEach(formField => {
@@ -43,6 +58,10 @@ export default class CustomPrechatForm extends LightningElement {
         return isFormValid;
     }
 
+    /**
+     * Gathers and submits prechat data to the app on start converation button click.
+     * @type {boolean}
+     */
     handleStartConversation() {
         const prechatData = {};
         if (this.isValid()) {
