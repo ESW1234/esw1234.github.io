@@ -10,17 +10,15 @@
 <h1> In APP Web Client for Org: cb2@ora3.ee</h1>
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true; 
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
 				'00DR00000008sRG',
 				'InAppDep',
-				'https://org28.test1.my.pc-rnd.salesforce.com',
+				'https://org24.test1.pc-rnd.force.com/ESWInAppDep1657918577219',
 				{
 					scrt2URL: 'https://org28.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -30,7 +28,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://org28.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://org24.test1.pc-rnd.force.com/ESWInAppDep1657918577219/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
