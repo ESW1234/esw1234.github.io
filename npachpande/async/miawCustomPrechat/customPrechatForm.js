@@ -19,7 +19,7 @@ export default class CustomPrechatForm extends LightningElement {
     }
 
     /**
-     * Returns prechat form fields in a sorted display order.
+     * Returns prechat form fields sorted by their display order.
      * @type {Object[]}
      */
     get fields() {
@@ -33,7 +33,7 @@ export default class CustomPrechatForm extends LightningElement {
     }
 
     /**
-     * Adds choicelist values to fields of type choiceList (dropdown).
+     * Adds values to fields of type choiceList (dropdown).
      */
     addChoiceListValues(fields) {
         for (let field of fields) {
