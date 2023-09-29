@@ -9,15 +9,16 @@ Agent: web4@na45a.org1
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<script type='text/javascript'>
+
+	<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.debugMode = true; 
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
 				'00DS7000000owIT',
-				'web4',
-				'https://iana45a.stmfa.my.stm.salesforce.com',
+				'web4_InboundFiles',
+				'https://iana45a.stmfa.my.stm.site.com/ESWweb4InboundFiles1696031690757',
 				{
 					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
 				}
@@ -27,6 +28,7 @@ Agent: web4@na45a.org1
 		}
 	};
 </script>
-<script type='text/javascript' src='https://iana45a.stmfa.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://iana45a.stmfa.my.stm.site.com/ESWweb4InboundFiles1696031690757/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
   </body>
   </html>
