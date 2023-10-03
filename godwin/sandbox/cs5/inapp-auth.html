@@ -1,1 +1,65 @@
+<html>
+   <head>
+       <title>CS5 MIAW Auth</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>CS5 MIAW Auth</h1>
+	<h2>admin@ccsorgmigracs5.com</h2>
+  <p> CS5	-> aus2s </p></br>
+  <p> prod9	-> prod4</p></br>
 
+	<!-- Edit page link -->
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+	  </script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true; 
+				
+			embeddedservice_bootstrap.init(
+				'00DO00000057A0g',
+				'CS5_MIAW_Auth_01',
+				'https://cssorgmigracs5.sfdctest.my.site.com/ESWCS5MIAWAuth011696288798296',
+				{
+					scrt2URL: 'https://cssorgmigracs5.sfdctest.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://cssorgmigracs5.sfdctest.my.site.com/ESWCS5MIAWAuth011696288798296/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+   </body></html>
