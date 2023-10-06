@@ -1,6 +1,6 @@
 import { track, api, LightningElement } from "lwc";
 
-export default class CustomPrechatForm extends LightningElement {
+export default class CustomPreChatForm extends LightningElement {
     /**
      * Deployment configuration data.
      * @type {Object}
@@ -50,7 +50,7 @@ export default class CustomPrechatForm extends LightningElement {
      */
     isValid() {
         let isFormValid = true;
-        this.template.querySelectorAll("c-custom-prechat-form-field").forEach(formField => {
+        this.template.querySelectorAll("c-custom-pre-chat-form-field").forEach(formField => {
             if (!formField.reportValidity()) {
                 isFormValid = false;
             }
@@ -62,10 +62,10 @@ export default class CustomPrechatForm extends LightningElement {
      * Gathers and submits prechat data to the app on start converation button click.
      * @type {boolean}
      */
-    handleStartConversation() {
+    onStartConversationClick() {
         const prechatData = {};
         if (this.isValid()) {
-            this.template.querySelectorAll("c-custom-prechat-form-field").forEach(formField => {
+            this.template.querySelectorAll("c-custom-pre-chat-form-field").forEach(formField => {
                 prechatData[formField.name] = String(formField.value);
             });
 
