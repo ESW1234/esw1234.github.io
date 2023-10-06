@@ -1,6 +1,6 @@
 import { track, api, LightningElement } from "lwc";
 
-export default class CustomPrechatFormField extends LightningElement {
+export default class CustomPreChatFormField extends LightningElement {
     choiceListDefaultValue;
 
     /**
