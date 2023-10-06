@@ -1,12 +1,12 @@
 <template>
     <template class="slds-m-around_medium" for:each={fields} for:item="field">
-        <c-custom-prechat-form-field key={field.name} 
+        <c-custom-pre-chat-form-field key={field.name} 
                                     field-info={field}>
-        </c-custom-prechat-form-field>
+        </c-custom-pre-chat-form-field>
     </template>
     <lightning-button label={startConversationLabel}  
                     title={startConversationLabel} 
-                    onclick={handleStartConversation} 
+                    onclick={onStartConversationClick} 
                     class="slds-m-left_x-small">
     </lightning-button>
 </template>
