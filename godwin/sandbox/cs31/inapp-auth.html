@@ -48,18 +48,19 @@
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
-			embeddedservice_bootstrap.init(
-				'00Dp0000000AHDG',
-				'CS31_MIAW_Auth',
-				'https://cssorgmigracs31.sfdctest.my.site.com/ESWCS31MIAWAuth1696289853976',
-				{
-					scrt2URL: 'https://cssorgmigracs31.sfdctest.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://cssorgmigracs31.sfdctest.my.site.com/ESWCS31MIAWAuth1696289853976/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-   </body></html>
+				embeddedservice_bootstrap.init(
+					'00Dp0000000AHDG',
+					'CS31_MIAW_Auth',
+					'https://cssorgmigracs31.sfdctest.my.site.com/ESWCS31MIAWAuth1696289853976',
+					{
+						scrt2URL: 'https://cssorgmigracs31.sfdctest.my.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://cssorgmigracs31.sfdctest.my.site.com/ESWCS31MIAWAuth1696289853976/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
