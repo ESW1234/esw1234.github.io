@@ -139,7 +139,126 @@
 	const EMBEDDED_MESSAGING_3P_STORAGE_CLEAR_ITEMS_EVENT_NAME = "ESW_3RDPARTY_STORAGE_CLEAR";
 	const EMBEDDED_MESSAGING_3P_STORAGE_SET_OBJECTS_EVENT_NAME = "ESW_3RDPARTY_STORAGE_SET_OBJECTS";
 	const APP_PRECHAT_SUBMIT = "ESW_APP_PRECHAT_SUBMIT";
+	const APP_SHOW_MINIMIZED_STATE_NOTIFICATION = "ESW_APP_SHOW_MINIMIZED_STATE_NOTIFICATION";
+	const EMBEDDED_MESSAGING_PUSH_PARENT_FRAME_LOGS = "EMBEDDED_MESSAGING_PUSH_PARENT_FRAME_LOGS";
 
+	/**
+     * Hex color constants used for the default chat icon fill colors.
+     */
+    const WHITE_HEX_CODE = "#FFFFFF";
+    const BLACK_HEX_CODE = "#1A1B1E";
+	const A11Y_CONTRAST_THRESHOLD = 3.0;
+    const HEX_BASE = 16;
+
+    /**
+     * Static class containing methods for determining whether two colors meet color contrast ratio accessibility
+     * guidelines.
+     * 
+     * See: https://www.w3.org/WAI/WCAG21/Techniques/general/G207
+     */
+    class ColorContrastAccessibility {
+        /**
+         * Checks if the contrast ratio between two colors meets a given threshold or an accessibility standard.
+         * 
+         * @param {string} colorA - The hexadecimal color value of the first color.
+         * @param {string} colorB - The hexadecimal color value of the second color.
+         * @param {number} [threshold=3.0] - Optional contrast threshold to check against, defaulted to a11y requirement of 3.0.
+         * @returns {boolean} Returns true if the contrast ratio is greater than or equal to the threshold, false otherwise.
+         *
+         * @example
+         * // Returns true
+         * const color1 = "#000080"; // Navy
+         * const color2 = "#FFFFFF"; // White
+         * const contrastIsValid = isValidContrastRatio(color1, color2);
+         */
+        static isValidContrastRatio(colorA, colorB, threshold = A11Y_CONTRAST_THRESHOLD) {
+            return this.getContrastRatio(colorA, colorB) >= threshold;
+        }
+
+        /**
+         * Calculates the contrast ratio between two colors according to the WCAG 2.0 formula.
+         *
+         * The contrast ratio is a measure of the difference in perceived brightness between two colors, used
+         * in accessibility guidelines to determine if the contrast between two colors meets the minimum contrast
+         * requirements for accessibility.
+         *
+         * The contrast ratio is calculated using the relative luminance of the two colors.
+         * WCAG 2.0 documentation: https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef
+         *
+         * @param {string} colorA - The hexadecimal color value of the first color
+         * @param {string} colorB - The hexadecimal color value of the second color.
+         * @returns {string} The contrast ratio between the two colors, rounded to two decimal places.
+         */
+        static getContrastRatio(colorA, colorB) {
+            const rgbColorA = this.convertHexToRGB(colorA);
+            const rgbColorB = this.convertHexToRGB(colorB);
+
+            const L1 = this.getRelativeLuminance(rgbColorA);
+            const L2 = this.getRelativeLuminance(rgbColorB);
+
+            const contrastRatio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+            return contrastRatio.toFixed(2);
+        }
+
+        /**
+         * Calculates the relative luminance of a color in the sRGB colorspace according to the WCAG 2.0 formula.
+         * 
+         * The relative luminance represents the relative brightness of a color in a colorspace, normalized to 0
+         * for darkest black and 1 for lightest white, and is used in accessibility guidelines for determining color
+         * contrast ratios.
+         * 
+         * WCAG 2.0 documentation: https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+         * 
+         * @param {{ r: number, g: number, b: number }} color - An object representing an sRGB color.
+         * @returns {number} The relative luminance of the input color in the range [0, 1].
+         */
+        static getRelativeLuminance(color) {
+            const [R, G, B] = Object.values(color).map(rgbValue => this.getSRGB(rgbValue));
+            return (0.2126 * R) + (0.7152 * G) + (0.0722 * B);
+        }
+
+        /**
+         * Calculates the sRGB value of an RGB color component according to the WCAG 2.0 formula.
+         *
+         * @param {number} color - One of R, G, B color values. 
+         * @returns {number} sRGB representation of an RGB color.
+         */
+        static getSRGB(color) {
+            // Normalize the color value to a range between [0, 1].
+            color /= 255;
+            return color <= 0.03928 ? color / 12.92 : Math.pow((color + 0.055) / 1.055, 2.4);
+        }
+
+        /**
+         * Converts a hexadecimal color value to its corresponding RGB representation.
+         * @param {string} hex - The hexadecimal color value to convert to RGB.
+         * @returns {{ r: number, g: number, b: number }} An object representing the RGB values.
+        */
+        static convertHexToRGB(hex) {
+            // Extract the red, green, and blue components from the hexadecimal value.
+            const red = parseInt(hex.slice(1, 3), HEX_BASE);
+            const green = parseInt(hex.slice(3, 5), HEX_BASE);
+            const blue = parseInt(hex.slice(5, 7), HEX_BASE);
+            return { r: red, g: green, b: blue };
+        }
+    }
+
+    /**
+     * Checks if the color contrast between default icon svg color (white) and the button color from the branding configuration
+     * meets the accessibility threshold guidelines.
+     * @returns {boolean} Returns true if the color contrast meets the accessibility threshold, otherwise false.
+     */
+    function hasConversationButtonColorContrastMetA11yThreshold() {
+        return ColorContrastAccessibility.isValidContrastRatio(WHITE_HEX_CODE, getButtonColorFromBrandingConfig());
+    };
+
+    /**
+     * Sets the icon fill color to black by setting a new CSS variable (property) if color contrast accessibility guidelines are not met between the default white icon color on FAB and the button color itself.
+     * @returns {void}
+     */
+    function setConversationButtonIconColor() {
+        document.documentElement.style.setProperty("--eswIconFillColor", BLACK_HEX_CODE);
+    }
 
 	/*********************************************************
 	 *		Embedded Messaging Public Events		*
@@ -375,6 +494,28 @@
 	 */
 	let setIdentityTokenResolve;
 
+	/**
+	 * Internal in-memory object populated with current-state and error logs from bootstrap for later to be process and pushed to Splunk in embeddedMessagingFrame#container.
+	 * @type {object}
+	 */
+	let embeddedMessagingLogs = {
+		currentStateLogs: [],
+		errorLogs: []
+	};
+
+	/**
+	 * This is a resolver function for when the app (container) has
+	 * finished initialization. This is used to send data from bootstrap to container only after app initialization.
+	 */
+	let resolveAppLoaded;
+
+	/**
+	 * Promise to be resolved when the app (container) has finished loading
+	 */
+	let appLoadedPromise = new Promise((resolve) => {
+		resolveAppLoaded = resolve;
+	});
+
 	/******************************************************
 						Web storage functions
 		This is copied from embeddedService:webStorageUtils.js.
@@ -423,7 +564,13 @@
 	function initializeWebStorage() {
 		let localStorageObj, sessionStorageObj;
 
-		conversationId = getConversationIdFromWebStorage() || generateUUID();
+		if (getConversationIdFromWebStorage()) {
+			conversationId = getConversationIdFromWebStorage();
+			log("initializeWebStorage", `Retreived existing conversation-id: ${conversationId} from web storage`);
+		} else {
+			conversationId = generateUUID();
+			log("initializeWebStorage", `Generated a new conversation-id: ${conversationId}`);
+		}
 
 		// Only create the structure if this is a new chat session
 		const storageObj = JSON.stringify({
@@ -447,7 +594,7 @@
 				"sessionStorageObj" : sessionStorageObj});
 		}
 
-		log("web storage initialized");
+		log("initializeWebStorage", `web storage initialized`);
 	}
 
 	/**
@@ -515,7 +662,7 @@
 				storageObj[conversationId][key] = value;
 			}
 			storage.setItem(storageKey, JSON.stringify(storageObj));
-			log(`${key} set in ${inLocalStorage ? "localStorage" : "sessionStorage"}`);
+			log("setItemInWebStorage", `${key} set in ${inLocalStorage ? "localStorage" : "sessionStorage"}`);
 
 			if (sendToThirdParty) {
 				sendPostMessageToSiteContextIframe(EMBEDDED_MESSAGING_3P_STORAGE_SET_ITEMS_EVENT_NAME,
@@ -533,7 +680,7 @@
 			const storageObj = JSON.parse(localStorage.getItem(storageKey)) || {};
 			// Remove top level stored item (e.g. JWT, conversationId)
 			delete storageObj[key];
-			if (storageObj[conversationId]) {
+			if (storageObj[conversationId] && storageObj[conversationId][key]) {
 				delete storageObj[conversationId][key];
 			}
 			localStorage.setItem(storageKey, JSON.stringify(storageObj));
@@ -542,13 +689,13 @@
 			const storageObj = JSON.parse(sessionStorage.getItem(storageKey)) || {};
 			// Remove top level stored item (e.g. JWT, conversationId)
 			delete storageObj[key];
-			if (storageObj[conversationId]) {
+			if (storageObj[conversationId] && storageObj[conversationId][key]) {
 				delete storageObj[conversationId][key];
 			}
 			sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
 		}
 
-		log(`${key} removed from web storage`);
+		log("removeItemInWebStorage", `${key} removed from web storage`);
 	}
 
 	/**
@@ -566,7 +713,7 @@
 			sessionStorage.removeItem(storageKey);
 		}
 		sendPostMessageToSiteContextIframe(EMBEDDED_MESSAGING_3P_STORAGE_CLEAR_ITEMS_EVENT_NAME, embeddedservice_bootstrap.settings.orgId);
-		log(`web storage cleared`);
+		log("clearWebStorage", `web storage cleared`);
 	}
 
 	/**
@@ -596,7 +743,10 @@
 		// Reset title notification
 		updateTitleNotification();
 
-		log(`Cleared in-memory data.`);
+		// Reset in-memory logs generated in bootstrap.
+		cleanUpEmbeddedMessagingLogs();
+
+		log("clearInMemoryData", `Cleared in-memory data.`);
 	}
 
 	/**
@@ -614,7 +764,7 @@
 					storageObj[updatedConversationId] = {};
 				}
 				sessionStorage.setItem(storageKey, JSON.stringify(storageObj));
-				log(`conversationId updated in sessionStorage`);
+				log("updateConversationIdInWebStorage", `conversationId updated in sessionStorage`);
 			}
 
 			if (embeddedservice_bootstrap.isLocalStorageAvailable) {
@@ -626,7 +776,7 @@
 					storageObj[updatedConversationId] = {};
 				}
 				localStorage.setItem(storageKey, JSON.stringify(storageObj));
-				log(`conversationId updated in localStorage`);
+				log("updateConversationIdInWebStorage", `conversationId updated in localStorage`);
 			}
 
 			conversationId = updatedConversationId;
@@ -685,10 +835,19 @@
 	/**
 	 * Log a message to the console.
 	 *
-	 * @param {...object} messages - Objects to be displayed comma-delimited.
+	 * @param {string} method - Name of caller.
+	 * @param {string} message - The log message to print and optionally push to Splunk.
+	 * @param {boolean} alwaysOutput - Always log to console regardless of devMode setting.
 	 */
-	function log() {
-		outputToConsole("log", [].slice.apply(arguments));
+	function log(method, message, alwaysOutput) {
+		outputToConsole("log", message, alwaysOutput);
+
+		const obj = {};
+		Object.assign(obj, {
+			method: method ? method : "",
+			stateMessage: message ? `[bootstrap][timestamp: ${Date.now()}] ${message}` : ""
+		});
+		processEmbeddedMessagingLogs(obj);
 	}
 
 	/**
@@ -708,15 +867,25 @@
 	/**
 	 * Log an error.
 	 *
+	 * @param {string} method - Name of caller.
 	 * @param {string} message - The error message to print.
+	 * @param {string} errorCode - Optional error code if the caller was a network request.
 	 * @param {boolean} alwaysOutput - Always log to console regardless of devMode setting.
 	 */
-	function error(message, alwaysOutput) {
+	function error(method, message, errorCode, alwaysOutput) {
 		if(message) {
 			outputToConsole("error", message, alwaysOutput);
 		} else {
 			outputToConsole("error", "EmbeddedServiceBootstrap responded with an unspecified error.", alwaysOutput);
 		}
+
+		const obj = {};
+		Object.assign(obj, {
+			method: method ? method : "",
+			errMessage: message ? `[bootstrap][timestamp: ${Date.now()}] ${message}` : "",
+			...(errorCode && {errCode: errorCode})
+		});
+		processEmbeddedMessagingLogs(null, obj);
 	}
 
 	/**
@@ -847,7 +1016,7 @@
 
 			return svg;
 		} else {
-			error("Invalid icon data.");
+			error("renderSVG", `Invalid icon data.`);
 		}
 
 		return undefined;
@@ -915,7 +1084,7 @@
 	 */
 	function storeJwtInWebStorage(jwt) {
 		if(typeof jwt !== "string") {
-			error(`Expected to receive string, instead received: ${jwt}.`);
+			error("storeJwtInWebStorage", `Expected to receive string, instead received: ${jwt}.`);
 		}
 
 		setItemInWebStorage(STORAGE_KEYS.JWT, jwt);
@@ -928,7 +1097,7 @@
 	 */
 	function storeFailedMessagesInWebStorage(failedMessages) {
 		if (typeof failedMessages !== "object") {
-			error(`Expected to receive object, instead received: ${failedMessages}.`);
+			error("storeFailedMessagesInWebStorage", `Expected to receive object, instead received: ${failedMessages}.`);
 			return;
 		}
 
@@ -967,7 +1136,9 @@
 			language: embeddedservice_bootstrap.settings.language,
 			imageCompressionOptions,
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
-			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration})
+			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration}),
+			hasConversationButtonColorContrastMetA11yThreshold: hasConversationButtonColorContrastMetA11yThreshold(),
+			hostUrl: window.location.href
 		});
 
 		return finalConfigurationData || {};
@@ -1115,12 +1286,15 @@
 					case APP_PRECHAT_SUBMIT:
 						handlePrechatSubmit(e.data.data);
 						break;
+					case APP_SHOW_MINIMIZED_STATE_NOTIFICATION:
+						handleShowMinimizedStateNotification();
+						break;
 					default:
 						warning("Unrecognized event name: " + e.data.method);
 						break;
 				}
 			} else {
-				error("Unexpected message origin: " + e.origin);
+				error("handleMessageEvent", `Unexpected message origin: ${e.origin}`);
 			}
 		}
 	}
@@ -1148,7 +1322,7 @@
 				// Updating only when both old & new id is non-null
 				// So that it doesn't overwrite data on other tabs after reset
 				if (oldConversationId && newConversationId && oldConversationId !== newConversationId) {
-					log("ConversationId change detected in web storage");
+					log("handleStorageEvent", "ConversationId change detected in web storage");
 					updateConversationIdInWebStorage(newConversationId);
 				}
 			}
@@ -1164,7 +1338,7 @@
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_READY_EVENT_NAME);
 		} catch(err) {
 			hasEmbeddedMessagingReadyEventFired = false;
-			error(`Something went wrong in firing onEmbeddedMessagingReady event ${err}.`);
+			error("emitEmbeddedMessagingReadyEvent", `Something went wrong in firing onEmbeddedMessagingReady event ${err}.`);
 		}
 	}
 
@@ -1177,7 +1351,7 @@
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME);
 		} catch(err) {
 			hasEmbeddedMessagingInitEventFired = false;
-			error(`Something went wrong in firing onEmbeddedMessagingInitSuccess event ${err}.`);
+			error("emitEmbeddedMessagingInitSuccessEvent", `Something went wrong in firing onEmbeddedMessagingInitSuccess event ${err}.`);
 		}
 	}
 
@@ -1190,7 +1364,7 @@
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME);
 		} catch(err) {
 			hasEmbeddedMessagingInitEventFired = false;
-			error(`Something went wrong in firing onEmbeddedMessagingInitError event ${err}.`);
+			error("emitEmbeddedMessagingInitErrorEvent", `Something went wrong in firing onEmbeddedMessagingInitError event ${err}.`);
 		}
 	}
 
@@ -1307,6 +1481,7 @@
 				embeddedMessagingFrame.tabIndex = "0";
 				embeddedMessagingFrame.setAttribute("aria-hidden", "false");
 			}
+			log("setFilePreviewFrameVisibility", `Full size file preview ${Boolean(showFilePreviewFrame) ? "shown" : "hidden"}`);
 		}
 	}
 
@@ -1387,7 +1562,7 @@
 				"/embedded-service-config?orgId=" + embeddedservice_bootstrap.settings.orgId + "&esConfigName=" +
 				embeddedservice_bootstrap.settings.eswConfigDevName + "&language=" + embeddedservice_bootstrap.settings.language;
 
-		return sendXhrRequest(configURL, "GET");
+		return sendXhrRequest(configURL, "GET", "getConfigurationData");
 	}
 
 	/**
@@ -1403,9 +1578,12 @@
 		const endpoint = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION +
 				"/businesshours?orgId=" + orgId + "&esConfigName=" + eswConfigDevName;
 
-		return sendXhrRequest(endpoint, "GET").then(
+		return sendXhrRequest(endpoint, "GET", "getBusinessHoursInterval").then(
 			response => {
 				const businessHoursInfo = response && response.businessHoursInfo;
+
+				log("getBusinessHoursInterval", "Successfully retrieved Business Hours data");
+
 				if (businessHoursInfo && Array.isArray(businessHoursInfo.businessHours) && businessHoursInfo.businessHours.length > 0 && (isChannelMenuDeployment() || typeof embeddedservice_bootstrap.settings.hideChatButtonOnLoad !== "boolean")) {
 					businessHoursInterval = {
 						startTime: businessHoursInfo.businessHours[0].startTime,
@@ -1416,7 +1594,7 @@
 			}
 		).catch(
 			(e) => {
-				error("Error loading business hours metadata.", e);
+				error("getBusinessHoursInterval", `Error loading business hours metadata: ${e}`, e);
 			}
 		);
 	}
@@ -1425,7 +1603,9 @@
 	 * Send an HTTP request using fetch with a specified path, and method.
 	 * @returns {Promise}
 	 */
-	function sendXhrRequest(apiPath, method) {
+	function sendXhrRequest(apiPath, method, caller) {
+		const startTime = performance.now();
+
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 
@@ -1437,6 +1617,8 @@
 				// DONE === The operation is complete, per https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState.
 				// Business hours return 204 if no business hours is associated with the deployment.
 				if(state && state.readyState === state.DONE || state.status === 204) {
+					const timeElapsed = ((performance.now() - startTime) / 1000).toFixed(3); // Read the timeElapsed in seconds and round the value to 3 decimal places.
+
 					if(state.status === 200 || state.status === 204) {
 						const responseJson = state.responseText ? JSON.parse(state.responseText) : state.responseText;
 
@@ -1444,6 +1626,7 @@
 					} else {
 						reject(state.status);
 					}
+					log("sendXhrRequest", `${caller ? caller : apiPath} took ${timeElapsed} seconds and returned with the status code ${state.status}`);
 				}
 			};
 			xhr.send();
@@ -1462,7 +1645,7 @@
 		if (getAuthMode() === AUTH_MODE.AUTH) {
 			return handleGetAuthenticatedJwt().then((jwtData) => {
 				handleListConversation().then((conversationData) => {
-					log("finished joining verified user conversation");
+					log("initializeConversationState", "finished joining verified user conversation");
 					sendConfigurationToAppIframe(jwtData, conversationData);
 				}).catch(() => {
 					emitEmbeddedMessagingInitErrorEvent();
@@ -1472,7 +1655,7 @@
 			if (!isPrechatStateEnabled()) {
 				return handleGetUnauthenticatedJwt().then((jwtData) => {
 					handleCreateNewConversation(hiddenPrechatFields).then((conversationData) => {
-						log("finished creating conversation");
+						log("initializeConversationState", "finished creating conversation");
 						sendConfigurationToAppIframe(jwtData, conversationData);
 					}).catch(() => {
 						emitEmbeddedMessagingInitErrorEvent();
@@ -1495,11 +1678,16 @@
 	 */
 	function sendConfigurationToAppIframe(jwtData, conversationData) {
 		let configData = prepareConfigurationDataForIframeWindow();
+
 		if (jwtData) {
 			configData = Object.assign(configData, { jwtData });
 		}
 		if (conversationData) {
 			configData = Object.assign(configData, { conversationData });
+		}
+		if (embeddedMessagingLogs.currentStateLogs.length || embeddedMessagingLogs.errorLogs.length) {
+			configData = Object.assign(configData, { pendingLogs: embeddedMessagingLogs });
+			cleanUpEmbeddedMessagingLogs();
 		}
 		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_CONFIG_EVENT_NAME, configData);
 	}
@@ -1556,10 +1744,11 @@
 		return getContinuityJwt()
 			.then(response => {
 				storeJwtInWebStorage(response.accessToken);
+				log("handleGetContinuityJwt", "Sucessfully retreived a Continuity JWT");
 				return response;
 			})
 			.catch(e => {
-				error(`Failed to get continuity JWT: ${e && e.message ? e.message : e}.`);
+				error("handleGetContinuityJwt", `Failed to get Continuity JWT: ${e && e.message ? e.message : e}.`);
 				// Reset the client to the initial state when we fail to fetch a continuity jwt.
 				// This will mainly occur when a user returns to unverified conversation after the messaging jwt expires.
 				resetClientToInitialState();
@@ -1578,7 +1767,10 @@
 		return sendRequest(
 			apiPath,
 			"GET",
-			"cors"
+			"cors",
+			null,
+			null,
+			"getContinuityJwt"
 		).then(response => {
 			if (!response.ok) {
 				throw response;
@@ -1596,6 +1788,7 @@
 		return getUnauthenticatedJwt()
 			.then(response => {
 				storeJwtInWebStorage(response.accessToken);
+				log("handleGetUnauthenticatedJwt", "Successfully retreived an Unauthenticated JWT");
 				return response;
 			})
 			.catch(e => {
@@ -1649,10 +1842,11 @@
         return getAuthenticatedJwt()
 			.then(response => {
 				storeJwtInWebStorage(response.accessToken);
+				log("handleGetAuthenticatedJwt", "Successfully retreived an Authenticated JWT");
 				return response;
 			})
 			.catch(e => {
-				error(`Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
+				error("handleGetAuthenticatedJwt", `Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
 				handleJwtRetrievalFailure();
 			});
     }
@@ -1683,7 +1877,7 @@
 
 		if (customerIdentityToken && validateJwt(customerIdentityToken)) {
 			// Send fetch request if identity token has not expired.
-			return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody)
+			return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, "getAuthenticatedJwt")
 				.then(response => {
 					if (!response.ok) {
 						throw response;
@@ -1709,7 +1903,7 @@
 	function handleRegisterDeviceCapabilities() {
 		registerDeviceCapabilities()
 		.then(() => {
-			log("Successfully Registered Device Capabilities.");
+			log("handleRegisterDeviceCapabilities", "Successfully Registered Device Capabilities.");
 		})
 		.catch(err => {
 			handleRegisterDeviceCapabilitiesError(err);
@@ -1721,17 +1915,17 @@
 	 */
 	function handleRegisterDeviceCapabilitiesError(err) {
 		if (err && err.status && err.status >= 500 && err.status <= 599) {
-			error(`Something went wrong in Registering Device Capabilities: ${err && err.statusText ? err.statusText : err.status}. Retrying the request.`);
+			error("handleRegisterDeviceCapabilitiesError", `Something went wrong in Registering Device Capabilities: ${err && err.statusText ? err.statusText : err.status}. Retrying the request.`, err.status);
 			registerDeviceCapabilities()
 			.then(() => {
-				log("Successfully Registered Device Capabilities after retrying.");
+				log("handleRegisterDeviceCapabilitiesError", `Successfully Registered Device Capabilities after retrying.`);
 			})
 			.catch(err => {
-				error(`Failed to Register Device Capabilities after retrying: ${err && err.statusText ? err.statusText : err.status}`);
+				error("handleRegisterDeviceCapabilitiesError", `Failed to Register Device Capabilities after retrying: ${err && err.statusText ? err.statusText : err.status}`, err.status);
 				return;
 			});
 		}
-		error(`Something went wrong while registering device capabilities: ${err && err.statusText ? err.statusText : (err.status ? err.status : err)}`);
+		error("handleRegisterDeviceCapabilitiesError", `Something went wrong while registering device capabilities: ${err && err.statusText ? err.statusText : (err.status ? err.status : err)}`);
 	}
 
 	/**
@@ -1747,7 +1941,8 @@
 			"POST",
 			"cors",
 			null,
-			{}
+			{},
+			"registerDeviceCapabilities"
 		);
 	}
 
@@ -1755,37 +1950,35 @@
      * List existing open conversations for this end-user.
      *
      * If this end user is a part of 0 open conversations and pre-chat is not enabled, create a new one.
-     * If this end user is a part of more than 1 open conversation, throw an error.
-     * If this end user is a part of exactly 1 open conversation, re-join the conversation.
-     *
-     * TODO - W-11772963 Gracefully handle the error thrown when the end-user is a part of more than 1 open conversation.
+	 * If this end user is a part of exactly 1 open conversation, re-join the conversation.
+     * If this end user is a part of more than 1 open conversation, load the conversation with the latest startTimestamp.
+	 *
+	 * Note:
+	 * It's possible there's a delay in scrt2 propagating conversation information to core if this conversation has just ended.
+	 * Check for an endTimestamp for both open and closed conversations.
+	 * If the conversation's `endTimestamp` value is not 0, the conversation is closed.
 	 *
 	 * @param isPageLoad - we are attempting to continue an existing session on script load
      * @returns {*}
      */
     function handleListConversation(isPageLoad) {
         return listConversation(false).then(response => {
-			if (response.conversations && response.conversations.length === 1 && response.conversations[0].endTimestamp === 0) {
-				/**
-				 * It's possible there's a delay in scrt2 propagating conversation information to core if this conversation has just ended.
-				 * Check for an endTimestamp for both open and closed conversations.
-				 * If the conversation's `endTimestamp` value is not 0, the conversation is closed.
-				 */
-				let existingConversationData = response.conversations[0];
+			let openConversations = [];
 
-				if (!isString(existingConversationData.conversationId)) {
-					// To restore conversation status and entries, conversationId must be set!
-					throw new Error(`Invalid conversation identifier: ${existingConversationData.conversationId}.`);
-				}
+			if (!response.conversations || !Array.isArray(response.conversations)) {
+				throw new Error(`Invalid conversation list: ${response.conversations}.`);
+			}
 
-				existingConversationData.isExistingConversation = true;
-				return existingConversationData;
-			} else if (response.conversations && response.conversations.length === 0) {
+			// Filter open conversations, i.e conversations with endTimestamp === 0
+			openConversations = response.conversations.filter((conversation) => conversation.endTimestamp === 0);
+
+			if (openConversations.length === 0) {
 				// No existing conversation. If this is page load, it means we have stale data;
 
 				if (isPageLoad) {
 					//delete stale data, show button as on normal page load
 					let existingConversationId = getConversationIdFromWebStorage();
+					log("handleListConversation", `No open conversation found, deleting stale data with conversationId: ${existingConversationId} from web storage`, true);
 					warning("No open conversation found, deleting stale data with conversationId " + existingConversationId + " from web storage");
 					resetClientToInitialState();
 
@@ -1794,18 +1987,34 @@
 
 				if (!isPrechatStateEnabled()) {
 					// Pre-chat state is not enabled - start a new conversation.
+					log("handleListConversation", "No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
 					warning("No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
 					return handleCreateNewConversation(hiddenPrechatFields).then((newConversationData) => {
 						return newConversationData;
 					});
-				} else {
-					// No-op since pre-chat is enabled.
-					return null;
 				}
-			} else if (response.conversations && response.conversations.length > 1) {
-				throw new Error(`Expected the end user to be a participant of one open conversation, instead they are participating in ${response.conversations.length} conversations.`);
+				// No-op since pre-chat is enabled.
+				return null;
 			}
+
+			if (openConversations.length > 1) {
+				log("handleListConversation", `Expected the user to be participating in 1 open conversation but instead found ${openConversations.length}. Loading the conversation with latest startTimestamp.`);
+				warning(`Expected the user to be participating in 1 open conversation but instead found ${openConversations.length}. Loading the conversation with latest startTimestamp.`);
+				openConversations.sort((convA, convB) => convB.startTimestamp - convA.startTimestamp);
+			}
+
+			let existingConversationData = openConversations[0];
+
+			if (!isString(existingConversationData.conversationId)) {
+				// To restore conversation status and entries, conversationId must be set!
+				throw new Error(`Invalid conversation identifier: ${existingConversationData.conversationId}.`);
+			}
+
+			log("handleListConversation", `Successfully retrieved existing conversation`);
+			existingConversationData.isExistingConversation = true;
+			return existingConversationData;
         }).catch(e => {
+			error("handleListConversation", `Failed to list conversation entries: ${e && e.message ? e.message : e}.`);
             throw new Error(`Failed to list conversation entries: ${e && e.message ? e.message : e}.`);
         });
     }
@@ -1830,7 +2039,8 @@
 			"POST",
 			"cors",
 			null,
-			{ includeClosedConversations }
+			{ includeClosedConversations },
+			"listConversation"
 		).then(response => response.json());
 	};
 
@@ -1841,6 +2051,7 @@
      */
 	function handleGetJwtError(e) {
 		if (e && e.status && e.status === 401) {
+			error("handleGetJwtError", `Unauthorized error caused by JWT expiration. Attempt to get another JWT`, e.status);
 			// "Unauthorized" error caused by JWT expiration. Attempt to get another JWT.
 			return handleGetUnauthenticatedJwt().catch(err => {
 				throw new Error(err);
@@ -1912,17 +2123,17 @@
 	function handleCreateNewConversationError(e, prechatFields) {
 		if (!e || !e.status || (e.status >= 500 && e.status <= 599)) {
 			// Retry createConversation in case of server-side errors
-			error(`Something went wrong while creating a conversation: ${e && e.message ? e.message : e}. Re-trying the request.`);
+			error("handleCreateNewConversationError", `Something went wrong while creating a conversation: ${e && e.message ? e.message : e}. Re-trying the request.`, e.status);
 			return createNewConversation(prechatFields).then((conversationResponse) => {
 				handleRegisterDeviceCapabilities();
 				return conversationResponse;
 			}).catch(err => {
-				error(`Create conversation request failed again: ${err && err.message ? err.message : err}.`);
+				error("handleCreateNewConversationError", `Create conversation request failed again: ${err && err.message ? err.message : err}.`, err.status ? err.status : undefined);
 				throw err;
 			});
 		}
 		// Throw error in case of other errors.
-		error(`Something went wrong while creating a conversation: ${e && e.message ? e.message : e}`);
+		error("handleCreateNewConversationError", `Something went wrong while creating a conversation: ${e && e.message ? e.message : e}`);
 		throw e;
 	}
 
@@ -1946,7 +2157,8 @@
 			{
 				...(routingAttributes && { routingAttributes }),
 				conversationId
-			}
+			},
+			"createNewConversation"
 		).then(response => response.json());
 	};
 
@@ -1962,7 +2174,7 @@
 	 *                               uploading a file. For file attachments, request body must be binary data.
 	 * @returns {Promise}
 	 */
-	function sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody) {
+	function sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller=apiPath) {
 		const messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
 		const headers = requestHeaders ?
 			requestHeaders :
@@ -1971,6 +2183,7 @@
 				...(messagingJwt && { "Authorization": "Bearer " + messagingJwt })
 			};
 		const body = requestBody ? JSON.stringify(requestBody) : undefined;
+		const startTime = performance.now();
 
 		return fetch(
 			apiPath,
@@ -1981,6 +2194,9 @@
 				...(body && { body })
 			}
 		).then((response) => {
+			const timeElapsed = ((performance.now() - startTime) / 1000).toFixed(3); // Read the timeElapsed in seconds and round the value to 3 decimal places.
+			log("sendFetchRequest", `${caller} took ${timeElapsed} seconds and returned with the status code ${response.status}`);
+
 			if (response.status === 401) {
 				clearWebStorage();
 			}
@@ -2003,13 +2219,13 @@
 	 * @param {string} jwt - (Optional) JWT Token to use. If none provided will look in web storage for one
 	 * @returns {Promise}
 	 */
-	function sendRequest(apiPath, method, mode, requestHeaders, requestBody) {
+	function sendRequest(apiPath, method, mode, requestHeaders, requestBody, caller) {
 		const messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
 
 		if (getAuthMode() === AUTH_MODE.AUTH) {
 			// Send fetch request if ia-message jwt has not expired.
 			if (messagingJwt && validateJwt(messagingJwt)) {
-				return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody);
+				return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller);
 			}
 
 			// If the ia-message JWT has expired, check whether the identity token has expired.
@@ -2027,7 +2243,7 @@
 				handleIdentityTokenExpiry({apiPath, method, mode, requestHeaders, requestBody, resolve});
 			});
 		}
-		return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody);
+		return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller);
 	};
 
 	/**
@@ -2139,9 +2355,9 @@
 	 */
 	function getSiteURL() {
 		try {
-			return embeddedservice_bootstrap.settings.siteURL;
+			return window.location.origin + "/godwin";
 		} catch(err) {
-			error("Error getting Site URL: " + err);
+			error("getSiteURL", `Error getting Site URL: ${err}`);
 		}
 	}
 
@@ -2509,7 +2725,7 @@
 	 */
 	function handleAuraSite(iframe) {
 		if(!iframe) {
-			error("Failed to load aura app. Iframe is undefined.");
+			error("handleAuraSite", `Failed to load aura app. Iframe is undefined.`);
 		}
 
 		iframe.src = getSiteURL() + "/embeddedService/embeddedService.app";
@@ -2523,7 +2739,7 @@
 		let siteURL = getSiteURL();
 
 		if(!iframe) {
-			error("Failed to load LWR site. Iframe is undefined.");
+			error("handleLWRSite", `Failed to load LWR site. Iframe is undefined.`);
 		}
 
 		// Ensure a '/' is at the end of an LWR URI so a redirect doesn't occur.
@@ -2550,25 +2766,27 @@
 					// Change the button to a loading icon.
 					setLoadingStatusForButton();
 
+					log("handleClick", `Conversation button clicked`);
+
 					// Create iframes and load app.
 					generateIframes().then(() => {
 						resolve();
 					}).catch((err) => {
-						error(err);
+						error("handleClick", err.message);
 						reject(err);
 					});
 
 					// Initialize conversation state and fetch messaging JWTs.
 					initializeConversationState().catch((err) => {
 						emitEmbeddedMessagingInitErrorEvent();
-						error(err);
+						error("handleClick", err.message);
 						reject(err);
 					});
 				} else if((button && button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) && (frame && frame.classList && frame.classList.contains(MODAL_ISMAXIMIZED_CLASS))) {
 					// Minimize the chat if it is already maximized.
 					sendPostMessageToAppIframe(APP_MINIMIZE_EVENT_NAME);
 				} else {
-					error("Something went wrong handling button click event.");
+					error("handleClick", `Something went wrong handling button click event.`);
 				}
 			} catch(e) {
 				reject(e);
@@ -2690,6 +2908,8 @@
 			button.classList.add("no-hover");
 		}
 
+		// Send any unsent pending logs from bootstrap to container, once the app/container is finished loading.
+		resolveAppLoaded();
 		handleInitializationSuccess();
 	}
 
@@ -2719,14 +2939,13 @@
 		try {
 			// Clear existing items stored in current conversation
 			clearWebStorage(isSecondaryTab);
+			// Clear existing items stored in current conversation from in-memory
+			clearInMemoryData();
 			// Re-init web storage, for subsequent conversations
 			initializeWebStorage();
 		} catch(err) {
-			error("Error on clearing web storage for the previously ended conversation: " + err);
+			error("resetClientToInitialState", `Error on clearing web storage for the previously ended conversation: ${err}`);
 		}
-
-		// Clear existing items stored in current conversation from in-memory
-		clearInMemoryData();
 
 		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
 		resolveClearSessionPromise();
@@ -2743,6 +2962,7 @@
 		if (getAuthMode() === AUTH_MODE.UNAUTH) {
 			embeddedservice_bootstrap.generateMarkup();	
 		}
+		log("resetClientToInitialState", `Client reset to initial state`);
 	}
 
 
@@ -2834,6 +3054,10 @@
 	 * @return {HTMLElement}
 	 */
 	function createConversationButtonIcon() {
+		if (!hasConversationButtonColorContrastMetA11yThreshold()) {
+            setConversationButtonIconColor();
+        }
+
 		const buttonIconWrapper = document.createElement("div");
 		const buttonIconElement = renderSVG(DEFAULT_ICONS.CHAT);
 
@@ -2981,6 +3205,48 @@
 		return buttonElement;
 	}
 
+	/**
+	 * Processes embedded messaging logs generated from bootstrap.js. When a log is generated,
+	 * 1. it is directly sent to the container via postMessage if the container has finished initialization or kept in-memory otherwise.
+	 * 2. reset in-memory storage if log(s) are sent to the container
+	 *
+	 * @param {object} currentStateLogObj - a standard/current state log object generated from a log statement in bootstrap, for a change of event
+	 * @param {object} errorLogObj - an error log object generated from an error statement in bootstrap, for an encountered error
+	 */
+	function processEmbeddedMessagingLogs(currentStateLogObj, errorLogObj) {
+		currentStateLogObj && embeddedMessagingLogs.currentStateLogs.push(currentStateLogObj);
+		errorLogObj && embeddedMessagingLogs.errorLogs.push(errorLogObj);
+
+		appLoadedPromise.then(() => {
+			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_PUSH_PARENT_FRAME_LOGS, {pendingLogs: embeddedMessagingLogs});
+			cleanUpEmbeddedMessagingLogs();
+		});
+	}
+
+	/**
+	 * Logs web storage items (top level keys) during initialization.
+	 */
+	function logWebStorageItemsOnInit() {
+		let localStorageObjects = [];
+		let sessionStorageObjects = [];
+
+		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
+			localStorageObjects = Object.keys(JSON.parse(localStorage.getItem(storageKey)));
+			log("logWebStorageItemsOnInit", `Local storage items on init: ${localStorageObjects}`);
+		}
+		if (embeddedservice_bootstrap.isSessionStorageAvailable) {
+			sessionStorageObjects = Object.keys(JSON.parse(sessionStorage.getItem(storageKey)));
+			log("logWebStorageItemsOnInit", `Session storage items on init: ${sessionStorageObjects}`);
+		}
+	}
+
+	/**
+	 * Clean up logs generated from bootsrap.js in-memory.
+	 */
+	function cleanUpEmbeddedMessagingLogs() {
+		embeddedMessagingLogs = {currentStateLogs: [], errorLogs: []};
+	}
+
 	/*************************************************************
 	*		Embedded Messaging User Verification Public API      *
 	**************************************************************/
@@ -3027,19 +3293,19 @@
 
 		// Cannot be invoked before `afterInit` event has been emitted.
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Method can’t be invoked before the onEmbeddedMessagingReady event is fired.`);
+			error("setIdentityToken", `Method can’t be invoked before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
 		// Check whether we are in authorization mode.
 		if (getAuthMode() !== AUTH_MODE.AUTH) {
-			error(`User Verification isn’t enabled in Messaging Settings.`);
+			error("setIdentityToken", `User Verification isn’t enabled in Messaging Settings.`);
 			return false;
 		}
 
 		// Perform validation on the identity token data supplied.
 		if (!validateIdentityTokenData(identityTokenData)) {
-			error(`Invalid identity token parameter passed into the setIdentityToken method. Specify a valid object containing the token data.`);
+			error("setIdentityToken", `Invalid identity token parameter passed into the setIdentityToken method. Specify a valid object containing the token data.`);
 			return false;
 		}
 
@@ -3049,13 +3315,13 @@
 
 		// Only JWT-based identity tokens are supported in 242.
 		if (typeof identityTokenType !== "string" || identityTokenType.trim().toUpperCase() !== ID_TOKEN_TYPE.JWT) {
-			error(`Unsupported identity token. Only JWT-based identity tokens are supported.`);
+			error("setIdentityToken", `Unsupported identity token. Only JWT-based identity tokens are supported.`);
 			return false;
 		}
 
 		// Perform validation on the identity token received.
 		if (!validateIdentityToken(identityTokenType, token)) {
-			error(`Invalid identity token passed into the setIdentityToken method.`);
+			error("setIdentityToken", `Invalid identity token passed into the setIdentityToken method.`);
 			return false;
 		}
 
@@ -3101,6 +3367,7 @@
 			// Cannot be invoked before `afterInit` event has been emitted.
 			if (!hasEmbeddedMessagingReadyEventFired) {
 				reject(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+				error("clearSession", `Method cannot be invoked before the onEmbeddedMessagingReady event is fired.`);
 				return;
 			}
 
@@ -3152,6 +3419,7 @@
 	 */
 	function renewAuthenticatedJwt(pendingRequest) {
 		return new Promise(resolve => {
+			log("renewAuthenticatedJwt", `Renewing Authenticated JWT`);
             handleGetAuthenticatedJwt().then(() => {
                 handlePendingRequest(pendingRequest);
                 resolve();
@@ -3214,7 +3482,7 @@
 		// Promise returned by Promise.race is resolved if a valid token is received before timeout, else it's rejected.
 		Promise.race([setIdentityTokenPromise, setIdentityTokenPromiseTimeout])
 			.then(() => {
-				log(`Valid identity token found. Fetch authenticated JWT.`);
+				log("handleIdentityTokenExpiry", `Valid identity token found. Fetch authenticated JWT.`);
 				// Process pending request(s).
 				if (pendingRequest.apiPath.includes(ACCESS_TOKEN_PATH)) {
 					// Handle authenticated JWT request separately, because we only need to fetch the JWT in this case.
@@ -3229,7 +3497,7 @@
 				}
 			})
 			.catch(() => {
-				error(`Failed to fetch authenticated JWT due to setIdentityToken timeout or other error. Clearing the messaging session on all tabs.`);
+				error("handleIdentityTokenExpiry", `Failed to fetch authenticated JWT due to setIdentityToken timeout or other error. Clearing the messaging session on all tabs.`);
 				handleClearUserSession(false, false);
 			});
 	}
@@ -3364,13 +3632,13 @@
 
 			// Log JWT expiry to console if devMode is on and JWT has expired.
 			if (Boolean(embeddedservice_bootstrap.settings.devMode) && !isValid) {
-				log(`JWT has expired at ${(new Date(jwtPayload.exp * 1000)).toString()}`);
+				log("validateJwt", `JWT has expired at ${(new Date(jwtPayload.exp * 1000)).toString()}`);
 			}
 
 			return isValid;
 		} catch (e) {
 			if (Boolean(embeddedservice_bootstrap.settings.devMode)) {
-				error(`JWT validation failed: ${e.message}`);
+				error("validateJwt", `JWT validation failed: ${e.message}`);
 			}
 			return false;
 		}
@@ -3387,7 +3655,7 @@
 		try {
 			authMode = embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode;
 		} catch (e) {
-			error(`Failed to retrieve auth mode flag: ${e.message}`);
+			error("getAuthMode", `Failed to retrieve auth mode flag: ${e.message}`);
 		}
 		return authMode;
 	}
@@ -3403,9 +3671,9 @@
 	}
 
 	/****************************************
-	 *		    HIDDEN PRECHAT API          *
+	 *		HIDDEN/VISIBLE PRECHAT API      *
 	/****************************************/
-	/* Hidden Prechat functions exposed in window.embeddedservice_bootstrap.prechatAPI for setting/updating and removing hidden prechat fields.
+	/* Hidden/Visible Prechat functions exposed in window.embeddedservice_bootstrap.prechatAPI for setting/updating and removing hidden/visible prechat fields.
 	 *
 	 * @class
 	 */
@@ -3426,6 +3694,15 @@
 	}
 
 	/**
+	 * Validates the Visible Prechat fields from the configuration response object.
+	 * @return {boolean} True if valid and False otherwise.
+	 */
+	function validateVisiblePrechatFieldsFromConfig() {
+		return Array.isArray(embeddedservice_bootstrap.settings.embeddedServiceConfig.forms) && embeddedservice_bootstrap.settings.embeddedServiceConfig.forms.length
+				&& Array.isArray(embeddedservice_bootstrap.settings.embeddedServiceConfig.forms[0].formFields) && embeddedservice_bootstrap.settings.embeddedServiceConfig.forms[0].formFields.length;
+	}
+
+	/**
 	 * Validates a Hidden Pre-Chat field set by host in setHiddenPrechatFields method.
 	 * @return {boolean} True if fieldName and/or fieldValue are valid and False otherwise.
 	 */
@@ -3437,19 +3714,19 @@
 		const hiddenPrechatField = hiddenPrechatFieldsFromConfig.find(fields => fields.name === fieldName);
 
 		if (!hiddenPrechatFieldNamesFromConfig.includes(fieldName)) {
-			error(`setHiddenPrechatFields called with an invalid field name ${fieldName}.`);
+			error("validateHiddenPrechatField", `setHiddenPrechatFields called with an invalid field name ${fieldName}.`);
 			return false;
 		}
 		if (typeof fieldValue !== "string") {
-			error(`You must specify a string for the ${fieldName} field in setHiddenPrechatFields instead of a ${typeof fieldValue} value.`);
+			error("validateHiddenPrechatField", `You must specify a string for the ${fieldName} field in setHiddenPrechatFields instead of a ${typeof fieldValue} value.`);
 			return false;
 		}
 		if (fieldValue.toLowerCase().includes("javascript:") || fieldValue.toLowerCase().includes("<script>")) {
-			error(`JavaScript isn't allowed in the value for the ${fieldName} field when calling setHiddenPrechatFields.`);
+			error("validateHiddenPrechatField", `JavaScript isn't allowed in the value for the ${fieldName} field when calling setHiddenPrechatFields.`);
 			return false;
 		}
 		if (fieldValue.length > hiddenPrechatField['maxLength']) {
-			error(`Value for the ${fieldName} field in setHiddenPrechatFields exceeds the maximum length restriction of ${hiddenPrechatField['maxLength']} characters.`);
+			error("validateHiddenPrechatField", `Value for the ${fieldName} field in setHiddenPrechatFields exceeds the maximum length restriction of ${hiddenPrechatField['maxLength']} characters.`);
 			return false;
 		}
 		return true;
@@ -3469,13 +3746,21 @@
 	}
 
 	/**
-	 * Determine whether the client is ready for the host to set/update and/or remove Hidden Prechat fields.
-	 * @param {string} caller - caller method name which invokes 'shouldProcessHiddenPrechatFieldsFromHost'.
-	 * @return {boolean} True if the client is ready for the host to set/update and/or remove Hidden Prechat fields AND False otherwise.
+	 * Gets the Visible Prechat fields from the configuration response object.
+	 * @returns {object} Array of Visible Prechat fields.
 	 */
-	function shouldProcessHiddenPrechatFieldsFromHost(caller) {
+	function getVisiblePrechatFieldsFromConfig() {
+		return validateVisiblePrechatFieldsFromConfig() ? embeddedservice_bootstrap.settings.embeddedServiceConfig.forms[0].formFields : [];
+	}
+
+	/**
+	 * Determine whether the client is ready for the host to set/update and/or remove Prechat fields.
+	 * @param {string} caller - caller method name which invokes 'shouldProcessPrechatFieldsFromHost'.
+	 * @return {boolean} True if the client is ready for the host to set/update and/or remove Prechat fields AND False otherwise.
+	 */
+	function shouldProcessPrechatFieldsFromHost(caller) {
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Can't call ${caller} before the onEmbeddedMessagingReady event is fired.`);
+			error("shouldProcessPrechatFieldsFromHost", `Can't call ${caller} before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 		return true;
@@ -3503,7 +3788,7 @@
 	 * @param {object} hiddenFields - an object (in the form of a Map) of key-value pairs (e.g. { HiddenPrechatFieldName1 : HiddenPrechatFieldValue1, HiddenPrechatFieldName2 : HiddenPrechatFieldValue2 }) of Hidden Prechat fields as set by the host.
 	 */
 	EmbeddedMessagingPrechat.prototype.setHiddenPrechatFields = function setHiddenPrechatFields(hiddenFields) {
-		if (!shouldProcessHiddenPrechatFieldsFromHost('setHiddenPrechatFields')) {
+		if (!shouldProcessPrechatFieldsFromHost('setHiddenPrechatFields')) {
 			return;
 		}
 
@@ -3514,11 +3799,11 @@
 					// Store/Update Session storage with Hidden Prechat fields object for a valid field.
 					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false, true);
 					// Log successful update action on Hidden Prechat fields for debugging purposes.
-					log(`[setHiddenPrechatFields] Successfully updated Hidden Pre-Chat field ${fieldName}.`);
+					log("setHiddenPrechatFields", `[setHiddenPrechatFields] Successfully updated Hidden Pre-Chat field ${fieldName}.`);
 				}
 			}
 		} else {
-			error(`When calling setHiddenPrechatFields, you must pass in an object with key-value pairs.`);
+			error("setHiddenPrechatFields", `When calling setHiddenPrechatFields, you must pass in an object with key-value pairs.`);
 		}
 	};
 
@@ -3530,7 +3815,7 @@
 	 * @param {object} hiddenFields - an object (in the form of an Array) of Hidden Prechat field names (e.g. [ HiddenPrechatFieldName1, HiddenPrechatFieldName2 ]) to be removed/deleted.
 	 */
 	EmbeddedMessagingPrechat.prototype.removeHiddenPrechatFields = function removeHiddenPrechatFields(hiddenFields) {
-		if (!shouldProcessHiddenPrechatFieldsFromHost('removeHiddenPrechatFields')) {
+		if (!shouldProcessPrechatFieldsFromHost('removeHiddenPrechatFields')) {
 			return;
 		}
 
@@ -3541,15 +3826,72 @@
 					// Update Session storage with Hidden Prechat fields object for a valid field.
 					setItemInWebStorage(STORAGE_KEYS.HIDDEN_PRECHAT_FIELDS, hiddenPrechatFields, false, true);
 					// Log successful remove action on Hidden Prechat fields for debugging purposes.
-					log(`[removeHiddenPrechatFields] Successfully removed Hidden Pre-Chat field ${fieldName}.`);
+					log("removeHiddenPrechatFields", `[removeHiddenPrechatFields] Successfully removed Hidden Pre-Chat field ${fieldName}.`);
 				} else {
-					error(`removeHiddenPrechatFields called with an invalid field name ${fieldName}.`);
+					error("removeHiddenPrechatFields", `removeHiddenPrechatFields called with an invalid field name ${fieldName}.`);
 				}
 			});
 		} else {
-			error(`When calling removeHiddenPrechatFields, you must pass in an array of fields.`);
+			error("removeHiddenPrechatFields", `When calling removeHiddenPrechatFields, you must pass in an array of fields.`);
 		}
 	};
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE
+	 * A publicly exposed api for the host (i.e. customer) to invoke and set Visible Prechat fields.
+	 * Sets a new Visible Prechat field or updates an existing field with the passed in value.
+	 *
+	 * @param {object} hiddenFields - Array of objects with key-value pairs, with 2 fields in each object. (i.e. field name & value, editability boolean flag).
+	 */
+	EmbeddedMessagingPrechat.prototype.setVisiblePrechatFields = function setVisiblePrechatFields(visibleFields) {
+		if (!shouldProcessPrechatFieldsFromHost('setVisiblePrechatFields')) {
+			return;
+		}
+		const formFields = getVisiblePrechatFieldsFromConfig();
+
+		if (visibleFields) {
+			for (const [fieldName, fieldData] of visibleFields) {
+				// TODO: Add validation 
+				const matchedField = formFields.find((field) => field.name === fieldName);
+				if (matchedField) {
+					matchedField['value'] = fieldData['value'];
+					if (typeof fieldData['isEditableByEndUser'] === 'boolean') {
+						matchedField['isEditableByEndUser'] = fieldData['isEditableByEndUser'];
+					}
+				}
+			}
+		} else {
+			error("setVisiblePrechatFields", `When calling setVisiblePrechatFields, you must pass in an array of objects of key-value pairs`);
+		}
+	}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE
+	 * A publicly exposed api for the host (i.e. customer) to invoke and remove Visible Prechat field(s).
+	 * Removes existing Visible Prechat field(s) with the passed in key name.
+	 *
+	 * @param {object} visibleFields - Array of field names to be removed
+	 */
+	EmbeddedMessagingPrechat.prototype.removeVisiblePrechatFields = function removeVisiblePrechatFields(visibleFields) {
+        if (!shouldProcessPrechatFieldsFromHost('removeVisiblePrechatFields')) {
+            return;
+        }
+		const formFields = getVisiblePrechatFieldsFromConfig();
+
+		if (visibleFields) {
+			visibleFields.forEach((fieldName) => {
+				const matchedField = formFields.find((field) => field.name === fieldName);
+				if (matchedField) {
+					delete matchedField['value'];
+					delete matchedField['isEditableByEndUser'];
+				} else {
+					error("removeVisiblePrechatFields", `removeVisiblePrechatFields called with an invalid field name ${fieldName}.`);
+				}
+			});
+		} else {
+			error("removeVisiblePrechatFields", `When calling removeVisiblePrechatFields, you must pass in an array of fields.`);
+		};
+	}
 
 	/****************************************
 	 * .           AUTO-RESPONSE API        *
@@ -3573,7 +3915,7 @@
 	 */
 	function shouldProcessAutoResponseParametersFromHost(caller) {
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`[${caller}] Cannot invoke Auto-Response API before the onEmbeddedMessagingReady event is fired.`);
+			error("shouldProcessAutoResponseParametersFromHost", `[${caller}] Cannot invoke Auto-Response API before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
@@ -3588,12 +3930,12 @@
 	 */
 	function validateAutoResponseParameter(parameterName, parameterValue) {
 		if (typeof parameterName !== "string" || parameterName.trim().length < 1) {
-			error(`Expected a non-empty string for the parameter name, but received ${typeof parameterName}`);
+			error("validateAutoResponseParameter", `Expected a non-empty string for the parameter name, but received ${typeof parameterName}`);
 			return false;
 		}
 
 		if (typeof parameterValue !== "string" || parameterValue.trim().length < 1) {
-			error(`Expected a non-empty string for the parameter value, but received ${typeof parameterValue}`);
+			error("validateAutoResponseParameter", `Expected a non-empty string for the parameter value, but received ${typeof parameterValue}`);
 			return false;
 		}
 
@@ -3620,13 +3962,13 @@
 					autoResponseParameters[paramKey] = paramValue;
 					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false, true);
 					// Log successfully updated auto-response parameters for debugging purposes.
-					log(`[setAutoResponseParameters] Successfully updated auto-response parameter ${paramKey}`);
+					log("setAutoResponseParameters", `[setAutoResponseParameters] Successfully updated auto-response parameter ${paramKey}`);
 				} else {
 					warning(`[setAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`)
 				}
 			}
 		} else {
-			error(`[setAutoResponseParameters] Must pass in an object of parameters as key-value pairs.`);
+			error("setAutoResponseParameters", `[setAutoResponseParameters] Must pass in an object of parameters as key-value pairs.`);
 		}
 	};
 
@@ -3648,13 +3990,13 @@
 					delete autoResponseParameters[paramKey];
 					setItemInWebStorage(STORAGE_KEYS.AUTORESPONSE_PARAMETERS, autoResponseParameters, false);
 					// Log successfully removed auto-response page parameter for debugging purposes.
-					log(`[removeAutoResponseParameters] Successfully removed auto-response parameter ${paramKey}`);
+					log("removeAutoResponseParameters", `[removeAutoResponseParameters] Successfully removed auto-response parameter ${paramKey}`);
 				} else {
 					warning(`[removeAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`);
 				}
 			});
 		} else {
-			error(`[removeAutoResponseParameters] Must pass in an array of parameter names.`);
+			error("removeAutoResponseParameters", `[removeAutoResponseParameters] Must pass in an array of parameter names.`);
 		}
 	};
 
@@ -3677,7 +4019,7 @@
 		const authMode = getAuthMode();
 
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+			error("showChatButton", `Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
@@ -3689,7 +4031,7 @@
 				return true;
 			}
 		} else {
-			error("Can’t call showChatButton for a verified user before calling the setIdentity method with a valid token.");
+			error("showChatButton", `Can't call showChatButton for a verified user before calling the setIdentity method with a valid token.`);
 		}
 
 		return false;
@@ -3702,7 +4044,7 @@
 	 */
 	EmbeddedMessagingUtil.prototype.hideChatButton = function hideChatButton() {
 		if (!hasEmbeddedMessagingReadyEventFired) {
-			error(`Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
+			error("hideChatButton", `Method can't be invoked before the onEmbeddedMessagingReady event is fired.`);
 			return false;
 		}
 
@@ -3714,7 +4056,7 @@
 				return true;
 			}
 		} else {
-			error("Can’t call hideChatButton once the messaging window is showing.");
+			error("hideChatButton", `Can’t call hideChatButton once the messaging window is showing.`);
 		}
 
 		return false;
@@ -3737,7 +4079,7 @@
 
 				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
 				if (!hasEmbeddedMessagingInitEventFired) {
-					successMessage = `[Launch Chat API] Web chat client initialized successfully or failed event isn’t fired.`;
+					successMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
 					warning(successMessage);
 					reject(successMessage);
@@ -3745,8 +4087,8 @@
 					return;
 				}
 
-				successMessage = `[Launch Chat API] Successfully initialized web chat client.`;
-				log(successMessage);
+				successMessage = `[Launch Chat API] Successfully initialized the messaging client.`;
+				log("launchChat", successMessage);
 				resolve(successMessage);
 
 				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
@@ -3761,7 +4103,7 @@
 
 				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
 				if (!hasEmbeddedMessagingInitEventFired) {
-					errorMessage = `[Launch Chat API] Web chat client initialized successfully or failed event isn’t fired.`;
+					errorMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
 					warning(errorMessage);
 					reject(errorMessage);
@@ -3769,8 +4111,8 @@
 					return;
 				}
 
-				errorMessage = `[Launch Chat API] Error launching web chat client.`;
-				error(errorMessage);
+				errorMessage = `[Launch Chat API] Error launching the messaging client.`;
+				error("handleBootstrapError", errorMessage);
 				reject(errorMessage);
 
 				window.removeEventListener(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME, handleBootstrapSuccess);
@@ -3782,7 +4124,7 @@
 			try {
 				// Cannot be invoked before `afterInit` event has been emitted.
 				if (!hasEmbeddedMessagingReadyEventFired) {
-					consoleMessage = `[Launch Chat API] Can’t invoke Launch Chat API before the onEmbeddedMessagingReady event is fired.`;
+					consoleMessage = `[Launch Chat API] Can’t invoke API before the onEmbeddedMessagingReady event is fired.`;
 
 					warning(consoleMessage);
 					reject(consoleMessage);
@@ -3792,19 +4134,27 @@
 
 				// Cannot be invoked if static button is not present.
 				if (!getEmbeddedMessagingConversationButton()) {
-					consoleMessage = `[Launch Chat API] Default chat button isn’t present. Check if the web chat client initialized successfully.`;
+					if(isChannelMenuDeployment()) {
+						// [W-13992566] Generate button markup for Channel Menu only.
+						if (getAuthMode() === AUTH_MODE.UNAUTH) {
+							// Only generate button markup if it is unauth, or identityToken is present in auth.
+							embeddedservice_bootstrap.generateMarkup(true);
+						}
+					} else {
+						consoleMessage = `[Launch Chat API] Default chat button isn’t present. Check if the messaging client initialized successfully.`;
 
-					warning(consoleMessage);
-					reject(consoleMessage);
+						warning(consoleMessage);
+						reject(consoleMessage);
 
-					return;
+						return;
+					}
 				}
 
 				// Cannot be invoked if iframe is already present.
 				if (getEmbeddedMessagingFrame()) {
 					let iframe = getEmbeddedMessagingFrame();
 
-					consoleMessage = `[Launch Chat API] Web chat client window is already present.`;
+					consoleMessage = `[Launch Chat API] The messaging client window is already present.`;
 
 					warning(consoleMessage);
 					resolve(consoleMessage);
@@ -3817,17 +4167,17 @@
 
 				// Simulate button click to initiate app.
 				handleClick().catch((err) => {
-					consoleMessage = `[Launch Chat API] Error handling simulating clicking the custom web chat client button: ${err}`;
+					consoleMessage = `[Launch Chat API] Error when API simulates clicking the custom messaging client button: ${err}`;
 
-					error(consoleMessage);
+					error("launchChat", consoleMessage);
 					reject(consoleMessage);
 
 					return;
 				});
 			} catch(e) {
-				consoleMessage = `[Launch Chat API] Something went wrong launching the web chat client: ${e}`;
+				consoleMessage = `[Launch Chat API] Something went wrong launching the API: ${e}`;
 
-				error(consoleMessage);
+				error("launchChat", consoleMessage);
 				reject(consoleMessage);
 			}
 		});
@@ -3976,7 +4326,7 @@
 		siteContextFrame.name = SITE_CONTEXT_IFRAME_NAME;
 		siteContextFrame.src = siteContextFrameUrl;
 		siteContextFrame.onload = () => {
-			log("Created an iframe for siteContext.");
+			log("createSiteContextFrame", `Created an iframe for siteContext.`);
 		};
 		embeddedservice_bootstrap.siteContextFrame = siteContextFrame;
 		document.body.appendChild(siteContextFrame);
@@ -3996,7 +4346,7 @@
 		filePreviewFrame.src = filePreviewFrameUrl;
 		filePreviewFrame.title = getLabel("EmbeddedMessagingIframesAndContents", "FilePreviewIframeTitle") || FILE_PREVIEW_IFRAME_DEFAULT_TITLE;
 		filePreviewFrame.onload = () => {
-			log("Created an iframe for file preview.");
+			log("createFilePreviewFrame", `Created an iframe for file preview.`);
 		};
 		embeddedservice_bootstrap.filePreviewFrame = filePreviewFrame;
 		document.body.appendChild(filePreviewFrame);
@@ -4059,6 +4409,10 @@
 					iframe.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
 				}
 
+				iframe.onload = () => {
+					log("createIframe", `Created Embedded Messaging frame.`);
+				};
+
 				parent.appendChild(modal);
 				parent.appendChild(iframe);
 			} catch(e) {
@@ -4078,11 +4432,6 @@
 	 */
 	EmbeddedServiceBootstrap.prototype.bootstrapEmbeddedMessaging = function bootstrapEmbeddedMessaging() {
 		try {
-			// Only generate button markup if it is unauth, or identityToken is present in auth.
-			if (getAuthMode() === AUTH_MODE.UNAUTH) {
-				embeddedservice_bootstrap.generateMarkup(true);
-			}
-
 			return embeddedservice_bootstrap.utilAPI.launchChat();
 		} catch(e) {
 			throw new Error("[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: " + e);
@@ -4090,7 +4439,7 @@
 	};
 
 	/**
-	 * Maximize the iframe which holds the aura application. Use branding width/height if screen is
+	 * Maximize the iframe which holds the LWR application. Use branding width/height if screen is
 	 * big enough, else just fill what we have.
 	 * @param {Object} iframe - Reference to iframe DOM element.
 	 */
@@ -4170,6 +4519,7 @@
 		}
 
 		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME);
+		log("maximizeIframe", `Maximized the app`);
 	};
 
 	/**
@@ -4235,7 +4585,20 @@
 		}
 
 		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
+		log("minimizeIframe", `Minimized the app`);
 	};
+
+	/**
+     * Resize iframe to fit the minimize state notification area (modal).
+     */
+    function handleShowMinimizedStateNotification() {
+        const embeddedMessagingFrame = getEmbeddedMessagingFrame();
+
+        if(embeddedMessagingFrame) {
+            // Resize and style iframe to render minimized button and notification.
+            embeddedMessagingFrame.classList.add(MODAL_HASMINIMIZEDNOTIFICATION_CLASS);
+        }
+    }
 
 	/**
 	 * Initialize feature specific objects on the global bootstrap object 'embeddedservice_bootstrap' to expose certain feature related APIs/properties externally.
@@ -4309,6 +4672,7 @@
 			// Load config settings from SCRT 2.0.
 			const configPromise = getConfigurationData().then(
 				response => {
+					log("init", `Successfully retrieved configuration settings`);
 					// Merge the Config Settings into embeddedservice_bootstrap.settings.
 					mergeSettings(response);
 
@@ -4326,6 +4690,7 @@
 					createSiteContextFrame();
 				},
 				responseStatus => {
+					error("init", `Failed to retrieve configuration settings. Retrying the request`);
 					// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
 					return new Promise((resolve, reject) => {
 						getConfigurationData().then(resolve, reject);
@@ -4347,6 +4712,8 @@
 			Promise.all([cssPromise, configPromise, getBusinessHoursInterval(), sessionDataPromise]).then(() => {
 				initializeWebStorage();
 
+				logWebStorageItemsOnInit();
+
 				embeddedservice_bootstrap.initializeFeatureObjects();
 
 				embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
@@ -4362,7 +4729,7 @@
 				}
 			});
 		} catch(err) {
-			error("Error: " + err);
+			error("init", `Error: ${err}`);
 		}
 	};
 
