@@ -1,1 +1,65 @@
+<html>
+   <head>
+       <title>AP3 MIAW Unauth</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>AP3 MIAW Unauth</h1>
+	<h2> admin@testorgcssap3.com </h2>
+  <p> ap3	-> ap11 </p></br>
+  <p> prod4	-> prod9 </p></br>
 
+	<!-- Edit page link -->
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+	  </script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true; 
+				
+  			embeddedservice_bootstrap.init(
+  				'00D5F000000c1uD',
+  				'Messaging_UnauthExternal',
+  				'https://testorgcssap3.my.site.com/ESWMessagingUnauthExtern1697724224993',
+  				{
+  					scrt2URL: 'https://testorgcssap3.my.salesforce-scrt.com'
+  				}
+  			);
+  		} catch (err) {
+  			console.error('Error loading Embedded Messaging: ', err);
+  		}
+  	};
+  </script>
+  <script type='text/javascript' src='https://testorgcssap3.my.site.com/ESWMessagingUnauthExtern1697724224993/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</body></html>
