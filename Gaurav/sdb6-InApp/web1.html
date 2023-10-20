@@ -15,13 +15,13 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = ''; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.isAuraSite = true;
-			embeddedservice_bootstrap.settings.debugMode = true; 
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
 			embeddedservice_bootstrap.init(
 				'00DSG0000002ITt',
-				'web1',
-				'https://inapporg0105.test1.my.pc-rnd.salesforce.com',
+				'Sachin',
+				'https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s',
 				{
 					scrt2URL: 'https://inapporg0105.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -31,6 +31,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://inapporg0105.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
