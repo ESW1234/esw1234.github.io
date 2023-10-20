@@ -8,9 +8,13 @@
   <h2 style="color:blue;"> For Agent:- web1@ia.sdb6</h2>
 	NO LWR
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
-
-<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+		// Embedded Messaging app ready
+		console.log("onEmbeddedMessagingReady event received");
+		embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({"_firstName": {"value": "Sachin", "isEditableByEndUser": false}, "_lastName": {"value": "Reddy", "isEditableByEndUser": false}});
+	});
+</script>
 
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
