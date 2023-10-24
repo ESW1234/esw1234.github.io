@@ -1,40 +1,111 @@
 <html>
 <head>
 	<title>SDB6-InAppChatbot</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
 	<h1> SDB6 InApp Messaging with Chatbot</h1>
-  <h2 style="color:blue;"> For Agent:- web1@ia.sdb6</h2>
-	NO LWR
-<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-		// Embedded Messaging app ready
-		console.log("onEmbeddedMessagingReady event received");
-		embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({"_firstName": {"value": "Sachin", "isEditableByEndUser": false}, "_lastName": {"value": "Reddy", "isEditableByEndUser": false}});
-	});
-</script>
+	<h2 style="color:blue;"> Admin: admin2@ia.sdb / Test1234 </h2>
+  	<h2 style="color:blue;"> Agent:- web1@ia.sdb6</h2>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
+	<form action='generateSplunkUrl()' target="_blank">
+  		<label for="environment">Environment</label>
+  		<select name="environment" id="environment">
+    			<option value="sdb6">SDB6</option>
+    			<option value="sdb3">SDB3</option>
+    			<option value="stmfa">STMFA</option>
+    			<option value="stmfb">STMFB</option>
+  		</select>
+		<label for="logsType">Log Type</label>
+		<select name="logsType" id="logsType">
+			<option value="all">All</option>
+    			<option value="standard">Standard</option>
+    			<option value="error">Error</option>
+    			<option value="domclick">DOM Click Events</option>
+  		</select>
+  		<br><br>
+  		<input type="submit" value="Client Splunk Logs">
+	</form>
+	<script>
+		function generateSplunkUrl() {
+			let templateUrl = "https://splunk-web-preprod.log-analytics.monitoring.aws-esvc1-useast2.aws.sfdc.is/en-US/app/search/search?q=search%20index%3DindexValue%20organizationId%3DorgIdValue%20%60logRecordType%60%20loggerAppName%3Dlwr_experience%20deploymentName%20conversationIdValue%20%7C%20sort%20logTimestamp&display.page.search.mode=smart&dispatch.sample_ratio=1&earliest=-4h%40m&latest=now&display.page.search.tab=events&display.general.type=events&sid=1698110101.83182_459D7453-5E2C-4B85-8B25-A0022E9259B0";
+			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt';
+			let deploymentName = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.eswConfigDevName || 'Sachin';
+			let conversationIdValue = getConversationIdFromWebStorage() || "";
+			let indexValue = document.getElementById("environment") ? document.getElementById("environment").value : "";
+			let logsType = document.getElementById("logsType") ? document.getElementById("logsType").value : "";
+			let logRecordType;
 
-			embeddedservice_bootstrap.init(
-				'00DSG0000002ITt',
-				'Sachin',
-				'https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s',
-				{
-					scrt2URL: 'https://inapporg0105.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
+			switch(logsType) {
+				case "all":
+					logRecordType = 'logRecordType(ux*)';
+					break;
+				case "standard":
+					logRecordType = 'logRecordType(uxlog)';
+					break;
+				case "error":
+					logRecordType = 'logRecordType(uxerr)';
+					break;
+				case "domclick":
+					logRecordType = 'logRecordType(uxevt)';
+					break;
+				default:
+					logRecordType = '';
+					break;
+			}
+
+			templateUrl.replace("indexValue", indexValue);
+			templateUrl.replace("orgIdValue", embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt');
+			templateUrl.replace("deploymentName", deploymentName);
+			templateUrl.replace("logRecordType", logRecordType);
+			templateUrl.replace("conversationIdValue", conversationIdValue);
+
+			return templateUrl;
 		}
-	};
-</script>
-<script type='text/javascript' src='https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+		function getConversationIdFromWebStorage() {
+			let storage = window.localStorage ? localStorage : sessionStorage;
+			let storageItem;
+
+			if(storage) {
+				storageItem = JSON.parse(localStorage.getItem((embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt') + "_WEB_STORAGE"));
+				for (const key of Object.keys(storageItem)) {
+					if (!Object.hasOwn({"JWT", "FAILED_MESSAGES", "HIDDEN_PRECHAT_FIELDS", "AUTORESPONSE_PARAMETERS"}, key)) {
+						return key;
+					}
+				}
+			}
+			return undefined;
+		}
+	</script>
+	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+			embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({"_firstName": {"value": "Sachin", "isEditableByEndUser": false}, "_lastName": {"value": "Reddy", "isEditableByEndUser": false}});
+		});
+	</script>
+
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+					'00DSG0000002ITt',
+					'Sachin',
+					'https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s',
+					{
+						scrt2URL: 'https://inapporg0105.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://inapporg0105.test1.my.pc-rnd.site.com/ESWSachin1697828206342/s/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
