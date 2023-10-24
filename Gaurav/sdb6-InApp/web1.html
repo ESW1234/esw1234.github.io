@@ -17,6 +17,13 @@
 			color: black;
 			text-decoration: none;
 			font-weight: bold;
+			pointer-events: all;
+			cursor: pointer;
+			position: relative;
+			left: 100px;
+		}
+		.logsButton:disabled {
+  			cursor: not-allowed;
 		}
 	</style>
 	<h1> SDB6 InApp Messaging with Chatbot</h1>
@@ -24,7 +31,7 @@
   	<h2 style="color:blue;"> Agent:- web1@ia.sdb6</h2>
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 
-	<div style="background:#BFD8BF; width:500px">
+	<div style="background:#BFD8BF; width:365px">
   		<label style="font-weight:bold" for="environment">Environment</label>
   		<select name="environment" id="environment">
     			<option value="sdb6">SDB6</option>
