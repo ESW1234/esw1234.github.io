@@ -40,7 +40,7 @@
     			<option value="domclick">DOM Click Events</option>
   		</select>
   		<br><br>
-		<a target="_blank" class="logsButton" href="#" onClick="document.location.href=generateSplunkUrl();">Client Splunk Logs</a>
+		<a target="_blank" class="logsButton" onClick="window.open(generateSplunkUrl());">Client Splunk Logs</a>
 	</div>
 	<script "text/javascript">
 		function generateSplunkUrl() {
@@ -48,7 +48,17 @@
 			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt';
 			let deploymentName = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.eswConfigDevName || 'Sachin';
 			let conversationIdValue = getConversationIdFromWebStorage() || "";
-			let indexValue = document.getElementById("environment") ? document.getElementById("environment").value : "";
+			let indexValue = () => {
+				const env = document.getElementById("environment");
+				if(env.value.includes("sdb")) {
+					return "coretest";
+				} else if(env.value.includes("stmf")) {
+					return "prod";
+				} else {
+					return "*";
+				}
+			};
+				document.getElementById("environment") ? (document.getElementById("environment").value.includes("sdb") ? ) : "*";
 			let logsType = document.getElementById("logsType") ? document.getElementById("logsType").value : "";
 			let logRecordType;
 
@@ -70,11 +80,11 @@
 					break;
 			}
 
-			templateUrl.replace("indexValue", indexValue);
-			templateUrl.replace("orgIdValue", embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt');
-			templateUrl.replace("deploymentName", deploymentName);
-			templateUrl.replace("logRecordType", logRecordType);
-			templateUrl.replace("conversationIdValue", conversationIdValue);
+			templateUrl = templateUrl.replace("indexValue", indexValue);
+			templateUrl = templateUrl.replace("orgIdValue", embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt');
+			templateUrl = templateUrl.replace("deploymentName", deploymentName);
+			templateUrl = templateUrl.replace("logRecordType", logRecordType);
+			templateUrl = templateUrl.replace("conversationIdValue", conversationIdValue);
 
 			return templateUrl;
 		}
