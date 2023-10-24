@@ -24,7 +24,7 @@
   	<h2 style="color:blue;"> Agent:- web1@ia.sdb6</h2>
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 
-	<form style="background:#BFD8BF; width:500px">
+	<div style="background:#BFD8BF; width:500px">
   		<label style="font-weight:bold" for="environment">Environment</label>
   		<select name="environment" id="environment">
     			<option value="sdb6">SDB6</option>
@@ -40,9 +40,9 @@
     			<option value="domclick">DOM Click Events</option>
   		</select>
   		<br><br>
-		<a target="_blank" class="logsButton" href="javascript:generateSplunkUrl();">Client Splunk Logs</a>
-	</form>
-	<script>
+		<a target="_blank" class="logsButton" href="#" onClick="document.location.href=generateSplunkUrl();">Client Splunk Logs</a>
+	</div>
+	<script "text/javascript">
 		function generateSplunkUrl() {
 			let templateUrl = "https://splunk-web-preprod.log-analytics.monitoring.aws-esvc1-useast2.aws.sfdc.is/en-US/app/search/search?q=search%20index%3DindexValue%20organizationId%3DorgIdValue%20%60logRecordType%60%20loggerAppName%3Dlwr_experience%20deploymentName%20conversationIdValue%20%7C%20sort%20logTimestamp&display.page.search.mode=smart&dispatch.sample_ratio=1&earliest=-4h%40m&latest=now&display.page.search.tab=events&display.general.type=events&sid=1698110101.83182_459D7453-5E2C-4B85-8B25-A0022E9259B0";
 			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt';
