@@ -4,10 +4,29 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="red">Stmfb org 1</font></p>
+	<p align="center"><font color ="red">STMFA org 1</font></p>
   <br/>
   <br/>		
 
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DS7000000p0sf',
+				'EM1_Web',
+				'https://foresw7.stmfa.my.stm.site.com/ESWEM1Web1683929316443',
+				{
+					scrt2URL: 'https://foresw7.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://foresw7.stmfa.my.stm.site.com/ESWEM1Web1683929316443/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 	
 	
