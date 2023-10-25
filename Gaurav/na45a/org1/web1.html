@@ -23,6 +23,13 @@
 			color: black;
 			text-decoration: none;
 			font-weight: bold;
+			pointer-events: all;
+			cursor: pointer;
+			position: relative;
+			left: 100px;
+		}
+		.logsButton:disabled {
+  			cursor: not-allowed;
 		}
 	</style>
 	<h1 style="font-family: myFirstFont;">  NA45A - Messaging for Web client </h1>
@@ -30,7 +37,7 @@
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-	<div style="background:#BFD8BF; width:500px">
+	<div style="background:#BFD8BF; width:365px">
   		<label style="font-weight:bold" for="environment">Environment</label>
   		<select name="environment" id="environment">
     			<option value="sdb6">SDB6</option>
@@ -49,6 +56,8 @@
 		<button class="logsButton" onClick="generateSplunkUrl()">Client Splunk Logs</button>
 	</div>
 	<script "text/javascript">
+		document.getElementById("logsButton").disabled = true;
+
 		function generateSplunkUrl() {
 			let templateUrl = "https://splunk-web-preprod.log-analytics.monitoring.aws-esvc1-useast2.aws.sfdc.is/en-US/app/search/search?q=search%20index%3DindexValue%20organizationId%3DorgIdValue%20%60logRecordType%60%20loggerAppName%3Dlwr_experience%20deploymentName%20conversationIdValue%20%7C%20sort%20logTimestamp&display.page.search.mode=smart&dispatch.sample_ratio=1&earliest=-4h%40m&latest=now&display.page.search.tab=events&display.general.type=events&sid=1698110101.83182_459D7453-5E2C-4B85-8B25-A0022E9259B0";
 			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DS7000000owIT';
@@ -109,26 +118,14 @@
 			return undefined;
 		}
 	</script>
-<!-- <script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
+	<script>
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
 
-			embeddedservice_bootstrap.init(
-				'00DS7000000owIT',
-				'MIAW1',
-				'https://iana45a.stmfa.my.stm.site.com/ESWMIAW11672876345145',
-				{
-					scrt2URL: 'https://iana45a.stmfa.my.stm.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://iana45a.stmfa.my.stm.site.com/ESWMIAW11672876345145/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
+			document.getElementById("logsButton").disabled = false;
+		});
+	</script>
 
 	<script type='text/javascript'>
 	function initEmbeddedMessaging() {
