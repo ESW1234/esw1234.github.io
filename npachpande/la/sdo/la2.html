@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>sdo la2.html </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+    
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+    embedded_svc.addEventHandler("onChatEndedByChasitor", function(data) {
+    	console.log("onChatEndedByChasitor event was fired. liveAgentSessionKey was " + data.liveAgentSessionKey);
+    	embedded_svc.liveAgentAPI.clearSession();
+    });
+
+		embedded_svc.init(
+			'https://npachpande-230620-319-demo.my.salesforce.com',
+			'https://npachpande-230620-319-demo.my.site.com/consumer',
+			gslbBaseURL,
+			'00DHr00000189kC',
+			'SDO_Service_Sunny_Bot',
+			{
+				baseLiveAgentContentURL: 'https://c.la3-c1-ia7.salesforceliveagent.com/content',
+				deploymentId: '572Hr000000PHmY',
+				buttonId: '573Hr000000PHsB',
+				baseLiveAgentURL: 'https://d.la3-c1-ia7.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1N0000004H9WUAU_16b67004022',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://npachpande-230620-319-demo.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+  
+  
+</body>
+</html>
