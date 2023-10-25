@@ -50,13 +50,22 @@
 		<button class="logsButton" id="logsButton" onClick="generateSplunkUrl()">Client Splunk Logs</button>
 	</div>
 	<script "text/javascript">
+		let conversationIdValue;
+
 		document.getElementById("logsButton").disabled = true;
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+
+			conversationIdValue = getConversationIdFromWebStorage();
+			document.getElementById("logsButton").disabled = false;
+		});
 
 		function generateSplunkUrl() {
 			let templateUrl = "https://splunk-web-preprod.log-analytics.monitoring.aws-esvc1-useast2.aws.sfdc.is/en-US/app/search/search?q=search%20index%3DindexValue%20organizationId%3DorgIdValue%20%60logRecordType%60%20loggerAppName%3Dlwr_experience%20deploymentName%20conversationIdValue%20%7C%20sort%20logTimestamp&display.page.search.mode=smart&dispatch.sample_ratio=1&earliest=-4h%40m&latest=now&display.page.search.tab=events&display.general.type=events&sid=1698110101.83182_459D7453-5E2C-4B85-8B25-A0022E9259B0";
 			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt';
 			let deploymentName = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.eswConfigDevName || 'Sachin';
-			let conversationIdValue = getConversationIdFromWebStorage() || "";
+			conversationIdValue = conversationIdValue || getConversationIdFromWebStorage() || "";
 			let indexValue = () => {
 				const env = document.getElementById("environment");
 				if(env.value.includes("sdb")) {
