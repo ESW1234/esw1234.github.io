@@ -112,9 +112,11 @@
 
 			if(storage) {
 				storageItem = JSON.parse(localStorage.getItem((embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt') + "_WEB_STORAGE"));
-				for (const key of Object.keys(storageItem)) {
-					if (!Object.hasOwn({JWT: "JWT", FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES", HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS", AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS"}, key)) {
-						return key;
+				if(typeof storageItem === "object") {
+					for (const key of Object.keys(storageItem)) {
+						if (!Object.hasOwn({JWT: "JWT", FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES", HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS", AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS"}, key)) {
+							return key;
+						}
 					}
 				}
 			}
