@@ -16,16 +16,14 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
       			embeddedservice_bootstrap.settings.devMode = true;
-
-
-			/*
+			
 			// STMFA ORG 
 			embeddedservice_bootstrap.init(
-				'00DS7000000ouRu',
-				'Messaging_11',
-				'https://miaw.my.localhost.sfdcdev.site.com:6101/ESWMessaging11683837920004',
+				'00DRM000000HvmX',
+				'Messaging_7',
+				'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMessaging41698272552447',
 				{
-					scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://eswmessagingchat2.stmfa.my.stm.salesforce-scrt.com'
 				}
 			);
 
@@ -62,8 +60,9 @@
 					scrt2URL: 'https://eswmessaging.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
-			*/
 
+
+		
 			// SDB6 ORG
 			embeddedservice_bootstrap.init(
 				'00DSG0000001hxN',
@@ -73,6 +72,7 @@
 					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
+   			*/
 
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
