@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://sisi-lcs-imac-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/lwrtest/lightning/lightning.out.js"></script> //<My Domain URL>/lightning/lightning.out.js
+<script src="https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auratest/lightning/lightning.out.js"></script> //<My Domain URL>/lightning/lightning.out.js
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Lightning Out App Test</p>
@@ -10,7 +10,7 @@
 <div id="divlightning">
 </div>
 <script>
-            $Lightning.use("c:LightningOutAppTest", function() {
+            $Lightning.use("c:LightningOutApp", function() {
               $Lightning.createComponent("c:AuraComLightningOutTest", 
               { },
               "divlightning",
@@ -19,7 +19,7 @@
               }); 
             },
 
-            'https://sisi-lcs-imac-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/lwrtest' // Experience Site URL
+            'https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auratest' // Experience Site URL
 
                            
         );                   
