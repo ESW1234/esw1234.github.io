@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>In APP on Ora6 Test1 for Org: Bestcompany4</h1>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DOG000000B4Nf',
+				'MIAW',
+				'https://bestcompany4.test1.my.pc-rnd.site.com/ESWMIAW1699382728004',
+				{
+					scrt2URL: 'https://bestcompany4.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://bestcompany4.test1.my.pc-rnd.site.com/ESWMIAW1699382728004/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+    </body>
+</html>
