@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>sdb6 saveTranscript.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+  <label for="endpoint">Set endpoint:</label></br>
+  <input type="text" id="endpoint" name="endpoint" size="500"></br>
+  <label for="endpoint">Set jwt:</label></br>
+  <input type="text" id="jwt" name="jwt" size="500"></br>
+  <button type="button" id="saveTranscript" onclick="saveTranscript()"> Save Transcript </button></br></br>
+
+  <script type='text/javascript'>
+    function saveTranscipt() {
+      var endpoint = document.getElementById("endpoint").value;
+      var jwt = document.getElementById("jwt").value;
+
+      fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + jwt    
+          }
+      })
+      .then(response => response.arrayBuffer())
+      .then(arrayBuffer => {
+          saveFile("transcript.pdf", "application/pdf", arrayBuffer);
+      });
+    }
+
+    function saveFile(fileName, mimeType, arrayBuffer) {
+      var blob = new Blob([arrayBuffer], {type: mimeType});
+      var link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    }
+
+  </script>
+</body>
+</html>
