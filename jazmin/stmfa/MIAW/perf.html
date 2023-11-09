@@ -4,10 +4,30 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="red">New Perf org 1 new deployment</font></p>
+	<p align="center"><font color ="blue">New Perf org 1 new deployment</font></p>
   <br/>
   <br/>		
 
+	<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DS7000000p2YA',
+				'EM1_web',
+				'https://foresw57.stmfa.my.stm.site.com/ESWEM1web1699488819508',
+				{
+					scrt2URL: 'https://foresw57.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://foresw57.stmfa.my.stm.site.com/ESWEM1web1699488819508/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 	
 	
