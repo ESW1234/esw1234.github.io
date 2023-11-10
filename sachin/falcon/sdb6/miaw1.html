@@ -6,41 +6,152 @@
 </head>
 <body>
 	<h1> SDB6 - MIAW </h1>
-  	<h2 style="color:blue;"> For Agent: web1@ia.na45a</h2>
+  	<h2 style="color:blue;">Admin: sachinh@esw.com/test1234</h2>
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-<script type='text/javascript'>
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-		console.log("Received 'onEmbeddedMessagingReady' event");
-	});
-
-	window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
-		console.log("Received 'onEmbeddedMessagingInitSuccess' event");
-	});
-
-	window.addEventListener("onEmbeddedMessagingInitError", () => {
-		console.log("Received 'onEmbeddedMessagingInitError' event");
-	});
-	
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
-
-			embeddedservice_bootstrap.init(
-				'00DSG000001NruH',
-				'Web1',
-				'https://dsg000001nruh2as.test1.my.pc-rnd.site.com/ESWWeb11692643996749',
-				{
-					scrt2URL: 'https://dsg000001nruh2as.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
+	<style>
+		.logsButton {
+			display: block;
+			width: 100%;
+			max-width: 150px;
+			height: 30px;
+			background: thistle;
+			padding: 5px;
+			text-align: center;
+			border-radius: 5px;
+			color: black;
+			text-decoration: none;
+			font-weight: bold;
+			pointer-events: all;
+			cursor: pointer;
+			position: relative;
+			left: 100px;
 		}
-	};
-</script>
-<script type='text/javascript' src='https://dsg000001nruh2as.test1.my.pc-rnd.site.com/ESWWeb11692643996749/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+		.logsButton:disabled {
+  			cursor: not-allowed;
+		}
+	</style>
+
+	<div style="background:#BFD8BF; width:365px">
+  		<label style="font-weight:bold" for="environment">Environment</label>
+  		<select name="environment" id="environment">
+    			<option value="sdb6">SDB6</option>
+    			<option value="sdb3">SDB3</option>
+    			<option value="stmfa">STMFA</option>
+    			<option value="stmfb">STMFB</option>
+  		</select>
+		<label style="font-weight:bold" for="logsType">Log Type</label>
+		<select name="logsType" id="logsType">
+			<option value="all">All</option>
+    			<option value="standard">Standard</option>
+    			<option value="error">Error</option>
+    			<option value="domclick">DOM Click Events</option>
+  		</select>
+  		<br><br>
+		<button class="logsButton" id="logsButton" onClick="generateSplunkUrl()">Client Splunk Logs</button>
+	</div>
+	<script "text/javascript">
+		let conversationIdValue;
+
+		document.getElementById("logsButton").disabled = true;
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+
+			conversationIdValue = getConversationIdFromWebStorage();
+			document.getElementById("logsButton").disabled = false;
+		});
+		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
+		});
+
+		window.addEventListener("onEmbeddedMessagingInitError", () => {
+			console.log("Received 'onEmbeddedMessagingInitError' event");
+		});
+
+		function generateSplunkUrl() {
+			let templateUrl = "https://splunk-web-preprod.log-analytics.monitoring.aws-esvc1-useast2.aws.sfdc.is/en-US/app/search/search?q=search%20index%3DindexValue%20organizationId%3DorgIdValue%20%60logRecordType%60%20loggerAppName%3Dlwr_experience%20deploymentName%20conversationIdValue%20%7C%20sort%20logTimestamp&display.page.search.mode=smart&dispatch.sample_ratio=1&earliest=-4h%40m&latest=now&display.page.search.tab=events&display.general.type=events&sid=1698110101.83182_459D7453-5E2C-4B85-8B25-A0022E9259B0";
+			let orgIdValue = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt';
+			let deploymentName = embeddedservice_bootstrap && embeddedservice_bootstrap.settings && embeddedservice_bootstrap.settings.eswConfigDevName || 'Sachin';
+			conversationIdValue = conversationIdValue || getConversationIdFromWebStorage() || "";
+			let indexValue = () => {
+				const env = document.getElementById("environment");
+				if(env.value.includes("sdb")) {
+					return "coretest";
+				} else if(env.value.includes("stmf")) {
+					return "prod";
+				} else {
+					return "*";
+				}
+			};
+			let logsType = document.getElementById("logsType") ? document.getElementById("logsType").value : "";
+			let logRecordType;
+
+			switch(logsType) {
+				case "all":
+					logRecordType = 'logRecordType(ux*)';
+					break;
+				case "standard":
+					logRecordType = 'logRecordType(uxlog)';
+					break;
+				case "error":
+					logRecordType = 'logRecordType(uxerr)';
+					break;
+				case "domclick":
+					logRecordType = 'logRecordType(uxevt)';
+					break;
+				default:
+					logRecordType = '';
+					break;
+			}
+
+			templateUrl = templateUrl.replace("indexValue", indexValue);
+			templateUrl = templateUrl.replace("orgIdValue", orgIdValue);
+			templateUrl = templateUrl.replace("deploymentName", deploymentName);
+			templateUrl = templateUrl.replace("logRecordType", logRecordType);
+			templateUrl = templateUrl.replace("conversationIdValue", conversationIdValue);
+
+			window.open(templateUrl, "_blank");
+		}
+
+		function getConversationIdFromWebStorage() {
+			let storage = window.localStorage ? localStorage : sessionStorage;
+			let storageItem;
+
+			if(storage) {
+				storageItem = JSON.parse(localStorage.getItem((embeddedservice_bootstrap.settings.orgId || '00DSG0000002ITt') + "_WEB_STORAGE"));
+				if(storageItem && typeof storageItem === "object") {
+					for (const key of Object.keys(storageItem)) {
+						if (!Object.hasOwn({JWT: "JWT", FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES", HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS", AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS"}, key)) {
+							return key;
+						}
+					}
+				}
+			}
+			return undefined;
+		}
+	</script>
+
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+					'00DSG000001NruH',
+					'Web1',
+					'https://sachinsdb6.test1.my.pc-rnd.site.com/ESWWeb11692643996749',
+					{
+						scrt2URL: 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://sachinsdb6.test1.my.pc-rnd.site.com/ESWWeb11692643996749/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
