@@ -1,1 +1,44 @@
+<html lang="en-US">
+<body>
+<script src="https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutApp", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); 
+
+     
+             $Lightning.createComponent("c:bikeCardLo", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              });*/
+            },
+
+           'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>
+
 
