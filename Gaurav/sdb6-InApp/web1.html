@@ -49,14 +49,12 @@
   		<br><br>
 		<button class="logsButton" id="logsButton" onClick="generateSplunkUrl()">Client Splunk Logs</button>
 	</div>
+
 	<script "text/javascript">
 		let conversationIdValue;
 
 		document.getElementById("logsButton").disabled = true;
 		window.addEventListener("onEmbeddedMessagingReady", () => {
-			// Embedded Messaging app ready
-			console.log("onEmbeddedMessagingReady event received");
-
 			conversationIdValue = getConversationIdFromWebStorage();
 			document.getElementById("logsButton").disabled = false;
 		});
@@ -93,7 +91,7 @@
 					logRecordType = 'logRecordType(uxevt)';
 					break;
 				default:
-					logRecordType = '';
+					logRecordType = 'logRecordType(ux*)';
 					break;
 			}
 
