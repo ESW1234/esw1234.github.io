@@ -11,6 +11,7 @@
 <body>
 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
@@ -20,6 +21,14 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+  				console.log("Received the onEmbeddedMessagingReady event…");
+
+  				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+    					cartValue: "123",
+  				});
+			});
+			
 			embeddedservice_bootstrap.init(
 				'00DB0000000gb6A',
 				'Peter_Messaging_for_Web_Demo',
