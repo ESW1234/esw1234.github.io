@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+
+    <div id="lightningout"></div>
+
+    <script src="https://dsg000004hgjh2ac.test1.my.pc-rnd.salesforce.com/lightning/lightning.out.js"></script>
+    <script>
+      $Lightning.use(
+        'c:LightningOutDependencyApp', // name of the Lightning app
+        function () {
+          // Callback once framework and app loaded
+            
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "lightningout",
+              function(cmp) {
+                   console.log('AuraComLightningOutTest created');
+              }); 
+          
+
+        },
+        'https://dsg000004hgjh2ac.test1.my.pc-rnd.site.com/auraLO' // Site endpoint
+
+      );
+    </script>
+  </body>
+</html>
