@@ -7,11 +7,11 @@
     <div id="lightningout"></div>  
     <script>
       $Lightning.use(
-        'c:LightningOutAppErrorAction', // name of the Lightning app
+        'c:LightningOutErrorAction', // name of the Lightning app
         function () {
           // Callback once framework and app loaded
           $Lightning.createComponent(
-            'c:helloBinding', // top-level component of your app
+            'c:helloErrorTest', // top-level component of your app
             {}, // attributes to set on the component when created
             'lightningout', // the DOM location to insert the component
             function (cmp) {
