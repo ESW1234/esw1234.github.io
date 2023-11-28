@@ -2,11 +2,11 @@
 <!-- Async client url: https://esw1234.github.io/csi/stmha/na54/csi_help_center.html -->
 <html>
    <head>
-      <title>CSI in na54 stmha</title>
+      <title>CSI in na54 stmha(main)</title>
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
    </head>
    <body>
-	<h1>CSI in na54 stmha</h1>
+	<h1>CSI in na54 stmha(main)</h1>
 <!-- 	<p><a href="https://login.stmfa.stm.salesforce.com" target="_blank" style="color:blue">Click here into login as agent</a> user1@csi.stmfa.na44 / agent1@csi.stmfa</p> -->
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>
@@ -17,22 +17,21 @@
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
-			 	embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-       				embeddedservice_bootstrap.settings.devMode = true;
-
+				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	
 				embeddedservice_bootstrap.init(
-  				'00DZ60000008amu',
-  				'csi_help_center',
-  				'https://csi.test1.my.pc-rnd.site.com/ESWcsihelpcenter1698515631667',
-  				{
-  					scrt2URL: 'https://csi.test1.my.pc-rnd.salesforce-scrt.com'
-  				}
-			);
+					'00DZ60000008amu',
+					'csi_help_center',
+					'https://csi-na54.test1.my.pc-rnd.site.com/ESWcsihelpcenter1698515631667',
+					{
+						scrt2URL: 'https://csi-na54.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
 		};
 	</script>
-	<script type='text/javascript' src='https://csi.test1.my.pc-rnd.site.com/ESWcsihelpcenter1698515631667/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript' src='https://csi-na54.test1.my.pc-rnd.site.com/ESWcsihelpcenter1698515631667/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
