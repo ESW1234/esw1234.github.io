@@ -4,19 +4,20 @@
         <title>Test Page</title>
    </head>
    <body>
-       <script type='text/javascript'>
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.debugMode = true;
 			embeddedservice_bootstrap.settings.devMode = true;
 
+
 			embeddedservice_bootstrap.init(
-				'00DRM000000NxTt',
-				'web6',
-				'https://miawagent1.stmfa.stm.force.com/ESWweb61680030833192',
+				'00D2v000002K39g',
+				'webchat_Production',
+				'https://maxicare.my.site.com/ESWwebchatProduction1699069487582',
 				{
-					scrt2URL: 'https://testmiawagent1.my.stmfa.stm.salesforce-scrt.com'
+					scrt2URL: 'https://maxicare.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -24,7 +25,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://miawagent1.stmfa.stm.force.com/ESWweb61680030833192/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://maxicare.my.site.com/ESWwebchatProduction1699069487582/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
