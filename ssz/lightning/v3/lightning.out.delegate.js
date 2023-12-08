@@ -157,6 +157,9 @@ $Lightning._delegate = (function() {
             if(_applicationTag && _applicationTag !== applicationTag) {
                 throw new Error("$Lightning.use() already invoked with application: " + _applicationTag);
             }
+            $A.getEvt("markup://force:updateMDP").setParams(hostedCmp.get("v.globalPublisherContext")).fire();
+    
+
 
             if(!_applicationTag) {
                 _applicationTag = applicationTag;
