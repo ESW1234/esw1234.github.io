@@ -3,25 +3,37 @@
 <script src="https://esw1234.github.io/ssz/lightning/v3/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
-<p>Today's welcome message is:</p>
-<div ng-bind-html="rawHtml">{{myWelcome}}</div>
 
-</div>
-<div id="lightning">
+<div id="divlightning">
   </div>
-  <script>
+<script>
             $Lightning.use("c:LightningOutAppTest", function() {
               $Lightning.createComponent("c:AuraComLightningOutTest", 
               { },
-              "lightning",
+              "divlightning",
               function(cmp) {
-                // do some stuff
-              });
+                  console.log('AuraComLightningOutTest created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); 
+
+     
+             $Lightning.createComponent("c:bikeCardLo", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              });*/
             },
 
-  'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression' // Community endpoint
+           'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression'// Experience Site URL
+                           
         );                   
-
-</script>   
+</script>    
 </body>
 </html>
