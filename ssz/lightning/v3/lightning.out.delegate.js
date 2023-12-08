@@ -157,7 +157,6 @@ $Lightning._delegate = (function() {
             if(_applicationTag && _applicationTag !== applicationTag) {
                 throw new Error("$Lightning.use() already invoked with application: " + _applicationTag);
             }
-            $A.getEvt("markup://force:updateMDP").setParams(hostedCmp.get("v.globalPublisherContext")).fire();
     
 
 
@@ -229,6 +228,7 @@ $Lightning._delegate = (function() {
         createComponent : function(type, attributes, locator, callback) {
             // Check to see if we know about the component - enforce aura:dependency
             // is used to avoid silent performance killer
+            $A.getEvt("markup://force:updateMDP").setParams(hostedCmp.get("v.globalPublisherContext")).fire();
             var unknownComponent;
             try {
                 unknownComponent = $A.componentService.getDef(type) === undefined;
