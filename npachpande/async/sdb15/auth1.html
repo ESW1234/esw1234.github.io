@@ -59,7 +59,7 @@
 
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 		     console.log("Received the onEmbeddedMessagingReady event…");
-		     // fetchAndSetToken();
+		     fetchAndSetToken();
 		});
 
 
@@ -73,7 +73,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.devMode = true;
+     		 	embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
 				'00DQZ0000004c1v',
