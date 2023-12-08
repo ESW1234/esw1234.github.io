@@ -228,7 +228,13 @@ $Lightning._delegate = (function() {
         createComponent : function(type, attributes, locator, callback) {
             // Check to see if we know about the component - enforce aura:dependency
             // is used to avoid silent performance killer
-            $A.getEvt("markup://force:updateMDP").setParams(hostedCmp.get("v.globalPublisherContext")).fire();
+             var evt = $A.getEvt("markup://home:homeViewportEnter");
+            evt.setParams({
+                "isOnViewport" : true
+            });
+            evt.fire();
+
+            
             var unknownComponent;
             try {
                 unknownComponent = $A.componentService.getDef(type) === undefined;
