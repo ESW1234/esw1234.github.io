@@ -1,0 +1,43 @@
+<html lang="en-US">
+<body>
+<script src="https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.salesforce.com:7443/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutWithApex", function() {
+              $Lightning.createComponent("c:AuraWithApex", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraWithApex created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); 
+
+     
+             $Lightning.createComponent("c:bikeCardLo", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              });*/
+            },
+
+           'https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auratest'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>
