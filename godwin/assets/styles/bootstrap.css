@@ -170,6 +170,7 @@
 .embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[class~="embeddedMessagingConversationButtonLoading"] {
 	pointer-events: none;
 	cursor: none;
+	padding-inline-start: 6px;
 }
 
 .embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[class~="embeddedMessagingConversationButtonLoaded"] {
