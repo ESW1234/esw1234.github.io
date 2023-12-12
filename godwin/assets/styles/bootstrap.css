@@ -3,6 +3,13 @@
  * All Rights Reserved
  * Company Confidential
  */
+
+/* CSS Variable for handling icon fill color */
+:root {
+	--eswIconFillColor: #FFFFFF;
+	--eswIconFontSize: 16px;
+}
+
 /* Default iframe specs. */
 .embeddedMessagingFrame {
 	/* hide iframe on initial page load by having 0x0 height & width */
@@ -24,21 +31,38 @@
 	right: 30px;
 	/* padding */
 	margin: 0;
-	/* sizing of button and notification */
-	height: 215px;
-	width: 206px;
+	/* sizing of button */
+	height: 62px;
+	width: 62px;
 	/* do not show shadow when minimized */
 	box-shadow: none;
 	display: inline-block;
 	visibility: visible;
-}
-
-.embedded-messaging > .embeddedMessagingFrame[class~="isDismissed"] {
-	/* sizing of button */
-	height: 62px;
-	width: 62px;
 	/* rounded corners to surround minimized button */
 	border-radius: 50%;
+}
+
+.embedded-messaging > .embeddedMessagingFrame[class~="isMinimized"][dir~="rtl"] {
+	right: 0px;
+	left: 30px;
+}
+
+.embedded-messaging > .embeddedMessagingFrame[class~="isMinimized"][dir~="rtl"][class~="experienceSite"] {
+	right: calc(100vw - 7em);
+}
+
+.embedded-service ~ .embedded-messaging > .embeddedMessagingFrame[class~="isMinimized"] {
+	/* channel menu specific positioning*/
+	bottom: 22px;
+	right: 27px;
+}
+
+.embedded-messaging > .embeddedMessagingFrame[class~="hasMinimizedNotification"]:not(.isMaximized) {
+	/* sizing of button and notification */
+	height: 215px;
+	width: 206px;
+	/* remove rounded corners for notification */
+	border-radius: 0;
 }
 
 /* Ensure that our chat button and modal floats above other components */
@@ -89,11 +113,28 @@
 	overflow: hidden;
 	pointer-events: all;
 	cursor: pointer;
+	/* Increase style specificity to prevent parent app button styles from influencing button styling */
+	display: block;
+	line-height: normal;
+	padding: 0;
+	margin: 0;
+	font-size: var(--eswIconFontSize, 16px);
+	box-sizing: border-box;
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[dir~="rtl"] {
+	right: 0;
+	left: 30px;
+	transform: scaleX(-1);
+}
+
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton[dir~="rtl"][class~="experienceSite"] {
+	right: calc(100vw - 7em);
 }
 
 /* [A11Y] Elements on parent page consumes custom branding tokens from config */
 .embeddedMessagingConversationButton {
-	background-color: var(--eswHeaderColor, #1A1B1E);
+	background: var(--eswHeaderColor, #1A1B1E);
 }
 
 .embeddedMessagingConversationButton:focus {
@@ -108,7 +149,7 @@
 	}
 
 	.embeddedMessagingFrameMaximizedBottomTabBar {
-		bottom: calc(6.25rem + env(safe-area-inset-bottom, 0));
+		bottom: calc(env(safe-area-inset-bottom, 0) - 1rem);
 	}
 }
 
@@ -151,9 +192,32 @@
 	height: 100%;
 	max-height: 30px;
 	max-width: 30px;
-	/* default button icon svg color */
-	fill: #ffffff;
+	fill: var(--eswIconFillColor);
 	transform: scale(1) translate(0px, 1.5px);
+	overflow: visible;
+}
+
+/* Minimize action shown on button, when client is maximized. */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] > svg.embeddedMessagingIconMinimize {
+	/* button icon size */
+	width: 100%;
+	height: 100%;
+	max-height: 30px;
+	max-width: 30px;
+	fill: var(--eswIconFillColor);
+	transform: scale(1.5) translate(7px, 8px);
+	overflow: visible;
+}
+
+/* Minimize action shown on button, when client is maximized. */
+.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton div[class="embeddedMessagingIconContainer"] > svg.embeddedMessagingIconRefresh {
+	/* button icon size */
+	width: 100%;
+	height: 100%;
+	max-height: 30px;
+	max-width: 30px;
+	fill: var(--eswIconFillColor);
+	transform: scale(2) translate(7px, 6.5px);
 	overflow: visible;
 }
 
@@ -163,6 +227,7 @@
 	width: 40px;
 	height: 40px;
 	position: relative;
+	padding-inline-start: 6px;
 }
 
 .embeddedMessagingConversationButtonWrapper .embeddedMessagingLoadingSpinner .embeddedMessagingLoadingCircle {
@@ -177,8 +242,7 @@
 	margin: 0 auto;
 	width: 15%;
 	height: 15%;
-	/* default loading icon color */
-	background-color: #ffffff;
+	background-color: var(--eswIconFillColor);
 	border-radius: 100%;
 	/* loading circles animation */
 	-webkit-animation: embeddedmessaging-loading-circle-fade-delay 1.2s infinite ease-in-out both;
@@ -198,6 +262,114 @@
 
 .embeddedMessagingFilePreviewFrame[class~="show"] {
 	display: block;
+}
+
+.embeddedMessagingSiteContextFrame {
+	display: none;
+}
+
+/* Minimized Notification area */
+.embeddedMessagingMinimizedNotification {
+    display: flex;
+    position: fixed;
+    pointer-events: all;
+    text-decoration: none;
+    overflow: visible;
+    cursor: default;
+    bottom: 102px;
+    right: 30px;
+    min-width: 150px;
+    max-width: 275px;
+    min-height: 120px;
+    height: auto;
+    padding: 6px 6px;
+    color: var(--slds-g-color-neutral-base-10, #000000);
+    background: var(--slds-g-color-neutral-base-100, #ffffff);
+    background-color: var(--slds-g-color-neutral-base-100, #ffffff);
+    border: 1px solid var(--slds-g-color-neutral-base-90, #dedede);
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px 0 rgba(45, 45, 45, 0.50);
+    outline: 0;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.embeddedMessagingMinimizedNotification[dir~="rtl"] {
+	right: 0;
+	left: 30px;
+}
+
+.embeddedMessagingMinimizedNotification::-moz-focus-inner,
+.embeddedMessagingMinimizedNotificationDismissButton::-moz-focus-inner {
+    /* No outline on firefox. */
+    border: 0;
+    outline: 0;
+    outline-style: none;
+    -moz-outline-style: none;
+}
+
+.embeddedMessagingMinimizedNotificationTextWrapper {
+    width: 165px;
+    position: relative;
+    margin: 12px;
+    display: flex;
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-content: left;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.embeddedMessagingMinimizedNotificationTextWrapper > .embeddedMessagingMinimizedNotificationText {
+    white-space: normal;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.embeddedMessagingMinimizedNotificationDismissButton {
+    color: var(--slds-g-color-brand-base-30, #005290);
+    background-color: var(--slds-g-color-neutral-base-100, #ffffff);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    position: fixed;
+    width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 3px;
+	align-self: end;
+	margin: 10px;
+}
+
+.embeddedMessagingMinimizedNotificationDismissButton:focus {
+    outline: 0;
+    box-shadow: 0 0 3px var(--secondaryColor, #005290);
+}
+
+.embeddedMessagingMinimizedNotificationDismissButtonText {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.slds-assistive-text {
+	position: absolute !important;
+	margin: -1px !important;
+	border: 0 !important;
+	padding: 0 !important;
+	width: 1px !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	text-transform: none !important;
+	white-space: nowrap !important;
 }
 
 /***************************
@@ -334,8 +506,8 @@
 Responsive styles for the iframe
 (mobile vs desktop/tablet)
 ***************************/
-/* mobile phones (320px-767px) */
-@media only screen and (min-width: 20em) and (max-width: 47.9375em) {
+/* mobile phones (240px-767px) */
+@media only screen and (min-width: 15em) and (max-width: 47.9375em) {
 	/* maximized iframe takes up entire viewport on mobile devices */
 	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"] {
 		/* positioning */
@@ -346,10 +518,20 @@ Responsive styles for the iframe
 		/* default iframe dimensions */
 		height: 100vh;
 		width: 100vw;
-		max-height: calc(100vh - 7em);
+		max-height: calc(100vh - 9em);
 		max-width: calc(100vw - 2em);
 		display: inline-block;
 		visibility: visible;
+	}
+
+	/* dynamic container sizing for experience site */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][class~="experienceSite"] {
+		max-height: calc(100vh - 11em);
+	}
+
+	/* dynamic container sizing for mobile publisher app */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][class~="mobilePublisher"] {
+		max-height: calc(100vh - 6em);
 	}
 
 	/* hide static button if chat is maximized */
@@ -409,7 +591,18 @@ Responsive styles for the iframe
 		width: 344px;
 		display: inline-block;
 		visibility: visible;
+		/* dynamic container sizing for iframe when zooming in */
+		max-height: calc(100vh - 9em);
 	}
+
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][dir~="rtl"] {
+		right: 0;
+		left: 30px;
+	}
+
+    .embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][dir~="rtl"][class~="experienceSite"] {
+        right: calc(100vw - 29em);
+    }
 
 	/* show button if chat is maximized on tablets and desktops */
 	#embeddedMessagingModalOverlay[class~="isMaximized"]~div.embeddedMessagingConversationButtonWrapper {
@@ -449,6 +642,16 @@ Responsive styles for the iframe
 		max-width: calc(100vw - 2em);
 		display: inline-block;
 		visibility: visible;
+	}
+
+	/* dynamic container sizing for experience site */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][class~="experienceSite"] {
+		max-height: calc(100vh - 9em);
+	}
+
+	/* dynamic container sizing for mobile publisher app */
+	.embedded-messaging > .embeddedMessagingFrame[class~="isMaximized"][class~="mobilePublisher"] {
+		max-height: calc(100vh - 4em);
 	}
 
 	/* hide static button if client is maximized */
