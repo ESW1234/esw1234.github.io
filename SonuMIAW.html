@@ -1,0 +1,27 @@
+<html>
+   <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>Test Page</title>
+   </head>
+   <body>
+       <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRM000000OHBw',
+				'MIAW',
+				'https://orgmiaw.stmfa.stm.force.com/ESWMIAW1702448933463',
+				{
+					scrt2URL: 'https://shreeramchat7.my.stmfa.stm.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgmiaw.stmfa.stm.force.com/ESWMIAW1702448933463/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
