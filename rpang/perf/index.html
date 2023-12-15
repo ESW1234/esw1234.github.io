@@ -11,7 +11,14 @@
   </div>
   <script>
     <!-- https://perftesting886-corsa04-"+ "basichb1" + "-" + "2015881314" + ".vpod.t.salesforce-communities.com/accountPortal -->
-    
+    <%
+    // Get the VPod ID from the request
+    String vpodId = request.getParameter("vpodId");
+    String usecase = request.getParameter("usecase");
+    String url = "https://perftesting886-corsa04-"+ "basichb1" + "-" + "2015881314" + ".vpod.t.salesforce-communities.com/accountPortal";
+    %>
+
+    const url = "${url}";
             $Lightning.use("c:loApp", function() {
               $Lightning.createComponent("c:auraTextCmp1", 
               { },
@@ -120,8 +127,8 @@
              );
           
             },
-
-         'https://perftest886-corsa04-basichb1-2015881314.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
+            url
+         <!-- 'https://perftest886-corsa04-basichb1-2015881314.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint -->
         );                   
 
 </script>   
