@@ -82,7 +82,9 @@ $Lightning._delegate = (function() {
                     error = new $A.$auraError$(targetURI, error);
             }
 
-        $A.reportError("Error During Lightning Out setup scripts load", error);
+        
+
+        $A.reportError("Error During Lightning Out setup scripts load" + targetURI);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
