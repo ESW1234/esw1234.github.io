@@ -76,7 +76,9 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+        $A.reportError("Error During Lightning Out setup scripts load", error);
 
+        /*
         if (typeof $A.metricsService !== "undefined") {
             $A.metricsService.transaction("aura", "lightningout:client-error", {
                 "context": {
@@ -87,7 +89,7 @@ $Lightning._delegate = (function() {
                     }
                 }
             });
-        }
+        }*/
     }
 
     function displayErrorText(error) {
