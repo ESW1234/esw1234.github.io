@@ -81,6 +81,10 @@ $Lightning._delegate = (function() {
          if (!(error instanceof $A.$auraError$)) {
                     error = new $A.$auraError$(null, error);
             }
+
+      
+        error.componentStack = e.componentStack.concat(" > ", "[", targetURI, "]");
+
         $A.reportError("Error During Lightning Out setup scripts load", error);
 
         /*
