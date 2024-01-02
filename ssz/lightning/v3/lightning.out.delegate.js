@@ -79,7 +79,7 @@ $Lightning._delegate = (function() {
 
 
          if (!(error instanceof $A.$auraError$)) {
-                    error = new $A.$auraError$(null, error);
+                    error = new $A.$auraError$(targetURI, error);
             }
 
       
