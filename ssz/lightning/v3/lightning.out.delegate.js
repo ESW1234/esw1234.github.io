@@ -76,6 +76,11 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+
+
+         if (!(error instanceof $A.$auraError$)) {
+                    error = new $A.$auraError$(null, error);
+            }
         $A.reportError("Error During Lightning Out setup scripts load", error);
 
         /*
