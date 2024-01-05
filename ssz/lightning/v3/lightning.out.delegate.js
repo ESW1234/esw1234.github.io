@@ -85,6 +85,7 @@ $Lightning._delegate = (function() {
             }
         error.component = targetURI;
         error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
+          error["stackFrames"] = error.componentStack;
 
         $A.reportError("Error During Lightning Out setup scripts load", error);
 
