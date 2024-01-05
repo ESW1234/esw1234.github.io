@@ -83,7 +83,7 @@ $Lightning._delegate = (function() {
         error.component = targetURI;
         error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
           error["stackFrames"] = error.componentStack;*/
-        error.stack = "aaa";
+       // error.stack = "aaa";
            if (!(error instanceof $A.$auraError$)) {
                     error = new $A.$auraError$(null, error);
              
