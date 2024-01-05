@@ -303,6 +303,7 @@ $Lightning._delegate = (function() {
                     if (callback) {
                         try {
                             callback(component, status, statusMessage);
+                            throw new Error("test error");
                         } catch (e) {
                             // Associate any callback error with the lightning out component being created to facilitate proper gack suppression
                             if (!(e instanceof $A.$auraError$)) {
