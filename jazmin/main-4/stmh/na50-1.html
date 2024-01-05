@@ -4,11 +4,29 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-	<p align="center"><font color ="blue">STMHB NA50(Main-4)</font></p>
+	<p align="center"><font color ="red">STMHB NA50(Main-4)</font></p>
   <br/>
   <br/>		
 
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
+			embeddedservice_bootstrap.init(
+				'00DZL0000008aKo',
+				'web1',
+				'https://foresw.test2.my.pc-rnd.site.com/ESWweb11704233527157',
+				{
+					scrt2URL: 'https://foresw.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://foresw.test2.my.pc-rnd.site.com/ESWweb11704233527157/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 	
     <style>
