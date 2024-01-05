@@ -38,6 +38,7 @@ $Lightning._delegate = (function() {
             script.type = "text/javascript";
             script.src = urls[i];
             script.async = false;
+            throw new Error;
             script.onerror = logError;
             if (i == urls.length - 1) {
                 script.onload = onload;
