@@ -79,17 +79,17 @@ $Lightning._delegate = (function() {
         }
 
         /*
-      
+            if (!(error instanceof $A.$auraError$)) {
+                    error = new $A.$auraError$(null, error);
+             
+            }
         error.component = targetURI;
         error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
           error["stackFrames"] = error.componentStack;*/
        // error.stack = "aaa";
-           if (!(error instanceof $A.$auraError$)) {
-                    error = new $A.$auraError$(null, error);
-             
-            }
+     
 
-        $A.reportError("Error During Lightning Out setup scripts load", error);
+        $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
