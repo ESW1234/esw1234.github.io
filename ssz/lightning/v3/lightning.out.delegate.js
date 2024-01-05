@@ -78,15 +78,11 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
 
-        /*
-
          if (!(error instanceof $A.$auraError$)) {
-                    error = new $A.$auraError$(targetURI, error);
+                    error = new $A.$auraError$(null, error);
+             error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
+             
             }
-
-        */
-
-
 
         $A.reportError("Error During Lightning Out setup scripts load" + targetURI, error);
 
