@@ -35,6 +35,7 @@ Agent: a1@sdb3.ia240
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
 			window.addEventListener("onEmbeddedMessagingReady", () => {
             		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
 			embeddedservice_bootstrap.init(
@@ -50,6 +51,6 @@ Agent: a1@sdb3.ia240
 		}
 	};
 </script>
-<script type='text/javascript' src='https://inapporg3.test1.my.pc-rnd.site.com/ESWX246Web1693250708347/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://inapporg3.test1.my.pc-rnd.site.com/ESWX246Web1693250708347/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
   </body>
   </html>
