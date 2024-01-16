@@ -88,7 +88,8 @@
 
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-
+			document.getElementById("authSwitch").defaultValue = window.embeddedservice_bootstrap.settings.authModeSwitch || false;
+			
 			function handleAuthSwitch(checked) {
 				window.embeddedservice_bootstrap.settings.authModeSwitch = checked;
 				window.location.reload();
