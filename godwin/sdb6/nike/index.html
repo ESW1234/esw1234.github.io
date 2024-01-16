@@ -75,7 +75,8 @@
 		<div>
 			<label class="switch">
 			  <input id="authSwitch" type="checkbox" onclick='handleAuthSwitch(this);'>
-			  <span class="slider round">Authenticated Mode</span>
+			  <span class="slider round"></span>
+				Authenticated Mode
 			</label>
 		</div>
 		
@@ -115,7 +116,7 @@
 			});
 		</script>
 		<script type='text/javascript'>
-			var isAuthSelected = embeddedservice_bootstrap.settings.authModeSwitch;
+			var isAuthSelected = window.embeddedservice_bootstrap.settings.authModeSwitch;
 			var deploymentName;
 			var deploymentSiteEndpoint;
 
