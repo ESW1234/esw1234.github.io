@@ -73,12 +73,10 @@
 
 		<!-- Auth mode switch -->
 		<div>
-			<h3>Authenticated</h3>
 			<label class="switch">
-			  <input type="checkbox">
-			  <span class="slider round"></span>
+			  <input id="authSwitch" type="checkbox" onclick='handleAuthSwitch(this);'>
+			  <span class="slider round">Authenticated Mode</span>
 			</label>
-			<h3>Unauthenticated</h3>
 		</div>
 		
 		<label for="idToken">Set identity token:</label>
@@ -91,6 +89,11 @@
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 
+			function handleAuthSwitch(checked) {
+				window.embeddedservice_bootstrap.settings.authModeSwitch = checked;
+				window.location.reload();
+			}
+			
 			function clearAuthSession() {
 				console.log("Clearing user session.");
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
@@ -110,5 +113,37 @@
 				console.log("onEmbeddedMessagingReady emitted");
 			});
 		</script>
-</body>
+		<script type='text/javascript'>
+			var isAuthSelected = embeddedservice_bootstrap.settings.authModeSwitch;
+			var deploymentName;
+			var deploymentSiteEndpoint;
+
+			if (isAuthSelected) {
+				deploymentName = 'MessagingWeb_External';
+				deploymentSiteEndpoint = 'ESWMessagingWebExternal1698440434660';
+			} else {
+				deploymentName = 'MessagingWeb_External';
+				deploymentSiteEndpoint = 'ESWMessagingWebExternal1698440434660';
+			}
+			
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+					embeddedservice_bootstrap.settings.devMode = true;
+
+					embeddedservice_bootstrap.init(
+						'00DSG000003UGaH',
+						deploymentName,
+						'https://godwin-sdb6.test1.my.pc-rnd.site.com/' + deploymentSiteEndpoint,
+						{
+							scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+						}
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
+		</script>
+		<script type='text/javascript' src='https://godwin-sdb6.test1.my.pc-rnd.site.com/ESWMessagingWebExternal1698440434660/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	</body>
 </html>
