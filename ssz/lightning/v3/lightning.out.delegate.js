@@ -192,6 +192,9 @@ $Lightning._delegate = (function() {
                             	setTimeout(function () {
                             		$A.initAsync(config.auraConfig);
                                 }, 0);
+                                for (var n = 0; n < _error.length; n++) {
+                                    $A.reportError( _error[n]);
+                                }    
                             } else {
                                 // Backward compatibility with 198
                                 $A.initConfig(config.auraInitConfig, true);
