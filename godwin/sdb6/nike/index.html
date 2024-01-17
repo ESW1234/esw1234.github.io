@@ -99,8 +99,8 @@
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 			
-			function handleAuthSwitch(checked) {
-				localStorage.setItem("authModeOn", checked);
+			function handleAuthSwitch(switch) {
+				localStorage.setItem("authModeOn", switch.checked);
 				window.location.reload();
 			}
 			
@@ -128,7 +128,7 @@
 				document.getElementById("authSwitch").checked = false;
 				localStorage.setItem("authModeOn", false);
 			    } else {
-				document.getElementById("authSwitch").checked = localStorage.getItem("authModeOn");
+				document.getElementById("authSwitch").checked = Boolean(localStorage.getItem("authModeOn"));
 			    }
 			}
 		</script>
