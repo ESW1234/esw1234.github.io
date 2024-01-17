@@ -197,6 +197,9 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
+                            for (var n = 0; n < _error.length; n++) {
+                                $A.reportError( _error[n]);
+                            }    
                         });
 
                         var styles = config.styles;
