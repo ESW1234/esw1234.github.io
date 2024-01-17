@@ -77,28 +77,17 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
-/*
         
             if (!(error instanceof $A.$auraError$)) {
                     error = new $A.$auraError$(null, error);
              
             }
-        error.component = targetURI;
-        error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
-          error["stackFrames"] = error.componentStack;*/
+        //error.component = targetURI;
+        //error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
+        //error["stackFrames"] = error.componentStack;
        // error.stack = "aaa";
      
-
-       var dispMsg = "Error During Lightning Out setup scripts load : " + targetURI;
-        var evtArgs = {"message":dispMsg, "error":null, "auraError":null};
-          evtArgs["timestamp"] = Date.now();
-     
-            window.setTimeout(function fireDeferedError() {
-      
-        $A.$eventService$.$getNewEvent$("markup://aura:systemError").$fire$(evtArgs)
-      
-    }, 0)
-         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, error);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
