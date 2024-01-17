@@ -89,7 +89,7 @@ $Lightning._delegate = (function() {
        // error.stack = "aaa";
      
 
-        $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+       
         var evtArgs = {"message":dispMsg, "error":null, "auraError":null};
           evtArgs["timestamp"] = Date.now();
      
@@ -98,6 +98,7 @@ $Lightning._delegate = (function() {
         $A.$eventService$.$getNewEvent$("markup://aura:systemError").$fire$(evtArgs)
       
     }, 0)
+         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
