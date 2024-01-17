@@ -100,7 +100,7 @@
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 			
 			function handleAuthSwitch(checked) {
-				window.authMode = checked;
+				localStorage.setItem("authModeOn", checked);
 				window.location.reload();
 			}
 			
@@ -124,17 +124,16 @@
 			});
 
 			window.onload = function () {
-			    if (localStorage.getItem("hasCodeRunBefore") === null) {
+			    if (localStorage.getItem("authModeOn") === null) {
 				document.getElementById("authSwitch").checked = false;
-				window.authMode = false;
-			        localStorage.setItem("hasCodeRunBefore", true);
+				localStorage.setItem("authModeOn", false);
 			    } else {
-				document.getElementById("authSwitch").checked = window.authMode;
+				document.getElementById("authSwitch").checked = localStorage.getItem("authModeOn");
 			    }
 			}
 		</script>
 		<script type='text/javascript'>
-			var isAuthSelected = window.authMode;
+			var isAuthSelected = localStorage.getItem("authModeOn");
 			var deploymentName;
 			var deploymentSiteEndpoint;
 
