@@ -77,8 +77,8 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
-
-        /*
+/*
+        
             if (!(error instanceof $A.$auraError$)) {
                     error = new $A.$auraError$(null, error);
              
@@ -90,6 +90,8 @@ $Lightning._delegate = (function() {
      
 
         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+        var evtArgs = {"message":dispMsg, "error":null, "auraError":null};
+         $A.$eventService$.$getNewEvent$("markup://aura:systemError").$fire$(evtArgs)
 
         /*
         if (typeof $A.metricsService !== "undefined") {
