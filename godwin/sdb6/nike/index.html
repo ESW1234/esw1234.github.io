@@ -99,8 +99,8 @@
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 			
-			function handleAuthSwitch(switch) {
-				localStorage.setItem("authModeOn", switch.checked);
+			function handleAuthSwitch(authswitch) {
+				localStorage.setItem("authModeOn", authswitch.checked);
 				window.location.reload();
 			}
 			
