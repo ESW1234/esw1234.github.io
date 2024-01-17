@@ -125,11 +125,11 @@
 
 			window.onload = function () {
 			    if (localStorage.getItem("hasCodeRunBefore") === null) {
-				document.getElementById("authSwitch").checked = "unchecked";
+				document.getElementById("authSwitch").checked = false;
 				window.authMode = false;
 			        localStorage.setItem("hasCodeRunBefore", true);
 			    } else {
-				document.getElementById("authSwitch").checked = window.authMode ? "checked" : "unchecked";
+				document.getElementById("authSwitch").checked = window.authMode;
 			    }
 			}
 		</script>
