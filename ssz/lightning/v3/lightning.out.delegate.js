@@ -77,17 +77,33 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
-        /*
+        
             if (!(error instanceof $A.$auraError$)) {
-                    error = new $A.$auraError$(null, error);
+                   Error ex = new $A.$auraError$(null, error);
              
-            }*/
+            }
         //error.component = targetURI;
         //error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
         //error["stackFrames"] = error.componentStack;
        // error.stack = "aaa";
+           function callback(result) {
+        // body...
+
+        for (var i = 0; i < result.length; i++) {
+            console.log(result[i]);
+        }
+    }
+
+    function errback(error) {
+        // body...
+        //console.log(error);
+    }
+
+
+    StackTrace.get().then(callback).catch(errback);
      
          $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, error);
+         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, ex);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
