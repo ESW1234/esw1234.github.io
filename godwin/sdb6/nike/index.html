@@ -98,7 +98,6 @@
 
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-			document.getElementById("authSwitch").defaultValue = window.authMode;
 			
 			function handleAuthSwitch(checked) {
 				window.authMode = checked;
@@ -126,8 +125,11 @@
 
 			window.onload = function () {
 			    if (localStorage.getItem("hasCodeRunBefore") === null) {
+				document.getElementById("authSwitch").value = false;
 				window.authMode = false;
 			        localStorage.setItem("hasCodeRunBefore", true);
+			    } else {
+				document.getElementById("authSwitch").value = window.authMode;
 			    }
 			}
 		</script>
@@ -144,12 +146,11 @@
 				deploymentSiteEndpoint = 'ESWMessagingWebExternal1698440434660';
 			}
 
-			embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
-
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 					embeddedservice_bootstrap.settings.devMode = true;
+					embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
 
 					embeddedservice_bootstrap.init(
 						'00DSG000003UGaH',
