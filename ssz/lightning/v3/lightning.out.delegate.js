@@ -78,48 +78,7 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
 
-                 try {
-                           
-                            throw new Error();
-                        } catch (e) {
-                            // Associate any callback error with the lightning out component being created to facilitate proper gack suppression
-                            if (!(e instanceof $A.$auraError$)) {
-                                e = new $A.$auraError$(null, e);
-                            }
-                        
-                            
-                            $A.reportError("Error During Lightning Out setup scripts load :" + targetURI, e);
-                        }
-        
-        
- 
-        //error.component = targetURI;
-        //error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
-        //error["stackFrames"] = error.componentStack;
-       // error.stack = "aaa";
-           function callback(result) {
-        // body...
-
-        for (var i = 0; i < result.length; i++) {
-            console.log(result[i]);
-        }
-    }
-
-    function errback(error) {
-        // body...
-        //console.log(error);
-    }
-
-
-    StackTrace.get().then(callback).catch(errback);
-     
-         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, error);
-
-                   if (!(error instanceof $A.$auraError$)) {
-                   error = new $A.$auraError$(null, error);
-             
-            }
-         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, ex);
+         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
