@@ -77,6 +77,20 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+
+                 try {
+                           
+                            throw new Error();
+                        } catch (e) {
+                            // Associate any callback error with the lightning out component being created to facilitate proper gack suppression
+                            if (!(e instanceof $A.$auraError$)) {
+                                e = new $A.$auraError$(null, e);
+                            }
+                            e.component = type;
+                            e.componentStack = e.componentStack.concat(" > ", "[", type, "]");
+                            $A.reportError("Error During Lightning Out setup scripts load : ", e);
+                        }
+        
         
             if (!(error instanceof $A.$auraError$)) {
                    Error ex = new $A.$auraError$(null, error);
