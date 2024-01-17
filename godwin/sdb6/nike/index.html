@@ -128,12 +128,12 @@
 				document.getElementById("authSwitch").checked = false;
 				localStorage.setItem("authModeOn", false);
 			    } else {
-				document.getElementById("authSwitch").checked = Boolean(localStorage.getItem("authModeOn"));
+				document.getElementById("authSwitch").checked = localStorage.getItem("authModeOn") === "true";
 			    }
 			}
 		</script>
 		<script type='text/javascript'>
-			var isAuthSelected = localStorage.getItem("authModeOn");
+			var isAuthSelected = localStorage.getItem("authModeOn") === "true";
 			var deploymentName;
 			var deploymentSiteEndpoint;
 
