@@ -1,15 +1,15 @@
 <html>
 <head>
-  <title>SDB3 cm1.html</title>
+  <title>sdb3 cm1.html</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
+
 <style>
   body {
     background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
   }
 </style>
-  
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
@@ -18,17 +18,17 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://eswmessagingchat.test1.my.pc-rnd.salesforce.com',
-			'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+			'https://eswmessaging.demo.test1.my.pc-rnd.salesforce.com',
+			'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DSB0000002LA1',
+			'00DSB0000016Oez',
 			'Channel_Menu'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswmessagingchat.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -37,6 +37,7 @@
 		initESW('https://service.force.com');
 	}
 </script>
-  
+
+	
 </body>
 </html>
