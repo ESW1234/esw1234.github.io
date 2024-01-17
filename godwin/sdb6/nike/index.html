@@ -97,8 +97,9 @@
 		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 
 		<script type='text/javascript'>
+			window.authMode = window.authMode || false;
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-			document.getElementById("authSwitch").defaultValue = window.authMode || false;
+			document.getElementById("authSwitch").defaultValue = window.authMode;
 			
 			function handleAuthSwitch(checked) {
 				window.authMode = checked;
