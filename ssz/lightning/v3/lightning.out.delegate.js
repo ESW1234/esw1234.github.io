@@ -89,7 +89,7 @@ $Lightning._delegate = (function() {
        // error.stack = "aaa";
      
 
-       var dispMsg = "Error During Lightning Out setup scripts load : " + targetURI);
+       var dispMsg = "Error During Lightning Out setup scripts load : " + targetURI;
         var evtArgs = {"message":dispMsg, "error":null, "auraError":null};
           evtArgs["timestamp"] = Date.now();
      
