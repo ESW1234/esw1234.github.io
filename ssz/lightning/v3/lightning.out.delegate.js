@@ -92,10 +92,7 @@ $Lightning._delegate = (function() {
                         }
         
         
-            if (!(error instanceof $A.$auraError$)) {
-                   Error ex = new $A.$auraError$(null, error);
-             
-            }
+ 
         //error.component = targetURI;
         //error.componentStack = error.componentStack.concat(" > ", "[", targetURI, "]");
         //error["stackFrames"] = error.componentStack;
@@ -117,6 +114,11 @@ $Lightning._delegate = (function() {
     StackTrace.get().then(callback).catch(errback);
      
          $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, error);
+
+                   if (!(error instanceof $A.$auraError$)) {
+                   error = new $A.$auraError$(null, error);
+             
+            }
          $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, ex);
 
         /*
