@@ -137,7 +137,9 @@
 				deploymentName = 'MessagingWeb_External';
 				deploymentSiteEndpoint = 'ESWMessagingWebExternal1698440434660';
 			}
-			
+
+			embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
+
 			function initEmbeddedMessaging() {
 				try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
