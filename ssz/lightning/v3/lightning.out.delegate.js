@@ -88,7 +88,7 @@ $Lightning._delegate = (function() {
                             }
                         
                             
-                            $A.reportError("Error During Lightning Out setup scripts load : " + targetURI, e);
+                            $A.reportError("Error During Lightning Out setup scripts load :" + targetURI, e);
                         }
         
         
