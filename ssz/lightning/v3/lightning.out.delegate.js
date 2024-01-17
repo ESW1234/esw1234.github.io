@@ -6,6 +6,7 @@ $Lightning._delegate = (function() {
     var _pendingReadyRequests = [];
     var _ready = false;
     var _previousRequestAuthToken;
+    var _error =[];
 
     function ready(callback) {
         if (_ready) {
@@ -77,8 +78,9 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+        _error.push(targetURI);
 
-         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+        // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
         if (typeof $A.metricsService !== "undefined") {
@@ -320,6 +322,10 @@ $Lightning._delegate = (function() {
 
                 for (var n = 0; n < _pendingReadyRequests.length; n++) {
                     _pendingReadyRequests[n]();
+                }
+
+               for (var n = 0; n < _error.length; n++) {
+                    $A.reportError( _error[n]);
                 }
 
                 _ready = true;
