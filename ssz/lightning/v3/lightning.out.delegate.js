@@ -324,15 +324,14 @@ $Lightning._delegate = (function() {
                     _pendingReadyRequests[n]();
                 }
 
-               for (var n = 0; n < _error.length; n++) {
-                    $A.reportError( _error[n]);
-                }
-
                 _ready = true;
             }
         },
 
         getApplication : function() {
+            for (var n = 0; n < _error.length; n++) {
+                    $A.reportError( _error[n]);
+                }
             return _application;
         }
     };
