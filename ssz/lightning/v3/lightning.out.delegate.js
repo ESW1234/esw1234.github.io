@@ -91,7 +91,13 @@ $Lightning._delegate = (function() {
 
         $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
         var evtArgs = {"message":dispMsg, "error":null, "auraError":null};
-         $A.$eventService$.$getNewEvent$("markup://aura:systemError").$fire$(evtArgs)
+          evtArgs["timestamp"] = Date.now();
+     
+            window.setTimeout(function fireDeferedError() {
+      
+        $A.$eventService$.$getNewEvent$("markup://aura:systemError").$fire$(evtArgs)
+      
+    }, 0)
 
         /*
         if (typeof $A.metricsService !== "undefined") {
