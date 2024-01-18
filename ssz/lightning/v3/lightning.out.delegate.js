@@ -81,14 +81,8 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+        _error.push(targetURI);
 
-
-        if($A.$initialized$){
-            $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
-        } else {
-            _error.push(targetURI);
-        }
-        
     
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
@@ -220,11 +214,12 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
+                            /*
                              for (var n = 0; n < _error.length; n++) {
                                 var message = "Error During LO Script load: " +  _error[n];
                       
                                 reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
-                             }
+                             }*/
 
       
                         });
@@ -233,21 +228,6 @@ $Lightning._delegate = (function() {
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
-
-                         for (var n = 0; n < _error.length; n++) {
-
-                                        /*     var targetURI;
-  
-        if (typeof _error[n].target.src !== "undefined") {
-            targetURI = _error[n].target.src;
-        } else {
-        // for <link> tags, targetURI is the href attribute
-            targetURI = _error[n].target.href;
-        }*/
-
-                                //reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
-                                //$A.reportError( _error[n]);
-                            } 
                   
                     } else {
                         // Strip aura servlet error markers
@@ -257,6 +237,12 @@ $Lightning._delegate = (function() {
                         var exceptn = JSON.parse(jsonExcptn);
                         displayErrorText(exceptn.message);
                     }
+
+                             for (var n = 0; n < _error.length; n++) {
+                                var message = "Error During LO Script load: " +  _error[n];
+                      
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
+                             }
                 });
             } else if(authToken !== _previousRequestAuthToken && $A !== undefined && $A !== null) {
                 // Update the CSRF token for the new authentication context.
