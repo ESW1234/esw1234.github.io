@@ -107,7 +107,7 @@ $Lightning._delegate = (function() {
     }
 //https://stackoverflow.com/questions/22125865/how-to-wait-until-a-predicate-condition-becomes-true-in-javascript
     function reportErrorWhenAuraInitialized(condition, callback, count) {
-    if(!condition()) {
+    if(!condition() && (count >0)) {
         console.log('waiting' + count);
         count--;
         setTimeout(reportErrorWhenAuraInitialized.bind(null, condition, callback, count), 100); /* this checks the flag every 100 milliseconds*/
