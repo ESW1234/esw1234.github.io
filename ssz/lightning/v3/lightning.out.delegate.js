@@ -82,9 +82,11 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
 
-        _error.push(targetURI);
+
         if($A.$initialized$){
             $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+        } else {
+            _error.push(targetURI);
         }
         
     
