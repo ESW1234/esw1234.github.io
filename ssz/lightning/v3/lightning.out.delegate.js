@@ -220,7 +220,8 @@ $Lightning._delegate = (function() {
                                 $Lightning.lightningLoaded();
                             }
                              for (var n = 0; n < _error.length; n++) {
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));                     
+                                 var message = "Error During LO Script load: " +  _error[n];
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message));                     
                              }
 
       
