@@ -79,10 +79,6 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
 
-        if (!(error instanceof $A.$auraError$)) {
-            error = new $A.$auraError$("Error Loading " + targetURI);
-                            }
-
         _error.push(error);
     
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
@@ -215,7 +211,17 @@ $Lightning._delegate = (function() {
                                 $Lightning.lightningLoaded();
                             }
                             for (var n = 0; n < _error.length; n++) {
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(_error[n]));
+
+                                        var targetURI;
+       
+        if (typeof _error[n].target.src !== "undefined") {
+            targetURI = _error[n].target.src;
+        } else {
+        // for <link> tags, targetURI is the href attribute
+            targetURI = _error[n].target.href;
+        }
+
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError( "Lightning Out script load Error: " +targetURI));
                                 //$A.reportError( _error[n]);
                             }    
                         });
