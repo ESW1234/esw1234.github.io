@@ -46,9 +46,7 @@ $Lightning._delegate = (function() {
                 script.onload = onload;
             }
             head.appendChild(script);
-            for (var n = 0; n < _error.length; n++) {
-                 reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
-            }
+ 
            
         }
     };
@@ -85,6 +83,9 @@ $Lightning._delegate = (function() {
         }
 
         _error.push(targetURI);
+        if($A.$initialized$){
+            $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
+        }
         
     
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
@@ -216,6 +217,10 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
+                             for (var n = 0; n < _error.length; n++) {
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));                     
+                             }
+
       
                         });
 
