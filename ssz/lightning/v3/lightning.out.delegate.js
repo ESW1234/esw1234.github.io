@@ -79,7 +79,7 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
         _error.push(targetURI);
-        reportErrorWhenAuraInitialized(() =>$A.$initialized$ == false, () => $A.reportError("error1"));
+        reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () => $A.reportError("error1"));
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
