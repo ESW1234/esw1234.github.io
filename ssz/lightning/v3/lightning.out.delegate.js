@@ -109,7 +109,7 @@ $Lightning._delegate = (function() {
     function reportErrorWhenAuraInitialized(condition, callback) {
     if(!condition()) {
         console.log('waiting');
-        window.setTimeout(reportErrorWhenAuraInitialized.bind(null, condition, callback), 100); /* this checks the flag every 100 milliseconds*/
+        setTimeout(reportErrorWhenAuraInitialized.bind(null, condition, callback), 100); /* this checks the flag every 100 milliseconds*/
     } else {
         console.log('done');
         callback();
