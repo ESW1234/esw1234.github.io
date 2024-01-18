@@ -214,12 +214,12 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
-                            /*
+                            
                              for (var n = 0; n < _error.length; n++) {
                                 var message = "Error During LO Script load: " +  _error[n];
                       
                                 reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
-                             }*/
+                             }
 
       
                         });
@@ -228,6 +228,11 @@ $Lightning._delegate = (function() {
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
+                         for (var n = 0; n < _error.length; n++) {
+                                var message = "Error During LO Script load: " +  _error[n];
+                      
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
+                         }
                   
                     } else {
                         // Strip aura servlet error markers
@@ -238,11 +243,7 @@ $Lightning._delegate = (function() {
                         displayErrorText(exceptn.message);
                     }
 
-                             for (var n = 0; n < _error.length; n++) {
-                                var message = "Error During LO Script load: " +  _error[n];
-                      
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
-                             }
+    
                 });
             } else if(authToken !== _previousRequestAuthToken && $A !== undefined && $A !== null) {
                 // Update the CSRF token for the new authentication context.
