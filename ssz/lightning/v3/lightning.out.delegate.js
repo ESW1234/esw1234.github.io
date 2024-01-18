@@ -100,7 +100,7 @@ $Lightning._delegate = (function() {
         }*/
     }
 //https://stackoverflow.com/questions/22125865/how-to-wait-until-a-predicate-condition-becomes-true-in-javascript
-    function reportErrorWhenAuraInitialized(condition, callback, count) {
+    function reportErrorWhenAuraInitialized(condition, callback, ount) {
     if(!condition() && (count >0)) {
         console.log('waiting' + count);
         count--;
@@ -215,11 +215,17 @@ $Lightning._delegate = (function() {
                                 $Lightning.lightningLoaded();
                             }
                             
-                             for (var n = 0; n < _error.length; n++) {
-                                var message = "Error During LO Script load: " +  _error[n];
+                       
                       
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
-                             }
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, function(){ 
+                                   for (var n = 0; n < _error.length; n++) {
+                                                    console.log("loggging " + n);
+                                       var message = "Script:" + _error[n];
+                                      $A.reportError(message);
+                                     }
+                                    
+                                },  5);                     
+                      
 
       
                         });
@@ -228,11 +234,8 @@ $Lightning._delegate = (function() {
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
-                         for (var n = 0; n < _error.length; n++) {
-                                var message = "Error During LO Script load: " +  _error[n];
-                      
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
-                         }
+                                 
+                   
                   
                     } else {
                         // Strip aura servlet error markers
