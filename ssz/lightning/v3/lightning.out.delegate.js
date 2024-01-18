@@ -221,8 +221,8 @@ $Lightning._delegate = (function() {
                             }
                              for (var n = 0; n < _error.length; n++) {
                                 var message = "Error During LO Script load: " +  _error[n];
-                                setTimeout($A.reportError(message), 1000)
-                                //reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message));                     
+                      
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message));                     
                              }
 
       
