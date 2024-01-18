@@ -210,26 +210,28 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
-                            for (var n = 0; n < _error.length; n++) {
-
-                                        var targetURI;
-       
-        if (typeof _error[n].target.src !== "undefined") {
-            targetURI = _error[n].target.src;
-        } else {
-        // for <link> tags, targetURI is the href attribute
-            targetURI = _error[n].target.href;
-        }
-
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError( "Lightning Out script load Error: " +targetURI));
-                                //$A.reportError( _error[n]);
-                            }    
+      
                         });
 
                         var styles = config.styles;
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
+
+                         for (var n = 0; n < _error.length; n++) {
+
+                                        /*     var targetURI;
+  
+        if (typeof _error[n].target.src !== "undefined") {
+            targetURI = _error[n].target.src;
+        } else {
+        // for <link> tags, targetURI is the href attribute
+            targetURI = _error[n].target.href;
+        }*/
+
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(_error[n]));
+                                //$A.reportError( _error[n]);
+                            } 
                   
                     } else {
                         // Strip aura servlet error markers
