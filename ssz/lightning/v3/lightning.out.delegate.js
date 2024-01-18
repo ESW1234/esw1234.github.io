@@ -106,12 +106,12 @@ $Lightning._delegate = (function() {
         }*/
     }
 //https://stackoverflow.com/questions/22125865/how-to-wait-until-a-predicate-condition-becomes-true-in-javascript
-    function reportErrorWhenAuraInitialized(condition, callback) {
+    function reportErrorWhenAuraInitialized(condition, callback, count) {
     if(!condition()) {
-        console.log('waiting');
-        setTimeout(reportErrorWhenAuraInitialized.bind(null, condition, callback), 100); /* this checks the flag every 100 milliseconds*/
+        console.log('waiting' + count);
+        setTimeout(reportErrorWhenAuraInitialized.bind(null, condition, callback, count), 100); /* this checks the flag every 100 milliseconds*/
     } else {
-        console.log('done');
+        console.log('done' + count );
         callback();
     }
 }
@@ -222,7 +222,7 @@ $Lightning._delegate = (function() {
                              for (var n = 0; n < _error.length; n++) {
                                 var message = "Error During LO Script load: " +  _error[n];
                       
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message));                     
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(message), 5);                     
                              }
 
       
