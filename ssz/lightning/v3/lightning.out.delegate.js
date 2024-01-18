@@ -229,7 +229,7 @@ $Lightning._delegate = (function() {
             targetURI = _error[n].target.href;
         }*/
 
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(_error[n]));
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
                                 //$A.reportError( _error[n]);
                             } 
                   
