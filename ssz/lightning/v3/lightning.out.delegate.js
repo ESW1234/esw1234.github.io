@@ -41,10 +41,15 @@ $Lightning._delegate = (function() {
             script.async = false;
             //throw new Error("Test error from delegate script");
             script.onerror = logError;
+            
             if (i == urls.length - 1) {
                 script.onload = onload;
             }
             head.appendChild(script);
+            for (var n = 0; n < _error.length; n++) {
+                 reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
+            }
+           
         }
     };
 
@@ -80,6 +85,7 @@ $Lightning._delegate = (function() {
         }
 
         _error.push(targetURI);
+        
     
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
@@ -229,7 +235,7 @@ $Lightning._delegate = (function() {
             targetURI = _error[n].target.href;
         }*/
 
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
+                                //reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError("Error During LO Script load: "+ _error[n]));
                                 //$A.reportError( _error[n]);
                             } 
                   
