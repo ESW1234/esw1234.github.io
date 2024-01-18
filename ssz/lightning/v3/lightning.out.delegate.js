@@ -79,7 +79,7 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
         _error.push(targetURI);
-        reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () => $A.reportError("error1"));
+        reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () => console.log('report error'));
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
@@ -95,12 +95,13 @@ $Lightning._delegate = (function() {
             });
         }*/
     }
-
+//https://stackoverflow.com/questions/22125865/how-to-wait-until-a-predicate-condition-becomes-true-in-javascript
     function reportErrorWhenAuraInitialized(condition, callback) {
     if(!condition()) {
         console.log('waiting');
         window.setTimeout(waitFor.bind(null, condition, callback), 100); /* this checks the flag every 100 milliseconds*/
     } else {
+        $A.reportError("error1");
         console.log('done');
         callback();
     }
