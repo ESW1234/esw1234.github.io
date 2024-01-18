@@ -210,8 +210,7 @@ $Lightning._delegate = (function() {
                                 $Lightning.lightningLoaded();
                             }
                             for (var n = 0; n < _error.length; n++) {
-
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError( _error[n])  );
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError(_error[n]));
                                 //$A.reportError( _error[n]);
                             }    
                         });
@@ -220,11 +219,7 @@ $Lightning._delegate = (function() {
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
-                        for (var n = 0; n < _error.length; n++) {
-
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError( _error[n])  );
-                                //$A.reportError( _error[n]);
-                            }    
+                  
                     } else {
                         // Strip aura servlet error markers
                         var startIndex = (xhr.responseText.startsWith("*/")) ? 2 : 0;
