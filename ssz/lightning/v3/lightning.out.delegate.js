@@ -204,9 +204,7 @@ $Lightning._delegate = (function() {
                             	setTimeout(function () {
                             		$A.initAsync(config.auraConfig);
                                 }, 0);
-                                for (var n = 0; n < _error.length; n++) {
-                                    $A.reportError( _error[n]);
-                                }    
+                       
                             } else {
                                 // Backward compatibility with 198
                                 $A.initConfig(config.auraInitConfig, true);
@@ -223,6 +221,11 @@ $Lightning._delegate = (function() {
                         for (var n = 0; n < styles.length; n++) {
                             addStyle(styles[n]);
                         }
+                        for (var n = 0; n < _error.length; n++) {
+
+                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true, () =>$A.reportError( _error[n])  );
+                                //$A.reportError( _error[n]);
+                            }    
                     } else {
                         // Strip aura servlet error markers
                         var startIndex = (xhr.responseText.startsWith("*/")) ? 2 : 0;
@@ -314,7 +317,7 @@ $Lightning._delegate = (function() {
                     if (callback) {
                         try {
                             callback(component, status, statusMessage);
-                            throw new Error("test error");
+                           // throw new Error("test error");
                         } catch (e) {
                             // Associate any callback error with the lightning out component being created to facilitate proper gack suppression
                             if (!(e instanceof $A.$auraError$)) {
