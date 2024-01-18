@@ -100,7 +100,7 @@ $Lightning._delegate = (function() {
         }*/
     }
 //https://stackoverflow.com/questions/22125865/how-to-wait-until-a-predicate-condition-becomes-true-in-javascript
-    function reportErrorWhenAuraInitialized(condition, callback, ount) {
+    function reportErrorWhenAuraInitialized(condition, callback, count) {
     if(!condition() && (count >0)) {
         console.log('waiting' + count);
         count--;
