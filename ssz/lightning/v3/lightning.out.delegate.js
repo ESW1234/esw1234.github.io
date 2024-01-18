@@ -79,7 +79,7 @@ $Lightning._delegate = (function() {
             targetURI = error.target.href;
         }
         _error.push(targetURI);
-
+        reportErrorWhenAuraInitialized(() =>$A.$initialized$ == false, () => $A.reportError("error1"));
         // $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
 
         /*
@@ -95,6 +95,17 @@ $Lightning._delegate = (function() {
             });
         }*/
     }
+
+    function reportErrorWhenAuraInitialized(condition, callback) {
+    if(!condition()) {
+        console.log('waiting');
+        window.setTimeout(waitFor.bind(null, condition, callback), 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+        console.log('done');
+        callback();
+    }
+}
+
 
     function displayErrorText(error) {
         var para = document.createElement("P");
