@@ -217,7 +217,7 @@ $Lightning._delegate = (function() {
                             
                        
                       
-                                reportErrorWhenAuraInitialized(() =>$A.$initialized$ == true,() => { 
+                                reportErrorWhenAuraInitialized(() =>$A.finishedInit == true,() => { 
                                    for (var n = 0; n < _error.length; n++) {
                                                     console.log("loggging " + n);
                                        var message = "Script:" + _error[n];
