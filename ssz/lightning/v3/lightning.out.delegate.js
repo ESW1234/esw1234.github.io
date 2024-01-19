@@ -111,6 +111,17 @@ $Lightning._delegate = (function() {
     }
 }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function reportScriptError(cb, timeout) {
+        while(!$A.finishedInit) {
+            await sleep(timeout);
+        }
+        cb();
+    }
+
 
     function displayErrorText(error) {
         var para = document.createElement("P");
@@ -215,7 +226,7 @@ $Lightning._delegate = (function() {
                                 $Lightning.lightningLoaded();
                             }
                             
-                       
+                       /*
                       
                                 reportErrorWhenAuraInitialized(() =>$A.finishedInit == true,() => { 
                                    for (var n = 0; n < _error.length; n++) {
@@ -224,7 +235,11 @@ $Lightning._delegate = (function() {
                                       $A.reportError(message);
                                      }
                                     
-                                },  5);                     
+                                },  5);       */
+                            reportScriptError(() => {
+                                    for (var n = 0; n < _error.length; n++) {
+                                        $A.reportError("lightningout:client-error:script-setup:" + _error[n]);
+                                    }}, 250);
                       
 
       
