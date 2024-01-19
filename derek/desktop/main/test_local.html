@@ -27,6 +27,7 @@
                 try {
                   embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                   embeddedservice_bootstrap.settings.devMode = true;
+		  embeddedservice_bootstrap.settings.shouldDisableUserInputForBotParticipant = true;
 			
 		// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 		 window.addEventListener("onEmbeddedMessagingReady", () => {
