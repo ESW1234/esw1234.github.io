@@ -1,0 +1,168 @@
+<html>
+	<head>
+		<title>NIKE INAPP</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+		<style>
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+			}
+			
+			.switch input { 
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+			
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ccc;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+			
+			input:checked + .slider {
+				background-color: #2196F3;
+			}
+			
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196F3;
+			}
+			
+			input:checked + .slider:before {
+				-webkit-transform: translateX(26px);
+				-ms-transform: translateX(26px);
+				transform: translateX(26px);
+			}
+			
+			/* Rounded sliders */
+			.slider.round {
+				border-radius: 34px;
+			}
+			
+			.slider.round:before {
+				border-radius: 50%;
+			}
+
+			.authModeSwitcher {
+				width: 300px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>NIKE INAPP</h1>
+		<h2>godwin@sdb6.org</h2>
+		<!-- Edit page link -->
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		</br>
+		<!-- Auth mode switch -->
+		<div class="authModeSwitcher">
+			<p>Unauthenticated</p>
+			<label class="switch">
+				<input id="authSwitch" type="checkbox" onclick='handleAuthSwitch(this);'>
+				<span class="slider round"></span>
+			</label>
+			<p>Authenticated</p>
+		</div>
+		</br>
+		</br>
+		<label for="idToken">Set identity token:</label>
+		<input type="text" id="idToken" name="idToken" size="50">
+		<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+		</br>
+		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+		<script type='text/javascript'>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+			
+			function handleAuthSwitch(authswitch) {
+				localStorage.setItem("authModeOn", authswitch.checked);
+				window.location.reload();
+			}
+			
+			function clearAuthSession() {
+				console.log("Clearing user session.");
+				embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			}
+
+			function setIdentityToken(token) {
+				var token = document.getElementById("idToken").value;
+
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+					"identityTokenType":"JWT",
+					// Valid JWT
+					"identityToken": token
+				});
+			}
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("onEmbeddedMessagingReady emitted");
+			});
+
+			window.onload = function () {
+			    if (localStorage.getItem("authModeOn") === null) {
+				document.getElementById("authSwitch").checked = false;
+				localStorage.setItem("authModeOn", false);
+			    } else {
+				document.getElementById("authSwitch").checked = localStorage.getItem("authModeOn") === "true";
+			    }
+			}
+		</script>
+		<script type='text/javascript'>
+			var isAuthSelected = localStorage.getItem("authModeOn") === "true";
+			var deploymentName;
+			var deploymentSiteEndpoint;
+
+			if (isAuthSelected) {
+				deploymentName = 'Messaging_Auth';
+				deploymentSiteEndpoint = 'ESWMessagingAuth1705701510213';
+			} else {
+				deploymentName = 'EmbeddedMessaging_ExternalSites';
+				deploymentSiteEndpoint = 'ESWEmbeddedMessagingExte1690834629937';
+			}
+
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+					embeddedservice_bootstrap.settings.devMode = true;
+					embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
+
+    			embeddedservice_bootstrap.init(
+    				'00DSB0000004st3',
+    				deploymentName,
+    				'https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/' + deploymentSiteEndpoint,
+    				{
+    					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+    				}
+    			);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
+		</script>
+		<script type='text/javascript' src='https://godwin-sdb6.test1.my.pc-rnd.site.com/ESWMessagingWebExternal1698440434660/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	</body>
+</html>
