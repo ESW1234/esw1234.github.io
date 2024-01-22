@@ -44,16 +44,16 @@
 			  	try {
 					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 					embeddedservice_bootstrap.settings.devMode = true;
-          embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
-			
-    			embeddedservice_bootstrap.init(
-    				'00DSB0000004st3',
-    				'Messaging_Auth',
-    				'https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWMessagingAuth1705701510213',
-    				{
-    					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
-    				}
-    			);
+		          		embeddedservice_bootstrap.settings.clearSessionBetweenAuthSchemes = true;
+					
+		    			embeddedservice_bootstrap.init(
+		    				'00DSB0000004st3',
+		    				'Messaging_Auth',
+		    				'https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWMessagingAuth1705701510213',
+		    				{
+		    					scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+		    				}
+		    			);
 				} catch (err) {
 					console.error('Error loading Embedded Messaging: ', err);
 				}
