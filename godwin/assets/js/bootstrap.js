@@ -499,7 +499,8 @@
 		JWT: "JWT",
 		FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES",
 		HIDDEN_PRECHAT_FIELDS: "HIDDEN_PRECHAT_FIELDS",
-		AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS"
+		AUTORESPONSE_PARAMETERS: "AUTORESPONSE_PARAMETERS",
+		CONVERSATION_BUTTON_CLICK_TIME: "CONVERSATION_BUTTON_CLICK_TIME"
 	};
 
 	/**
@@ -561,6 +562,12 @@
 		resolveAppLoaded = resolve;
 	});
 
+	/**
+	 * Constant for Channel Address Identifier claim in ia-message jwt.
+	 * @type {string}
+	 */
+	const MESSAGING_JWT_CHANNEL_ADD_ID_CLAIM = "channelAddId";
+
 	/******************************************************
 						Web storage functions
 		This is copied from embeddedService:webStorageUtils.js.
@@ -580,7 +587,7 @@
 	function getConversationIdFromPayload(payload) {
 		if (payload) {
 			for (const key of Object.keys(JSON.parse(payload))) {
-				if (!Object.hasOwn(STORAGE_KEYS, key)) {
+				if (!STORAGE_KEYS.hasOwnProperty(key)) {
 					return key;
 				}
 			}
@@ -1199,7 +1206,8 @@
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration}),
 			hasConversationButtonColorContrastMetA11yThreshold: hasConversationButtonColorContrastMetA11yThreshold(),
-			hostUrl: window.location.href
+			hostUrl: window.location.href,
+			shouldDisableUserInputForBotParticipant: Boolean(embeddedservice_bootstrap.settings.shouldDisableUserInputForBotParticipant)
 		});
 
 		return finalConfigurationData || {};
@@ -1616,7 +1624,7 @@
 	 */
 	function loadCSS(url) {
 		return new Promise((resolve, reject) => {
-			let baseURL = "https://esw1234.github.io/godwin"
+			let baseURL = getSiteURL();
 			let link = document.createElement("link");
 
 			link.id = BOOTSTRAP_CSS_NAME;
@@ -2027,7 +2035,9 @@
      * @returns {*}
      */
     function handleListConversation(isPageLoad) {
-        return listConversation(false).then(response => {
+		const channelAddressIdentifier = embeddedservice_bootstrap.settings.clearSessionOnChannelChange ?
+			embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.channelAddressIdentifier : null;
+        return listConversation(false, channelAddressIdentifier).then(response => {
 			let openConversations = [];
 
 			if (!response.conversations || !Array.isArray(response.conversations)) {
@@ -2094,9 +2104,10 @@
 	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#operation/listConversation
 	 *
 	 * @param {Boolean} includeClosedConversations - Whether to include closed conversations in list. Optional.
+	 * @param {String} channelAddressIdentifier - Whether to filter conversations list by channelAddressIdentifier. Optional.
 	 * @returns {Promise}
 	 */
-	function listConversation(includeClosedConversations){
+	function listConversation(includeClosedConversations, channelAddressIdentifier){
 		const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat(LIST_CONVERSATIONS_PATH);
 
 		return sendRequest(
@@ -2104,7 +2115,10 @@
 			"POST",
 			"cors",
 			null,
-			{ includeClosedConversations },
+			{
+				includeClosedConversations,
+				...(channelAddressIdentifier && { channelAddressIdentifier })
+			},
 			"listConversation"
 		).then(response => response.json());
 	};
@@ -2935,6 +2949,9 @@
 
 				// eslint-disable-next-line no-negated-condition
 				if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
+					// Store Conversation Button's click time in localstorage for later use.
+					setItemInWebStorage(STORAGE_KEYS.CONVERSATION_BUTTON_CLICK_TIME, Date.now(), true, true);
+
 					// Change the button to a loading icon.
 					setLoadingStatusForButton();
 
@@ -3048,6 +3065,33 @@
 	}
 
 	/**
+	 * Helper function to generate button markup & bootstrap existing session in web storage.
+	 *
+	 * When embeddedservice_bootstrap.settings.clearSessionOnChannelChange = true, this function compares the channelAddressIdentifier
+	 * received in config to the one set in ia-messsage jwt & clears the existing session on value mismatch. This is useful for customers
+	 * who want to clear session on -
+	 * 1. user verification change (going from a verified to an unverified deployment)
+	 * 2. language-specific auto-response change (customer has language-specific auto-responses configured)
+	 * 3. any other channel setting change (like routing, consent keywords, file attachment, inactivity rules)
+	 */
+	function handleExistingSession() {
+		messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
+		const channelAddIdFromConfig =  embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.channelAddressIdentifier || "";
+		// Extract messaging JWT payload.
+		const jwtPayload = parseJwt(messagingJwt) || {};
+		// Extract channelAddId claim.
+		const channelAddIdFromJwt = jwtPayload[MESSAGING_JWT_CHANNEL_ADD_ID_CLAIM] || "";
+
+		if (embeddedservice_bootstrap.settings.clearSessionOnChannelChange && (channelAddIdFromConfig !== channelAddIdFromJwt)) {
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			return;
+		}
+
+		embeddedservice_bootstrap.generateMarkup(true);
+		bootstrapExistingSession();
+	}
+
+	/**
 	 * Handle updates to FAB and Iframe after app loaded event is received from container with the aura app
 	 * OR after a LWR site is loaded.
 	 */
@@ -3125,6 +3169,11 @@
 		// [iOS Devices] Restore the meta viewport tag to its original value
 		if (originalViewportMetaTag) {
 			restoreViewportMetaTag();
+		}
+
+		// [Mobile Web] Remove inert state from background elements.
+		if (isMobile()) {
+			toggleInertOnSiblingElements(false);
 		}
 
 		// Remove markup from the page.
@@ -4893,8 +4942,8 @@
 			// Default app to use sandbox on iframe unless the flag is turned on.
 			embeddedservice_bootstrap.settings.omitSandbox = Boolean(embeddedservice_bootstrap.settings.omitSandbox);
 
-			// hideChatButtonOnLoad - Static setting for visibility of chat button on page load.
-			embeddedservice_bootstrap.settings.hideChatButtonOnLoad = embeddedservice_bootstrap.settings.hideChatButtonOnLoad;
+			// Whether to clear the session on messaging channel change & filter listConversation response by channelAddressIdentifier.
+			embeddedservice_bootstrap.settings.clearSessionOnChannelChange = Boolean(embeddedservice_bootstrap.settings.clearSessionOnChannelChange);
 
 			// Load CSS file for bootstrap.js from GSLB.
 			const cssPromise = loadCSS().then(
@@ -4975,9 +5024,7 @@
 				// Else, generate button markup only for unauth mode. For auth mode, markup is generated in #setIdentityToken() API.
 				// For MIAW in Channel Menu, static button markup is generated on menu item click in #bootstrapEmbeddedMessaging() API
 				if (sessionExists()) {
-					messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
-					embeddedservice_bootstrap.generateMarkup(true);
-					bootstrapExistingSession();
+					handleExistingSession();
 				} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
 					embeddedservice_bootstrap.generateMarkup();
 				}
