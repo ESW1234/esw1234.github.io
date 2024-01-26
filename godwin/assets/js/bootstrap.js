@@ -345,7 +345,7 @@
 		".salesforce-sites.com",
 
 		// Used by Salesforce Workspaces environments
-		".w.crm.dev"
+		".crm.dev"
 	];
 
 	/**
