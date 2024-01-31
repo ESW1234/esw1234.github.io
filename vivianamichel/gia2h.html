@@ -18,7 +18,7 @@
         console.log ("Received the onEmbeddedMessagingReady event...");
         console.log("Page_URL: " + window.location.href);
 		// get UserId of currently logged in Experience Cloud User
-        var userId = underfined;
+        var userId = undefined;
         console.log ("HiddenPrechatUserId (currently Logged In User Id) set to " + userId);
         // Send data to Salesforce
         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"HiddenPrechatUserId" : userId, "Page_URL" : window.location.href});
