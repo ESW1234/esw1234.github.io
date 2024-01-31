@@ -8,14 +8,15 @@
 
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
+		background-color: #88DA15;
 		font-family: "Arial", sans-serif;
 	}
 	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
+		outline: 1px solid #88DA15;
 	}
 </style>
 
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -26,25 +27,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://eswmessagingchat.test1.my.pc-rnd.salesforce.com',
-			'https://eswmessagingchat.test1.my.pc-rnd.site.com/chatcommunity',
+			'https://eswmessaging.demo.test1.my.pc-rnd.salesforce.com',
+			'https://eswmessaging.demo.test1.my.pc-rnd.site.com/chatcommunity',
 			gslbBaseURL,
-			'00DSB0000002LA1',
-			'Chat_3',
+			'00DSB0000016Oez',
+			'Chat',
 			{
-				baseLiveAgentContentURL: 'https://c.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
-				deploymentId: '572SB0000000lVB',
-				buttonId: '573SB0000000jd6',
-				baseLiveAgentURL: 'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000000Vwf2AE_189d2d3d40a',
-				isOfflineSupportEnabled: false
+				baseLiveAgentContentURL: 'https://c.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				deploymentId: '572SB000000KqMj',
+				buttonId: '573SB000000Ak00',
+				baseLiveAgentURL: 'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_1743cd61ebc',
+				isOfflineSupportEnabled: true
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://eswmessagingchat.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
