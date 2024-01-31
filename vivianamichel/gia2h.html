@@ -12,6 +12,32 @@
 	}
 
 </script>
+
+	<script>
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+        console.log ("Received the onEmbeddedMessagingReady event...");
+        console.log("Page_URL: " + window.location.href);
+		// get UserId of currently logged in Experience Cloud User
+        var userId = underfined;
+        console.log ("HiddenPrechatUserId (currently Logged In User Id) set to " + userId);
+        // Send data to Salesforce
+        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"HiddenPrechatUserId" : userId, "Page_URL" : window.location.href});
+    });
+</script>
+
+<script type="text/javascript">
+    window.addEventListener("onEmbeddedMessagingReady", () => {
+        console.log("Received the onEmbeddedMessagingReady event.");
+        
+        embeddedservice_bootstrap.settings.imageCompressionOptions = {
+            quality: 0.6,
+            maxWidth: 960,
+            maxHeight: 1280,
+            convertTypes: ["image/png"],
+            convertSize: 2000000
+        };
+    });
+</script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -19,11 +45,11 @@
 			embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
-				'00DGB0000000Ma1',
-				'Messaging_6',
-				'https://eswcom2.giadev1.my.pc-rnd.site.com/ESWMessaging61689899322265',
+				'00DB0000000gb6A',
+				'DEEVO_Messaging_for_Web_Guest',
+				'https://deevo-demo.my.site.com/ESWDEEVOMessagingforWe1675439323844',
 				{
-					scrt2URL: 'https://eswcom2.giadev1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://deevo-demo.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -31,7 +57,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswcom2.giadev1.my.pc-rnd.site.com/ESWMessaging61689899322265/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://deevo-demo.my.site.com/ESWDEEVOMessagingforWe1675439323844/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
 
