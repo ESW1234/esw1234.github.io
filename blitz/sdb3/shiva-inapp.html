@@ -21,25 +21,12 @@
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
 
-			//window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-			//	console.log("onEmbeddedMessagingReady emitted");
-
-        		//embeddedservice_bootstrap.utilAPI.showChatButton();
-			//});
-
 			window.addEventListener("onEmbeddedMessagingReady", () => {
-    				console.log("Received the onEmbeddedMessagingReady event…");
+				 Embedded Messaging app ready
+				console.log("onEmbeddedMessagingReady emitted");
 
-			    // Send data to Salesforce
-    			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Order_Number" : "867-5309",
-        		"Customer_ID" : "11098324"});
-
-			    // Remove any items from the previous list that you don't want to send
-    			//embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(["Customer_ID"]);
-			//});
-
-			embeddedservice_bootstrap.init(…)
+        		embeddedservice_bootstrap.utilAPI.showChatButton();
+			});
 		</script>
 		
 		
