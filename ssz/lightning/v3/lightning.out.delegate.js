@@ -39,7 +39,8 @@ $Lightning._delegate = (function() {
             script.type = "text/javascript";
             script.src = urls[i];
             if (script.src.indexOf("aura_dev.js") > -1){
-                script.setAttribute('crossorigin', 'use-credential');
+                //script.setAttribute('crossorigin', 'use-credential');
+                script.setAttribute('crossorigin', 'anonymous');
             }
             script.async = false;
             script.onerror = logError;
