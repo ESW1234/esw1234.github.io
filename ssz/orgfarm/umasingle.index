@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>External Forms</title>
+        <script src="https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression/lightning/lightning.out.js"></script> 
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </head>
+    <body>
+        <h1>External Forms</h1>
+        <div id="exformlocation"></div>
+    </body>
+    <script type="text/javascript">
+        $Lightning.use("c:externalFormsApp", // name of the Lightning app
+            function() {                     // Callback once framework and app loaded
+                $Lightning.createComponent(
+                    "c:exformsingle",        // top-level component of your app
+                    {
+                        "recaptchaSiteKey": "6LegKwMpAAAAAEvAVqhjm6pikqVziChY8xx_JGhe",
+                        "recaptcha": window.grecaptcha
+                    },                       // attributes to set on the component when created
+                    "exformlocation",        // the DOM location to insert the component
+                    function(cmp) {
+                        // callback when component is created and active on the page
+                        console.log("*** created");
+                    }
+                );
+            },
+         
+             'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression'// Experience Site URL
+        );
+    </script>
+</html>
