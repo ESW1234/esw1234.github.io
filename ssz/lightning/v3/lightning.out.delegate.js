@@ -41,14 +41,12 @@ $Lightning._delegate = (function() {
             if (n > -1) {
                 script.src = urls[i].substring(0, n);
                 var crossorigin = urls[i].substring(n + 13);
-                script.setAttribute('crossorigin', crossorigin);
+                //script.setAttribute('crossorigin', crossorigin);
+                script.setAttribute('crossorigin', 'anonymous');
             } else {
                 script.src = urls[i];
             }
-            if (script.src.indexOf("aura_dev.js") > -1){
-                //script.setAttribute('crossorigin', 'use-credential');
-                script.setAttribute('crossorigin', 'anonymous');
-            }
+        
             script.async = false;
             script.onerror = logError;
             if (i == urls.length - 1) {
