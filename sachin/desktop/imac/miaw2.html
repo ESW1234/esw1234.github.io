@@ -9,7 +9,7 @@
 		<h2>sachinh@esw.com / test1234</h2>
 		<br>
 		<h1>SDB3</h1>
-		<h2>admin@sdb3.blitz.org / 123456</h2>
+		<h2>admin@sdb3.blitz.org / test1234</h2>
 		<br>
 		<a href="https://salesforce.quip.com/wkswAYpfZt8B#temp:C:ccC9943708394e844a7b65f1451c" target="_blank">Q3 orgs detail sheet</a>
 		<a href="https://salesforce.quip.com/LaV8AzbsDBeu" target="_blank">Blitz org detail sheet</a>
@@ -30,13 +30,63 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
-				console.log("onEmbeddedMessagingReady emitted");
+				console.log("onEmbeddedMessagingReady event received");
 				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
 				    "userName" : "Guest",
 				    "cartValue": "1000"
 				});
+				fetchAndSetToken(5);
 			});
 		</script>
+
+		function clearAuthSession() {
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				"identityToken": token
+			});
+		}
+
+		function closeEmbeddedMessagingVerifiedConversation() {
+		    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+		    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
+		    const jwt = storageObj["JWT"];
+		    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+		    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
+		    fetch(endpoint, {
+			method: "DELETE",
+			mode: "cors",
+			headers: {
+			    "Content-Type": "application/json",
+			    "Authorization": "Bearer " + jwt    
+			}
+		    })
+		    .then(res => res.json())
+		    .then(res => console.log(res))
+		}
+
+		function fetchAndSetToken(seconds) {
+		     var porticoURL = `https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=${seconds}&keyId=5f103f1b-ee38-404c-ac94-83c427764813`;
+		     fetch(porticoURL).then(function(response) {
+			  return response.json();
+		     }).then(function(data) {
+			  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			       identityTokenType: "JWT",
+			       identityToken: data.accessToken
+			  });
+		     }).catch(function(err) {
+			  console.log('Fetch Error :', err);
+		     });
+		}
+
+		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+		     console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		     fetchAndSetToken(60);
+		});
 		
 		<!-- Snippet -->
 	<script type='text/javascript'>
@@ -53,12 +103,20 @@
 				// 		scrt2URL: 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				// 	}
 				// );
+				// embeddedservice_bootstrap.init(
+				// 	'00DSB0000005YCL',
+				// 	'webMessagingBot03',
+				// 	'https://trialorgfarmforu4.my.localhost.sfdcdev.site.com:7443/ESWMIAW120241704839850743',
+				// 	{
+				// 		scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
 				embeddedservice_bootstrap.init(
-					'00DSB0000005YCL',
-					'webMessagingBot03',
+					'00DSB0000016Oez',
+					'Auth_2',
 					'https://trialorgfarmforu4.my.localhost.sfdcdev.site.com:7443/ESWMIAW120241704839850743',
 					{
-						scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
