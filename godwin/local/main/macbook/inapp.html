@@ -47,37 +47,18 @@
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
 				// SDB6
-				// embeddedservice_bootstrap.init(
-				// 	'00DSG0000008LaL',
-				// 	'MIAW_External_Sites',
-				// 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWEmbeddedMessagingWebE1687549957545',
-				// 	{
-				// 		scrt2URL: 'https://godwinlaw-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
-				// 	}
-				// );
-
-				// STMFA
 				embeddedservice_bootstrap.init(
-					'00DS7000000owqD',
-					'MIAW_III',
-				 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWEmbeddedMessagingWebE1687549957545',
+					'00DSG000003UGaH',
+					'MessagingWeb_External',
+					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExternalS1707342993732',
 					{
-						scrt2URL: 'https://godwinlaw.stmfa.my.stm.salesforce-scrt.com'
+						scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
-				// NIKHIL SDB6
-				// embeddedservice_bootstrap.init(
-				// 	'00DSG0000001hxN',
-				// 	'Messaging_19',
-				// 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWEmbeddedMessagingWebE1687549957545',
-				// 	{
-				// 		scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
-				// 	}
-				// );
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
 		};
 	</script>	
-	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWEmbeddedMessagingWebE1687549957545/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript' src='https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExternalS1707342993732/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 </html>
