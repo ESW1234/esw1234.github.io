@@ -47,12 +47,22 @@
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
 				// SDB6
+				// embeddedservice_bootstrap.init(
+				// 	'00DSG000003UGaH',
+				// 	'MessagingWeb_Bot',
+				// 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExternalS1707342993732',
+				// 	{
+				// 		scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
+
+				// SDB3 BLITZ
 				embeddedservice_bootstrap.init(
-					'00DSG000003UGaH',
-					'MessagingWeb_Bot',
+					'00DSB0000005YCL',
+					'webMessagingBot01',
 					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExternalS1707342993732',
 					{
-						scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
