@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <link rel="prefetch" href="1.html"/>
+    <script language="javascript">
+      function prefetchAFile() {
+        const head = document.querySelector("HEAD");
+        const linkEl = document.createElement("link");
+        linkEl.rel="prefetch";
+        linkEl.href="2.html"
+        head.appendChild(linkEl);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="prefetchAFile()">Click me! I'm in an iframe</button>
+    </iframe>
+  </body>
+</html>
