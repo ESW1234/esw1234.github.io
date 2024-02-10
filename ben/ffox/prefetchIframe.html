@@ -9,10 +9,12 @@
         linkEl.href="2.html"
         head.appendChild(linkEl);
       }
+      window.addEventListener("message", function(e) {
+        prefetchAFile();
+      });
     </script>
   </head>
   <body>
-    <button onclick="prefetchAFile()">Click me! I'm in an iframe</button>
-    </iframe>
+    <H1>I'm in an iframe</H1>
   </body>
 </html>
