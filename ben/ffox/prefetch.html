@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <link rel="prefetch" href="1.html"/>
+    <script language="javascript">
+      function prefetchAFile() {
+        const head = document.querySelector("HEAD");
+        const linkEl = document.createElement("link");
+        linkEl.rel="prefetch";
+        linkEl.href="1.html"
+        head.appendChild(linkEl);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Hello! This is a reproduction of a prefetch issue in firefox! Open the developer tools to network view to see what is going on</h1>
+    <button onclick="prefetchAFile()">Click me! I'm in the parent page</button>
+  </body>
+</html>
