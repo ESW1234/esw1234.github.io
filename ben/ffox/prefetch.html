@@ -8,12 +8,14 @@
         linkEl.rel="prefetch";
         linkEl.href="1.html"
         head.appendChild(linkEl);
+        const iframe = document.querySelector("IFRAME");
+        iframe.contentWindow.postMessage("loadIt");
       }
     </script>
   </head>
   <body>
     <h1>Hello! This is a reproduction of a prefetch issue in firefox! Open the developer tools to network view to see what is going on</h1>
-    <button onclick="prefetchAFile()">Click me! I'm in the parent page</button>
+    <button onclick="prefetchAFile()">Click me to add some prefetch links!</button>
     <iframe src="prefetchIframe.html" width="400px" heigh="400px">
     </iframe>
   </body>
