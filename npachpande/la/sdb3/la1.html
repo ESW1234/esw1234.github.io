@@ -18,6 +18,12 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script> -->
 <script type='text/javascript'>
+
+	embedded_svc.addEventHandler("onClickSubmitButton", function(data) {
+	    console.log("onClickSubmitButton event was fired.");
+	});
+
+	
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
