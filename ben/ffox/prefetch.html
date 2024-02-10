@@ -8,7 +8,7 @@
         linkEl.href="1.html"
         head.appendChild(linkEl);
         const iframe = document.querySelector("IFRAME");
-        iframe.contentWindow.postMessage("loadIt");
+        iframe.contentWindow.postMessage("loadIt", "*");
       }
     </script>
   </head>
