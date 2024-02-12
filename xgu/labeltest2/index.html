@@ -1,0 +1,23 @@
+<html lang="en-US">
+  <body>
+    <script src="https://xgu-dev-ed.develop.my.localhost.sfdcdev.site.com:6101/lightning/lightning.out.js"></script>
+    <p>Lightning Out App Test</p>
+    <div id="divlightning"></div>
+    <script>
+      $Lightning.use(
+        "c:labelTestApp",
+        function () {
+          $A.getDefinition(
+            "c:labelTest",
+            function (cmp) {
+              console.log("aura component created" + cmp);
+            }
+          );
+        },
+        "https://xgu-dev-ed.develop.my.localhost.sfdcdev.site.com:6101",
+        null,
+        {"guestUserLang": "zh-CN"}
+      );
+    </script>
+  </body>
+</html>
