@@ -28,15 +28,15 @@
 		<script type='text/javascript'>
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 
-			// window.addEventListener("onEmbeddedMessagingReady", () => {
-			// 	// Embedded Messaging app ready
-			// 	console.log("onEmbeddedMessagingReady event received");
-			// 	embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-			// 	    "userName" : "Guest",
-			// 	    "cartValue": "1000"
-			// 	});
-			// 	//fetchAndSetToken(20);
-			// });
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				// Embedded Messaging app ready
+				console.log("onEmbeddedMessagingReady event received");
+				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+				    "userName" : "Guest",
+				    "cartValue": "1000"
+				});
+				//fetchAndSetToken(20);
+			});
 		</script>
 
 		<script type='text/javascript'>
@@ -121,16 +121,6 @@
 				// 		scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
 				// 	}
 				// );
-				window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-				embeddedservice_bootstrap.bootstrapEmbeddedMessaging();
-				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
-    					"_firstName": {
-      						"value": "Jane",
-      						"isEditableByEndUser": false
-    					}
-  				});
-				});
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
