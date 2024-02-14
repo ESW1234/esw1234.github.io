@@ -123,6 +123,7 @@
 				// );
 				window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
+				embeddedservice_bootstrap.bootstrapEmbeddedMessaging();
 				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
     					"_firstName": {
       						"value": "Jane",
