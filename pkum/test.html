@@ -1,6 +1,41 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Non LWR App</title>
 
-    <body>
+    <script src="https://pkcom.my.localhost.sfdcdev.salesforce.com:6101/lightning/lightning.out.js"></script>
 
-    </body>
+    <script>
+        function init(){
+            $Lightning.use("c:myLightningOutDependencyApp", function() {
+                    $Lightning.createComponent("c:myLightningOutCmp",
+                        {"accountId" : "001xx000003GYihAAG"},
+                        "lightningOutDiv",
+                        function(component) {
+                            console.log('Lightning out view refreshed!');
+                        }
+                    );
+                },
+                'https://pkcom.my.localhost.sfdcdev.salesforce.com:6101/',
+                '00Dxx00000071xv!AQEAQLmL1A694WwhTtAif39qtteomwh4oQBSZAU_OJHWVVa03xd3bAFuz61.HFywmrztnwXBiwO0ncd1uc5aUiQhpNANaGkC'
+            );
+        }
+
+        function buttonClicked() {
+            console.log('Button is clicked!');
+        }
+    </script>
+</head>
+<body onload="init()">
+    <p>This is non-LWR application !!!</p>
+
+    <button onclick="buttonClicked()">Click me!</button>
+    <br/>
+    <!-- Lightning out div -->
+    <div id='lightningOutDiv'></div>
+
+</body>
 </html>
