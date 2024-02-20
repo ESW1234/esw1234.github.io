@@ -20,6 +20,11 @@
             				'https://gcpmiawtest.my.site.com/ESWdeployment11708107326640',
             				{
             					scrt2URL: 'https://gcpmiawtest.my.salesforce-scrt.com'
+                                          // Override default behavior and hide the chat button at initialization
+                                          embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+
+                                          // Messaging for Web init call
+                                          embeddedservice_bootstrap.init(...initalization info...);
             				}
                   );
                 } catch (err) {
