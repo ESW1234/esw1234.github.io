@@ -15,12 +15,16 @@
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+  				console.log("Received the onEmbeddedMessagingReady event…");
+			});
+			embeddedservice_bootstrap.settings.devMode = true;
+			
 			embeddedservice_bootstrap.init(
 				'00Dam000001Yuwr',
 				'testing_repo',
@@ -34,6 +38,7 @@
 		}
 	};
 </script>
+
 <script type='text/javascript' src='https://erikasa-240219-649-demo.my.site.com/ESWtestingrepo1708713845617/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
   
 </body>
