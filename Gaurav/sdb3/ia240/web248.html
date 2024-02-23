@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>SDB3-MIAW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDB3 MIAW Chat - MIAW - 248 deployment.</h1>
+Agent: a1@sdb3.ia240
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		// Required if you want labels in a language that’s different from your user’s context.
+		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		embedded_svc.menu.init(
+			'https://inapporg3.test1.my.pc-rnd.salesforce.com',
+			'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+			gslbBaseURL,
+			'00DSB0000003a8b',
+			'ch1'
+		);
+	};
+
+	if (!window.embedded_svc || !window.embedded_svc.menu) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://inapporg3.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script> -->
+	
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
+			embeddedservice_bootstrap.init(
+				'00DSB0000003a8b',
+				'X248Web',
+				'https://inapporg3.test1.my.pc-rnd.site.com/ESWX248Web1708669458498',
+				{
+					scrt2URL: 'https://inapporg3.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inapporg3.test1.my.pc-rnd.site.com/ESWX248Web1708669458498/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+  </html>
