@@ -20,17 +20,6 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-  				console.log("Received the onEmbeddedMessagingReady event…");
-  				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-    					cartValue: "123",
-					country: "ch",
-					language_code: "en",
-					country_language: "ch-en",
-					userName: "pchung@salesforce.com"
-  				});
-			});
 
 			embeddedservice_bootstrap.init(
 				'00Dam000001Yuwr',
