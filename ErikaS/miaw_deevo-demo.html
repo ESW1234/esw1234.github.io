@@ -22,15 +22,23 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
   				console.log("Received the onEmbeddedMessagingReady event…");
+
+  				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+    					cartValue: "123",
+					country: "ch",
+					language_code: "en",
+					country_language: "ch-en",
+					userName: "pchung@salesforce.com"
+  				});
 			});
 			embeddedservice_bootstrap.settings.devMode = true;
 			
 			embeddedservice_bootstrap.init(
-				'00Dam000001Yuwr',
-				'testing_repo',
-				'https://erikasa-240219-649-demo.my.site.com/ESWtestingrepo1708713845617',
+				'00DB0000000gb6A',
+				'Peter_Messaging_for_Web_Demo',
+				'https://deevo-demo.my.site.com/ESWPeterMessagingforWe1673924632044',
 				{
-					scrt2URL: 'https://erikasa-240219-649-demo.my.salesforce-scrt.com'
+					scrt2URL: 'https://deevo-demo.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
