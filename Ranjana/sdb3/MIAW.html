@@ -11,7 +11,26 @@
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'>> -->
 
 
-__ HEREinsert snippet here__
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB00000582WP',
+				'ALLAgents_MIAW_Flow_PreChat_Bot',
+				'https://sdb3com85.demo.test1.my.pc-rnd.site.com/ESWALLAgentsMIAWFlowPr1707852230068',
+				{
+					scrt2URL: 'https://sdb3com85.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://sdb3com85.demo.test1.my.pc-rnd.site.com/ESWALLAgentsMIAWFlowPr1707852230068/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 </html>
