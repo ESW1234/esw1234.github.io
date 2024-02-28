@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LO App</title>
+
+    <script src="https://pkcom.lightning.localhost.sfdcdev.force.com:7443/lightning/lightning.out.js"></script>
+
+    <script>
+        function init(){
+            $Lightning.use("c:simpleLightningOutDepApp", function() {
+                    $Lightning.createComponent("c:simpleLightningOutCmp",
+                        {},
+                        "lightningOutDiv",
+                        function(component) {
+                            console.log('Lightning out view refreshed!');
+                        }
+                    );
+                },
+                'https://pkcom.lightning.localhost.sfdcdev.force.com:7443',
+                null,
+                {"guestUserLang": "zh-CN"}
+            );
+        }
+
+        function buttonClicked() {
+            console.log('Button is clicked!');
+        }
+    </script>
+</head>
+<body onload="init()">
+    <p>LO application - 1</p>
+    <br/>
+    <!-- Lightning out div -->
+    <div id='lightningOutDiv'></div>
+
+</body>
+</html>
