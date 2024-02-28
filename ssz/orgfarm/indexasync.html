@@ -1,0 +1,51 @@
+<html lang="en-US">
+<body>
+<script src="https://dsg000007gucs2aa.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script> 
+<script async src = "https://dsg000007gucs2aa.test1.my.pc-rnd.site.com/l/%7B%22mode%22%3A%22PROD%22%2C%22cac%22%3A0%2C%22app%22%3A%22c%3ALightningOutAppTest%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fc%3ALightningOutAppTest%22%3A%22Es1-6gwfsrc3v4X408zfiw%22%7D%2C%22styleContext%22%3A%7B%22c%22%3A%22webkit%22%2C%22x%22%3A%5B%22isDesktop%22%5D%2C%22tokens%22%3A%5B%22markup%3A%2F%2Fforce%3AsldsTokens%22%2C%22markup%3A%2F%2Fforce%3Abase%22%2C%22markup%3A%2F%2Fforce%3AformFactorLarge%22%5D%2C%22tuid%22%3A%22GPc3Z9bbWUNbdiNSSht2FA%22%2C%22cuid%22%3A631219208%7D%2C%22pathPrefix%22%3A%22%22%7D/app.css?2=" crossorigin="anonymous"></script>
+
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppTest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+
+               $Lightning.createComponent("c:AuraWithApex", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('AuraWithApex created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); */
+
+     
+             $Lightning.createComponent("c:bikeCard", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCard created');
+              });
+            },
+
+           'https://dsg000007gucs2aa.test1.my.pc-rnd.site.com'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>
