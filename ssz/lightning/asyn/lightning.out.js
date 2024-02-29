@@ -82,6 +82,7 @@ if (!window.$Lightning) {
             var url = "/auraFW/javascript/" + getDelegateScriptVersion();
 
             // Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
+            /*
             var scripts = document.getElementsByTagName("script");
             for (var m = 0; m < scripts.length; m++) {
                 var script = scripts[m].src;
@@ -91,9 +92,9 @@ if (!window.$Lightning) {
                     url = basePath + url;
                     break;
                 }
-            }
+            }*/
 
-            return url;
+            return https://dsg000007gucs2aa.test1.my.pc-rnd.site.com + url;
         }
         // load delegate
 
