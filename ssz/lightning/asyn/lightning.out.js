@@ -61,6 +61,7 @@ if (!window.$Lightning) {
             script.src = getAuraFWUrl();
                 //"https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auratest/auraFW/javascript/ZmQ3cTY1S1FuMXN4RWtOb0MzX19mQWI3R1VKcGhJWk5vdjhFRG1WRXIwQ2cyNTAuMy4xLTYuMC4w/aura_dev.js";
             script.async = true;
+            script.setAttribute("rel", "prefetch");
 
             script.onload = function() {
                 console.log("Loading an script " + this.src);
