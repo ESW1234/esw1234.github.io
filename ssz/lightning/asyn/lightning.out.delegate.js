@@ -37,7 +37,12 @@ $Lightning._delegate = (function() {
         for (var i = 0; i < urls.length; i++) {
             var script = document.createElement("SCRIPT");
             script.type = "text/javascript";
-            script.src = urls[i];
+            script.src = urls[i]["url"];
+            var crossorigin = urls[i]["crossorigin"];
+            if (crossorigin) {
+                script.setAttribute("crossorigin", crossorigin);
+            }
+
             script.async = false;
             script.onerror = logError;
             if (i == urls.length - 1) {
