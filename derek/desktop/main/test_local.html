@@ -6,14 +6,7 @@
 		}
 	</style>
       <head>
-	     <!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-P23HLW3');</script>
-	     <!-- End Google Tag Manager -->
-             <title>Test (Local LWR)</title>
+             <title>Test (Local SDB6)</title>
              <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 	     
       </head>
@@ -27,39 +20,20 @@
                 try {
                   embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                   embeddedservice_bootstrap.settings.devMode = true;
-		  embeddedservice_bootstrap.settings.shouldDisableUserInputForBotParticipant = true;
+		  embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
 			
 		// Customers add such standard Javascript event listeners for specific MIAW events to act on them.
 		 window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("Received onEmbeddedMessagingReady event!!!");
 		 });
-
-			
-		// p4 core
-  //                 embeddedservice_bootstrap.init(
-		// 	'00DSG0000001hxN',
-		// 	'Messaging_19',
-		// 	'https://derek1.my.localhost.sfdcdev.site.com:6101/ESWdeployment11683842413808',
-		// 	{
-		// 		scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
-		// 	}
-		// );
-// 			embeddedservice_bootstrap.init(
-// 				'00DS7000000lqNL',
-// 				'MIAW3',
-// 				'https://derek1.my.localhost.sfdcdev.site.com:6101/ESWdeployment11683842413808',
-// 				{
-// 					scrt2URL: 'https://test-1d4.stmfa.my.stm.salesforce-scrt.com'
-// 				}
-// 			);
 			
 			// git core
                   embeddedservice_bootstrap.init(
-			'00DSG0000001hxN',
-			'Messaging_19',
+			'00DSG000007vf49',
+			'MIAW1',
 			'https://derek1.my.localhost.sfdcdev.site.com:6101/ESWdeployment11703015692849',
 			{
-				scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				scrt2URL: 'https://derekeswsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 			}
 		 );
 			
