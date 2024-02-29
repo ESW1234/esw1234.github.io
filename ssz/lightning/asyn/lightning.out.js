@@ -79,7 +79,7 @@ if (!window.$Lightning) {
 
         function getAuraFWUrl() {
             // load the delegate script based on stored version (got from aura nonce) or get latest version
-            var url = "/auraFW/javascript/" + getDelegateScriptVersion();
+            var url = "/auraFW/javascript/" + getDelegateScriptVersion() + "/aura_dev.js";
 
             // Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
             /*
