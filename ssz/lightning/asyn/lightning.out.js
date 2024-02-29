@@ -94,7 +94,7 @@ if (!window.$Lightning) {
                 }
             }*/
 
-            return https://dsg000007gucs2aa.test1.my.pc-rnd.site.com + url;
+            return "https://dsg000007gucs2aa.test1.my.pc-rnd.site.com" + url;
         }
         // load delegate
 
