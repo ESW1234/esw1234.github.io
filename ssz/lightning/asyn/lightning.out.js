@@ -22,7 +22,7 @@ if (!window.$Lightning) {
             var scripts = document.getElementsByTagName("script");
             for (var m = 0; m < scripts.length; m++) {
                 var script = scripts[m].src;
-                var i = script.indexOf("/lightning/lightning.out.js");
+                var i = script.indexOf("/lightning.out.js");
                 if (i >= 0) {
                     var basePath = script.substring(0, i);
                     url = basePath + url;
