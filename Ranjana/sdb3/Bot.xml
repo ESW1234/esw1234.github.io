@@ -17,7 +17,7 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00DSB00000582WP',
+				'00DSB000005gstx',
 				'ALLAgents_MIAW_Flow_PreChat_Bot',
 				'https://sdb3com85.demo.test1.my.pc-rnd.site.com/ESWALLAgentsMIAWFlowPr1707852230068',
 				{
