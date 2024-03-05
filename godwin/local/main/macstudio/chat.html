@@ -22,12 +22,15 @@
 	}
 </style>
 
-<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>-->
+<!--<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>-->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
 		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.devMode = true;
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
 		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
 		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
@@ -46,17 +49,17 @@
 
 		embedded_svc.init(
 			'https://godwinlaw.my.localhost.sfdcdev.salesforce.com:6101',
-			'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ember',
+			'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/endpoint',
 			gslbBaseURL,
-			'00Dxx0000006Gqx',
+			'00Dxx0000006GpL',
 			'Embedded_Chat',
 			{
 				baseLiveAgentContentURL: 'https://yatlaw-ltm947n.internal.salesforce.com:8095/content',
 				deploymentId: '572xx0000004CCG',
 				buttonId: '573xx0000004CCG',
 				baseLiveAgentURL: 'https://yatlaw-ltm947n.internal.salesforce.com:8096/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004CAeEAM_18872d54c50',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ixx0000004C92EAE_18e10304785',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
