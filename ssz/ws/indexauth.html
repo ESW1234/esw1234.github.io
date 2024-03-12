@@ -1,0 +1,45 @@
+
+<html lang="en-US">
+<body>
+<script src="https://trialorgfarmforu2.my.site-com.sisi-zhang-w-14786918.wb.crm.dev:6101/lotest/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAOO", function() {
+              $Lightning.createComponent("c:AuraCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:AuraCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); 
+
+     
+             $Lightning.createComponent("c:bikeCardLo", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              });*/
+            },
+            'https:trialorgfarmforu2.lightning.force-com.sisi-zhang-w-14786918.wb.crm.dev:6101',
+             '00Dxx0000006HBv!AQEAQNJocFO4eeLtPJ_HtdHNIppRTO2zzp4Wzc5ScTcfl4.mq.fNJ5_q0cmEFOeBy5JxT9yI4hutLHLCDTB2FbQDOE7bWaJ0'
+           //'https://trialorgfarmforu2.my.salesforce-com.sisi-zhang-w-14786918.wb.crm.dev:6101'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>
