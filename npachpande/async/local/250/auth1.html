@@ -76,6 +76,7 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
 
+			// STMHA ORG
 			embeddedservice_bootstrap.init(
 				'00DZ60000004Yw0',
 				'Auth_1',
@@ -84,6 +85,19 @@
 					scrt2URL: 'https://eswmessaging0220.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
+
+			/*
+			// STMHB ORG
+			embeddedservice_bootstrap.init(
+				'00DZM0000004YbI',
+				'Auth_1',
+				'https://eswmessaging.my.localhost.sfdcdev.site.com:6101/ESWMessaging21710287638567',
+				{
+					scrt2URL: 'https://eswmessaging0307.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+			*/
+
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
