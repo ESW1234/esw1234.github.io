@@ -1,14 +1,22 @@
 <html>
   <head>
     <script>
-      document.requestStorageAccess();
-      //read values from session storage/local storage
-      let sessionVal = sessionStorage.getItem("test_storageVal");
-      let localVal = sessionStorage.getItem("test_storageVal");
+      function setVals() {
+        //read values from session storage/local storage
+        let sessionVal = sessionStorage.getItem("test_storageVal");
+        let localVal = sessionStorage.getItem("test_storageVal");
       
-      //output values to console
-      console.log("esw1234 sessionVal: " + sessionVal);
-      console.log("esw1234 localVal: " + localVal);
+        //output values to console
+        console.log("esw1234 sessionVal: " + sessionVal);
+        console.log("esw1234 localVal: " + localVal);
+
+        console.log("esw1234 setting values on page load");
+        document.getElementById("sessionVal").value = sessionVal;
+        document.getElementById("localVal").value = localVal;
+
+        document.getElementById("updateBtn").addEventListener("click", updateVals);
+
+      }
       
       //add function to update the values
       function updateVals(){
@@ -23,11 +31,16 @@
       
       //add handler to show the values
       window.addEventListener("load", (event) => {
-        console.log("esw1234 setting values on page load");
-        document.getElementById("sessionVal").value = sessionVal;
-        document.getElementById("localVal").value = localVal;
-
-        document.getElementById("updateBtn").addEventListener("click", updateVals);
+        document.requestStorageAccess().then(
+          () => {
+            console.log("access granted");
+            setVals();
+          },
+          () => {
+            console.log("access denied");
+            setVals()
+          },
+        );
       });
     </script>
   </head>
