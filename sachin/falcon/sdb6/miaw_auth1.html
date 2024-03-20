@@ -9,9 +9,6 @@
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 
-  <label for="idToken">Set identity token:</label></br>
-	<input type="text" id="idToken" name="idToken" size="50"></br>
-	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
 	<textarea id="convIdInput" placeholder="Enter conversation-id to end conversation" style="resize:none;position:relative;top:10px"></textarea>
 	<button type="button" id="closeConversationBtn" onclick="closeEmbeddedMessagingVerifiedConversation()"> Close Conversation  </button></br></br>
 	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
@@ -63,7 +60,7 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			// Embedded Messaging app ready
 			console.log("onEmbeddedMessagingReady event received");
-      fetchAndSetToken();
+      			fetchAndSetToken();
 
 			document.getElementById("logsButton").disabled = false;
 		});
@@ -136,17 +133,9 @@
 		}
 	</script>
 
-  <script type='text/javascript'>
+  	<script type='text/javascript'>
 		function clearAuthSession() {
 			embeddedservice_bootstrap.userVerificationAPI.clearSession();
-		}
-
-		function setIdentityToken(token) {
-			var token = document.getElementById("idToken").value;
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				"identityToken": token
-			});
 		}
 
 		function closeEmbeddedMessagingVerifiedConversation() {
@@ -177,11 +166,11 @@
 			       identityToken: data.accessToken
 			  });
 		     }).catch(function(err) {
-			      console.log('Fetch Error :', err);
-           embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-             identityTokenType: "JWT",
-			       identityToken: "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3RAZXN3LmNvbSIsImV4cCI6MTcwOTMzMDY4NiwiaWF0IjoxNzA5MzI0Njg2fQ.cdvp2x_9bNg9VZNbAH7aM7dXW5d2Z-PGq_EVdm_pY_ladn7BxegCghIrXDfgt171efx_7zLjbZcOCmbuqzi_3P7kIMsgIIcVXDQBArad7rWr47DHPsB6PRihjVo9qda0nDfDfNk4WBvI0BMKudB-EeQMBx_eghLgUplOHOp5Eg9PIhCTHDf5rw_0p8IlBsa3QRoU38_cX-TDSNgs_IY_YVl1z457LXiwZ9z8MePk9ph2GvLhWhpGHxOZMmHRHk2fmxgtPdOI3TD2nv3dx-N-EpMGOdaK4Qd7aoCNLFfCySihE7miR35yt1qqKFKSrgzSXukRvZcdq-2MvAJf9UXcKw"
-			     });
+				console.log('Fetch Error :', err);
+           			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+             				identityTokenType: "JWT",
+			       		identityToken: "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3RAZXN3LmNvbSIsImV4cCI6MTcwOTMzMDY4NiwiaWF0IjoxNzA5MzI0Njg2fQ.cdvp2x_9bNg9VZNbAH7aM7dXW5d2Z-PGq_EVdm_pY_ladn7BxegCghIrXDfgt171efx_7zLjbZcOCmbuqzi_3P7kIMsgIIcVXDQBArad7rWr47DHPsB6PRihjVo9qda0nDfDfNk4WBvI0BMKudB-EeQMBx_eghLgUplOHOp5Eg9PIhCTHDf5rw_0p8IlBsa3QRoU38_cX-TDSNgs_IY_YVl1z457LXiwZ9z8MePk9ph2GvLhWhpGHxOZMmHRHk2fmxgtPdOI3TD2nv3dx-N-EpMGOdaK4Qd7aoCNLFfCySihE7miR35yt1qqKFKSrgzSXukRvZcdq-2MvAJf9UXcKw"
+			     	});
 		    });
 		}
 
