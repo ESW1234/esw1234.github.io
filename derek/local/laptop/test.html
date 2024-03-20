@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>sdb6 miaw1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
+
+			embeddedservice_bootstrap.init(
+				'00DSG000007vf49',
+				'MIAW1',
+				'https://derek1.my.localhost.sfdcdev.site.com:7443/ESWdeployment11710954681543',
+				{
+					scrt2URL: 'https://derekeswsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://derek1.my.localhost.sfdcdev.site.com:7443/ESWdeployment11710954681543/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
