@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>sdb6 miaw3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<h1>Route to agent</h1>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSG000007vf49',
+				'MIAW3',
+				'https://derekeswsdb6.test1.my.pc-rnd.site.com/ESWMIAW31711040498068',
+				{
+					scrt2URL: 'https://derekeswsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://derekeswsdb6.test1.my.pc-rnd.site.com/ESWMIAW31711040498068/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
