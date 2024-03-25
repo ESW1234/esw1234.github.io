@@ -3483,7 +3483,7 @@
 		// To add/remove MIAW from menu items use the reorder API
 		// Reordering API accounts for single/multiple channels and supported/unsupported operating systems
 		// Calling the reorder API closes an open channel menu
-		const addEmbeddedMessagingMenuOption = function () {
+		const addEmbeddedMessagingMenuOption = function (detail) {
 			const listItems = document.getElementById("esw-channelmenu_ctas");
 			const menu = document.getElementById("esw-channelmenu");
 			const formattedMenuItems = [];
