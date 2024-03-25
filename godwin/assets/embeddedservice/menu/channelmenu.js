@@ -3489,19 +3489,24 @@
 			const formattedMenuItems = [];
 			let wasChannelMenuOpen = false;
 			let menuItemsToBeDisplayed;
-			let embeddedMessagingConfiguration = null;
+			let embeddedMessagingConfiguration;
 
 			if (menu && menu.style.visibility !== "hidden") {
 				wasChannelMenuOpen = true;
 			}
 
-			// Retrieve configuration object for embedded messaging channel
+			// Retrieve configuration object for embedded messaging channel.
 			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
-				.filter(channel => 
-					channel.channelType === "EmbeddedMessaging" 
-					&& channel.name === "MIAW" //detail.devName
+				.find(channel =>
+					channel.channelType === "EmbeddedMessaging"
+					&& channel.name === detail.devName
 				);
-			
+
+			if (!embeddedMessagingConfiguration) {
+				embedded_svc.utils.log("[Channel Menu] The embedded messaging \"" + detail.devName + "\" is not found.");
+				return;
+			}
+
 			// Add embedded messaging menu item markup.
 			generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
 
