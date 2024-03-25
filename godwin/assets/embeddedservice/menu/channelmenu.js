@@ -3474,9 +3474,9 @@
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
 		const visibilityChangeEventListener = function (options) {
 			if (options && options.detail && options.detail.isVisible) {
-				addEmbeddedMessagingMenuOption();
+				addEmbeddedMessagingMenuOption(options.detail);
 			} else {
-				removeEmbeddedMessagingMenuOption();
+				removeEmbeddedMessagingMenuOption(options.detail);
 			}
 		}
 
@@ -3496,7 +3496,11 @@
 			}
 
 			// Retrieve configuration object for embedded messaging channel
-			embedded_svc.menu.menuConfig.configuredChannels.filter(channel => channel === channel);
+			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
+				.filter(channel => 
+					channel.channelType === CHANNEL_TYPE_MAPPING.EmbeddedMessaging 
+					&& channel.name === detail.devName
+				);
 			
 			// Add embedded messaging menu item markup.
 			generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
