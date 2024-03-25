@@ -1842,10 +1842,6 @@
 		var newTabLink_ariaLabel = embedded_svc.menu.menuConfig.labelData.ChannelMenu_WebURL.NewTabLinkAssistiveText || "Web link opens in a new tab.";
 		var channelType = getChannelType(channelConfiguration);
 
-		if (channelType === "EmbeddedMessaging") {
-			return;
-		}
-
 		// Invoke main channel factory.
 		var menuItemElements = buildMenuItem(channelConfiguration);
 
