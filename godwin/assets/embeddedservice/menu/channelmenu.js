@@ -3499,7 +3499,7 @@
 			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
 				.filter(channel => 
 					channel.channelType === "EmbeddedMessaging" 
-					&& channel.name === detail.devName
+					&& channel.name === "MIAW" //detail.devName
 				);
 			
 			// Add embedded messaging menu item markup.
