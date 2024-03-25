@@ -1807,12 +1807,7 @@
 		Object.keys(configuredChannels).forEach(function(channel) {
 			var channelConfiguration = configuredChannels[channel];
 
-			if (getChannelType(channelConfiguration) !== "EmbeddedMessaging") {
-				generateChannelMenuItemMarkup(listItemsElement, channelConfiguration, Number(channel));
-			} else {
-				// Initialize MIAW as menu item but wait for event from bootstrap before rendering the channel.
-				embedded_svc.menu.initializeEmbeddedMessaging(channelConfiguration);
-			}
+			generateChannelMenuItemMarkup(listItemsElement, channelConfiguration, Number(channel));
 		});
 
 		listItemsElement.id = "esw-channelmenu_ctas";
@@ -2307,7 +2302,7 @@
 	/**
 	 * Checks if a menu item is configured to be displayed (initially on page load or after a reorder).
 	 *
-	 * @param {Array} channels - Array of menu item configurations (Object) that stores settings from setup.
+	 * @param {Object} channel - Menu item to be validated.
 	 * @return {Boolean} - Whether channel is configured to be displayed (initially or after a reorder).
 	 */
 	function isChannelDisplayed(channel) {
@@ -2316,6 +2311,26 @@
 		}
 
 		return channel.isDisplayedOnPageLoad === true;
+	}
+
+	/**
+	 * Checks if a menu item is of type Embedded Messaging.
+	 *
+	 * @param {Object} channel - Menu item to be validated.
+	 * @return {Boolean} - Whether channel is an Embedded Messaging (initially or after a reorder).
+	 */
+	function isEmbeddedMessagingChannel(channel) {
+		return channel.channelType === "EmbeddedMessaging";
+	}
+
+	/**
+	 * Checks if an Embedded Messaging menu item is configured to be displayed.
+	 *
+	 * @param {Object} channel - Menu item to be validated.
+	 * @return {Boolean} - Whether the channel is configured to be displayed.
+	 */
+	function isEmbeddedMessagingChannelVisible(channel) {
+		return isEmbeddedMessagingChannel(channel) && channel.isVisible;
 	}
 
 	/**
@@ -2357,8 +2372,11 @@
 			});
 
 			// Note: this does not alter the original array.
-			configuredChannels = supportedChannels.filter(isChannelDisplayed)
-				// Evaluate whhich channels should be displayed initially (based on `isDisplayedOnPageLoad` field).
+			configuredChannels = supportedChannels
+				// Evaluate which channels should be displayed initially (based on `isDisplayedOnPageLoad` field).
+				.filter(isChannelDisplayed)
+				// Evaluate which Embedded Messaging channels should be included.
+				.filter(isEmbeddedMessagingChannelVisible)
 				.sort(function(a, b) {
 					// Sort channels based on increasing order.
 					return a.order < b.order ? -1 : 1;
@@ -2849,6 +2867,13 @@
 	 * Finish initialization after code settings have loaded (if applicable).
 	 */
 	function finishInit() {
+		Object.keys(embedded_svc.menu.menuConfig.menuItems)
+			.filter(isEmbeddedMessagingChannel)
+			.forEach(channel =>
+				// Initialize MIAW as menu item but wait for event from bootstrap before rendering the channel.
+				embedded_svc.menu.initializeEmbeddedMessaging(channel)
+			)
+
 		// Ensure code settings from file have loaded before building markup.
 		if(hasCodeSettingsFileLoaded) {
 			// Load stylesheet before injecting custom branding CSS.
@@ -3469,10 +3494,21 @@
 	}
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
 		const visibilityChangeEventListener = function (options) {
-			if (options && options.detail && options.detail.isVisible) {
-				addEmbeddedMessagingMenuOption(options.detail);
-			} else {
-				removeEmbeddedMessagingMenuOption(options.detail);
+			if (options && options.detail && options.detail.devName) {
+				// Update local visibility flag for Embedded Messaging menu item.
+				embedded_svc.menu.menuConfig.menuItems
+					.filter(channel =>
+						channel.channelType === "EmbeddedMessaging" && channel.name === options.detail.devName
+					)
+					.forEach(channel =>
+						channel.isVisible = options.detail.isVisible || false
+					)
+
+				if (options.detail.isVisible) {
+					addEmbeddedMessagingMenuOption(options.detail);
+				} else {
+					removeEmbeddedMessagingMenuOption(options.detail);
+				}
 			}
 		}
 
@@ -3495,7 +3531,7 @@
 			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
 				.find(channel =>
 					channel.channelType === "EmbeddedMessaging"
-					&& channel.name === "MIAW" //detail.devName
+					&& channel.name === detail.devName
 				);
 
 			if (!embeddedMessagingConfiguration) {
