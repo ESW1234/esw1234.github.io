@@ -3498,7 +3498,7 @@
 			// Retrieve configuration object for embedded messaging channel
 			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
 				.filter(channel => 
-					channel.channelType === CHANNEL_TYPE_MAPPING.EmbeddedMessaging 
+					channel.channelType === "EmbeddedMessaging" 
 					&& channel.name === detail.devName
 				);
 			
