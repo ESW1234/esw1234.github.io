@@ -3480,6 +3480,9 @@
 	}
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
 		const visibilityChangeEventListener = function (options) {
+			var numConfiguredChannels = Array.isArray(embedded_svc.menu.menuConfig.configuredChannels) ?
+				embedded_svc.menu.menuConfig.configuredChannels.length :
+				0;
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
@@ -3492,7 +3495,7 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else if (embedded_svc.menu.menuConfig.configuredChannels.length > 0) {
+				} else if (numConfiguredChannels > 0) {
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
 			}
