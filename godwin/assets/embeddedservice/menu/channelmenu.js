@@ -3480,6 +3480,8 @@
 	}
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
 		const visibilityChangeEventListener = function (options) {
+			const menu = document.getElementById("esw-channelmenu");
+
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
