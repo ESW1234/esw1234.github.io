@@ -3479,7 +3479,7 @@
 		window.addEventListener("onEmbeddedMessagingReady", resetClientEventListener);
 	}
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
-		const visibilityChangeEventListener = function (options) {c
+		const visibilityChangeEventListener = function (options) {
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
