@@ -2514,6 +2514,11 @@
 	 * @param {function} callback - function to invoke after top container is appended, i.e. injecting custom branding.
 	 */
 	function appendTopContainer(callback) {
+		var isEmbeddedMessagingPresent =
+			(Array.isArray(embedded_svc.menu.menuConfig.menuItems)
+				&& embedded_svc.menu.menuConfig.menuItems.some(isEmbeddedMessagingChannel)
+			)
+			|| false;
 		var container = document.createElement("div");
 		var markup = embedded_svc.menu.generateMarkup(embedded_svc.menu.menuConfig.configuredChannels);
 
@@ -2524,7 +2529,7 @@
 		document.body.appendChild(container);
 
 		// Initially show or hide the channel menu.
-		if(!embedded_svc.menu.settings.displayChannelMenu) {
+		if(!embedded_svc.menu.settings.displayChannelMenu || isEmbeddedMessagingPresent) {
 			embedded_svc.menu.hideTopContainer();
 		}
 
@@ -2813,9 +2818,6 @@
 	 */
 	function generateCustomBrandingStyleElement() {
 		var brandingElement = document.createElement("style");
-		var isEmbeddedMessagingPresent = 
-			embedded_svc.menu.menuConfig.menuItems.some(isEmbeddedMessagingChannel) 
-			|| false;
 		var callback;
 
 		brandingElement.type = "text/css";
@@ -2829,10 +2831,8 @@
 			};
 		}
 
-		if (!isEmbeddedMessagingPresent) {
-			// Style element appended to top-level container as a callback.
-			appendTopContainer(callback);
-		}
+		// Style element appended to top-level container as a callback.
+		appendTopContainer(callback);
 	}
 
 	/**
