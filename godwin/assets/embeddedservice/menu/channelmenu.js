@@ -3503,6 +3503,10 @@
 				} else if (numConfiguredChannels > 0) {
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
+
+				if (options.detail.initialRender) {
+					embedded_svc.menu.showTopContainer();
+				}
 			}
 		}
 
