@@ -3163,7 +3163,7 @@
 		var originalDeployment = embedded_svc.menu.menuConfig.menuItems.slice(0);
 		var paramsValidated = false;
 		var previouslyCalled = [];
-		var reorderedDeployment;
+		var reorderedDeployment = [];
 		var newChannels = [];
 		var newMarkup;
 
@@ -3205,31 +3205,32 @@
 					embedded_svc.utils.log("[Channel Menu][Reorder API] Successfully validated params.");
 					if(Array.isArray(originalDeployment)) {
 						if(originalDeployment.length > 0) {
-							reorderedDeployment = originalDeployment.map(function(menuItem) {
-								var index = channels.indexOf(menuItem.name);
+							originalDeployment.forEach(function(originalItem) {
+								var index = channels.indexOf(originalItem.name);
 								var channel;
+								var reorderedItem = {};
 
 								// Check if this menu item name matches any of the channels passed in.
-								if(isMenuItemReordered(channels, menuItem) && index !== -1) {
+								if(isMenuItemReordered(channels, originalItem) && index !== -1) {
 									channel = channels[index];
 
 									// If match is found, update menu item on the current deployment with new field values.
-									if(channel === menuItem.name) {
+									if(channel === originalItem.name) {
 										// If this menu item found in params, display.
-										menuItem.isDisplayedOnPageLoad = true;
+										reorderedItem.isDisplayedOnPageLoad = true;
 										// Updated `order` value is the index of the channel in the params array.
-										menuItem.order = index;
+										reorderedItem.order = index;
 										// Log this menu item was updated during reorder.
-										embedded_svc.utils.log("[Channel Menu][Reorder API] " + menuItem.name + " reordered.");
+										embedded_svc.utils.log("[Channel Menu][Reorder API] " + originalItem.name + " reordered.");
 									}
 								} else if(index === -1) {
 									// If this menu item not found in params, do not display.
-									menuItem.isDisplayedOnPageLoad = false;
+									reorderedItem.isDisplayedOnPageLoad = false;
 									// Log this menu item was hidden during reorder.
-									embedded_svc.utils.log("[Channel Menu][Reorder API] " + menuItem.name + " hidden.");
+									embedded_svc.utils.log("[Channel Menu][Reorder API] " + originalItem.name + " hidden.");
 								}
 
-								return menuItem;
+								reorderedDeployment[index] = reorderedItem;
 							});
 
 							embedded_svc.utils.log("[Channel Menu][Reorder API] Successfully updated deployment for reordering.");
