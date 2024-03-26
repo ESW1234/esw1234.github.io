@@ -2218,9 +2218,6 @@
 				}
 			});
 		} else if (channelType === "EmbeddedMessaging") {
-			// [MIAW] Special handling for MIAW channel(s) only.
-			embedded_svc.menu.initializeEmbeddedMessaging(singleChannelConfiguration);
-
 			// Initialize MIAW as single CTA by invoking bootstrap from the button's click handler.
 			fab.addEventListener("click", function(e) {
 				if(fab.classList.contains("miawLoading")) {
