@@ -2308,7 +2308,7 @@
 	function isEmbeddedMessagingChannel(channel) {
 		return channel.channelType === "EmbeddedMessaging";
 	}
-	
+
 	/**
 	 * Checks if a menu item is configured to be displayed (initially on page load or after a reorder).
 	 *
@@ -2318,7 +2318,7 @@
 	function isChannelDisplayed(channel) {
 		let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
 			(isEmbeddedMessagingChannel(channel) && channel.isVisible)
-		
+
 		if(!isChannelDisplayed) {
 			embedded_svc.utils.log("[Channel Menu] The menu item \"" + channel.name + "\" will not be displayed.");
 		}
@@ -2858,7 +2858,7 @@
 	 * Finish initialization after code settings have loaded (if applicable).
 	 */
 	function finishInit() {
-		Object.keys(embedded_svc.menu.menuConfig.menuItems)
+		embedded_svc.menu.menuConfig.menuItems
 			.filter(isEmbeddedMessagingChannel)
 			.forEach(channel =>
 				// Initialize MIAW as menu item but wait for event from bootstrap before rendering the channel.
