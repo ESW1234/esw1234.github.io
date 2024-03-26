@@ -2813,6 +2813,9 @@
 	 */
 	function generateCustomBrandingStyleElement() {
 		var brandingElement = document.createElement("style");
+		var isEmbeddedMessagingPresent = 
+			embedded_svc.menu.menuConfig.menuItems.some(isEmbeddedMessagingChannel) 
+			|| false;
 		var callback;
 
 		brandingElement.type = "text/css";
@@ -2826,8 +2829,10 @@
 			};
 		}
 
-		// Style element appended to top-level container as a callback.
-		appendTopContainer(callback);
+		if (!isEmbeddedMessagingPresent) {
+			// Style element appended to top-level container as a callback.
+			appendTopContainer(callback);
+		}
 	}
 
 	/**
