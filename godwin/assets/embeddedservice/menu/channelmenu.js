@@ -3489,7 +3489,7 @@
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
 					.filter(channel =>
-						channel.channelType === "EmbeddedMessaging" && channel.name === options.detail.devName
+						channel.channelType === "EmbeddedMessaging" && channel.channel === options.detail.devName
 					)
 					.forEach(channel =>
 						channel.isVisible = options.detail.isVisible || false
