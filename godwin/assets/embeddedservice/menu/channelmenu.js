@@ -2284,7 +2284,7 @@
 				// Generate markup for multiple channels (menu) configured on deployment.
 				markup = generateMultipleChannelMenuMarkup(channels);
 			} else {
-				embedded_svc.utils.warning("[Channel Menu] Warning generating markup: no menu items configured.");
+				embedded_svc.utils.log("[Channel Menu] No menu items to generate markup for.");
 			}
 		} else {
 			embedded_svc.utils.error("[Channel Menu] Error generating markup: expected non-empty Array of channel configurations.");
@@ -2292,8 +2292,6 @@
 
 		if(markup) {
 			thisFragment.appendChild(markup);
-		} else {
-			embedded_svc.utils.error("[Channel Menu] Error generating markup: markup not defined.");
 		}
 
 		return thisFragment;
