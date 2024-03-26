@@ -3207,9 +3207,9 @@
 						if(originalDeployment.length > 0) {
 							originalDeployment.forEach(function(originalItem) {
 								var index = channels.indexOf(originalItem.name);
+								var reorderedItem = Object.assign({}, originalItem);
 								var channel;
-								var reorderedItem = Array.prototype.slice.call(originalItem);
-
+								
 								// Check if this menu item name matches any of the channels passed in.
 								if(isMenuItemReordered(channels, originalItem) && index !== -1) {
 									channel = channels[index];
