@@ -3479,9 +3479,7 @@
 		window.addEventListener("onEmbeddedMessagingReady", resetClientEventListener);
 	}
 	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
-		const visibilityChangeEventListener = function (options) {
-			const menu = document.getElementById("esw-channelmenu");
-
+		const visibilityChangeEventListener = function (options) {c
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
@@ -3494,7 +3492,7 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else if (menu && menu.style.visibility !== "hidden") {
+				} else if (embedded_svc.menu.menuConfig.configuredChannels.length > 0) {
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
 			}
