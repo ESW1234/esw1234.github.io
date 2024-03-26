@@ -3564,14 +3564,15 @@
 			}
 
 			// Display all items that are currently being displayed except for MIAW item
-			menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad && item.id !== menuItemData.id);
-			menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
+			embedded_svc.menu.menuConfig.menuItems
+				.filter(isChannelDisplayed)
+				.forEach((item, i) => formattedMenuItems[i] = item.name);
 			if (formattedMenuItems.length == 0) {
 				window.addEventListener("animationend", removeFabAfterAnimation);
 			}
 			embedded_svc.menu.reorder(formattedMenuItems);
 
-			if (menu && wasChannelMenuOpen) {
+			if (formattedMenuItems.length > 1 && menu && wasChannelMenuOpen) {
 				embedded_svc.menu.openChannelMenu();
 			}
 		};
