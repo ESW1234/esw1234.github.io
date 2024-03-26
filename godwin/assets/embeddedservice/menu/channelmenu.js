@@ -3518,26 +3518,26 @@
 				wasChannelMenuOpen = true;
 			}
 
-			// Retrieve configuration object for embedded messaging channel.
-			embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
-				.find(channel =>
-					channel.channelType === "EmbeddedMessaging"
-					&& channel.name === "MIAW" //detail.devName
-				);
-
-			if (!embeddedMessagingConfiguration) {
-				embedded_svc.utils.log("[Channel Menu] The embedded messaging \"" + detail.devName + "\" is not found.");
-				return;
-			}
-
-			// Add embedded messaging menu item markup.
-			generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
+			// // Retrieve configuration object for embedded messaging channel.
+			// embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
+			// 	.find(channel =>
+			// 		channel.channelType === "EmbeddedMessaging"
+			// 		&& channel.name === "MIAW" //detail.devName
+			// 	);
+			//
+			// if (!embeddedMessagingConfiguration) {
+			// 	embedded_svc.utils.log("[Channel Menu] The embedded messaging \"" + detail.devName + "\" is not found.");
+			// 	return;
+			// }
+			//
+			// // Add embedded messaging menu item markup.
+			// generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
 
 			// Display all items that are currently being displayed and MIAW item
-			menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad || item.id === menuItemData.id);
-			menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
+			// menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad || item.id === menuItemData.id);
+			// menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
 			embedded_svc.menu.showTopContainer();
-			embedded_svc.menu.reorder(formattedMenuItems);
+			embedded_svc.menu.reorder(embedded_svc.menu.menuConfig.menuItems);
 
 			if (menu && wasChannelMenuOpen) {
 				embedded_svc.menu.openChannelMenu();
