@@ -2308,16 +2308,7 @@
 	function isEmbeddedMessagingChannel(channel) {
 		return channel.channelType === "EmbeddedMessaging";
 	}
-
-	/**
-	 * Checks if an Embedded Messaging menu item is configured to be displayed.
-	 *
-	 * @param {Object} channel - Menu item to be validated.
-	 * @return {Boolean} - Whether the channel is configured to be displayed.
-	 */
-	function isEmbeddedMessagingChannelVisible(channel) {
-		return isEmbeddedMessagingChannel(channel) && channel.isVisible;
-	}
+	
 	/**
 	 * Checks if a menu item is configured to be displayed (initially on page load or after a reorder).
 	 *
@@ -2325,13 +2316,16 @@
 	 * @return {Boolean} - Whether channel is configured to be displayed (initially or after a reorder).
 	 */
 	function isChannelDisplayed(channel) {
-		if(!channel.isDisplayedOnPageLoad || !isEmbeddedMessagingChannelVisible(channel)) {
+		let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
+			(isEmbeddedMessagingChannel(channel) && channel.isVisible)
+		
+		if(!isChannelDisplayed) {
 			embedded_svc.utils.log("[Channel Menu] The menu item \"" + channel.name + "\" will not be displayed.");
 		}
 
-		return channel.isDisplayedOnPageLoad === true;
+		return isChannelDisplayed;
 	}
-	
+
 	/**
 	 * Evaluate which channels are configured on this deployment by doing the following:
 	 *	1) Determine if a menu item is supported for the user's operating system (based on `unSupportedOS` field).
