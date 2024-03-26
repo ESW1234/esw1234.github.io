@@ -3534,10 +3534,11 @@
 			// generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
 
 			// Display all items that are currently being displayed and MIAW item
-			// menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad || item.id === menuItemData.id);
-			// menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
+			embedded_svc.menu.menuConfig.menuItems
+				.filter(isChannelDisplayed)
+				.forEach((item, i) => formattedMenuItems[i] = item.name)
 			embedded_svc.menu.showTopContainer();
-			embedded_svc.menu.reorder(embedded_svc.menu.menuConfig.menuItems);
+			embedded_svc.menu.reorder(formattedMenuItems);
 
 			if (menu && wasChannelMenuOpen) {
 				embedded_svc.menu.openChannelMenu();
