@@ -3492,7 +3492,7 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else {
+				} else if (menu && menu.style.visibility !== "hidden") {
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
 			}
