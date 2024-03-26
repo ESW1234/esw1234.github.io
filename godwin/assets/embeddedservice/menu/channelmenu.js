@@ -3543,6 +3543,10 @@
 			// Display all items that are currently being displayed and MIAW item
 			embedded_svc.menu.menuConfig.menuItems
 				.filter(isChannelDisplayed)
+				.sort(function(a, b) {
+					// Preserve order of menu items.
+					return a.order < b.order ? -1 : 1
+				})
 				.forEach((item, i) => formattedMenuItems[i] = item.name)
 			embedded_svc.menu.showTopContainer();
 			embedded_svc.menu.reorder(formattedMenuItems);
@@ -3573,6 +3577,10 @@
 			// Display all items that are currently being displayed except for MIAW item
 			embedded_svc.menu.menuConfig.menuItems
 				.filter(isChannelDisplayed)
+				.sort(function(a, b) {
+					// Preserve order of menu items.
+					return a.order < b.order ? -1 : 1
+				})
 				.forEach((item, i) => formattedMenuItems[i] = item.name);
 			if (formattedMenuItems.length == 0) {
 				window.addEventListener("animationend", removeFabAfterAnimation);
