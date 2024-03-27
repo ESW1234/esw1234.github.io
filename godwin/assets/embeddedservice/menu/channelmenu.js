@@ -3491,14 +3491,18 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else if (numConfiguredChannels > 0) {
-					removeEmbeddedMessagingMenuOption(options.detail);
+				} else {
+					if (numConfiguredChannels > 0) {
+						removeEmbeddedMessagingMenuOption(options.detail);
+					} else {
+						onClosingEmbeddedMessaging(isMenuItem);
+					}
 				}
 
 				if (options.detail.initialRender) {
 					embedded_svc.menu.showTopContainer();
 				}
-				
+
 				if (options.detail.resetClient) {
 					// After end user closes MIAW, display Channel Menu again after client is reset.
 					onClosingEmbeddedMessaging(isMenuItem);
