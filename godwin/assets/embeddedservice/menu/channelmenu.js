@@ -1807,6 +1807,7 @@
 		Object.keys(configuredChannels).forEach(function(channel) {
 			var channelConfiguration = configuredChannels[channel];
 
+			// Generate markup for the channel menu item.
 			generateChannelMenuItemMarkup(listItemsElement, channelConfiguration, Number(channel));
 		});
 
@@ -1831,7 +1832,6 @@
 	 * @param {HTMLElement} listItemsElement - The channel menu list items DOM element.
 	 * @param {Object} channelConfiguration - The configuration object for the menu item.
 	 * @param {Number} channelIndex - The index of the channel in the list.
-	 * @return {HTMLElement} listItemsElement - Reference to the channel menu's unordered list of menu items.
 	 */
 	function generateChannelMenuItemMarkup(listItemsElement, channelConfiguration, channelIndex) {
 		var newTabLink_ariaLabel = embedded_svc.menu.menuConfig.labelData.ChannelMenu_WebURL.NewTabLinkAssistiveText || "Web link opens in a new tab.";
@@ -2298,7 +2298,7 @@
 	 * Checks if a menu item is of type Embedded Messaging.
 	 *
 	 * @param {Object} channel - Menu item to be validated.
-	 * @return {Boolean} - Whether channel is an Embedded Messaging (initially or after a reorder).
+	 * @return {Boolean} - Whether channel is an Embedded Messaging.
 	 */
 	function isEmbeddedMessagingChannel(channel) {
 		return channel.channelType === "EmbeddedMessaging";
@@ -2361,7 +2361,7 @@
 
 			// Note: this does not alter the original array.
 			configuredChannels = supportedChannels
-				// Evaluate which channels should be displayed initially (based on `isDisplayedOnPageLoad` field).
+				// Evaluate which channels should be displayed.
 				.filter(isChannelDisplayed)
 				.sort(function(a, b) {
 					// Sort channels based on increasing order.
@@ -2528,7 +2528,8 @@
 		container.appendChild(markup);
 		document.body.appendChild(container);
 
-		// Initially show or hide the channel menu.
+		// Initially show or hide the channel menu depending on the displayChannelMenu setting.
+		// If an Embedded Messaging channel is present, wait for visibility change event before showing top container.
 		if(!embedded_svc.menu.settings.displayChannelMenu || isEmbeddedMessagingPresent) {
 			embedded_svc.menu.hideTopContainer();
 		}
@@ -2858,8 +2859,10 @@
 	 * Finish initialization after code settings have loaded (if applicable).
 	 */
 	function finishInit() {
-		const numMenuItems = embedded_svc.menu.menuConfig.menuItems.length;
-			
+		const numMenuItems = Array.isArray(embedded_svc.menu.menuConfig.menuItems) ? 
+			embedded_svc.menu.menuConfig.menuItems.length :
+			0;
+
 		embedded_svc.menu.menuConfig.menuItems
 			.filter(isEmbeddedMessagingChannel)
 			.forEach(channel =>
@@ -3162,7 +3165,7 @@
 	 */
 	function validateAndReorder(channels) {
 		var deploymentName = embedded_svc.menu.menuConfig.menuSettings.name;
-		var originalDeployment = embedded_svc.menu.menuConfig.menuItems.slice(0);
+		var originalDeployment = embedded_svc.menu.menuConfig.menuItems.slice(0); // Create shallow copy of menuItems.
 		var paramsValidated = false;
 		var previouslyCalled = [];
 		var reorderedDeployment = [];
@@ -3208,8 +3211,9 @@
 					if(Array.isArray(originalDeployment)) {
 						if(originalDeployment.length > 0) {
 							originalDeployment.forEach(function(originalItem) {
-								var index = channels.indexOf(originalItem.name);
+								// Create shallow copy of the original menu item itself.
 								var reorderedItem = Object.assign({}, originalItem);
+								var index = channels.indexOf(originalItem.name);
 								var channel;
 
 								// Check if this menu item name matches any of the channels passed in.
@@ -3476,9 +3480,6 @@
 	 */
 	function addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem) {
 		const visibilityChangeEventListener = function (options) {
-			var numConfiguredChannels = Array.isArray(embedded_svc.menu.menuConfig.configuredChannels) ?
-				embedded_svc.menu.menuConfig.configuredChannels.length :
-				0;
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
 				embedded_svc.menu.menuConfig.menuItems
@@ -3572,71 +3573,6 @@
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
 	}
-
-	/**
-	 * Add event listener to handle business hours interval changes.
-	 * @param {Object} menuItemData - Deployment configuration data for Embedded Messaging.
-	 */
-	function addEmbeddedMessagingBusinessHourChangeEventListener(menuItemData) {
-		// To add/remove MIAW from menu items use the reorder API
-		// Reordering API accounts for single/multiple channels and supported/unsupported operating systems
-		// Calling the reorder API closes an open channel menu
-
-		addEmbeddedMessagingMenuOption = function () {
-			const menu = document.getElementById("esw-channelmenu");
-			const formattedMenuItems = [];
-			let wasChannelMenuOpen = false;
-			let menuItemsToBeDisplayed;
-
-			if (menu && menu.style.visibility !== "hidden") {
-				wasChannelMenuOpen = true;
-			}
-
-			// Display all items that are currently being displayed and MIAW item
-			menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad || item.id === menuItemData.id);
-			menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
-			embedded_svc.menu.showTopContainer();
-			embedded_svc.menu.reorder(formattedMenuItems);
-
-			if (menu && wasChannelMenuOpen) {
-				embedded_svc.menu.openChannelMenu();
-			}
-		};
-
-		removeEmbeddedMessagingMenuOption = function() {
-			const menu = document.getElementById("esw-channelmenu");
-			const formattedMenuItems = [];
-			let wasChannelMenuOpen = false;
-			let menuItemsToBeDisplayed;
-
-			const removeFabAfterAnimation = function() {
-				// After animation, hide button to make it unclickable
-				embedded_svc.menu.hideTopContainer();
-
-				// Remove event listener afterwards.
-				window.removeEventListener("animationend", removeFabAfterAnimation);
-			};
-
-			if (menu && menu.style.visibility !== "hidden") {
-				wasChannelMenuOpen = true;
-			}
-
-			// Display all items that are currently being displayed except for MIAW item
-			menuItemsToBeDisplayed = embedded_svc.menu.menuConfig.menuItems.filter(item => item.isDisplayedOnPageLoad && item.id !== menuItemData.id);
-			menuItemsToBeDisplayed.forEach((item, i) => formattedMenuItems[i] = item.name);
-			if (formattedMenuItems.length == 0) {
-				window.addEventListener("animationend", removeFabAfterAnimation);
-			}
-			embedded_svc.menu.reorder(formattedMenuItems);
-
-			if (menu && wasChannelMenuOpen) {
-				embedded_svc.menu.openChannelMenu();
-			}
-		};
-
-		window.addEventListener("onEmbeddedMessagingBusinessHoursEnded", removeEmbeddedMessagingMenuOption);
-		window.addEventListener("onEmbeddedMessagingBusinessHoursStarted", addEmbeddedMessagingMenuOption);
-	};
 
 	/**
 	 * Utilizes esw.js's Bootstrap API to ensure Channel Menu's behavior is synchronous with Embedded Messaging's bootstrapping process. More performant if Chat was previously opened on the page or LO is preemptively loaded.
