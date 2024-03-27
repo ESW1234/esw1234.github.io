@@ -2858,11 +2858,13 @@
 	 * Finish initialization after code settings have loaded (if applicable).
 	 */
 	function finishInit() {
+		const numMenuItems = embedded_svc.menu.menuConfig.menuItems.length;
+			
 		embedded_svc.menu.menuConfig.menuItems
 			.filter(isEmbeddedMessagingChannel)
 			.forEach(channel =>
 				// Initialize MIAW as menu item but wait for event from bootstrap before rendering the channel.
-				embedded_svc.menu.initializeEmbeddedMessaging(channel)
+				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1)
 			)
 
 		// Ensure code settings from file have loaded before building markup.
@@ -3209,7 +3211,7 @@
 								var index = channels.indexOf(originalItem.name);
 								var reorderedItem = Object.assign({}, originalItem);
 								var channel;
-								
+
 								// Check if this menu item name matches any of the channels passed in.
 								if(isMenuItemReordered(channels, originalItem) && index !== -1) {
 									channel = channels[index];
@@ -3470,9 +3472,9 @@
 
 	/**
 	 * Add event listener to show Channel Menu after MIAW client is closed/reset.
-	 * @param {Object} elements - Object containing DOM elements required for updating the Embedded Messaging channel.
+	 * @param {Boolean} isMenuItem - If the Embedded Messaging channel clicked was a menu item or a single-channel button.
 	 */
-	function addEmbeddedMessagingClientEventListener(elements) {
+	function addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem) {
 		const visibilityChangeEventListener = function (options) {
 			var numConfiguredChannels = Array.isArray(embedded_svc.menu.menuConfig.configuredChannels) ?
 				embedded_svc.menu.menuConfig.configuredChannels.length :
@@ -3499,7 +3501,7 @@
 				
 				if (options.detail.resetClient) {
 					// After end user closes MIAW, display Channel Menu again after client is reset.
-					onClosingEmbeddedMessaging(elements);
+					onClosingEmbeddedMessaging(isMenuItem);
 				}
 			}
 		}
@@ -3507,7 +3509,7 @@
 		// To add/remove MIAW from menu items use the reorder API
 		// Reordering API accounts for single/multiple channels and supported/unsupported operating systems
 		// Calling the reorder API closes an open channel menu
-		const addEmbeddedMessagingMenuOption = function (detail) {
+		const addEmbeddedMessagingMenuOption = function () {
 			const menu = document.getElementById("esw-channelmenu");
 			const formattedMenuItems = [];
 			let wasChannelMenuOpen = false;
@@ -3570,7 +3572,7 @@
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
 	}
-	
+
 	/**
 	 * Add event listener to handle business hours interval changes.
 	 * @param {Object} menuItemData - Deployment configuration data for Embedded Messaging.
@@ -3718,8 +3720,9 @@
 	 * Load bootstrap.js and call embeddedservice_bootstrap.init() to initialize first-party Embedded Messaging (MIAW).
 	 *
 	 * @param {Object} menuItemData - Deployment configuration data for the Chat CTA.
+	 * @param {Boolean} isMenuItem - If the Embedded Messaging channel clicked was a menu item or a single-channel button.
 	 */
-	embedded_svc.menu.initializeEmbeddedMessaging = function initializeEmbeddedMessaging(menuItemData) {
+	embedded_svc.menu.initializeEmbeddedMessaging = function initializeEmbeddedMessaging(menuItemData, isMenuItem) {
 		var labelsLanguage = embedded_svc.menu.menuConfig.additionalSettings.labelsLanguage;
 		var baseURL = 'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExperienc1709839200606';
 
@@ -3753,7 +3756,7 @@
 
 				// If MIAW was configured to not be initially displayed that takes precedent over business hours
 				if (menuItemData.isDisplayedOnPageLoad) {
-					addEmbeddedMessagingBusinessHourChangeEventListener(menuItemData);
+					addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem);
 				}
 
 				embeddedservice_bootstrap.init(
