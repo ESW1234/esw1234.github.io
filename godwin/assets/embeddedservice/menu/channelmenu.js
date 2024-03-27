@@ -3473,18 +3473,6 @@
 	 * @param {Object} elements - Object containing DOM elements required for updating the Embedded Messaging channel.
 	 */
 	function addEmbeddedMessagingClientEventListener(elements) {
-		const resetClientEventListener = function() {
-			// After end user closes MIAW, display Channel Menu again after client is reset.
-			onClosingEmbeddedMessaging(elements);
-
-			// Remove event listener afterwards.
-			window.removeEventListener("onEmbeddedMessagingReady", resetClientEventListener);
-			window.removeEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
-		};
-
-		window.addEventListener("onEmbeddedMessagingReady", resetClientEventListener);
-	}
-	function addEmbeddedMessagingVisibilityChangeEventListener(menuItemData) {
 		const visibilityChangeEventListener = function (options) {
 			var numConfiguredChannels = Array.isArray(embedded_svc.menu.menuConfig.configuredChannels) ?
 				embedded_svc.menu.menuConfig.configuredChannels.length :
@@ -3508,6 +3496,11 @@
 				if (options.detail.initialRender) {
 					embedded_svc.menu.showTopContainer();
 				}
+				
+				if (options.detail.resetClient) {
+					// After end user closes MIAW, display Channel Menu again after client is reset.
+					onClosingEmbeddedMessaging(elements);
+				}
 			}
 		}
 
@@ -3515,37 +3508,19 @@
 		// Reordering API accounts for single/multiple channels and supported/unsupported operating systems
 		// Calling the reorder API closes an open channel menu
 		const addEmbeddedMessagingMenuOption = function (detail) {
-			const listItems = document.getElementById("esw-channelmenu_ctas");
 			const menu = document.getElementById("esw-channelmenu");
 			const formattedMenuItems = [];
 			let wasChannelMenuOpen = false;
-			let menuItemsToBeDisplayed;
-			let embeddedMessagingConfiguration;
 
 			if (menu && menu.style.visibility !== "hidden") {
 				wasChannelMenuOpen = true;
 			}
 
-			// // Retrieve configuration object for embedded messaging channel.
-			// embeddedMessagingConfiguration = embedded_svc.menu.menuConfig.configuredChannels
-			// 	.find(channel =>
-			// 		channel.channelType === "EmbeddedMessaging"
-			// 		&& channel.name === "MIAW" //detail.devName
-			// 	);
-			//
-			// if (!embeddedMessagingConfiguration) {
-			// 	embedded_svc.utils.log("[Channel Menu] The embedded messaging \"" + detail.devName + "\" is not found.");
-			// 	return;
-			// }
-			//
-			// // Add embedded messaging menu item markup.
-			// generateChannelMenuItemMarkup(listItems, embeddedMessagingConfiguration, -1);
-
-			// Display all items that are currently being displayed and MIAW item
+			// Display all items that are currently being displayed with MIAW item added.
+			// Order from the original configuration is preserved.
 			embedded_svc.menu.menuConfig.menuItems
 				.filter(isChannelDisplayed)
 				.sort(function(a, b) {
-					// Preserve order of menu items.
 					return a.order < b.order ? -1 : 1
 				})
 				.forEach((item, i) => formattedMenuItems[i] = item.name)
@@ -3561,7 +3536,6 @@
 			const menu = document.getElementById("esw-channelmenu");
 			const formattedMenuItems = [];
 			let wasChannelMenuOpen = false;
-			let menuItemsToBeDisplayed;
 
 			const removeFabAfterAnimation = function() {
 				// After animation, hide button to make it unclickable
@@ -3575,7 +3549,8 @@
 				wasChannelMenuOpen = true;
 			}
 
-			// Display all items that are currently being displayed except for MIAW item
+			// Display all items that are currently being displayed except the MIAW item.
+			// Order from the original configuration is preserved.
 			embedded_svc.menu.menuConfig.menuItems
 				.filter(isChannelDisplayed)
 				.sort(function(a, b) {
@@ -3583,7 +3558,7 @@
 					return a.order < b.order ? -1 : 1
 				})
 				.forEach((item, i) => formattedMenuItems[i] = item.name);
-			if (formattedMenuItems.length == 0) {
+			if (formattedMenuItems.length === 0) {
 				window.addEventListener("animationend", removeFabAfterAnimation);
 			}
 			embedded_svc.menu.reorder(formattedMenuItems);
@@ -3595,6 +3570,7 @@
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
 	}
+	
 	/**
 	 * Add event listener to handle business hours interval changes.
 	 * @param {Object} menuItemData - Deployment configuration data for Embedded Messaging.
