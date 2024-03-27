@@ -3491,7 +3491,7 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else if (!isMenuItem || !options.detail.initialRender) {
+				} else if ((!isMenuItem && !options.detail.initialRender) || (isMenuItem && options.detail.resetClient)) {
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
 
