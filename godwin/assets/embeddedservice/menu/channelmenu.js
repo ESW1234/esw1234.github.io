@@ -3491,12 +3491,8 @@
 
 				if (options.detail.isVisible) {
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else {
-					if (numConfiguredChannels > 0) {
-						removeEmbeddedMessagingMenuOption(options.detail);
-					} else {
-						onClosingEmbeddedMessaging(isMenuItem);
-					}
+				} else if (!isMenuItem) {
+					removeEmbeddedMessagingMenuOption(options.detail);
 				}
 
 				if (options.detail.initialRender) {
