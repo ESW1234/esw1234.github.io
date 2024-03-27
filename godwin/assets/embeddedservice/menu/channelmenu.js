@@ -3754,7 +3754,6 @@
 				// If MIAW was configured to not be initially displayed that takes precedent over business hours
 				if (menuItemData.isDisplayedOnPageLoad) {
 					addEmbeddedMessagingBusinessHourChangeEventListener(menuItemData);
-					addEmbeddedMessagingVisibilityChangeEventListener(menuItemData);
 				}
 
 				embeddedservice_bootstrap.init(
