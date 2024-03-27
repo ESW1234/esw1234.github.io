@@ -3645,8 +3645,6 @@
 	 * @param {Object} elements - Object containing DOM elements required for updating the Embedded Messaging channel.
 	 */
 	function bootstrapEmbeddedMessagingInChannelMenu(miawLabels, elements) {
-		addEmbeddedMessagingClientEventListener(elements);
-
 		if (!window.embeddedservice_bootstrap || !embeddedservice_bootstrap || typeof embeddedservice_bootstrap.bootstrapEmbeddedMessaging !== "function") {
 			// W-13824845: Remove loading indicator and reset Embedded Messaging channel menu item to clickable state.
 			onStopLoadingEmbeddedMessaging(miawLabels.ChannelMenu_ChannelType.EmbeddedMessaging, elements);
