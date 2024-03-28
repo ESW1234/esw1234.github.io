@@ -1,1 +1,36 @@
 
+<html lang="en-US">
+<body>
+<script src="	https://dsg000008a0or2ak.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppGuest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+  
+             $Lightning.createComponent("c:bikeCard", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCard created');
+              });
+            },
+
+           'https://dsg000008a0or2ak.test1.lightning.pc-rnd.force.com',// lightningEndPointURI
+            '00DSG000008A0Or!AQEAQJZUIukjEF6YlHegxstAqHyffGbUmmxrfGgv3CI_rJQltm6abouF3cJamCstkTLvvuZMiFqov70Wokhfd3sdhLfe6i9_'
+                           
+        );                   
+</script>   
+</body>
+</html>
