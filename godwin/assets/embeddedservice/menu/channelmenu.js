@@ -3489,7 +3489,8 @@
 				if (options.detail.isVisible) {
 					// Add the Embedded Messaging channel if it has become visible.
 					addEmbeddedMessagingMenuOption(options.detail);
-				} else if ((!isMenuItem && !options.detail.initialRender) || (isMenuItem && options.detail.resetClient)) {
+				} else {
+				//} else if ((!isMenuItem && !options.detail.initialRender) || (isMenuItem && options.detail.resetClient)) {
 					// Remove the Embedded Messaging channel.
 					removeEmbeddedMessagingMenuOption(options.detail);
 				}
