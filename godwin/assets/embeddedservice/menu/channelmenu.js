@@ -2311,8 +2311,9 @@
 	 * @return {Boolean} - Whether channel is configured to be displayed (initially or after a reorder).
 	 */
 	function isChannelDisplayed(channel) {
-		let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
-			(isEmbeddedMessagingChannel(channel) && channel.isVisible)
+		// let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
+		// 	(isEmbeddedMessagingChannel(channel) && channel.isVisible)
+		let isChannelDisplayed = channel.isDisplayedOnPageLoad;
 
 		if(!isChannelDisplayed) {
 			embedded_svc.utils.log("[Channel Menu] The menu item \"" + channel.name + "\" will not be displayed.");
@@ -2530,7 +2531,7 @@
 
 		// Initially show or hide the channel menu depending on the displayChannelMenu setting.
 		// If an Embedded Messaging channel is present, wait for visibility change event before showing top container.
-		if(!embedded_svc.menu.settings.displayChannelMenu || isEmbeddedMessagingPresent) {
+		if(!embedded_svc.menu.settings.displayChannelMenu) { //|| isEmbeddedMessagingPresent) {
 			embedded_svc.menu.hideTopContainer();
 		}
 
