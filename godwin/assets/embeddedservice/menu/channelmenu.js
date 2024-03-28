@@ -3654,7 +3654,7 @@
 	 */
 	embedded_svc.menu.initializeEmbeddedMessaging = function initializeEmbeddedMessaging(menuItemData, isMenuItem) {
 		var labelsLanguage = embedded_svc.menu.menuConfig.additionalSettings.labelsLanguage;
-		var baseURL = menuItemData.siteUrl;
+		var baseURL = 'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExperienc1709839200606';
 
 		// Load bootstrap.js from MIAW deployment's LWR site endpoint.
 		embedded_svc.utils.loadScriptFromUrl(
@@ -3692,7 +3692,7 @@
 				embeddedservice_bootstrap.init(
 					embedded_svc.menu.settings.orgId,
 					menuItemData.channel,
-					menuItemData.siteUrl,
+					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExperienc1709839200606',
 					{
 						scrt2URL: menuItemData.scrt2Url
 					}
