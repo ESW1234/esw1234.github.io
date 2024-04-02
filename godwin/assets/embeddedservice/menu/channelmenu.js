@@ -2311,9 +2311,8 @@
 	 * @return {Boolean} - Whether channel is configured to be displayed (initially or after a reorder).
 	 */
 	function isChannelDisplayed(channel) {
-		// let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
-		// 	(isEmbeddedMessagingChannel(channel) && channel.isVisible)
-		let isChannelDisplayed = channel.isDisplayedOnPageLoad;
+		let isChannelDisplayed = (!isEmbeddedMessagingChannel(channel) && channel.isDisplayedOnPageLoad) ||
+			(isEmbeddedMessagingChannel(channel) && channel.isVisible)
 
 		if(!isChannelDisplayed) {
 			embedded_svc.utils.log("[Channel Menu] The menu item \"" + channel.name + "\" will not be displayed.");
