@@ -1,0 +1,17 @@
+<html lang="en-US">
+<body>
+
+<div id="lightning"></div>
+
+<script async src="https://corsa04-perfeng2-2015934348.vpod.t.force.com/lightning/lightning.out.iframe.js"></script> 
+          <!--  <My Domain URL>/lightning/lightning.out.js -->
+
+<script>
+    <%
+	 String url = "https://perftest886-corsa04-perfeng2-2015934348.vpod.t.salesforce-communities.com/accountPortal";
+    %>
+    document.addEventListener('LightningOutLoaded', e => console.log(`${e.detail.application} is loaded.`));
+    ($Lightning = window.$Lightning || {}).data = ['c:loIframeApp', '<%= url %>', {}, "lightning", document.getElementById('lightning')]
+</script>
+</body>
+</html>
