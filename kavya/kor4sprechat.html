@@ -10,6 +10,16 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+    				console.log("Received the onEmbeddedMessagingReady event…");
+
+    				// Send data to Salesforce
+    				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Bot_Message_Id" : "a0CTJ000007TTc62AG"});
+
+    				// Remove any items from the previous list that you don't want to send
+    				//embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(["Customer_ID"]);
+			});
+
 			embeddedservice_bootstrap.init(
 				'00DTJ00000000zl',
 				'miaw_web_prechat',
