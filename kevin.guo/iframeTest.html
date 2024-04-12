@@ -8,11 +8,8 @@
           <!--  <My Domain URL>/lightning/lightning.out.js -->
 
 <script>
-    <%
-	 String url = "https://perftest886-corsa04-basichb1-2015937085.vpod.lightning.t.salesforce-communities.com/accountPortal";
-    %>
     document.addEventListener('LightningOutLoaded', e => console.log(`${e.detail.application} is loaded.`));
-    ($Lightning = window.$Lightning || {}).data = ['c:LOIframePerfTestApp', '<%= url %>', {}, "lightning", null]
+    ($Lightning = window.$Lightning || {}).data = ['c:LOIframePerfTestApp', "https://perftest886-corsa04-basichb1-2015937085.vpod.lightning.t.salesforce-communities.com/accountPortal", {}, "lightning", null]
 </script>
 </body>
 </html>
