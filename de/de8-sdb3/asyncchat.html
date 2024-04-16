@@ -1,12 +1,13 @@
 
 <html>
 <head>
-	<title>AsyncChat</title>
+	<title>MIAWUnAuthChat</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
 
-<h1> DE8 Async Chat Web Client</h1>
+<h1> DE8 MIAWUnAuthChat</h1>
+<h3> 	miaw1@sdb3.de8</h3> 
 <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
@@ -14,12 +15,12 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true; 
-		embeddedservice_bootstrap.init(
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
 				'00DSB0000002YSD',
-				'AsyncChatdeployment',
-				'https://de8.test1.my.pc-rnd.salesforce.com',
+				'MIAWUnAuthChat',
+				'https://de8.test1.my.pc-rnd.site.com/ESWAsyncChatdeployment1649803781556',
 				{
 					scrt2URL: 'https://de8.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -29,7 +30,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://de8.test1.lightning.pc-rnd.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://de8.test1.my.pc-rnd.site.com/ESWAsyncChatdeployment1649803781556/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
