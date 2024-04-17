@@ -2873,15 +2873,15 @@
 
 		embedded_svc.menu.menuConfig.menuItems
 			.filter(isEmbeddedMessagingChannel)
-			.forEach(channel =>
+			.forEach(function(channel) {
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
-				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1)
-			).forEach(channel =>
+				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
+				
 				// Promise to be resolved when Embedded Messaging initialization completes.
 				embeddedMessagingInitResolves.append(new Promise((resolve) => {
 					embeddedMessagingInitResolveMap[channel.channel] = resolve;
-				}))
-			);
+				}));
+			})
 
 		// Apply timeout for waiting on Embedded Messaging initialization.
 		const initializeEmbeddedMessagingTimeout = new Promise((resolve, reject) => {
