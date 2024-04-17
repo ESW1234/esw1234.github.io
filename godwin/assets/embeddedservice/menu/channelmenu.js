@@ -2889,7 +2889,7 @@
 				reject();
 			}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
 		});
-		embeddedMessagingInitResolves.append(initializeEmbeddedMessagingTimeout);
+		embeddedMessagingInitResolves.push(initializeEmbeddedMessagingTimeout);
 
 		// Promise returned by Promise.race is resolved if Embedded Messaging initialization succeeds before timeout, else it's rejected.
 		Promise.race(embeddedMessagingInitResolves)
