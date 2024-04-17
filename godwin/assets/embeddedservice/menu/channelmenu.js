@@ -2867,38 +2867,39 @@
 		const numMenuItems = Array.isArray(embedded_svc.menu.menuConfig.menuItems) ?
 			embedded_svc.menu.menuConfig.menuItems.length :
 			0;
+		let embeddedMessagingChannels = embedded_svc.menu.menuConfig.menuItems.filter(isEmbeddedMessagingChannel);
 		let embeddedMessagingInitResolves = []
 
-		embedded_svc.menu.menuConfig.menuItems
-			.filter(isEmbeddedMessagingChannel)
-			.forEach(function(channel) {
+		if (!embeddedMessagingChannels.isEmpty()) {
+			embeddedMessagingChannels.forEach(function (channel) {
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
-
+	
 				// Add promise to be resolved when Embedded Messaging initialization completes.
 				embeddedMessagingInitResolves.push(new Promise((resolve) => {
 					embeddedMessagingInitResolveMap[channel.channel] = resolve;
 				}));
 			})
 
-		// Apply timeout for waiting on Embedded Messaging initialization.
-		const initializeEmbeddedMessagingTimeout = new Promise((resolve, reject) => {
-			setTimeout(() => {
-				reject();
-			}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
-		});
+			addEmbeddedMessagingEventListeners();
 
-		// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
-		Promise.race([Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout])
-			.then(() => {
-				embedded_svc.menu.showTopContainer();
-			})
-			.catch((error) => {
-				console.error(error);
-				embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
-				embedded_svc.menu.showTopContainer();
+			// Apply timeout for waiting on Embedded Messaging initialization.
+			const initializeEmbeddedMessagingTimeout = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					reject();
+				}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
 			});
-
+	
+			// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
+			Promise.race([Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout])
+				.then(() => {
+					embedded_svc.menu.showTopContainer();
+				})
+				.catch(() => {
+					embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
+					embedded_svc.menu.showTopContainer();
+				});
+		}
 		// Ensure code settings from file have loaded before building markup.
 		if(hasCodeSettingsFileLoaded) {
 			// Load stylesheet before injecting custom branding CSS.
@@ -3500,9 +3501,8 @@
 	 ******************************************************/
 	/**
 	 * Add event listener to show Channel Menu after MIAW client is closed/reset.
-	 * @param {Boolean} isMenuItem - If the Embedded Messaging channel clicked was a menu item or a single-channel button.
 	 */
-	function addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem) {
+	function addEmbeddedMessagingEventListeners() {
 		const onEmbeddedMessagingReadyEventListener = function(options) {
 			if (options && options.detail && options.detail.devName) {
 				let embeddedMessagingResolve = embeddedMessagingInitResolveMap[options.detail.devName];
@@ -3718,11 +3718,6 @@
 					embedded_svc.utils.error("[Channel Menu] Initialization script is not up to date. Please publish your MIAW deployment: " + menuItemData.channel);
 				}
 
-				// If MIAW was configured to not be initially displayed that takes precedent over business hours
-				if (menuItemData.isDisplayedOnPageLoad) {
-					addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem);
-				}
-
 				embeddedservice_bootstrap.init(
 					embedded_svc.menu.settings.orgId,
 					menuItemData.channel,
@@ -3737,6 +3732,7 @@
 			}.bind(embedded_svc)
 		);
 	}
+
 
 	/******************************************************
 	 Private runtime functions
@@ -4285,7 +4281,6 @@
 		if(element && element.parentElement) element.parentElement.removeChild(element);
 		if(window.embedded_svc) window.embedded_svc = undefined;
 
-		window.removeEventListener("onEmbeddedMessagingBusinessHoursEnded", removeEmbeddedMessagingMenuOption);
-		window.removeEventListener("onEmbeddedMessagingBusinessHoursStarted", addEmbeddedMessagingMenuOption);
+		removeEmbeddedMessagingEventListeners();
 	};
 })();
