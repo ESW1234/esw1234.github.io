@@ -2870,7 +2870,7 @@
 		let embeddedMessagingChannels = embedded_svc.menu.menuConfig.menuItems.filter(isEmbeddedMessagingChannel);
 		let embeddedMessagingInitResolves = []
 
-		if (!embeddedMessagingChannels.isEmpty()) {
+		if (embeddedMessagingChannels.length > 0) {
 			embeddedMessagingChannels.forEach(function (channel) {
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
