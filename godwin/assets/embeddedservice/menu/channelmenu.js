@@ -2889,7 +2889,8 @@
 		});
 
 		// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
-		Promise.race(Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout)
+		// Promise.race(Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout)
+		Promise.all(embeddedMessagingInitResolves)
 			.then(() => {
 				embedded_svc.menu.showTopContainer();
 			})
