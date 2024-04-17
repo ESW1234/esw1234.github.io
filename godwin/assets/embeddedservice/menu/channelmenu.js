@@ -2893,7 +2893,8 @@
 			.then(() => {
 				embedded_svc.menu.showTopContainer();
 			})
-			.catch(() => {
+			.catch((error) => {
+				console.error(error);
 				embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
 				embedded_svc.menu.showTopContainer();
 			});
