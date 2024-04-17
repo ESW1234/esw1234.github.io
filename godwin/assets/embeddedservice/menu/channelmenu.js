@@ -58,9 +58,7 @@
 	// Max time (in milliseconds) to wait for Embedded Messaging initialization.
 	const INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS = 10 * 1000;
 
-	// Resolver function for initialize Embedded Messaging promise created after initializeEmbeddedMessaging() is called.
-	let initializeEmbeddedMessagingResolve;
-
+	// Resolver map for storing Embedded Messaging initialization promise resolves.
 	let embeddedMessagingInitResolveMap = {};
 
 	Object.defineProperties(DEFAULT_MENU_ICONS, {
@@ -2876,8 +2874,8 @@
 			.forEach(function(channel) {
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
-				
-				// Promise to be resolved when Embedded Messaging initialization completes.
+
+				// Add promise to be resolved when Embedded Messaging initialization completes.
 				embeddedMessagingInitResolves.push(new Promise((resolve) => {
 					embeddedMessagingInitResolveMap[channel.channel] = resolve;
 				}));
@@ -2889,15 +2887,11 @@
 				reject();
 			}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
 		});
-		embeddedMessagingInitResolves.push(initializeEmbeddedMessagingTimeout);
 
-		// Promise returned by Promise.race is resolved if Embedded Messaging initialization succeeds before timeout, else it's rejected.
-		Promise.race(embeddedMessagingInitResolves)
-			.then((channelName) => {
-				embedded_svc.utils.log(`[Channel Menu] Embedded Messaging channel (${channelName}) initialization successful.`);
-				if (Object.keys(embeddedMessagingInitResolveMap).length === 0) {
-					embedded_svc.menu.showTopContainer();
-				}
+		// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
+		Promise.race(Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout)
+			.then(() => {
+				embedded_svc.menu.showTopContainer();
 			})
 			.catch(() => {
 				embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
@@ -3512,9 +3506,11 @@
 			if (options && options.detail && options.detail.devName) {
 				let embeddedMessagingResolve = embeddedMessagingInitResolveMap[options.detail.devName];
 
+				embedded_svc.utils.log(`[Channel Menu] Embedded Messaging channel (${options.detail.devName}) initialization successful.`);
+
 				// Resolve setIdentityTokenPromise created while handling identity token expiry.
 				if (embeddedMessagingResolve && typeof embeddedMessagingResolve === "function") {
-					embeddedMessagingResolve(options.detail.devName);
+					embeddedMessagingResolve();
 					delete embeddedMessagingInitResolveMap[options.detail.devName];
 				}
 			}
@@ -3740,7 +3736,6 @@
 			}.bind(embedded_svc)
 		);
 	}
-
 
 	/******************************************************
 	 Private runtime functions
