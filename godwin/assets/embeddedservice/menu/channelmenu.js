@@ -2878,7 +2878,7 @@
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
 				
 				// Promise to be resolved when Embedded Messaging initialization completes.
-				embeddedMessagingInitResolves.append(new Promise((resolve) => {
+				embeddedMessagingInitResolves.push(new Promise((resolve) => {
 					embeddedMessagingInitResolveMap[channel.channel] = resolve;
 				}));
 			})
