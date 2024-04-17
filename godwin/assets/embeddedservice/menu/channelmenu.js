@@ -55,6 +55,14 @@
 	// [Customizations] Lock to block markup creation until code settings are loaded
 	var hasCodeSettingsFileLoaded;
 
+	// Max time (in milliseconds) to wait for Embedded Messaging initialization.
+	const INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS = 10 * 1000;
+
+	// Resolver function for initialize Embedded Messaging promise created after initializeEmbeddedMessaging() is called.
+	let initializeEmbeddedMessagingResolve;
+
+	let embeddedMessagingInitResolveMap = {};
+
 	Object.defineProperties(DEFAULT_MENU_ICONS, {
 		QUESTION: {
 			value: "M50 22c-16.6 0-30 12.5-30 28 0 5 1.4 9.6 3.8 13.7.3.5.4 1.1.2 1.6l-2.8 8.9c-.5 1.6 1 3 2.6 2.5l8.8-3.1c.6-.2 1.2-.1 1.7.2 4.6 2.7 10 4.2 15.8 4.2 16.6 0 30-12.5 30-28C80 34.5 66.6 22 50 22zm3 45c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v2zm.8-12.7c-.4.1-.8.5-.8 1v1.6c0 1.1-.9 2.1-2 2.1h-2c-1.1 0-2-1-2-2.1v-1.6c0-3 2-5.7 4.9-6.7 1.1-.4 2.1-.9 2.7-1.8 3.4-4.5 0-9.7-4.5-9.8-1.6-.1-3.2.6-4.4 1.7-.8.8-1.4 1.8-1.6 2.8-.2.9-1 1.6-1.9 1.6h-2.1c-1.2 0-2.2-1.2-2-2.4.5-2.4 1.6-4.6 3.4-6.3 2.3-2.3 5.4-3.5 8.7-3.4 6.3.2 11.5 5.4 11.7 11.7.2 5.2-3 9.9-8.1 11.6z"
@@ -74,8 +82,8 @@
 	});
 
 	/******************************************************
-						Accessibility
-	******************************************************/
+	 Accessibility
+	 ******************************************************/
 	/**
 	 * Implements keyboard navigation/roving tabindex on menu items.
 	 *
@@ -149,9 +157,9 @@
 	}
 
 	/******************************************************
-						Icon rendering
-		This is copied from embeddedService:iconHelper.js.
-	******************************************************/
+	 Icon rendering
+	 This is copied from embeddedService:iconHelper.js.
+	 ******************************************************/
 	/**
 	 * You can add icons by defining either their SVG path or an array of objects representing the SVG structure.
 	 *
@@ -223,8 +231,8 @@
 	}
 
 	/******************************************************
-			Factories for Channel CTAs (call-to-action)
-	******************************************************/
+	 Factories for Channel CTAs (call-to-action)
+	 ******************************************************/
 	/**
 	 * Builds the icon component for each supported channel type to be used in a CTA (call-to-action).
 	 * - Generates a HTMLElement (<svg> or <img>) for default and custom icons.
@@ -488,7 +496,7 @@
 			 * @param {Object} channel - Deployment-specific menu item configuration data for this channel.
 			 * @param {String} channelType - CHANNEL_TYPE field for the Messaging for Web channel type.
 			 * @return {String} label - The generated text representing the configured CTA default label, or undefined if params are invalid.
-			*/
+			 */
 			generateEmbeddedMessagingChatLabel: function(channel, channelType) {
 				var label;
 
@@ -1021,8 +1029,8 @@
 	}
 
 	/******************************************************
-				Factories for Supported Channels
-	******************************************************/
+	 Factories for Supported Channels
+	 ******************************************************/
 	/**
 	 * Channel menu item factory for type: Messaging for Web (MIAW).
 	 * Configures icon, label, and link. Contains channel type specific properties.
@@ -1708,8 +1716,8 @@
 	}
 
 	/******************************************************
-						Markup generation
-	******************************************************/
+	 Markup generation
+	 ******************************************************/
 	/*
 	* Markup Overview (Classes and IDs) - please update if you make markup changes.
 	* 	(NOTE: if channelType = MessagingChannel, we will use messageType for specificity.)
@@ -1836,7 +1844,6 @@
 	function generateChannelMenuItemMarkup(listItemsElement, channelConfiguration, channelIndex) {
 		var newTabLink_ariaLabel = embedded_svc.menu.menuConfig.labelData.ChannelMenu_WebURL.NewTabLinkAssistiveText || "Web link opens in a new tab.";
 		var channelType = getChannelType(channelConfiguration);
-
 		// Invoke main channel factory.
 		var menuItemElements = buildMenuItem(channelConfiguration);
 
@@ -2366,7 +2373,7 @@
 				.sort(function(a, b) {
 					// Sort channels based on increasing order.
 					return a.order < b.order ? -1 : 1;
-				// Display the first 6 options returned from the response.
+					// Display the first 6 options returned from the response.
 				}).slice(0, MAX_NUMBER_OF_OPTIONS);
 
 			if(supportedChannels.length < 1 || configuredChannels.length < 1) {
@@ -2381,8 +2388,8 @@
 	}
 
 	/******************************************************
-					Instrumentation functions
-	******************************************************/
+	 Instrumentation functions
+	 ******************************************************/
 	/**
 	 * Utility function to Find and remove protocol (http, ftp, etc.) and retrieve the host name from the URL.
 	 * Note: This piece of code has been replicated from chasitor.esw.js.
@@ -2506,8 +2513,8 @@
 	};
 
 	/******************************************************
-					Initialization functions
-	******************************************************/
+	 Initialization functions
+	 ******************************************************/
 	/**
 	 * Creates the top parent container div and appends the FAB to the DOM.
 	 *
@@ -2530,7 +2537,7 @@
 
 		// Initially show or hide the channel menu depending on the displayChannelMenu setting.
 		// If an Embedded Messaging channel is present, wait for visibility change event before showing top container.
-		if(!embedded_svc.menu.settings.displayChannelMenu) { //|| isEmbeddedMessagingPresent) {
+		if(!embedded_svc.menu.settings.displayChannelMenu || isEmbeddedMessagingPresent) {
 			embedded_svc.menu.hideTopContainer();
 		}
 
@@ -2862,13 +2869,40 @@
 		const numMenuItems = Array.isArray(embedded_svc.menu.menuConfig.menuItems) ?
 			embedded_svc.menu.menuConfig.menuItems.length :
 			0;
+		let embeddedMessagingInitResolves = []
 
 		embedded_svc.menu.menuConfig.menuItems
 			.filter(isEmbeddedMessagingChannel)
 			.forEach(channel =>
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1)
-			)
+			).forEach(channel =>
+				// Promise to be resolved when Embedded Messaging initialization completes.
+				embeddedMessagingInitResolves.append(new Promise((resolve) => {
+					embeddedMessagingInitResolveMap[channel.channel] = resolve;
+				}))
+			);
+
+		// Apply timeout for waiting on Embedded Messaging initialization.
+		const initializeEmbeddedMessagingTimeout = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				reject();
+			}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
+		});
+		embeddedMessagingInitResolves.append(initializeEmbeddedMessagingTimeout);
+
+		// Promise returned by Promise.race is resolved if Embedded Messaging initialization succeeds before timeout, else it's rejected.
+		Promise.race(embeddedMessagingInitResolves)
+			.then((channelName) => {
+				embedded_svc.utils.log(`[Channel Menu] Embedded Messaging channel (${channelName}) initialization successful.`);
+				if (Object.keys(embeddedMessagingInitResolveMap).length === 0) {
+					embedded_svc.menu.showTopContainer();
+				}
+			})
+			.catch(() => {
+				embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
+				embedded_svc.menu.showTopContainer();
+			});
 
 		// Ensure code settings from file have loaded before building markup.
 		if(hasCodeSettingsFileLoaded) {
@@ -2896,7 +2930,7 @@
 		if(embedded_svc.menu.settings.liveAgentChatUrl) {
 			// Retrieve the existing liveAgentChatUrl domain and use the same domain for loading the iframe.
 			embedded_svc.menu.settings.iframeURL = embedded_svc.menu.settings.liveAgentChatUrl.substring(0,
-				embedded_svc.menu.settings.liveAgentChatUrl.lastIndexOf("/chat")) +
+					embedded_svc.menu.settings.liveAgentChatUrl.lastIndexOf("/chat")) +
 				"/content/test/webdriver/logChannelMenu.html?parent=" +
 				document.location.href;
 
@@ -3124,8 +3158,8 @@
 	};
 
 	/******************************************************
-					Reordering API functions
-	******************************************************/
+	 Reordering API functions
+	 ******************************************************/
 	/**
 	 * Checks that at least one menu item in the deployment has the same name as the channel being validated.
 	 *
@@ -3374,9 +3408,9 @@
 	};
 
 	/******************************************************
-					Private runtime functions
-						(Embedded Messaging)
-	******************************************************/
+	 Private runtime functions
+	 (Embedded Messaging)
+	 ******************************************************/
 	/**
 	 * Set the Loading state for the Embedded Messaging menu item or floating action button.
 	 *
@@ -3466,14 +3500,26 @@
 	}
 
 	/******************************************************
-					Public runtime functions
-						(Embedded Messaging)
-	******************************************************/
+	 Public runtime functions
+	 (Embedded Messaging)
+	 ******************************************************/
 	/**
 	 * Add event listener to show Channel Menu after MIAW client is closed/reset.
 	 * @param {Boolean} isMenuItem - If the Embedded Messaging channel clicked was a menu item or a single-channel button.
 	 */
 	function addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem) {
+		const onEmbeddedMessagingReadyEventLister = function(options) {
+			if (options && options.detail && options.detail.devName) {
+				let embeddedMessagingResolve = embeddedMessagingInitResolveMap[options.detail.devName];
+
+				// Resolve setIdentityTokenPromise created while handling identity token expiry.
+				if (embeddedMessagingResolve && typeof embeddedMessagingResolve === "function") {
+					embeddedMessagingResolve(options.detail.devName);
+					delete embeddedMessagingInitResolveMap[options.detail.devName];
+				}
+			}
+		}
+
 		const visibilityChangeEventListener = function (options) {
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
@@ -3489,18 +3535,7 @@
 					// Add the Embedded Messaging channel if it has become visible.
 					addEmbeddedMessagingMenuOption(options.detail);
 				} else {
-				//} else if ((!isMenuItem && !options.detail.initialRender) || (isMenuItem && options.detail.resetClient)) {
-					// Remove the Embedded Messaging channel.
 					removeEmbeddedMessagingMenuOption(options.detail);
-				}
-
-				if (options.detail.initialRender) {
-					embedded_svc.menu.showTopContainer();
-				}
-
-				if (options.detail.resetClient) {
-					// After end user closes MIAW, display Channel Menu again after client is reset.
-					onClosingEmbeddedMessaging(isMenuItem);
 				}
 			}
 		}
@@ -3569,7 +3604,8 @@
 		};
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
-	}
+		window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventLister);
+	};
 
 	/**
 	 * Utilizes esw.js's Bootstrap API to ensure Channel Menu's behavior is synchronous with Embedded Messaging's bootstrapping process. More performant if Chat was previously opened on the page or LO is preemptively loaded.
@@ -3705,10 +3741,11 @@
 		);
 	}
 
+
 	/******************************************************
-					Private runtime functions
-						(Embedded Chat)
-	******************************************************/
+	 Private runtime functions
+	 (Embedded Chat)
+	 ******************************************************/
 	/**
 	 * Remap settings values so that they can override nested values retrieved from REST endpoint for a Chat menu item.
 	 *
@@ -3850,19 +3887,19 @@
 				// Hide channel menu when sidebar is ready to be displayed.
 				onOpeningEmbeddedChat(elements);
 			}).catch(function(result) {
-				embedded_svc.utils.warning("[Channel Menu] " + result);
-				// If rejected, update status to unavailable (offline).
-				updateEmbeddedChatAvailabilityLabel(labels.ChatUnavailable, elements);
-			}).finally(function() {
-				// Remove loading state from Embedded Chat menu item or button.
-				onStopLoadingEmbeddedChat(elements);
-			});
+			embedded_svc.utils.warning("[Channel Menu] " + result);
+			// If rejected, update status to unavailable (offline).
+			updateEmbeddedChatAvailabilityLabel(labels.ChatUnavailable, elements);
+		}).finally(function() {
+			// Remove loading state from Embedded Chat menu item or button.
+			onStopLoadingEmbeddedChat(elements);
+		});
 	}
 
 	/******************************************************
-					Public runtime functions
-						(Embedded Chat)
-	******************************************************/
+	 Public runtime functions
+	 (Embedded Chat)
+	 ******************************************************/
 	/**
 	 * Fires when user clicks the Embedded Chat menu item or floating action Embedded Chat button.
 	 *
@@ -4014,9 +4051,9 @@
 	};
 
 	/******************************************************
-					Public runtime functions
-						(Channel Menu)
-	******************************************************/
+	 Public runtime functions
+	 (Channel Menu)
+	 ******************************************************/
 	/**
 	 * Runtime function to open the menu.
 	 */
