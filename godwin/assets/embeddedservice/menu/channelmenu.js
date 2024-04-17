@@ -2889,8 +2889,7 @@
 		});
 
 		// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
-		// Promise.race(Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout)
-		Promise.all(embeddedMessagingInitResolves)
+		Promise.race(Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout)
 			.then(() => {
 				embedded_svc.menu.showTopContainer();
 			})
@@ -3503,7 +3502,7 @@
 	 * @param {Boolean} isMenuItem - If the Embedded Messaging channel clicked was a menu item or a single-channel button.
 	 */
 	function addEmbeddedMessagingVisibilityChangeEventListener(isMenuItem) {
-		const onEmbeddedMessagingReadyEventLister = function(options) {
+		const onEmbeddedMessagingReadyEventListener = function(options) {
 			if (options && options.detail && options.detail.devName) {
 				let embeddedMessagingResolve = embeddedMessagingInitResolveMap[options.detail.devName];
 
@@ -3601,7 +3600,7 @@
 		};
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
-		window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventLister);
+		window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventListener);
 	};
 
 	/**
@@ -3688,7 +3687,7 @@
 	 */
 	embedded_svc.menu.initializeEmbeddedMessaging = function initializeEmbeddedMessaging(menuItemData, isMenuItem) {
 		var labelsLanguage = embedded_svc.menu.menuConfig.additionalSettings.labelsLanguage;
-		var baseURL = 'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExperienc1709839200606';
+		var baseURL = menuItemData.siteUrl;
 
 		// Load bootstrap.js from MIAW deployment's LWR site endpoint.
 		embedded_svc.utils.loadScriptFromUrl(
@@ -3726,7 +3725,7 @@
 				embeddedservice_bootstrap.init(
 					embedded_svc.menu.settings.orgId,
 					menuItemData.channel,
-					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWebExperienc1709839200606',
+					menuItemData.siteUrl,
 					{
 						scrt2URL: menuItemData.scrt2Url
 					}
