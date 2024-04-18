@@ -63,10 +63,17 @@
 
 	/**
 	 * Resolver function for Embedded Messaging initialization promise.
-	 * Promise is resolved after onEmbeddedMessagingReady is received.
+	 * Promise is resolved after first visibility changed for adding Embedded Messaging is received.
 	 * @type {function}
 	 */
 	let initializeEmbeddedMessagingResolve;
+
+	/**
+	 * Reject function for Embedded Messaging initialization promise.
+	 * Promise is rejected if onEmbeddedMessagingInitError event is received.
+	 * @type {function}
+	 */
+	let initializeEmbeddedMessagingReject;
 
 	Object.defineProperties(DEFAULT_MENU_ICONS, {
 		QUESTION: {
@@ -2892,12 +2899,15 @@
 
 			// Apply timeout for waiting on Embedded Messaging initialization.
 			const initializeEmbeddedMessagingTimeout = new Promise((resolve, reject) => {
+				initializeEmbeddedMessagingReject = reject;
+				
 				setTimeout(() => {
 					reject();
 				}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
 			});
 
-			// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
+			// Promise returned by Promise.race is resolved if Embedded Messaging initialization succeeds before timeout,
+			// else it's rejected and the Channel Menu is rendered without it.
 			Promise.race([initializeEmbeddedMessagingPromise, initializeEmbeddedMessagingTimeout])
 				.then(() => {
 					embedded_svc.utils.log(`[Channel Menu] Embedded Messaging initialization successful.`);
@@ -3511,13 +3521,6 @@
 	 * Add event listener to show Channel Menu after MIAW client is closed/reset.
 	 */
 	function addEmbeddedMessagingEventListeners() {
-		const onEmbeddedMessagingReadyEventListener = function(options) {
-			if (initializeEmbeddedMessagingResolve && typeof initializeEmbeddedMessagingResolve === "function") {
-				initializeEmbeddedMessagingResolve();
-				initializeEmbeddedMessagingResolve = undefined;
-			}
-		}
-
 		const visibilityChangeEventListener = function (options) {
 			if (options && options.detail && options.detail.devName) {
 				// Update local visibility flag for Embedded Messaging menu item.
@@ -3531,9 +3534,9 @@
 
 				if (options.detail.isVisible) {
 					// Add the Embedded Messaging channel if it has become visible.
-					addEmbeddedMessagingMenuOption(options.detail);
+					addEmbeddedMessagingMenuOption();
 				} else {
-					removeEmbeddedMessagingMenuOption(options.detail);
+					removeEmbeddedMessagingMenuOption();
 				}
 			}
 		}
@@ -3550,7 +3553,7 @@
 				initializeEmbeddedMessagingResolve();
 				initializeEmbeddedMessagingResolve = undefined;
 			}
-			
+
 			if (menu && menu.style.visibility !== "hidden") {
 				wasChannelMenuOpen = true;
 			}
@@ -3605,9 +3608,18 @@
 				embedded_svc.menu.openChannelMenu();
 			}
 		};
+		
+		const initializationFailureListener = function () {
+			if (initializeEmbeddedMessagingReject && typeof initializeEmbeddedMessagingReject === "function") {
+				initializeEmbeddedMessagingReject();
+				initializeEmbeddedMessagingReject = undefined;
+			}
+
+			removeEmbeddedMessagingMenuOption();
+		}
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
-		//window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventListener);
+		window.addEventListener("onEmbeddedMessagingInitError", initializationFailureListener);
 	};
 
 	/**
