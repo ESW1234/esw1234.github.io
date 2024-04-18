@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<h1> In APP Web Client for Org: "MIAW on ECM"</h1>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'>> -->
+
+
+__ insert code snippet here from ESD __
+
+</body>
+</html>
