@@ -61,6 +61,13 @@
 	// Resolver map for storing Embedded Messaging initialization promise resolves.
 	let embeddedMessagingInitResolveMap = {};
 
+	/**
+	 * Resolver function for Embedded Messaging initialization promise.
+	 * Promise is resolved after onEmbeddedMessagingReady is received.
+	 * @type {function}
+	 */
+	let initializeEmbeddedMessagingResolve;
+
 	Object.defineProperties(DEFAULT_MENU_ICONS, {
 		QUESTION: {
 			value: "M50 22c-16.6 0-30 12.5-30 28 0 5 1.4 9.6 3.8 13.7.3.5.4 1.1.2 1.6l-2.8 8.9c-.5 1.6 1 3 2.6 2.5l8.8-3.1c.6-.2 1.2-.1 1.7.2 4.6 2.7 10 4.2 15.8 4.2 16.6 0 30-12.5 30-28C80 34.5 66.6 22 50 22zm3 45c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v2zm.8-12.7c-.4.1-.8.5-.8 1v1.6c0 1.1-.9 2.1-2 2.1h-2c-1.1 0-2-1-2-2.1v-1.6c0-3 2-5.7 4.9-6.7 1.1-.4 2.1-.9 2.7-1.8 3.4-4.5 0-9.7-4.5-9.8-1.6-.1-3.2.6-4.4 1.7-.8.8-1.4 1.8-1.6 2.8-.2.9-1 1.6-1.9 1.6h-2.1c-1.2 0-2.2-1.2-2-2.4.5-2.4 1.6-4.6 3.4-6.3 2.3-2.3 5.4-3.5 8.7-3.4 6.3.2 11.5 5.4 11.7 11.7.2 5.2-3 9.9-8.1 11.6z"
@@ -2868,17 +2875,17 @@
 			embedded_svc.menu.menuConfig.menuItems.length :
 			0;
 		let embeddedMessagingChannels = embedded_svc.menu.menuConfig.menuItems.filter(isEmbeddedMessagingChannel);
-		let embeddedMessagingInitResolves = []
+		let initializeEmbeddedMessagingPromise;
 
 		if (embeddedMessagingChannels.length > 0) {
 			embeddedMessagingChannels.forEach(function (channel) {
 				// Initialize MIAW channel but wait for event from bootstrap before rendering the channel.
 				embedded_svc.menu.initializeEmbeddedMessaging(channel, numMenuItems > 1);
-	
+
 				// Add promise to be resolved when Embedded Messaging initialization completes.
-				embeddedMessagingInitResolves.push(new Promise((resolve) => {
-					embeddedMessagingInitResolveMap[channel.channel] = resolve;
-				}));
+				initializeEmbeddedMessagingPromise = new Promise((resolve) => {
+					initializeEmbeddedMessagingResolve = resolve;
+				});
 			})
 
 			addEmbeddedMessagingEventListeners();
@@ -2889,17 +2896,18 @@
 					reject();
 				}, INIT_EMBEDDED_MESSAGING_TIMEOUT_IN_MS);
 			});
-	
+
 			// Promise returned by Promise.race is resolved if all Embedded Messaging initialization succeeds before timeout, else it's rejected.
-			Promise.race([Promise.all(embeddedMessagingInitResolves), initializeEmbeddedMessagingTimeout])
+			Promise.race([initializeEmbeddedMessagingPromise, initializeEmbeddedMessagingTimeout])
 				.then(() => {
-					embedded_svc.menu.showTopContainer();
+					embedded_svc.utils.log(`[Channel Menu] Embedded Messaging initialization successful.`);
 				})
 				.catch(() => {
-					embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging failed to initialize before time out. Rendering Channel Menu without the Embedded Messaging channel.`);
+					embedded_svc.utils.warning(`[Channel Menu] Embedded Messaging initialization failure. Rendering Channel Menu without the Embedded Messaging channel.`);
 					embedded_svc.menu.showTopContainer();
 				});
 		}
+
 		// Ensure code settings from file have loaded before building markup.
 		if(hasCodeSettingsFileLoaded) {
 			// Load stylesheet before injecting custom branding CSS.
@@ -3504,16 +3512,9 @@
 	 */
 	function addEmbeddedMessagingEventListeners() {
 		const onEmbeddedMessagingReadyEventListener = function(options) {
-			if (options && options.detail && options.detail.devName) {
-				let embeddedMessagingResolve = embeddedMessagingInitResolveMap[options.detail.devName];
-
-				embedded_svc.utils.log(`[Channel Menu] Embedded Messaging channel (${options.detail.devName}) initialization successful.`);
-
-				// Resolve setIdentityTokenPromise created while handling identity token expiry.
-				if (embeddedMessagingResolve && typeof embeddedMessagingResolve === "function") {
-					embeddedMessagingResolve();
-					delete embeddedMessagingInitResolveMap[options.detail.devName];
-				}
+			if (initializeEmbeddedMessagingResolve && typeof initializeEmbeddedMessagingResolve === "function") {
+				initializeEmbeddedMessagingResolve();
+				initializeEmbeddedMessagingResolve = undefined;
 			}
 		}
 
@@ -3545,6 +3546,11 @@
 			const formattedMenuItems = [];
 			let wasChannelMenuOpen = false;
 
+			if (initializeEmbeddedMessagingResolve && typeof initializeEmbeddedMessagingResolve === "function") {
+				initializeEmbeddedMessagingResolve();
+				initializeEmbeddedMessagingResolve = undefined;
+			}
+			
 			if (menu && menu.style.visibility !== "hidden") {
 				wasChannelMenuOpen = true;
 			}
@@ -3601,7 +3607,7 @@
 		};
 
 		window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", visibilityChangeEventListener);
-		window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventListener);
+		//window.addEventListener("onEmbeddedMessagingReady", onEmbeddedMessagingReadyEventListener);
 	};
 
 	/**
