@@ -1,5 +1,5 @@
 {
     "shouldShowParticipantChgEvntInConvHist": false,
     "enableUserInputForConversationWithBot": false,
-    "chatButtonPosition": "25px, 30px"
+    "chatButtonPosition": "500px, 600px"
 }
