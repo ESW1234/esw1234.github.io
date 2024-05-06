@@ -9,36 +9,17 @@
 
 
 </div>
-<div id="divlightning">
+<div id="divlightning">            
 </div>
+<script async src="/lightning/lightning.out.iframe.js"></script>
 <script>
-            $Lightning.use("c:LightningOutAppGuest2", function() {
-              $Lightning.createComponent("c:AuraCmp", 
-              { },
-              "divlightning",
-              function(cmp) {
-                  console.log('AuraComLightningOutTest created');
-              }); 
-                      /*
-              $Lightning.createComponent("c:AuraCmp", 
-              { },
-              "divlightning",
-              function(cmp) {
-                   console.log('TestLabelCmp created');
-              }); 
-
-     
-             $Lightning.createComponent("c:bikeCardLo", 
-              { },
-              "divlightning",
-              function(cmp) {
-                     console.log('bikeCardLo created');
-              });*/
-            },
-
-           'https://trialorgfarmforu2-dev-ed.develop.my.site-com.sisi-zhang-e3rd5cjsafj70.wb.crm.dev:6101/lotest'// Experience Site URL
-                           
-        );                   
-</script>   
+    <%--Example landing url of this page: https://corsa04-basichb1http2-2015912970.vpod.t.force.com/qa/lcs/lightningOutPerf.jsp--%>
+    <%
+	
+	String url = "https://trialorgfarmforu-dev-ed.develop.my.site-com.sisi-zhang-8n43wple5vqb0.wb.crm.dev:6101/lotest";
+    %>
+    document.addEventListener('LightningOutLoaded', e => console.log(`${e.detail.application} is loaded.`));
+    ($Lightning = window.$Lightning || {}).data = ['c:LightningOutAppIframe', '<%= url %>', {}, null, document.getElementById('divlightning')]
+</script>
 </body>
 </html>
