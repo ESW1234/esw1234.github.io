@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>InApp</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"+Sheet2!B21>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
 <h1> In APP Web Client for Org: "admin username"</h1>
@@ -12,6 +12,7 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
 				'00DOK0000009Fvx',
