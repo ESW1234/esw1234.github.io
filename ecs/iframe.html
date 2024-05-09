@@ -1,0 +1,27 @@
+<html lang="en-US">
+<body>
+<iframe src="https://dsg000008amyj2ag.test1.my.pc-rnd.salesforce.com/c/LightningOutAppIframe.app"></iframe>
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Iframe Test</p>
+
+</body>
+</html>
+
+<html lang="en-US">
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+<div id="divlightning"/>
+<script async src="https://dsg000008amyj2ag.test1.my.pc-rnd.salesforce.com/lightning/lightning.out.iframe.js"></script>
+<script>
+    document.addEventListener("LightningOutLoaded", e => console.log(`${e.detail.application} is loaded.`));
+    ($Lightning = window.$Lightning || {}).data = ["c:LightningOutAppIframe", "https://dsg000008amyj2ag.test1.my.pc-rnd.salesforce.com", {}, null, document.getElementById('divlightning')]
+</script>
+	
+</body>
+</html>
