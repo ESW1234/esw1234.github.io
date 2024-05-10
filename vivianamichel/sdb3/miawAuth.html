@@ -22,20 +22,6 @@
                 "identityToken": token
             });
         }
-        
-        function fetchAndSetToken() {
-             var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=30&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-             fetch(porticoURL).then(function(response) {
-              return response.json();
-             }).then(function(data) {
-              embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                   identityTokenType: "JWT",
-                   identityToken: data.accessToken
-              });
-             }).catch(function(err) {
-              console.log('Fetch Error :', err);
-             });
-        }
 
 
         window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -46,14 +32,6 @@
              }, 5000);
         });
 
-
-        window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
-             console.log("Received the onEmbeddedMessagingTokenExpired event…");
-             // Add some fake delay
-             setTimeout(() => {
-            //fetchAndSetToken();
-             }, 5000);
-        });
     </script>
 
 
