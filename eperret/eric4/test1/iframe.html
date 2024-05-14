@@ -3,22 +3,24 @@
     <head>
         <title>Lightning out</title>
         <style>
+            body {
+                background: gainsboro;
+            }
             #content {
                 padding: 1rem;
-                background: #fff;
                 display: inline-block
             }
         </style>
     </head>
     <body>
         <div id="content">
-            <h1>S̡̙͙a͕̞m̡͕̫p̢̢̘l̡̘̝e̪̞ P̢̫͉a̟̙͍g̡̡͎e̝͕̘ 1</h1>
+            <h1>S̡̙͙a͕̞m̡͕̫p̢̢̘l̡̘̝e̪̞ P̢̫͉a̟̙͍g̡̡͎e̝͕̘ 3</h1>
             <div id="innerContent"></div>
         </div>
         <script async src="https://eric4sdb6.test1.my.pc-rnd.site.com/lightning/lightning.out.iframe.js"></script>
         <script>
             document.addEventListener("LightningOutLoaded", e => console.log(`${e.detail.application} is loaded.`));
-    ($Lightning = window.$Lightning || {}).data = ["c:iframe", "https://eric4sdb6.test1.my.pc-rnd.site.com", {}, null, document.getElementById('innerContent')]
+    ($Lightning = window.$Lightning || {}).data = ["c:iframe", "https://eric4sdb6.test1.my.pc-rnd.site.com", {}, "data:text/css;base64,Ym9keSB7CgliYWNrZ3JvdW5kOiB1cmwoaHR0cHM6Ly93d3cudzNzY2hvb2xzLmNvbS93M2ltYWdlcy9wYXJhbGxheDEuanBnKTsKCW9wYWNpdHk6IC43NTsKCWJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7CgliYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7CgliYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0OwoJYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsKfQ==", document.getElementById('innerContent')]
         </script>
     </body>
 </html>
