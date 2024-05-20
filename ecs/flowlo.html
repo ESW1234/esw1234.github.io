@@ -47,6 +47,13 @@
         );    */
 
                   $Lightning.use("salesforceIdentity:flowLightningOut", function() {
+                  $Lightning.createComponent("c:AuraComLightningOutTest", 
+                          { },
+                          "divlightning",
+                          function(cmp) {
+                              console.log('AuraComLightningOutTest created');
+                  }); 
+                              /*
                     $Lightning.createComponent("salesforceIdentity:lightningLoginFlow",
                         {
                             flowDevName : flowName,
@@ -55,7 +62,7 @@
                         },
                         "flowContainer",
                         function(cmp) {}
-                    );
+                    );*/
                 },
                 'https://dsg000008amyj2ag.test1.lightning.pc-rnd.force.com',// Lightning domain URL
                 '00DSG000008AMyj!AQEAQHNqw5oq5n6nl8nx2eYOTiz376DQ20PW37Vi5QA6pg9zuh3GhocUlnhofwgLs66ICdM99nIWmPOxLZb2ExUgU184YyKs'
