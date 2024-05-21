@@ -4,6 +4,7 @@ $Lightning._delegate = (function() {
     // private state
     var _application, _applicationTag, _auraContextCallback;
     var _pendingReadyRequests = [];
+    const _error = [];
     var _ready = false;
     var _previousRequestAuthToken;
 
@@ -36,9 +37,17 @@ $Lightning._delegate = (function() {
         for (var i = 0; i < urls.length; i++) {
             var script = document.createElement("SCRIPT");
             script.type = "text/javascript";
-            script.src = urls[i];
+            if (typeof urls[i] === "string") {
+                script.src = urls[i];
+            } else {
+                script.src = urls[i]["url"];
+                var crossorigin = urls[i]["crossorigin"];
+                if (crossorigin) {
+                    script.setAttribute("crossorigin", crossorigin);
+                }
+            }
+
             script.async = false;
-            //throw new Error("Test error from delegate script");
             script.onerror = logError;
             if (i == urls.length - 1) {
                 script.onload = onload;
@@ -77,25 +86,24 @@ $Lightning._delegate = (function() {
         // for <link> tags, targetURI is the href attribute
             targetURI = error.target.href;
         }
+        _error.push(targetURI);
+    }
 
-         ready(function(){
-             $A.reportError("Error During Lightning Out setup scripts load : " + targetURI);
-         });
-     
-        
-
+    async function reportScriptError(callback, timeout, count) {
         /*
-        if (typeof $A.metricsService !== "undefined") {
-            $A.metricsService.transaction("aura", "lightningout:client-error", {
-                "context": {
-                    "eventSource": "error",
-                    "attributes": {
-                        "targetURI": targetURI,
-                        "baseURI": error.currentTarget.baseURI
-                    }
-                }
-            });
-        }*/
+         *  call $A.reportError to send gack to server and log error in the console when $A finishedInit
+         *  After certain times of check, if $A is still not finishedInit, will stop checking and reportError
+         */
+
+        while ((!$A.finishedInit) && (count > 0)) {
+            count--;
+            await sleep(timeout);
+        }
+        callback();
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function displayErrorText(error) {
@@ -125,18 +133,17 @@ $Lightning._delegate = (function() {
         if (lightningEndPointURI) {
             url = lightningEndPointURI + "/" + url;
         } else {
-            //Throw error to let customer know lightningEndPointURI is required now
             // Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
-           /* var scripts = document.getElementsByTagName("script");
+            var scripts = document.getElementsByTagName("script");
             for (var m = 0; m < scripts.length; m++) {
                 var script = scripts[m].src;
-                var i = script.indexOf("/lightning.out.js");
+                var i = script.indexOf("/lightning/lightning.out.js");
                 if (i >= 0) {
                     var basePath = script.substring(0, i);
                     url = basePath + "/" + url;
                     break;
                 }
-            }*/
+            }
         }
 
         var xhr = new XMLHttpRequest();
@@ -165,8 +172,6 @@ $Lightning._delegate = (function() {
             if(_applicationTag && _applicationTag !== applicationTag) {
                 throw new Error("$Lightning.use() already invoked with application: " + _applicationTag);
             }
-    
-
 
             if(!_applicationTag) {
                 _applicationTag = applicationTag;
@@ -176,7 +181,31 @@ $Lightning._delegate = (function() {
                 requestApp(applicationTag, lightningEndPointURI, authToken, paramsObj, function(xhr) {
                     var errorMarker = xhr.responseText.indexOf("/*ERROR*/");
                     if (errorMarker == -1) {
-                        var config = JSON.parse(xhr.responseText);
+                        var config = JSON.parse(xhr.responseText),
+                            cn = config.auraConfig && config.auraConfig["eikoocnekot"];
+                        if (cn) {
+                            // Read cookie and convert it to the token config value. This is being done early so the cookie is deleted and reduces the chance the cookie unnecessarily sent to the server with subsequent requests.
+                            var cookies = "; " + document.cookie + ";",
+                                value,
+                                key = "; " + cn + "=",
+                                begin = cookies.indexOf(key);
+                            if (begin !== -1) {
+                                var end = cookies.indexOf(";", begin + key.length);
+                                value = cookies.substring(begin + key.length, end);
+                            }
+                            if (!value) {
+                                throw new Error("Unable to read the Aura token from the response.");
+                            }
+                            config.auraConfig["token"] = value;
+                            // Delete cookie
+                            var cookie = cn + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+                            if ((cn.indexOf("__Host-") === 0)) {
+                                cookie += "; secure";
+                            }
+                            document.cookie = cookie;
+                            config.auraConfig["csrfV2"] = true;
+                            delete config.auraConfig["eikoocnekot"]
+                        }
 
                         // save the delegate version to local storage
                         try {
@@ -199,6 +228,14 @@ $Lightning._delegate = (function() {
                                 $A.initConfig(config.auraInitConfig, true);
                                 $Lightning.lightningLoaded();
                             }
+
+                            if (_error.length > 0) {
+                                reportScriptError(() => {
+                                    for (var n = 0; n < _error.length; n++) {
+                                        $A.reportError("lightningout:client-error:script-setup:" + _error[n]);
+                                    }}, 250, 5);
+                            }
+
                         });
 
                         var styles = config.styles;
@@ -227,8 +264,6 @@ $Lightning._delegate = (function() {
             if(callback) {
                 ready(callback);
             }
-            
-
         },
 
         ready : ready,
@@ -236,15 +271,6 @@ $Lightning._delegate = (function() {
         createComponent : function(type, attributes, locator, callback) {
             // Check to see if we know about the component - enforce aura:dependency
             // is used to avoid silent performance killer
-             /*
-            var evt = $A.getEvt("markup://home:homeViewportEnter");
-            evt.setParams({
-                "isOnViewport" : true
-            });
-            evt.fire();*/
-        
-
-            
             var unknownComponent;
             try {
                 unknownComponent = $A.componentService.getDef(type) === undefined;
@@ -296,7 +322,6 @@ $Lightning._delegate = (function() {
                     if (callback) {
                         try {
                             callback(component, status, statusMessage);
-                        
                         } catch (e) {
                             // Associate any callback error with the lightning out component being created to facilitate proper gack suppression
                             if (!(e instanceof $A.$auraError$)) {
