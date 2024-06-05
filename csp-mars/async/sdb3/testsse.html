@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>sdb3 Test SSE Response</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+	<label for="jwtToken">JWT:</label></br>
+	<input type="text" id="jwtToken" name="jwtToken" size="50"></br>
+	<label for="lastEventId">LastEventId:</label></br>
+	<input type="text" id="lastEventId" name="lastEventId" size="50"></br>
+	<button type="button" onclick="subscribeToSSE()"> Subscribe to SSE </button></br></br>
+
+	<script type='text/javascript'>
+		const DEFAULT_JWT = "eyJraWQiOiI2ZjUxNmMwOTMxZTQwODkxYzMyODliN2ZjZDcyZDZjY2RiYzQwMTAwMDczMWU2ZmFkNzM3ZDk1MjRiYWUyY2FhIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ2Mi9pYW1lc3NhZ2UvVU5BVVRIL05BL3VpZDo1MzdhN2Q4MC0zZjViLTRhYjUtYjNiNi1kYzEwZmFkZDk1ZDMiLCJjbGllbnRJZCI6InYxL01lc3NhZ2luZ18xMy8wMjQ4NjAzOS04NDk0LTQ3YjMtYWJlZS1lNmJlMjZmNGQwMWUiLCJjaGFubmVsQWRkSWQiOiJhMWU2N2JhOS1iZjY1LTQ2ZjQtODZhMS05OTFhYzIyOGZlMTEiLCJpc3MiOiJpYW1lc3NhZ2UiLCJkZXZpY2VJZCI6ImMzY2U5Njg5LWJlMjQtNDMxYS1hYzE4LTIwM2ZiYmVlNDdhNCIsImNhcGFiaWxpdGllc1ZlcnNpb24iOiIyNDYiLCJvcmdJZCI6IjAwRFNCMDAwMDAwMkxBMSIsImRldmljZUluZm8iOiJ7XCJvc1wiOlwiTWFjaW50b3NoXCIsXCJvc1ZlcnNpb25cIjpcIjEwLjE1N1wiLFwiYnJvd3NlclwiOlwiQ2hyb21lXCIsXCJicm93c2VyVmVyc2lvblwiOlwiMTE1XCJ9Iiwiand0SWQiOiI0clRjb0s1MDlaU3Y4Z3VteVRrdVZrIiwiY2xpZW50U2Vzc2lvbklkIjoiNjNjYjI1MTktN2YyZi00ZTNmLWJjNTQtYTQxMDg4ZTIyZjI4IiwiYXVkIjoiVVNFUiIsImV2dEtleSI6InNjcnQudGVzdC5ldmVudHJvdXRlcl9fYXdzLnRlc3QxLXVzd2VzdDIudW5pZmllZC1lbmdhZ2VtZW50LmFqbmFsb2NhbDFfX3B1YmxpYy5ldmVudHMuc2NydDAxOjM4Iiwiandrc191cmkiOiJodHRwczovL3NjcnQwMS51bmlmaWVkLWVuZ2FnZW1lbnQuc2ZkYy1ja3pxZ2Muc3ZjLnNmZGNmYy5uZXQvaWFtZXNzYWdlL3YxLy53ZWxsLWtub3duL2p3a3MuanNvbj9rZXlJZD02ZjUxNmMwOTMxZTQwODkxYzMyODliN2ZjZDcyZDZjY2RiYzQwMTAwMDczMWU2ZmFkNzM3ZDk1MjRiYWUyY2FhIiwiZXNEZXBsb3ltZW50VHlwZSI6IldlYiIsImV4cCI6MTY5MTI2NTAwMiwiaWF0IjoxNjkxMDA1ODAyfQ.F6ZK9qcZrrj6sgpjjhzLzcAvqFH6GN9Uzd3wG0J7p68JWf_hWTSsV4CfXxmdWW9-5kXVDhuhZBI7Fs-ZhNHPjLZ5IUlNHB2fICEY13mYXXwYruGRgyKl5xJ2qdQYphlYv_080Z5TibcmW-3lv8FkRENXL3Gc5PZQH6HqGvyhuuDsVD56gsaugOgLEkh-l-yKDHiXc0GS3yGKVOmsq-NtshSa8hwVA3mPqceLgb47OwgmD7NvFcOz7O-IlB73WAwVidglKIi1S6r3aRJHmxhGsN087_G6R2prs4C13k_L4y1GxlyoGfMO3ZlkJoNOxiILjy3kRTMF__kR4XE7TD_dqw";
+		const DEFAULT_LASTEVENTID = "445944";
+		document.getElementById("jwtToken").value = DEFAULT_JWT;
+		document.getElementById("lastEventId").value = DEFAULT_LASTEVENTID;
+
+		function subscribeToSSE() {
+			const jwt = document.getElementById("jwtToken").value;
+			const lastEventId = document.getElementById("lastEventId").value;
+			const endpoint = "https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com/eventrouter/v1/sse";
+
+			fetch(endpoint, {
+				method: "GET",
+				mode: "cors",
+				headers: {
+					"Authorization": "Bearer " + jwt,
+					"Last-Event-Id": lastEventId,
+					"X-Org-Id": "00DSB0000002LA1"
+				}
+			})
+			.then(function(response) {
+				console.log('Response : ', response);
+				response.json();
+			})
+			.then(function(responseData) {
+				console.log('Response data : ', responseData);
+			})
+			.catch(function(err) {
+				console.log('Fetch Error :', err);
+			});
+		}
+	</script>
+
+
+</body>
+</html>

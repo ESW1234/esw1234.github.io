@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>sdb6 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DLT000000aIPp',
+				'MIAW_Queue',
+				'https://dlt000000aipp2am.test1.my.pc-rnd.site.com/ESWMIAWQueue1677750015009',
+				{
+					scrt2URL: 'https://dlt000000aipp2am.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dlt000000aipp2am.test1.my.pc-rnd.site.com/ESWMIAWQueue1677750015009/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+<!--<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000001hxN',
+				'Messaging_22',
+				'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging221701373567079',
+				{
+					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging221701373567079/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+-->
+</body>
+</html>

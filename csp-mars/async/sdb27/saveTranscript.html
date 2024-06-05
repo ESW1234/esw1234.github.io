@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>sdb6 saveTranscript.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+  <label for="endpoint">Set endpoint:</label></br>
+  <input type="text" id="endpoint" name="endpoint" size="100" value="https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com/iamessage/v1/conversation/4d03f1cf-a9bb-45b1-855f-b69691b9c964/saveTranscript"></br>
+  <label for="endpoint">Set jwt:</label></br>
+  <input type="text" id="jwt" name="jwt" size="100" value="eyJraWQiOiJjZGI2NDIyZGIwMzcwN2MxMDk3NDRjYjVjOGQzNDY0OTkwOTAwNTFmOTQzYTlhYzBmZjA0YmU1NWY3NDU5OTBlIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ2Mi9pYW1lc3NhZ2UvVU5BVVRIL05BL3VpZDo1NjExNGM0MS01NmU4LTQ5YTMtOWZmOC1iNzM5YjM2N2MwZTQiLCJjbGllbnRJZCI6InYxL01lc3NhZ2luZ18yMS82Njg5NGQwMy02MTBlLTQyYjYtYTgzYy1mMzkxZmFlNmM0ZTMiLCJjaGFubmVsQWRkSWQiOiI2MDMwNjkxYi1lMmFhLTQ0NTYtYTMxYy1iYTY2NWNjYTYyYTkiLCJpc3MiOiJpYW1lc3NhZ2UiLCJkZXZpY2VJZCI6ImFmZDFhYzc4LWQ1ODktNDMwYy05NWI1LTA0Yzg2MjA5ZDY2YSIsImNhcGFiaWxpdGllc1ZlcnNpb24iOiIyNDYiLCJvcmdJZCI6IjAwRFNHMDAwMDAwMWh4TiIsImRldmljZUluZm8iOiJ7XCJvc1wiOlwiTWFjaW50b3NoXCIsXCJvc1ZlcnNpb25cIjpcIjEwLjE1N1wiLFwiYnJvd3NlclwiOlwiQ2hyb21lXCIsXCJicm93c2VyVmVyc2lvblwiOlwiMTE5XCJ9Iiwiand0SWQiOiI0dExzS1g2Yi1jeW5lb1FkY0ItbjEtIiwiY2xpZW50U2Vzc2lvbklkIjoiZWFlOTAyMmUtYTdiYS00M2I5LWEzYmMtMzI3ZjdhMDRiMDdlIiwiYXVkIjoiVVNFUiIsImV2dEtleSI6InNjcnQudGVzdC5ldmVudHJvdXRlcl9fYXdzLnRlc3QxLXVzd2VzdDIudW5pZmllZC1lbmdhZ2VtZW50LmFqbmFsb2NhbDFfX3B1YmxpYy5ldmVudHMuc2NydDAxOjYiLCJqd2tzX3VyaSI6Imh0dHBzOi8vc2NydDAxLnVuaWZpZWQtZW5nYWdlbWVudC5zZmRjLWNrenFnYy5zdmMuc2ZkY2ZjLm5ldC9pYW1lc3NhZ2UvdjEvLndlbGwta25vd24vandrcy5qc29uP2tleUlkPWNkYjY0MjJkYjAzNzA3YzEwOTc0NGNiNWM4ZDM0NjQ5OTA5MDA1MWY5NDNhOWFjMGZmMDRiZTU1Zjc0NTk5MGUiLCJlc0RlcGxveW1lbnRUeXBlIjoiV2ViIiwiZXhwIjoxNjk5NzI2MjgwLCJpYXQiOjE2OTk0NjcxMTR9.V0qDe37y2UVzbTZf4mdVYshJ6R4nRrIdrI375f39zRTlaj9XrK2Bicxpwt0p-ljSP-NcU61MIj6W8qkbQRAEk7py3Cr6_slhHB8ijuDxK1dMkuJjN8JUPUZ_lM6gSW5YvSpyiQRtVNyPLHqcLV0-uyuURyywdGSLYLngah2DuqwXtuaO-N_gxS26uiGkvaynzFNz6M2IRkSDx9OAjwtvgJt8RLNvfRGMUFdbDbRg7ZRfj0wY40C-K5sPmTPA29uhex8XVBh1eiJkmm-xYk8x8ukeFgRcuhm2C8TkZKUxbvWBKgrGbMkYkNsc7TPIb7LOEN51JMC-JFQAP_CwZAGunw"></br>
+  <button type="button" id="saveTranscriptButton" onclick="saveTranscript()"> Save Transcript </button></br></br>
+
+  <script type='text/javascript'>
+    function saveTranscript() {
+      var endpoint = document.getElementById("endpoint").value;
+      var jwt = document.getElementById("jwt").value;
+
+      fetch(endpoint, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + jwt    
+          }
+      })
+      .then(response => response.arrayBuffer())
+      .then(arrayBuffer => {
+          saveFile("transcript.pdf", "application/pdf", arrayBuffer);
+      });
+    }
+
+    function saveFile(fileName, mimeType, arrayBuffer) {
+      var blob = new Blob([arrayBuffer], {type: mimeType});
+      var link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    }
+
+  </script>
+</body>
+</html>

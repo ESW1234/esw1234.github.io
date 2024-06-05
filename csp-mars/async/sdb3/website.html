@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>website.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+  <h1>A website with Messaging for Web client</h1>  
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+      			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB0000002LA1',
+				'Auth_1',
+				'https://eswmessagingchat.test1.my.pc-rnd.site.com/ESWAuth11671566504404',
+				{
+					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswmessagingchat.test1.my.pc-rnd.site.com/ESWAuth11671566504404/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>
