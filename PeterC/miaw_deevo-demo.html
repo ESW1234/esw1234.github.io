@@ -17,14 +17,6 @@
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
 
 <script type='text/javascript'>
-	// Populating a variable with the current URL
-	var currentURL = window.location.href;
-	
-	// Printing the current URL to the console
-	console.log("Current URL:", currentURL);
-</script>
-
-<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -33,6 +25,11 @@
 			window.addEventListener("onEmbeddedMessagingReady", () => {
   				console.log("Received the onEmbeddedMessagingReady event…");
 
+				// Populating a variable with the current URL
+				var currentURL = window.location.href;
+				
+				// Printing the current URL to the console
+				console.log("Current URL:", currentURL);
 				// Send data to Salesforce
     				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"PageURL" : currentURL});
 
