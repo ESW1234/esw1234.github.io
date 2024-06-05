@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>GS0 la1.html</title>
+</head>
+<body>
+
+	
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.devMode = true;
+		
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://lexie-summer22-gs0-esw.my.salesforce.com',
+			'https://lexie-summer22-gs0-esw.my.site.com/chatsite',
+			gslbBaseURL,
+			'00DB0000000gcgU',
+			'Chat',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1-ia2.salesforceliveagent.com/content',
+				deploymentId: '572B0000000Q53q',
+				buttonId: '573B0000000Q5P2',
+				baseLiveAgentURL: 'https://d.la1-c1-ia2.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1Q000000kA0yUAE_18a911f776c',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://lexie-summer22-gs0-esw.my.salesforce.com/embeddedservice/5.0/esw.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+
+</body>
+</html>
