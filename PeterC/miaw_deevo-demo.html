@@ -16,20 +16,46 @@
 
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
 
+	// Populating a variable with the current URL
+var currentURL = window.location.href;
+
+// Printing the current URL to the console
+console.log("Current URL:", currentURL);
+
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
   				console.log("Received the onEmbeddedMessagingReady event…");
+
+				// Send data to Salesforce
+    				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"PageURL" : currentURL});
+
+				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+				    // List the pre-chat field names with the value and whether
+				    // it's editable in the pre-chat form.
+				    "_firstName": {
+				      "value": "Peter",
+				      "isEditableByEndUser": true
+				    },
+				    "_lastName": {
+				      "value": "Chung",
+				      "isEditableByEndUser": true
+				    },
+				    "_email": {
+				      "value": "pchung@salesforce.com,
+				      "isEditableByEndUser": true
+				    }
 
   				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
     					cartValue: "123",
 					country: "ch",
 					language_code: "en",
 					country_language: "ch-en",
-					userName: "pchung@salesforce.com"
+					userName: "pchung@salesforce.com",
   				});
 			});
 			embeddedservice_bootstrap.settings.devMode = true;
