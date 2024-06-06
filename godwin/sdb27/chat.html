@@ -50,10 +50,10 @@
 			'00DLT000000m0Dy',
 			'Embedded_Chat',
 			{
-				baseLiveAgentContentURL: 'https://c.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
+				baseLiveAgentContentURL: 'https://c.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
 				deploymentId: '572LT000000L4QP',
 				buttonId: '573LT000000BAAX',
-				baseLiveAgentURL: 'https://d.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				baseLiveAgentURL: 'https://d.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ILT00000000zJ2AQ_18fe90783d4',
 				isOfflineSupportEnabled: false
 			}
@@ -62,7 +62,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://godwinlaw-sdb27.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://godwinlaw-sdb27.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
