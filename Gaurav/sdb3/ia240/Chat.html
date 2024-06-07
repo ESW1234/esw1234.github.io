@@ -50,21 +50,21 @@
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
 			'https://inapporg3.test1.my.pc-rnd.salesforce.com',
-			'https://inapporg3.test1.my.pc-rnd.site.com/cs',
+			'https://inapporg3.test1.my.pc-rnd.site.com/eswChat',
 			gslbBaseURL,
 			'00DSB0000003a8b',
-			'Chat_1_0',
+			'ChatWithNoBot',
 			{
 				baseLiveAgentContentURL: 'https://c.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
 				deploymentId: '572SB0000001gzh',
-				buttonId: '573SB0000001Hhx',
+				buttonId: '573SB000001wlaf',
 				baseLiveAgentURL: 'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000000U7l2AE_18873d1ef56',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000002KM12AM_18ff467b556',
 				isOfflineSupportEnabled: false
 			}
 		);
