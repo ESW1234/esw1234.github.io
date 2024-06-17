@@ -26,6 +26,10 @@
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
+
+	window.addEventListener("onEmbeddedMessagingButtonClicked", () => {
+	       console.log("onEmbeddedMessagingButtonClicked emitted");
+    	});
 </script>
 <script type='text/javascript' src='https://derekeswsdb6.demo.test1.my.pc-rnd.site.com/ESWMIAW11716925767745/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
