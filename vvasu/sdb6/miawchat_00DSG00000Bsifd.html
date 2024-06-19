@@ -40,6 +40,7 @@
         </style>
     </head>
     <body>
+      <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
       <div id="mainContainer">
           <div id="bodyContainer">
               <div style="font-size:60px;text-align:center;">Event framework DEMO</div>
@@ -207,6 +208,7 @@
            fetchAndSetToken();
         });
     </script>
+    <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
     <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -214,7 +216,7 @@
 
 			embeddedservice_bootstrap.init(
 				'00DSG00000Bsifd',
-				'Messaging',
+				'Deployment_For_Chat',
 				'https://testcom-b1.demo.test1.my.pc-rnd.site.com/ESWMessaging1718270617731',
 				{
 					scrt2URL: 'https://testcom-b1.demo.test1.my.pc-rnd.salesforce-scrt.com'
@@ -225,6 +227,7 @@
 		}
 	};
 </script>
+
 <script type='text/javascript' src='https://testcom-b1.demo.test1.my.pc-rnd.site.com/ESWMessaging1718270617731/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
       
