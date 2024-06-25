@@ -141,13 +141,13 @@
                 //document.getElementById("eventDetails").innerHTML = JSON.stringify(e.detail);
                 addRow(eventName, JSON.stringify(e.detail));
             });
-            window.addEventListener("onEmbeddedMessageSent", (e) => {
-                var eventName = "onEmbeddedMessageSent";
-                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
-                //document.getElementById("eventName").innerHTML = eventName;
-                //document.getElementById("eventDetails").innerHTML = JSON.stringify(e.detail);
-                addRow(eventName, JSON.stringify(e.detail));
-            });
+            // window.addEventListener("onEmbeddedMessageSent", (e) => {
+            //     var eventName = "onEmbeddedMessageSent";
+            //     console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+            //     //document.getElementById("eventName").innerHTML = eventName;
+            //     //document.getElementById("eventDetails").innerHTML = JSON.stringify(e.detail);
+            //     addRow(eventName, JSON.stringify(e.detail));
+            // });
             window.addEventListener("onEmbeddedMessagingTranscriptRequested", (e) => {
                 var eventName = "onEmbeddedMessagingTranscriptRequested";
                 console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
