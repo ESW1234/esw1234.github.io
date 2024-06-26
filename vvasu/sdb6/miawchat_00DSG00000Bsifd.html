@@ -108,9 +108,13 @@
                 console.log("Received the onEmbeddedMessagingWindowMaximized event…" + JSON.stringify(e.detail));
                 addRow("onEmbeddedMessagingWindowMaximized", JSON.stringify(e.detail));
             });
-            window.addEventListener("onEmbeddedMessagingWindowMinimized", (e) => {
-                console.log("Received the onEmbeddedMessagingWindowMinimized event…" + JSON.stringify(e.detail));
-                addRow("onEmbeddedMessagingWindowMinimized", JSON.stringify(e.detail));
+            window.addEventListener("onEmbeddedMessagingButtonClicked", (e) => {
+                console.log("Received the onEmbeddedMessagingButtonClicked event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingButtonClicked", JSON.stringify(e.detail));
+            });
+	    window.addEventListener("onEmbeddedMessagingConversationRouted", (e) => {
+                console.log("Received the onEmbeddedMessagingConversationRouted event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingConversationRouted", JSON.stringify(e.detail));
             });
             window.addEventListener("onEmbeddedMessagingConversationStarted", (e) => {
                 console.log("Received the onEmbeddedMessagingConversationStarted event…" + JSON.stringify(e.detail));
@@ -139,6 +143,11 @@
                 console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
                 addRow(eventName, JSON.stringify(e.detail));
             });
+	    window.addEventListener("onEmbeddedMessagingTranscriptRequestFailed", (e) => {
+                var eventName = "onEmbeddedMessagingTranscriptRequestFailed";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
             window.addEventListener("onEmbeddedMessagingTranscriptDownloadSuccessful", (e) => {
                 var eventName = "onEmbeddedMessagingTranscriptDownloadSuccessful";
                 console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
@@ -156,6 +165,11 @@
             });
             window.addEventListener("onEmbeddedMessageRead", (e) => {
                 var eventName = "onEmbeddedMessageRead";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+	   window.addEventListener("onEmbeddedMessagingLinkClicked", (e) => {
+                var eventName = "onEmbeddedMessagingLinkClicked";
                 console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
                 addRow(eventName, JSON.stringify(e.detail));
             });
