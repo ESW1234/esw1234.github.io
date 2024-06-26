@@ -102,7 +102,7 @@
                 cell2.style["padding"] = "8px";
                 cell2.style["text-align"] = "center";
                 cell1.innerHTML = column1Data;
-                cell2.innerHTML = column2Data;
+                cell2.innerHTML = JSON.stringify(column2Data, undefined, 4);
             }
             window.addEventListener("onEmbeddedMessagingWindowMaximized", (e) => {
                 console.log("Received the onEmbeddedMessagingWindowMaximized event…" + JSON.stringify(e.detail));
