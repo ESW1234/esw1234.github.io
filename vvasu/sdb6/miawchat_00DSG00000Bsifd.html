@@ -108,6 +108,10 @@
                 console.log("Received the onEmbeddedMessagingWindowMaximized event…" + JSON.stringify(e.detail));
                 addRow("onEmbeddedMessagingWindowMaximized", JSON.stringify(e.detail));
             });
+	    window.addEventListener("onEmbeddedMessagingWindowMinimized", (e) => {
+                console.log("Received the onEmbeddedMessagingWindowMinimized event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingWindowMinimized", JSON.stringify(e.detail));
+            });
             window.addEventListener("onEmbeddedMessagingButtonClicked", (e) => {
                 console.log("Received the onEmbeddedMessagingButtonClicked event…" + JSON.stringify(e.detail));
                 addRow("onEmbeddedMessagingButtonClicked", JSON.stringify(e.detail));
