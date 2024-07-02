@@ -3,7 +3,7 @@
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
     <script src="https://trialorgfarmforu5.my.localhost.sfdcdev.salesforce.com:7443/lightning/lightning.out.client.js"></script>
-    <framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5></framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5>
+    <framebus-lo-fragment></framebus-lo-fragment>
     
     <script> 
         const customEventData = new CustomEvent("lo.dataSend", {
@@ -14,7 +14,7 @@
                 }
             }
         });
-        const loFragment= document.querySelector("framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5");
+        const loFragment= document.querySelector("framebus-lo-fragment");
       
         loFragment.addEventListener("LightningOutLoaded", (e) => {
           loFragment.dispatchEvent(customEventData);
