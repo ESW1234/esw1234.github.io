@@ -11,6 +11,15 @@
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
+	window.addEventListener("onEmbeddedMessagingPreChatLoaded", (event) => {
+             	console.log("Received onEmbeddedMessagingPreChatLoaded");
+		console.log("Event detail: ", event);
+        });
+
+	window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
+             console.log("Received onEmbeddedMessagingPreChatSubmitted");
+		console.log("Event detail: ", event);
+        });
 </script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
