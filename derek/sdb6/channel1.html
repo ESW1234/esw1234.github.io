@@ -30,6 +30,28 @@
 	} else {
 		initESW('https://derekeswsdb6.demo.test1.my.pc-rnd.salesforce.com');
 	}
+
+	function fetchAndSetToken() {
+	        var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+	         
+	        fetch(idpEndpoint).then(function (response) {
+	            return response.json();
+	        }).then(function (data) {
+	            console.log("Access Token from IDP: " + data.accessToken);
+	            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+	                identityTokenType: "JWT",
+	                identityToken: data.accessToken
+	            });
+	        }).catch(function(err) {
+	            console.error('Something went wrong :', err);
+	        });
+	    }
+	     
+	    window.addEventListener("onEmbeddedMessagingReady", () => {
+	       console.log("onEmbeddedMessagingReady emitted");
+	       fetchAndSetToken();
+	    });
+
 </script>
 
 </body>
