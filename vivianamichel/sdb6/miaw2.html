@@ -31,6 +31,10 @@
              console.log("Received onEmbeddedMessagingPreChatSubmitted");
 		console.log("Event detail: ", event);
         });
+
+	window.addEventListener("onEmbeddedMessagingConversationOpened", (event) => {
+             console.log("Received onEmbeddedMessagingConversationOpened");
+        });
 </script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
