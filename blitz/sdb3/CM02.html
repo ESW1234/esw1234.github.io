@@ -2,6 +2,46 @@
   <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
   <body>
     <!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+    <!-- Clear user session button -->
+    <button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+                                                                                                                       
+    <script type='text/javascript'>
+         document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+         
+         function clearAuthSession() {
+              console.log("Clearing user session.");
+              embeddedservice_bootstrap.userVerificationAPI.clearSession();
+         }
+      
+        function setIdentityToken(token) {
+          var token = document.getElementById("idToken").value;
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            "identityTokenType":"JWT",
+            "identityToken": token
+          });
+        }
+
+        function fetchAndSetToken() {
+             var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=auth03@sdb3.com&jwtExpInSeconds=600&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+             fetch(porticoURL).then(function(response) {
+            return response.json();
+             }).then(function(data) {
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                 identityTokenType: "JWT",
+                 identityToken: data.accessToken
+            });
+             }).catch(function(err) {
+            console.log('Fetch Error :', err);
+             });
+        }
+
+         window.addEventListener("onEmbeddedMessagingReady", () => {
+              // Embedded Messaging app ready
+              console.log("onEmbeddedMessagingReady emitted");
+              fetchAndSetToken();
+         });
+    </script>
+    
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
         // Required if you want labels in a language that’s different from your user’s context.
