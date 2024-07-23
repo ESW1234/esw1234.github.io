@@ -10,50 +10,49 @@
 		<!-- Edit page link -->
     </br>
 	
-		<label for="idToken">Set identity token:</label>
-		<input type="text" id="idToken" name="idToken" size="100">
-		<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="100">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
 	
-		<!-- Clear user session button -->
-		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+	<!-- Clear user session button -->
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+	
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		
-		<script type='text/javascript'>
-			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-			
-			function clearAuthSession() {
-				console.log("Clearing user session.");
-				embeddedservice_bootstrap.userVerificationAPI.clearSession();
-			}
-			
-			function setIdentityToken(token) {
-				var token = document.getElementById("idToken").value;
-
-				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-					"identityTokenType":"JWT",
-					// Valid JWT
-					"identityToken": token
-				});
-			}
-
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-				var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-				console.log("onEmbeddedMessagingReady emitted");
-
-				// fetch(idpEndpoint).then(function (response) {
-			 //            return response.json();
-			 //        }).then(function (data) {
-			 //            console.log("Access Token from IDP: " + data.accessToken);
-			 //            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-			 //                identityTokenType: "JWT",
-			 //                identityToken: data.accessToken
-			 //            });
-			 //        }).catch(function(err) {
-			 //            console.error('Something went wrong :', err);
-			 //        });
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+		
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+	
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
 			});
-		</script>
-    </script>
+		}
+	
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+			console.log("onEmbeddedMessagingReady emitted");
+	
+			// fetch(idpEndpoint).then(function (response) {
+		 //            return response.json();
+		 //        }).then(function (data) {
+		 //            console.log("Access Token from IDP: " + data.accessToken);
+		 //            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+		 //                identityTokenType: "JWT",
+		 //                identityToken: data.accessToken
+		 //            });
+		 //        }).catch(function(err) {
+		 //            console.error('Something went wrong :', err);
+		 //        });
+		});
+	</script>	
     
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
