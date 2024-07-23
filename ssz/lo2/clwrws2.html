@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+    <script src="https://trialorgfarmforu3.my.salesforce-setup-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101//lightning/lightning.out.lo2poc.js"></script>
+      
+  <framebus-lo-fragment data-url="https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/lplo2?queryParam=fragment/z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud"></framebus-lo-fragment>    
+    <script> 
+        const customEventData = new CustomEvent("lo.dataSend", {
+            detail: {
+                type: "sendNumber",
+                payload: {
+                  number: 4
+                }
+            }
+        });
+        const loFragment= document.querySelector("framebus-lo-fragment");
+      
+        loFragment.addEventListener("LightningOutLoaded", (e) => {
+          loFragment.dispatchEvent(customEventData);
+        });
+      
+        loFragment.addEventListener("lo.dataReceive", (e) => {
+          if (e.detail.type === "thankYou") {
+            document.location.href = e.detail.payload.url;
+          } else {
+            console.error("Unexpected event! " + JSON.stringify(e.detail));
+          }
+        })
+    </script>
+  </body>
+</html>
