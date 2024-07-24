@@ -8,6 +8,8 @@
 	<label for="idToken">Set identity token:</label></br>
 	<input type="text" id="idToken" name="idToken" size="50"></br>
 	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+	<label for="idToken">Set conversationId to end the conversation:</label></br>
+	<input type="text" id="conversationId" name="conversationId" size="50"></br>
 	<button type="button" id="clearAuthBtn" onclick="closeEmbeddedMessagingVerifiedConversation()"> Close Conversation  </button></br></br>
 	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 
@@ -28,7 +30,7 @@
 		    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
 		    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
 		    const jwt = storageObj["JWT"];
-		    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+		    const conversationId = document.getElementById("conversationId").value;
 		    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
 		    fetch(endpoint, {
 			method: "DELETE",
