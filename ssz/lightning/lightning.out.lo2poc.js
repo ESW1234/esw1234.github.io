@@ -95,7 +95,7 @@
                       // preload("https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lwr3?queryParam=fragment/z4v9l1k6pkgwb5dkk34xzadt2fwkkxxuwubz42vyblx" + "&LIGHTNING_OUT=true", this);
                          //preload("https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lp/20Yxx0000011R4k/webruntime/fragment/06e9c70355f0b0a3042d8179fb887050/prod/en-US/z4vkkmcwgf8fr487n08gppr81lfzn6xp1a7bqx8ay4l" + "?LIGHTNING_OUT=true", this);
                         ///lp/20Yxx0000011R4k/webruntime/fragment/06e9c70355f0b0a3042d8179fb887050/prod/en-US/z4vkkmcwgf8fr487n08gppr81lfzn6xp1a7bqx8ay4l
-                        preload(url + "?LIGHTNING_OUT=true", this);
+                        preload(url , this);
                     } else {
                         console.error('No URL provided for LightningOut element.');
                     }
