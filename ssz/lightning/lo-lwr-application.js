@@ -11,11 +11,11 @@
         iframe.scrolling = "no" // USE style="overflow:hidden;"
         iframe.sandxox = "allow-downloads allow-forms allow-scripts";
         iframe.frameborder = 0;
-        iframe.width = "100%";
+        // iframe.width = "100%";
         iframe.style = "position:relative;border:0;padding:5px;overflow:none;visibility:none;background-color:#FFFCB5;"
-        //iframe.width = iframe.style.width;
-        iframe.height = "100%";
-            //iframe.height = iframe.style.height;
+        iframe.width = iframe.style.width;
+        //iframe.height = "100%";
+        iframe.height = iframe.style.height;
         iframe.onerror = (err) => alert("Error Loading iframe for " + iframe.src);
         iframe.onload = (event) => {
             $$iframeRef$$ = event.target;
