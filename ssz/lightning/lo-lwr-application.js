@@ -51,6 +51,9 @@
     }
 
     class LightningOut extends HTMLElement {
+        static get observedAttributes() {
+                    return ['data-url'];
+                }
         addEventListener(eventName) {
             super.addEventListener(...arguments);
             debugger;
@@ -79,7 +82,14 @@
             this.remove();
         }
         connectedCallback() {
-            preload("https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/", this)
+            const url = this.getAttribute('data-url');
+                    if (url) {
+
+                        preload(url , this);
+                    } else {
+                        console.error('No URL provided for LightningOut element.');
+                    }
+            //preload("https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/", this)
         }
     }
     customElements.define("lo-lwr-application", LightningOut);
