@@ -13,7 +13,7 @@
         iframe.frameborder = 0;
         iframe.width = "100%";
         iframe.style = "position:relative;border:0;padding:5px;overflow:none;visibility:none;background-color:#FFFCB5;"
-        iframe.width = iframe.style.width;
+        //iframe.width = iframe.style.width;
         iframe.height = iframe.style.height;
         iframe.onerror = (err) => alert("Error Loading iframe for " + iframe.src);
         iframe.onload = (event) => {
