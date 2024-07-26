@@ -1,1 +1,90 @@
+<html>
+<head>
+  <title>254 unauth1.html </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
 
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+
+			/*
+			// STMHA ORG 
+			embeddedservice_bootstrap.init(
+				'00DZ60000004Yw0',
+				'Unauth_1',
+				'https://eswmessaging.my.localhost.sfdcdev.site.com:6101/ESWMessaging21710287638567',
+				{
+					scrt2URL: 'https://eswmessaging0220.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+			
+			
+			// STMFB ORG
+			embeddedservice_bootstrap.init(
+				'00DS70000000Uae',
+				'Messaging_7',
+				'https://eswmessaging.my.localhost.sfdcdev.site.com:6101/ESWMessaging11700597894408',
+				{
+					scrt2URL: 'https://eswmiaw.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+			*/
+
+			/*
+			// STMFC ORG
+			embeddedservice_bootstrap.init(
+				'00DRM0000006B0K',
+				'MIAW1',
+				'https://miaw.my.localhost.sfdcdev.site.com:6101/ESWMessaging11683837920004',
+				{
+					scrt2URL: 'https://eswchat.my.stmfc.stm.salesforce-scrt.com'
+				}
+			);
+   		*/
+   			
+
+			/*
+			// SDB3 ORG
+			embeddedservice_bootstrap.init(
+				'00DSB0000016Oez',
+				'Messaging_7',
+				'https://esw.my.localhost.sfdcdev.site.com:6101/ESWMessaging51702936678253',
+				{
+					scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+      */
+			
+			
+			// SDB6 ORG
+			embeddedservice_bootstrap.init(
+				'00DSG0000001hxN',
+				'Messaging_26',
+				'https://trialorgfarmforu.my.site-com.npachpande-zad3n39lfegd0.wa.crm.dev:6101/ESWMIAW1722033044423',
+				{
+					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+			
+   			
+
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://trialorgfarmforu.my.site-com.npachpande-zad3n39lfegd0.wa.crm.dev:6101/ESWMIAW1722033044423/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>
