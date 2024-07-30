@@ -1,0 +1,228 @@
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>Test Messaging | Salesforce</title>
+      <!--<apex:slds />-->
+      <style type="text/css">
+            @font-face {
+                font-family: ITC Avant Garde;
+                src: url(https://a.sfdcstatic.com/shared/fonts/avant-garde/4c0a2f1e-8b66-47d8-8e7c-9b259c4d363f.woff2) format("woff2"),url(https://a.sfdcstatic.com/shared/fonts/avant-garde/f8c88707-ed03-43dd-aec9-29571c329bcc.woff) format("woff");
+                font-weight: 400
+            }
+            body {
+                background: #EAF5FE;
+                font-family: system-ui;
+                width: 100%;
+                height:100%;
+                padding: 25px;
+            }
+            
+            #bodyContainer h1 {
+                font-family: ITC Avant Garde;
+                font-weight: 600;
+                font-size: 48px;            
+                color: #032D60;
+            }
+            
+            .container {
+                display: flex; /* Use flexbox for layout */
+            }
+            .box {
+                width: 50%; /* Each box takes 50% of the container */
+                font-size:40px;
+                text-align:center; /* Just for visualization */
+                border-bottom: 2px solid black;
+            }
+            .box1 {
+                width: 50%; /* Each box takes 50% of the container */
+                font-size:20px;
+                text-align:center; /* Just for visualization */
+            }
+        </style>
+    </head>
+    <body>
+      <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+      <div id="mainContainer">
+          <div id="bodyContainer">
+              <div style="font-size:60px;text-align:center;">Event framework DEMO</div>
+              <!--<div class="container">
+                  <div class="box">Event name</div>
+                  <div class="box">Event details</div>
+              </div>
+              <br/>
+              <div class="container">
+                  <div class="box1" id="eventName"></div>
+                  <div class="box1" id="eventDetails"></div>
+              </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>-->
+                <br/>
+                <br/>
+                <br/>
+                <div style="font-size:40px;text-align:center;border-top: 2px solid black">Event History</div>
+                <br/>
+                <table id="eventHistory" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid black;padding: 8px;text-align: center;width: 50%">Event Name</th>
+                            <th style="border: 1px solid black;padding: 8px;text-align: center;width: 50%">Event Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+                <br/>
+                <br/>
+                <button onclick="clearHistory()">Clear History</button>
+          </div>
+      </div>
+        
+        <script type='text/javascript'>
+            function clearHistory() {
+                var table = document.getElementById("eventHistory");
+                var rowCount = table.rows.length;
+        
+                // Loop through the table rows and remove them
+                for (var i = rowCount - 1; i > 0; i--) {
+                    table.deleteRow(i);
+                }
+            }
+            
+            function addRow(column1Data, column2Data) {
+                var table = document.getElementById("eventHistory").getElementsByTagName('tbody')[0];
+                var newRow = table.insertRow(0);
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                cell1.style["border"] = "1px solid black";
+                cell1.style["padding"] = "8px";
+                cell1.style["text-align"] = "center";
+                cell2.style["border"] = "1px solid black";
+                cell2.style["padding"] = "8px";
+                cell2.style["text-align"] = "center";
+                cell1.innerHTML = column1Data;
+                cell2.innerHTML = JSON.stringify(column2Data, null, 2);
+            }
+            window.addEventListener("onEmbeddedMessagingWindowMaximized", (e) => {
+                console.log("Received the onEmbeddedMessagingWindowMaximized event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingWindowMaximized", JSON.stringify(e.detail));
+            });
+	    window.addEventListener("onEmbeddedMessagingWindowMinimized", (e) => {
+                console.log("Received the onEmbeddedMessagingWindowMinimized event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingWindowMinimized", JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingButtonClicked", (e) => {
+                console.log("Received the onEmbeddedMessagingButtonClicked event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingButtonClicked", JSON.stringify(e.detail));
+            });
+	    window.addEventListener("onEmbeddedMessagingConversationRouted", (e) => {
+                console.log("Received the onEmbeddedMessagingConversationRouted event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingConversationRouted", JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingConversationStarted", (e) => {
+                console.log("Received the onEmbeddedMessagingConversationStarted event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingConversationStarted", JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingPreChatLoaded", (e) => {
+                console.log("Received the onEmbeddedMessagingPreChatLoaded event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingPreChatLoaded", JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (e) => {
+                console.log("Received the onEmbeddedMessagingPreChatSubmitted event…" + JSON.stringify(e.detail));
+                addRow("onEmbeddedMessagingPreChatSubmitted", JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingConversationParticipantChanged", (e) => {
+                var eventName = "onEmbeddedMessagingConversationParticipantChanged";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessageSent", (e) => {
+                var eventName = "onEmbeddedMessageSent";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingTranscriptRequested", (e) => {
+                var eventName = "onEmbeddedMessagingTranscriptRequested";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+	    window.addEventListener("onEmbeddedMessagingTranscriptRequestFailed", (e) => {
+                var eventName = "onEmbeddedMessagingTranscriptRequestFailed";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingTranscriptDownloadSuccessful", (e) => {
+                var eventName = "onEmbeddedMessagingTranscriptDownloadSuccessful";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessagingConversationClosed", (e) => {
+                var eventName = "onEmbeddedMessagingConversationClosed";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessageDelivered", (e) => {
+                var eventName = "onEmbeddedMessageDelivered";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+            window.addEventListener("onEmbeddedMessageRead", (e) => {
+                var eventName = "onEmbeddedMessageRead";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+	   window.addEventListener("onEmbeddedMessagingLinkClicked", (e) => {
+                var eventName = "onEmbeddedMessagingLinkClicked";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
+        </script>
+    
+    
+      <script type='text/javascript'>
+        function fetchAndSetToken() {
+            var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+             
+            fetch(idpEndpoint).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log("Access Token from IDP: " + data.accessToken);
+                embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                    identityTokenType: "JWT",
+                    identityToken: data.accessToken
+                });
+            }).catch(function(err) {
+                console.error('Something went wrong :', err);
+            });
+        }
+         
+        window.addEventListener("onEmbeddedMessagingReady", () => {
+           console.log("onEmbeddedMessagingReady emitted");
+           fetchAndSetToken();
+        });
+    </script>
+    <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRZ0000012kaM',
+				'MIAWDep',
+				'https://na54test.test2.my.pc-rnd.site.com/ESWMIAWDep1716276975980',
+				{
+					scrt2URL: 'https://na54test.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://na54test.test2.my.pc-rnd.site.com/ESWMIAWDep1716276975980/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+    </body>
+  </html>
