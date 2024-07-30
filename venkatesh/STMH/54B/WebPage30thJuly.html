@@ -199,6 +199,11 @@
            console.log("onEmbeddedMessagingReady emitted");
            fetchAndSetToken();
         });
+	 window.addEventListener("onEmbeddedMessagingLinkClicked", (e) => {
+                var eventName = "onEmbeddedMessagingLinkClicked";
+                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
+                addRow(eventName, JSON.stringify(e.detail));
+            });
     </script>
 	    
 <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
