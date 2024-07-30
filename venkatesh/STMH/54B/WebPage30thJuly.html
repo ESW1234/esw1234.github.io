@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <head>
       <title>Test Messaging | Salesforce</title>
       <!--<apex:slds />-->
@@ -183,7 +183,8 @@
       <script type='text/javascript'>
         function fetchAndSetToken() {
             var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
-             fetch(idpEndpoint).then(function (response) {
+             
+            fetch(idpEndpoint).then(function (response) {
                 return response.json();
             }).then(function (data) {
                 console.log("Access Token from IDP: " + data.accessToken);
@@ -195,28 +196,24 @@
                 console.error('Something went wrong :', err);
             });
         }
+         
         window.addEventListener("onEmbeddedMessagingReady", () => {
            console.log("onEmbeddedMessagingReady emitted");
            fetchAndSetToken();
         });
-	 window.addEventListener("onEmbeddedMessagingLinkClicked", (e) => {
-                var eventName = "onEmbeddedMessagingLinkClicked";
-                console.log(`Received the ${eventName} event…` + JSON.stringify(e.detail));
-                addRow(eventName, JSON.stringify(e.detail));
-            });
     </script>
-	    
-<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+    <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
 			embeddedservice_bootstrap.init(
-				'00DRZ0000012kaM',
-				'MIAWDep',
-				'https://na54test.test2.my.pc-rnd.site.com/ESWMIAWDep1716276975980',
+				'00DSB000008z6QZ',
+				'DeploymentForMiawChat',
+				'https://vvasucom.demo.test1.my.pc-rnd.site.com/ESWDeploymentForMiawChat1716991900521',
 				{
-					scrt2URL: 'https://na54test.test2.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://vvasucom.demo.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -224,6 +221,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://na54test.test2.my.pc-rnd.site.com/ESWMIAWDep1716276975980/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-</body>
-</html>
+<script type='text/javascript' src='https://vvasucom.demo.test1.my.pc-rnd.site.com/ESWDeploymentForMiawChat1716991900521/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+    </body>
+  </html>
