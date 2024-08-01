@@ -1,65 +1,93 @@
 (function(that) {
     "use strict";
 
-    var $$iframeRef$$;
+    class LightningOut extends HTMLElement {
+        iframeRef;
+        lastWidth;
+        ready = false;
 
-    function load(endpoint, parentDomElement) {
-        const iframe = that.document.createElement("iframe");
-        const shadow = parentDomElement.attachShadow({ mode: "closed" });
-        iframe.id = "lightning_af";
-        iframe.name = "lightning_af";
-        iframe.scrolling = "no" // USE style="overflow:hidden;"
-        iframe.sandxox = "allow-downloads allow-forms allow-scripts";
-        iframe.frameborder = 0;
-        // iframe.width = "100%";
-        iframe.style = "position:relative;border:0;padding:5px;overflow:none;visibility:none;background-color:#FFFCB5;"
-        iframe.width = iframe.style.width;
-        //iframe.height = "100%";
-        iframe.height = iframe.style.height;
-        iframe.onerror = (err) => alert("Error Loading iframe for " + iframe.src);
-        iframe.onload = (event) => {
-            $$iframeRef$$ = event.target;
-        };
+        preload(endpoint, parentDomElement) {
+            const iframe = that.document.createElement("iframe");
+            const shadow = parentDomElement.attachShadow({ mode: "closed" })
+            iframe.id = "lightning_af";
+            iframe.name = "lightning_af";
+            iframe.scrolling = "no" // USE style="overflow:hidden;"
+            iframe.sandxox = "allow-downloads allow-forms allow-scripts";
+            iframe.frameborder = 0;
+            iframe.style.width = '100%';
+            iframe.style = "position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#FFFCB5;"
+            iframe.onerror = () => alert("Error Loading <iframe> for " + iframe.src);
+            iframe.onload = (event) => {
+                this.iframeRef = event.target;
+                this.iframeRef.style.display = 'block';
+                this.adjustIFrameSize();
+            };
 
-        // (1) Ensure that event.origin is set for all postMessage events.
-        // (3) For events from the iframe to the host document. We will need to do the reverse.
-        //     The target origin will need to be the URL of the host document and we will need to 
-        //     check if it matches the URL of the host document before reading the message.
-        //     This flow is trickier as we do not necessarily know the URL of the host document 
-        //     from the iframe. However, from the iframe back to the host document is slightly less of
-        //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
-        // function compareOrigin(eventOrigin) {
-        //     eventOrigin === window.location.href; // TODO
-        // }
+            // (1) Ensure that event.origin is set for all postMessage events.
+            // (3) For events from the iframe to the host document. We will need to do the reverse.
+            //     The target origin will need to be the URL of the host document and we will need to 
+            //     check if it matches the URL of the host document before reading the message.
+            //     This flow is trickier as we do not necessarily know the URL of the host document 
+            //     from the iframe. However, from the iframe back to the host document is slightly less of
+            //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
+            // function compareOrigin(eventOrigin) {
+            //     // TODO
+            // }
 
-        window.addEventListener("message", (event) => {
+            window.addEventListener("message", (event) => {
                 switch(event.data.type) {
-                    case 'lo.iframeSize':
+                    case "lo.container-sized":
+                        if (event.data) {
+                            this.iframeRef.height = event.data.height;
+                        }
                         break;
                     case 'lo.dispatchEvent':
-                        debugger;
                         const customEvent = new CustomEvent(event.data.name, { detail: event.data.detail });
                         parentDomElement.dispatchEventComponent(customEvent);
                         break;
+                    case "lo.ready":
+                        parentDomElement.addEventListener('ShowRecaptcha', () => {
+                            const form = document.getElementById('form');
+                            form.style.display = 'inline-block';
+                            const button = document.getElementById('button');
+                            button.addEventListener("click", () => {
+                                const inputEl = document.getElementById('returnInput');
+                                const customEvent = new CustomEvent('returnValue', {
+                                    detail: {
+                                        returnValue: inputEl.value
+                                    }
+                                });
+                                parentDomElement.dispatchEvent(customEvent);
+                                form.style.display = 'none';
+                            });
+                        });
+                        break;
                 }
-        });
+            });
 
-        shadow.appendChild(iframe);
-        iframe.src = endpoint;
-    }
+            new ResizeObserver(this.adjustIFrameSize).observe(parentDomElement);
 
-    function preload(endpoint, parentDomElement) {
-        load(endpoint, parentDomElement);
-    }
+            shadow.appendChild(iframe);
+            iframe.src = endpoint;
+        }
 
-    class LightningOut extends HTMLElement {
-        static get observedAttributes() {
-                    return ['data-url'];
-                }
+        adjustIFrameSize() {
+            // Set Max-Width for LWR Container
+            const { offsetWidth, offsetHeight } = this;
+            if (this.lastWidth !== offsetWidth) {
+                this.lastWidth = offsetWidth;
+                this.iframeRef.width = offsetWidth;
+                this.iframeRef.contentWindow.postMessage({
+                    type: 'lo.wrapper-size',
+                    width: offsetWidth,
+                    height: offsetHeight,
+                }, '*');
+            }
+        }
+
         addEventListener(eventName) {
             super.addEventListener(...arguments);
-            debugger;
-            $$iframeRef$$.contentWindow.postMessage({
+            this.iframeRef.contentWindow.postMessage({
                 name: eventName,
                 type: 'lo.addEventListener',
             }, '*');
@@ -67,8 +95,7 @@
 
         dispatchEvent(event) {
             super.dispatchEvent(...arguments);
-            debugger;
-            $$iframeRef$$.contentWindow.postMessage({
+            this.iframeRef.contentWindow.postMessage({
                 name: event.type,
                 detail: event.detail,
                 type: 'lo.dispatchEvent',
@@ -76,7 +103,6 @@
         }
 
         dispatchEventComponent() {
-            debugger;
             super.dispatchEvent(...arguments);
         }
 
@@ -84,14 +110,7 @@
             this.remove();
         }
         connectedCallback() {
-            const url = this.getAttribute('data-url');
-                    if (url) {
-
-                        preload(url , this);
-                    } else {
-                        console.error('No URL provided for LightningOut element.');
-                    }
-            //preload("https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/", this)
+            this.preload("https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/", this)
         }
     }
     customElements.define("lo-lwr-application", LightningOut);
