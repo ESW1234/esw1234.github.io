@@ -110,7 +110,7 @@
             this.remove();
         }
         connectedCallback() {
-            this.preload("https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/", this)
+            this.preload("https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/lplo2?embeddedCmp=fragment/z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud", this)
         }
     }
     customElements.define("lo-lwr-application", LightningOut);
