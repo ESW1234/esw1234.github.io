@@ -1,40 +1,43 @@
 <html>
     <head>
         <title>Third-Party Website</title>
+        <style>
+            body {
+                border: 1px solid rgb(83, 83, 216);
+                margin: auto;
+                max-width: 800px;
+                padding: 20px;
+            }
+
+            #form {
+                border: 5px solid rgb(83, 83, 216);
+                margin: 10px;
+                padding: 10px;
+            }
+        </style>
     </head>
     <body style="background-color:#ADD8E6">
-        <script type="text/javascript" src="https://esw1234.github.io/ssz/lightning/lo-lwr-application.js"></script>
-        <lo-lwr-application id="container" data-url="https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/lplo2?embeddedCmp=fragment/z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud"></lo-lwr-application>
+        <h1>Third-Party Website</h1>
+        <script type="text/javascript" src="lo-lwr-application.js"></script>
+        <lo-lwr-application id="container"></lo-lwr-application>
 
-        <!-- TESTS -->
-        <script>
-            setTimeout(() => {
-                const element = document.getElementById('container');
-                element.addEventListener('ShowRecaptcha', (event) => {
-                    const form = document.getElementById('form');
-                    form.style.display = 'inline';
-                    const button = document.getElementById('button');
-                    button.addEventListener("click", (event) => {
-                        const inputEl = document.getElementById('returnInput');
-                        const customEvent = new CustomEvent('returnValue', {
-                            detail: {
-                                returnValue: inputEl.value
-                            }
-                        });
-                        element.dispatchEvent(customEvent);
-                        form.style.display = 'none';
-                    });
-                });
-            }, "500");
-        </script>
-        <div>
-            <div id="form" style="display:none">
-                <label>Return: <input type="text" id="returnInput"/></label>
-                <br />
-                <span>Write XYZ in the input box.</span>
-                <br />
-                <button id="button">Submit</button>
+        <div style="display:inline-block">
+            <div id="form" style="display:none;">
+                <div style="display:inline-block">
+                    <label>Return: <input type="text" id="returnInput"/></label>
+                    <br />
+                    <span>Write XYZ in the input box.</span>
+                    <br />
+                    <button id="button">Submit</button>
+                </div>
             </div>
         </div>
+
+        <h2>Legend</h2>
+        <span>Blue = Third-Party Website</span><br/>
+        <span>Yellow = ShadowRoot + IFrame</span><br/>
+        <span>Green = Lightning Out Container</span>
+
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</h2>
     </body>
 </html>
