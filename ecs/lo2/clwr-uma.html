@@ -22,40 +22,51 @@
             dt, legend {
                 font-weight: bold;
             }
+            h1 {
+                color: #FFF;
+                font-family: monospace;
+            }
+            .content {
+                background-color:#ADD8E6;
+                border-radius: 1rem;
+                padding: 1rem;
+            }
         </style>
     </head>
-    <body style="background-color:#ADD8E6">
+    <body style="background-color:rgb(80, 141, 179)">
         <h1>Third-Party Website - <abbr title="Lightning Out">LO</abbr> 2.0</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
-        <script src="lo-lwr-application.js"></script>
-        <lo-lwr-application id="container"></lo-lwr-application>
-
-        <div style="display:inline-block">
-            <div id="form" style="display:none;">
-                <div style="display:inline-block">
-                    <form>
-                        <label>Return: <input type="text" id="returnInput"/></label>
-                        <br />
-                        <span>Write XYZ in the input box.</span>
-                        <br />
-                        <button id="button">Submit</button>
-                    </form>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
+            <script src="lo-lwr-application.js"></script>
+            <lo-lwr-application id="container"></lo-lwr-application>
+    
+            <div style="display:inline-block">
+                <div id="form" style="display:none;">
+                    <div style="display:inline-block">
+                        <form>
+                            <label>Return: <input type="text" id="returnInput"/></label>
+                            <br />
+                            <span>Write XYZ in the input box.</span>
+                            <br />
+                            <button id="button">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div>
+                <fieldset>
+                    <legend>Legend</legend>
+                    <dl>
+                        <dt>Blue</dt>
+                        <dd>Third-Party Website</dd>
+                        <dt>Yellow</dt>
+                        <dd>ShadowRoot + IFrame</dd>
+                        <dt>Green</dt>
+                        <dd>Lightning Out Container</dd>
+                    </dl>
+                </fieldset>
+            </div>
+            <p style="columns:2;column-width:300px;font-size:2em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
         </div>
-
-        <fieldset>
-            <legend>Legend</legend>
-            <dl>
-                <dt>Blue</dt>
-                <dd>Third-Party Website</dd>
-                <dt>Yellow</dt>
-                <dd>ShadowRoot + IFrame</dd>
-                <dt>Green</dt>
-                <dd>Lightning Out Container</dd>
-            </dl>
-        </fieldset>
-
-        <p style="columns:2;column-width:300px;font-size:2em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
     </body>
 </html>
