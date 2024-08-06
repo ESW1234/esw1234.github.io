@@ -11,7 +11,7 @@
 
         preload(endpoint, parentDomElement) {
             const iframe = that.document.createElement('iframe');
-            const shadow = parentDomElement.attachShadow({ mode: 'closed' })
+            const shadow = parentDomElement.attachShadow({ mode: 'closed' });
             iframe.id = 'lightning_af';
             iframe.name = 'lightning_af';
             iframe.scrolling = 'no' // USE style='overflow:hidden;'
@@ -24,6 +24,11 @@
                 iframe.style.display = 'block';
                 this.adjustIFrameSize();
             };
+
+            const title = parentDomElement.getAttribute("title");
+            if (title) {
+	            iframe.title = title;
+	        }
 
             // (1) Ensure that event.origin is set for all postMessage events.
             // (3) For events from the iframe to the host document. We will need to do the reverse.
@@ -82,8 +87,8 @@
             const { offsetWidth, offsetHeight } = this;
             if (this.lastWidth !== offsetWidth) {
                 this.lastWidth = offsetWidth;
-                this.iframeRef.width = offsetWidth;
-                this.iframeRef.contentWindow.postMessage({
+                this.#iframeRef.width = offsetWidth;
+                this.#iframeRef.contentWindow.postMessage({
                     type: 'lo.wrapper-size',
                     width: offsetWidth,
                     height: offsetHeight,
@@ -93,7 +98,7 @@
 
         addEventListener(eventName) {
             super.addEventListener(...arguments);
-            this.iframeRef.contentWindow.postMessage({
+            this.#iframeRef.contentWindow.postMessage({
                 name: eventName,
                 type: 'lo.addEventListener',
             }, '*');
@@ -101,7 +106,7 @@
 
         dispatchEvent(event) {
             super.dispatchEvent(...arguments);
-            this.iframeRef.contentWindow.postMessage({
+            this.#iframeRef.contentWindow.postMessage({
                 name: event.type,
                 detail: event.detail,
                 type: 'lo.dispatchEvent',
