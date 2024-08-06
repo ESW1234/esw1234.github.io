@@ -19,8 +19,7 @@
             const iframeInternalId = that.crypto.randomUUID();
             iframe.id = 'lightning_af';
             iframe.name = 'lightning_af';
-            iframe.scrolling = 'no' // USE style='overflow:hidden;'
-            iframe.sandxox = 'allow-downloads allow-forms allow-scripts';
+            iframe.sandbox = 'allow-downloads allow-forms allow-scripts';
             iframe.frameborder = 0;
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
