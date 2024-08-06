@@ -3,8 +3,10 @@
 
     class LightningOut extends HTMLElement {
 
-    	#frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
-        #framePath = '/lp/lo?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
+    	/*#frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
+        #framePath = '/lp/lo?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';*/
+        #frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com';
+        #framePath = '/';
 
         #iframeRef;
 
@@ -14,6 +16,7 @@
         #preload(endpoint, parentDomElement) {
             const iframe = that.document.createElement('iframe');
             const shadow = parentDomElement.attachShadow({ mode: 'closed' });
+            const iframeInternalId = that.crypto.randomUUID();
             iframe.id = 'lightning_af';
             iframe.name = 'lightning_af';
             iframe.scrolling = 'no' // USE style='overflow:hidden;'
@@ -22,9 +25,14 @@
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
             iframe.onload = (event) => {
-                parentDomElement.#adjustIFrameSize();
                 iframe.style.display = 'block';
                 parentDomElement.#ready = true;
+                iframe.contentWindow.postMessage({
+                    type: 'lo.init',
+                    detail: {
+                        iframeId: iframeInternalId
+                    }
+                }, '*');
             };
 
             const title = parentDomElement.getAttribute("title");
@@ -45,6 +53,10 @@
             		that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
             		return;
             	}
+                if (event.data.iframeId !== iframeInternalId) {
+                    that.console.trace("Message ignored due to different iframeId.");
+                    return;
+                }
                 switch(event.data.type) {
                     case 'lo.container-sized': {
                         if (event.data) {
@@ -54,7 +66,7 @@
                     }
                     case 'lo.dispatchEvent': {
                         const customEvent = new that.CustomEvent(event.data.name, { detail: event.data.detail });
-                        parentDomElement.#dispatchEventComponent(customEvent);
+                        parentDomElement.dispatchEventComponent(customEvent);
                         break;
                     }
                     case 'lo.ready': {
@@ -76,9 +88,10 @@
                         break;
                     }
                 }
+                event.stopImmediatePropagation();
             });
 
-            new that.ResizeObserver(parentDomElement.#adjustIFrameSize.bind(this)).observe(parentDomElement);
+            //new that.ResizeObserver(parentDomElement.#adjustIFrameSize.bind(this)).observe(parentDomElement);
 
             iframe.src = endpoint;
             parentDomElement.#iframeRef = shadow.appendChild(iframe);
@@ -115,7 +128,7 @@
             }, '*');
         }
 
-        #dispatchEventComponent() {
+        dispatchEventComponent() {
             super.dispatchEvent(...arguments);
         }
 
