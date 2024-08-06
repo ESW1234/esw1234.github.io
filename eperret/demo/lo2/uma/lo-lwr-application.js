@@ -125,7 +125,7 @@
                 name: event.type,
                 detail: event.detail,
                 type: 'lo.dispatchEvent',
-            }, '*');
+            }, this.#frameDomain);
         }
 
         dispatchEventComponent() {
