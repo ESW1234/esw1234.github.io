@@ -3,9 +3,11 @@
 
     class LightningOut extends HTMLElement {
 
-    	#frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com';
+    	#frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
+        #framePath = '/lp/lo?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
 
         #iframeRef;
+
         #lastWidth;
         #ready = false;
 
@@ -20,10 +22,9 @@
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
             iframe.onload = (event) => {
-                this.#iframeRef = event.target;
-                this.adjustIFrameSize();
+                parentDomElement.#adjustIFrameSize();
                 iframe.style.display = 'block';
-                this.#ready = true;
+                parentDomElement.#ready = true;
             };
 
             const title = parentDomElement.getAttribute("title");
@@ -40,20 +41,20 @@
             //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
 
             that.addEventListener('message', (event) => {
-            	if (event.origin !== this.#frameDomain) {
+            	if (event.origin !== parentDomElement.#frameDomain) {
             		that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
             		return;
             	}
                 switch(event.data.type) {
                     case 'lo.container-sized': {
                         if (event.data) {
-                            this.#iframeRef.height = event.data.height;
+                            parentDomElement.#iframeRef.height = event.data.height;
                         }
                         break;
                     }
                     case 'lo.dispatchEvent': {
                         const customEvent = new that.CustomEvent(event.data.name, { detail: event.data.detail });
-                        parentDomElement.dispatchEventComponent(customEvent);
+                        parentDomElement.#dispatchEventComponent(customEvent);
                         break;
                     }
                     case 'lo.ready': {
@@ -77,17 +78,17 @@
                 }
             });
 
-            new that.ResizeObserver(this.adjustIFrameSize).observe(parentDomElement);
+            new that.ResizeObserver(parentDomElement.#adjustIFrameSize.bind(this)).observe(parentDomElement);
 
             iframe.src = endpoint;
-            shadow.appendChild(iframe);
+            parentDomElement.#iframeRef = shadow.appendChild(iframe);
         }
 
-        adjustIFrameSize() {
+        #adjustIFrameSize() {
             // Set Max-Width for LWR Container
             const { offsetWidth, offsetHeight } = this;
-            if (this.lastWidth !== offsetWidth) {
-                this.lastWidth = offsetWidth;
+            if (this.#lastWidth !== offsetWidth) {
+                this.#lastWidth = offsetWidth;
                 this.#iframeRef.width = offsetWidth;
                 this.#iframeRef.contentWindow.postMessage({
                     type: 'lo.wrapper-size',
@@ -114,7 +115,7 @@
             }, '*');
         }
 
-        dispatchEventComponent() {
+        #dispatchEventComponent() {
             super.dispatchEvent(...arguments);
         }
 
