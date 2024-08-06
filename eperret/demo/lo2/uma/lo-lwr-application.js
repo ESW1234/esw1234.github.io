@@ -116,7 +116,7 @@
             this.#iframeRef.contentWindow.postMessage({
                 name: eventName,
                 type: 'lo.addEventListener',
-            }, '*');
+            }, this.#frameDomain);
         }
 
         dispatchEvent(event) {
