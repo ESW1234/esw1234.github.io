@@ -125,4 +125,4 @@
         }
     }
     that.customElements.define('lo-lwr-application', LightningOut);
-})(this);
+})(window);
