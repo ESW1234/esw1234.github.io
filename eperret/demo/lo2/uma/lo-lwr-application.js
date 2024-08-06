@@ -40,7 +40,7 @@
             //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
 
             that.addEventListener('message', (event) => {
-            	if (event.origin !== LightningOut.#frameDomain) {
+            	if (event.origin !== this.#frameDomain) {
             		that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
             		return;
             	}
