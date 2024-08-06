@@ -1,7 +1,7 @@
 (function(that) {
     'use strict';
 
-    class LightningOut extends that.HTMLElement {
+    class LightningOut extends HTMLElement {
 
     	static #frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/';
 
