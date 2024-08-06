@@ -20,9 +20,10 @@
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
             iframe.onload = (event) => {
-                iframe = event.target;
-                iframe.style.display = 'block';
+                this.#iframeRef = event.target;
                 this.adjustIFrameSize();
+                iframe.style.display = 'block';
+                this.#ready = true;
             };
 
             const title = parentDomElement.getAttribute("title");
