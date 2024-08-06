@@ -3,13 +3,13 @@
 
     class LightningOut extends HTMLElement {
 
-    	static #frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/';
+    	#frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/';
 
         #iframeRef;
         #lastWidth;
         #ready = false;
 
-        preload(endpoint, parentDomElement) {
+        #preload(endpoint, parentDomElement) {
             const iframe = that.document.createElement('iframe');
             const shadow = parentDomElement.attachShadow({ mode: 'closed' });
             iframe.id = 'lightning_af';
@@ -122,7 +122,7 @@
             this.remove();
         }
         connectedCallback() {
-            this.preload(LightningOut.#frameDomain, this);
+            this.#preload(this.#frameDomain, this);
         }
     }
     that.customElements.define('lo-lwr-application', LightningOut);
