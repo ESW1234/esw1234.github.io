@@ -3,7 +3,7 @@
 
     class LightningOut extends HTMLElement {
 
-    	#frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com/';
+    	#frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com';
 
         #iframeRef;
         #lastWidth;
