@@ -19,7 +19,6 @@
             const iframe = that.document.createElement('iframe');
             const shadow = parentDomElement.attachShadow({ mode: 'closed' });
             this.#shadow = shadow;
-            const iframeInternalId = that.crypto.randomUUID();
             iframe.name = 'lightning_af';
             iframe.sandbox = 'allow-same-origin allow-downloads allow-forms allow-scripts';
             iframe.frameborder = 0;
@@ -34,12 +33,6 @@
                 }
                 iframe.style.display = 'block';
                 parentDomElement.#ready = true;
-                iframe.contentWindow.postMessage({
-                    type: 'lo.init',
-                    detail: {
-                        iframeId: iframeInternalId
-                    }
-                }, this.#frameDomain);
             };
 
             const title = parentDomElement.getAttribute("title");
@@ -57,11 +50,11 @@
 
             this.#messageListener = (event) => {
                 if (event.origin !== parentDomElement.#frameDomain) {
-                    that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
+                    that.console.trace(`Lightning Out: Message ignored from ${event.origin}.`);
                     return;
                 }
-                if (event.data.iframeId !== iframeInternalId) {
-                    that.console.trace("Message ignored due to different iframeId.");
+                if (event.source !== parentDomElement.#iframeRef.contentWindow) {
+                    that.console.trace("Lightning Out: Message ignored due to different source.");
                     return;
                 }
                 switch(event.data.type) {
