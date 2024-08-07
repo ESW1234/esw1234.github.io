@@ -26,6 +26,12 @@
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
             iframe.onload = (event) => {
+                if (parentDomElement.#ready) {
+                    // Someone is trying to change the page
+                    this.#shadow.innerHTML = '';
+                    this.remove();
+                    return;
+                }
                 iframe.style.display = 'block';
                 parentDomElement.#ready = true;
                 iframe.contentWindow.postMessage({
