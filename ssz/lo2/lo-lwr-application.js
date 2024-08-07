@@ -110,9 +110,9 @@
             this.remove();
         }
         connectedCallback() {
-            this.preload("https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lp/lplo2?embeddedCmp=fragment/z4vg26ktp6xoi9vv3v2dii28kamrltaho2ixifeok0p", this)
+           // this.preload("https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lp/lplo2?embeddedCmp=fragment/z4vg26ktp6xoi9vv3v2dii28kamrltaho2ixifeok0p", this)
  
-            //this.preload("https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/lplo2?embeddedCmp=fragment/z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud", this)
+            this.preload("https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/lplo2?embeddedCmp=fragment/z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud", this)
         }
     }
     customElements.define("lo-lwr-application", LightningOut);
