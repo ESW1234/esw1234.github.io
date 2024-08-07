@@ -22,6 +22,7 @@
             iframe.name = 'lightning_af';
             iframe.sandbox = 'allow-same-origin allow-downloads allow-forms allow-scripts';
             iframe.frameborder = 0;
+            iframe.scrolling = 'no' // USE style="overflow:hidden;"
             iframe.style = 'width:100%;position:relative;border:0;padding:1px;overflow:none;visibility:none;background-color:#fffcb5';
             iframe.onerror = () => that.alert('Error Loading <iframe> for ' + iframe.src);
             iframe.onload = (event) => {
