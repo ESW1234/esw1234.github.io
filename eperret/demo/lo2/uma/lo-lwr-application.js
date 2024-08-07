@@ -65,7 +65,7 @@
                     }
                     case 'lo.dispatchEvent': {
                         const customEvent = new that.CustomEvent(event.data.name, { detail: event.data.detail });
-                        parentDomElement.dispatchEventComponent(customEvent);
+                        parentDomElement.#dispatchEventComponent(customEvent);
                         break;
                     }
                     case 'lo.ready': {
@@ -110,6 +110,10 @@
             }
         }
 
+	#dispatchEventComponent() {
+            super.dispatchEvent(...arguments);
+        }
+
         addEventListener(eventName) {
             super.addEventListener(...arguments);
             this.#iframeRef.contentWindow.postMessage({
@@ -125,10 +129,6 @@
                 detail: event.detail,
                 type: 'lo.dispatchEvent',
             }, this.#frameDomain);
-        }
-
-        dispatchEventComponent() {
-            super.dispatchEvent(...arguments);
         }
 
         adoptedCallback() {
