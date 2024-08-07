@@ -13,10 +13,12 @@
 
         #lastWidth;
         #ready = false;
+        #messageListener;
 
         #preload(endpoint, parentDomElement) {
             const iframe = that.document.createElement('iframe');
             const shadow = parentDomElement.attachShadow({ mode: 'closed' });
+            this.#shadow = shadow;
             const iframeInternalId = that.crypto.randomUUID();
             iframe.name = 'lightning_af';
             iframe.sandbox = 'allow-same-origin allow-downloads allow-forms allow-scripts';
@@ -36,7 +38,7 @@
 
             const title = parentDomElement.getAttribute("title");
             if (title) {
-            iframe.title = title;
+                iframe.title = title;
             }
 
             // (1) Ensure that event.origin is set for all postMessage events.
@@ -47,7 +49,7 @@
             //     from the iframe. However, from the iframe back to the host document is slightly less of
             //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
 
-            that.addEventListener('message', (event) => {
+            this.#messageListener = (event) => {
                 if (event.origin !== parentDomElement.#frameDomain) {
                     that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
                     return;
@@ -88,9 +90,8 @@
                     }
                 }
                 event.stopImmediatePropagation();
-            });
-
-            //new that.ResizeObserver(parentDomElement.#adjustIFrameSize.bind(this)).observe(parentDomElement);
+            };            
+            that.addEventListener('message', this.#messageListener);
 
             iframe.src = endpoint;
             parentDomElement.#iframeRef = shadow.appendChild(iframe);
@@ -141,6 +142,12 @@
             } else {
                 this.remove();
                 throw new Error("This component cannot be rerendered for security reasons.");
+            }
+        }
+        disconnectedCallback() {
+            this.#shadow.innerHTML = '';
+            if (this.#messageListener) {
+                that.removeEventListener('message', this.#messageListener);
             }
         }
     }
