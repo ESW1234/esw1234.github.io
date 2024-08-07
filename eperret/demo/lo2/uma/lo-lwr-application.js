@@ -3,12 +3,13 @@
 
     class LightningOut extends HTMLElement {
 
-    	/*#frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
+        /*#frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
         #framePath = '/lp/lo?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';*/
         #frameDomain = 'https://dsb00000aegn92ah.test1.my.pc-rnd.site.com';
         #framePath = '/';
 
         #iframeRef;
+        #shadow;
 
         #lastWidth;
         #ready = false;
@@ -17,7 +18,6 @@
             const iframe = that.document.createElement('iframe');
             const shadow = parentDomElement.attachShadow({ mode: 'closed' });
             const iframeInternalId = that.crypto.randomUUID();
-            iframe.id = 'lightning_af';
             iframe.name = 'lightning_af';
             iframe.sandbox = 'allow-same-origin allow-downloads allow-forms allow-scripts';
             iframe.frameborder = 0;
@@ -31,13 +31,13 @@
                     detail: {
                         iframeId: iframeInternalId
                     }
-                }, '*');
+                }, this.#frameDomain);
             };
 
             const title = parentDomElement.getAttribute("title");
             if (title) {
-	            iframe.title = title;
-	        }
+            iframe.title = title;
+            }
 
             // (1) Ensure that event.origin is set for all postMessage events.
             // (3) For events from the iframe to the host document. We will need to do the reverse.
@@ -48,10 +48,10 @@
             //     a concern and we could set the targetOrigin to '*' for now and fix this up later.
 
             that.addEventListener('message', (event) => {
-            	if (event.origin !== parentDomElement.#frameDomain) {
-            		that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
-            		return;
-            	}
+                if (event.origin !== parentDomElement.#frameDomain) {
+                    that.console.log(`Lightning Out: Unexpected message from ${event.origin}.`);
+                    return;
+                }
                 if (event.data.iframeId !== iframeInternalId) {
                     that.console.trace("Message ignored due to different iframeId.");
                     return;
@@ -110,7 +110,7 @@
             }
         }
 
-	#dispatchEventComponent() {
+        #dispatchEventComponent() {
             super.dispatchEvent(...arguments);
         }
 
@@ -139,7 +139,7 @@
             if (!this.#shadow) {
                 this.#preload(this.#frameDomain, this);
             } else {
-		this.remove();
+                this.remove();
                 throw new Error("This component cannot be rerendered for security reasons.");
             }
         }
