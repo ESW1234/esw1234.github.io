@@ -133,9 +133,15 @@
 
         adoptedCallback() {
             this.remove();
+            throw new Error("This component cannot be rerendered for security reasons.");
         }
         connectedCallback() {
-            this.#preload(this.#frameDomain, this);
+            if (!this.#shadow) {
+                this.#preload(this.#frameDomain, this);
+            } else {
+		this.remove();
+                throw new Error("This component cannot be rerendered for security reasons.");
+            }
         }
     }
     that.customElements.define('lo-lwr-application', LightningOut);
