@@ -110,7 +110,7 @@
             this.remove();
         }
         connectedCallback() {
-            this.preload("https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com/lp/lo?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp", this)
+            this.preload("https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com/lp/lo2?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp", this)
         }
     }
     customElements.define("lo-lwr-application", LightningOut);
