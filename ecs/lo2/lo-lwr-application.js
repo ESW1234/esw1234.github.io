@@ -2,8 +2,8 @@
     'use strict';
 
     class LightningOut extends HTMLElement {
-        #frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com/lp/lo2?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
-        #framePath = '/';
+        #frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
+        #framePath = '/lp/lo2?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
 
         #iframeRef;
         #shadow;
@@ -135,7 +135,7 @@
         }
         connectedCallback() {
             if (!this.#shadow) {
-                this.#preload(this.#frameDomain, this);
+             this.#preload(this.#frameDomain + this.#framePath, this);
             } else {
                 this.remove();
                 throw new Error('Lightning Out: This component cannot be rerendered for security reasons.');
