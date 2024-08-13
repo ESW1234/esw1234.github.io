@@ -16,7 +16,7 @@
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
-	window.addEventListener("onEmbeddedMessagingReady", () => {
+	window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
         	console.log("Received the onEmbeddedMessagingReady event.");
         
         	embeddedservice_bootstrap.utilAPI.launchChat();
