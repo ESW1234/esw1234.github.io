@@ -16,8 +16,14 @@
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
-	window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+	window.addEventListener("onEmbeddedMessagingReady", () => {
         	console.log("Received the onEmbeddedMessagingReady event.");
+        
+        	embeddedservice_bootstrap.utilAPI.launchChat();
+    	});
+
+	window.addEventListener("onEmbeddedMessagingButtonGenerated", () => {
+        	console.log("Received the onEmbeddedMessagingButtonGenerated event.");
         
         	embeddedservice_bootstrap.utilAPI.launchChat();
     	});
