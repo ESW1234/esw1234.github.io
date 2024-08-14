@@ -21,9 +21,7 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			// Embedded Messaging app ready
 			console.log("onEmbeddedMessagingReady event received");
-      fetchAndSetToken();
-
-			document.getElementById("logsButton").disabled = false;
+			fetchAndSetToken();
 		});
 		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
 			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
