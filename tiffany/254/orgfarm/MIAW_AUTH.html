@@ -22,5 +22,15 @@
 	};
 </script>
 <script type='text/javascript' src='https://dsb00000b5ofz2az.test1.my.pc-rnd.site.com/ESWUNAUTHEXTERNAL1724288179282/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script>
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+	  console.log("Received the onEmbeddedMessagingReady event.");
+
+	  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+	    identityTokenType: "JWT",
+	    identityToken: customer_signed_jwt,
+	  });
+	});
+</script>
   </body>
 </html>
