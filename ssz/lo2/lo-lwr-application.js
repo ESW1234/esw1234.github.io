@@ -3,8 +3,8 @@
 
     class LightningOut extends HTMLElement {
         #frameDomain = 'https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443';
-       // #framePath = '/lp/lo/fragment__z4vhnq8fkhy8w941q1l08rzx70o7nprbilcuti8snyl';
-        #framePath = '/lp/form/MCM3M7TZFT4VBARD2M6NK45ZLQHM';
+        #framePath = '/lp/lo/fragment__z4vhnq8fkhy8w941q1l08rzx70o7nprbilcuti8snyl';
+        //#framePath = '/lp/form/MCM3M7TZFT4VBARD2M6NK45ZLQHM';
 
         #iframeRef;
         #shadow;
