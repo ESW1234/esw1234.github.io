@@ -32,8 +32,13 @@
 		console.log("Event detail: ", event);
         });
 
-	window.addEventListener("onEmbeddedMessagingConversationOpened", (event) => {
-             console.log("Received onEmbeddedMessagingConversationOpened");
+	window.addEventListener("message", (event) => {
+             if (event.origin !== "https://esw1234.github.io"){
+		     return;
+	     }
+	     if (event.data && event.data.type === "navigate") {
+		     window.location.href = event.data.url;
+	     }
         });
 </script>
 <script type='text/javascript'>
