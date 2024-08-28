@@ -22,25 +22,22 @@
 			}
 		</style> -->
 		
-		<script type='text/javascript'>
-			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+	<script "text/javascript">
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+			fetchAndSetToken();
+		});
+		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
+		});
 
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-				console.log("onEmbeddedMessagingReady event received");
-				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-				    "userName" : "Guest",
-				    "cartValue": "1000"
-				});
-				//fetchAndSetToken(20);
-			});
-		</script>
+		window.addEventListener("onEmbeddedMessagingInitError", () => {
+			console.log("Received 'onEmbeddedMessagingInitError' event");
+		});
+	</script>
 
-		<script type='text/javascript'>
-		function clearAuthSession() {
-			embeddedservice_bootstrap.userVerificationAPI.clearSession();
-		}
-
+  	<script type='text/javascript'>
 		function setIdentityToken(token) {
 			var token = document.getElementById("idToken").value;
 			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
@@ -49,43 +46,57 @@
 			});
 		}
 
+		function clearAuthSession() {
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
 		function closeEmbeddedMessagingVerifiedConversation() {
 		    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
 		    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
 		    const jwt = storageObj["JWT"];
-		    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+		    const conversationId = document.getElementById("convIdInput").value;
 		    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
 		    fetch(endpoint, {
-			method: "DELETE",
-			mode: "cors",
-			headers: {
-			    "Content-Type": "application/json",
-			    "Authorization": "Bearer " + jwt    
-			}
+			    method: "DELETE",
+			    mode: "cors",
+			    headers: {
+			        "Content-Type": "application/json",
+			        "Authorization": "Bearer " + jwt    
+			    }
 		    })
 		    .then(res => res.json())
-		    .then(res => console.log(res))
+		    .then(res => console.log(res));
 		}
 
-		function fetchAndSetToken(seconds) {
-		     var porticoURL = `https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=${seconds}&keyId=5f103f1b-ee38-404c-ac94-83c427764813`;
+		function fetchAndSetToken() {
+		     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 		     fetch(porticoURL).then(function(response) {
-			  return response.json();
+			  return retryFetchRequest(porticoURL);
 		     }).then(function(data) {
 			  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
 			       identityTokenType: "JWT",
 			       identityToken: data.accessToken
 			  });
 		     }).catch(function(err) {
-			  console.log('Fetch Error :', err);
-		     });
+				console.log('Fetch Error :', err);
+           			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+             				identityTokenType: "JWT",
+			       		identityToken: "eyJraWQiOiI1ZjEwM2YxYi1lZTM4LTQwNGMtYWM5NC04M2M0Mjc3NjQ4MTMiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidGVzdFN1YmplY3Q2QGVzdy5jb20iLCJleHAiOjE3MTA5NjA0OTEsImlhdCI6MTcxMDk1NzQ5MX0.kOWnnSfUnsTo8YbqRG1BbCWVaKHg7x0WaDWZn9pRc_bJ7nYrKhWolHqQ0GU6fjLZUi8A_HFUkKMlDktRx76_Qhd8yVGfk-0gmGfd1LuMQTznI8eeMl3KdvGuJLCVSG52TmYEdDa55vtPOacxGb9xkQ9Qg7ghu3ZJoVvnmLkwwvsOSCCgafl4Q9jZlW2cdmOo_0HtpysHp_LykFozbSsStCyr_74zOn5SVYKsVKfNFQp2A2o-kRg0vgjxlBSGkQwhkkINbwOi2wz1RL8Zx1A8xPPzdgMF_c6pREFx6pr7rm0-vmlGoan_BXPuMCyypZfHGs4sTsG0ggAVOLPecE6kmw"
+			     	});
+		    });
 		}
+
+		function retryFetchRequest(requestUrl) {
+			return fetch(requestUrl).then(function(response) {
+				return response.json();
+			});
+		};
 
 		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		     console.log("Received the onEmbeddedMessagingTokenExpired event…");
-		     fetchAndSetToken(60);
+		     fetchAndSetToken();
 		});
-		</script>
+	</script>
 		
 		<!-- Snippet -->
 	<script type='text/javascript'>
