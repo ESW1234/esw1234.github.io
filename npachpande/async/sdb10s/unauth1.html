@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>sdb6 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type="text/javascript">
+ function initEmbeddedMessaging() {
+  try {
+   embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+    embeddedservice_bootstrap.settings.devMode = true; // For example, enter 'en' or 'en-US'
+
+   embeddedservice_bootstrap.init(
+    '00DSM000001ykN4',
+    'MIAW',
+    'https://dsm000001ykn42ai.sfdctest.test1.my.pc-rnd.site.com/ESWMIAW1724454357448',
+    {
+     scrt2URL: 'https://dsm000001ykn42ai.sfdctest.test1.my.pc-rnd.salesforce-scrt.com'
+    }
+   );
+  } catch (err) {
+   console.error('Error loading Embedded Messaging: ', err);
+  }
+ };
+</script>
+<script onload="initEmbeddedMessaging()" src="https://dsm000001ykn42ai.sfdctest.test1.my.pc-rnd.site.com/ESWMIAW1724454357448/assets/js/bootstrap.js" type="text/javascript"></script>
+
+</body>
+</html>
