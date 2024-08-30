@@ -19,5 +19,15 @@
 	};
 </script>
 <script type='text/javascript' src='https://miaw-esw-sdb6.test1.my.pc-rnd.site.com/ESWUNAUTHPRECHATDISABLE1689058532705/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script>
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+	  console.log("Setting Auto-Response API parameters...");
+	
+	  embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+	    product: "sales",
+	    language: "en"
+	  });
+	});
+</script>
 </body>
 </html>
