@@ -3,7 +3,7 @@
 
     class LightningOut extends HTMLElement {
         #frameDomain = 'https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com';
-        #framePath = '/lp/lo2?embeddedCmp=fragment/z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
+        #framePath = '/lp/lo/fragment__z4vef6fpe0h7wnpytaj5p1600u5elax6i6m7rq364wp';
 
         #iframeRef;
         #shadow;
