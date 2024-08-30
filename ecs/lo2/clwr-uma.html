@@ -8,7 +8,6 @@
                 max-width: 800px;
                 padding: 20px;
             }
-
             #form {
                 border: 5px solid rgb(83, 83, 216);
                 margin: 10px;
@@ -39,9 +38,8 @@
         <h1>Third-Party Website - <abbr title="Lightning Out">LO</abbr> 2.0</h1>
         <div class="content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
-            <script type="module" async="async" src="lo-lwr-application.js"></script>
-            <lo-lwr-application id="container"></lo-lwr-application>
-    
+            <script src="lo-lwr-application.js" type="module" async="async"></script>
+            <lo-lwr-application title="Marketing Form" id="container"></lo-lwr-application>
             <div style="display:inline-block">
                 <div id="form" style="display:none;">
                     <div style="display:inline-block">
@@ -50,7 +48,7 @@
                             <br />
                             <span>Write XYZ in the input box.</span>
                             <br />
-                            <button id="button">Submit</button>
+                            <button type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
