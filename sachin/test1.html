@@ -26,11 +26,13 @@
 
 				window.eventSourceObj.subscribeToEventSource(orgId, scrt2URL, jwt, lastEventId).
 					then(console.log("Connected to SSE")).
-					catch(console.error(`Faile to connect to the SSE`));
+					catch(console.error(`Failed to connect to the SSE`));
 			}
 
 			function disconnectSSE() {
-				window.eventSourceObj.closeEventSource();
+				window.eventSourceObj.closeEventSource()
+					then(console.log("Disconnected SSE")).
+					catch(console.error(`Failed to disconnect from the SSE`));
 			}
 		</script>
 		
