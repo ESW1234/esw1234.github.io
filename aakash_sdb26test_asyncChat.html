@@ -29,7 +29,26 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://esaperf1org.perf2n.my.pc-rnd.site.com/ESWNellyBotDeployment1725430194587/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<!-- <script type='text/javascript' src='https://esaperf1org.perf2n.my.pc-rnd.site.com/ESWNellyBotDeployment1725430194587/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	 -->
+
+<script>
+  (function() {
+    var el = document.createElement('script');
+	el.src = 'https://esaperf1org.perf2n.my.pc-rnd.site.com/ESWNellyBotDeployment1725430194587/assets/js/bootstrap.min.js';
+	el.async = 'true';
+	el.addEventListener('load', function() {
+      console.log(
+		'Before Init'
+	  );
+	  initEmbeddedMessaging();
+      console.log(
+		'After Init'
+	  );
+    });
+    document.head.appendChild(el);
+  })();
+</script>
 	
 </body>
 </html>
