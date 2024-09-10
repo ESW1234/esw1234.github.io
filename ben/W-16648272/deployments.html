@@ -36,7 +36,7 @@
 		};
 		document.body.appendChild(s);
   }
-  
+
   function loadDeployment1() {
     loadBootstrapScript(
       "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW1676452590768/assets/js/bootstrap.js", 
@@ -50,8 +50,28 @@
    function loadDeployment2() {
     loadBootstrapScript(
       "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW21676635423898/assets/js/bootstrap.js", 
-      "deployment1", 
+      "deployment2", 
       "Messaging", 
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW1676452590768", 
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101");
+    
+  }
+	
+  function loadDeployment3() {
+    loadBootstrapScript(
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW1676452590768/assets/js/bootstrap.js", 
+      "deployment3", 
+      "MessagingPrechat", 
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW1676452590768", 
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101");
+    
+  }
+
+   function loadDeployment4() {
+    loadBootstrapScript(
+      "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW21676635423898/assets/js/bootstrap.js", 
+      "deployment4", 
+      "MessagingPrechat", 
       "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101/ESWMIAW1676452590768", 
       "https://benco0.my.site-com.bdrasin-xfnsfzkp3ivc0.wb.crm.dev:6101");
     
@@ -62,6 +82,10 @@
     <a onclick="loadDeployment1()">Load Deployment 1</a>
     <br>
     <a onclick="loadDeployment2()">Load Deployment 2</a>
+    <br>
+    <a onclick="loadDeployment3()">Load Deployment 3 (prechat)</a>
+    <br>
+    <a onclick="loadDeployment4()">Load Deployment 4 (prechat)</a>
   </div>
 
    </body>
