@@ -7,7 +7,7 @@
         //#frameDomain = 'https://trialorgfarmforu3.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101'
         //#frameDomain = 'https://dsg00000exfct2av.test1.my.pc-rnd.site.com';
         
-        #framePath = '/lp/lo/fragmenta__z4vhnq8fkhy8w941q1l08rzx70o7nprbilcuti8snyl';
+        #framePath = '/lp/lo/fragment__z4vhnq8fkhy8w941q1l08rzx70o7nprbilcuti8snyl';
         //#framePath = '/lp/lo/fragment__z4vegofl6txy3q90qecmlz7ovhl9w5d7e5jtf439cud';
         //#framePath = '/lp/lo/fragment__z4vhol8ey0agx4rn91uzngh9txri138i6jnsyxmwlkx';
 
