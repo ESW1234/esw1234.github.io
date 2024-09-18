@@ -2,7 +2,6 @@
   "keys":[
     {
     "kid": "5f103f1b-ee38-404c-ac94-83c427764813",
-    "alg": "RS256",
     "use": "sig",
     "kty": "RSA",
     "x5c": [
