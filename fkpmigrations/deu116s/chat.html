@@ -31,17 +31,6 @@
 	}
 </style>
 
-<!--script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script-->
-<style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
-
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -67,16 +56,16 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://ita42fkp.my.salesforce.com',
-			'https://ita42fkp.my.site.com/ESWDummyChatPage',
+			'https://deu11sfkpv2.sfdctest.my.salesforce.com',
+			'https://deu11sfkpv2.sfdctest.my.site.com/ESWDummyChatPage',
 			gslbBaseURL,
-			'00DdY00000006bh',
+			'00Dbh000000pQwX',
 			'ESWChatDep',
 			{
-				baseLiveAgentContentURL: 'https://c.la1-core1.sfdc-3d0u2f.salesforceliveagent.com/content',
-				deploymentId: '572dY00000002hl',
-				buttonId: '573dY00000000zJ',
-				baseLiveAgentURL: 'https://d.la1-core1.sfdc-3d0u2f.salesforceliveagent.com/chat',
+				baseLiveAgentContentURL: 'https://c.la2s-core1.sfdc-yzvdd4.salesforceliveagent.com/content',
+				deploymentId: '572bh0000003FKH',
+				buttonId: '573bh0000001BcX',
+				baseLiveAgentURL: 'https://d.la2s-core1.sfdc-yzvdd4.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ia5000000GoqTEAS_191368fdd27',
 				isOfflineSupportEnabled: true
 			}
@@ -85,7 +74,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://ita42fkp.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://deu11sfkpv2.sfdctest.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -93,6 +82,6 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>    
+</script>   
     	</body>
 </html>
