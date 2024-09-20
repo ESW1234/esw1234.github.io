@@ -2,6 +2,9 @@
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <title>Third-Party Website - LO 2.0</title>
+        <meta content="Third-Party Website - LO 2.0" property="og:title">
+        <meta content="Showcase Website for Demonstrating Lightning Out 2.0 and UMA Forms Features" property="og:description">
+        <meta content="Showcase Website for Demonstrating Lightning Out 2.0 and UMA Forms Features" property="description">
         <style>
             body {
                 margin: auto;
@@ -23,23 +26,55 @@
             h1 {
                 color: #fff;
                 font-family: monospace;
-                font-size: 2.9rem;
-                text-align: center;
-                margin: .5rem 0
+                font-size: 5rem;
+                position: absolute;
+                top: 0;
             }
             .content {
                 background-color:#ADD8E6;
                 border-radius: 1rem;
                 padding: 1rem;
+                position: relative;
+            }
+            .hero {
+                margin-left: -1rem;
+                margin-top: -1rem;
+                border-radius: 1rem 1rem 0 0;
+            }
+            .bottom {
+                background: url(bg-bar.jpg);
+                height: 3rem;
+                margin-bottom: -1rem;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                border-radius: 0 0 1rem 1rem;
             }
         </style>
+        <script>
+            {
+                const shadows = new WeakMap(),
+                      original = Element.prototype.attachShadow;
+                Element.prototype.attachShadow = function () {
+                    console.log("attachShadow called");
+                    const shadow = original.apply(this, arguments);
+                    shadows.set(this, shadow);
+                    return shadow;
+                };
+                window.getClosedShadow = function(element) {
+                    return shadows.get(element);
+                };
+            }
+        </script>
     </head>
     <body style="background-color:rgb(80, 141, 179)">
-        <h1>Third-Party Website - <abbr title="Lightning Out">LO</abbr> 2.0</h1>
         <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
-            <script src="https://lo.clwr.blitztesting.com/welcome/assets/lightning_out_embed/prod/en-US/MC6UMQOGIVTZAE3GGUBFK4Z3VHUE.js" async="async"></script>
+            <h1>Third-Party Website - <abbr title="Lightning Out">LO</abbr> 2.0</h1>
+            <img class="hero" src="hero.jpg" alt="Hero image" width="800" height="296" />
+            <h2>Revolutionize Business with Salesforce Lightning Out</h2>
+            <p>Salesforce Lightning Out is an exceptional and innovative feature that truly revolutionizes the way businesses interact with their Salesforce data. This feature enables the embedding of Lightning components into any external web application, thereby extending the power and functionality of Salesforce beyond its native environment. It's a game-changer for businesses that rely on multiple platforms, as it provides seamless integration and interaction with Salesforce data without the need to switch between applications. This not only enhances efficiency but also streamlines operations, saving valuable time and resources. The Salesforce Lightning Out feature truly embodies the spirit of innovation, pushing the boundaries of what is possible in the realm of customer relationship management.</p>
+            <script type="module" async="async" src="https://lo.clwr.blitztesting.com/welcome/assets/lightning_out_embed/prod/en-US/MC6UMQOGIVTZAE3GGUBFK4Z3VHUE.js"></script>
             <fragment-z4va97su0opobzz55ixymv8blaukblo4o0hl4cjze4l title="Marketing Form" id="container"></fragment-z4va97su0opobzz55ixymv8blaukblo4o0hl4cjze4l>
+    
             <div style="display:inline-block">
                 <div id="form" style="display:none;">
                     <div style="display:inline-block">
@@ -48,7 +83,7 @@
                             <br />
                             <span>Write XYZ in the input box.</span>
                             <br />
-                            <button type="submit">Submit</button>
+                            <button id="button">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -66,7 +101,11 @@
                     </dl>
                 </fieldset>
             </div>
-            <p style="columns:2;column-width:300px;font-size:2em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
+            <p style="columns:2;column-width:300px;font-size:1.5rem">
+                Salesforce Lightning Out is an exceptional and innovative feature that truly revolutionizes the way businesses interact with their Salesforce data. This feature enables the embedding of Lightning components into any external web application, thereby extending the power and functionality of Salesforce beyond its native environment. It's a game-changer for businesses that rely on multiple platforms, as it provides seamless integration and interaction with Salesforce data without the need to switch between applications. This not only enhances efficiency but also streamlines operations, saving valuable time and resources. The Salesforce Lightning Out feature truly embodies the spirit of innovation, pushing the boundaries of what is possible in the realm of customer relationship management.
+                <img src="users.png" alt="Image of a user" style="float: right" width="300" height="300"/>
+            </p>
+            <div class="bottom"></div>
         </div>
     </body>
 </html>
