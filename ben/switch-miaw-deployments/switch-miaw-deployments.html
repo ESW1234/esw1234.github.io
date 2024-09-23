@@ -8,18 +8,15 @@
 
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
-	function clearAuthSession() {
+
+	function clearUnauthSession() {
 		console.log("Clearing user session.");
-		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		//end existing session, remove event handlers
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
+		embeddedservice_bootstrap.removeEventHandlers();
+		//now that we have called all the APIs we need, unset this so taht we can load other deployment
+		embeddedservice_bootstrap = undefined;
 	}
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-		// Embedded Messaging app ready
-		console.log("onEmbeddedMessagingReady emitted");
-		embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-			"userName" : "Guest",
-			"cartValue": "1000"
-		});
-	});
 
 	function loadBootstrapScript(scriptUrl, tagId, deploymentName, siteUrl1, siteUrl2) {
 		var s = document.createElement('script');
@@ -32,14 +29,14 @@
 	}
 	
 	function loadVerifiedDeployment() {
-		cleanUpUnverifiedDeployment().then((value) => {
-			loadBootstrapScript(
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js", 
-				"00DSB0000005YCL",
-				"deployment1", 
-				"Messaging", 
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205", 
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com");
+		clearUnauthSession();
+		loadBootstrapScript(
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js", 
+			"00DSB0000005YCL",
+			"deployment1", 
+			"Messaging", 
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205", 
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com");
 		});
 	}
 </script>
