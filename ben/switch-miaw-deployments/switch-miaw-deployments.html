@@ -6,17 +6,33 @@
   <p align="center"><font color ="red">ben@sdb6miaw.com</font></p>
 
 <script type='text/javascript'>
+	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+		// Embedded Messaging app ready
+		console.log("onEmbeddedMessagingReady emitted");
+		embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+			"userName" : "Guest",
+			"cartValue": "1000"
+		});
+	});
+</script>
+	
+<script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
-				'00DSG000003NJRe',
-				'Messaging',
-				'https://benco13.test1.my.pc-rnd.site.com/ESWMessaging1686939222398',
+				'00DSB0000005YCL',
+				'webMessaging04',
+				'https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205',
 				{
-					scrt2URL: 'https://benco13.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -24,7 +40,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://benco13.test1.my.pc-rnd.site.com/ESWMessaging1686939222398/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
