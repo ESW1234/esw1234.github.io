@@ -3,7 +3,8 @@
    <head>
 </head>
 <body>
-  <p align="center"><font color ="red">ben@sdb6miaw.com</font></p>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
 
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
@@ -19,6 +20,28 @@
 			"cartValue": "1000"
 		});
 	});
+
+	function loadBootstrapScript(scriptUrl, tagId, deploymentName, siteUrl1, siteUrl2) {
+		var s = document.createElement('script');
+		s.setAttribute('src', scriptUrl);
+		s.id = tagId;
+		s.onload = function() {
+			initEmbeddedMessaging(deploymentName, siteUrl1, siteUrl2);
+		};
+		document.body.appendChild(s);
+	}
+	
+	function loadVerifiedDeployment() {
+		cleanUpUnverifiedDeployment().then((value) => {
+			loadBootstrapScript(
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js", 
+				"00DSB0000005YCL",
+				"deployment1", 
+				"Messaging", 
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205", 
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com");
+		});
+	}
 </script>
 	
 <script type='text/javascript'>
@@ -57,28 +80,6 @@
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
-	
-	function loadBootstrapScript(scriptUrl, tagId, deploymentName, siteUrl1, siteUrl2) {
-		var s = document.createElement('script');
-		s.setAttribute('src', scriptUrl);
-		s.id = tagId;
-		s.onload = function() {
-			initEmbeddedMessaging(deploymentName, siteUrl1, siteUrl2);
-		};
-		document.body.appendChild(s);
-	}
-	
-	function loadVerifiedDeployment() {
-		cleanUpUnverifiedDeployment().then((value) => {
-			loadBootstrapScript(
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js", 
-				"00DSB0000005YCL",
-				"deployment1", 
-				"Messaging", 
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205", 
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com");
-		});
-	}
 </script>
 <script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
