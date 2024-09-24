@@ -7,8 +7,19 @@
 	<div style="position: absolute; bottom: 200px"><button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button></div>
 
 
+//this is a script to switch to a verified deployment
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
+	
+	function clearUnauthSession() {
+		console.log("Clearing user session.");
+		//this flag prevents script from regenerating DOM after we remove it
+		embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = null
+
+		//end existing session, remove event handlers	
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
+		waitForRemoveMarkup();
+	}
 
 	function waitForRemoveMarkup() {
 		if(document.getElementById("embedded-messaging")) {
@@ -23,53 +34,29 @@
 			embeddedservice_bootstrap = undefined;
 		}
 	}
-	
-	function clearUnauthSession() {
-		console.log("Clearing user session.");
-		//this flag prevents script from regenerating DOM after we remove it
-		embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = null
-
-		//end existing session, remove event handlers	
-		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		waitForRemoveMarkup();
-	}
 
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
 		var s = document.createElement('script');
 		s.setAttribute('src', scriptUrl);
 		s.onload = function() {
-			initEmbeddedMessaging(orgId, deploymentName, siteUrl, scrtUrl);
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.init(
+					orgId,
+					deploymentName,
+					siteUrl,
+					{
+						scrt2URL: scrtUrl,
+        			});
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
 		};
 		document.body.appendChild(s);
 	}
-	
-	function loadVerifiedDeployment() {
-		clearUnauthSession();
-		loadBootstrapScript(
-			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.js", 
-			"00DSB0000005YCL",
-			"webMessaging04", 
-			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205",
-			"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
-	}
-
-	function initEmbeddedMessaging(orgId, deploymentName, siteUrl, scrtUrl) {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-
-			embeddedservice_bootstrap.init(
-				orgId,
-				deploymentName,
-				siteUrl,
-				{
-					scrt2URL: scrtUrl,
-        			});
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
 </script>
-	
+
+//This is the vanilla generated snippet for an unverified deployment
 <script id="unauthBootstrapScript" type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
