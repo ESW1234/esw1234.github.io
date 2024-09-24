@@ -72,7 +72,7 @@
 
 	function setUserAccessToken() {
 		var token = prompt("Please enter user access token");
-		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(token);
+		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({"identityTokenType": "JWT", "identityToken": token});
 	}
 </script>
 
