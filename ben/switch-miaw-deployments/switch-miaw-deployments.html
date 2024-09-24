@@ -10,13 +10,21 @@
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
 
+	function waitForDomCleanUp() {
+		if(document.getElementById("embedded-messaging")) {
+			window.setTimeout( waitForDomCleanUp, 100);
+		} else {
+			embeddedservice_bootstrap.removeEventHandlers();	
+			//now that we have called all the APIs we need, unset this so we can load other deployment
+			embeddedservice_bootstrap = undefined;
+		}
+	}
+	
 	function clearUnauthSession() {
 		console.log("Clearing user session.");
 		//end existing session, remove event handlers
 		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		embeddedservice_bootstrap.removeEventHandlers();
-		//now that we have called all the APIs we need, unset this so taht we can load other deployment
-		embeddedservice_bootstrap = undefined;
+		waitForDomCleanUp();
 	}
 
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
