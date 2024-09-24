@@ -7,13 +7,17 @@
 	<div style="position: absolute; bottom: 200px"><button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button></div>
 
 
-<script type='text/javascript'>
+<script id="unauthBootstrapScript" type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
 
-	function waitForDomCleanUp() {
+	function waitForClearSession() {
 		if(document.getElementById("embedded-messaging")) {
-			window.setTimeout( waitForDomCleanUp, 100);
+			window.setTimeout( waitForClearSession, 100);
 		} else {
+			//remove remaining DOM items, event handler
+			document.getElementById("unauthBootstrapScript").remove();
+			document.getElementByid("embeddedMessagingSiteContextFrame").remove();
+			document.getElementById("embedded-messaging").remove();
 			embeddedservice_bootstrap.removeEventHandlers();	
 			//now that we have called all the APIs we need, unset this so we can load other deployment
 			embeddedservice_bootstrap = undefined;
@@ -24,7 +28,7 @@
 		console.log("Clearing user session.");
 		//end existing session, remove event handlers
 		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		waitForDomCleanUp();
+		waitForClearSession();
 	}
 
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
