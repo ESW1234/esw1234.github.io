@@ -22,7 +22,6 @@
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
 		var s = document.createElement('script');
 		s.setAttribute('src', scriptUrl);
-		s.id = tagId;
 		s.onload = function() {
 			initEmbeddedMessaging(orgId, deploymentName, siteUrl, scrtUrl);
 		};
