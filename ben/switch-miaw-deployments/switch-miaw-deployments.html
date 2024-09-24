@@ -13,18 +13,19 @@
 	
 	function loadVerifiedDeployment() {
 		console.log("Clearing user session.");
-		//this flag prevents script from regenerating DOM after we remove it
-		embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = null
+		//save this reference so we know when we've finished with clearSession
+		let emEl = document.getElementById("embedded-messaging")
 
 		//end existing session, remove event handlers	
 		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		waitForRemoveMarkup();
+		waitForClearSession(emEl);
 	}
 
-	function waitForRemoveMarkup() {
-		if(document.getElementById("embedded-messaging")) {
-			window.setTimeout( waitForRemoveMarkup, 100);
+	function waitForClearSession(emEl) {
+		if(document.getElementById("embedded-messaging") === emEl) {
+			window.setTimeout( waitForClearSession, 100, emEl);
 		} else {
+			embeddedservice_bootstrap.removeMarkup();
 			//remove remaining DOM items, event handler
 			document.getElementById("unauthBootstrapScript").remove();
 			document.getElementById("unauthBootstrapScriptSrc").remove();
