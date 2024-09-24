@@ -11,7 +11,7 @@
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
 	
-	function clearUnauthSession() {
+	function loadVerifiedDeployment() {
 		console.log("Clearing user session.");
 		//this flag prevents script from regenerating DOM after we remove it
 		embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = null
