@@ -7,15 +7,16 @@
 	<div style="position: absolute; bottom: 200px"><button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button></div>
 
 
-<script id="unauthBootstrapScript" type='text/javascript'>
+<script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
 
-	function waitForClearSession() {
+	function waitForRemoveMarkup() {
 		if(document.getElementById("embedded-messaging")) {
-			window.setTimeout( waitForClearSession, 100);
+			window.setTimeout( waitForRemoveMarkup, 100);
 		} else {
 			//remove remaining DOM items, event handler
 			document.getElementById("unauthBootstrapScript").remove();
+			document.getElementById("unauthBootstrapScriptSrc").remove();
 			document.getElementByid("embeddedMessagingSiteContextFrame").remove();
 			document.getElementById("embedded-messaging").remove();
 			embeddedservice_bootstrap.removeEventHandlers();	
@@ -26,9 +27,12 @@
 	
 	function clearUnauthSession() {
 		console.log("Clearing user session.");
-		//end existing session, remove event handlers
+		//this flag prevents script from regenerating DOM after we remove it
+		embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = null
+
+		//end existing session, remove event handlers	
 		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		waitForClearSession();
+		waitForRemoveMarkup();
 	}
 
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
@@ -67,7 +71,7 @@
 	};
 </script>
 	
-<script type='text/javascript'>
+<script id="unauthBootstrapScript" type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -86,7 +90,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script id="unauthBootstrapScriptSrc" type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
