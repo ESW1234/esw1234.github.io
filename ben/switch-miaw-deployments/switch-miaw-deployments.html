@@ -4,7 +4,11 @@
 </head>
 <body>
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	<div style="position: absolute; bottom: 200px"><button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button></div>
+	<div style="position: absolute; bottom: 200px">
+		<button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button>
+		<br>
+		<button type="button" id="userVerificationButton" style="display: none" onclick="setUserAccessToken()">Set user verification token</button>
+	</div>
 
 
 //this is a script to switch to a verified deployment
@@ -33,6 +37,15 @@
 			embeddedservice_bootstrap.removeEventHandlers();	
 			//now that we have called all the APIs we need, unset this so we can load other deployment
 			embeddedservice_bootstrap = undefined;
+			//load verified deployment
+			loadBootstrapScript(
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.js", 
+				"00DSB0000005YCL",
+				"webMessaging04", 
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205",
+				"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
+			//show the user token button
+			document.getElementById("userVerificationButton").style.display="";
 		}
 	}
 
@@ -49,6 +62,7 @@
 					{
 						scrt2URL: scrtUrl,
         			});
+				
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
