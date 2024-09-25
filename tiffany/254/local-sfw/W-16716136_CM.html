@@ -29,5 +29,10 @@
       		initESW('https://w-16716136.my.salesforce-com.tiffany-tso-2oq5rrlvgilv0.wc.crm.dev:6101');
 	  }
   </script>
+	  <script>
+		  window.addEventListener("onEmbeddedMessagingChannelMenuVisibilityChanged", () => {
+			  console.log("onEmbeddedMessagingChannelMenuVisibilityChanged fired!");
+		  });
+	  </script>
   </body>
 </html>
