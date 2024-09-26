@@ -34,13 +34,16 @@
 		waitForClearSession(emEl, loadVerifiedDeployment);
 	}
 
-	function switchToUnVerifiedDeployment() {
+	function switchToUnverifiedDeployment() {
 		console.log("switching to unverified deployment");
-		sessionStorage.removeIte("USER_TOKEN");
+		sessionStorage.removeItem("USER_TOKEN");
 		
 		console.log("Clearing user session.");
 		//save this reference so we know when we've finished with clearSession
 		let emEl = document.getElementById("embedded-messaging");
+
+		//end existing session, remove event handlers	
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements		
 		waitForClearSession(emEl, loadUnverifiedDeployment);
 	}
 	
