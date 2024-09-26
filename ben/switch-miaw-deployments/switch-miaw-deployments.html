@@ -54,6 +54,7 @@
 			"webMessaging03", 
 			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989",
 			"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
+		//show the guest user options
 		document.getElementById("userLoggedInPanel").style.display="none";
 		document.getElementById("userNotLoggedInPanel").style.display="";
 	}
@@ -65,7 +66,7 @@
 			"webMessaging04", 
 			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205",
 			"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
-		//show the user token button
+		//show the logged in user options
 		document.getElementById("userLoggedInPanel").style.display="";
 		document.getElementById("userNotLoggedInPanel").style.display="none";
 	}
@@ -110,13 +111,19 @@
 
 	function setUserAccessToken() {
 		var token = prompt("Please enter user access token");
+		//Storing in sessionStorage to make things easier
+		sessionStorage.setItem("VERIFICATION_TOKEN", token);
 		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({"identityTokenType": "JWT", "identityToken": token});
 	}
 
 	window.addEventListener("load", () => {
 		//use verified deployment if user token present, else unverified
-		if (sessionStorage.getItem("USER_TOKEN")) {				
+		if (sessionStorage.getItem("USER_TOKEN")) {		
 			loadVerifiedDeployment();
+			let token = sessionStorage.getItem("VERIFICATION_TOKEN");
+			if(token) {
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({"identityTokenType": "JWT", "identityToken": token});
+			}
 		} else {
 			loadUnverifiedDeployment();
 		}
