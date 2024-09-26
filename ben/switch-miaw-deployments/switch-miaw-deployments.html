@@ -86,7 +86,7 @@
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
 		var s = document.createElement('script');
 		s.setAttribute('src', scriptUrl);
-		s.setAttribute("bootstrapScript");
+		s.setAttribute("id", "bootstrapScript");
 		s.onload = function() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -113,9 +113,9 @@
 	window.addEventListener("load", () => {
 		//use verified deployment if user token present, else unverified
 		if (sessionStorage.getItem("USER_TOKEN")) {				
-			loadUnverifiedDeployment();
-		} else {
 			loadVerifiedDeployment();
+		} else {
+			loadUnverifiedDeployment();
 		}
 	});
 
