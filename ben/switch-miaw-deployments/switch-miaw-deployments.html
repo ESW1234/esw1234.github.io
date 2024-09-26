@@ -5,9 +5,14 @@
 <body>
 	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 	<div style="position: absolute; bottom: 200px">
-		<button type="button" onclick="loadVerifiedDeployment()">Load verified deployment</button>
+		<div id="userNotLoggedInPanel">
+			<button type="button" onclick="switchToVerifiedDeployment()">Simulate login (switch to verified deployment)</button>
+		</div>
 		<br>
-		<button type="button" id="userVerificationButton" style="display: none" onclick="setUserAccessToken()">Set user verification token</button>
+		<div id="userLoggedInPanel" style="display: none">
+			<button type="button" id="userVerificationButton" onclick="setUserAccessToken()">Set user verification token</button>
+			<button type="button" id="logOutUserButton" onclick="switchToUnverifiedDeployment()">Simulate Logout (switch to unverified deployment)</button>
+		</div>
 	</div>
 
 
@@ -15,43 +20,73 @@
 <script type='text/javascript'>
 	document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
 	
-	function loadVerifiedDeployment() {
+	function switchToVerifiedDeployment() {
+		console.log("switching to verified deployment");
+		//realistically this would be set by a customer's login function - we are simulating here for simplicity
+		sessionStorage.setItem("USER_TOKEN", "123456";
+		
 		console.log("Clearing user session.");
 		//save this reference so we know when we've finished with clearSession
 		let emEl = document.getElementById("embedded-messaging")
 
 		//end existing session, remove event handlers	
 		embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-		waitForClearSession(emEl);
+		waitForClearSession(emEl, loadVerifiedDeployment);
 	}
 
-	function waitForClearSession(emEl) {
+	function switchToUnVerifiedDeployment() {
+		console.log("switching to unverified deployment");
+		sessionStorage.removeIte("USER_TOKEN");
+		
+		console.log("Clearing user session.");
+		//save this reference so we know when we've finished with clearSession
+		let emEl = document.getElementById("embedded-messaging");
+		waitForClearSession(emEl, loadUnverifiedDeployment);
+	}
+	
+	function loadUnverifiedDeployment() {
+		loadBootstrapScript(
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.js", 
+			"00DSB0000005YCL",
+			"webMessaging03", 
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989",
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
+		document.getElementById("userLoggedInPanel").style.display="none";
+		document.getElementById("userNotLoggedInPanel").style.display="";
+	}
+
+	function loadVerifiedDeployment() {		
+		loadBootstrapScript(
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.js", 
+			"00DSB0000005YCL",
+			"webMessaging04", 
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205",
+			"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com);
+		//show the user token button
+		document.getElementById("userLoggedInPanel").style.display="";
+		document.getElementById("userNotLoggedInPanel").style.display="none";
+	}
+	
+	function waitForClearSession(emEl, callback) {
+		//userVerificationAPI.clearSession() reloads ESW DOM elements; this is how we know it is finished
 		if(document.getElementById("embedded-messaging") === emEl) {
 			window.setTimeout( waitForClearSession, 100, emEl);
 		} else {
 			embeddedservice_bootstrap.removeMarkup();
 			//remove remaining DOM items, event handler
-			document.getElementById("unauthBootstrapScript").remove();
-			document.getElementById("unauthBootstrapScriptSrc").remove();
+			document.getElementById("bootstrapScript").remove();
 			document.getElementById("embeddedMessagingSiteContextFrame").remove();
 			embeddedservice_bootstrap.removeEventHandlers();	
 			//now that we have called all the APIs we need, unset this so we can load other deployment
 			embeddedservice_bootstrap = undefined;
-			//load verified deployment
-			loadBootstrapScript(
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205/assets/js/bootstrap.js", 
-				"00DSB0000005YCL",
-				"webMessaging04", 
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging041674063807205",
-				"https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com");
-			//show the user token button
-			document.getElementById("userVerificationButton").style.display="";
+			callback();
 		}
 	}
 
 	function loadBootstrapScript(scriptUrl, orgId, deploymentName, siteUrl, scrtUrl) {
 		var s = document.createElement('script');
 		s.setAttribute('src', scriptUrl);
+		s.setAttribute("bootstrapScript");
 		s.onload = function() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -79,20 +114,11 @@
 //This is the standard generated snippet for an unverified deployment
 <script id="unauthBootstrapScript" type='text/javascript'>
 	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
-
-			embeddedservice_bootstrap.init(
-				'00DSB0000005YCL',
-				'webMessaging03',
-				'https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989',
-				{
-					scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
+		//use verified deployment if user token present, else unverified
+		if (sessionStorage.getItem("USER_TOKEN")) {
+			loadUnverifiedDeployment();
+		} else {
+			loadVerifiedDeployment();
 		}
 	};
 </script>
