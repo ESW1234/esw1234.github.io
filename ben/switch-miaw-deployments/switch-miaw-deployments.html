@@ -109,20 +109,17 @@
 		var token = prompt("Please enter user access token");
 		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({"identityTokenType": "JWT", "identityToken": token});
 	}
-</script>
 
-//This is the standard generated snippet for an unverified deployment
-<script id="unauthBootstrapScript" type='text/javascript'>
-	function initEmbeddedMessaging() {
+	window.addEventListener("load", () => {
 		//use verified deployment if user token present, else unverified
-		if (sessionStorage.getItem("USER_TOKEN")) {
+		if (sessionStorage.getItem("USER_TOKEN")) {				
 			loadUnverifiedDeployment();
 		} else {
 			loadVerifiedDeployment();
 		}
-	};
+	});
+
 </script>
-<script id="unauthBootstrapScriptSrc" type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.site.com/ESWwebMessaging031674063746989/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
