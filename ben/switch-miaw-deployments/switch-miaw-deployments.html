@@ -72,7 +72,7 @@
 	
 	function waitForClearSession(emEl, callback) {
 		//userVerificationAPI.clearSession() reloads ESW DOM elements; this is how we know it is finished
-		if(document.getElementById("embedded-messaging") === emEl) {
+		if(emEl && document.getElementById("embedded-messaging") === emEl) {
 			window.setTimeout( waitForClearSession, 100, emEl, callback);
 		} else {
 			embeddedservice_bootstrap.removeMarkup();
