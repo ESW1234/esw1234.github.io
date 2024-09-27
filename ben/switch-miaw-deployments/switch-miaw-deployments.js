@@ -7,9 +7,11 @@ function switchToVerifiedDeployment() {
   //save this reference so we know when we've finished with clearSession
   let emEl = document.getElementById("embedded-messaging")
 
-  //end existing session, remove event handlers	
-  embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements
-  waitForClearSession(emEl, loadVerifiedDeployment);
+  //end existing session before proceeding
+  embeddedservice_bootstrap.userVerificationAPI.clearSession().then(
+    ()=> {
+      waitForClearSession(emEl, loadUnverifiedDeployment);
+  });
 }
 
 function switchToUnverifiedDeployment() {
@@ -20,9 +22,11 @@ function switchToUnverifiedDeployment() {
   //save this reference so we know when we've finished with clearSession
   let emEl = document.getElementById("embedded-messaging");
 
-  //end existing session, remove event handlers	
-  embeddedservice_bootstrap.userVerificationAPI.clearSession(); //this also clears DOM elements		
-  waitForClearSession(emEl, loadUnverifiedDeployment);
+  //end existing session before proceeding
+  embeddedservice_bootstrap.userVerificationAPI.clearSession().then(
+    ()=> {
+      waitForClearSession(emEl, loadUnverifiedDeployment);
+  });
 }
 
 function loadUnverifiedDeployment() {
