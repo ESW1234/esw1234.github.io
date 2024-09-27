@@ -10,7 +10,7 @@ function switchToVerifiedDeployment() {
   //end existing session before proceeding
   embeddedservice_bootstrap.userVerificationAPI.clearSession().then(
     ()=> {
-      waitForClearSession(emEl, loadUnverifiedDeployment);
+      waitForClearSession(emEl, loadVerifiedDeployment);
   });
 }
 
