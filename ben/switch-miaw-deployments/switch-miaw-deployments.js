@@ -98,10 +98,6 @@ window.addEventListener("load", () => {
   //use verified deployment if user token present, else unverified
   if (sessionStorage.getItem("USER_TOKEN")) {		
     loadVerifiedDeployment();
-    let token = sessionStorage.getItem("VERIFICATION_TOKEN");
-    if(token) {
-      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({"identityTokenType": "JWT", "identityToken": token});
-    }
   } else {
     loadUnverifiedDeployment();
   }
