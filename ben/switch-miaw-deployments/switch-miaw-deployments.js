@@ -17,6 +17,7 @@ function switchToVerifiedDeployment() {
 function switchToUnverifiedDeployment() {
   console.log("switching to unverified deployment");
   sessionStorage.removeItem("USER_TOKEN");
+  sessionStorage.removeItem("VERIFICATION_TOKEN");
   
   console.log("Clearing user session.");
   //save this reference so we know when we've finished with clearSession
@@ -111,7 +112,9 @@ window.addEventListener("onEmbeddedMessagingReady", () => {
   console.log("Received the onEmbeddedMessagingReady event.");
 
   let token = sessionStorage.getItem("VERIFICATION_TOKEN");
-  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-    identityTokenType: "JWT",
-    identityToken: token});
+  if(token){
+    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+      identityTokenType: "JWT",
+      identityToken: token});
+  }
 });
