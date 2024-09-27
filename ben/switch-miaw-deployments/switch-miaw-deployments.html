@@ -9,7 +9,10 @@
 		</div>
 		<br>
 		<div id="userLoggedInPanel" style="display: none">
-			<button type="button" id="userVerificationButton" onclick="setUserAccessToken()">Set user verification token</button>
+			<div>
+				Get a user verification accessToken <a target="_blank" href="https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject12345&jwtExpInSeconds=6000&keyId=5f103f1b-ee38-404c-ac94-83c427764813">here</a>:
+			</div>
+			<button type="button" id="userVerificationButton" onclick="setUserAccessToken()">Set user verification accessToken</button>
 			<button type="button" id="logOutUserButton" onclick="switchToUnverifiedDeployment()">Simulate Logout (switch to unverified deployment)</button>
 		</div>
 	</div>
