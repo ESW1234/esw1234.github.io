@@ -1,5 +1,3 @@
-document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;		
-
 function switchToVerifiedDeployment() {
   console.log("switching to verified deployment");
   //realistically this would be set by a customer's login function - we are simulating here for simplicity
