@@ -36,7 +36,6 @@
 		}
 		
 		window.addEventListener("onEmbeddedMessagingReady", () => {
-			debugger;
 			console.log("onEmbeddedMessagingReady emitted");
 		});
 
@@ -44,10 +43,13 @@
 			console.log("onEmbeddedMessagingIdentityTokenExpired emitted");
 		});
 
-		//here is the listener code
-		window.addEventListener("onEmbeddedMessagingConversationCreated", (event) => {
-			debugger;
-		  	console.log("Received the onEmbeddedMessagingConversationCreated event…");
+		window.addEventListener("onEmbeddedMessagingConversationOpened", (event) => {
+		  	console.log("Received the onEmbeddedMessagingConversationOpened event…");
+		 	console.log("Event detail: ", event.detail);
+		});
+
+		window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+		  	console.log("Received the onEmbeddedMessagingConversationStarted event…");
 		 	console.log("Event detail: ", event.detail);
 		});
 	  </script>
