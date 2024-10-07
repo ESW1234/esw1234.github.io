@@ -3312,7 +3312,7 @@
 		// Ensure a '/' is at the end of an LWR URI so a redirect doesn't occur.
 		if(!siteURL.endsWith("/")) siteURL += "/";
 
-		iframe.src = siteURL + "?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
+		iframe.src = siteURL + "fr/?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
 	}
 
 	/**
