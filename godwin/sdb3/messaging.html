@@ -42,6 +42,12 @@
 		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 			console.log("onEmbeddedMessagingIdentityTokenExpired emitted");
 		});
+
+		//here is the listener code
+		window.addEventListener("onEmbeddedMessagingConversationCreated", (event) => {
+		  console.log("Received the onEmbeddedMessagingConversationCreated event…");
+		  console.log("Event detail: ", event.detail);
+		});
 	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
