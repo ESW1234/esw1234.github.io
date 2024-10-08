@@ -11,18 +11,17 @@
 <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'>> -->
  
  
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00Dxx0000006Gqx',
+				'00Dxx0000006Gpr',
 				'miaw',
-				'https://chat2.my.localhost.sfdcdev.site.com:6101/ESWmiaw1727181907365',
+				'https://ram.my.localhost.sfdcdev.site.com:6101/ESWmiaw1728371756937',
 				{
-					scrt2URL: 'https://chat2.my.localhost.sfdcdev.salesforce-scrt.com:18000'
+					scrt2URL: 'http://ram.my.localhost.sfdcdev.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -30,8 +29,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://chat2.my.localhost.sfdcdev.site.com:6101/ESWmiaw1727181907365/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
+<script type='text/javascript' src='https://ram.my.localhost.sfdcdev.site.com:6101/ESWmiaw1728371756937/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
  
 </body>
