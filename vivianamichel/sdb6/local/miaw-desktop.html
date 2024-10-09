@@ -12,8 +12,9 @@
 	}
 
 	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
-             console.log("Received onEmbeddedMessagingButtonCreated");
-		console.log("Event detail: ", event);
+		console.log("Received onEmbeddedMessagingButtonCreated");
+		console.log("Event detail: ", event.detail);
+		console.log("Button  Visibility: ", event.detail.buttonVisibility);
         });
 </script>
 <script type='text/javascript'>
