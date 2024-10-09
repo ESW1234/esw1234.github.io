@@ -11,6 +11,10 @@
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
+	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
+             console.log("Received onEmbeddedMessagingButtonCreated");
+		console.log("Event detail: ", event);
+        });
 </script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
