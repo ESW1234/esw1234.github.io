@@ -3,6 +3,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
 <button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
 <script type='text/javascript'>	
@@ -10,6 +12,14 @@
 		console.log("Clearing user session.");
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
+
+	function setIdentityToken(token) {
+            var token = document.getElementById("idToken").value;
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                "identityTokenType":"JWT",
+                "identityToken": token
+            });
+        }
 
 	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
 		console.log("Received onEmbeddedMessagingButtonCreated");
