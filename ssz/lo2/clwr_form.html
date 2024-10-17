@@ -38,16 +38,15 @@
         <h1>Third-Party Website - <abbr title="Lightning Out">LO</abbr> 2.0</h1>
         <div class="content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel ex nec elit ornare molestie et at ligula. Curabitur congue, mi a venenatis iaculis, quam turpis consectetur ipsum, ac efficitur magna tortor vitae felis. Fusce eu maximus sem. Ut libero velit, tincidunt eu ante vitae, venenatis bibendum mi. Nulla at volutpat ligula. Aliquam erat volutpat. Ut vitae ornare velit, vel sodales erat. Ut tincidunt velit ac velit consectetur, tincidunt placerat dolor tempor. Donec ultrices ornare tincidunt.</p>
-<!-- Insert the following into your page -->
-<!-- Insert the reCAPTCHA script only if you do not already have it on your page -->
-<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
+            <!-- Insert the following into your page -->
 <!-- Insert the following script for your form -->
-<script>if(typeof sfdc_forms==="undefined")sfdc_forms={fns:[]};sfdc_forms.add=function(cb){sfdc_forms.fns.push(cb)};sfdc_forms.init=function(){const elem=document.querySelector("[data-external-form='true']");if(!elem)throw new Error("sfdc_forms: No external form found");sfdc_forms.fns.forEach((e=>e(elem)))};sfdc_forms.add((function(elem){const rsk=elem?.dataset?.recaptchaSiteKey;if(rsk!==undefined&&rsk!==""){if(typeof window.grecaptcha==="undefined")window.grecaptcha={};window.grecaptcha.ready=function(cb){const c="___grecaptcha_cfg";window[c]=window[c]||{};(window[c]["fns"]=window[c]["fns"]||[]).push(cb)};elem.addEventListener("form:grecaptchaRender",(function(event){const grecaptchaElem=document.querySelector("div.grecaptcha");if(grecaptchaElem===null)console.error("sfdc_forms: reCAPTCHA element not found");window.grecaptcha.ready((function(){const id=window.grecaptcha.render(grecaptchaElem,{sitekey:rsk,size:"invisible",badge:"bottomright",callback:token=>{elem.dispatchEvent(new CustomEvent("form:grecaptchaVerified",{detail:{token:token}}))},"error-callback":()=>{elem.dispatchEvent(new CustomEvent("form:grecaptchaErrored"))}});elem.dispatchEvent(new CustomEvent("form:grecaptchaRenderedId",{detail:{id:id}}))}))}));elem.addEventListener("form:grecaptchaExecute",(function(event){window.grecaptcha.ready((function(){if(event.detail&&event.detail.id!==undefined){window.grecaptcha.execute(event.detail.id)}}))}));elem.dispatchEvent(new CustomEvent("form:grecaptchaEnabled"));console.info("sfdc_forms: reCAPTCHA enabled.")}}));sfdc_forms.add((function(elem){const wt=elem?.dataset?.webTracking==="true";if(wt){if(typeof SalesforceInteractions==="undefined"){console.info("sfdc_forms: Data Cloud Web SDK not available");return}elem.dispatchEvent(new CustomEvent("form:interactionDeviceId",{detail:{uniqueId:SalesforceInteractions.getAnonymousId()}}));function updateConsent(consent){elem.dispatchEvent(new CustomEvent("form:interactionConsentState",{detail:{consent:consent}}))}if(SalesforceInteractions.currentConsentOptInExists()){updateConsent(true)}document.addEventListener("interactions:onConsentGrant",(e=>{updateConsent(true)}));document.addEventListener("interactions:onConsentRevoke",(e=>{updateConsent(false)}));console.info("sfdc_forms: web-tracking enabled")}}));</script>
-<script async="async" src="https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lp/assets/lightning_out_embed/prod/en-US/MCITAW2RDASFGFJMH6EQ2MUVMFNY.js" onload="sfdc_forms.init()"></script>
+<script src="https://trialorgfarmforu5.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/assets/scripts/external-forms-host.min.js"></script>
+<script async="async" src="https://trialorgfarmforu5.my.site-com.sisi-zhang-j34g7vcm333o1.wa.crm.dev:6101/lp/assets/lightning_out_embed/prod/en-US/MCSHGFLLL6WJFEXADGGECQ5R7UYY.js" onload="sfdc_forms.init()"></script>
 <!-- Add the following to your page where you want the form to be inserted -->
-<fragment-z4vgelye0ozfcyhg05tl1h89e7a7cy0jzhhtm6y21jt title="Marketing Form" id="container" data-recaptcha-site-key="6LfEXkkqAAAAAGc492wMKPmG5KiHGln7yZpz9rMJ" data-web-tracking="false" data-external-form="true"></fragment-z4vgelye0ozfcyhg05tl1h89e7a7cy0jzhhtm6y21jt>
-<!-- Add the following element to your page only if you do not have a reCAPTCHA element added already -->
-<div class="grecaptcha"></div>
+<fragment-z4vjmm1op9r8m33r2c2zq6dlt32dd0o4r553a5zt5qx title="Marketing Form" id="container" data-external-form="true" data-web-tracking="true" data-recaptcha-site-key=""></fragment-z4vjmm1op9r8m33r2c2zq6dlt32dd0o4r553a5zt5qx>
+
 
             <div style="display:inline-block">
                 <div id="form" style="display:none;">
