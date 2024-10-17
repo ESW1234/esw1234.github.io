@@ -24,13 +24,19 @@
 	};
 </script>
 <script type='text/javascript' src='https://dsg00000dwjar2an.test1.my.pc-rnd.site.com/ESWMIAWUnauthExternal1724708879735/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-<!-- <script>
+<script>
 	window.addEventListener("onEmbeddedMessagingReady", () => { 
-		embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({ 
-			product: "sales",
-			language: "en" 
-		});
+		// embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({ 
+		// 	product: "sales",
+		// 	language: "en" 
+		// });
+
+		// Functional fallback mock.
+		embeddedservice_bootstrap.settings.embeddedServiceConfig.functionalFallback = {
+			isFunctionalFallbackEnabled: true,
+			functionalFallbackMessage: "Looks like something went wrong, and we can't display the conversation"
+		};
 	});
-</script> -->
+</script>
   </body>
 </html>
