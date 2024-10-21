@@ -3,6 +3,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
 <button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
 <script type='text/javascript'>	
@@ -10,6 +12,14 @@
 		console.log("Clearing user session.");
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
+
+	function setIdentityToken(token) {
+            var token = document.getElementById("idToken").value;
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                "identityTokenType":"JWT",
+                "identityToken": token
+            });
+        }
 
 	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
 		console.log("Received onEmbeddedMessagingButtonCreated");
@@ -22,14 +32,13 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
-			embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 
 			embeddedservice_bootstrap.init(
-				'00DSB0000007IzV',
-				'MIAW_w_Bot',
-				'https://viviana-254.my.localhost.sfdcdev.site.com:7443/ESWWeb11729141123479',
+				'00DSG000000rQdt',
+				'MIAW',
+				'https://viviana-254.my.localhost.sfdcdev.site.com:7443/ESWWeb21729547032796',
 				{
-					scrt2URL: 'https://viviana-sdb3.demo.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://viviana-sdb6.demo.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -37,7 +46,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://viviana-254.my.localhost.sfdcdev.site.com:7443/ESWWeb11729141123479/assets/js/bootstrap.js'  onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://viviana-254.my.localhost.sfdcdev.site.com:7443/ESWWeb21729547032796/assets/js/bootstrap.js'  onload='initEmbeddedMessaging()'></script>
 
 
 
