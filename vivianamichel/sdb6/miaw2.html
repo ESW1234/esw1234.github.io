@@ -22,9 +22,10 @@
             });
         }
 
-	window.addEventListener("onEmbeddedMessagingPreChatLoaded", (event) => {
-             	console.log("Received onEmbeddedMessagingPreChatLoaded");
-		console.log("Event detail: ", event);
+	window.addEventListener("onEmbeddedMessagingReady", (event) => {
+             	console.log("Received onEmbeddedMessagingReady");
+		console.log("CLEARING STORAGE");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
         });
 
 	window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
