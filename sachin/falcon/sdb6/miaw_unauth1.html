@@ -64,6 +64,7 @@
 
 			conversationIdValue = getConversationIdFromWebStorage();
 			document.getElementById("logsButton").disabled = false;
+			embeddedservice_bootstrap.utilAPI.launchChat();
 		});
 		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
 			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
@@ -143,7 +144,6 @@
 				embeddedservice_bootstrap.settings.devMode = true;
 				//embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
 				//embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
-				embeddedservice_bootstrap.utilAPI.launchChat();
 
 				embeddedservice_bootstrap.init(
 					'00DSG000001NruH',
