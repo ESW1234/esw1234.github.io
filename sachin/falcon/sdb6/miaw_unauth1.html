@@ -64,7 +64,6 @@
 
 			conversationIdValue = getConversationIdFromWebStorage();
 			document.getElementById("logsButton").disabled = false;
-			embeddedservice_bootstrap.utilAPI.launchChat();
 		});
 		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
 			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
