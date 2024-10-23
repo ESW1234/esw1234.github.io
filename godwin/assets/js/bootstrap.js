@@ -214,6 +214,19 @@
 		POPUP: "default"
 	}
 
+	/**
+	 * The conversation button visibility field name, used in onEmbeddedMessagingButtonCreated.
+	 */
+	const CONVERSATION_BUTTON_CREATED_EVENT_DETAIL_NAME = "buttonVisibility"
+
+	/**
+	 * The conversation button visibility enum, used in onEmbeddedMessagingButtonCreated.
+	 */
+	const CONVERSATION_BUTTON_CREATED_EVENT_DETAIL_VALUE = {
+		SHOW: "Show",
+		HIDE: "Hide"
+	}
+
     /**
      * Static class containing methods for determining whether two colors meet color contrast ratio accessibility
      * guidelines.
@@ -514,6 +527,7 @@
 	 * Internal property to track whether the onEmbeddedMessagingConversationOpened has fired.
 	 */
 	let hasEmbeddedMessagingConversationOpenedEventFired = false;
+
 
 	/**
 	 * Internal property to track whether the launchChat API has been called.
@@ -984,15 +998,27 @@
 	/**
 	 * Log a warning.
 	 *
+	 * @param {string} method - Name of caller.
 	 * @param {string} message - The warning message to print.
 	 * @param {boolean} alwaysOutput - Always log to console regardless of devMode setting.
 	 */
-	function warning(message, alwaysOutput) {
+	function warning(method, message, alwaysOutput) {
 		if(message) {
 			outputToConsole("warn", "Warning: " + message, alwaysOutput);
 		} else {
 			outputToConsole("warn", "EmbeddedServiceBootstrap sent an anonymous warning.", alwaysOutput);
 		}
+
+		const obj = {};
+		Object.assign(obj, {
+			configDev: embeddedservice_bootstrap.settings.eswConfigDevName,
+			method: method ? method : "",
+			stateMessage: message ? `[bootstrap][timestamp: ${Date.now()}] ${message}` : "",
+			convId: conversationId,
+			convType: getAuthMode(),
+			hostUrl: window.location.href
+		});
+		processEmbeddedMessagingLogs(obj);
 	}
 
 	/**
@@ -1031,13 +1057,13 @@
 		try {
 			window.localStorage;
 		} catch(e) {
-			warning("localStorage is not available. User chat sessions continue only in a single-page view and not across multiple pages.");
+			warning("detectWebStorageAvailability", "localStorage is not available. User chat sessions continue only in a single-page view and not across multiple pages.");
 			embeddedservice_bootstrap.isLocalStorageAvailable = false;
 		}
 		try {
 			window.sessionStorage;
 		} catch(e) {
-			warning("sessionStorage is not available. User chat sessions end after a web page refresh or across browser tabs and windows.");
+			warning("detectWebStorageAvailability", "sessionStorage is not available. User chat sessions end after a web page refresh or across browser tabs and windows.");
 			embeddedservice_bootstrap.isSessionStorageAvailable = false;
 		}
 	}
@@ -1191,6 +1217,7 @@
 			objectToCheck.functions.forEach((nativeFunction) => {
 				if(nativeFunction in objectToCheck.object && !isNativeFunction(objectToCheck.object, nativeFunction)) {
 					warning(
+						"checkForNativeFunctionOverrides",
 						"EmbeddedService Messaging Bootstrap may not function correctly with this native JS function modified: " + objectToCheck.name + "." + nativeFunction,
 						true
 					);
@@ -1268,7 +1295,8 @@
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration}),
 			hasConversationButtonColorContrastMetA11yThreshold: hasConversationButtonColorContrastMetA11yThreshold(),
 			hostUrl: window.location.href,
-			...(getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && {expSiteUrl: embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl}), 
+			...(getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && {expSiteUrl: embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl}),
+			...(embeddedservice_bootstrap.settings.displayMode && {displayMode: embeddedservice_bootstrap.settings.displayMode}),
 			snippetSettings
 		});
 
@@ -1366,7 +1394,7 @@
 						setFilePreviewFrameVisibility(false);
 						break;
 					default:
-						warning("Unrecognized event name: " + e.data.method);
+						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
 				}
 			} else if(embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.contentWindow === e.source) {
@@ -1384,13 +1412,13 @@
 						sessionDataReady();
 						break;
 					default:
-						warning("Unrecognized event name: " + e.data.method);
+						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
 				}
 			} else if(getSiteURL().indexOf(e.origin) === 0
 				&& embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)
-				&& getEmbeddedMessagingFrame().contentWindow === e.source) {
-				let frame = getEmbeddedMessagingFrame();
+				&& embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame().contentWindow === e.source) {
+				let frame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 				switch(e.data.method) {
 					case EMBEDDED_MESSAGING_APP_READY_EVENT_NAME:
@@ -1464,7 +1492,7 @@
 						handleSendTextMessageResponse(e.data.data);
 						break;
 					default:
-						warning("Unrecognized event name: " + e.data.method);
+						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
 				}
 			} else {
@@ -1574,7 +1602,11 @@
 	 */
 	function emitEmbeddedMessagingButtonCreatedEvent() {
 		try {
-			dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUTTON_CREATED);
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUTTON_CREATED, {
+				detail: {
+					[CONVERSATION_BUTTON_CREATED_EVENT_DETAIL_NAME]: !shouldShowChatButtonInInitialState() && !sessionExists() ? CONVERSATION_BUTTON_CREATED_EVENT_DETAIL_VALUE.HIDE : CONVERSATION_BUTTON_CREATED_EVENT_DETAIL_VALUE.SHOW
+				}
+			});
 		} catch(err) {
 			error("onEmbeddedMessagingButtonCreated", `Something went wrong in firing onEmbeddedMessagingButtonCreated event ${err}.`);
 		}
@@ -1646,15 +1678,6 @@
 	}
 
 	/**
-	 * Returns a DOM reference to the embedded messaging iframe.
-	 *
-	 * @returns {object}
-	 */
-	function getEmbeddedMessagingFrame() {
-		return document.getElementById(LWR_IFRAME_NAME);
-	}
-
-	/**
 	 * Returns a DOM reference to the embedded messaging modal.
 	 *
 	 * @returns {object}
@@ -1697,7 +1720,7 @@
 	 * @param {boolean} showFilePreviewFrame
 	 */
 	function setFilePreviewFrameVisibility(showFilePreviewFrame) {
-		const embeddedMessagingFrame = getEmbeddedMessagingFrame();
+		const embeddedMessagingFrame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 		if(embeddedservice_bootstrap.filePreviewFrame && embeddedMessagingFrame) {
 			if(Boolean(showFilePreviewFrame)) {
@@ -1964,6 +1987,15 @@
 		}
 
 		return Promise.reject(new Error("Something went wrong initializing conversation state."));
+	}
+
+	/**
+	 * Initializes the unavailable state in the chat client.
+	 * @returns {Promise}
+	 */
+	function initializeChatUnavailableState() {
+		sendConfigurationToAppIframe();
+		return Promise.resolve();
 	}
 
 	/**
@@ -2325,8 +2357,7 @@
 
 				if (isPageLoad) {
 					//delete stale data, show button as on normal page load
-					log("handleListConversation", `No open conversation found, deleting stale data from web storage.`, true);
-					warning("No open conversation found, deleting stale data from web storage.");
+					warning("handleListConversation", `No open conversation found, deleting stale data from web storage.`, true);
 					resetClientToInitialState();
 
 					throw new Error(`No open conversation found for JWT in web storage.`);
@@ -2334,8 +2365,7 @@
 
 				if (!isPrechatStateEnabled()) {
 					// Pre-chat state is not enabled - start a new conversation.
-					log("handleListConversation", "No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
-					warning("No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
+					warning("handleListConversation", "No existing conversation found and pre-chat is not enabled. Will start a new conversation.");
 					return handleCreateNewConversation(hiddenPrechatFields).then((newConversationData) => {
 						return newConversationData;
 					});
@@ -2345,8 +2375,7 @@
 			}
 
 			if (openConversations.length > 1) {
-				log("handleListConversation", `Expected the user to be participating in 1 open conversation but instead found ${openConversations.length}. Loading the conversation with latest startTimestamp.`);
-				warning(`Expected the user to be participating in 1 open conversation but instead found ${openConversations.length}. Loading the conversation with latest startTimestamp.`);
+				warning("handleListConversation", `Expected the user to be participating in 1 open conversation but instead found ${openConversations.length}. Loading the conversation with latest startTimestamp.`);
 				openConversations.sort((convA, convB) => convB.startTimestamp - convA.startTimestamp);
 			}
 
@@ -2451,6 +2480,16 @@
 	}
 
 	/**
+	 * Returns true if functional fallback is enabled; false otherwise.
+	 *
+	 * @returns {boolean}
+	 */
+	function hasFunctionalFallbackEnabled(){
+		const functionalFallback = embeddedservice_bootstrap.settings.embeddedServiceConfig.functionalFallback || {};
+		return Boolean(functionalFallback.isFunctionalFallbackEnabled);
+	}
+
+	/**
 	 * Handle creating a new conversation for this end user. Also handles registering device capabilities if the conversation creation is successful.
 	 *
 	 * @param prechatFields - Pre-chat data to be sent with the request. Includes visible and/or hidden pre-chat fields
@@ -2463,8 +2502,18 @@
 			error("handleCreateNewConversation", "Attempting to create new conversation multiple times!", null, true);
 			return Promise.resolve();
 		}
-		startingConversation = true;
 
+		if (prechatFields) {
+			if (typeof prechatFields === "object") {
+				for (const [key, value] of Object.entries(prechatFields)) {
+					log("handleCreateNewConversation", `Pre-chat field: ${key} ${value && value.trim().length > 0 ? `is set with a value of ${value.length} characters.` : `is not set.`}`);
+				}
+			} else {
+				error("handleCreateNewConversation", `Expected to receive a valid object for Pre-Chat fields, instead received ${typeof prechatFields}`);
+			}
+		}
+
+		startingConversation = true;
 		return createNewConversation(prechatFields)
 			.then((conversationResponse) => {
 				//Dispatch ON_EMBEDDED_MESSAGING_CONVERSATION_STARTED event to parent window
@@ -2656,6 +2705,8 @@
 					handleIdentityTokenExpiry({apiPath, method, mode, requestHeaders, requestBody, resolve});
 				});
 			}
+		} else if (err.status === 423) {
+			initializeChatUnavailableState();
 		}
 		// Throw error in case of other errors.
 		error("handleSendFetchRequestError", `Something went wrong in ${caller}: ${err && err.message ? err.message : JSON.stringify(Object.assign({}, err, {status: err.status, statusText: err.statusText, type: err.type}))}`, err && err.status);
@@ -2963,7 +3014,7 @@
 	 * @returns {boolean} True if chat button should be hidden on page load and false otherwise.
 	 */
 	function shouldShowChatButtonInInitialState() {
-		return isAppDisplayModeInline() ? false : (isWithinBusinessHours() && !embeddedservice_bootstrap.settings.hideChatButtonOnLoad);
+		return isWithinBusinessHours() && !embeddedservice_bootstrap.settings.hideChatButtonOnLoad;
 	}
 
 	/**
@@ -3230,7 +3281,7 @@
 	 */
 	function sendPostMessageToAppIframe(method, data) {
 		lwrIframeReadyPromise.then(() => {
-			const iframe = getEmbeddedMessagingFrame();
+			const iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 			if (typeof method !== "string") {
 				throw new Error(`Expected a string to use as message param in post message, instead received ${method}.`);
@@ -3245,7 +3296,7 @@
 					getSiteURL()
 				);
 			} else {
-				warning(`Embedded Messaging iframe not available for post message with method ${method}.`);
+				warning("sendPostMessageToAppIframe", `Embedded Messaging iframe not available for post message with method ${method}.`);
 			}
 		});
 	}
@@ -3273,7 +3324,7 @@
 					getSiteURL()
 				);
 			} else {
-				warning(`Embedded Messaging iframe not available for post message with method ${method}.`);
+				warning("sendPostMessageToSiteContextIframe", `Embedded Messaging site context iframe not available for post message with method ${method}.`);
 			}
 		});
 	}
@@ -3312,7 +3363,7 @@
 		// Ensure a '/' is at the end of an LWR URI so a redirect doesn't occur.
 		if(!siteURL.endsWith("/")) siteURL += "/";
 
-		iframe.src = siteURL + "fr/?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
+		iframe.src = siteURL + "?lwc.mode=" + (embeddedservice_bootstrap.settings.devMode ? "dev" : "prod");
 	}
 
 	/**
@@ -3326,7 +3377,7 @@
 		return new Promise((resolve, reject) => {
 			try {
 				let button = getEmbeddedMessagingConversationButton();
-				let frame = getEmbeddedMessagingFrame();
+				let frame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 				// eslint-disable-next-line no-negated-condition
 				if(button && !button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) {
@@ -3360,12 +3411,16 @@
 						reject(err);
 					});
 
-					// Initialize conversation state and fetch messaging JWTs.
-					initializeConversationState().catch((err) => {
-						emitEmbeddedMessagingInitErrorEvent();
-						error("handleClick", err.message);
-						reject(err);
-					});
+					// Initialize conversation state and fetch messaging JWTs if functional fallback is not enabled.
+					if (hasFunctionalFallbackEnabled()) {
+						initializeChatUnavailableState();
+					} else {
+						initializeConversationState().catch((err) => {
+							emitEmbeddedMessagingInitErrorEvent();
+							error("handleClick", err.message);
+							reject(err);
+						});
+					}
 				} else if((button && button.classList.contains(CONVERSATION_BUTTON_LOADED_CLASS)) && (frame && frame.classList && frame.classList.contains(MODAL_ISMAXIMIZED_CLASS))) {
 					// Minimize the chat if it is already maximized.
 					sendPostMessageToAppIframe(APP_MINIMIZE_EVENT_NAME);
@@ -3384,7 +3439,7 @@
 	 * @param evt
 	 */
 	function handleKeyDown(evt) {
-		let frame = getEmbeddedMessagingFrame();
+		let frame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 		if (evt && evt.key) {
 			if (evt.key === KEY_CODES.SPACE || evt.key === KEY_CODES.ENTER) {
@@ -3497,14 +3552,14 @@
 		let iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		let chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
 		let loadingSpinner = document.getElementById(EMBEDDED_MESSAGING_LOADING_SPINNER);
-		let iframe = getEmbeddedMessagingFrame();
+		let iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 		if(!iframe) {
-			warning("Embedded Messaging iframe not available for post-app-load updates.");
+			warning("handleAfterAppLoad", "Embedded Messaging iframe not available for post-app-load updates.");
 		}
 
 		if(!button) {
-			warning("Embedded Messaging static button not available for post-app-load updates.");
+			warning("handleAfterAppLoad", "Embedded Messaging static button not available for post-app-load updates.");
 		} else {
 			// Reset the Conversation button once the aura application is loaded in the iframe. Ifame/Chat window is rendered on top of FAB.
 			if (iconContainer && loadingSpinner) {
@@ -3561,9 +3616,6 @@
 			error("resetClientToInitialState", `Error on clearing web storage for the previously ended conversation: ${err}`);
 		}
 
-		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
-		resolveClearSessionPromise();
-
 		// [iOS Devices] Restore the meta viewport tag to its original value
 		if (originalViewportMetaTag) {
 			restoreViewportMetaTag();
@@ -3586,6 +3638,13 @@
 			}
 		}
 		log("resetClientToInitialState", `Successfully reset client to initial state.`);
+
+		// Resolve clearSession() promise, for both Auth and UnAuth (W-12338093) mode.
+		// The reason we do this here is because in some cases we need to wait for the iframe
+		// document to process clearSession asynchronousl; see handleClearUserSession
+		// and handler for APP_RESET_INITIAL_STATE_EVENT_NAME
+		// This should always be the last thing we do in this function.
+		resolveClearSessionPromise();
 	}
 
 
@@ -3594,7 +3653,7 @@
 	 * @param {Boolean} isExperienceSiteContext - Indicates whether we are in the experience site context.
 	 */
 	EmbeddedServiceBootstrap.prototype.removeMarkup = function removeMarkup(isExperienceSiteContext) {
-		const iframe = getEmbeddedMessagingFrame();
+		const iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = getEmbeddedMessagingModal();
 		const minimizedNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
@@ -3605,21 +3664,21 @@
 			// Remove the iframe from DOM. This should take care of clearing Conversation Entries as well.
 			iframe.parentNode.removeChild(iframe);
 		} else {
-			warning("Embedded Messaging iframe not available for resetting the client to initial state.");
+			warning("removeMarkup", "Embedded Messaging iframe not available for resetting the client to initial state.");
 		}
 
 		if(embeddedservice_bootstrap.filePreviewFrame && embeddedservice_bootstrap.filePreviewFrame.parentNode) {
 			// Remove the file preview iframe from DOM.
 			embeddedservice_bootstrap.filePreviewFrame.parentNode.removeChild(embeddedservice_bootstrap.filePreviewFrame);
 		} else {
-			warning("Embedded Messaging file preview iframe not available for resetting the client to initial state.");
+			warning("removeMarkup", "Embedded Messaging file preview iframe not available for resetting the client to initial state.");
 		}
 
 		if(Boolean(isExperienceSiteContext) && embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.parentNode) {
 			// Remove the site context iframe from DOM if we are in experience site context.
 			embeddedservice_bootstrap.siteContextFrame.parentNode.removeChild(embeddedservice_bootstrap.siteContextFrame);
 		} else {
-			warning("Embedded Messaging site context iframe not available for resetting the client to initial state.");
+			warning("removeMarkup", "Embedded Messaging site context iframe not available for resetting the client to initial state.");
 		}
 
 		if (modal) {
@@ -3640,7 +3699,7 @@
 			// Remove button from DOM.
 			button.parentNode.removeChild(button);
 		} else {
-			warning("Embedded Messaging static button not available for resetting the client to initial state.");
+			warning("removeMarkup", "Embedded Messaging static button not available for resetting the client to initial state.");
 		}
 
 		// Remove the minimized notification area if exists.
@@ -3676,7 +3735,7 @@
 		const topContainerElement = document.createElement("div");
 
 		topContainerElement.id = TOP_CONTAINER_NAME;
-		topContainerElement.className = TOP_CONTAINER_NAME;
+		topContainerElement.className = TOP_CONTAINER_NAME + (isAppDisplayModeInline() ? `-${DISPLAY_MODE.INLINE}` : "");
 
 		return topContainerElement;
 	}
@@ -3743,7 +3802,7 @@
 		}
 
 		// Check if the chat button should be hidden in initial state.
-		if (!shouldShowChatButtonInInitialState() && !sessionExists()) {
+		if ((!shouldShowChatButtonInInitialState() && !sessionExists()) || isAppDisplayModeInline()) {
 			buttonElement.style.display = "none";
 		}
 
@@ -3948,8 +4007,9 @@
 			setIdentityTokenResolve();
 			setIdentityTokenResolve = undefined;
 		}
+		log("setIdentityToken", `Successfully set the customer identity token.`);
 
-		if (getEmbeddedMessagingFrame()) {
+		if (embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame()) {
 			// If iframe is initialized, replace the identity token passed down during initialization.
 			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
 		} else if (!getEmbeddedMessagingConversationButton()) {
@@ -4002,7 +4062,7 @@
 	 * 						   in secondary tab - use storage event handlers.
 	 */
 	function handleClearUserSession(shouldRevokeJwt, isSecondaryTab) {
-		const iframe = getEmbeddedMessagingFrame();
+		const iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 		if (iframe) {
 			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
 		} else {
@@ -4125,7 +4185,7 @@
 	 */
 	function handleIdentityTokenExpiredEvent() {
 		if (getAuthMode() !== AUTH_MODE.AUTH) {
-			warning(`handleIdentityTokenExpiredEvent method called but User Verification isn’t enabled in Messaging Settings.`);
+			warning("handleIdentityTokenExpiredEvent", `handleIdentityTokenExpiredEvent method called but User Verification isn’t enabled in Messaging Settings.`);
 			return;
 		}
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_ID_TOKEN_EXPIRED_EVENT_NAME);
@@ -4291,6 +4351,7 @@
 	function resolveClearSessionPromise() {
 		if (clearUserSessionPromiseResolve && typeof clearUserSessionPromiseResolve === "function") {
 			clearUserSessionPromiseResolve();
+			log("resolveClearSessionPromise", "Resolved Clear Session promise.");
 			clearUserSessionPromiseResolve = undefined;
 		}
 	}
@@ -4355,12 +4416,13 @@
 			return false;
 		}
 
+		if (fieldValue && String(fieldValue).length > prechatField['maxLength']) {
+			error("validatePrechatField", `Value for the ${fieldName} field in ${caller} exceeds the maximum length restriction of ${prechatField['maxLength']} characters.`);
+			return false;
+		}
+
 		// These checks are only applicable to hidden fields.
 		if (isHiddenField) {
-			if (fieldValue.length > prechatField['maxLength']) {
-				error("validatePrechatField", `Value for the ${fieldName} field in ${caller} exceeds the maximum length restriction of ${prechatField['maxLength']} characters.`);
-				return false;
-			}
 			if (typeof fieldValue !== "string") {
 				error("validatePrechatField", `You must specify a string for the ${fieldName} field in ${caller} instead of a ${typeof fieldValue} value.`);
 				return false;
@@ -4631,7 +4693,7 @@
 					// Log successfully updated auto-response parameters for debugging purposes.
 					log("setAutoResponseParameters", `[setAutoResponseParameters] Successfully updated auto-response parameter ${paramKey}`);
 				} else {
-					warning(`[setAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`)
+					warning("setAutoResponseParameters", `[setAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`)
 				}
 			}
 		} else {
@@ -4658,7 +4720,7 @@
 					// Log successfully removed auto-response page parameter for debugging purposes.
 					log("removeAutoResponseParameters", `[removeAutoResponseParameters] Successfully removed auto-response parameter ${paramKey}`);
 				} else {
-					warning(`[removeAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`);
+					warning("removeAutoResponseParameters", `[removeAutoResponseParameters] Failed to validate auto-response parameter ${paramKey}`);
 				}
 			});
 		} else {
@@ -4676,6 +4738,16 @@
 	 * @class
 	 */
 	function EmbeddedMessagingUtil() {}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * Returns a DOM reference to the embedded messaging iframe.
+	 *
+	 * @returns {object}
+	 */
+	EmbeddedMessagingUtil.prototype.getEmbeddedMessagingFrame = function getEmbeddedMessagingFrame() {
+		return document.getElementById(LWR_IFRAME_NAME);
+	}
 
 	/**
 	 * EXTERNAL API - DO NOT CHANGE SHAPE!
@@ -4723,7 +4795,7 @@
 		}
 
 		// We only hide the button if iframe is not present
-		if (!getEmbeddedMessagingFrame()) {
+		if (!embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame()) {
 			const conversationButton = getEmbeddedMessagingConversationButton();
 			if (conversationButton) {
 				conversationButton.style.display = "none";
@@ -4757,7 +4829,7 @@
 				if (!hasEmbeddedMessagingInitEventFired) {
 					successMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
-					warning(successMessage);
+					warning("launchChat", successMessage);
 					reject(successMessage);
 
 					return;
@@ -4781,7 +4853,7 @@
 				if (!hasEmbeddedMessagingInitEventFired) {
 					errorMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
-					warning(errorMessage);
+					warning("launchChat", errorMessage);
 					reject(errorMessage);
 
 					return;
@@ -4802,7 +4874,7 @@
 				if (!hasEmbeddedMessagingReadyEventFired) {
 					consoleMessage = `[Launch Chat API] Can’t invoke API before the onEmbeddedMessagingReady event is fired.`;
 
-					warning(consoleMessage);
+					warning("launchChat", consoleMessage);
 					reject(consoleMessage);
 
 					return;
@@ -4810,13 +4882,13 @@
 
 				// Cannot be invoked if static button is not present.
 				if (!getEmbeddedMessagingConversationButton()) {
-					if(isChannelMenuDeployment()) {
+					if(isChannelMenuDeployment() && (!isUserVerificationEnabled() || isUserVerificationEnabled() && identityToken)) {
 						// [W-13992566] Generate button markup for Channel Menu only.
 						embeddedservice_bootstrap.generateMarkup(true);
 					} else {
 						consoleMessage = `[Launch Chat API] Default chat button isn’t present. Check if the messaging client initialized successfully.`;
 
-						warning(consoleMessage);
+						warning("launchChat", consoleMessage);
 						reject(consoleMessage);
 
 						return;
@@ -4824,8 +4896,8 @@
 				}
 
 				// Handle invocation when iframe is already present.
-				if (getEmbeddedMessagingFrame()) {
-					let iframe = getEmbeddedMessagingFrame();
+				if (embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame()) {
+					let iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 					// Maximize the iframe if it's minimized, else return.
 					if (iframe && iframe.classList && iframe.classList.contains(MODAL_ISMINIMIZED_CLASS)) {
 						let successMessage;
@@ -4842,8 +4914,7 @@
 
 					consoleMessage = `[Launch Chat API] The messaging client window is already present and maximized.`;
 
-					log("launchChat", consoleMessage);
-					warning(consoleMessage);
+					warning("launchChat", consoleMessage);
 					resolve(consoleMessage);
 
 					return;
@@ -5358,7 +5429,7 @@
 	 * Resize iframe to fit the minimize state notification area (modal).
 	 */
 	function handleShowMinimizedStateNotification() {
-		const embeddedMessagingFrame = getEmbeddedMessagingFrame();
+		const embeddedMessagingFrame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 		if(embeddedMessagingFrame) {
 			// Resize and style iframe to render minimized button and notification.
@@ -5545,7 +5616,6 @@
 			error("init", `Error: ${err}`);
 		}
 	};
-
 	if (!window.embeddedservice_bootstrap) {
 		window.embeddedservice_bootstrap = new EmbeddedServiceBootstrap();
 	} else {
