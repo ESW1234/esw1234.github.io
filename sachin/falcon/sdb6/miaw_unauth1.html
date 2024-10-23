@@ -137,11 +137,17 @@
 	</script>
 
 	<script type='text/javascript'>
+		window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
+			console.log("Auto launching the MIAW chat window.");
+    			embeddedservice_bootstrap.utilAPI.launchChat();
+		});
+
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 				embeddedservice_bootstrap.settings.devMode = true;
 				//embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
+				embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true
 
 				embeddedservice_bootstrap.init(
 					'00DSG000001NruH',
