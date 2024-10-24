@@ -26,6 +26,12 @@ Agent: sa1@sdb6.gkr
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
+	const host = document.querySelector("#host");
+const shadow = host.attachShadow({ mode: "open" });
+const span = document.createElement("span");
+span.textContent = "I'm in the shadow DOM";
+shadow.appendChild(span);
+	
 </script>
 <script type='text/javascript' src='https://miawsdb6.demo.test1.my.pc-rnd.site.com/ESWSAWebESD1710981651681/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 <div>
