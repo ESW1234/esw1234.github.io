@@ -11,6 +11,27 @@
 </style> 
 <h1>Laptop local, on sdb6 MIAW1</h1>
 <script type='text/javascript'>
+	function fetchAndSetToken() {
+	        var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+	         
+	        fetch(idpEndpoint).then(function (response) {
+	            return response.json();
+	        }).then(function (data) {
+	            console.log("Access Token from IDP: " + data.accessToken);
+	            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+	                identityTokenType: "JWT",
+	                identityToken: data.accessToken
+	            });
+	        }).catch(function(err) {
+	            console.error('Something went wrong :', err);
+	        });
+	    }
+	     
+	    window.addEventListener("onEmbeddedMessagingReady", () => {
+	       console.log("onEmbeddedMessagingReady emitted");
+	       fetchAndSetToken();
+	    });
+	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
