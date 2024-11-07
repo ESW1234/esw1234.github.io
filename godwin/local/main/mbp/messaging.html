@@ -47,24 +47,24 @@
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
 				// SDB6
-				// embeddedservice_bootstrap.init(
-				// 	'00DSG000003UGaH',
-				// 	'MessagingWeb_External',
-				// 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWeb1730740402466',
-				// 	{
-				// 		scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
-				// 	}
-				// );
-
-				// OMT1
 				embeddedservice_bootstrap.init(
-					'00DJM000000ZwnV',
-					'MIAW',
+					'00DSG000003UGaH',
+					'MessagingWeb_External',
 					'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWeb1730740402466',
 					{
-						scrt2URL: 'https://godwin-orgmig1.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
+
+				// OMT1
+				// embeddedservice_bootstrap.init(
+				// 	'00DJM000000ZwnV',
+				// 	'MIAW',
+				// 	'https://godwinlaw.my.localhost.sfdcdev.site.com:6101/ESWMessagingWeb1730740402466',
+				// 	{
+				// 		scrt2URL: 'https://godwin-orgmig1.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
