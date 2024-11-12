@@ -34,7 +34,7 @@
 		  });
 		</script>
 		
-	<script type='text/javascript'>
+<!-- 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
@@ -63,6 +63,26 @@
 			}
 		};
 	</script>
-	<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+  try {
+   embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+    embeddedservice_bootstrap.settings.devMode = true;
+
+   embeddedservice_bootstrap.init(
+    '00DSB00000EOGVX',
+    'MIAW_Test',
+    'https://orgfarmout-2e3.test1.my.pc-rnd.site.com/ESWMIAWTest1728501792794',
+    {
+     scrt2URL: 'https://orgfarmout-2e3.test1.my.pc-rnd.salesforce-scrt.com'
+    }
+   );
+  } catch (err) {
+   console.error('Error loading Embedded Messaging: ', err);
+  }
+ };
+</script>
+<script onload="initEmbeddedMessaging()" src="https://orgfarmout-2e3.test1.my.pc-rnd.site.com/ESWMIAWTest1728501792794/assets/js/bootstrap.js" type="text/javascript"></script>
 	</body>
 </html>
