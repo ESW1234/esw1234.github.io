@@ -14,7 +14,7 @@
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		</script>
 		<br>
-		<h2 align="center"><font color ="green">SDB3 STANDARD CHAT </font></h2>
+		<h2 align="center"><font color ="green">SDB3 STANDARD CHAT. </font></h2>
 
 		<br/>
 
@@ -50,12 +50,12 @@
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://inapporg3.test1.my.pc-rnd.salesforce.com',
-			'https://inapporg3.test1.my.pc-rnd.site.com/eswChat',
+			'https://inapporg3.demo.test1.my.pc-rnd.salesforce.com',
+			'https://inapporg3.demo.test1.my.pc-rnd.site.com/eswChat',
 			gslbBaseURL,
 			'00DSB0000003a8b',
 			'ChatWithNoBot',
@@ -72,7 +72,7 @@ embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://inapporg3.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://inapporg3.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
