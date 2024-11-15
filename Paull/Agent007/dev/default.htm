@@ -1,0 +1,33 @@
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<head>
+    <title>ASA Chat 1</title>
+</head>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=0">
+<title>ASA MIAW Demo 1</title>
+</head>
+<body>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.init(
+				'00D7h0000004oHJ',
+				'xDO_Messaging_for_Web',
+				'https://qlabs-org--agent007.sandbox.my.site.com/ESWxDOMessagingforWeb1731465555669',
+				{
+					scrt2URL: 'https://qlabs-org--agent007.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://qlabs-org--agent007.sandbox.my.site.com/ESWxDOMessagingforWeb1731465555669/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  
+</body>
+</html>
