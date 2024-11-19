@@ -3,6 +3,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
+
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
 <button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
 
 <script type='text/javascript'>	
@@ -11,19 +14,41 @@
 		embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
+	function setIdentityToken(token) {
+            var token = document.getElementById("idToken").value;
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                "identityTokenType":"JWT",
+                "identityToken": token
+            });
+        }
+
+	window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
+             console.log("Received onEmbeddedMessagingPreChatSubmitted");
+		console.log("Event detail: ", event);
+        });
+
+	window.addEventListener("message", (event) => {
+             if (event.origin !== "https://viviana-sdb6.demo.test1.my.pc-rnd.site.com"){
+		     return;
+	     }
+	     if (event.data && event.data.type === "navigate") {
+		     window.location.href = event.data.url;
+	     }
+        });
 </script>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab = true;
 
 			embeddedservice_bootstrap.init(
-				'00DSB0000007IzV',
-				'MIAW_w_Bot',
-				'https://viviana-sdb6.test1.my.pc-rnd.site.com/ESWMIAW1688664871145',
+				'00DSG0000085KEP',
+				'AUTH_PRECHAT_DISABLED',
+				'https://viviana-sdb6-esw.test1.my.pc-rnd.site.com/ESWAUTHPRECHATDISABLED1691479579187',
 				{
-					scrt2URL: 'https://viviana-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://viviana-sdb6-esw.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -31,10 +56,8 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://viviana-sdb6.test1.my.pc-rnd.site.com/ESWMIAW1688664871145/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://viviana-sdb6-esw.test1.my.pc-rnd.site.com/ESWAUTHPRECHATDISABLED1691479579187/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 
-
-   
 </body>
 </html>
