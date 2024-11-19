@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
 	</head>
 	<body>
-<!--     	<h1>Desktop/Mac Studio/MIAW (main)</h1>
+    	<h1>Desktop/Mac Studio/MIAW (main)</h1>
 		<h2>SDB6</h2>
 		<h3>sachinh@esw.com / test1234</h3>
 		<br>
@@ -16,7 +16,7 @@
 		<a href="https://salesforce.quip.com/LaV8AzbsDBeu" target="_blank">Blitz org detail sheet</a>
 
 		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-		</br> -->
+		</br>
 		<style>
 			body {
   				background-image: url('https://esw1234.github.io/Agentforce_PageBackground.png');
@@ -26,7 +26,7 @@
 		</style>
 		
 		<script type='text/javascript'>
-			// document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
@@ -49,13 +49,21 @@
 				// 		scrt2URL: 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				// 	}
 				// );
+				// embeddedservice_bootstrap.init(
+				// 	'00DSB0000005YCL',
+				// 	'webMessagingBot03',
+				// 	'https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677', // 254
+				// 	//'https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11730148338244', // 252-patch
+				// 	{
+				// 		scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
 				embeddedservice_bootstrap.init(
-					'00DSB0000005YCL',
-					'webMessagingBot03',
-					'https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677', // 254
-					//'https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11730148338244', // 252-patch
+					'00DSB00000Ga2IE', // SDB3_ASA
+					'ASAWeb1', // SDB3_ASA
+					'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb11731982791438',
 					{
-						scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://dsb00000ga2ie2az.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
 			} catch (err) {
@@ -63,26 +71,6 @@
 			}
 		};
 	</script>
-	<script type='text/javascript' src='https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-<!-- 	<script type='text/javascript'>
-		function initEmbeddedMessaging() {
-  try {
-   embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-    embeddedservice_bootstrap.settings.devMode = true;
-
-   embeddedservice_bootstrap.init(
-    '00DSB00000EOGVX',
-    'MIAW_Test',
-    'https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677',
-    {
-     scrt2URL: 'https://orgfarmout-2e3.test1.my.pc-rnd.salesforce-scrt.com'
-    }
-   );
-  } catch (err) {
-   console.error('Error loading Embedded Messaging: ', err);
-  }
- };
-</script>
-<script onload="initEmbeddedMessaging()" src="https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677/assets/js/bootstrap.js" type="text/javascript"></script> -->
+	<script type='text/javascript' src='https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb11731982791438/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 	</body>
 </html>
