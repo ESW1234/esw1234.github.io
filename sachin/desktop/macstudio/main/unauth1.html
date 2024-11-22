@@ -49,23 +49,23 @@
 				// 		scrt2URL: 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com'
 				// 	}
 				// );
-				// embeddedservice_bootstrap.init(
-				// 	'00DSB0000005YCL',
-				// 	'webMessagingBot03',
-				// 	'https://miaw.my.localhost.sfdcdev.site.com:7443/ESWWeb11730316837677', // 254
-				// 	//'https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11730148338244', // 252-patch
-				// 	{
-				// 		scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
-				// 	}
-				// );
 				embeddedservice_bootstrap.init(
-					'00DSB00000Ga2IE', // SDB3_ASA
-					'ASAWeb1', // SDB3_ASA
-					'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb11731982791438',
+					'00DSB0000005YCL',
+					'webMessagingBot03',
+					'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb11731982791438', // 254
+					//'https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11730148338244', // 252-patch
 					{
-						scrt2URL: 'https://dsb00000ga2ie2az.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
+				// embeddedservice_bootstrap.init(
+				// 	'00DSB00000Ga2IE', // SDB3_ASA
+				// 	'ASAWeb1', // SDB3_ASA
+				// 	'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb11731982791438',
+				// 	{
+				// 		scrt2URL: 'https://dsb00000ga2ie2az.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
