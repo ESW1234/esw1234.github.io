@@ -7,8 +7,6 @@
 
 <h1>Route to Math Planner Copilot</h1>
 
-<button type="button" onclick='loadMIAW()'>Load MIAW</button>
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -31,15 +29,17 @@
 
 	function loadMIAW() {
 		let script = document.createElement("script");
-		script.innerHTML = "<script type='text/javascript' src='https://derekeswsdb6.demo.test1.my.pc-rnd.site.com/ESWMIAW11716925767745/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>"
+		script.src = 'https://derekeswsdb6.demo.test1.my.pc-rnd.site.com/ESWMIAW11716925767745/assets/js/bootstrap.js';
+		script.type = 'text/javascript';
+		script.onload = function () {
+			initEmbeddedMessaging();
+		}
 		document.body.appendChild(script);
 	}
-
-	window.addEventListener("onFabClick", () => {
-	       console.log("onEmbeddedMessagingButtonClicked emitted");
-    	});
 </script>
 <!-- <script type='text/javascript' src='https://derekeswsdb6.demo.test1.my.pc-rnd.site.com/ESWMIAW11716925767745/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
  -->
+<button type="button" onclick='loadMIAW()'>Load MIAW</button>
+
 </body>
 </html>
