@@ -50,21 +50,6 @@
                 border-radius: 0 0 1rem 1rem;
             }
         </style>
-        <script>
-            {
-                const shadows = new WeakMap(),
-                      original = Element.prototype.attachShadow;
-                Element.prototype.attachShadow = function () {
-                    console.log("attachShadow called");
-                    const shadow = original.apply(this, arguments);
-                    shadows.set(this, shadow);
-                    return shadow;
-                };
-                window.getClosedShadow = function(element) {
-                    return shadows.get(element);
-                };
-            }
-        </script>
     </head>
     <body style="background-color:rgb(80, 141, 179)">
         <div class="content">
