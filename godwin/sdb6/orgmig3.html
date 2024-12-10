@@ -40,24 +40,24 @@
 			console.log("onEmbeddedMessagingReady emitted");
 		});
 	  </script>
-    <script type='text/javascript'>
-  	function initEmbeddedMessaging() {
-  		try {
-  			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-  
-  			embeddedservice_bootstrap.init(
-  				'00DSG00000HJd8j',
-  				'MIAW',
-  				'https://godwin-sdb6-mig3.test1.my.pc-rnd.site.com/ESWMIAW1676452590768',
-  				{
-  					scrt2URL: 'https://godwin-sdb6-mig3.test1.my.pc-rnd.salesforce-scrt.com'
-  				}
-  			);
-  		} catch (err) {
-  			console.error('Error loading Embedded Messaging: ', err);
-  		}
-  	};
-  </script>
-  <script type='text/javascript' src='https://godwin-sdb6-mig3.test1.my.pc-rnd.site.com/ESWMIAW1676452590768/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	
+				embeddedservice_bootstrap.init(
+					'00DSG00000HJd8j',
+					'MIAW_2',
+					'https://godwin-sdb6-mig3.test1.my.pc-rnd.site.com/ESWMIAW21676635423898',
+					{
+						scrt2URL: 'https://godwin-sdb6-mig3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://godwin-sdb6-mig3.test1.my.pc-rnd.site.com/ESWMIAW21676635423898/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </html>
