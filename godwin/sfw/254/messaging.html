@@ -47,23 +47,23 @@
 				embeddedservice_bootstrap.settings.devMode = true; 
 				
 				// SDB3
-				embeddedservice_bootstrap.init(
-					'00DSB0000004st3',
-					'EmbeddedMessaging_ExternalBot',
-					'https://godwin.my.site-com.yat-law-onin1thy590y0.wa.crm.dev:6101/ESWMIAW1732575961496',
-					{
-						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
-					}
-				);
-				// SDB6
 				// embeddedservice_bootstrap.init(
-				// 	'00DSG000003UGaH',
-				// 	'MessagingWeb_Bot',
-				// 	'https://godwin250sfw.my.site-com.yat-law-w-49831803.wc.crm.dev:6101/ESWEmbeddedMessagingSFW1706128621312',
+				// 	'00DSB0000004st3',
+				// 	'EmbeddedMessaging_ExternalBot',
+				// 	'https://godwin.my.site-com.yat-law-onin1thy590y0.wa.crm.dev:6101/ESWMIAW1732575961496',
 				// 	{
-				// 		scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				// 		scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
 				// 	}
 				// );
+				// SDB6
+				embeddedservice_bootstrap.init(
+					'00DSG000003UGaH',
+					'MessagingWeb_Bot',
+					'https://godwin.my.site-com.yat-law-onin1thy590y0.wa.crm.dev:6101/ESWMIAW1732575961496',
+					{
+						scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
