@@ -22,7 +22,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -44,17 +44,17 @@
 
 		embedded_svc.init(
 			'https://org13.test2.my.pc-rnd.salesforce.com',
-			'https://org13.test2.my.pc-rnd.site.com/cs',
+			'https://org13.test2.my.pc-rnd.site.com/endpoint',
 			gslbBaseURL,
 			'00DZN0000008aIO',
-			'eswDep1',
+			'Embedded_Chat',
 			{
 				baseLiveAgentContentURL: 'https://c.la2-stmhb1-0-xrd.stmhb.stm.salesforceliveagent.com/content',
-				deploymentId: '572ZN000000001X',
-				buttonId: '573ZN000000CaRM',
+				deploymentId: '572ZN000000CaRR',
+				buttonId: '573ZN000000001m',
 				baseLiveAgentURL: 'https://d.la2-stmhb1-0-xrd.stmhb.stm.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IZN0000004CAK2A2_190ee97f661',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IZN00000000232AA_193b6d5c186',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
