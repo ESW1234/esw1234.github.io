@@ -8,6 +8,8 @@
 	<label for="idToken">Set identity token:</label></br>
 	<input type="text" id="idToken" name="idToken" size="50"></br>
 	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+	<label for="idToken">Set conversationId to end the conversation:</label></br>
+	<input type="text" id="conversationId" name="conversationId" size="50"></br>
 	<button type="button" id="clearAuthBtn" onclick="closeEmbeddedMessagingVerifiedConversation()"> Close Conversation  </button></br></br>
 	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
 
@@ -28,7 +30,7 @@
 		    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
 		    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
 		    const jwt = storageObj["JWT"];
-		    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+		    const conversationId = document.getElementById("conversationId").value;
 		    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
 		    fetch(endpoint, {
 			method: "DELETE",
@@ -73,15 +75,14 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-      			embeddedservice_bootstrap.settings.devMode = true;
-			embeddedservice_bootstrap.settings.restrictSessionOnMessagingChannel = true;
+			embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
-				'00DZM0000004YbI',
-				'Auth_1',
-				'https://eswmessaging0307.test2.my.pc-rnd.site.com/ESWAuth11710354074271',
+				'00DSB0000016Oez',
+				'Auth_2',
+				'https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWAuth21703180552103',
 				{
-					scrt2URL: 'https://eswmessaging0307.test2.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -89,7 +90,8 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswmessaging0307.test2.my.pc-rnd.site.com/ESWAuth11710354074271/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWAuth21703180552103/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
 
 
 </body>
