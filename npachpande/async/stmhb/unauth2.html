@@ -13,25 +13,35 @@
 
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
-		try {
+	        try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
-			embeddedservice_bootstrap.init(
-				'00DZM0000004YbI',
-				'Unauth_2',
-				'https://eswmessaging0307.test2.my.pc-rnd.site.com/ESWUnauth21712595274823',
-				{
-					scrt2URL: 'https://eswmessaging0307.test2.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
+			embeddedservice_bootstrap.settings.devMode = true;
+	
+	            embeddedservice_bootstrap.init(
+	                '00DZM0000004d3p',
+	                'Unauth_1',
+	                'https://eswmessaging1206.test2.my.pc-rnd.site.com/ESWUnauth11733875675751',
+	                {
+	                    scrt2URL: 'https://eswmessaging1206.test2.my.pc-rnd.salesforce-scrt.com'
+	                }
+	            );
+	        } catch (err) {
+	            console.error('Error loading Embedded Messaging: ', err);
+	        }
 	};
+
+	function loadMIAW() {
+		let script = document.createElement("script");
+		script.src = 'https://eswmessaging1206.test2.my.pc-rnd.site.com/ESWUnauth11733875675751/assets/js/bootstrap.js';
+		script.type = 'text/javascript';
+		script.onload = function () {
+			initEmbeddedMessaging();
+		}
+		document.body.appendChild(script);
+	}
 </script>
-<script type='text/javascript' src='https://eswmessaging0307.test2.my.pc-rnd.site.com/ESWUnauth21712595274823/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-
+<button type="button" onclick='loadMIAW()'>Load MIAW</button>
 
 </body>
 </html>
