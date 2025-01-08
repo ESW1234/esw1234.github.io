@@ -59,11 +59,11 @@
 				// 	}
 				// );
 				embeddedservice_bootstrap.init(
-					'00DSB00000Ga2IE', // SDB3_ASA
-					'ASAWeb1', // SDB3_ASA
-					'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb31734396432075',
+					'00DSB00000Ga2IE', // SDB3_ASA org
+					'ASAWeb1', // SDB3_ASA deployment
+					'https://dxx0000006gqxeae.my.localhost.sfdcdev.site.com:7443/ESWWeb31734396432075', // local org site url
 					{
-						scrt2URL: 'https://dsb00000ga2ie2az.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://dsb00000ga2ie2az.test1.my.pc-rnd.salesforce-scrt.com' // SDB3_ASA deployment's SCRT2 URL
 					}
 				);
 			} catch (err) {
