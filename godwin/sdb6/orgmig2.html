@@ -1,0 +1,63 @@
+<html>
+   <head>
+       <title>SDB6 ORG MIG MESSAGING 2</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>SDB6 Org Migration Messaging 2</h1>
+	<h2>g2@mig.sdb6.org</h2>
+
+	<!-- Edit page link -->
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+	  </script>
+
+     <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG00000HJc6E',
+				'MIAW',
+				'https://godwin-sdb6-mig2.test1.my.pc-rnd.site.com/ESWMIAW1676452590768',
+				{
+					scrt2URL: 'https://godwin-sdb6-mig2.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://godwin-sdb6-mig2.test1.my.pc-rnd.site.com/ESWMIAW1676452590768/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</html>

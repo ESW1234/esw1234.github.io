@@ -12,36 +12,25 @@
 </style>
 
 <script type='text/javascript'>
-	window.addEventListener("onEmbeddedMessagingReady", () => {
-	    setTimeout(() => {
-	        embeddedservice_bootstrap.settings.imageCompressionOptions = {
-	            maxWidth: 960,
-	            maxHeight: 1280
-	        };
-	    }, 5000);
-	});
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en_US';
+            embeddedservice_bootstrap.settings.devMode = true;
 
-	
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = false;
-
-			embeddedservice_bootstrap.init(
-				'00DSG0000001hxN',
-				'Messaging_21',
-				'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging211696959858528',
-				{
-					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+            embeddedservice_bootstrap.init(
+                '00DSG0000001hxN',
+                'Messaging_25',
+                'https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging251717171138427',
+                {
+                    scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
 </script>
-<script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging211696959858528/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
+<script type='text/javascript' src='https://eswmessagingchatsdb6.test1.my.pc-rnd.site.com/ESWMessaging251717171138427/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>

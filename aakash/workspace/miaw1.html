@@ -1,0 +1,32 @@
+
+<html>
+	<head>
+		<title>MIAW 1 (Local)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+		<h1>Local Setup</h1>
+		
+		<!-- Snippet -->
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+					'00DSB000009YhN7',
+					'MIAW_Queue',
+					'https://mars.my.site-com.aakash-prakash-xt516moyf9id0.wb.crm.dev:6101/ESWMIAWQueue1677750015009',
+					{
+						scrt2URL: 'https://miawsdb33.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://mars.my.site-com.aakash-prakash-xt516moyf9id0.wb.crm.dev:6101/ESWMIAWQueue1677750015009/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+	  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			
+		      	embeddedservice_bootstrap.settings.displayMode = 'default';
+    			embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+
+			// embeddedservice_bootstrap.settings.devMode = true;
+			
+			embeddedservice_bootstrap.init(
+				'00DSG00000GnGX4',
+				'MIAW_Unauth',
+				'https://dsg00000gngx42an.test1.my.pc-rnd.site.com/ESWMIAWUnauth1732041531227',
+				{
+					scrt2URL: 'https://dsg00000gngx42an.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dsg00000gngx42an.test1.my.pc-rnd.site.com/ESWMIAWUnauth1732041531227/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script>
+	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => { 
+		console.log("buttonVisibility is " + event.detail.buttonVisibility);
+	});
+</script>
+  </body>
+</html>

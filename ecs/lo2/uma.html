@@ -1,0 +1,13 @@
+<!-- Insert the following into your page -->
+<!-- Insert the reCAPTCHA script only if you do not already have it on your page -->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<!-- Initialize the reCAPTCHA script -->
+<script> if (typeof grecaptcha === "undefined") { grecaptcha = {}; } grecaptcha.ready = function (cb) { const c = "___grecaptcha_cfg"; window[c] = window[c] || {}; (window[c]["fns"] = window[c]["fns"] || []).push(cb); };</script>
+<!-- LO SCRIPT INSTRUCTION -->
+<script src="https://dsg00000axdtj2a3.test1.my.pc-rnd.site.com/lp/assets/lightning_out_embed/prod/en-US/MC3236H4GGAFGT7CGTN4IAJHIGTI.js" async="async" onload="init()"></script>
+<!-- Add the following to your page where you want the form to be inserted -->
+<fragment-z4v98njy5byy572pdaydw454cui26rdentssasentqh></fragment-z4v98njy5byy572pdaydw454cui26rdentssasentqh>
+<!-- RECAPTCHA INIT INSTRUCTION -->
+<script>const RECAPTCHA_SITE_KEY = '';function init() { const parentDomElement = window.document.getElementById('container'); parentDomElement.addEventListener("form:grecaptchaRender", function (event) { const grecaptchaElem = document.querySelector('div.grecaptcha'); grecaptcha.ready(function () { const id = grecaptcha.render(grecaptchaElem, { sitekey: RECAPTCHA_SITE_KEY, size: 'invisible', badge: 'bottomright', callback: (token) => { parentDomElement.dispatchEvent(new CustomEvent('form:grecaptchaVerified', { detail: { token: token } })) }, 'error-callback': () => { parentDomElement.dispatchEvent(new CustomEvent('form:grecaptchaErrored')) } }); parentDomElement.dispatchEvent(new CustomEvent('form:grecaptchaRenderedId', { detail: { id: id } })); }); }); parentDomElement.addEventListener('form:grecaptchaExecute', function (event) { grecaptcha.ready(function () { if (event.detail && event.detail.id !== undefined) { grecaptcha.execute(event.detail.id); } }); }); parentDomElement.dispatchEvent(new CustomEvent('form:grecaptchaEnabled'));}</script>
+<!-- Add the following element to your page only if you do not have a reCAPTCHA element added already -->
+<div class="grecaptcha"></div>

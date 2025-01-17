@@ -1,0 +1,36 @@
+<html>
+<body>
+<style type="text/css">
+.embeddedServiceHelpButton .helpButton .uiButton { background-color: #005290; font-family: "Salesforce Sans", sans-serif; }
+.embeddedServiceHelpButton .helpButton .uiButton:focus { outline: 1px solid #005290; }
+@font-face {
+font-family: 'Salesforce Sans';
+src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+}
+</style>
+<script src="http://npachpande-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var initESW = function(gslbBaseURL) {
+embedded_svc.settings.isExternalPage = false;
+embedded_svc.settings.displayHelpButton = true;
+embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+embedded_svc.settings.extraPrechatFormDetails = [];
+embedded_svc.settings.loginClientId = 'clientId';
+embedded_svc.settings.loginRedirectURL = 'https://www.salesforce.com/';
+embedded_svc.settings.loginTargetQuerySelector = '#login';
+embedded_svc.settings.devMode = true;
+
+
+embedded_svc.settings.enabledFeatures = ['FieldService'];
+embedded_svc.settings.entryFeature = 'FieldService';
+
+
+embedded_svc.auth.oauthToken = '00Dxx0000001gG3%21AQQAQIy9lU8Uon_V4hLfK0h7XY1BVvgXBbftonTA04ehBXwxuXQ2M5V8m0sOFVvSgyvBSbEVHaFXC1tqIdHysND4ww8SCutZ';embedded_svc.init('http://npachpande-wsm.internal.salesforce.com:6109', null, gslbBaseURL, '00Dxx0000001gG3', 'EmbeddedServiceConfig1545173996686', { }); }; if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'http://npachpande-wsm.internal.salesforce.com:6109/embeddedservice/5.0/esw.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW(null); }</script>
+</body>
+</html>

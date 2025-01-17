@@ -1,0 +1,85 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <label for="idToken">Set identity token:</label></br>
+    <input type="text" id="idToken" name="idToken" size="50"></br>
+    <button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+    <button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+    <script type='text/javascript'>
+        function clearAuthSession() {
+            embeddedservice_bootstrap.userVerificationAPI.clearSession();
+        }
+
+        function setIdentityToken(token) {
+            var token = document.getElementById("idToken").value;
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                "identityTokenType":"JWT",
+                "identityToken": token
+            });
+        }
+        
+        function fetchAndSetToken() {
+             var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=tiffany&subject=epic.b62305079cc8@orgfarm.out&jwtExpInSeconds=600000&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+             fetch(porticoURL).then(function(response) {
+              return response.json();
+             }).then(function(data) {
+              embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                   identityTokenType: "JWT",
+                   identityToken: data.accessToken
+              });
+             }).catch(function(err) {
+              console.log('Fetch Error :', err);
+             });
+        }
+
+
+        window.addEventListener("onEmbeddedMessagingReady", () => {
+             console.log("Received the onEmbeddedMessagingReady event…");
+             // Add some fake delay
+             setTimeout(() => {
+              //fetchAndSetToken();
+             }, 5000);
+        });
+
+
+        window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+             console.log("Received the onEmbeddedMessagingTokenExpired event…");
+             // Add some fake delay
+             setTimeout(() => {
+              //fetchAndSetToken();
+             }, 5000);
+        });
+    </script>
+    
+	  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			
+      embeddedservice_bootstrap.settings.displayMode = 'default';
+      embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+
+			// embeddedservice_bootstrap.settings.devMode = true;
+			
+			embeddedservice_bootstrap.init(
+				'00DSG00000GnGX4',
+				'MIAW_Auth',
+				'https://dsg00000gngx42an.test1.my.pc-rnd.site.com/ESWMIAWAuth1732035055686',
+				{
+					scrt2URL: 'https://dsg00000gngx42an.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dsg00000gngx42an.test1.my.pc-rnd.site.com/ESWMIAWAuth1732035055686/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script>
+	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => { 
+		console.log("buttonVisibility is " + event.detail.buttonVisibility);
+	});
+</script>
+  </body>
+</html>

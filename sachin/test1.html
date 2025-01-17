@@ -1,0 +1,40 @@
+
+
+<html>
+	<head>
+		<title>Event Source Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+		<label for="orgId">Set Org ID:</label></br>
+		<input type="text" id="orgId" name="orgId" size="50"></br>
+		<label for="scrt2URL">Set SCRT2 URL:</label></br>
+		<input type="text" id="scrt2URL" name="scrt2URL" size="50"></br>
+		<label for="jwt">Set JWT:</label></br>
+		<input type="text" id="jwt" name="jwt" size="50"></br>
+		<label for="lastEventId">Set lastEventId:</label></br>
+		<input type="text" id="lastEventId" name="lastEventId" size="50"></br>
+		
+		<button type="button" id="connectSSE" onclick="connectToSSE()"> Connect to SSE </button></br></br>
+		<button type="button" id="disconnectSSE" onclick="disconnectSSE()"> Disconnect SSE </button></br></br>
+		<script "text/javascript">
+			function connectToSSE() {
+				let orgId = document.getElementById("orgId").value;
+				let scrt2URL = document.getElementById("scrt2URL").value;
+				let jwt = document.getElementById("jwt").value;
+				let lastEventId = document.getElementById("lastEventId").value;
+
+				window.eventSourceObj.subscribeToEventSource(orgId, scrt2URL, jwt, lastEventId).
+					then(console.log("Connected to SSE")).
+					catch(console.error(`Failed to connect to the SSE`));
+			}
+
+			function disconnectSSE() {
+				window.eventSourceObj.closeEventSource();
+			}
+		</script>
+		
+		<script type='text/javascript' src='https://git.soma.salesforce.com/pages/sachin-hanumantha/test/eventsource-polyfill.js'></script>
+	  	<script type='text/javascript' src='https://git.soma.salesforce.com/pages/sachin-hanumantha/test/eventSourceService.js'></script>
+	</body>
+</html>

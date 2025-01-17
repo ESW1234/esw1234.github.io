@@ -1,0 +1,29 @@
+
+<html>
+	<head>
+		<title>MIAW - Orgfarm</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+            '00D4V000001EnHZ',
+            'EmbeddedServiceAgent',
+            'https://sftutor.my.site.com/ESWEmbeddedServiceAgent1722316746599',
+            {
+              scrt2URL: 'https://sftutor.my.salesforce-scrt.com',
+            },
+          );
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src="https://sftutor.my.site.com/ESWEmbeddedServiceAgent1722316746599/assets/js/bootstrap.min.js" onload='initEmbeddedMessaging()'></script>
+	</body>
+</html>

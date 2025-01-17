@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>sdb3 unverified1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSB0000016Oez',
+				'Unverified_Deployment_1',
+				'https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWUnverifiedDeployment1705685894740',
+				{
+					scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWUnverifiedDeployment1705685894740/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+	
+</body>
+</html>

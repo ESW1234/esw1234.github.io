@@ -13,21 +13,20 @@
             try {
                 embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
                 embeddedservice_bootstrap.settings.debugMode = true;
-                embeddedservice_bootstrap.init(
-                    '00DB0000000gZkn',
-                    'a4',
-                    'https://miaw2.my.salesforce.com',
-                    {
-                        scrt2URL: 'https://miaw2.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
-    <script type='text/javascript' src='https://miaw2.lightning.force.com/embeddedservice/asyncclient/bootstrap.min.js'
-        onload='initEmbeddedMessaging()'></script>
+			embeddedservice_bootstrap.init(
+				'00DB0000000gZkn',
+				'a4',
+				'https://miaw2.my.site.com/ESWa41654210969303',
+				{
+					scrt2URL: 'https://miaw2.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miaw2.my.site.com/ESWa41654210969303/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 

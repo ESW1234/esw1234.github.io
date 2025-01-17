@@ -1,0 +1,59 @@
+<html>
+   <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>Test Page</title>
+   </head>
+<body>
+  
+<label for="idToken">Set identity token:</label></br>
+<input type="text" id="idToken" name="idToken" size="50"></br>
+<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+<button type="button" id="showChatButton" onclick="showChatButton()"> Show </button></br></br>
+<button type="button" id="hideChatButton" onclick="hideChatButton()"> Hide </button>
+
+<script type='text/javascript'>
+	function showChatButton() {
+		embeddedservice_bootstrap.utilAPI.showChatButton();
+	}
+	function hideChatButton() {
+		embeddedservice_bootstrap.utilAPI.hideChatButton();
+	}
+  	function clearAuthSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+  	}
+
+	function setIdentityToken(token) {
+      		var token = document.getElementById("idToken").value;
+      		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+          		"identityTokenType":"JWT",
+			"identityToken": token
+		});
+	}
+
+</script>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.hideChatButtonOnLoad = "";
+
+			embeddedservice_bootstrap.init(
+				'00DSG0000085KEP',
+				'AUTH_PRECHAT_DISABLED',
+        'https://viviana.my.localhost.sfdcdev.site.com:7443/ESWWeb11726525034246',
+				{
+					scrt2URL: 'https://viviana-sdb6-esw.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://viviana.my.localhost.sfdcdev.site.com:7443/ESWWeb11726525034246/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>

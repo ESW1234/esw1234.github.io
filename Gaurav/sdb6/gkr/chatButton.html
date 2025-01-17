@@ -61,8 +61,8 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://miawsdb6.test1.my.pc-rnd.salesforce.com',
-			'https://miawsdb6.test1.my.pc-rnd.site.com/eswChat',
+			'https://miawsdb6.demo.test1.my.pc-rnd.salesforce.com',
+			'https://miawsdb6.demo.test1.my.pc-rnd.site.com/eswChat',
 			gslbBaseURL,
 			'00DSG0000006nKb',
 			'ESW_Chat',
@@ -79,7 +79,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://miawsdb6.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://miawsdb6.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -87,4 +87,4 @@
 	} else {
 		initESW('https://service.force.com');
 	}
-</script>
+</script

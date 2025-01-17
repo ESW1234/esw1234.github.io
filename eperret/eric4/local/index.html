@@ -12,13 +12,13 @@
     </head>
     <body>
         <div id="content">
-            <h1>Sample Page ̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺ͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩ  39.8</h1>
+            <h1>Sample Page ̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺̺ͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩͩ  40.9</h1>
             <div id="innerContent"></div>
             <div id="innerContent2"></div>
         </div>
-        <script src="https://signuporgtest1632185089334.lightning.localhost.sfdcdev.force.com:6101/lightning/lightning.out.js"></script>
+        <script src="https://eric4.lightning.localhost.sfdcdev.force.com:7443/lightning/lightning.out.js"></script>
         <script>
-            $Lightning.use("c:LO",    // name of the Lightning app
+            $Lightning.use("c:simpleLO",    // name of the Lightning app
                 function() {          // Callback once framework and app loaded
                     debugger;
                     console.log("callback for $Lightning.use");
@@ -30,18 +30,10 @@
                             console.log("callback for $Lightning.createComponent");
                         }
                     );
-                    $Lightning.createComponent(
-                        "c:staticResources",
-                        {},
-                        "innerContent2",
-                        function(cmp){
-                            console.log("callback for $Lightning.createComponent2");
-                        }
-                    );
                 },
                 //"https://safaritest.localhost.blitztesting.com",
-                "https://signuporgtest1632185089334.lightning.localhost.sfdcdev.force.com:6101",
-                "00Dxx0000006GZj!AQEAQD2LF0t2fnUkhnmw2pLOr.wwG0jaGeScRA.aXy4wQRwdSQFwrX3wW1IcDw96nF70N8nc64OC9CWumHoQzAIz4FQ9hvN8"
+                "https://eric4.lightning.localhost.sfdcdev.force.com:7443",
+                "00Dxx0000006GKh!AQEAQFiOq0PDawxiIjh7ofSAygIlZMMpBS0iMeN5kF89afadCiS.PF.j85olTZhyzYjl4oYjXOK473AzHTTxwbnah6qI5IJp"
             );
         </script>
     </body>

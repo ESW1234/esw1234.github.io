@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE with Last-Event-ID and Headers</title>
+</head>
+<body>
+
+    <h1>SSE with Custom Headers and Last-Event-ID</h1>
+
+    <label for="lastEventId">Last Event ID:</label>
+    <input type="text" id="lastEventId" placeholder="Enter Last Event ID">
+    <br><br>
+
+    <button id="connectButton">Connect to SSE</button>
+    <button id="disconnectButton" disabled>Disconnect from SSE</button>
+
+    <div id="output"></div>
+
+    <script>
+        let eventSource;
+
+        // Function to connect to SSE
+        function connectToSSE() {
+            const lastEventId = document.getElementById("lastEventId").value;
+            const headers = {
+                'Authorization': 'Bearer eyJraWQiOiIyNjY3YjViZWE1Nzg2NWZmNzEwODBmODdmYTQ3ODM1NTFkZWM0NjRjZWIyNDI2ZDRjYjJjOWNhN2RmZWIyMDk0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ2Mi9pYW1lc3NhZ2UvVU5BVVRIL05BL3VpZDoyY2UxMzY3My0xMjkyLTQ5NzYtOTdiMi03ZTQ4MmE2NzJjMjQiLCJjbGllbnRJZCI6InYxL3VuQXV0aFdlYkRlcGxveW1lbnQvOGQ2ZmQxMWMtZDMxNC00ODE2LTg5MTktM2Y1ZjNmZWMzY2JiIiwiZmFsY29uQ2VsbCI6IiIsImNoYW5uZWxBZGRJZCI6IjJiNDlhZjhiLWExYjYtNDA1Yi04MjA3LTc4MmY5YzdiNjhlZiIsImlzcyI6ImlhbWVzc2FnZSIsImZhbGNvbkZEIjoiIiwiZGV2aWNlSWQiOiJ5MFF3RlRFNVh2THB5Y0EwNElaRVl3bWwxRDh5M002bkdQc3kweENXOU1lNGhIbVFJcmMvcG9ZRU5rVWR2Qi9oZ3dhTGYwM2syY05KZGJTOXZzdEZxZz09IiwiY2FwYWJpbGl0aWVzVmVyc2lvbiI6IjI0OCIsIm9yZ0lkIjoiMDBEeHgwMDAwMDA2R3F4IiwiZGV2aWNlSW5mbyI6Int9IiwicGxhdGZvcm0iOiJXZWIiLCJmYWxjb25GSUhhc2giOiIiLCJqd3RJZCI6IjR6OGwyZlhNRDl5cy05blRILS1HN1YiLCJjbGllbnRTZXNzaW9uSWQiOiJiMTE3NmQ3OC03YjM4LTQwOTQtYmFkOC00OGQzZjEzMTUzZjUiLCJhdWQiOiJVU0VSIiwiZXZ0S2V5IjoicHVibGljLWV2ZW50OjAiLCJhcGlWZXJzaW9uIjoidjEiLCJzY29wZSI6ImludGVybmFsIiwiandrc191cmkiOiJodHRwOi8vbG9jYWxob3N0OjgyMDYvaWFtZXNzYWdlL3YxLy53ZWxsLWtub3duL2p3a3MuanNvbj9rZXlJZD0yNjY3YjViZWE1Nzg2NWZmNzEwODBmODdmYTQ3ODM1NTFkZWM0NjRjZWIyNDI2ZDRjYjJjOWNhN2RmZWIyMDk0IiwiZXNEZXBsb3ltZW50VHlwZSI6IldlYiIsImV4cCI6MTcyNTU3MzE2MiwiaWF0IjoxNzI1NTY1OTYyfQ.o2ZT-UPfZ8vtQUCtMqA5GwgUPFmO87o1B-s2YtUphdpUZcALM73FiuyYf5PqT1t4PBxPII0kaojcug4m2Tz9DEVMDm38L46q8ubZFnKpBm9_JGZ7vsdMPo6sI8idJcQv4--Ccng5mo7Okx5qarVgCanz9Gc005uBic8Y5q8BDXP4Wyiu_pIYxaGLJk5p8t9eejaB7dtpCXTUWYARoqlqaDi53JlcuTJj_pLmcXVfrjpYRhltBmVo564egzc3xrRX1ccI9o-h-psFovgpG4L6b8hc_5A6tSAbVFisMXuxp_1zsJclug2eZ4FZExoB_kd8FKEiWBvvfnxOeEoaAxKIHg',  // Add your custom headers here
+                'X-Org-ID': '00Dxx0000006Gqx'
+            };
+
+            // Make an initial fetch request to pass headers and Last-Event-ID
+            fetch('http://localhost:8198/eventrouter/v1/sse', {
+                method: 'GET',
+                headers: headers
+            })
+            .then(response => {
+                if (response.ok) {
+                    logMessage("Initial request successful. Connecting to SSE...");
+
+                    // Construct URL with Last-Event-ID if provided
+                    let url = 'http://localhost:8198/eventrouter/v1/sse';
+                    if (lastEventId) {
+                        url += `?lastEventId=${lastEventId}`;
+                    }
+
+                    // Now establish the SSE connection using EventSource
+                    eventSource = new EventSource(url);
+
+                    eventSource.onopen = function() {
+                        logMessage("Connected to SSE stream.");
+                        document.getElementById("connectButton").disabled = true;
+                        document.getElementById("disconnectButton").disabled = false;
+                    };
+
+                    eventSource.onmessage = function(event) {
+                        logMessage("Received event: " + event.data);
+                    };
+
+                    eventSource.onerror = function(error) {
+                        logMessage("Error: " + error);
+                    };
+                } else {
+                    logMessage("Initial request failed.");
+                }
+            })
+            .catch(error => logMessage("Error during fetch: " + error));
+        }
+
+        // Function to disconnect from SSE
+        function disconnectFromSSE() {
+            if (eventSource) {
+                eventSource.close();
+                logMessage("Disconnected from SSE stream.");
+                document.getElementById("connectButton").disabled = false;
+                document.getElementById("disconnectButton").disabled = true;
+            }
+        }
+
+        // Function to log messages
+        function logMessage(message) {
+            const outputDiv = document.getElementById("output");
+            const newMessage = document.createElement("p");
+            newMessage.textContent = message;
+            outputDiv.appendChild(newMessage);
+        }
+
+        // Add event listeners for buttons
+        document.getElementById("connectButton").addEventListener("click", connectToSSE);
+        document.getElementById("disconnectButton").addEventListener("click", disconnectFromSSE);
+
+    </script>
+
+</body>
+</html>

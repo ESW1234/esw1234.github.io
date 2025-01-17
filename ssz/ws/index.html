@@ -1,0 +1,44 @@
+
+<html lang="en-US">
+<body>
+<script src="https://trialorgfarmforu-dev-ed.develop.my.site-com.sisi-zhang-8n43wple5vqb0.wb.crm.dev:6101/lotest/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppGuest", function() {
+              $Lightning.createComponent("c:AuraCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:AuraCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); 
+
+     
+             $Lightning.createComponent("c:bikeCardLo", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              });*/
+            },
+
+           'https://trialorgfarmforu-dev-ed.develop.my.site-com.sisi-zhang-8n43wple5vqb0.wb.crm.dev:6101/lotest'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>

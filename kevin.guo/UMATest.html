@@ -1,0 +1,26 @@
+<html lang="en-US">
+<body>
+<script src="https://corsa04-perfeng2-2015926685.vpod.lightning.t.force.com/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:loUmaApp", function() {
+              $Lightning.createComponent("c:lightouttest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('myAuraComp created');
+              }); 
+            },
+            'https://perftest886-corsa04-perfeng2-2015926685.vpod.t.salesforce-communities.com/accountPortal' // Experience Site URL
+        );                   
+</script>   
+</body>
+</html>

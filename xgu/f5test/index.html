@@ -1,0 +1,23 @@
+<html lang="en-US">
+  <body>
+    <script src="https://xgu-dev-ed.develop.test1.my.pc-rnd.site.com/auratest/lightning/lightning.out.js"></script>
+    <p>Lightning Out App Test</p>
+    <div id="divlightning"></div>
+    <script>
+      $Lightning.use(
+        "c:myLightningOutTest",
+        function () {
+          $Lightning.createComponent(
+            "c:MyTest",
+            {},
+            "divlightning",
+            function (cmp) {
+              console.log("MyTest aura component created");
+            }
+          );
+        },
+        "https://xgu-dev-ed.develop.test1.my.pc-rnd.site.com/auratest"
+      );
+    </script>
+  </body>
+</html>

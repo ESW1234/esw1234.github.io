@@ -5,12 +5,6 @@
 </head>
 <body>
 
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
-
 <style type='text/css'>
 	.embeddedServiceHelpButton .helpButton .uiButton {
 		background-color: #005290;
@@ -21,36 +15,36 @@
 	}
 </style>
 
-<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
 		embedded_svc.settings.devMode = true;
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://npachpande-230620-319-demo.my.salesforce.com',
-			'https://npachpande-230620-319-demo.my.site.com/consumer',
+			'https://npachpande-240627-393-demo.my.salesforce.com',
+			'https://npachpande-240627-393-demo.my.site.com/consumer',
 			gslbBaseURL,
-			'00DHr00000189kC',
+			'00Dal00000Omk03',
 			'SDO_Service_Standard_Chat',
 			{
-				baseLiveAgentContentURL: 'https://c.la3-c1-ia6.salesforceliveagent.com/content',
-				deploymentId: '572Hr000000PHmY',
-				buttonId: '573Hr000000PHsA',
-				baseLiveAgentURL: 'https://d.la3-c1-ia6.salesforceliveagent.com/chat',
+				baseLiveAgentContentURL: 'https://c.la1-core1.sfdc-8tgtt5.salesforceliveagent.com/content',
+				deploymentId: '572al00000DyTZ5',
+				buttonId: '573al000001OuQg',
+				baseLiveAgentURL: 'https://d.la1-core1.sfdc-8tgtt5.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1N000000000QUAQ_161f7756989',
-				isOfflineSupportEnabled: true
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://npachpande-230620-319-demo.my.salesforce.com/embeddedservice/5.0/esw.js');
+		s.setAttribute('src', 'https://npachpande-240627-393-demo.my.salesforce.com/embeddedservice/5.0/esw.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -59,7 +53,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-  
-  
 </body>
 </html>

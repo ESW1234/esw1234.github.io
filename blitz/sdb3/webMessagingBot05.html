@@ -21,13 +21,24 @@
 				embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			}
 
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				// Embedded Messaging app ready
-				console.log("onEmbeddedMessagingReady emitted");
-				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-				    "userName" : "Guest",
-				    "cartValue": "1000"
-				});
+			// window.addEventListener("onEmbeddedMessagingReady", () => {
+			// 	// Embedded Messaging app ready
+			// 	console.log("onEmbeddedMessagingReady emitted");
+			// 	embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+			// 	    "userName" : "Guest",
+			// 	    "cartValue": "1000"
+			// 	});
+			// });
+
+			window.addEventListener("onEmbeddedMessagingReady", e => {
+			  embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+			    // List the pre-chat field names with the value and whether it's editable
+			    // in the pre-chat form.
+			    "firstName": {
+			      "value": "Jane",
+			      "isEditableByEndUser": false
+			    }
+			  });
 			});
 		</script>
 		

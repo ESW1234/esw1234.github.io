@@ -1,0 +1,23 @@
+<html>
+  <h1>PerfChatBot NA211 new (SCRT2) with Prechat</h1>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00D8a000003z0bg',
+				'PerfBotPrechat',
+				'https://miawtestorgnew.my.site.com/ESWPerfBotPrechat1713543934910',
+				{
+					scrt2URL: 'https://miawtestorgnew.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://miawtestorgnew.my.site.com/ESWPerfBotPrechat1713543934910/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</html>

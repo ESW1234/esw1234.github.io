@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>	
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB000002YPin',
+				'akshitaweb1',
+				'https://sdb3org6.test1.my.pc-rnd.site.com/ESWakshitaweb11702947870698',
+				{
+					scrt2URL: 'https://sdb3org6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://sdb3org6.test1.my.pc-rnd.site.com/ESWakshitaweb11702947870698/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+
+
+</body>
+</html>

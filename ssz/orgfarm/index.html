@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression/lightning/lightning.out.js"></script> 
+<script src="https://dsg000007gucs2aa.test1.my.pc-rnd.salesforce.com/lightning/lightning.out.js"></script> 
             <!--  <My Domain URL>/lightning/lightning.out.js -->
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
@@ -17,24 +17,33 @@
               function(cmp) {
                   console.log('AuraComLightningOutTest created');
               }); 
+
+               $Lightning.createComponent("c:AuraWithApex", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('AuraWithApex created');
+              }); 
                       /*
               $Lightning.createComponent("c:TestLabelCmp", 
               { },
               "divlightning",
               function(cmp) {
                    console.log('TestLabelCmp created');
-              }); 
+              }); */
 
      
-             $Lightning.createComponent("c:bikeCardLo", 
+             $Lightning.createComponent("c:bikeCard", 
               { },
               "divlightning",
               function(cmp) {
-                     console.log('bikeCardLo created');
-              });*/
+                     console.log('bikeCard created');
+              });
             },
+                           "https://dsg000007gucs2aa.test1.my.pc-rnd.salesforce.com",
 
-           'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression'// Experience Site URL
+          // 'https://dsg000007gucs2aa.test1.my.pc-rnd.site.com',// Experience Site URL
+                           "00DSG000007gucs!AQEAQEiWtTzuHMWJQfUhMOumAalw1bzBLhHcpUuMfdofoF.Tmah6KH1rhXglOdd9wdQjaaBkohP9P1eYkZF3XeFFhO2pRtaD"
                            
         );                   
 </script>   

@@ -1,0 +1,56 @@
+
+
+<html>
+<head>
+	<title>SDO-MIAW-Unauth</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDO - MIAW - Unauth </h1>
+  <h2 style="color:blue;">Admin: sachinhanumantha@sachinhanumantha-240403-636.demo</h2>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+	<script "text/javascript">
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+		});
+
+		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
+		});
+
+		window.addEventListener("onEmbeddedMessagingInitError", () => {
+			console.log("Received 'onEmbeddedMessagingInitError' event");
+		});
+
+		window.addEventListener("message", (event) => {
+	     		if (event.data && event.data.eventName === "request_hidden_prechat_fields") {
+		     		console.log("Received request_hidden_prechat_fields event");
+	     		}
+ 		});
+	</script>
+
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+				  '00Dbn000001N2a1',
+				  'SDO_Messaging_for_Web',
+				  'https://sachinhanu-240403-636-demo.my.site.com/ESWSDOMessagingforWeb1712616595003',
+				  {
+					  scrt2URL: 'https://sachinhanu-240403-636-demo.my.salesforce-scrt.com'
+				  }
+			  );
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://sachinhanu-240403-636-demo.my.site.com/ESWSDOMessagingforWeb1712616595003/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>na1 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<script type="text/javascript">
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en-US'; // For example, enter 'en' or 'en-US'
+            embeddedservice_bootstrap.settings.devMode = true;
+
+            embeddedservice_bootstrap.init(
+                '00Dx0000000H1zM',
+                'chatbot_scrt2_loadtest_embedded_deployment244',
+                'https://perfchatbotscrt2.ist19.stm.force.com/ESWchatbotscrt2loadtest1678229372855/s',
+                {
+                    scrt2URL: 'https://perfchatbotscrt2org.my.ist19.stm.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
+</script>
+
+
+<script onload="initEmbeddedMessaging()" src="https://perfchatbotscrt2.ist19.stm.force.com/ESWchatbotscrt2loadtest1678229372855/s/assets/js/bootstrap.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"+Sheet2!B21>
+</head>
+<body>
+<h1> Capabilities Auth Page In APP Web Client for Org: "admin username"</h1>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'>> -->
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DRZ000001dA71',
+				'MIAWAuth2',
+				'https://desdb14org.test2.my.pc-rnd.site.com/ESWMIAWAuth21728057392289',
+				{
+					scrt2URL: 'https://desdb14org.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://desdb14org.test2.my.pc-rnd.site.com/ESWMIAWAuth21728057392289/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

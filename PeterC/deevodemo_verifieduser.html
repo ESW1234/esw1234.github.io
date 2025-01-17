@@ -15,7 +15,7 @@
           <div class="slds-scope">
 <script type='text/javascript'>
      function fetchAndSetToken() {
-          var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=pchung@salesforce.com&jwtExpInSeconds=600000&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+          var porticoURL = "https://portico.sfproxy.controltelemetry-s.aws-esvc1-useast2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=pchung@salesforce.com&jwtExpInSeconds=600000&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
           fetch(porticoURL).then(function(response) {
                return response.json();
           }).then(function(data) {
