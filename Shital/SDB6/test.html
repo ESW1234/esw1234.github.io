@@ -1,1 +1,20 @@
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG00000KG28n',
+				'MIAW_ESD_QUEUE_TO_AGENT',
+				'https://btsdb620250116.demo.test1.my.pc-rnd.site.com/ESWMIAWESDQUEUETOAGEN1737454331127',
+				{
+					scrt2URL: 'https://btsdb620250116.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://btsdb620250116.demo.test1.my.pc-rnd.site.com/ESWMIAWESDQUEUETOAGEN1737454331127/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
