@@ -44,16 +44,26 @@
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-	
-				// SDB6
+
+				// SDB3
 				embeddedservice_bootstrap.init(
-					'00DSG000003UGaH',
-					'MessagingWeb_External2',
+					'00DSB0000004st3',
+					'EmbeddedMessaging_ExternalSites',
 					'https://godwinlaw-main.my.site-com.yat-law-h601lct4o7b41.wc.crm.dev:6101/ESWEmbeddedMessaging1736800934217',
 					{
-						scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
+				
+				// // SDB6
+				// embeddedservice_bootstrap.init(
+				// 	'00DSG000003UGaH',
+				// 	'MessagingWeb_External2',
+				// 	'https://godwinlaw-main.my.site-com.yat-law-h601lct4o7b41.wc.crm.dev:6101/ESWEmbeddedMessaging1736800934217',
+				// 	{
+				// 		scrt2URL: 'https://godwin-sdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
