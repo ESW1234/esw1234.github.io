@@ -113,7 +113,7 @@
 	 * 3. Maintain the same version here and in embeddedMessaging#constants.js
 	 * @type {string}
 	 */
-	const capabilitiesVersion = "252";
+	const capabilitiesVersion = "254";
 
 	// TODO: W-13475085 - confirm event names with CX.
 	const APP_LOADED_EVENT_NAME = "ESW_APP_LOADED";
