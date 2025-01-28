@@ -30,8 +30,9 @@
 	/**
 	 * Iframe platform class constants.
 	 */
-	const EXPERIENCE_SITE = "experienceSite";
-	const MOBILE_PUBLISHER = "mobilePublisher";
+	const EXPERIENCE_SITE = "eswExperienceSite";
+	const MOBILE_PUBLISHER = "eswMobilePublisher";
+	const IS_DESKTOP = "eswIsDesktop";
 
 	/**
 	 * Parent page elements class constants.
@@ -40,7 +41,7 @@
 	const BACKGROUND_MODAL_ID = "embeddedMessagingModalOverlay";
 	const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
 	const LWR_IFRAME_NAME = "embeddedMessagingFrame";
-	const LWR_INLINE_IFRAME_CLASS = LWR_IFRAME_NAME + "Inline"; 
+	const LWR_INLINE_IFRAME_CLASS = LWR_IFRAME_NAME + "Inline";
 	const BOOTSTRAP_CSS_NAME = "embeddedMessagingBootstrapStyles";
 	const IFRAME_DEFAULT_TITLE = "Chat with an Agent";
 	const IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS = LWR_IFRAME_NAME + "MaximizedBottomTabBar";
@@ -112,7 +113,7 @@
 	 * 3. Maintain the same version here and in embeddedMessaging#constants.js
 	 * @type {string}
 	 */
-	const capabilitiesVersion = "248";
+	const capabilitiesVersion = "254";
 
 	// TODO: W-13475085 - confirm event names with CX.
 	const APP_LOADED_EVENT_NAME = "ESW_APP_LOADED";
@@ -160,6 +161,9 @@
 	const EMBEDDED_MESSAGING_DISPATCH_EVENT_TO_HOST = "EMBEDDED_MESSAGING_DISPATCH_EVENT_TO_HOST";
 	const EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_REQUEST_EVENT_NAME = "EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_REQUEST";
 	const EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE_EVENT_NAME = "EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE";
+	const EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED_EVENT_NAME = "EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED";
+	const ERR_MESSAGE_ORG_NOT_SUPPORTED = "ORG_NOT_SUPPORTED";
+	const ERR_MESSAGE_ORG_UNDER_MAINTENANCE = "ORG_UNDER_MAINTENANCE";
 
 	/**
 	 * Conversation transcript file name.
@@ -205,7 +209,7 @@
 		CONVERSATION: "Conversation",
 		SESSION: "Session"
 	}
-	
+
 	/**
 	 * Display mode for the client.
 	 */
@@ -230,13 +234,13 @@
     /**
      * Static class containing methods for determining whether two colors meet color contrast ratio accessibility
      * guidelines.
-     * 
+     *
      * See: https://www.w3.org/WAI/WCAG21/Techniques/general/G207
      */
     class ColorContrastAccessibility {
         /**
          * Checks if the contrast ratio between two colors meets a given threshold or an accessibility standard.
-         * 
+         *
          * @param {string} colorA - The hexadecimal color value of the first color.
          * @param {string} colorB - The hexadecimal color value of the second color.
          * @param {number} [threshold=3.0] - Optional contrast threshold to check against, defaulted to a11y requirement of 3.0.
@@ -409,7 +413,7 @@
 	 * @type {string}
 	 */
 	const ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME = "onEmbeddedMessagingWindowMinimized";
-	
+
 	/**
 	 * Event dispatched when Transcript request fails
 	 */
@@ -518,10 +522,16 @@
 	let hasEmbeddedMessagingReadyEventFired = false;
 
 	/**
-	 * Internal property to track whether the embedded messaging initialization event is fired already.
+	 * Internal property to track whether the embedded messaging initialization success event is fired already.
 	 * @type {boolean}
 	 */
-	let hasEmbeddedMessagingInitEventFired = false;
+	let hasEmbeddedMessagingInitSuccessEventFired = false;
+
+	/**
+	 * Internal property to track whether the embedded messaging initialization failure event is fired already.
+	 * @type {boolean}
+	 */
+	let hasEmbeddedMessagingInitFailureEventFired = false;
 
 	/**
 	 * Internal property to track whether the onEmbeddedMessagingConversationOpened has fired.
@@ -734,6 +744,12 @@
 	 */
 	const MESSAGING_JWT_CHANNEL_ADD_ID_CLAIM = "channelAddId";
 
+	/**
+	 * Default dimension for custom window size
+	 */
+	const DEFAULT_WINDOW_WIDTH = 320;
+	const DEFAULT_WINDOW_HEIGHT = 480;
+
 	/******************************************************
 	 Web storage functions
 	 This is copied from embeddedService:webStorageUtils.js.
@@ -894,8 +910,11 @@
 		// Reset hasEmbeddedMessagingReadyEventFired.
 		hasEmbeddedMessagingReadyEventFired = false;
 
-		// Reset hasEmbeddedMessagingInitEventFired.
-		hasEmbeddedMessagingInitEventFired = false;
+		// Reset hasEmbeddedMessagingInitSuccessEventFired.
+		hasEmbeddedMessagingInitSuccessEventFired = false;
+		
+		// Reset hasEmbeddedMessagingInitFailureEventFired.
+		hasEmbeddedMessagingInitFailureEventFired = false;
 
 		// Reset hasEmbeddedMessagingConversationOpenedEventFired.
 		hasEmbeddedMessagingConversationOpenedEventFired = false;
@@ -1290,6 +1309,7 @@
 			failedMessages: failedConversationMessages,
 			conversationId,
 			devMode: Boolean(embeddedservice_bootstrap.settings.devMode),
+			noSsePatch: Boolean(embeddedservice_bootstrap.settings.noSsePatch),
 			language: embeddedservice_bootstrap.settings.language,
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration}),
@@ -1297,7 +1317,8 @@
 			hostUrl: window.location.href,
 			...(getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && {expSiteUrl: embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl}),
 			...(embeddedservice_bootstrap.settings.displayMode && {displayMode: embeddedservice_bootstrap.settings.displayMode}),
-			snippetSettings
+			snippetSettings,
+			capabilitiesVersion: capabilitiesVersion
 		});
 
 		return finalConfigurationData || {};
@@ -1344,7 +1365,7 @@
 				"event": "force:logout",
 				"handler": handleAuraLogoutEvent
 			});
-		} 
+		}
 	}
 
 	/**
@@ -1435,7 +1456,7 @@
 						embeddedservice_bootstrap.minimizeIframe(frame, e.data.data);
 						break;
 					case APP_MAXIMIZE_EVENT_NAME:
-						embeddedservice_bootstrap.maximizeIframe(frame);
+						embeddedservice_bootstrap.maximizeIframe(frame, e.data.data);
 						break;
 					case APP_RESET_INITIAL_STATE_EVENT_NAME:
 						resetClientToInitialState();
@@ -1554,11 +1575,11 @@
 	 * Fires an event 'onEmbeddedMessagingInitSuccess' to the host (i.e. customer) window to indicate the client is rendered.
 	 */
 	function emitEmbeddedMessagingInitSuccessEvent() {
-		hasEmbeddedMessagingInitEventFired = true;
+		hasEmbeddedMessagingInitSuccessEventFired = true;
 		try {
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_SUCCESS_EVENT_NAME);
 		} catch(err) {
-			hasEmbeddedMessagingInitEventFired = false;
+			hasEmbeddedMessagingInitSuccessEventFired = false;
 			error("emitEmbeddedMessagingInitSuccessEvent", `Something went wrong in firing onEmbeddedMessagingInitSuccess event ${err}.`);
 		}
 	}
@@ -1567,13 +1588,13 @@
 	 * Fires an event 'onEmbeddedMessagingInitError' to the host (i.e. customer) window to indicate the client is not rendered.
 	 */
 	function emitEmbeddedMessagingInitErrorEvent() {
-		hasEmbeddedMessagingInitEventFired = true;
+		hasEmbeddedMessagingInitFailureEventFired = true;
 		try {
 			// Send any pending logs to container, to be pushed to Splunk, even if app initialization fails.
 			processEmbeddedMessagingLogs();
 			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INIT_ERROR_EVENT_NAME);
 		} catch(err) {
-			hasEmbeddedMessagingInitEventFired = false;
+			hasEmbeddedMessagingInitFailureEventFired = false;
 			error("emitEmbeddedMessagingInitErrorEvent", `Something went wrong in firing onEmbeddedMessagingInitError event ${err}.`);
 		}
 	}
@@ -1991,10 +2012,11 @@
 
 	/**
 	 * Initializes the unavailable state in the chat client.
+	 * @param errorData - Optional error data to pass to Chat Unavailable State.
 	 * @returns {Promise}
 	 */
-	function initializeChatUnavailableState() {
-		sendConfigurationToAppIframe();
+	function initializeChatUnavailableState(errorData) {
+		sendConfigurationToAppIframe(null, null, errorData);
 		return Promise.resolve();
 	}
 
@@ -2002,9 +2024,10 @@
 	 * Sends configuration data to LWR app. Optional - Adds jwt & conversation data to configuration before sending if specified.
 	 * @param jwtData - Optional jwtData (accessToken & lastEventId).
 	 * @param conversationData - Optional new or existing conversation data.
+	 * @param errorData - Optional error data to pass to Chat Unavailable State.
 	 * @param isPageLoad - Whether we are attempting to continue an existing session (using an existing JWT from web storage) on page/script load.
 	 */
-	function sendConfigurationToAppIframe(jwtData, conversationData, isPageLoad = false) {
+	function sendConfigurationToAppIframe(jwtData, conversationData, errorData, isPageLoad = false) {
 		let configData = prepareConfigurationDataForIframeWindow();
 
 		if (jwtData) {
@@ -2012,6 +2035,10 @@
 		}
 		if (conversationData) {
 			configData = Object.assign(configData, { conversationData });
+		}
+
+		if (errorData) {
+			configData = Object.assign(configData, { errorData });
 		}
 
 		configData.isExistingSessionOnPageLoad = isPageLoad;
@@ -2226,7 +2253,7 @@
 		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
 		const channelAddressIdentifier = embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.channelAddressIdentifier || "";
 		const platformType = "Web"
-	
+
 		// TODO: Update hardcoded variable in endpoint.
 		const endpoint = embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl + EXP_SITE_ACCESS_TOKEN_PATH
 			+ `?platformType=${platformType}&requestType=${requestType}&developerName=${developerName}&channelAddressIdentifier=${channelAddressIdentifier}&capabilitiesVersion=${capabilitiesVersion}&deviceId="abcd"`;
@@ -2485,8 +2512,8 @@
 	 * @returns {boolean}
 	 */
 	function hasFunctionalFallbackEnabled(){
-		const functionalFallback = embeddedservice_bootstrap.settings.embeddedServiceConfig.functionalFallback || {};
-		return Boolean(functionalFallback.isFunctionalFallbackEnabled);
+		const functionalFallback = embeddedservice_bootstrap.settings.embeddedServiceConfig.fallbackMessage || {};
+		return Boolean(functionalFallback.isFallbackMessageEnabled);
 	}
 
 	/**
@@ -2706,11 +2733,26 @@
 				});
 			}
 		} else if (err.status === 423) {
-			initializeChatUnavailableState();
+			const errorData = {};
+			Object.assign(errorData, { errorStatus: err.status, errorCode: err.errorCode});
+
+			if (err.errorCode && err.errorCode === ERR_MESSAGE_ORG_UNDER_MAINTENANCE || err.errorCode === ERR_MESSAGE_ORG_NOT_SUPPORTED) {
+				error("handleSendFetchRequestError", `Received a ${err.status} in ${caller}: ${err && err.message ? err.message : JSON.stringify(Object.assign({}, err, {status: err.status, statusText: err.statusText, type: err.type}))}`, err && err.status);
+				if (hasEmbeddedMessagingInitSuccessEventFired) {
+					sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED_EVENT_NAME, errorData);
+				} else {
+					initializeChatUnavailableState(errorData);
+				}
+			}
+		} else {
+			// Throw error in case of other errors.
+			error("handleSendFetchRequestError", `Something went wrong in ${caller}: ${err && err.message ? err.message : JSON.stringify(Object.assign({}, err, {
+				status: err.status,
+				statusText: err.statusText,
+				type: err.type
+			}))}`, err && err.status);
+			throw err;
 		}
-		// Throw error in case of other errors.
-		error("handleSendFetchRequestError", `Something went wrong in ${caller}: ${err && err.message ? err.message : JSON.stringify(Object.assign({}, err, {status: err.status, statusText: err.statusText, type: err.type}))}`, err && err.status);
-		throw err;
 	}
 
 	/**
@@ -3179,7 +3221,7 @@
 	}
 
 	/**
-	 * 
+	 *
 	 * @returns {boolean} - True if the displayMode flag is set to "inline"
 	 */
 	function isAppDisplayModeInline() {
@@ -3197,7 +3239,7 @@
 
 	/**
 	 * Determines whether the Embedded Messaging channel should be rendered in Channel Menu.
-	 * 
+	 *
 	 * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
 	 * @returns {boolean} True if the Embedded Messaging channel should be rendered and false otherwise.
 	 */
@@ -3509,7 +3551,7 @@
 			// Fetch a continuity jwt, load the conversation & send config data to app.
 			return handleGetContinuityJwt().then((jwtData) => {
 				handleListConversation(isPageLoad).then((conversationData) => {
-					sendConfigurationToAppIframe(jwtData, conversationData, isPageLoad);
+					sendConfigurationToAppIframe(jwtData, conversationData, null, isPageLoad);
 				});
 			})
 				.catch(error);
@@ -3650,9 +3692,9 @@
 
 	/**
 	 * Remove all markup from the page.
-	 * @param {Boolean} isExperienceSiteContext - Indicates whether we are in the experience site context.
+	 * * @param {Boolean} shouldRemoveSiteContextFrame - Indicates whether siteContextFrame should be removed, true for exp site & removeAllComponents API.
 	 */
-	EmbeddedServiceBootstrap.prototype.removeMarkup = function removeMarkup(isExperienceSiteContext) {
+	EmbeddedServiceBootstrap.prototype.removeMarkup = function removeMarkup(shouldRemoveSiteContextFrame) {
 		const iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = getEmbeddedMessagingModal();
@@ -3674,7 +3716,7 @@
 			warning("removeMarkup", "Embedded Messaging file preview iframe not available for resetting the client to initial state.");
 		}
 
-		if(Boolean(isExperienceSiteContext) && embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.parentNode) {
+		if(Boolean(shouldRemoveSiteContextFrame) && embeddedservice_bootstrap.siteContextFrame && embeddedservice_bootstrap.siteContextFrame.parentNode) {
 			// Remove the site context iframe from DOM if we are in experience site context.
 			embeddedservice_bootstrap.siteContextFrame.parentNode.removeChild(embeddedservice_bootstrap.siteContextFrame);
 		} else {
@@ -4032,9 +4074,10 @@
 	 * NOTE: W-12338093 - This API is also extended to UnAuth mode. In UnAuth mode, clearSession will close the current
 	 * 					  conversation (if it's active) and reset the client to the initial state (in the same tab).
 	 *
+	 * @param {Boolean} shouldEndSession - Flag to determine if current session should be ended.
 	 * @return {Promise} - Promise that resolves after a session is successfully cleared OR is rejected with relevant error message.
 	 */
-	EmbeddedMessagingUserVerification.prototype.clearSession = function clearSession() {
+	EmbeddedMessagingUserVerification.prototype.clearSession = function clearSession(shouldEndSession) {
 		return new Promise((resolve, reject) => {
 			clearUserSessionPromiseResolve = resolve;
 
@@ -4046,7 +4089,7 @@
 			}
 
 			// Revoke JWT only for User Verification.
-			handleClearUserSession(isUserVerificationEnabled(),  false);
+			handleClearUserSession(isUserVerificationEnabled(),  false, shouldEndSession);
 		});
 	}
 
@@ -4061,10 +4104,10 @@
 	 * 						   in primary tab - use the clearSession() API.
 	 * 						   in secondary tab - use storage event handlers.
 	 */
-	function handleClearUserSession(shouldRevokeJwt, isSecondaryTab) {
+	function handleClearUserSession(shouldRevokeJwt, isSecondaryTab, shouldEndSession = false) {
 		const iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 		if (iframe) {
-			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, shouldRevokeJwt);
+			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_CLEAR_USER_SESSION_EVENT_NAME, {shouldRevokeJwt, shouldEndSession});
 		} else {
 			resetClientToInitialState(isSecondaryTab);
 		}
@@ -4826,7 +4869,7 @@
 				let successMessage;
 
 				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
-				if (!hasEmbeddedMessagingInitEventFired) {
+				if (!(hasEmbeddedMessagingInitSuccessEventFired || hasEmbeddedMessagingInitFailureEventFired)) {
 					successMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
 					warning("launchChat", successMessage);
@@ -4850,7 +4893,7 @@
 				let errorMessage;
 
 				// onEmbeddedMessagingInitSuccess or onEmbeddedMessagingInitError event is not fired.
-				if (!hasEmbeddedMessagingInitEventFired) {
+				if (!(hasEmbeddedMessagingInitSuccessEventFired || hasEmbeddedMessagingInitFailureEventFired)) {
 					errorMessage = `[Launch Chat API] The messaging client initialized successfully or failed event isn’t fired.`;
 
 					warning("launchChat", errorMessage);
@@ -4969,6 +5012,38 @@
 				error("sendTextMessage", errorMsg);
 				reject(errorMsg);
 			}
+		});
+	}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * A publicly expose API for the host (i.e. customer) to remove all MIAW components off the page
+	 * This should only be called after clearSession().
+	 * @returns {Promise}
+	 */
+	EmbeddedMessagingUtil.prototype.removeAllComponents = function removeAllComponents() {
+		return new Promise((resolve) => {
+			// Remove markup from the page.
+			embeddedservice_bootstrap.removeMarkup(true);
+			embeddedservice_bootstrap.removeEventHandlers();
+
+			// Remove CSS file.
+			if (document.querySelector(`#${BOOTSTRAP_CSS_NAME}`)) {
+				document.querySelector(`#${BOOTSTRAP_CSS_NAME}`).remove();
+			}
+
+			// Remove bootstrap file.
+			const bootstrapSrc = `${getSiteURL()}/assets/js/bootstrap` + (embeddedservice_bootstrap.settings.devMode ? "" : ".min") + ".js";
+			if (document.body.querySelector(`script[src="${bootstrapSrc}"]`)) {
+				document.body.querySelector(`script[src="${bootstrapSrc}"]`).remove();
+			}
+
+			log("removeAllComponents", `Successfully removed all components.`);
+
+			// Remove all javascript objects.
+			delete window.embeddedservice_bootstrap;
+
+			resolve();
 		});
 	}
 
@@ -5224,6 +5299,8 @@
 					iframe.classList.add(MOBILE_PUBLISHER);
 				} else if (isExpSite()) {
 					iframe.classList.add(EXPERIENCE_SITE);
+				} else if (isDesktop()) {
+					iframe.classList.add(IS_DESKTOP);
 				}
 
 				// Set HTML direction based on language
@@ -5265,7 +5342,7 @@
 	 * big enough, else just fill what we have.
 	 * @param {Object} iframe - Reference to iframe DOM element.
 	 */
-	EmbeddedServiceBootstrap.prototype.maximizeIframe = function maximizeIframe(frame) {
+	EmbeddedServiceBootstrap.prototype.maximizeIframe = function maximizeIframe(frame, data) {
 		const button = getEmbeddedMessagingConversationButton();
 		const modal = getEmbeddedMessagingModal();
 		const chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
@@ -5286,6 +5363,11 @@
 				frame.classList.remove(IFRAME_BOTTOM_TAB_BAR_MINIMIZED_CLASS);
 				frame.classList.add(IFRAME_BOTTOM_TAB_BAR_MAXIMIZED_CLASS);
 			}
+
+			const width = data && data.width ? `${data.width}px` : `${DEFAULT_WINDOW_WIDTH}px`;
+			const height = data && data.height ? `${data.height}px` : `${DEFAULT_WINDOW_HEIGHT}px`;
+			document.documentElement.style.setProperty("--eswWidth", width);
+			document.documentElement.style.setProperty("--eswHeight", height);
 		}
 
 		if(button) {
@@ -5539,8 +5621,13 @@
 					validateSettings();
 
 					// Experience site user verification, since the setting is on a page level, it will override the org setting.
-					if (isExpSite() && embeddedservice_bootstrap.settings.expSiteAuthMode) {
-						embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+					if (isExpSite()) {
+						log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
+						if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
+							embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+						}
+					} else {
+						log("init", "Messaging for Web used in External Site context.");
 					}
 
 					// We have to wait until we have configuration to do this
