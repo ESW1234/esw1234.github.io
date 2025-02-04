@@ -1,17 +1,19 @@
 <h1>MIAW Chat SDB3 E2ETest using Bot</h1>
       miawe2e@sdb3.ia240 
     <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+	<script type='text/javascript'>
+	    function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
 			embeddedservice_bootstrap.init(
 				'00DSB0000003a8b',
 				'e2eBotTest',
 				'https://inapporg3.demo.test1.my.pc-rnd.site.com/ESWe2eBotTest1686185155759',
 				{
-					scrt2URL: 'https://inapporg3.demo.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://inapporg3.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -19,6 +21,6 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://inapporg3.demo.test1.my.pc-rnd.site.com/ESWe2eBotTest1686185155759/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://inapporg3.test1.my.pc-rnd.site.com/ESWe2eBotTest1686185155759/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>    
     </body>
 </html>
