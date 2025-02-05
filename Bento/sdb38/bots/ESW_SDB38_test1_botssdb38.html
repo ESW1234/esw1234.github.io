@@ -15,6 +15,16 @@
 	}
 </style>
 
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -40,17 +50,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://botssdb38.demo.test1.my.pc-rnd.salesforce.com',
-			'https://botssdb38.demo.test1.my.pc-rnd.salesforce-sites.com/liveAgentSetupFlow',
+			'https://autoorg3.test1.my.pc-rnd.salesforce.com',
+			'https://autoorg3.test1.my.pc-rnd.salesforce-sites.com/liveAgentSetupFlow',
 			gslbBaseURL,
-			'00DAAC00001L2j4',
+			'00DSG0000008Vt3',
 			'ESW',
 			{
 				baseLiveAgentContentURL: 'https://c.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
-				deploymentId: '572AAC00000R6MH',
-				buttonId: '573AAC00000IHSD',
+				deploymentId: '572SG0000001QdB',
+				buttonId: '573SG0000001Sgb',
 				baseLiveAgentURL: 'https://d.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IAAC000000FlR2BU_194d01bb9a9',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISG0000000IRZ2A2_188bb90aaf9',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -58,7 +68,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://botssdb38.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://autoorg3.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
