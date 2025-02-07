@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    </head>
+    <body>
+<h1>In-App Messaging Chat SDB38 E2ETest</h1>
+      inapp.e2e@bento.sdb38.org 
+    <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DAAC00001IcKn',
+				'e2eWebQueue',
+				'https://inappsdb38.demo.test1.my.pc-rnd.site.com/ESWe2eWebQueue1738952363586',
+				{
+					scrt2URL: 'https://inappsdb38.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inappsdb38.demo.test1.my.pc-rnd.site.com/ESWe2eWebQueue1738952363586/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+    </body>
+</html>
