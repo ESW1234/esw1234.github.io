@@ -37,6 +37,8 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				console.log("onEmbeddedMessagingReady emitted");
+
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Custom_Field" : "CustomValue","Customer_ID" : "11098324"});
 			});
 
 			window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
