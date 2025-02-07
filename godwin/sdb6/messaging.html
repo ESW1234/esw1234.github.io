@@ -38,6 +38,11 @@
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				console.log("onEmbeddedMessagingReady emitted");
 			});
+
+			window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
+				console.log("onEmbeddedMessagingPreChatSubmitted emitted");
+				console.log(event.detail);
+			});
 		</script>
 		<script type='text/javascript'>
 			function initEmbeddedMessaging() {
