@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>256 unauth1.html </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<script type='text/javascript'>
+  function initNextGenChat() {
+    try {
+      embeddedservice_nextgenchat.settings.language = 'en_US';
+
+      embeddedservice_nextgenchat.init(
+        '00DSB0000016Oez',
+        'Messaging_7',
+        'https://orgfarm-d3c9d63c53.my.site-com.npachpande-3m7mbo87czbh0.wb.crm.dev:6101/ESWUnauth11739554986767',
+        {
+          scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Next Gen Chat: ', err);
+    }
+  };
+</script>
+<script type='text/javascript' src='https://orgfarm-d3c9d63c53.my.site-com.npachpande-3m7mbo87czbh0.wb.crm.dev:6101/ESWUnauth11739554986767/assets/js/init.js' onload='initNextGenChat()'></script>
+
+</body>
+</html>
