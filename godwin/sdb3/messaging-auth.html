@@ -1,0 +1,78 @@
+<html>
+   <head>
+       <title>SDB3 Messaging Auth page</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>SDB3 Messaging Auth page</h1>
+	<h2>godwin@sdb3.org</h2>
+
+	<!-- Edit page link -->
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+	<script type='text/javascript'>
+		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+
+		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+			console.log("onEmbeddedMessagingIdentityTokenExpired emitted");
+		});
+
+		window.addEventListener("onEmbeddedMessagingConversationOpened", (event) => {
+		  	console.log("Received the onEmbeddedMessagingConversationOpened event…");
+		 	console.log("Event detail: ", event.detail);
+		});
+
+		window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+		  	console.log("Received the onEmbeddedMessagingConversationStarted event…");
+		 	console.log("Event detail: ", event.detail);
+		});
+	  </script>
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	
+				embeddedservice_bootstrap.init(
+					'00DSB0000004st3',
+					'MessagingWeb_One',
+					'https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWMessagingWebOne1708118627448',
+					{
+						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWMessagingWebOne1708118627448/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+	<!--<script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>-->
+	</body>
+</html>
