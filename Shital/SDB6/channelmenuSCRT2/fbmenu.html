@@ -13,17 +13,17 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://orgfarm-c08e61ee25.demo.test1.my.pc-rnd.salesforce.com',
+			'https://sdb6com-1a1.test1.my.pc-rnd.salesforce.com',
 			'https://d.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DSG00000Jpq9i',
-			'MIAW_CHNL_MENU'
+			'00DSG00000CE2aR',
+			'CHANNEL_MENU_SCRT2'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://orgfarm-c08e61ee25.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://sdb6com-1a1.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
