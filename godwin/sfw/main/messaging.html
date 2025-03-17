@@ -43,6 +43,11 @@
 		window.addEventListener("onEmbeddedMessagingSent", (data) => {
 			console.log("onEmbeddedMessagingSent emitted");
 		});
+
+		window.addEventListener("onEmbeddedMessageInteraction", (data) => {
+			console.log("onEmbeddedMessageInteraction emitted");
+			console.log(data);
+		});
 	</script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
