@@ -39,6 +39,10 @@
 		window.addEventListener("onEmbeddedMessagingReady", () => {
 			console.log("onEmbeddedMessagingReady emitted");
 		});
+
+		window.addEventListener("onEmbeddedMessagingSent", (data) => {
+			console.log("onEmbeddedMessagingSent emitted");
+		});
 	</script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
