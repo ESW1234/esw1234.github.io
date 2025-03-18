@@ -42,6 +42,7 @@
 
 		window.addEventListener("onEmbeddedMessagingSent", (data) => {
 			console.log("onEmbeddedMessagingSent emitted");
+			console.log(data.detail);
 		});
 
 		window.addEventListener("onEmbeddedMessageInteraction", (data) => {
