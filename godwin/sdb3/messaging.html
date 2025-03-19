@@ -52,6 +52,11 @@
 		  	console.log("Received the onEmbeddedMessagingConversationStarted event…");
 		 	console.log("Event detail: ", event.detail);
 		});
+
+		window.addEventListener("onEmbeddedMessagingConversationClosed", (event) => {
+		  	console.log("Received the onEmbeddedMessagingConversationClosed event…");
+		 	console.log("Event detail: ", event.detail);
+		});
 	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
