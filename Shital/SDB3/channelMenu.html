@@ -1,10 +1,11 @@
+
 <html>
 <head>
 <title>InApp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"+Sheet2!B21>
 </head>
 <body>
-<h1> Channel Menu Web Client for : "Shital"</h1>
+<h1> Channel Menu Web Client for : "Shital Malviya"</h1>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
@@ -12,17 +13,17 @@
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
 
 		embedded_svc.menu.init(
-			'https://bt20250106.demo.test1.my.pc-rnd.salesforce.com',
+			'https://sdb3com8.demo.test1.my.pc-rnd.salesforce.com',
 			'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DSB00000KVyaf',
-			'Miaw_channel_menu'
+			'00DSB000008ypfn',
+			'channelMenuSCRT1'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://bt20250106.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://sdb3com8.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
@@ -33,8 +34,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
