@@ -55,17 +55,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://orgfarm-c08e61ee25.demo.test1.my.pc-rnd.salesforce.com',
-			'https://orgfarm-c08e61ee25.demo.test1.my.pc-rnd.site.com/forASA',
+			'https://orgfarm-451ddc304d.demo.test1.my.pc-rnd.salesforce.com',
+			'https://orgfarm-451ddc304d.demo.test1.my.pc-rnd.site.com/AURATesting',
 			gslbBaseURL,
-			'00DSG00000Jpq9i',
-			'ESW_DEPLOYEMENT',
+			'00DSG00000OORVt',
+			'CHAT_ESW',
 			{
 				baseLiveAgentContentURL: 'https://c.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
-				deploymentId: '572SG00000A3TNk',
-				buttonId: '573SG000005I4FB',
+				deploymentId: '572SG00000Az8m5',
+				buttonId: '573SG000005gMvh',
 				baseLiveAgentURL: 'https://d.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISG0000005EDd2AM_19547e2fcce',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISG0000005WDl2AM_195cc5c28ac',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -73,7 +73,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://orgfarm-c08e61ee25.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://orgfarm-451ddc304d.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
