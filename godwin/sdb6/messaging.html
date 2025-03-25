@@ -45,6 +45,11 @@
 				console.log("onEmbeddedMessagingPreChatSubmitted emitted");
 				console.log(event.detail);
 			});
+
+			window.addEventListener("onEmbeddedMessageLinkClicked", (data) => {
+				console.log("onEmbeddedMessageLinkClick emitted");
+				console.log(data.detail);
+			});
 		</script>
 		<script type='text/javascript'>
 			function initEmbeddedMessaging() {
