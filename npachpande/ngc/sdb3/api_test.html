@@ -49,6 +49,50 @@ function startSession() {
     return response;
 });
 }
+
+function startSessionXhr() {
+  document.querySelector("#mytextarea").value = "Establishing session...";
+  const url = "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/0XxSB000000Y4cH0AS/sessions";
+  
+  return sendXhrRequest(url,
+    "POST",
+    {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + accessToken
+    },
+    JSON.stringify({
+    "externalSessionKey": "923126e6-1171-4804-b247-1cc691d26023",
+    "instanceConfig": {
+        "endpoint": "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com"
+    },
+    "tz": "America/Los_Angeles",
+    "variables": [
+        {
+            "name": "$Context.EndUserLanguage",
+            "type": "Text",
+            "value": "en_US"
+        }
+    ],
+    "featureSupport": "Streaming",
+    "streamingCapabilities": {
+        "chunkTypes": [
+            "Text"
+        ]
+    },
+    "bypassUser": true
+  })
+}).then(response => {
+    if (!response.ok) {
+        document.querySelector("#mytextarea").value = "Failed to establish a session.";
+        throw response;
+    }
+    document.querySelector("#mytextarea").value = "Session established successfully.";
+	response.json().then(data => {
+    	sessionId = data.sessionId;
+    });
+    return response;
+});
+}
     
 function sendMessage() {
     const url = "https://test.api.salesforce.com/einstein/ai-agent/v1/sessions/" + sessionId + "/messages";
@@ -99,8 +143,31 @@ function endSession() {
     });
 }
 
+function sendXhrRequest(apiPath, method, headers, body) {
+	return new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
+
+		xhr.open(method, apiPath, true);
+		headers.forEach((headerName, headerValue) => {
+		    xhr.setRequestHeader(headerName, headerValue);
+		});
+
+		xhr.onreadystatechange = (response) => {
+			const state = response.target;
+			if(state && state.readyState === state.DONE || state.status === 204) {
+				if(state.status === 200 || state.status === 204) {
+					resolve(responseJson);
+				} else {
+					reject(state.status);
+				}
+			}
+		};
+		xhr.send(body);
+	});
+}
+
 setTimeout(() => {
-	document.querySelector("#startSessionBtn").onclick = startSession;
+	document.querySelector("#startSessionBtn").onclick = startSessionXhr;
 	document.querySelector("#sendMessageBtn").onclick = sendMessage;
     document.querySelector("#endSessionBtn").onclick = endSession;
     document.querySelector("#mytextarea").value = "Ready to initiate a session...";
