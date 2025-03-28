@@ -80,8 +80,8 @@ function startSessionXhr() {
         ]
     },
     "bypassUser": true
-  })
-}).then(response => {
+   })
+).then(response => {
     if (!response.ok) {
         document.querySelector("#mytextarea").value = "Failed to establish a session.";
         throw response;
@@ -148,9 +148,10 @@ function sendXhrRequest(apiPath, method, headers, body) {
 		const xhr = new XMLHttpRequest();
 
 		xhr.open(method, apiPath, true);
-		headers.forEach((headerName, headerValue) => {
-		    xhr.setRequestHeader(headerName, headerValue);
-		});
+
+		for (const header in headers) {
+			xhr.setRequestHeader(header, headers[header]);
+		}
 
 		xhr.onreadystatechange = (response) => {
 			const state = response.target;
