@@ -1,0 +1,121 @@
+
+<html>
+<head>
+  <title>api_test.html</title>
+
+<script>
+let sessionId = "";
+const accessToken = "eyJ0bmsiOiJjb3JlL2ZhbGNvbnRlc3QxLWNvcmU0c2RiMy8wMERTQjAwMDAwUUFvOVIyQVQiLCJ2ZXIiOiIxLjAiLCJraWQiOiJDT1JFX0FUSldULjAwRFNCMDAwMDBRQW85Ui4xNzQyNDMzMDg5NjY5IiwidHR5Ijoic2ZkYy1jb3JlLXRva2VuIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzY3AiOiJzZmFwX2FwaSBjaGF0Ym90X2FwaSBhcGkiLCJzdWIiOiJ1aWQ6MDA1U0IwMDAwMEtDcXliWUFEIiwicm9sZXMiOltdLCJpc3MiOiJodHRwczovL29yZ2Zhcm0tMGM1YTI5MWNlYS50ZXN0MS5teS5wYy1ybmQuc2FsZXNmb3JjZS5jb20iLCJjbGllbnRfaWQiOiIzTVZHOWwzUjlGOW1IT0dZZTFxbC5Sa1Z2WDBkX29pa1FmNi5KQ3lOdWZtT0xvMUJmb0ZmcU1KVi5kRDdla2ZWVnJZV0hlYW9zQS4zcDZYc1h1T1RlIiwiY2RwX3RlbmFudCI6ImEzNjAvdGVzdGNkcDAwMi82YzBkM2QwNGMzNTQ0NmEyOTBhZmE1MmI0ZjViNGE0YyIsImF1ZCI6WyJodHRwczovL29yZ2Zhcm0tMGM1YTI5MWNlYS50ZXN0MS5teS5wYy1ybmQuc2FsZXNmb3JjZS5jb20iLCJodHRwczovL2FwaS5zYWxlc2ZvcmNlLmNvbSJdLCJuYmYiOjE3NDMxOTYyNzUsIm10eSI6Im9hdXRoIiwic2ZhcF9yaCI6ImJvdC1zdmMtbGxtOnRlc3QxLXVzd2VzdDIvZWluc3RlaW4yLG12cy9FREM6dGVzdDEtdXN3ZXN0Mi9laW5zdGVpbjIsYm90LXN2Yy1sbG0vRmxvd0dwdDp0ZXN0MS11c3dlc3QyL2VpbnN0ZWludGVzdDEsZWluc3RlaW4tYWktZ2F0ZXdheS9FaW5zdGVpbkdQVDp0ZXN0MS11c3dlc3QyL2VpbnN0ZWluMixlaW5zdGVpbi1haS1nYXRld2F5L0VEQzp0ZXN0MS11c3dlc3QyL2VpbnN0ZWluMixlaW5zdGVpbi10cmFuc2NyaWJlL0VpbnN0ZWluR1BUOnRlc3QxLXVzd2VzdDIvZWluc3RlaW4yIiwic2ZpIjoiNmY3MGY2NGM5ZmM3NDZkNzY0ZjA0YWViOTczOWFlMDMyYWY1MjFiMTExMDkwMTAzMWU5ODFkMTY2OGI4M2Y2MCIsInNmYXBfb3AiOiJFaW5zdGVpbkhhd2tpbmdDMkNFbmFibGVkLEVHcHRGb3JEZXZzQXZhaWxhYmxlLEVpbnN0ZWluR2VuZXJhdGl2ZVNlcnZpY2UiLCJoc2MiOmZhbHNlLCJjZHBfdXJsIjoiaHR0cHM6Ly9hMzYwLmNkcC5jZHAwMDIudGVzdDEtdXN3ZXN0Mi5hd3Muc2ZkYy5jbCIsImV4cCI6MTc0MzE5ODA5MCwiaWF0IjoxNzQzMTk2MjkwfQ.Kshypk5QR8J7NgXKAGBn3GgepmtCD7qk36OD3QmQMtnS16XkerbutqMvPvfhaNq-67bKY_A6jM8I8vZki4ygH06-3sdxCNLZo7pFszCxI0nH9aelOwYEwUPYwkvUk_XuOMQrNMNTxZ4NbBgGt4z4y0PfSOMqRkPNtHOxi2XcWNSQ5_J4i9IWXQBmYdAxn3uzQKG_gUXWdrvEG07h5A2G0mv1W-nzRmHuCsi1gQ6h0HE8ttpkNHaE-5KzsnM3PZ1wUOb6T--tr-Q4vKiQqpvrb5RN-RMv_Z1fGeoHTt6zwUV2CM2i-mW4brzrpS58dedAQx1UYgRJ5tldXXA0prV6Jg";
+function startSession() {
+  document.querySelector("#mytextarea").value = "Establishing session...";
+  const url = "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/0XxSB000000Y4cH0AS/sessions";
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + accessToken
+      
+  },
+  body: JSON.stringify({
+    "externalSessionKey": "923126e6-1171-4804-b247-1cc691d26023",
+    "instanceConfig": {
+        "endpoint": "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com"
+    },
+    "tz": "America/Los_Angeles",
+    "variables": [
+        {
+            "name": "$Context.EndUserLanguage",
+            "type": "Text",
+            "value": "en_US"
+        }
+    ],
+    "featureSupport": "Streaming",
+    "streamingCapabilities": {
+        "chunkTypes": [
+            "Text"
+        ]
+    },
+    "bypassUser": true
+  })
+}).then(response => {
+    if (!response.ok) {
+        document.querySelector("#mytextarea").value = "Failed to establish a session.";
+        throw response;
+    }
+    document.querySelector("#mytextarea").value = "Session established successfully.";
+	response.json().then(data => {
+    	sessionId = data.sessionId;
+    });
+    return response;
+});
+}
+    
+function sendMessage() {
+    const url = "https://test.api.salesforce.com/einstein/ai-agent/v1/sessions/" + sessionId + "/messages";
+      return fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + accessToken
+
+      },
+      body: JSON.stringify({
+        "message": {
+                "sequenceId": 1742945686,
+                "type": "Text",
+                "text": "hi, my email is acme@gmail.com, can you provide a summary of my orders?"
+            },
+            "variables": []
+      })
+    }).then(response => {
+        if (!response.ok) {
+            document.querySelector("#mytextarea").value = "Failed to send a message";
+            throw response;
+        }
+        response.json().then(data => {
+            document.querySelector("#mytextarea").value = data.messages[0].message;
+        });
+        return response;
+    });
+}
+    
+function endSession() {
+    const url = "https://test.api.salesforce.com/einstein/ai-agent/v1/sessions/" + sessionId;
+      return fetch(url, {
+        method: "DELETE",
+        headers: {
+		  "x-session-end-reason": "UserRequest",
+          "Authorization": "Bearer " + accessToken
+      }
+    }).then(response => {
+        if (!response.ok) {
+            document.querySelector("#mytextarea").value = "Failed to end the session.";
+            throw response;
+        }
+        response.json().then(data => {
+            document.querySelector("#mytextarea").value = "Session ended successfully.";
+        });
+        return response;
+    });
+}
+
+setTimeout(() => {
+	document.querySelector("#startSessionBtn").onclick = startSession;
+	document.querySelector("#sendMessageBtn").onclick = sendMessage;
+    document.querySelector("#endSessionBtn").onclick = endSession;
+    document.querySelector("#mytextarea").value = "Ready to initiate a session...";
+}, 2000);
+</script>
+
+</head>
+<body>
+
+<button id="startSessionBtn">Start Session</button>
+<button id="sendMessageBtn">Send Message - Synchronous</button>
+<button id="endSessionBtn">End Session</button>
+<p><label for="mytextarea">Status:</label></p>
+<textarea id="mytextarea" name="mytextarea" rows="10" cols="50" value="Loading..."></textarea>
+<br>
+
+</body>
+</html>
