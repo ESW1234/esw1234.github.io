@@ -574,6 +574,7 @@
 				if(!siteURL.endsWith("/")) siteURL += "/";
 		
 				iframe.src = siteURL + "?lwc.mode=" + (agentforce_messaging.settings.devMode ? "dev" : "prod");
+				iframe.allow="microphone";
 				iframe.sandbox = "allow-scripts allow-same-origin allow-modals allow-downloads allow-popups allow-popups-to-escape-sandbox";
 
 				iframe.onload = resolve;
