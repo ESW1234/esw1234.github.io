@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>NGC</title>
+</head>
+<body>
+
+<script type='text/javascript'>
+  function initAgentforceMessaging() {
+    try {
+      agentforce_messaging.settings.language = 'en_US';
+      agentforce_messaging.settings.devMode = true;
+
+      agentforce_messaging.init(
+        '00Dfi10000003ab',
+        'NGC_1',
+        'https://afdev1sdb400org3.deva.my.pc-rnd.site.com/ESWNGC11744244649987',
+        {
+          scrt2URL: 'https://afdev1sdb400org3.deva.my.pc-rnd.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading agentforce messaging: ', err);
+    }
+  };
+</script>
+<script type='text/javascript' 
+  src='init.js' 
+  onload='initAgentforceMessaging()'></script>
+
+</body>
+</html>
