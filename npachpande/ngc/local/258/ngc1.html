@@ -14,27 +14,25 @@
 </style>
 
 <script type='text/javascript'>
-  function initAgentforceMessaging() {
-    try {
-      agentforce_messaging.settings.language = 'en_US';
-      agentforce_messaging.settings.devMode = true;
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-      agentforce_messaging.init(
-        '00DSB00000QAo9R',
-        'Unauth_1',
-        'https://orgfarm-0942313262.my.site-com.npachpande-2szpm3ympf8w0.wa.crm.dev:6101/ESWNGC11744051087930',
-        {
-          scrt2URL: 'https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading agentforce messaging: ', err);
-    }
-  };
+			embeddedservice_bootstrap.init(
+				'00Dxx002gx6PpEG',
+				'MIAW_1',
+				'https://orgfarm-4210204e70.my.site-com.87e7ym1tkqs10as09rk1fepe001gh5s.wa.crm.dev:6101/ESWMIAW11744826981875',
+				{
+					scrt2URL: 'http://orgfarm-4210204e70.my.salesforce-scrt-com.87e7ym1tkqs10as09rk1fepe001gh5s.wa.crm.dev'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
-<script type='text/javascript' 
-  src='https://orgfarm-0942313262.my.site-com.npachpande-2szpm3ympf8w0.wa.crm.dev:6101/ESWNGC11744051087930/assets/js/init.js' 
-  onload='initAgentforceMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-4210204e70.my.site-com.87e7ym1tkqs10as09rk1fepe001gh5s.wa.crm.dev:6101/ESWMIAW11744826981875/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 </html>
