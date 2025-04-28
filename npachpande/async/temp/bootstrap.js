@@ -21,6 +21,14 @@
 	const CHAT_BUTTON_LOADING_ASSISTIVE_TEXT = "Loading";
 
 	/**
+	 * ReCaptcha Constants
+	 */
+	const GRECAPTCHA_CLASS = ".embeddedMessagingGRecaptchaBanner .grecaptcha-badge";
+	const GRECAPTCHA_BANNER_CLASS = "embeddedMessagingGRecaptchaBanner";
+	const GRECAPTCHA_BANNER_DIV = "embeddedMessagingRecaptchaBanner"
+	const RECAPTCHA_URL = "https://www.google.com/recaptcha/api.js?render=explicit";
+
+	/**
 	 * Conversation modal state class constants.
 	 */
 	const MODAL_ISMAXIMIZED_CLASS = "isMaximized";
@@ -162,8 +170,10 @@
 	const EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_REQUEST_EVENT_NAME = "EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_REQUEST";
 	const EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE_EVENT_NAME = "EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE";
 	const EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED_EVENT_NAME = "EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED";
+	const EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT = "EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT";
 	const ERR_MESSAGE_ORG_NOT_SUPPORTED = "ORG_NOT_SUPPORTED";
 	const ERR_MESSAGE_ORG_UNDER_MAINTENANCE = "ORG_UNDER_MAINTENANCE";
+	const EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK = "EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK";
 
 	/**
 	 * Conversation transcript file name.
@@ -209,6 +219,11 @@
 		CONVERSATION: "Conversation",
 		SESSION: "Session"
 	}
+
+	/**
+	 * The prechat fieds which have been submitted on form.
+	 */
+	const PRECHAT_SUBMIT_FIELDS = "prechatSubmitFields"	
 
 	/**
 	 * Display mode for the client.
@@ -459,6 +474,12 @@
 	 */
 	const ON_EMBEDDED_MESSAGING_BUTTON_CREATED = "onEmbeddedMessagingButtonCreated";
 
+	/**
+	 * Event dispatched to notify the host that the end user has clicked a link in a static text message.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGE_LINK_CLICKED_EVENT_NAME = "onEmbeddedMessageLinkClicked";
+
 	const SALESFORCE_DOMAINS = [
 		// Used by dev, blitz, and prod instances
 		".salesforce.com",
@@ -503,6 +524,11 @@
 	 * @type {number}
 	 */
 	const DOCUMENT_TITLE_BLINK_FREQUENCY_MS = 1000;
+
+	/**
+	 * Store the client-id returned by reCaptcha to be used while executing reCaptcha
+	 */
+	let recaptchaClientId;
 
 	/**
 	 * Store the interval for the notification blinking.
@@ -644,6 +670,11 @@
 	let expSiteUserSessionTimer;
 
 	/**
+	 * Store the live region timer, determines when live region text should be cleared.
+	 */
+	let liveRegionAnnouncerTimer;
+
+	/**
 	 * Viewport meta tag that disables autozoom for iOS devices
 	 * @type {string}
 	 */
@@ -743,6 +774,12 @@
 	 * @type {string}
 	 */
 	const MESSAGING_JWT_CHANNEL_ADD_ID_CLAIM = "channelAddId";
+
+	/**
+	 * Constant for User Id claim in ia-message jwt
+	 * @type {string}
+	 */
+	const MESSAGING_JWT_USER_ID_CLAIM = "coreRefId";
 
 	/**
 	 * Default dimension for custom window size
@@ -1301,7 +1338,8 @@
 			...(imageCompressionOptions && {imageCompressionOptions}),
 			...((typeof embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot === "boolean") && {enableUserInputForConversationWithBot: Boolean(embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot)}),
 			...((typeof embeddedservice_bootstrap.settings.shouldShowParticipantChgEvntInConvHist === "boolean") && {shouldShowParticipantChgEvntInConvHist: Boolean(embeddedservice_bootstrap.settings.shouldShowParticipantChgEvntInConvHist)}),
-			shouldMinimizeWindowOnNewTab: embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab
+			shouldMinimizeWindowOnNewTab: embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab,
+			...((typeof embeddedservice_bootstrap.settings.disableStreamingResponses === "boolean") && {disableStreamingResponses: Boolean(embeddedservice_bootstrap.settings.disableStreamingResponses)})
 		};
 
 		const finalConfigurationData = Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
@@ -1309,6 +1347,7 @@
 			failedMessages: failedConversationMessages,
 			conversationId,
 			devMode: Boolean(embeddedservice_bootstrap.settings.devMode),
+			noSsePatch: Boolean(embeddedservice_bootstrap.settings.noSsePatch),
 			language: embeddedservice_bootstrap.settings.language,
 			...(standardLabelsFromConfiguration && {standardLabels: standardLabelsFromConfiguration}),
 			...(customLabelsFromConfiguration && {customLabels: customLabelsFromConfiguration}),
@@ -1333,10 +1372,6 @@
 		if (embeddedservice_bootstrap.isLocalStorageAvailable) {
 			addStorageEventHandlers();
 		}
-		// Add aura site event handlers.
-		if (isAuraExpSite()) {
-			addAuraSiteEventHandlers();
-		}
 
 		try {
 			// Monitor if the page was refreshed in the same tab.
@@ -1351,19 +1386,6 @@
 			observer.observe({ type: "navigation", buffered: true });
 		} catch (err) {
 			error("addEventHandlers", `Unable to initialize PerformanceObserver ${err}.`);
-		}
-	}
-
-	/**
-	 * Adds aura site event listeners.
-	 */
-	function addAuraSiteEventHandlers() {
-		if (window.$A.eventService && getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
-			// Add a logout event handler if we are currently in auth mode and user is logged into aura site
-			window.$A.eventService.addHandler({
-				"event": "force:logout",
-				"handler": handleAuraLogoutEvent
-			});
 		}
 	}
 
@@ -1389,12 +1411,6 @@
 	EmbeddedServiceBootstrap.prototype.removeEventHandlers = function removeEventHandlers() {
 		window.removeEventListener("message", handleMessageEvent);
 		window.removeEventListener("storage", handleStorageEvent);
-		if (isAuraExpSite() && window.$A.eventService && getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
-			window.$A.eventService.removeHandler({
-				"event": "force:logout",
-				"handler": handleAuraLogoutEvent
-			});
-		}
 	}
 
 	/**
@@ -1511,6 +1527,12 @@
 					case EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE_EVENT_NAME:
 						handleSendTextMessageResponse(e.data.data);
 						break;
+					case EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK:
+						handleLinkClick(e);
+            break;
+					case EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT:
+						handleScreenReaderAnnouncement(e.data.data);
+						break;
 					default:
 						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
@@ -1518,6 +1540,40 @@
 			} else {
 				error("handleMessageEvent", `Unexpected message origin: ${e.origin}`);
 			}
+		}
+	}
+
+	/**
+	 * Handle a link click. Dispatches an event to host with the public conversation entry and link as a payload.
+	 * If we are in mobile publisher context or if the 'shouldOpenLinksInSameTab' setting is TRUE,
+	 * open the link in the same tab and open a new tab if FALSE.
+	 * @param {object} event - message event containing the link details
+	 */
+	function handleLinkClick(event) {
+		try {
+			if (event && event.data && event.data.data) {
+				let eventData = event.data.data;
+
+				dispatchEventToHost(ON_EMBEDDED_MESSAGE_LINK_CLICKED_EVENT_NAME, {
+					detail: Object.assign(
+						{},
+						JSON.parse(eventData.conversationEntry),
+						{link: eventData.link}
+					)
+				});
+
+				if (eventData.link) {
+					const linkElement = document.createElement("a");
+					linkElement.setAttribute('href', eventData.link);
+					linkElement.setAttribute('rel', 'noopener noreferrer');
+					if (isMobilePublisherApp() || !Boolean(embeddedservice_bootstrap.settings.shouldOpenLinksInSameTab)) {
+						linkElement.setAttribute('target', "_blank");
+					}
+					linkElement.click();
+				}
+			}
+		} catch (err) {
+			error("handleLinkClick", `Something went wrong in handling a link click: ${err}`);
 		}
 	}
 
@@ -1547,14 +1603,6 @@
 				}
 			}
 		}
-	}
-
-	/**
-	 * Handle aura logout event, clear the session on logout.
-	 */
-	function handleAuraLogoutEvent() {
-		log("handleAuraLogoutEvent", `Received force:logout event in auth mode, proceeds to clear session`);
-		return embeddedservice_bootstrap.userVerificationAPI.clearSession();
 	}
 
 	/**
@@ -1889,7 +1937,6 @@
 	/**
     * Continously polls the session timeout from SessionTimeServlet, until the session expires which it will clear the session.
     * SessionTimeServlet returns number <= 0 for expired session/guest user.
-	* endpoint is ONLY available in Aura.
     */
 	function getExpSiteSessionTimeout() {
 		if (embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl) {
@@ -1903,22 +1950,14 @@
 				}
 
 				// sr is the time remaing until session timeout in the response object.
-				if (response.sr) {
+				if (typeof response.sr === 'number') {
 					log("getExpSiteSessionTimeout", "Successfully retrieved experience site session timeout");
 					if (response.sr > 0) {
+						embeddedservice_bootstrap.settings.snippetConfig.isExpSiteGuestUser = false;
+
 						// Clear previous timer, if exists
 						if (expSiteUserSessionTimer) {
 							clearTimeout(expSiteUserSessionTimer);
-						}
-
-						// On page load, determine if we should generate markup or continue with existing session.
-						// If button is present, (i.e. subsequent timeout), then we skip generating markup.
-						if (!getEmbeddedMessagingConversationButton()) {
-							if (sessionExists()) {
-								handleExistingSession()
-							} else {
-								embeddedservice_bootstrap.generateMarkup();
-							}
 						}
 
 						expSiteUserSessionTimer = setTimeout(() => {
@@ -1927,6 +1966,7 @@
 						}, response.sr * 1000);
 					} else {
 						// Timeout is 0 or less, so session has expired.
+						embeddedservice_bootstrap.settings.snippetConfig.isExpSiteGuestUser = true;
 						embeddedservice_bootstrap.userVerificationAPI.clearSession();
 					}
 				}
@@ -2062,7 +2102,8 @@
 		const prechatFields = Object.assign(visiblePrechatFields, hiddenPrechatFields);
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_PRECHAT_SUBMITTED_EVENT_NAME, {
 			detail: {
-				[PRECHAT_DISPLAY_EVENT_DETAIL_NAME]: PRECHAT_DISPLAY_EVENT_DETAIL_VALUE.CONVERSATION
+				[PRECHAT_DISPLAY_EVENT_DETAIL_NAME]: PRECHAT_DISPLAY_EVENT_DETAIL_VALUE.CONVERSATION,
+				[PRECHAT_SUBMIT_FIELDS]: prechatFields
 			}
 		});
 		if (isUserVerificationEnabled()) {
@@ -2187,18 +2228,17 @@
 	}
 
 	/**
-	 * Get a JWT for an anonymous user. This JWT is used for unauthenticated conversations.
+	 * Send a JWT request for an anonymous user. This JWT is used for unauthenticated conversations.
 	 *
 	 * https://git.soma.salesforce.com/pages/service-cloud-realtime/scrt2-docs/openapi/?app=ia-message-service#operation/unAuthenticatedAccessToken
 	 *
+	 * @param requestBody - Depending on the captcha configuration, the requestBody will contain the captchaToken
 	 * @returns {Promise}
 	 */
-	function getUnauthenticatedJwt() {
-		const orgId = embeddedservice_bootstrap.settings.orgId;
-		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+	function sendUnauthenticatedJwtRequest(requestBody) {
 		const deviceInfoAsQueryParams = getDeviceInfoAsQueryParams();
 		const endpoint = deviceInfoAsQueryParams ?
-			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH, "?", deviceInfoAsQueryParams):
+			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH, "?", deviceInfoAsQueryParams) :
 			embeddedservice_bootstrap.settings.scrt2URL.concat(UNAUTHENTICATED_ACCESS_TOKEN_PATH);
 
 		return sendRequest(
@@ -2208,18 +2248,45 @@
 			{
 				"Content-Type": "application/json"
 			},
-			{
-				orgId,
-				developerName,
-				capabilitiesVersion
-			},
-			"getUnauthenticatedJwt"
+			requestBody,
+			"sendUnauthenticatedJwtRequest"
 		).then(response => {
+			if (isRecaptchaEnabled()) {
+				hideReCaptchaBanner();
+			}
 			if (!response.ok) {
 				throw response;
 			}
 			return response.json();
 		});
+	}
+
+	/**
+	 * Handle getting an unauthenticated jwt.
+	 *
+	 * @returns {Promise}
+	 */
+	function getUnauthenticatedJwt() {
+		const orgId = embeddedservice_bootstrap.settings.orgId;
+		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+
+		let requestBody = {
+			orgId,
+			developerName,
+			capabilitiesVersion
+		};
+
+		if (isRecaptchaEnabled()) {
+			let recaptchaPromise = handleReCaptchaTokenGeneration();
+			return recaptchaPromise.then((captchaToken) => {
+				if (!captchaToken) {
+					throw new Error('ReCaptcha token generation failed at client.');
+				}
+				requestBody.captchaToken = captchaToken;
+				return sendUnauthenticatedJwtRequest(requestBody);
+			});
+		}
+		return sendUnauthenticatedJwtRequest(requestBody);
 	}
 
 	/**
@@ -2238,8 +2305,13 @@
 				return jwtData;
 			})
 			.catch(e => {
-				error("handleGetAuthenticatedJwt", `Error retrieving authenticated token: ${e && e.message ? e.message : e}.`);
+				if (isRecaptchaEnabled()) {
+					hideReCaptchaBanner();
+				}
+				const errorMessage = e?.message || e;
+				error("handleGetAuthenticatedJwt", `Error retrieving authenticated token: ${errorMessage}.`);
 				handleJwtRetrievalFailure();
+				throw errorMessage;
 			});
 	}
 
@@ -2248,19 +2320,21 @@
 	 * @returns {Promise}
 	 */
 	function getExpSiteAuthenticatedJwt() {
-		const requestType = "Community";
 		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
-		const channelAddressIdentifier = embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.channelAddressIdentifier || "";
-		const platformType = "Web"
+		const platformType = "Web";
 
-		// TODO: Update hardcoded variable in endpoint.
 		const endpoint = embeddedservice_bootstrap.settings.snippetConfig.expSiteUrl + EXP_SITE_ACCESS_TOKEN_PATH
-			+ `?platformType=${platformType}&requestType=${requestType}&developerName=${developerName}&channelAddressIdentifier=${channelAddressIdentifier}&capabilitiesVersion=${capabilitiesVersion}&deviceId="abcd"`;
+			+ `?platformType=${platformType}&developerName=${developerName}&capabilitiesVersion=${capabilitiesVersion}`;
 		const method = "GET";
 		const mode = "cors";
 		const caller = "getExpSiteAuthenticatedJwt";
+		// Required by service for rate limiting (HTTP 429).
+		const requestHeaders = {
+			"Cos": "0x0204",
+			"Content-Type": "application/json"
+		};
 
-		return sendFetchRequest(endpoint, method, mode, null, null, caller)
+		return sendFetchRequest(endpoint, method, mode, requestHeaders, null, caller)
 			.then(response => {
 				if (!response.ok) {
 					throw response;
@@ -2268,18 +2342,17 @@
 				return response.json();
 			})
 			.catch(err => {
-				return handleSendFetchRequestError(err, endpoint, method, mode, null, null, caller);
+				return handleSendFetchRequestError(err, endpoint, method, mode, requestHeaders, null, caller);
 			});
 	}
 
 	/**
-	 * Get a JWT for an authenticated user. This JWT is used for authenticated conversations.
+	 * Send a JWT request for an authenticated user. This JWT is used for authenticated conversations.
 	 *
+	 * @param requestBody - Depending on the captcha configuration, the requestBody will contain the captchaToken
 	 * @returns {Promise}
 	 */
-	function getAuthenticatedJwt() {
-		const orgId = embeddedservice_bootstrap.settings.orgId;
-		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+	function sendAuthenticatedJwtRequest(requestBody) {
 		const customerIdentityToken = identityToken;
 		const deviceInfoAsQueryParams = getDeviceInfoAsQueryParams();
 		const apiPath = deviceInfoAsQueryParams ?
@@ -2287,26 +2360,24 @@
 			embeddedservice_bootstrap.settings.scrt2URL.concat(AUTHENTICATED_ACCESS_TOKEN_PATH);
 		const method = "POST";
 		const mode = "cors";
-		const requestHeaders = { "Content-Type": "application/json" };
-		const requestBody = {
-			orgId,
-			developerName,
-			capabilitiesVersion,
-			"authorizationType": ID_TOKEN_TYPE.JWT,
-			customerIdentityToken
-		};
-		const caller = "getAuthenticatedJwt";
-
+		const requestHeaders = {"Content-Type": "application/json"};
+		const caller = "sendAuthenticatedJwtRequest";
 		if (customerIdentityToken && validateJwt(customerIdentityToken)) {
 			// Send fetch request if identity token has not expired.
 			return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller)
 				.then(response => {
+					if (isRecaptchaEnabled()) {
+						hideReCaptchaBanner();
+					}
 					if (!response.ok) {
 						throw response;
 					}
 					return response.json();
 				})
 				.catch(err => {
+					if (isRecaptchaEnabled()) {
+						hideReCaptchaBanner();
+					}
 					return handleSendFetchRequestError(err, apiPath, method, mode, requestHeaders, requestBody, caller);
 				});
 		}
@@ -2315,11 +2386,45 @@
 		return new Promise(resolve => {
 			handleIdentityTokenExpiry({ apiPath, method, mode, requestHeaders, requestBody, resolve });
 		}).then(response => {
+			if (isRecaptchaEnabled()) {
+				hideReCaptchaBanner();
+			}
 			if (!response.ok) {
 				throw response;
 			}
 			return response.json();
 		});
+	}
+
+	/**
+	 * Handle getting an authenticated jwt.
+	 *
+	 * @returns {Promise}
+	 */
+	function getAuthenticatedJwt() {
+		const orgId = embeddedservice_bootstrap.settings.orgId;
+		const developerName = embeddedservice_bootstrap.settings.eswConfigDevName;
+		const customerIdentityToken = identityToken;
+
+		let requestBody = {
+			orgId,
+			developerName,
+			capabilitiesVersion,
+			"authorizationType": ID_TOKEN_TYPE.JWT,
+			customerIdentityToken
+		};
+
+		if (isRecaptchaEnabled()) {
+			let recaptchaPromise = handleReCaptchaTokenGeneration();
+			return recaptchaPromise.then((captchaToken) => {
+				if (!captchaToken) {
+					throw new Error('ReCaptcha token generation failed at client.');
+				}
+				requestBody.captchaToken = captchaToken;
+				return sendAuthenticatedJwtRequest(requestBody);
+			});
+		}
+		return sendAuthenticatedJwtRequest(requestBody);
 	}
 
 	/**
@@ -2468,8 +2573,11 @@
 				throw new Error(err);
 			});
 		}
-
-		throw new Error(`Error retrieving unauthenticated token: ${e}.`);
+		if (isRecaptchaEnabled()) {
+			hideReCaptchaBanner();
+		}
+		const errorMessage = e?.message || e;
+		throw new Error(`Error retrieving unauthenticated token: ${errorMessage}.`);
 	}
 
 	/**
@@ -2562,6 +2670,7 @@
 	 */
 	function createNewConversation(routingAttributes) {
 		const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat(CONVERSATION_PATH);
+		const language = embeddedservice_bootstrap.settings.language;
 
 		return sendRequest(
 			endpoint,
@@ -2570,7 +2679,8 @@
 			null,
 			{
 				...(routingAttributes && { routingAttributes }),
-				conversationId
+				conversationId,
+				language
 			},
 			"createNewConversation"
 		).then(response => response.json());
@@ -2957,6 +3067,14 @@
 	}
 
 	/**
+	 * Returns the FAB image url token value for customizing the button.
+	 * @return {String}
+	 */
+	function getCustomButtonIconUrlFromBrandingConfig() {
+		return getTokenValueFromBrandingConfig("fabImage");
+	}
+
+	/**
 	 * Sets --eswButtonBottom & --eswButtonRight CSS properties which determine the location of the static and the minimized button on a page.
 	 * bottom, right values are specified using the embeddedservice_bootstrap.settings.chatButtonPosition snippet setting.
 	 * For eg, If embeddedservice_bootstrap.settings.chatButtonPosition = "25px, 30px"; , set --eswButtonBottom = 25px, --eswButtonRight = 30px.
@@ -3301,6 +3419,40 @@
 	}
 
 	/**
+	 * Create a live region announcer on the parent page.
+	 */
+	function addLiveRegionAnnouncer() {
+		const liveRegion = document.createElement("div");
+
+		liveRegion.id = "embeddedMessagingLiveRegion";
+		liveRegion.setAttribute("aria-live", "assertive");
+		liveRegion.setAttribute("aria-atomic", "true");
+		liveRegion.classList.add("embeddedMessagingLiveRegion");
+
+		getEmbeddedMessagingTopContainer().appendChild(liveRegion);
+	};
+
+	/**
+	 * [A11Y] Populate the live region.
+	 * @param {Object} data - Contains text to announce.
+	 */
+	function handleScreenReaderAnnouncement(data) {
+		const liveRegion = document.getElementById("embeddedMessagingLiveRegion");
+
+		liveRegion.textContent = data.text;
+
+		if (liveRegionAnnouncerTimer) {
+			clearTimeout(liveRegionAnnouncerTimer);
+		}
+
+		liveRegionAnnouncerTimer = setTimeout(() => {
+			// Clear live region content
+			liveRegion.textContent = '';
+		}, 3000);
+	}
+
+
+	/**
 	 * Sets viewport meta content back to the original value
 	 *
 	 */
@@ -3566,6 +3718,9 @@
 	 * 1. user verification change (going from a verified to an unverified deployment)
 	 * 2. language-specific auto-response change (customer has language-specific auto-responses configured)
 	 * 3. any other channel setting change (like routing, consent keywords, file attachment, inactivity rules)
+	 *
+	 * When the client is using session based auth mode in exp site, if there is an existing jwt in storage
+	 * We will check if the current user ID matches with the user ID that is in the JWT, if they don't match then we will invoke clearSession to prevent showing conversation from another user.
 	 */
 	function handleExistingSession() {
 		messagingJwt = getItemInWebStorageByKey(STORAGE_KEYS.JWT);
@@ -3574,10 +3729,17 @@
 		const jwtPayload = parseJwt(messagingJwt) || {};
 		// Extract channelAddId claim.
 		const channelAddIdFromJwt = jwtPayload[MESSAGING_JWT_CHANNEL_ADD_ID_CLAIM] || "";
+		// Extract userId.
+		const userIdFromJwt = jwtPayload[MESSAGING_JWT_USER_ID_CLAIM] || "";
 
-		if (embeddedservice_bootstrap.settings.restrictSessionOnMessagingChannel && (channelAddIdFromConfig !== channelAddIdFromJwt)) {
+		if ((embeddedservice_bootstrap.settings.restrictSessionOnMessagingChannel && (channelAddIdFromConfig !== channelAddIdFromJwt)) || (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && userIdFromJwt !== embeddedservice_bootstrap.settings.snippetConfig.userId)) {
 			embeddedservice_bootstrap.userVerificationAPI.clearSession();
 			return;
+		}
+
+		// Same user refreshed the page, call the timer
+		if (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
+			getExpSiteSessionTimeout();
 		}
 
 		embeddedservice_bootstrap.generateMarkup(true);
@@ -3670,8 +3832,23 @@
 		// Remove markup from the page.
 		embeddedservice_bootstrap.removeMarkup();
 
+		//Load ReCaptcha scripts
+		if (shouldLoadReCaptchaScript()) {
+			let recaptchaPromise = loadReCaptchaScript();
+			recaptchaPromise.then(() => initializeClientState());
+		} else {
+			initializeClientState();
+		}
+	}
+
+	function initializeClientState() {
 		// Regenerate markup if we are in unverified user mode.
-		if (getAuthMode() === AUTH_MODE.UNAUTH) {
+		// OR if the user is logged into experience site with session-based auth mode.
+		if (getAuthMode() === AUTH_MODE.UNAUTH || (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && !embeddedservice_bootstrap.settings.snippetConfig.isExpSiteGuestUser)) {
+			if (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
+				getExpSiteSessionTimeout();
+			}
+
 			embeddedservice_bootstrap.generateMarkup();
 
 			if (getEmbeddedMessagingConversationButton()) {
@@ -3791,7 +3968,19 @@
 		}
 
 		const buttonIconWrapper = document.createElement("div");
-		const buttonIconElement = renderSVG(DEFAULT_ICONS.CHAT);
+		const customButtonIconUrl = getCustomButtonIconUrlFromBrandingConfig();
+		let buttonIconElement;
+		// If the customButtonIconUrl is valid use that, Otherwise use the default icon.
+		if (customButtonIconUrl && customButtonIconUrl.length > 0) {
+			buttonIconElement = document.createElement("img");
+			buttonIconElement.src = customButtonIconUrl;
+			// Accessibility attributes for decorative images
+			buttonIconElement.setAttribute("alt", "");
+			buttonIconElement.setAttribute("aria-hidden", "true");
+		} else {
+			// Create an SVG element with default icon.
+			buttonIconElement = renderSVG(DEFAULT_ICONS.CHAT);
+		}
 
 		buttonIconElement.setAttribute("id", EMBEDDED_MESSAGING_ICON_CHAT);
 		buttonIconElement.setAttribute("class", EMBEDDED_MESSAGING_ICON_CHAT);
@@ -4267,6 +4456,11 @@
 			// Remove the chat icon from the icon container.
 			if (iconContainer && chatIcon) {
 				iconContainer.removeChild(chatIcon);
+			}
+
+			// Hide the ReCaptcha Banner
+			if (isRecaptchaEnabled()) {
+				hideReCaptchaBanner();
 			}
 
 			// Create the minimize button markup and insert into the DOM.
@@ -5170,6 +5364,10 @@
 		let topContainerElement = getEmbeddedMessagingTopContainer();
 		let conversationButtonElement = getEmbeddedMessagingConversationButton();
 
+		if (isRecaptchaEnabled()) {
+			showReCaptchaBanner();
+		}
+
 		if (isChannelMenuDeployment() && !generateMarkupInChannelMenu) {
 			emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
 			return;
@@ -5195,6 +5393,8 @@
 		if(!getInertScript()) {
 			addInertScript();
 		}
+
+		addLiveRegionAnnouncer();
 	};
 
 	/**
@@ -5267,6 +5467,8 @@
 				iframe.setAttribute("aria-label", getLabel("EmbeddedMessagingChatHeader", "ChatWindowAssistiveText") || CHAT_WINDOW_ASSISTIVE_TEXT);
 				iframe.setAttribute("role", "dialog");
 				iframe.setAttribute("aria-modal", "true");
+
+				iframe.allow="payment *";
 
 				if (isAppDisplayModeInline()) {
 					iframe.classList.add(LWR_INLINE_IFRAME_CLASS);
@@ -5348,6 +5550,7 @@
 		const iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		const viewportMetaTag = getViewportMetaTag();
 		const isiOS = isUseriOS();
+		const captchaBanner = document.querySelector(GRECAPTCHA_CLASS);
 		let minimizeButton;
 
 		if(frame) {
@@ -5430,6 +5633,10 @@
 			toggleInertOnSiblingElements(true);
 		}
 
+		if (captchaBanner) {
+			captchaBanner.classList.add(MODAL_ISMAXIMIZED_CLASS);
+		}
+
 		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MAXIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 		log("maximizeIframe", `Maximized the app`);
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
@@ -5442,6 +5649,7 @@
 		const modal = getEmbeddedMessagingModal();
 		const minimizeIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_MINIMIZE);
 		const hasMinimizedNotification = data.hasMinimizedNotification;
+		const captchaBanner = document.querySelector(GRECAPTCHA_CLASS);
 
 		if(frame) {
 			frame.classList.remove(MODAL_ISMAXIMIZED_CLASS);
@@ -5501,6 +5709,10 @@
 			toggleInertOnSiblingElements(false);
 		}
 
+		if (captchaBanner) {
+			captchaBanner.classList.remove(MODAL_ISMAXIMIZED_CLASS);
+		}
+
 		sendPostMessageToAppIframe(EMBEDDED_MESSAGING_MINIMIZE_RESIZING_COMPLETED_EVENT_NAME);
 		log("minimizeIframe", `Minimized the app`);
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME);
@@ -5516,6 +5728,127 @@
 			// Resize and style iframe to render minimized button and notification.
 			embeddedMessagingFrame.classList.add(MODAL_HASMINIMIZEDNOTIFICATION_CLASS);
 		}
+	}
+
+	/**
+	 * Hide the ReCaptcha badge once the accessToken call is completed
+	 */
+	function hideReCaptchaBanner() {
+		// Select the grecaptcha-badge element
+		let badge = document.querySelector(GRECAPTCHA_CLASS);
+
+		// Set its visibility to hidden
+		if (badge) {
+			badge.style.visibility = 'hidden';
+		}
+	}
+
+	/**
+	 * Show the ReCaptcha badge once the chat is ended and client is reset to initial state
+	 */
+	function showReCaptchaBanner() {
+		// Select the grecaptcha-badge element
+		let badge = document.querySelector(GRECAPTCHA_CLASS);
+
+		// Set its visibility to visible
+		if (badge) {
+			badge.classList.remove(MODAL_ISMAXIMIZED_CLASS);
+			if (badge.style.visibility === "hidden") {
+				badge.style.visibility = 'visible';
+			}
+		}
+	}
+
+	/**
+	 * Checks if Captcha is enabled and siteKey is received in the configResponse
+	 * @returns {boolean}
+	 */
+	function isRecaptchaEnabled() {
+		const messagingChannel = embeddedservice_bootstrap.settings.embeddedServiceConfig.messagingChannel;
+		return ( messagingChannel != null && messagingChannel.captchaInfo != null && messagingChannel.captchaInfo.siteKey );
+	}
+
+	/**
+	 * Checks if ReCaptcha scripts need to be loaded.
+	 * @returns {boolean}
+	 */
+	function shouldLoadReCaptchaScript() {
+		return (isRecaptchaEnabled() && !sessionExists() && getAuthMode() !== AUTH_MODE.EXP_SITE_AUTH && (typeof grecaptcha === 'undefined'));
+	}
+
+	/**
+	 * Load the ReCaptcha script on below conditions
+	 * 1. Page load before chat button is visible
+	 * 2. In case of page refresh in middle of chat and chat end and then
+	 *    reset client to initial state before initiating a new chat
+	 * @returns {Promise} Resolves if ReCaptcha script is loaded.
+	 */
+	function loadReCaptchaScript() {
+		return new Promise( (resolve, reject) => {
+			const messagingChannel = embeddedservice_bootstrap.settings.embeddedServiceConfig.messagingChannel;
+			const siteKey = messagingChannel.captchaInfo.siteKey;
+			const script = document.createElement('script');
+			script.src = RECAPTCHA_URL;
+
+			const recaptchaBannerDiv = document.createElement('div');
+			recaptchaBannerDiv.id = GRECAPTCHA_BANNER_DIV;
+			recaptchaBannerDiv.classList.add(GRECAPTCHA_BANNER_CLASS);
+			let badgeDirection = "bottomright";
+			// Set HTML direction based on language
+			badgeDirection = (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection
+				&& typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string"
+				&& embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase() === "rtl")
+				? "bottomleft"
+				: badgeDirection;
+			embeddedservice_bootstrap.settings.targetElement.appendChild(recaptchaBannerDiv);
+
+			script.onload = function () {
+				grecaptcha.ready(function () {
+					recaptchaClientId = grecaptcha.render(GRECAPTCHA_BANNER_DIV, {
+						'sitekey': siteKey,
+						'size': 'invisible',
+						'badge': badgeDirection
+					});
+					resolve('ReCaptcha script loaded');
+				});
+			};
+
+			script.onerror = function (err) {
+				const errorMessage = err?.message || err;
+				warning("loadReCaptchaScript", errorMessage);
+				reject(errorMessage);
+			};
+
+			// Append the script to the head of the document
+			embeddedservice_bootstrap.settings.targetElement.appendChild(script);
+		});
+	}
+
+	/**
+	 * Executes the Invisible ReCaptcha script to generate the client token, required for server validation
+	 * @returns {Promise} Resolves if Captcha is not enabled or ReCaptcha token is successfully generated.
+	 */
+	function handleReCaptchaTokenGeneration() {
+		// Trigger the invisible ReCaptcha when requesting for new Access Token
+		return new Promise((resolve, reject) => {
+			try {
+				// Execute the ReCaptcha script to generate token
+				grecaptcha.ready(function () {
+					grecaptcha.execute(recaptchaClientId, {action: 'AccessTokenRequest'}).then(function (token) {
+						resolve(token);
+					}).catch(function (err) {
+						// If execute fails, reject the promise
+						const errorMessage = err?.message || err;
+						log("handleReCaptchaTokenGeneration", errorMessage);
+						reject(errorMessage);
+					});
+				});
+			} catch (err) {
+				const errorMessage = err?.message || err;
+				warning("handleReCaptchaTokenGeneration", errorMessage);
+				reject(errorMessage);
+			}
+		});
 	}
 
 	/**
@@ -5623,7 +5956,14 @@
 					if (isExpSite()) {
 						log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
 						if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
-							embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+							// Auth mode must also be enabled on channel level for session-based auth for exp site.
+							// Otherwise proceed as unauth.
+							if (isUserVerificationEnabled()) {
+								embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+							} else {
+								error("init", "User verification is not enabled in messaging channel.");
+								throw new Error("User verification is not enabled in messaging channel.");
+							}
 						}
 					} else {
 						log("init", "Messaging for Web used in External Site context.");
@@ -5647,6 +5987,15 @@
 				}
 			);
 
+			let loadReCaptchaPromise = configPromise.then(() => {
+				if (shouldLoadReCaptchaScript()) {
+					return loadReCaptchaScript();
+				} else {
+					// If ReCaptcha is not enabled or session exists or , resolve immediately
+					return Promise.resolve('ReCaptcha is not enabled or session exists');
+				}
+			});
+
 			//once we have config we can check 3rd party storage
 			configPromise.then(() => {
 				sendPostMessageToSiteContextIframe(
@@ -5669,9 +6018,8 @@
 					emitEmbeddedMessagingInitErrorEvent();
 					throw new Error("Failed to retrieve Business Hours data.");
 				});
-
 			// Show button when we've loaded everything.
-			Promise.all([cssPromise, configPromise, businessHoursPromise, sessionDataPromise]).then(() => {
+			Promise.all([cssPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise]).then(() => {
 				initializeWebStorage();
 
 				logWebStorageItemsOnInit();
@@ -5680,15 +6028,16 @@
 
 				embeddedservice_bootstrap.emitEmbeddedMessagingReadyEvent();
 
-				// For experience site auth mode, markup is generated if user is logged in.
 				// If session exists in web storage, generate button markup and bootstrap the session.
 				// Else, generate button markup only for unauth mode. For external site auth mode, markup is generated in #setIdentityToken() API.
+				// For experience site auth mode, markup is generated if user is logged in.
 				// For MIAW in Channel Menu, static button markup is generated on menu item click in #bootstrapEmbeddedMessaging() API
-				if (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
-					getExpSiteSessionTimeout();
-				} else if (sessionExists()) {
+				if (sessionExists()) {
 					handleExistingSession();
-				} else if (getAuthMode() === AUTH_MODE.UNAUTH) {
+				} else if (getAuthMode() === AUTH_MODE.UNAUTH || (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH && !embeddedservice_bootstrap.settings.snippetConfig.isExpSiteGuestUser)) {
+					if (getAuthMode() === AUTH_MODE.EXP_SITE_AUTH) {
+						getExpSiteSessionTimeout();
+					}
 					embeddedservice_bootstrap.generateMarkup();
 				}
 
