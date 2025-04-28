@@ -5,24 +5,17 @@
 </head>
 <body>
 
-<style>
-  body {
-    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
-  }
-</style>
-
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
-				'00DSB0000016Oez',
-				'Messaging_7',
-				'https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWMessaging71698179779843',
+				'00DSB00000QAo9R',
+				'Unauth_2',
+				'https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/ESWUnauth21745266158722',
 				{
-					scrt2URL: 'https://eswmessaging.demo.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -30,8 +23,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://eswmessaging.demo.test1.my.pc-rnd.site.com/ESWMessaging71698179779843/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-
+<script type='text/javascript' src='https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/ESWUnauth21745266158722/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 	
 </body>
