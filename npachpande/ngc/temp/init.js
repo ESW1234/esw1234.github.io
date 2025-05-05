@@ -201,7 +201,7 @@
             link.id = "css";
             link.class = "css";
             initSrc = initScriptElement.src;
-            link.href = initSrc.substring(0, initSrc.indexOf("/init.js")) + "./init.css";
+            link.href = initSrc.substring(0, initSrc.indexOf("/init.js")) + "/init.css";
             link.type = "text/css";
             link.rel = "stylesheet";
 
