@@ -192,14 +192,16 @@
         return new Promise((resolve, reject) => {
             let link = document.createElement("link");
             const initScriptElement = getInitScriptElement();
+            const initSrc = "";
 
             if(!initScriptElement) {
                 reject("Failed to locate init.js on page.");
             }
-            
+
             link.id = "css";
             link.class = "css";
-            link.href = initScriptElement.src.substring(0, initSrc.indexOf("/init.js")) + "./init.css";
+            initSrc = initScriptElement.src.substring(0, initSrc.indexOf("/init.js"));
+            link.href = initSrc + "./init.css";
             link.type = "text/css";
             link.rel = "stylesheet";
 
