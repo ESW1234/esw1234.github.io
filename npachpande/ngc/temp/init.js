@@ -197,10 +197,9 @@
                 reject("Failed to locate init.js on page.");
             }
             
-            console.log(initScriptElement.src);
             link.id = "css";
             link.class = "css";
-            link.href = "./init.css";
+            link.href = initScriptElement.src.substring(0, initSrc.indexOf("/init.js")) + "./init.css";
             link.type = "text/css";
             link.rel = "stylesheet";
 
