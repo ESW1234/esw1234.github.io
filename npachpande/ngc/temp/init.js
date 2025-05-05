@@ -10,6 +10,7 @@
      */
     const TOP_CONTAINER_NAME = "agentforce-messaging";
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
+    const INIT_SCRIPT_NAME = "init-agentforce-messaging";
 
     // =========================
     //  DOM Selectors
@@ -20,6 +21,10 @@
 
     function getIframe() {
         return document.getElementById(LWR_IFRAME_NAME);
+    }
+
+    function getInitScriptElement() {
+        return document.getElementById(INIT_SCRIPT_NAME);
     }
 
     function getSiteUrl() {
@@ -186,7 +191,13 @@
     function loadCSS() {
         return new Promise((resolve, reject) => {
             let link = document.createElement("link");
+            const initScriptElement = getInitScriptElement();
 
+            if(!initScriptElement) {
+                reject("Failed to locate init.js on page.");
+            }
+            
+            console.log(initScriptElement.src);
             link.id = "css";
             link.class = "css";
             link.href = "./init.css";
