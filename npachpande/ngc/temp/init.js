@@ -191,8 +191,8 @@
     function loadCSS() {
         return new Promise((resolve, reject) => {
             let link = document.createElement("link");
+            let initSrc = "";
             const initScriptElement = getInitScriptElement();
-            const initSrc = "";
 
             if(!initScriptElement) {
                 reject("Failed to locate init.js on page.");
