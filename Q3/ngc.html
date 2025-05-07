@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>NGC</title>
+</head>
+<body>
+<script type='text/javascript'>
+    function initAgentforceMessaging() {
+        try {
+            agentforce_messaging.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+            agentforce_messaging.init(
+                '0XxSG000000EyXN0A0',
+                'voice_agent_final',
+                'https://orgfarm-4f0d2cad1c.test1.my.pc-rnd.salesforce.com/ESWvoiceagentfinal1746599498161',
+                {
+                    scrt2URL: 'https://orgfarm-4f0d2cad1c.test1.my.pc-rnd.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
+</script>
+<script type='text/javascript' src='https://orgfarm-4f0d2cad1c.test1.my.pc-rnd.salesforce.com/ESWvoiceagentfinal1746599498161/assets/js/init.js' onload='initAgentforceMessaging()'></script>
+</body>
+</html>
