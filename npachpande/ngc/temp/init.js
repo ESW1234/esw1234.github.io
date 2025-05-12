@@ -82,6 +82,9 @@
             case "text_message_link_click":
                 handleLinkClick(postMessage);
                 break;
+            case "lwr_iframe_ready":
+                sendConfigurationToAppIframe();
+                break;
             default:
                 console.warn(
                     "Unrecognized postMessage event name: " + postMessage.type
@@ -106,7 +109,7 @@
 
         // TODO - Avoid adding targetElement to config data
         delete configData.targetElement;
-        sendPostMessageToAppIframe("ESW_SET_CONFIG_EVENT", configData);
+        sendPostMessageToAppIframe("set_app_config", configData);
     }
 
     /**
@@ -261,7 +264,6 @@
                 .createIframe()
                 .then(() => {
                     console.log(`Created Agentforce Messaging frame`);
-                    sendConfigurationToAppIframe();
                 })
                 .catch((e) => {
                     console.error(
