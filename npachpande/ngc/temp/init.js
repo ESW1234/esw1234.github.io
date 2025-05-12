@@ -91,40 +91,6 @@
     }
 
     /**
-     * Handle a link click. If 'shouldOpenLinksInSameTab' setting is TRUE, open the link in the same tab and open a new tab if FALSE.
-     * In case of Mobile Publisher, let the link navigation happen as usual per the app's control behavior.
-     * @param {object} event - message event containing the link details
-     */
-    function handleLinkClick(event) {
-        try {
-            if (
-                event &&
-                event.data &&
-                event.data.data &&
-                event.data.data.link
-            ) {
-                const linkElement = document.createElement("a");
-                linkElement.setAttribute("href", event.data.data.link);
-                linkElement.setAttribute("rel", "noopener noreferrer");
-                if (
-                    isMobilePublisherApp() ||
-                    !Boolean(
-                        agentforce_messaging.settings.shouldOpenLinksInSameTab
-                    )
-                ) {
-                    linkElement.setAttribute("target", "_blank");
-                }
-                linkElement.click();
-            }
-        } catch (err) {
-            throw new Error(
-                "handleLinkClick",
-                `Something went wrong in handling a link click: ${err}`
-            );
-        }
-    }
-
-    /**
      * Sends configuration data to LWR app. Optional - Adds jwt & conversation data to configuration before sending if specified.
      * @param jwtData - Optional jwtData (accessToken & lastEventId).
      * @param conversationData - Optional new or existing conversation data.
