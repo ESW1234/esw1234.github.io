@@ -244,6 +244,9 @@
             agentforce_messaging.settings.siteUrl = siteUrl;
             agentforce_messaging.settings.snippetConfig = snippetConfig;
 
+            // Add message event handler
+            window.addEventListener("message", handleMessageEvent);
+
             // Load CSS file.
             loadCSS()
                 .then(() => {
@@ -258,9 +261,6 @@
                 .createIframe()
                 .then(() => {
                     console.log(`Created Agentforce Messaging frame`);
-
-                    window.addEventListener("message", handleMessageEvent);
-
                     sendConfigurationToAppIframe();
                 })
                 .catch((e) => {
