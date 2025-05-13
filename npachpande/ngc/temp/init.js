@@ -182,13 +182,6 @@
         return topContainerElement;
     }
 
-    function isValidConfiguration(configData) {
-        if (!configData || !configData.siteUrl || !configData.agentApiConfiguration || !configData.uiConfiguration) {
-            return false;
-        }
-        return true;
-    }
-
     AgentforceMessaging.prototype.createIframe = function createIframe() {
         return new Promise((resolve, reject) => {
             try {
@@ -235,11 +228,8 @@
 
     AgentforceMessaging.prototype.init = function init(configData) {
         try {
-            if (!isValidConfiguration(configData)) {
-                throw new Error("Invalid client configuration specified in agentforce_messaging.init() method.");
-            }
             // Set configuration
-            configuration = configData;
+            configuration = configData || {};
             
             // Add message event handler
             window.addEventListener("message", handleMessageEvent);
