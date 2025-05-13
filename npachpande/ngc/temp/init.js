@@ -12,6 +12,9 @@
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
     const INIT_SCRIPT_NAME = "init-agentforce-messaging";
 
+    // App/Client configuration
+    let configuration = {};
+
     // =========================
     //  DOM Selectors
     // =========================
@@ -97,7 +100,7 @@
      * Sends configuration data to LWR app.
      */
     function sendConfigurationToAppIframe() {
-        sendPostMessageToAppIframe("set_app_config", agentforce_messaging.settings.configuration);
+        sendPostMessageToAppIframe("set_app_config", configuration);
     }
 
     /**
@@ -137,7 +140,6 @@
     // =========================
     function AgentforceMessaging() {
         this.settings = {
-            devMode: false,
             targetElement: document.body
         };
     }
@@ -180,8 +182,8 @@
         return topContainerElement;
     }
 
-    function isValidConfiguration(configuration) {
-        if (!configuration || !configuration.siteUrl || !configuration.agentApiConfiguration || !configuration.uiConfiguration) {
+    function isValidConfiguration(configData) {
+        if (!configData || !configData.siteUrl || !configData.agentApiConfiguration || !configData.uiConfiguration) {
             return false;
         }
         return true;
@@ -193,6 +195,7 @@
                 const markupFragment = document.createDocumentFragment();
                 const topContainer = createTopContainer();
                 const iframe = document.createElement("iframe");
+                const devMode = Boolean(configuration.devMode);
 
                 iframe.title = LWR_IFRAME_NAME;
                 iframe.className = LWR_IFRAME_NAME;
@@ -208,7 +211,7 @@
                 iframe.src =
                     siteURL +
                     "?lwc.mode=" +
-                    (agentforce_messaging.settings.devMode ? "dev" : "prod");
+                    (devMode ? "dev" : "prod");
                 // Allow microphone access for voice conversations.
                 iframe.allow = "microphone";
                 iframe.sandbox =
@@ -230,17 +233,13 @@
         });
     };
 
-    AgentforceMessaging.prototype.init = function init(configuration) {
+    AgentforceMessaging.prototype.init = function init(configData) {
         try {
-            if (!isValidConfiguration(configuration)) {
+            if (!isValidConfiguration(configData)) {
                 throw new Error("Invalid client configuration specified in agentforce_messaging.init() method.");
             }
-
             // Set configuration
-            agentforce_messaging.settings.configuration = configuration;
-
-            // Set devMode
-            agentforce_messaging.settings.devMode = Boolean(configuration.devMode);
+            configuration = configData;
             
             // Add message event handler
             window.addEventListener("message", handleMessageEvent);
