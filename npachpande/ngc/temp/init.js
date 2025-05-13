@@ -182,6 +182,14 @@
         return topContainerElement;
     }
 
+    function isValidConfiguration(configData) {
+        if (!configData || !configData.siteUrl || !configData.agentApiConfiguration 
+            || !configData.agentApiConfiguration.agentId || !configData.agentApiConfiguration.domainUrl) {
+            return false;
+        }
+        return true;
+    }
+
     AgentforceMessaging.prototype.createIframe = function createIframe() {
         return new Promise((resolve, reject) => {
             try {
@@ -228,6 +236,10 @@
 
     AgentforceMessaging.prototype.init = function init(configData) {
         try {
+            if (!isValidConfiguration(configData)) {
+                throw new Error("Invalid init() configuration specified. siteUrl, agentId & domainUrl are mandatory.");
+            }
+            
             // Set configuration
             configuration = configData || {};
             
