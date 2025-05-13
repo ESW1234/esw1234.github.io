@@ -32,7 +32,7 @@
 
     function getSiteUrl() {
         try {
-            return agentforce_messaging.settings.configuration.siteUrl;
+            return configuration.siteUrl;
         } catch (err) {
             console.error(`Error retrieving site URL: ${err}`);
         }
