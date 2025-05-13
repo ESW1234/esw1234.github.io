@@ -29,7 +29,7 @@
 
     function getSiteUrl() {
         try {
-            return agentforce_messaging.settings.siteUrl;
+            return agentforce_messaging.settings.configuration.siteUrl;
         } catch (err) {
             console.error(`Error retrieving site URL: ${err}`);
         }
@@ -94,22 +94,10 @@
     }
 
     /**
-     * Sends configuration data to LWR app. Optional - Adds jwt & conversation data to configuration before sending if specified.
-     * @param jwtData - Optional jwtData (accessToken & lastEventId).
-     * @param conversationData - Optional new or existing conversation data.
-     * @param errorData - Optional error data to pass to Chat Unavailable State.
-     * @param isPageLoad - Whether we are attempting to continue an existing session (using an existing JWT from web storage) on page/script load.
+     * Sends configuration data to LWR app.
      */
     function sendConfigurationToAppIframe() {
-        let configData = Object.assign(
-            {},
-            agentforce_messaging.settings,
-            agentforce_messaging.settings.snippetConfig
-        );
-
-        // TODO - Avoid adding targetElement to config data
-        delete configData.targetElement;
-        sendPostMessageToAppIframe("set_app_config", configData);
+        sendPostMessageToAppIframe("set_app_config", agentforce_messaging.settings.configuration);
     }
 
     /**
@@ -192,6 +180,13 @@
         return topContainerElement;
     }
 
+    function isValidConfiguration(configuration) {
+        if (!configuration || !configuration.siteUrl || !configuration.agentApiConfiguration || !configuration.uiConfiguration) {
+            return false;
+        }
+        return true;
+    }
+
     AgentforceMessaging.prototype.createIframe = function createIframe() {
         return new Promise((resolve, reject) => {
             try {
@@ -235,18 +230,15 @@
         });
     };
 
-    AgentforceMessaging.prototype.init = function init(
-        agentId,
-        domainUrl,
-        siteUrl,
-        snippetConfig = {}
-    ) {
+    AgentforceMessaging.prototype.init = function init(configuration) {
         try {
-            agentforce_messaging.settings.agentId = agentId;
-            agentforce_messaging.settings.domainUrl = domainUrl;
-            agentforce_messaging.settings.siteUrl = siteUrl;
-            agentforce_messaging.settings.snippetConfig = snippetConfig;
+            if (!isValidConfiguration(configuration)) {
+                throw new Error("Invalid client configuration provided in agentforce_messaging.init() method");
+            }
 
+            // Set configuration
+            agentforce_messaging.settings.configuration = configuration;
+            
             // Add message event handler
             window.addEventListener("message", handleMessageEvent);
 
