@@ -233,7 +233,7 @@
     AgentforceMessaging.prototype.init = function init(configuration) {
         try {
             if (!isValidConfiguration(configuration)) {
-                throw new Error("Invalid client configuration provided in agentforce_messaging.init() method");
+                throw new Error("Invalid client configuration specified in agentforce_messaging.init() method.");
             }
 
             // Set configuration
