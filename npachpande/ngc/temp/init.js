@@ -115,10 +115,10 @@
     /**
      * Send a post message to the LWR App iframe window. If the frame is not ready, wait for it.
      *
-     * @param {String} method - Name of method.
+     * @param {String} type - Type/Name of method.
      * @param {Object} data - Data to send with message. Only included in post message if data is defined.
      */
-    function sendPostMessageToAppIframe(method, data) {
+    function sendPostMessageToAppIframe(type, data) {
         // lwrIframeReadyPromise.then(() => {
         const iframe = getIframe();
 
@@ -131,7 +131,7 @@
         if (iframe && iframe.contentWindow) {
             iframe.contentWindow.postMessage(
                 {
-                    method,
+                    type,
                     ...(data && { data })
                 },
                 getSiteUrl()
