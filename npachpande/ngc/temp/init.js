@@ -238,6 +238,9 @@
 
             // Set configuration
             agentforce_messaging.settings.configuration = configuration;
+
+            // Set devMode
+            agentforce_messaging.settings.devMode = Boolean(configuration.devMode);
             
             // Add message event handler
             window.addEventListener("message", handleMessageEvent);
