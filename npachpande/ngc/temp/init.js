@@ -13,7 +13,7 @@
     const INIT_SCRIPT_NAME = "init-agentforce-messaging";
 
     // App/Client configuration
-    let configuration = {};
+    let appConfiguration = {};
 
     // =========================
     //  DOM Selectors
@@ -32,7 +32,7 @@
 
     function getSiteUrl() {
         try {
-            return configuration.siteUrl;
+            return appConfiguration.siteUrl;
         } catch (err) {
             console.error(`Error retrieving site URL: ${err}`);
         }
@@ -100,7 +100,7 @@
      * Sends configuration data to LWR app.
      */
     function sendConfigurationToAppIframe() {
-        sendPostMessageToAppIframe("set_app_config", configuration);
+        sendPostMessageToAppIframe("set_app_config", appConfiguration);
     }
 
     /**
@@ -110,12 +110,11 @@
      * @param {Object} data - Data to send with message. Only included in post message if data is defined.
      */
     function sendPostMessageToAppIframe(type, data) {
-        // lwrIframeReadyPromise.then(() => {
         const iframe = getIframe();
 
         if (typeof type !== "string") {
             throw new Error(
-                `Expected a string to use as message param in post message, instead received ${method}.`
+                `Expected a string to use as message param in post message, instead received ${type}.`
             );
         }
 
@@ -129,10 +128,9 @@
             );
         } else {
             console.warning(
-                `Embedded Messaging iframe not available for post message with method ${type}.`
+                `Agentforce Messaging iframe not available for post message with method ${type}.`
             );
         }
-        // });
     }
     
     // =========================
@@ -182,7 +180,7 @@
         return topContainerElement;
     }
 
-    function isValidConfiguration(configData) {
+    function isValidAppConfiguration(configData) {
         if (!configData || !configData.siteUrl || !configData.agentApiConfiguration 
             || !configData.agentApiConfiguration.agentId || !configData.agentApiConfiguration.domainUrl) {
             return false;
@@ -196,7 +194,7 @@
                 const markupFragment = document.createDocumentFragment();
                 const topContainer = createTopContainer();
                 const iframe = document.createElement("iframe");
-                const devMode = Boolean(configuration.devMode);
+                const devMode = Boolean(appConfiguration.devMode);
 
                 iframe.title = LWR_IFRAME_NAME;
                 iframe.className = LWR_IFRAME_NAME;
@@ -234,14 +232,14 @@
         });
     };
 
-    AgentforceMessaging.prototype.init = function init(configData) {
+    AgentforceMessaging.prototype.init = function init(appConfigData) {
         try {
-            if (!isValidConfiguration(configData)) {
+            if (!isValidAppConfiguration(appConfigData)) {
                 throw new Error("Invalid init() configuration specified. siteUrl, agentId & domainUrl are mandatory.");
             }
             
-            // Set configuration
-            configuration = configData || {};
+            // Set configuration for the app
+            appConfiguration = appConfigData || {};
             
             // Add message event handler
             window.addEventListener("message", handleMessageEvent);
