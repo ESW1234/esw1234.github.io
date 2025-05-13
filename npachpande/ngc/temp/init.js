@@ -122,7 +122,7 @@
         // lwrIframeReadyPromise.then(() => {
         const iframe = getIframe();
 
-        if (typeof method !== "string") {
+        if (typeof type !== "string") {
             throw new Error(
                 `Expected a string to use as message param in post message, instead received ${method}.`
             );
@@ -138,7 +138,7 @@
             );
         } else {
             console.warning(
-                `Embedded Messaging iframe not available for post message with method ${method}.`
+                `Embedded Messaging iframe not available for post message with method ${type}.`
             );
         }
         // });
