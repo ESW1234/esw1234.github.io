@@ -1,15 +1,26 @@
 <html>
 <head>
-  <title>ngc1.html</title>
+  <title>NGC</title>
 </head>
 <body>
-<script type="text/javascript"
-	id="init-agentforce-messaging"
-	src="https://esw1234.github.io/npachpande/ngc/temp/init.js" 
-	onload='agentforce_messaging.init(
-		"0XxSG000000Efsv0AC",
-		"https://orgfarm-559ff0d30b.test1.my.pc-rnd.salesforce.com", 
-		"https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/ESWNGC11746199002281")'>
+
+<script type="text/javascript" 
+	id="init-agentforce-messaging" 
+	src="https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com/embeddedservice/agentforcemessaging/init.js" 
+	onload='agentforce_messaging.init({
+		devMode: true,
+		siteUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/NGC1",
+		agentApiConfiguration: {
+	            agentId: "0XxSB000000Y4cH0AS",
+	            domainUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com",
+	            endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
+	            apiKey: "7c3c0415-dab7-4037-86db-5dc35bb48069",
+	            tenantId: "core/falcontest1-core4sdb3/00DSB00000QAo9R2AT",
+	            region: "us-west-2",
+	            voiceEndpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions"
+	        },
+		uiConfiguration: {});'>
 </script>
+
 </body>
 </html>
