@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>sdb6 miaw1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta name="referrer" content="origin" />
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { 
+	 var response = document.getElementById("g-recaptcha-response"); 
+	 if (response == null || response.value.trim() == "") {
+		 var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());
+		 document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); 
+	 } 
+ } 
+	setInterval(timestamp, 500); 
+</script>
+	
+<body>
+
+<h1>Route to Math Planner Copilot</h1>
+
+<form action="https://webto.test1.pc-rnd.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DSB0000016Oez" method="POST">
+
+<input type=hidden name='captcha_settings' value='{"keyname":"JPTestGithubsite","fallback":"true","orgId":"00DSB0000016Oez","ts":""}'>
+<input type=hidden name="orgid" value="00DSB0000016Oez">
+<input type=hidden name="retURL" value="https://esw1234.github.io/jp/test-sdb6/web2case.html">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="npachpande@salesforce.com">                                      -->
+<!--  ----------------------------------------------------------------------  -->
+
+<label for="name">Contact Name</label><input  id="name" maxlength="80" name="name" size="20" type="text" /><br>
+
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+<label for="subject">Subject</label><input  id="subject" maxlength="80" name="subject" size="20" type="text" /><br>
+
+<label for="description">Description</label><textarea name="description"></textarea><br>
+
+<input type="hidden"  id="external" name="external" value="1" /><br>
+
+<div class="g-recaptcha" data-sitekey="6Ld-hGIqAAAAAE590fD4dE_W51zTUB8PeGK-qmyr"></div><br>
+<input type="submit" name="submit">
+
+</form>
+
+
+	
+</body>
+</html>
+
+
+

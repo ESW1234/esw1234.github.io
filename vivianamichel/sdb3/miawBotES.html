@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, interactive-widget=resizes-content, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<button type="button" id="showChatButton" onclick="showChatButton()"> Show </button></br></br>
+<button type="button" id="clearSessionButton" onclick="clearAuthSession()"> Clear Session </button>
+
+<script type='text/javascript'>
+	function showChatButton() {
+		embeddedservice_bootstrap.utilAPI.showChatButton();
+	}
+	
+	function clearAuthSession() {
+		console.log("Clearing user session.");
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+        	console.log("Received the onEmbeddedMessagingReady event.");
+        
+        	embeddedservice_bootstrap.utilAPI.launchChat();
+    	});
+
+</script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+      			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.chatButtonPosition = "300px , 300px"
+			embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSB0000007IzV',
+				'MIAW_w_Bot',
+				'https://viviana-sdb3.demo.test1.my.pc-rnd.site.com/ESWMIAWwBot1686262279430',
+				{
+					scrt2URL: 'https://viviana-sdb3.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://viviana-sdb3.demo.test1.my.pc-rnd.site.com/ESWMIAWwBot1686262279430/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+   
+</body>
+</html>

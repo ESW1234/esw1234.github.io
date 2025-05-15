@@ -1,0 +1,41 @@
+
+<html>
+<head>
+  <title>NGC</title>
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ElectraHome.png") no-repeat;
+     background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+  function initNextGenChat() {
+    try {
+      embeddedservice_nextgenchat.settings.language = 'en_US';
+      embeddedservice_nextgenchat.settings.devMode = true;
+
+      embeddedservice_nextgenchat.init(
+				'00DSG00000K5wUT',
+				'NGC_3',
+				'https://orgfarm-90820276d1.test1.my.pc-rnd.site.com/ESWNGC31741650008410',
+				{
+					scrt2URL: 'https://orgfarm-90820276d1.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+    } catch (err) {
+      console.error('Error loading Next Gen Chat: ', err);
+    }
+  };
+</script>
+<script type='text/javascript' 
+  src='https://orgfarm-90820276d1.test1.my.pc-rnd.site.com/ESWNGC31741650008410/assets/js/init.js' 
+  onload='initNextGenChat()'></script>
+
+</body>
+</html>

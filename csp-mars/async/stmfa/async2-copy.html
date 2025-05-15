@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>STMFA async2.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+  var s = document.createElement('script');
+  s.setAttribute('src', 'https://na44.stmfa.stm.salesforce.com/embeddedservice/asyncclient/bootstrap.js');
+  s.onload = function() {
+    embeddedservice_bootstrap.settings.platformKey = 'EmbeddedMessaging:062e5c32-3ef6-4745-93e0-74c6b5dc9b8e'; //Messaging platform key
+    embeddedservice_bootstrap.settings.devMode = true;
+    embeddedservice_bootstrap.settings.prechatEnabled = false;
+    embeddedservice_bootstrap.init(
+      '00DRM000000HvmX', //orgId
+      'Messaging', //eswConfigDevName
+      'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat', //scrtUrl
+      'https://na44.stmfa.stm.salesforce.com', //baseCoreURL 
+      { //eswConfig
+        embeddedServiceConfig: {
+          siteUrl: 'https://eswmessagingchat-174dc858640.stmfa.stm.force.com/chatcommunity',
+          embeddedServiceBranding: {
+            height : '554',
+            width : '344'
+          }
+        }
+      }
+    );
+  };
+  document.body.appendChild(s);  
+</script>
+  
+  <div></div>
+  
+</body>
+</html>

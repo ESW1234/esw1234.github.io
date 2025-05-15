@@ -1,0 +1,54 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function loadReCaptchaScript() {
+		console.log("Loading Script for ReCaptcha");
+		const script = document.createElement('script');
+		script.src = 'https://www.google.com/recaptcha/api.js?render=6LdsASgrAAAAAAcz70JJXERIudtNoxjDMlWkfc4b';
+		script.onerror = function() {
+			console.error('Error loading the Turnstile script');
+		};
+		document.head.appendChild(script);  // Append the script to the head of the document
+		console.log("Loaded Script for ReCaptcha");
+	 script.onload = function() {
+        console.log("ReCaptcha script loaded successfully");
+            handleInvisibleReCaptcha();
+    };
+	}
+
+	function handleInvisibleReCaptcha() {
+		// Trigger the invisible Turnstile when needed (e.g., after a user action)
+		console.log("rendering ReCaptcha");
+		grecaptcha.ready(function() {
+			grecaptcha.execute('6LdsASgrAAAAAAcz70JJXERIudtNoxjDMlWkfc4b', {action: 'submit'}).then(function (token) {
+				console.log('ReCaptcha Token Generated :' + token.toString());
+				var captcha = document.getElementById("captcha");
+				captcha.innerHTML = token.toString();
+				
+				
+			});
+		});
+	}
+	loadReCaptchaScript();
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+	<body>
+		<h1> Test ReCaptcha on Different browsers</h1>
+		<h4 id="captcha"></h4>
+	</body>
+</html>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->

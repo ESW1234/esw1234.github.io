@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+    		<a class="linkelem" onclick="handleClick();">THIS LINK IS IN AN IFRAME</a>
+
+		<script type="text/javascript">
+			function handleClick(evt) {
+				console.log("link evt");
+				window.open("https://salesforce.com", "_parent", "noopener");
+			}
+		</script>
+	</body>
+</html>

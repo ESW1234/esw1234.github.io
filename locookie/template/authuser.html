@@ -1,0 +1,36 @@
+<html lang="en-US">
+<body>
+<script src="https://dsg000008a0or2ak.test1.my.pc-rnd.site.com/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppAuth", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+  
+             $Lightning.createComponent("c:bikeCard", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCard created');
+              });
+            },
+
+           'https://dsg000008a0or2ak.test1.lightning.pc-rnd.force.com',
+           //lightningEndPointURI, if you use experience site url, the authToken below will also need to be a site user token test
+            '00DSG000008A0Or!AQEAQFqQ7iyyIvOaqtlhcHFQ9hXp4KgmVk6e6g0mG1mhrZrtCS_aGk1o.Ttz3laW1OSPWW9lcsTTte.X0BI3GRIsS_GzBjH1'
+                           
+        );                   
+</script>   
+</body>
+</html>

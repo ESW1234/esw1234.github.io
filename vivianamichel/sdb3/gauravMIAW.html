@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>SDB3-MIAW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDB3 MIAW Chat - MIAW - 246 deployment</h1>
+Agent: a1@sdb3.ia240
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+	<!-- 	----------- Auth Block----------- -->
+	<textarea id="jwtToken" name="jwtToken" rows="7" cols="100"></textarea><br><br>
+	<button type="button" id="authBtn" onclick="authenticate()"> Authenticate User </button><br><br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function authenticate() {
+			var jwt = {
+				identityTokenType: "JWT",
+				identityToken: document.getElementById("jwtToken").value
+			}
+			console.log("Authenticating User.");
+			console.log("JWT Token: " + JSON.stringify(jwt));
+			console.log("Auth API Response: " + embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(jwt));
+		}
+	</script>
+<!-- 	----------- End of Auth Block----------- -->
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+            		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Browser" : "Browser Chrome 106", "OS" : "Mac OS 1.2"});});
+			embeddedservice_bootstrap.init(
+				'00DSB0000003a8b',
+				'X246Web',
+				'https://inapporg3.test1.my.pc-rnd.site.com/ESWX246Web1693250708347',
+				{
+					scrt2URL: 'https://inapporg3.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://inapporg3.test1.my.pc-rnd.site.com/ESWX246Web1693250708347/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+  </html>

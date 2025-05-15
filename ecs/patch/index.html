@@ -1,0 +1,50 @@
+<html lang="en-US">
+<body>
+<script src="https://esw1234.github.io/ssz/lightning/v4/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppTest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+              /*
+               $Lightning.createComponent("c:AuraWithApex", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('AuraWithApex created');
+              }); 
+        
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); */
+
+     
+             $Lightning.createComponent("c:bikeCard", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCard created');
+              });
+            },
+
+           'https://dsb000005k9i92aa.test1.my.pc-rnd.site.com',// Experience Site URL
+                           'aaaaaa'
+                           
+        );                   
+</script>   
+</body>
+</html>

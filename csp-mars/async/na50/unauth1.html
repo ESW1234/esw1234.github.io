@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>na50 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.chatButtonPosition = "125px, 125px";
+
+			embeddedservice_bootstrap.init(
+				'00DZL0000000MTC',
+				'Unauth_1',
+				'https://eswmessaging0409.test2.my.pc-rnd.site.com/ESWUnauth11712710064745',
+				{
+					scrt2URL: 'https://eswmessaging0409.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswmessaging0409.test2.my.pc-rnd.site.com/ESWUnauth11712710064745/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+	
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+    <script src="https://trialorgfarmforu5.my.localhost.sfdcdev.site.com:7443/lpvforcesite/resource/1719508371000/framebusThirdPartyPage"></script>
+    <framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5></framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5>
+    
+    <script> 
+        const customEventData = new CustomEvent("lo.dataSend", {
+            detail: {
+                type: "sendNumber",
+                payload: {
+                  number: 4
+                }
+            }
+        });
+        const loFragment= document.querySelector("framebus-lo-fragment-z4vi078s2c93toljd3gjqunpc0ts9ur85xj5te9swg5");
+      
+        loFragment.addEventListener("LightningOutLoaded", (e) => {
+          loFragment.dispatchEvent(customEventData);
+        });
+      
+        loFragment.addEventListener("lo.dataReceive", (e) => {
+          if (e.detail.type === "thankYou") {
+            document.location.href = e.detail.payload.url;
+          } else {
+            console.error("Unexpected event! " + JSON.stringify(e.detail));
+          }
+        })
+    </script>
+  </body>
+</html>

@@ -1,7 +1,8 @@
 <html>
 <head>
-  <title>sdo async1.html</title>
+  <title>test sdo async1.html</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="referrer" content="same-origin" />
 </head>
 <body>
 
@@ -15,14 +16,14 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.devMode = true; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00DHr00000189kC',
+				'00Dal00000Omk03',
 				'Unauth_1',
-				'https://npachpande-230620-319-demo.my.site.com/ESWUnauth11687299930875',
+				'https://npachpande-240627-393-demo.my.site.com/ESWUnauth11723843741054',
 				{
-					scrt2URL: 'https://npachpande-230620-319-demo.my.salesforce-scrt.com'
+					scrt2URL: 'https://npachpande-240627-393-demo.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -30,7 +31,9 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://npachpande-230620-319-demo.my.site.com/ESWUnauth11687299930875/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://npachpande-240627-393-demo.my.site.com/ESWUnauth11723843741054/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
 
 </body>
 </html>

@@ -1,1 +1,38 @@
 
+<html>
+<head>
+  <title>sdb14 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DRZ000000y3fl',
+				'MIAWTest',
+				'https://sdb14com-a8.test2.my.pc-rnd.site.com/ESWMIAWTest1728956010347',
+				{
+					scrt2URL: 'https://sdb14com-a8.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://sdb14com-a8.test2.my.pc-rnd.site.com/ESWMIAWTest1728956010347/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+	
+</body>
+</html>

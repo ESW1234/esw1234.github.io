@@ -1,6 +1,6 @@
 <html lang="en-US">
 <body>
-<script src="https://perftest886.twist1.soma.force.com/lightning/lightning.out.js"></script>
+<script src="https://perftest886-corsa04-basichb1-2015881314.vpod.t.force.com/lightning/lightning.out.js"></script>
 <div ng-app="myApp" ng-controller="myCtrl"> 
 
 <p>Today's welcome message is:</p>
@@ -10,6 +10,13 @@
 <div id="lightning">
   </div>
   <script>
+    <!-- https://perftesting886-corsa04-"+ "basichb1" + "-" + "2015881314" + ".vpod.t.salesforce-communities.com/accountPortal -->
+    
+
+    //const url = "${url}";
+    //const url = "https://perftest886-corsa04-"+ "<%= request.getParameter("usecase")%>"  + "-" + "<%= request.getParameter("vpodId")%>" + ".vpod.t.salesforce-communities.com/accountPortal";
+    const url =  "https://perftest886-corsa04-" + "basichb1" + "-" + "2015881314" + ".vpod.t.salesforce-communities.com/accountPortal";
+    // const url = "https://perftest886-corsa04-basichb1-2015881314.vpod.t.salesforce-communities.com/accountPortal";
             $Lightning.use("c:loApp", function() {
               $Lightning.createComponent("c:auraTextCmp1", 
               { },
@@ -118,8 +125,8 @@
              );
           
             },
-
-         'https://perftest886.twist1.soma.force.com/accountPortal' // Community endpoint
+            url
+         //'https://perftest886-corsa04-basichb1-2015881314.vpod.t.salesforce-communities.com/accountPortal' // Community endpoint
         );                   
 
 </script>   

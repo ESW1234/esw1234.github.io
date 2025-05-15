@@ -1,0 +1,31 @@
+
+
+<html lang="en-US">
+<body>
+<script src="https://sisi-lcs-imac3-dev-ed.develop.lightning.localhost.sfdcdev.force.com:7443/lightning/lightning.out.js"></script> //<My Domain URL>/lightning/lightning.out.js
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppTest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+            },
+
+            'https://sisi-lcs-imac3-dev-ed.develop.lightning.localhost.sfdcdev.force.com:7443' ,//Lightning domain URL
+            '00Dxx00000071xv!AQEAQLmL1A694WwhTtAif39qtteomwh4oQBSZAU_OJHWVVa03xd3bAFuz61.HFywmrztnwXBiwO0ncd1uc5aUiQhpNANaGkC'
+
+                           
+        );                   
+</script>   
+</body>
+</html>

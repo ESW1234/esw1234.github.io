@@ -3,19 +3,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     </head>
     <body>
-<h1>MIAW Chat on GS0 with CSS</h1>
+<h1>MIAW Chat on GS0 with CSS.</h1>
       agent: a1@gs0.de
 
         <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
         <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.debugMode = true;
-		embeddedservice_bootstrap.init(
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
 				'00DB0000000gZkn',
 				'a1',
-				'https://miaw2.my.salesforce.com',
+				'https://miaw2.my.site.com/ESWa11654180255570',
 				{
 					scrt2URL: 'https://miaw2.my.salesforce-scrt.com'
 				}
@@ -25,7 +26,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://miaw2.lightning.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://miaw2.my.site.com/ESWa11654180255570/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
         
     </body>
 </html>

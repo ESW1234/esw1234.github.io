@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>NGC</title>
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ElectraHome.png") no-repeat;
+     background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSG00000K5wUT',
+				'NGC_6',
+				'https://orgfarm-4210204e70.my.site-com.87e7ym1tkqs10as09rk1fepe001gh5s.wa.crm.dev:6101/ESWMIAW11744826981875',
+				{
+					scrt2URL: 'https://orgfarm-90820276d1.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-4210204e70.my.site-com.87e7ym1tkqs10as09rk1fepe001gh5s.wa.crm.dev:6101/ESWMIAW11744826981875/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>

@@ -38,23 +38,20 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				// Embedded Messaging app ready
+				var idpEndpoint = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=meu2&jwtExpInSeconds=42300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 				console.log("onEmbeddedMessagingReady emitted");
 
-				embeddedservice_bootstrap.utilAPI.launchChat()
-				.then((success) => {
-    					console.log("Successfully initialized Embedded Messaging: ", success);
-				})
-				.catch((err) => {
-    					console.log("Failed to initialize Embedded Messaging: ", err);
-				});
-				
-				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-				    "city" : "Vancouver"
-				});
-				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
-				    "userName" : "Guest",
-				    "cartValue": "1000"
-				});
+				// fetch(idpEndpoint).then(function (response) {
+			 //            return response.json();
+			 //        }).then(function (data) {
+			 //            console.log("Access Token from IDP: " + data.accessToken);
+			 //            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			 //                identityTokenType: "JWT",
+			 //                identityToken: data.accessToken
+			 //            });
+			 //        }).catch(function(err) {
+			 //            console.error('Something went wrong :', err);
+			 //        });
 			});
 		</script>
 		
@@ -62,8 +59,9 @@
 		<script type='text/javascript'>
 			function initEmbeddedMessaging() {
 				try {
-					embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+					embeddedservice_bootstrap.settings.language = 'fr'; // For example, enter 'en' or 'en-US'
 					embeddedservice_bootstrap.settings.devMode = true;
+					//embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 
 					embeddedservice_bootstrap.init(
 						'00DSB0000005YCL',

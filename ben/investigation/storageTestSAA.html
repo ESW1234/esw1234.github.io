@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script>
+      function setVals() {
+        //read values from session storage/local storage
+        let sessionVal = sessionStorage.getItem("test_storageVal");
+        let localVal = sessionStorage.getItem("test_storageVal");
+      
+        //output values to console
+        console.log("esw1234 sessionVal: " + sessionVal);
+        console.log("esw1234 localVal: " + localVal);
+
+        console.log("esw1234 setting values on page load");
+        document.getElementById("sessionVal").value = sessionVal;
+        document.getElementById("localVal").value = localVal;
+
+        document.getElementById("updateBtn").addEventListener("click", updateVals);
+
+      }
+      
+      //add function to update the values
+      function updateVals(){
+        sessionVal = document.getElementById("sessionVal").value;
+        localVal = document.getElementById("localVal").value;
+        console.log("esw1234 updating sessionVal to " + sessionVal);
+        console.log("esw1234 updating localVal to " + localVal);
+        
+        sessionStorage.setItem("test_storageVal", sessionVal);
+        localStorage.setItem("test_storageVal", localVal);
+      }
+      
+      //add handler to show the values
+      window.addEventListener("load", (event) => {
+        document.requestStorageAccess().then(
+          () => {
+            console.log("access granted");
+            setVals();
+          },
+          () => {
+            console.log("access denied");
+            setVals()
+          },
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+    Session: <input id="sessionVal" name="sessionVal"></input>
+    <p>
+    Local: <input id="localVal" name="localVal"</input>
+    <p>
+      <button type="button" id="updateBtn" value="updateBtn" style="height: 30px; width: 100px;">Update</button>
+  </body>
+</html>

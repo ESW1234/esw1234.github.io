@@ -3,8 +3,8 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-<title>Embedded Chat with Bot</title>
-  <h1>Embedded Chat with Bot</h1>
+<title>Embedded Chat </title>
+  <h1>Embedded Chat 4.1 </h1>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
 	}
 </style>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<!-- <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script> -->
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
@@ -49,17 +49,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://db0000000ckmpmam.my.salesforce.com',
-			'https://db0000000ckmpmam.my.site.com/',
+			'https://miaw.my.salesforce.com',
+			'https://miaw.my.site.com/cs',
 			gslbBaseURL,
-			'00DB0000000cKMp',
-			'PerfChatESDeployment',
+			'00DB0000000gY9H',
+			'ESWChat',
 			{
-				baseLiveAgentContentURL: 'https://c.gla3-phx.gus.salesforce.com/content',
-				deploymentId: '572B0000000PUWP',
-				buttonId: '573B0000000M3KO',
-				baseLiveAgentURL: 'https://d.gla3-phx.gus.salesforce.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000H3XAMA0_184a5b624fc',
+				baseLiveAgentContentURL: 'https://c.la1-c1-ia2.salesforceliveagent.com/content',
+				deploymentId: '5721Q000000bmdI',
+				buttonId: '5731Q000000bmdp',
+				baseLiveAgentURL: 'https://d.la1-c1-ia2.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IB0000000TeSZMA0_1899edf5f21',
 				isOfflineSupportEnabled: true
 			}
 		);
@@ -67,7 +67,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://db0000000ckmpmam.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://miaw.my.salesforce.com/embeddedservice/4.1/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};

@@ -20,7 +20,7 @@
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+		embedded_svc.settings.language = 'en'; //For example, enter 'en' or 'en-US'
 
 		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
 		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
@@ -42,16 +42,16 @@
 
 		embedded_svc.init(
 			'https://org18.test1.my.pc-rnd.salesforce.com',
-			'https://org19.test1.pc-rnd.force.com',
+			'https://org18.test1.my.pc-rnd.salesforce-sites.com/',
 			gslbBaseURL,
 			'00DSB00000036Lp',
-			'ESWDep',
+			'ESW2',
 			{
 				baseLiveAgentContentURL: 'https://c.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
 				deploymentId: '572SB0000000wX3',
 				buttonId: '573SB0000000rxB',
 				baseLiveAgentURL: 'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000000Icr2AE_18203282f03',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000001I7l2AE_18de7667238',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -68,6 +68,5 @@
 		initESW('https://service.force.com');
 	}
 </script>
-
     </body>
 </html>

@@ -1,0 +1,52 @@
+<html lang="en-US">
+<body>
+<script src="https://dsg000007gucs2aa.test1.my.pc-rnd.salesforce.com/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutAppTest", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+
+               $Lightning.createComponent("c:AuraWithApex", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('AuraWithApex created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              }); */
+
+     
+             $Lightning.createComponent("c:bikeCard", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCard created');
+              });
+            },
+                           "https://dsg000007gucs2aa.test1.my.pc-rnd.salesforce.com",
+
+          // 'https://dsg000007gucs2aa.test1.my.pc-rnd.site.com',// Experience Site URL
+                           "00DSG000007gucs!AQEAQEiWtTzuHMWJQfUhMOumAalw1bzBLhHcpUuMfdofoF.Tmah6KH1rhXglOdd9wdQjaaBkohP9P1eYkZF3XeFFhO2pRtaD"
+                           
+        );                   
+</script>   
+</body>
+</html>
+

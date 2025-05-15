@@ -11,8 +11,8 @@
     	  embedded_svc.menu.settings.devMode = true;
 
 		embedded_svc.menu.init(
-			'https://viviana-sdb3.test1.my.pc-rnd.salesforce.com',
-			'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+			'https://viviana-sdb3.demo.test1.my.pc-rnd.salesforce.com',
+			'https://d.la11-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
 			gslbBaseURL,
 			'00DSB0000007IzV',
 			'MIAW_Only'
@@ -21,7 +21,7 @@
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://viviana-sdb3.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://viviana-sdb3.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};

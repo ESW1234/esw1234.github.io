@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>STMFA Channel Menu Reordering Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+  
+<button onclick="switchLanguage()">Switch Chat Language</button>
+    
+<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript'>
+    var initESW = function(language, gslbBaseURL) {
+        embedded_svc.menu.settings.devMode = true;
+        embedded_svc.menu.settings.language = language;
+
+        embedded_svc.menu.init(
+            'https://eswmessagingchat2.my.stmfa.stm.salesforce.com',
+            'https://d.la2-stmfa1-0-prd.stmfa.stm.salesforceliveagent.com/chat',
+            gslbBaseURL,
+            '00DRM000000HvmX',
+            'Reordering',
+            {
+                pageName: "GermanChatSettings"
+            }
+        );
+    };
+
+    function switchLanguage() {
+        if(embedded_svc) {
+            embedded_svc.menu.hideButtonAndMenu();
+            embedded_svc.liveAgentAPI.clearSession();
+            embedded_svc.menu.destroy();
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "https://service.force.com/embeddedservice/menu/fab.min.js?t=2";
+            script.onload = function() {
+                initESW("de", "https://service.force.com");
+            };
+            document.body.appendChild(script);
+        }
+    }
+    
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://eswmessagingchat2.my.stmfa.stm.salesforce.com/embeddedservice/menu/fab.min.js');
+        s.onload = function() {
+            initESW("en", null);
+        };
+        document.body.appendChild(s);
+    } else {
+        initESW("en", "https://service.force.com");
+    }
+</script>
+  
+</body>
+</html>

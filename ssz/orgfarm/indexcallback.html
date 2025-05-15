@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script src="https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression/lightning/lightning.out.js"></script>
+    <div ng-app="myApp" ng-controller="myCtrl">
+    <p>Lightning Out App Test</p> 
+    <div id="lightningout"></div>  
+    <script>
+      $Lightning.use(
+        'c:LightningOutAppErrorTest', // name of the Lightning app
+        function () {
+          // Callback once framework and app loaded
+          $Lightning.createComponent(
+            'c:testJSError', // top-level component of your app
+            {}, // attributes to set on the component when created
+            'lightningout', // the DOM location to insert the component
+            function (cmp) {
+                console.log('testJSError created' + a);
+            }
+          );
+        },
+        'https://dog000000js1l2as-dev-ed.develop.test1.my.pc-rnd.site.com/auraRegression'
+      );
+    </script>
+  </body>
+</html>

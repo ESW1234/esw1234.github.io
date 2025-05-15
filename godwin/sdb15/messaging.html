@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>SDB15 MESSAGING - GUEST</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	</head>
+	<body>
+		<h1>SDB15 MESSAGING - GUEST</h1>
+		<h2>epic.93fd4aac2f2e@orgfarm.out/orgfarm1234</h2>
+		<!-- Edit page link -->
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		</br>
+
+		<label for="idToken">Set identity token:</label>
+		<input type="text" id="idToken" name="idToken" size="50">
+		<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+		</br>
+		</br>
+		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+
+		<script type='text/javascript'>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+			function clearAuthSession() {
+				console.log("Clearing user session.");
+				embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			}
+
+			function setIdentityToken(token) {
+				var token = document.getElementById("idToken").value;
+
+				embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+					"identityTokenType":"JWT",
+					// Valid JWT
+					"identityToken": token
+				});
+			}
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log("onEmbeddedMessagingReady emitted");
+
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Custom_Field" : "CustomValue","Customer_ID" : "11098324"});
+			});
+
+			window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
+				console.log("onEmbeddedMessagingPreChatSubmitted emitted");
+				console.log(event.detail);
+			});
+
+			window.addEventListener("onEmbeddedMessageLinkClicked", (data) => {
+				console.log("onEmbeddedMessageLinkClick emitted");
+				console.log(data.detail);
+			});
+		</script>
+  <script type='text/javascript'>
+  	function initEmbeddedMessaging() {
+  		try {
+  			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+        		embeddedservice_bootstrap.settings.devMode = true;
+  			embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab = true;
+  			embeddedservice_bootstrap.settings.shouldOpenLinksInSameTab = true
+  
+  			embeddedservice_bootstrap.init(
+				'00DQZ000004GsgX',
+				'MIAWDep',
+  				'https://godwinlaw-254prod.my.site-com.6ifks3kgyv1u0zzfhu9p5drg70o7z.wa.crm.dev:6101/ESWEmbeddedMessaging1746214015376',
+  				{
+					scrt2URL: 'https://orgfarm-3652d81608.test2.my.pc-rnd.salesforce-scrt.com'
+  				}
+  			);
+  		} catch (err) {
+  			console.error('Error loading Embedded Messaging: ', err);
+  		}
+  	};
+  </script>
+  <script type='text/javascript' src='https://godwinlaw-254prod.my.site-com.6ifks3kgyv1u0zzfhu9p5drg70o7z.wa.crm.dev:6101/ESWEmbeddedMessaging1746214015376/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

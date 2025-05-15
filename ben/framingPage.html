@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script language="javascript">
+      function handleMessage(event){
+        console.log(event.source);
+      }
+      window.addEventListner("message", handleMessage); 
+    </script>
+  </head>
+  <body>
+    <iframe sandbox="allow-scripts" src="./framedPage.html"></iframe>
+  </body>
+</html>

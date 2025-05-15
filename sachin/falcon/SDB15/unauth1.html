@@ -1,0 +1,53 @@
+
+
+
+
+<html>
+<head>
+	<title>SDB15-MIAW-ASA-Unauth</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDB15 - MIAW - ASA - Unauth </h1>
+  <h2 style="color:blue;">nikhil@esw.sdb15 / test1234</h2>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+	<script "text/javascript">
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			// Embedded Messaging app ready
+			console.log("onEmbeddedMessagingReady event received");
+		});
+
+		window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+			console.log("Received 'onEmbeddedMessagingInitSuccess' event");
+		});
+
+		window.addEventListener("onEmbeddedMessagingInitError", () => {
+			console.log("Received 'onEmbeddedMessagingInitError' event");
+		});
+	</script>
+
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+        embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
+
+				embeddedservice_bootstrap.init(
+				  '00DQZ0000004c1v',
+				  'Messaging',
+				  'https://eswmessaging.test2.my.pc-rnd.site.com/ESWMessaging1686939222398',
+				  {
+					  scrt2URL: 'https://eswmessaging.test2.my.pc-rnd.salesforce-scrt.com'
+				  }
+			  );
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://eswmessaging.test2.my.pc-rnd.site.com/ESWMessaging1686939222398/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

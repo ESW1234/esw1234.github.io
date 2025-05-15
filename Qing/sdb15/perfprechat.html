@@ -1,0 +1,23 @@
+<html>
+  <h1>PerfChatBot SDB15 with Prechat</h1>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DGL00000004YH',
+				'PreChatBotPrechat',
+				'https://perfchatbotscrt2org.perf2c.my.pc-rnd.site.com/ESWPreChatBotPrechat1710696843117',
+				{
+					scrt2URL: 'https://perfchatbotscrt2org.perf2c.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://perfchatbotscrt2org.perf2c.my.pc-rnd.site.com/ESWPreChatBotPrechat1710696843117/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</html>

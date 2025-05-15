@@ -1,0 +1,134 @@
+<html>
+<head>
+  <title>244 auth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<label for="idToken">Set identity token:</label></br>
+	<input type="text" id="idToken" name="idToken" size="50"></br>
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button></br></br>
+	<button type="button" id="clearAuthBtn" onclick="closeEmbeddedMessagingVerifiedConversation()"> Close Conversation  </button></br></br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+	
+<script type='text/javascript'>
+	function clearAuthSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession();
+	}
+
+	function setIdentityToken(token) {
+		var token = document.getElementById("idToken").value;
+		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			"identityTokenType":"JWT",
+			"identityToken": token
+		});
+	}
+
+	function closeEmbeddedMessagingVerifiedConversation() {
+	    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+	    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
+	    const jwt = storageObj["JWT"];
+	    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+	    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
+	    fetch(endpoint, {
+		method: "DELETE",
+		mode: "cors",
+		headers: {
+		    "Content-Type": "application/json",
+		    "Authorization": "Bearer " + jwt    
+		}
+	    })
+	    .then(res => res.json())
+	    .then(res => console.log(res))
+	}
+
+	function fetchAndSetToken() {
+	     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+	     fetch(porticoURL).then(function(response) {
+		  return response.json();
+	     }).then(function(data) {
+		  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+		       identityTokenType: "JWT",
+		       identityToken: data.accessToken
+		  });
+	     }).catch(function(err) {
+		  console.log('Fetch Error :', err);
+	     });
+	}
+
+
+	window.addEventListener("onEmbeddedMessagingReady", () => {
+	     console.log("Received the onEmbeddedMessagingReady event…");
+	     fetchAndSetToken();
+	});
+
+
+	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+	     console.log("Received the onEmbeddedMessagingTokenExpired event…");
+	     fetchAndSetToken();
+	});
+</script>
+
+
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+      			embeddedservice_bootstrap.settings.devMode = true;
+
+			/*
+			// STMFA ORG 
+			embeddedservice_bootstrap.init(
+				'00DS7000000ouRu',
+				'Messaging_8',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging161666056362549',
+				{
+					scrt2URL: 'https://asyncchat.stmfa.my.stm.salesforce-scrt.com'
+				}
+			);
+
+			
+			// STMFB ORG
+			embeddedservice_bootstrap.init(
+				'00DS70000000Uae',
+				'Auth_1',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
+				{
+					scrt2URL: 'https://eswmiaw.stmfb.my.stm.salesforce-scrt.com'
+				}
+			);
+			*/
+
+
+			// SDB3 ORG
+			embeddedservice_bootstrap.init(
+				'00DSB0000002LA1',
+				'Auth_2',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
+				{
+					scrt2URL: 'https://eswmessagingchat.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+
+			/*
+			// SDB6 ORG
+			embeddedservice_bootstrap.init(
+				'00DSG0000001hxN',
+				'Auth_4',
+				'https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861',
+				{
+					scrt2URL: 'https://eswmessagingchatsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+			*/
+
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://eswmessagingchat.my.localhost.sfdcdev.site.com:6101/ESWMessaging11680541175861/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+    <script src="https://lomainminus2.test3.my.pc-rnd.site.com/lovforcesite/resource/1721066021000/lo_demo_hostpagescript"></script>
+    <framebus-lo-fragment-xxx></framebus-lo-fragment-xxx>
+    
+    <script> 
+        const customEventData = new CustomEvent("lo.dataSend", {
+            detail: {
+                type: "sendNumber",
+                payload: {
+                  number: 4
+                }
+            }
+        });
+        const loFragment= document.querySelector("framebus-lo-fragment-xxx");
+      
+        loFragment.addEventListener("LightningOutLoaded", (e) => {
+          loFragment.dispatchEvent(customEventData);
+        });
+      
+        loFragment.addEventListener("lo.dataReceive", (e) => {
+          if (e.detail.type === "thankYou") {
+            document.location.href = e.detail.payload.url;
+          } else {
+            console.error("Unexpected event! " + JSON.stringify(e.detail));
+          }
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+
+<html lang="en-US">
+<body>
+<script src="https://vzwprod--ardcpniuat.sandbox.lightning.force.com/lightning/lightning.out.js"></script> //<My Domain URL>/lightning/lightning.out.js
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("c:LightningOutApp", function() {
+              $Lightning.createComponent("c:AuraComLightningOutTest", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+            },
+
+           'https://sisi-lcs-imac3-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auratest' //Lightning domain URL
+     
+
+                           
+        );                   
+</script>   
+</body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>NGC</title>
+</head>
+<body>
+
+<script type="text/javascript" 
+	id="init-agentforce-messaging" 
+	src="https://esw1234.github.io/npachpande/ngc/temp/init.js" 
+	onload='agentforce_messaging.init({
+		devMode: true,
+		siteUrl: "https://orgfarm-e76f26e2e6.my.site-com.scr3js2nmknf0pyytvabtfjhm1.wa.crm.dev:6101/ngcsite9",
+		agentApiConfiguration: {
+	            agentId: "0XxSB000000Y4cH0AS",
+	            domainUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com",
+	            endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
+	            apiKey: "7c3c0415-dab7-4037-86db-5dc35bb48069",
+	            tenantId: "core/falcontest1-core4sdb3/00DSB00000QAo9R2AT",
+	            region: "us-west-2",
+	            voiceEndpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions"
+	        },
+		uiConfiguration: {
+	            features: {
+	              voice: true
+	            },
+	            global: {
+	              textColor: {
+	                primary: "#333333",
+	                secondary: "#666666"
+	              },
+	              backgroundColor: "#FFFFFF",
+	              messageBubbleColor: {
+	                user: "#F0F0F0",
+	                agent: "#E1F5FE"
+	              }
+	            },
+	            components: {
+	              chatFab: {
+	                icon: "chat-icon.svg",
+	                cta: "Chat with us"
+	              },
+	              chatHeader: {
+	                agentName: "Support Agent",
+	                logo: "company-logo.svg",
+	                agentAvatar: "agent-avatar.svg",
+	                backgroundColor: "#0077CC",
+	                textColor: "#FFFFFF"
+	              },
+	              chatInput: {
+	                backgroundColor: "#FFFFFF",
+	                showPoweredBy: true,
+	                placeholder: "Type a message..."
+	              },
+	              chatMessage: {
+	                agent: {
+	                  avatarEnabled: true,
+	                  textColor: "#000000",
+	                  backgroundColor: "#E1F5FE"
+	                },
+	                user: {
+	                  textColor: "#000000",
+	                  backgroundColor: "#F0F0F0"
+	                }
+	              },
+	              chatWindow: {
+	                backgroundColor: "#F9F9F9",
+	                loadingText: "HELLO"
+	              }
+	            }
+	        }
+	});'>
+</script>
+
+</body>
+</html>

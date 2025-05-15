@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Local async1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+  body {
+    background: url("https://esw1234.github.io/ComcastHome.png") no-repeat;
+  }
+</style>
+  
+<script type='text/javascript'>
+  var s = document.createElement('script');
+  s.setAttribute('src', 'http://npachpand-wsm.internal.salesforce.com:6109/embeddedservice/asyncclient/bootstrap.js');
+  s.onload = function() {
+    embeddedservice_bootstrap.settings.platformKey = "EmbeddedMessaging:2f67b321-3619-4cfd-84b0-6447ded33b5b";
+    embeddedservice_bootstrap.init(
+      '00Dxx0000006GZj',
+      'Chat',
+      'http://npachpand-wsm.internal.salesforce.com:8096/chat',
+      'http://npachpand-wsm.internal.salesforce.com:6109',
+      {
+        embeddedServiceConfig: {
+          siteUrl: 'http://eswmessagingchat.dev.localhost.soma.force.com:6109/chatcommunity',
+          embeddedServiceBranding: {
+            height : '554',
+            width : '344'
+          }
+        }
+      }
+    );
+  };
+  document.body.appendChild(s);
+</script>
+
+</body>
+</html>

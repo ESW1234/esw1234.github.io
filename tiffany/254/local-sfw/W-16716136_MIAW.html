@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  </head>
+  <body>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx00CCEDuALg',
+				'Messaging',
+				'https://w-16716136.my.site-com.tiffany-tso-2oq5rrlvgilv0.wc.crm.dev:6101/ESWMessaging1686939222398',
+				{
+					scrt2URL: 'http://w-16716136.my.salesforce-scrt-com.tiffany-tso-2oq5rrlvgilv0.wc.crm.dev'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://w-16716136.my.site-com.tiffany-tso-2oq5rrlvgilv0.wc.crm.dev:6101/ESWMessaging1686939222398/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>

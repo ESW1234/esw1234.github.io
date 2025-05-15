@@ -1,0 +1,31 @@
+<html>
+   <head>
+	   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	   <title>SDB6-InAppChat ChatBot</title>
+   </head>
+   <body>
+        <h1> -- SDB6 InApp Messaging Chat for E2E Test CHATBOT WOOKIEES</h1>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB000002Z07F',
+				'WookieesDep',
+				'https://dsb000002z07f2as.test1.my.pc-rnd.site.com/ESWWookieesDep1716817213461',
+				{
+					scrt2URL: 'https://dsb000002z07f2as.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dsb000002z07f2as.test1.my.pc-rnd.site.com/ESWWookieesDep1716817213461/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+   </body>
+</html>

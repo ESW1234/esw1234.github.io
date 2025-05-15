@@ -1,0 +1,43 @@
+<html lang="en-US">
+<body>
+<script src="https://sisi-ecs-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auralo/lightning/lightning.out.js"></script> 
+            <!--  <My Domain URL>/lightning/lightning.out.js -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Lightning Out App Test</p>
+
+
+</div>
+<div id="divlightning">
+</div>
+<script>
+            $Lightning.use("forceContent:contentDistributionApp", function() {
+              $Lightning.createComponent("forceContent:contentDistributionViewer", 
+              { },
+              "divlightning",
+              function(cmp) {
+                  console.log('AuraComLightningOutTest created');
+              }); 
+                      /*
+              $Lightning.createComponent("c:TestLabelCmp", 
+              { },
+              "divlightning",
+              function(cmp) {
+                   console.log('TestLabelCmp created');
+              });
+*/
+     
+             $Lightning.createComponent("forceContent:contentFolderDistributionViewer", 
+              { },
+              "divlightning",
+              function(cmp) {
+                     console.log('bikeCardLo created');
+              }); 
+            },
+
+           'https://sisi-ecs-dev-ed.develop.my.localhost.sfdcdev.site.com:7443/auralo'// Experience Site URL
+                           
+        );                   
+</script>   
+</body>
+</html>

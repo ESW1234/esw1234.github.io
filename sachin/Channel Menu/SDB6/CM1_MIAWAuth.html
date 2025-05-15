@@ -1,0 +1,86 @@
+
+<html>
+	<head>
+		<title>SDB6 - Channel Menu - MIAWAuth</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+		<h1>SDB6 - Channel Menu - MIAWAuth</h1>
+		<h2 style="color:blue;">Admin: sachinh@esw.com/test1234</h2>
+
+		<!-- Edit page link -->
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		</br>
+		<!-- Clear user session button -->
+		<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear User Session </button>
+		
+		<script type='text/javascript'>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+			
+			function clearAuthSession() {
+        console.log("Clearing user session.");
+				embeddedservice_bootstrap.userVerificationAPI.clearSession();
+			}
+
+			window.addEventListener("onEmbeddedMessagingReady", e => {
+			  // Embedded Messaging app ready
+			  console.log("onEmbeddedMessagingReady event received");
+        fetchAndSetToken();
+			});
+
+      function fetchAndSetToken() {
+		    var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=300&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
+		    fetch(porticoURL)
+        .then(function(data) {
+			    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			      identityTokenType: "JWT",
+			      identityToken: data.accessToken
+			    });
+		    }).catch(function(err) {
+				  console.log('Fetch Error from Portico :', err);
+		    });
+		  }
+
+		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+		     console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		     fetchAndSetToken();
+		});
+
+      window.addEventListener("onEmbeddedMessagingInitSuccess", () => {
+			  console.log("Received 'onEmbeddedMessagingInitSuccess' event");
+		  });
+
+		  window.addEventListener("onEmbeddedMessagingInitError", () => {
+			  console.log("Received 'onEmbeddedMessagingInitError' event");
+		  });
+		</script>
+		
+		<!-- Snippet -->
+<!-- 	<script type='text/javascript' src='https://service.force.com/embeddedservice/menu/fab.min.js'></script> -->
+	<script type='text/javascript'>
+		var initESW = function(gslbBaseURL) {
+			// Required if you want labels in a language that’s different from your user’s context.
+			embedded_svc.menu.settings.language = 'en'; //For example, enter 'en' or 'en-US'
+
+			embedded_svc.menu.init(
+				'https://sachinsdb6.test1.my.pc-rnd.salesforce.com',
+				'https://d.la5-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+				gslbBaseURL,
+				'00DSG000001NruH',
+				'CM1'
+			);
+		};
+
+		if (!window.embedded_svc || !window.embedded_svc.menu) {
+			var s = document.createElement('script');
+			s.setAttribute('src', 'https://sachinsdb6.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+			s.onload = function() {
+				initESW(null);
+			};
+			document.body.appendChild(s);
+		} else {
+			initESW('https://service.force.com');
+		}
+	</script>
+</body>
+</html>

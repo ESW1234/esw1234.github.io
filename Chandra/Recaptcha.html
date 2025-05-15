@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+<h1> Google reCAPTCHA for : "CN"</h1>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+  function onSubmit(token) {
+    console.log('ReCaptcha Token Generated :' + token.toString());
+
+    // Display the token in the iframe
+    var iframe = document.getElementById("tokenFrame");
+    if (iframe && iframe.contentDocument) {
+      iframe.contentDocument.open();
+      iframe.contentDocument.write("ReCaptcha Token: <br>" + token);
+      iframe.contentDocument.close();
+    } else if (iframe && iframe.contentWindow) { // Fallback for older browsers
+        iframe.contentWindow.document.open();
+        iframe.contentWindow.document.write("ReCaptcha Token: <br>" + token);
+        iframe.contentWindow.document.close();
+    } else {
+        alert("Could not display the token."); // Handle the error if iframe is not available
+    }
+
+  }
+</script>
+
+<button class="g-recaptcha" 
+        data-sitekey="6LeoCtYqAAAAACcZFwGHBAZAlD_AwQ8oNkY9-Nmj"  data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+
+
+<iframe id="tokenFrame" width="400" height="200" style="border:1px solid black;"></iframe>
+
+</body>
+</html>

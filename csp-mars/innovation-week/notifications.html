@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Notification API</title>
+</head>
+<body>
+	<h1>Notification API</h1>
+	<button onclick="notifyMe()">Click me updated</button>
+	<script>
+		function notifyMe() {
+			Notification.requestPermission(function (permission) {
+				doNotify();
+			});
+		}
+		function doNotify() {
+			let title = "The Title";
+			let t = Date.now() + 120000;    //2 mins in future
+			let options = {
+			body: 'Hello from JavaScript!',
+			data: {prop1:123, prop2:"Steve"},
+			lang: 'en-CA',
+			icon: './img/calendar-lg.png',
+			timestamp: t,
+			vibrate: [100, 200, 100]
+			}
+			let n = new Notification(title, options);
+
+			n.addEventListener('show', function(ev){
+			console.log('SHOW', ev.currentTarget.data);
+			});
+			n.addEventListener('close', function(ev){
+			   console.log('CLOSE', ev.currentTarget.body); 
+			});
+			setTimeout( n.close.bind(n), 3000); //close notification after 3 seconds
+		}
+	</script>
+</body>
+</html>

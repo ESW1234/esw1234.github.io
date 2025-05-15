@@ -1,0 +1,24 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx0000006Gvn',
+				'LOCAL',
+				'https://trialorgfarmforu.my.site-com.tiffany-tso-w-14261899.w.crm.dev:6101/ESWLOCAL1697723182953',
+				{
+					scrt2URL: 'http://trialorgfarmforu.my.salesforce-scrt-com.tiffany-tso-w-14261899.w.crm.dev'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://trialorgfarmforu.my.site-com.tiffany-tso-w-14261899.w.crm.dev:6101/ESWLOCAL1697723182953/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+</html>

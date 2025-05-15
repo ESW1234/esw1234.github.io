@@ -1,0 +1,42 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			// embeddedservice_bootstrap.settings.emitChannelMenuVisibilityChangeEvent = true;
+
+			embeddedservice_bootstrap.settings.devMode = true;
+			
+			embeddedservice_bootstrap.init(
+				'00DSG00000DwJAr',
+				'MIAW_Unauth_External',
+				'https://dsg00000dwjar2an.test1.my.pc-rnd.site.com/ESWMIAWUnauthExternal1724708879735',
+				{
+					scrt2URL: 'https://dsg00000dwjar2an.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dsg00000dwjar2an.test1.my.pc-rnd.site.com/ESWMIAWUnauthExternal1724708879735/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script>
+	window.addEventListener("onEmbeddedMessagingReady", () => { 
+		// embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({ 
+		// 	product: "sales",
+		// 	language: "en" 
+		// });
+
+		// Functional fallback mock.
+		embeddedservice_bootstrap.settings.embeddedServiceConfig.functionalFallback = {
+			isFunctionalFallbackEnabled: true,
+			functionalFallbackMessage: "Looks like something went wrong, and we can't display the conversation"
+		};
+	});
+</script>
+  </body>
+</html>

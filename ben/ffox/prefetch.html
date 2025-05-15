@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script language="javascript">
+      function prefetchAFile() {
+        const head = document.querySelector("HEAD");
+        const linkEl = document.createElement("link");
+        linkEl.rel="prefetch";
+        linkEl.href="1.html"
+        head.appendChild(linkEl);
+        const iframe = document.querySelector("IFRAME");
+        iframe.contentWindow.postMessage("loadIt", "*");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Hello! This is a reproduction of a prefetch issue in firefox! Open the developer tools to see what is going on.</h1>
+    <h1>After clicking the button, use the inspector to see that both parent document and iframe doc contain links in their header, but according to network tab only parent doc links work.</h1>
+    <button onclick="prefetchAFile()">Click me to add some prefetch links!</button>
+    <iframe src="https://websnapins.com/ben/ffox/prefetchiframe.html" width="400px" heigh="400px">
+    </iframe>
+  </body>
+</html>

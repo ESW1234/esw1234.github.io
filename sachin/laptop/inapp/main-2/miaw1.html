@@ -1,0 +1,116 @@
+
+<html>
+	<head>
+		<title>Desktop/Laptop - MIAW (main-2)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+	<body>
+		<h1>SDB6</h1>
+		<h2>sachinh@esw.com / test1234</h2>
+		<br>
+		<h1>SDB3</h1>
+		<h2>admin@sdb3.blitz.org / 123456</h2>
+		<br>
+		<a href="https://salesforce.quip.com/wkswAYpfZt8B#temp:C:ccC9943708394e844a7b65f1451c" target="_blank">Q3 orgs detail sheet</a>
+		<a href="https://salesforce.quip.com/LaV8AzbsDBeu" target="_blank">Blitz org detail sheet</a>
+
+		<!-- Edit page link -->
+		<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+		</br>
+
+<!-- 		<style>
+  			body {
+  				background-image: url('https://esw1234.github.io/Spotify-large.png');
+  				background-repeat: no-repeat;
+			}
+		</style> -->
+		
+		<script type='text/javascript'>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				// Embedded Messaging app ready
+				console.log("onEmbeddedMessagingReady event received");
+				embeddedservice_bootstrap.autoResponseAPI.setAutoResponseParameters({
+				    "userName" : "Guest",
+				    "cartValue": "1000"
+				});
+				//fetchAndSetToken(20);
+			});
+		</script>
+
+		<script type='text/javascript'>
+		function clearAuthSession() {
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				"identityToken": token
+			});
+		}
+
+		function closeEmbeddedMessagingVerifiedConversation() {
+		    const storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+		    const storageObj = (localStorage.getItem(storageKey) && JSON.parse(localStorage.getItem(storageKey))) || {};
+		    const jwt = storageObj["JWT"];
+		    const conversationId = Object.keys(storageObj).filter(key => key !== "JWT");
+		    const endpoint = embeddedservice_bootstrap.settings.scrt2URL.concat("/iamessage/v1/conversation/" + conversationId);
+		    fetch(endpoint, {
+			method: "DELETE",
+			mode: "cors",
+			headers: {
+			    "Content-Type": "application/json",
+			    "Authorization": "Bearer " + jwt    
+			}
+		    })
+		    .then(res => res.json())
+		    .then(res => console.log(res))
+		}
+
+		function fetchAndSetToken(seconds) {
+		     var porticoURL = `https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject6@esw.com&jwtExpInSeconds=${seconds}&keyId=5f103f1b-ee38-404c-ac94-83c427764813`;
+		     fetch(porticoURL).then(function(response) {
+			  return response.json();
+		     }).then(function(data) {
+			  embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+			       identityTokenType: "JWT",
+			       identityToken: data.accessToken
+			  });
+		     }).catch(function(err) {
+			  console.log('Fetch Error :', err);
+		     });
+		}
+
+		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+		     console.log("Received the onEmbeddedMessagingTokenExpired event…");
+		     fetchAndSetToken(60);
+		});
+		</script>
+		
+		<!-- Snippet -->
+	<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
+				embeddedservice_bootstrap.settings.devMode = true;
+
+				embeddedservice_bootstrap.init(
+					'00DSG000001NruH',
+					'Web1',
+					'https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11721762075534',
+					{
+						scrt2URL: 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://trialorgfarmforu.my.localhost.sfdcdev.site.com:7443/ESWWeb11721762075534/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
+<!-- 	<script type='text/javascript' src='https://git.soma.salesforce.com/pages/sachin-hanumantha/test/bootstrap.js' onload='initEmbeddedMessaging()'></script> -->
+	</body>
+</html>

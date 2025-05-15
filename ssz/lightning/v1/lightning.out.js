@@ -10,7 +10,8 @@ if (!window.$Lightning) {
 		// util methods
 		function getDelegateScriptUrl() {
 			// load the delegate script based on stored version (got from aura nonce) or get latest version
-			var url = "/lightning.out.delegate.js?v=" + getDelegateScriptVersion();
+			//var url = "/lightning.out.delegate.js?v=" + getDelegateScriptVersion();
+			var url = "/lightning.out.delegate.js");
 			
 			// Extract the base path from our own <script> include to adjust for LC4VF/Communities/Sites
 			var scripts = document.getElementsByTagName("script");

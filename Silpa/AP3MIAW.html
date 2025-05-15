@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>AP3MIAW-WebClient</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1>AP3 MIAW Messaging for Web</h1>
+	<h2 style="color:blue;"> For Admin:- admin@testorgcs46css1.ee</h2>
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00D5F000000c1uD',
+				'MIAW_WebAP3',
+				'https://testorgcssap3.my.site.com/ESWMIAWWebAP31696936437790',
+				{
+					scrt2URL: 'https://testorgcssap3.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://testorgcssap3.my.site.com/ESWMIAWWebAP31696936437790/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
