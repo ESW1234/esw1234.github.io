@@ -14,12 +14,14 @@
 	            agentId: "0XxSB000000Y4cH0AS",
 	            domainUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com",
 	            endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
-	            apiKey: "7c3c0415-dab7-4037-86db-5dc35bb48069",
-	            tenantId: "core/falcontest1-core4sdb3/00DSB00000QAo9R2AT",
-	            region: "us-west-2",
+	            endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
+		    authTokenEndpoint: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/NGC1/agentforce/bootstrap?agentid=0XxSB000000Y4cH0AS",
 	            voiceEndpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions"
 	        },
 		uiConfiguration: {
+		    features: {
+		      voiceEnabled: false
+		    },
 		    components: {
 		      chatHeader: {
 			agentName: "Blitz Agent",
