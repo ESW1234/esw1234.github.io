@@ -9,19 +9,15 @@
 	src="https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com/embeddedservice/agentforcemessaging/0.3/init.js" 
 	onload='agentforce_messaging.init({
 		devMode: true,
-		siteUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/NGC1",
+		siteUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/NGC3",
 		agentApiConfiguration: {
-			enableStreaming: true,
-			agentId: "0XxSB000000YDZ70AO",
+			agentId: "0XxSB000000Y4cH0AS",
 			domainUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com",
 			endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
 			authTokenEndpoint: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.site.com/NGC1/agentforce/bootstrap?agentid=0XxSB000000Y4cH0AS",
 			voiceEndpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1.1/realtime/sessions/{SESSION_ID}/join"
 		},
 		uiConfiguration: {
-			features: {
-				voiceEnabled: true
-			},
 			components: {
 				chatHeader: {
 					agentName: "Blitz Agent",
