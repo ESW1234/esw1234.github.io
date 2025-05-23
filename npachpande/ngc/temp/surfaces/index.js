@@ -44328,7 +44328,7 @@ Take a look at the reducer(s) handling this action type: ${C.type}.
                     case `
 `:
                     case "\r":
-                    case "	":
+                    case "  ":
                     case " ":
                         continue;
                     default:
@@ -74252,7 +74252,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     }
                 case -2:
                     {
-                        c = t ? " " : "	";
+                        c = t ? " " : " ";
                         break
                     }
                 case -1:
@@ -78124,7 +78124,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             }, {
                 atBreak: !0,
                 character: "|",
-                after: "[	 :-]"
+                after: "[    :-]"
             }, {
                 character: "|",
                 inConstruct: "tableCell"
@@ -79675,7 +79675,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 sentTime: i,
                 messageComponent: m
             });
-        case "SURFACE_ACTION__Choices":
+        case "menu":
             return B.jsx(Sce, {
                 resultItem: f,
                 isUser: t,
@@ -81164,7 +81164,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     })
       , EB = e => {
         var t;
-        if ((t = e.result) != null && t.some(n => n.type.startsWith("SURFACE_ACTION__")))
+        if ((t = e.result) != null && t.some(n => n.type.startsWith("menu")))
             return "surfaceaction";
         switch (e.type) {
         case "text":
