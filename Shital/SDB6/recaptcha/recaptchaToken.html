@@ -4,7 +4,7 @@
  function loadReCaptchaScript() {
 		console.log("Loading Script for ReCaptcha");
 		const script = document.createElement('script');
-		script.src = 'https://www.google.com/recaptcha/api.js?render=6Ldx2g0rAAAAAKmHeRzuLfCyg7inVRzkHRWU61o4';
+		script.src = 'https://www.google.com/recaptcha/api.js?render=6LdSn04rAAAAAJKz77BFyr_-vXuBod1bE2d4qKoK';
 		script.onerror = function() {
 			console.error('Error loading the Turnstile script');
 		};
@@ -20,7 +20,7 @@
 		// Trigger the invisible Turnstile when needed (e.g., after a user action)
 		console.log("rendering ReCaptcha");
 		grecaptcha.ready(function() {
-			grecaptcha.execute('6Ldx2g0rAAAAAKmHeRzuLfCyg7inVRzkHRWU61o4', {action: 'submit'}).then(function (token) {
+			grecaptcha.execute('6LdSn04rAAAAAJKz77BFyr_-vXuBod1bE2d4qKoK', {action: 'submit'}).then(function (token) {
 				console.log('ReCaptcha Token Generated :' + token.toString());
 				var captcha = document.getElementById("captcha");
 				captcha.innerHTML = token.toString();
