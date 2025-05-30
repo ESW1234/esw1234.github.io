@@ -79675,7 +79675,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 sentTime: i,
                 messageComponent: m
             });
-        case "menu":
+        case "Choices":
             return B.jsx(Sce, {
                 resultItem: f,
                 isUser: t,
@@ -80622,7 +80622,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     },
                     bypassUser: !0,
                     "surfaceConfig": {
-                        "surfaceType": "NGC"
+                        "surfaceType": "AgentforceMessaging"
                     }
                 }, {
                     headers: se,
@@ -81163,7 +81163,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     })
       , EB = e => {
         var t;
-        if ((t = e.result) != null && t.some(n => n.type.startsWith("menu")))
+        if ((t = e.result) != null && t.some(n => n.type.startsWith("Choices")))
             return "surfaceaction";
         switch (e.type) {
         case "text":
