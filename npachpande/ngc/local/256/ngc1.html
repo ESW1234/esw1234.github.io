@@ -4,28 +4,21 @@
 </head>
 <body>
 
-<script type='text/javascript'>
-  function initAgentforceMessaging() {
-    try {
-      agentforce_messaging.settings.language = 'en_US';
-      agentforce_messaging.settings.devMode = true;
-
-      agentforce_messaging.init(
-        '00DSB00000QAo9R',
-        'Unauth_1',
-        'https://orgfarm-e76f26e2e6.my.site-com.scr3js2nmknf0pyytvabtfjhm1.wa.crm.dev:6101/ESWNGC21745536335515',
-        {
-          scrt2URL: 'https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading agentforce messaging: ', err);
-    }
-  };
+<script type="text/javascript" 
+	id="init-agentforce-messaging" 
+	src="https://orgfarm-b48de4168d.my.salesforce-com.ge8b6pjbl2b302opq8yix.wa.crm.dev:6101/embeddedservice/agentforcemessaging/0.3/init.js" 
+	onload='agentforce_messaging.init({
+		devMode: true,
+		siteUrl: "https://orgfarm-b48de4168d.my.site-com.ge8b6pjbl2b302opq8yix.wa.crm.dev:6101/NGC1",
+		agentApiConfiguration: {
+			agentId: "0XxSB000000Y4cH0AS",
+			domainUrl: "https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce.com",
+			endpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1/agents/{AGENT_ID}/sessions",
+			voiceEndpoint: "https://test.api.salesforce.com/einstein/ai-agent/v1.1/realtime/sessions/{SESSION_ID}/join"
+		},
+		uiConfiguration: {}
+	});'>
 </script>
-<script type='text/javascript' 
-  src='https://orgfarm-e76f26e2e6.my.site-com.scr3js2nmknf0pyytvabtfjhm1.wa.crm.dev:6101/ESWNGC21745536335515/assets/js/init.js' 
-  onload='initAgentforceMessaging()'></script>
 
 </body>
 </html>
