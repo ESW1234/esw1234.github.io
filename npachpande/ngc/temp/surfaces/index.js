@@ -80618,6 +80618,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     featureSupport: l ? "Streaming" : "",
                     ...l && {
                         streamingCapabilities: {
+                            chunkTypes:["Text"]
                         }
                     },
                     bypassUser: !0,
