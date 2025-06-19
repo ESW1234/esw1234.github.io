@@ -10,29 +10,25 @@
     <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
     
     <!-- paste code snippet here -->
-    <script type="text/javascript">
-      function initEmbeddedMessaging() {
-        try {
-          embeddedservice_bootstrap.settings.language = "en_US"; // For example, enter 'en' or 'en-US'
+    <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-          embeddedservice_bootstrap.init(
-            "00Dxx0000006dZ1",
-            "ESW_Web1",
-            "https://messageorg.my.localhost.sfdcdev.site.com:6101/ESWESWWeb11680636550226",
-            {
-              scrt2URL:
-                "http://localhost:8218",
-            }
-          );
-        } catch (err) {
-          console.error("Error loading Embedded Messaging: ", err);
-        }
-      }
-    </script>
-    <script
-      type="text/javascript"
-      src="https://messageorg.my.localhost.sfdcdev.site.com:6101/ESWESWWeb11680636550226/assets/js/bootstrap.min.js"
-      onload="initEmbeddedMessaging()"
-    ></script>
+			embeddedservice_bootstrap.init(
+				'00DSG00000SN8j7',
+				'Quickstarttest1',
+				'https://orgfarm-96e5e8c2ce.demo.test1.my.pc-rnd.site.com/ESWQuickstarttest11747933203573',
+				{
+					scrt2URL: 'https://orgfarm-96e5e8c2ce.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-96e5e8c2ce.demo.test1.my.pc-rnd.site.com/ESWQuickstarttest11747933203573/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
   </body>
 </html>
