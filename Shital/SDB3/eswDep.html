@@ -56,25 +56,25 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://bt20250106.demo.test1.my.pc-rnd.salesforce.com',
-			'https://bt20250106.demo.test1.my.pc-rnd.site.com/AuraDemoVideo',
+			'https://sdb3com8.demo.test1.my.pc-rnd.salesforce.com',
+			'https://sdb3com8.demo.test1.my.pc-rnd.site.com/AuraDummy',
 			gslbBaseURL,
-			'00DSB00000KVyaf',
-			'ESW_Video',
+			'00DSB000008ypfn',
+			'ESW',
 			{
 				baseLiveAgentContentURL: 'https://c.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/content',
-				deploymentId: '572SB00000Dxt5p',
-				buttonId: '573SB000005qMXp',
+				deploymentId: '572SB00000F921x',
+				buttonId: '573SB000006PmkL',
 				baseLiveAgentURL: 'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB00000070zN2AQ_196b0a0a6f8',
-				isOfflineSupportEnabled: true
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04ISB0000007TQH2A2_19809a4d537',
+				isOfflineSupportEnabled: false
 			}
 		);
 	};
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://bt20250106.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://sdb3com8.demo.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
