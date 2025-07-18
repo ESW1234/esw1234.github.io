@@ -16,45 +16,6 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
-
-			/*
-			// STMHA ORG 
-			embeddedservice_bootstrap.init(
-				'00DZ60000004Yw0',
-				'Unauth_1',
-				'https://eswmessaging.my.localhost.sfdcdev.site.com:6101/ESWMessaging21710287638567',
-				{
-					scrt2URL: 'https://eswmessaging0220.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-			
-			
-			// STMFB ORG
-			embeddedservice_bootstrap.init(
-				'00DS70000000Uae',
-				'Messaging_7',
-				'https://eswmessaging.my.localhost.sfdcdev.site.com:6101/ESWMessaging11700597894408',
-				{
-					scrt2URL: 'https://eswmiaw.stmfb.my.stm.salesforce-scrt.com'
-				}
-			);
-			*/
-
-			/*
-			// STMFC ORG
-			embeddedservice_bootstrap.init(
-				'00DRM0000006B0K',
-				'MIAW1',
-				'https://miaw.my.localhost.sfdcdev.site.com:6101/ESWMessaging11683837920004',
-				{
-					scrt2URL: 'https://eswchat.my.stmfc.stm.salesforce-scrt.com'
-				}
-			);
-   		*/
-   			
-
-			
-			// SDB3 ORG
 			embeddedservice_bootstrap.init(
 				'00DSB00000QAo9R',
 				'Unauth_4',
@@ -63,40 +24,12 @@
 					scrt2URL: 'https://orgfarm-0c5a291cea.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
-			
-			/*
-			// SDB6 ORG
-			embeddedservice_bootstrap.init(
-				'00DSG00000K5wUT',
-				'Unauth_1',
-				'https://orgfarm-3574614431.my.site-com.npachpande-uhzbpqxwkdwk0.wa.crm.dev:6101/ESWMIAW1737158700493',
-				{
-					scrt2URL: 'https://orgfarm-90820276d1.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-   			*/
-   		
-
-      /*
-			// SDB10s ORG
-			embeddedservice_bootstrap.init(
-				'00DSM000001ykN4',
-				'MIAW',
-				'https://trialorgfarmforu.my.site-com.npachpande-ddw8mspcflou1.wa.crm.dev:6101/ESWMIAW1725657836290',
-				{
-					scrt2URL: 'https://dsm000001ykn42ai.sfdctest.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-   */
-   			
-
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
 </script>
 <script type='text/javascript' src='https://orgfarm-e5c28bc906.my.site-com.mmheva1345fh1ltn0yj0.wa.crm.dev:6101/ESWMIAW11752804466471/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-
 
 </body>
 </html>
