@@ -1472,10 +1472,11 @@
 						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
 				}
-			} else if((embeddedservice_bootstrap.settings.customDomain && 
-				embeddedservice_bootstrap.isMessageFromCustomDomain(e.origin)) || (getSiteURL().indexOf(e.origin) === 0 && 
+			} else if((getSiteURL().indexOf(e.origin) === 0 && 
 				embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame().contentWindow === e.source && 
-				embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin))) {
+				embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)) || 
+				(embeddedservice_bootstrap.settings.customDomain && 
+				embeddedservice_bootstrap.isMessageFromCustomDomain(e.origin))) {
 				let frame = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 				switch(e.data.method) {
@@ -6244,7 +6245,7 @@
 					handleBrandingData(embeddedservice_bootstrap.settings.embeddedServiceConfig);
 
 					// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
-					embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = embeddedservice_bootstrap.settings.scrt2URL;
+					embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com';
 					embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
 
 					validateSettings();
