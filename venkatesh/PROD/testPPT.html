@@ -87,6 +87,93 @@
         .reveal li {
             margin-bottom: 0.5em;
         }
+        .icon-section {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .icon-section svg {
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .visual-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .flow-item {
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .flow-arrow {
+            font-size: 2em;
+            color: #0f6fc7;
+            margin: 0 10px;
+        }
+        .stat-box {
+            background: linear-gradient(135deg, #0f6fc7, #1798c1);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .flowchart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .flowchart-step {
+            background: linear-gradient(135deg, #e8f4fd, #f0f8ff);
+            border: 2px solid #0f6fc7;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 10px;
+            text-align: center;
+            min-width: 140px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .flowchart-arrow {
+            font-size: 2em;
+            color: #0f6fc7;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+        .flowchart-decision {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #feca57;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            min-width: 120px;
+            position: relative;
+        }
+        .vertical-flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .vertical-arrow {
+            font-size: 1.5em;
+            color: #0f6fc7;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -94,6 +181,30 @@
         <div class="slides">
             <!-- Title Slide -->
             <section class="title-slide">
+                <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                    <svg width="80" height="60" viewBox="0 0 100 80" style="margin: 0 20px;">
+                        <!-- Engineering icon -->
+                        <rect x="10" y="30" width="35" height="35" fill="#0f6fc7" rx="5"/>
+                        <rect x="15" y="35" width="25" height="5" fill="white"/>
+                        <rect x="15" y="45" width="20" height="3" fill="white"/>
+                        <rect x="15" y="52" width="15" height="3" fill="white"/>
+                        <text x="27" y="25" text-anchor="middle" font-size="8" fill="#0f6fc7">ENG</text>
+                    </svg>
+                    <svg width="40" height="60" viewBox="0 0 40 60" style="margin: 0 10px;">
+                        <!-- Partnership arrows -->
+                        <path d="M5 25 L35 25 L30 20 M35 25 L30 30" stroke="#1798c1" stroke-width="3" fill="none"/>
+                        <path d="M35 35 L5 35 L10 30 M5 35 L10 40" stroke="#1798c1" stroke-width="3" fill="none"/>
+                    </svg>
+                    <svg width="80" height="60" viewBox="0 0 100 80" style="margin: 0 20px;">
+                        <!-- CSG icon -->
+                        <circle cx="27" cy="47" r="22" fill="#1798c1"/>
+                        <circle cx="20" cy="40" r="3" fill="white"/>
+                        <circle cx="27" cy="40" r="3" fill="white"/>
+                        <circle cx="34" cy="40" r="3" fill="white"/>
+                        <path d="M15 50 Q27 60 39 50" stroke="white" stroke-width="3" fill="none"/>
+                        <text x="27" y="25" text-anchor="middle" font-size="8" fill="#1798c1">CSG</text>
+                    </svg>
+                </div>
                 <h1>How Engineering Teams Work with CSG</h1>
                 <h2>Singapore Airlines AI Use Cases Go Live</h2>
                 <p style="margin-top: 50px; font-style: italic;">A Case Study in Cross-Functional Collaboration</p>
@@ -102,12 +213,58 @@
 
             <!-- Overview -->
             <section>
-                <h2>Overview</h2>
-                <div class="highlight">
-                    <p><strong>Challenge:</strong> Ensuring smooth go-live of customers in RED state</p>
-                    <p><strong>Solution:</strong> Partnership between Engineering and Customer Success Group (CSG)</p>
-                    <p><strong>Case Study:</strong> Singapore Airlines (SIA) AI implementation</p>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Overview/summary icon -->
+                        <circle cx="30" cy="30" r="25" fill="#0f6fc7" opacity="0.1"/>
+                        <circle cx="30" cy="30" r="20" fill="none" stroke="#0f6fc7" stroke-width="2"/>
+                        <circle cx="20" cy="25" r="3" fill="#0f6fc7"/>
+                        <circle cx="30" cy="20" r="3" fill="#0f6fc7"/>
+                        <circle cx="40" cy="25" r="3" fill="#0f6fc7"/>
+                        <circle cx="25" cy="35" r="3" fill="#0f6fc7"/>
+                        <circle cx="35" cy="35" r="3" fill="#0f6fc7"/>
+                        <circle cx="30" cy="42" r="3" fill="#0f6fc7"/>
+                        <path d="M20 25 L30 20 L40 25 M25 35 L30 20 M35 35 L30 20 M30 42 L25 35 M30 42 L35 35" 
+                              stroke="#0f6fc7" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <h2>Overview</h2>
                 </div>
+                
+                <div class="visual-flow">
+                    <div class="flow-item">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Challenge icon -->
+                            <circle cx="25" cy="25" r="20" fill="#ff6b6b" opacity="0.2"/>
+                            <path d="M25 10 L25 30 M25 35 L25 40" stroke="#ff6b6b" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="25" cy="42" r="2" fill="#ff6b6b"/>
+                        </svg>
+                        <p><strong>Challenge:</strong><br/>Ensuring smooth go-live of customers in RED state</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Solution icon -->
+                            <circle cx="25" cy="25" r="20" fill="#4ecdc4" opacity="0.2"/>
+                            <path d="M15 25 L22 32 L35 18" stroke="#4ecdc4" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <p><strong>Solution:</strong><br/>Partnership between Engineering and CSG</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Case study icon -->
+                            <circle cx="25" cy="25" r="20" fill="#95e1d3" opacity="0.2"/>
+                            <rect x="15" y="15" width="20" height="15" fill="none" stroke="#45b7d1" stroke-width="2" rx="2"/>
+                            <rect x="18" y="18" width="5" height="2" fill="#45b7d1"/>
+                            <rect x="18" y="22" width="8" height="1" fill="#45b7d1"/>
+                            <rect x="18" y="25" width="6" height="1" fill="#45b7d1"/>
+                            <circle cx="35" cy="35" r="5" fill="#45b7d1"/>
+                            <path d="M32 32 L38 38" stroke="white" stroke-width="2"/>
+                        </svg>
+                        <p><strong>Case Study:</strong><br/>Singapore Airlines AI implementation</p>
+                    </div>
+                </div>
+                
                 <ul>
                     <li>Early collaboration to understand customer concerns</li>
                     <li>Joint approach to technical challenges</li>
@@ -118,15 +275,75 @@
 
             <!-- The Partnership Approach -->
             <section>
-                <h2>The Partnership Approach</h2>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Partnership/handshake icon -->
+                        <circle cx="30" cy="30" r="25" fill="#1798c1" opacity="0.1"/>
+                        <path d="M15 25 L25 15 L35 25 L45 15" stroke="#1798c1" stroke-width="3" fill="none"/>
+                        <circle cx="20" cy="35" r="6" fill="#0f6fc7"/>
+                        <circle cx="40" cy="35" r="6" fill="#1798c1"/>
+                        <path d="M26 35 L34 35" stroke="#4ecdc4" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="30" cy="20" r="3" fill="#feca57"/>
+                    </svg>
+                    <h2>The Partnership Approach</h2>
+                </div>
+                
                 <h3>Collaborative Framework</h3>
-                <ul>
-                    <li><span class="key-point">Cross-team coordination:</span> Engineering and CSG working together</li>
-                    <li><span class="key-point">Customer-centric focus:</span> Understanding SIA's specific needs</li>
-                    <li><span class="key-point">Proactive engagement:</span> Early partnership to prevent issues</li>
-                </ul>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0f6fc7;">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 12px;">
+                            <!-- Cross-team coordination icon -->
+                            <circle cx="10" cy="10" r="4" fill="#0f6fc7"/>
+                            <circle cx="20" cy="10" r="4" fill="#1798c1"/>
+                            <circle cx="15" cy="20" r="4" fill="#4ecdc4"/>
+                            <path d="M10 13 L15 17 L20 13" stroke="#0f6fc7" stroke-width="1.5"/>
+                        </svg>
+                        <div>
+                            <span class="key-point">Cross-team coordination:</span><br/>
+                            <small>Engineering and CSG working together</small>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #1798c1;">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 12px;">
+                            <!-- Customer-centric icon -->
+                            <circle cx="15" cy="12" r="5" fill="#1798c1"/>
+                            <path d="M6 25 Q6 18 15 18 Q24 18 24 25" fill="#1798c1"/>
+                            <circle cx="15" cy="8" r="2" fill="#feca57"/>
+                        </svg>
+                        <div>
+                            <span class="key-point">Customer-centric focus:</span><br/>
+                            <small>Understanding SIA's specific needs</small>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #4ecdc4;">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 12px;">
+                            <!-- Proactive engagement icon -->
+                            <circle cx="15" cy="15" r="12" fill="none" stroke="#4ecdc4" stroke-width="2"/>
+                            <circle cx="15" cy="15" r="3" fill="#4ecdc4"/>
+                            <path d="M15 5 L15 10 M25 15 L20 15 M15 25 L15 20 M5 15 L10 15" stroke="#4ecdc4" stroke-width="2"/>
+                        </svg>
+                        <div>
+                            <span class="key-point">Proactive engagement:</span><br/>
+                            <small>Early partnership to prevent issues</small>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="highlight">
-                    <p><strong>Key Areas of Focus:</strong></p>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 10px;">
+                            <!-- Focus areas icon -->
+                            <circle cx="15" cy="15" r="12" fill="none" stroke="#0f6fc7" stroke-width="2"/>
+                            <circle cx="10" cy="10" r="2" fill="#0f6fc7"/>
+                            <circle cx="20" cy="10" r="2" fill="#0f6fc7"/>
+                            <circle cx="10" cy="20" r="2" fill="#0f6fc7"/>
+                            <circle cx="20" cy="20" r="2" fill="#0f6fc7"/>
+                            <circle cx="15" cy="15" r="2" fill="#0f6fc7"/>
+                        </svg>
+                        <strong>Key Areas of Focus:</strong>
+                    </div>
                     <ul>
                         <li>Customer concerns and requirements</li>
                         <li>Environment setup and access</li>
@@ -138,51 +355,177 @@
 
             <!-- AI Use Cases -->
             <section>
-                <h2>Four Key AI Use Cases for SIA</h2>
-                <div class="use-case">
-                    <h4>1. Assisted Service Replies</h4>
-                    <p>Automatic response generation via chat</p>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- AI brain icon -->
+                        <circle cx="30" cy="30" r="25" fill="#0f6fc7" opacity="0.1"/>
+                        <path d="M15 30 Q20 15 30 20 Q40 15 45 30 Q40 45 30 40 Q20 45 15 30" fill="none" stroke="#0f6fc7" stroke-width="3"/>
+                        <circle cx="25" cy="25" r="2" fill="#0f6fc7"/>
+                        <circle cx="35" cy="25" r="2" fill="#0f6fc7"/>
+                        <circle cx="30" cy="30" r="2" fill="#0f6fc7"/>
+                        <circle cx="25" cy="35" r="2" fill="#0f6fc7"/>
+                        <circle cx="35" cy="35" r="2" fill="#0f6fc7"/>
+                        <path d="M25 25 L30 30 L35 25 M25 35 L30 30 L35 35" stroke="#0f6fc7" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <h2>Four Key AI Use Cases for SIA</h2>
                 </div>
-                <div class="use-case">
-                    <h4>2. Conversational Knowledge Search</h4>
-                    <p>Intelligent search of the knowledge base</p>
-                </div>
-                <div class="use-case">
-                    <h4>3. Case Summary</h4>
-                    <p>Automated summaries of individual cases</p>
-                </div>
-                <div class="use-case">
-                    <h4>4. Passenger Summary</h4>
-                    <p>Snapshot of passenger interactions across multiple channels</p>
+                
+                <div class="icon-grid">
+                    <div class="use-case">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 10px;">
+                                <!-- Chat/messaging icon -->
+                                <rect x="5" y="8" width="30" height="20" fill="#4ecdc4" rx="4"/>
+                                <rect x="8" y="12" width="12" height="2" fill="white"/>
+                                <rect x="8" y="16" width="18" height="2" fill="white"/>
+                                <rect x="8" y="20" width="10" height="2" fill="white"/>
+                                <path d="M20 28 L25 32 L20 32 Z" fill="#4ecdc4"/>
+                            </svg>
+                            <h4>1. Assisted Service Replies</h4>
+                        </div>
+                        <p>Automatic response generation via chat</p>
+                    </div>
+                    
+                    <div class="use-case">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 10px;">
+                                <!-- Search/knowledge icon -->
+                                <circle cx="18" cy="18" r="12" fill="none" stroke="#45b7d1" stroke-width="3"/>
+                                <path d="M28 28 L35 35" stroke="#45b7d1" stroke-width="3" stroke-linecap="round"/>
+                                <rect x="12" y="12" width="8" height="1.5" fill="#45b7d1"/>
+                                <rect x="12" y="16" width="10" height="1.5" fill="#45b7d1"/>
+                                <rect x="12" y="20" width="6" height="1.5" fill="#45b7d1"/>
+                            </svg>
+                            <h4>2. Conversational Knowledge Search</h4>
+                        </div>
+                        <p>Intelligent search of the knowledge base</p>
+                    </div>
+                    
+                    <div class="use-case">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 10px;">
+                                <!-- Document summary icon -->
+                                <rect x="8" y="5" width="24" height="30" fill="none" stroke="#96ceb4" stroke-width="2" rx="2"/>
+                                <rect x="12" y="10" width="16" height="2" fill="#96ceb4"/>
+                                <rect x="12" y="14" width="12" height="1.5" fill="#96ceb4"/>
+                                <rect x="12" y="17" width="14" height="1.5" fill="#96ceb4"/>
+                                <rect x="12" y="20" width="10" height="1.5" fill="#96ceb4"/>
+                                <circle cx="30" cy="25" r="6" fill="#96ceb4"/>
+                                <text x="30" y="29" text-anchor="middle" font-size="8" fill="white">Σ</text>
+                            </svg>
+                            <h4>3. Case Summary</h4>
+                        </div>
+                        <p>Automated summaries of individual cases</p>
+                    </div>
+                    
+                    <div class="use-case">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 10px;">
+                                <!-- Passenger/user icon -->
+                                <circle cx="20" cy="12" r="6" fill="#feca57"/>
+                                <path d="M8 35 Q8 25 20 25 Q32 25 32 35" fill="#feca57"/>
+                                <rect x="15" y="30" width="2" height="4" fill="white"/>
+                                <rect x="19" y="30" width="2" height="4" fill="white"/>
+                                <rect x="23" y="30" width="2" height="4" fill="white"/>
+                            </svg>
+                            <h4>4. Passenger Summary</h4>
+                        </div>
+                        <p>Snapshot of passenger interactions across multiple channels</p>
+                    </div>
                 </div>
             </section>
 
             <!-- Cross-Functional Collaboration -->
             <section>
-                <h2>Cross-Functional Collaboration</h2>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Collaboration workflow icon -->
+                        <circle cx="30" cy="30" r="25" fill="#45b7d1" opacity="0.1"/>
+                        <rect x="10" y="15" width="15" height="10" fill="#0f6fc7" rx="3"/>
+                        <rect x="35" y="15" width="15" height="10" fill="#1798c1" rx="3"/>
+                        <rect x="22" y="35" width="15" height="10" fill="#4ecdc4" rx="3"/>
+                        <path d="M17 25 L22 35 M43 25 L37 35" stroke="#0f6fc7" stroke-width="2"/>
+                        <circle cx="30" cy="8" r="3" fill="#feca57"/>
+                    </svg>
+                    <h2>Cross-Functional Collaboration</h2>
+                </div>
+                
                 <h3>When Issues Arise</h3>
-                <ul>
-                    <li><span class="key-point">Problem Identification:</span>
+                
+                <div class="flowchart">
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Problem detection icon -->
+                            <circle cx="15" cy="15" r="12" fill="#ff6b6b" opacity="0.3"/>
+                            <path d="M15 8 L15 18 M15 22 L15 24" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                        <strong>Problem Identification</strong><br/>
+                        <small>• SIA accuracy & latency issues<br/>
+                        • Engineering mobilizes quickly</small>
+                    </div>
+                    
+                    <div class="flowchart-arrow">→</div>
+                    
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Joint troubleshooting icon -->
+                            <circle cx="15" cy="15" r="12" fill="#4ecdc4" opacity="0.3"/>
+                            <circle cx="10" cy="12" r="3" fill="#4ecdc4"/>
+                            <circle cx="20" cy="12" r="3" fill="#4ecdc4"/>
+                            <path d="M8 20 Q15 25 22 20" stroke="#4ecdc4" stroke-width="2" fill="none"/>
+                            <rect x="12" y="18" width="6" height="3" fill="#4ecdc4"/>
+                        </svg>
+                        <strong>Joint Troubleshooting</strong><br/>
+                        <small>• On-site support at SIA R&D<br/>
+                        • Direct team collaboration</small>
+                    </div>
+                    
+                    <div class="flowchart-arrow">→</div>
+                    
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Knowledge transfer icon -->
+                            <circle cx="15" cy="15" r="12" fill="#96ceb4" opacity="0.3"/>
+                            <rect x="8" y="10" width="14" height="10" fill="none" stroke="#96ceb4" stroke-width="2" rx="2"/>
+                            <rect x="10" y="12" width="4" height="1" fill="#96ceb4"/>
+                            <rect x="10" y="14" width="6" height="1" fill="#96ceb4"/>
+                            <rect x="10" y="16" width="5" height="1" fill="#96ceb4"/>
+                            <path d="M18 15 L23 15 L21 13 M23 15 L21 17" stroke="#96ceb4" stroke-width="2" fill="none"/>
+                        </svg>
+                        <strong>Knowledge Transfer</strong><br/>
+                        <small>• Gen AI architecture training<br/>
+                        • Platform value education</small>
+                    </div>
+                </div>
+                
+                <!-- Detailed breakdown -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div class="highlight">
+                        <h4 style="color: #ff6b6b; margin-bottom: 10px;">🔍 Problem Identification</h4>
                         <ul>
                             <li>SIA faced accuracy and latency challenges</li>
                             <li>Engineering team quickly mobilized to support</li>
                         </ul>
-                    </li>
-                    <li><span class="key-point">Joint Troubleshooting:</span>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h4 style="color: #4ecdc4; margin-bottom: 10px;">🤝 Joint Troubleshooting</h4>
                         <ul>
                             <li>Engineers worked directly with SIA's team</li>
                             <li>On-site support at R&D office near airport</li>
                             <li>Gained access to sandbox environment</li>
                         </ul>
-                    </li>
-                    <li><span class="key-point">Knowledge Transfer:</span>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h4 style="color: #96ceb4; margin-bottom: 10px;">📚 Knowledge Transfer</h4>
                         <ul>
                             <li>Gen AI architecture fundamentals</li>
                             <li>NLP models and neural networks</li>
                             <li>Platform value vs. build-from-scratch approach</li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Technical Support -->
@@ -214,92 +557,456 @@
 
             <!-- Product Enhancement -->
             <section>
-                <h2>Product Enhancement Based on Customer Needs</h2>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Product enhancement cycle icon -->
+                        <circle cx="30" cy="30" r="25" fill="#96ceb4" opacity="0.1"/>
+                        <circle cx="30" cy="30" r="18" fill="none" stroke="#96ceb4" stroke-width="3"/>
+                        <circle cx="30" cy="12" r="4" fill="#feca57"/>
+                        <circle cx="48" cy="30" r="4" fill="#4ecdc4"/>
+                        <circle cx="30" cy="48" r="4" fill="#45b7d1"/>
+                        <circle cx="12" cy="30" r="4" fill="#ff7675"/>
+                        <path d="M34 12 L44 26 M48 34 L34 44 M26 48 L16 34 M12 26 L26 16" 
+                              stroke="#96ceb4" stroke-width="2" fill="none"/>
+                    </svg>
+                    <h2>Product Enhancement Based on Customer Needs</h2>
+                </div>
+                
+                <h3>Customer-Driven Innovation Cycle</h3>
+                
+                <!-- Circular flowchart showing feedback loop -->
+                <div style="display: flex; justify-content: center; margin: 30px 0;">
+                    <svg width="500" height="400" viewBox="0 0 500 400">
+                        <!-- Center circle -->
+                        <circle cx="250" cy="200" r="60" fill="#0f6fc7" opacity="0.1" stroke="#0f6fc7" stroke-width="2"/>
+                        <text x="250" y="195" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f6fc7">Customer</text>
+                        <text x="250" y="210" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f6fc7">Needs</text>
+                        
+                        <!-- Customer Requirements -->
+                        <rect x="100" y="80" width="120" height="60" fill="#feca57" stroke="#f39c12" stroke-width="2" rx="10"/>
+                        <text x="160" y="105" text-anchor="middle" font-size="12" font-weight="bold">Customer Requirements</text>
+                        <text x="160" y="120" text-anchor="middle" font-size="10">• Detailed metrics</text>
+                        <text x="160" y="130" text-anchor="middle" font-size="10">• Usage tracking</text>
+                        
+                        <!-- Engineering Response -->
+                        <rect x="280" y="80" width="120" height="60" fill="#4ecdc4" stroke="#26a085" stroke-width="2" rx="10"/>
+                        <text x="340" y="105" text-anchor="middle" font-size="12" font-weight="bold">Engineering Response</text>
+                        <text x="340" y="120" text-anchor="middle" font-size="10">• Feature development</text>
+                        <text x="340" y="130" text-anchor="middle" font-size="10">• Solution design</text>
+                        
+                        <!-- Implementation -->
+                        <rect x="280" y="260" width="120" height="60" fill="#45b7d1" stroke="#2980b9" stroke-width="2" rx="10"/>
+                        <text x="340" y="285" text-anchor="middle" font-size="12" font-weight="bold">Implementation</text>
+                        <text x="340" y="300" text-anchor="middle" font-size="10">• Quality improvements</text>
+                        <text x="340" y="310" text-anchor="middle" font-size="10">• Preventive measures</text>
+                        
+                        <!-- Feedback Collection -->
+                        <rect x="100" y="260" width="120" height="60" fill="#ff7675" stroke="#e74c3c" stroke-width="2" rx="10"/>
+                        <text x="160" y="285" text-anchor="middle" font-size="12" font-weight="bold">Feedback Collection</text>
+                        <text x="160" y="300" text-anchor="middle" font-size="10">• AI effectiveness</text>
+                        <text x="160" y="310" text-anchor="middle" font-size="10">• User experience</text>
+                        
+                        <!-- Arrows showing circular flow -->
+                        <path d="M220 110 L280 110" stroke="#0f6fc7" stroke-width="3" fill="none"/>
+                        <path d="M290 110 L285 105 M290 110 L285 115" stroke="#0f6fc7" stroke-width="2" fill="none"/>
+                        
+                        <path d="M340 140 L340 200 Q340 230 320 250" stroke="#0f6fc7" stroke-width="3" fill="none"/>
+                        <path d="M320 250 L325 245 M320 250 L315 245" stroke="#0f6fc7" stroke-width="2" fill="none"/>
+                        
+                        <path d="M280 290 L220 290" stroke="#0f6fc7" stroke-width="3" fill="none"/>
+                        <path d="M220 290 L225 285 M220 290 L225 295" stroke="#0f6fc7" stroke-width="2" fill="none"/>
+                        
+                        <path d="M160 260 L160 200 Q160 170 180 150" stroke="#0f6fc7" stroke-width="3" fill="none"/>
+                        <path d="M180 150 L175 155 M180 150 L185 155" stroke="#0f6fc7" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                
                 <h3>Driven by SIA Requirements</h3>
-                <ul>
-                    <li><span class="key-point">Consumption Tracking:</span>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="25" height="25" viewBox="0 0 25 25" style="margin-right: 10px;">
+                                <!-- Tracking icon -->
+                                <circle cx="12.5" cy="12.5" r="10" fill="none" stroke="#feca57" stroke-width="2"/>
+                                <path d="M8 12.5 L11 15.5 L17 9.5" stroke="#feca57" stroke-width="2" fill="none"/>
+                                <circle cx="12.5" cy="5" r="2" fill="#feca57"/>
+                            </svg>
+                            <span class="key-point">Consumption Tracking</span>
+                        </div>
                         <ul>
                             <li>Detailed metrics on AI usage required</li>
                             <li>Solutions for tracking by feature and prompt</li>
                         </ul>
-                    </li>
-                    <li><span class="key-point">Feedback Mechanisms:</span>
+                    </div>
+                    
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="25" height="25" viewBox="0 0 25 25" style="margin-right: 10px;">
+                                <!-- Feedback icon -->
+                                <circle cx="12.5" cy="12.5" r="10" fill="none" stroke="#4ecdc4" stroke-width="2"/>
+                                <path d="M8 10 L17 10 M8 12.5 L15 12.5 M8 15 L13 15" stroke="#4ecdc4" stroke-width="1.5"/>
+                                <circle cx="19" cy="8" r="3" fill="#4ecdc4"/>
+                            </svg>
+                            <span class="key-point">Feedback Mechanisms</span>
+                        </div>
                         <ul>
                             <li>Built-in feedback for Case Summary and Passenger Summary</li>
                             <li>AI effectiveness measurement tools</li>
                         </ul>
-                    </li>
-                    <li><span class="key-point">Quality Improvements:</span>
+                    </div>
+                    
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="25" height="25" viewBox="0 0 25 25" style="margin-right: 10px;">
+                                <!-- Quality improvement icon -->
+                                <circle cx="12.5" cy="12.5" r="10" fill="none" stroke="#45b7d1" stroke-width="2"/>
+                                <path d="M12.5 7 L12.5 18 M7 12.5 L18 12.5" stroke="#45b7d1" stroke-width="2"/>
+                                <circle cx="12.5" cy="12.5" r="3" fill="none" stroke="#45b7d1" stroke-width="2"/>
+                            </svg>
+                            <span class="key-point">Quality Improvements</span>
+                        </div>
                         <ul>
                             <li>Root cause analysis for identified bugs</li>
                             <li>Implementation of preventive measures</li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Leadership Engagement -->
             <section>
-                <h2>Leadership Engagement and Future Vision</h2>
-                <h3>Executive Level Partnership</h3>
-                <div class="highlight">
-                    <h4>Executive Alignment</h4>
-                    <p>Marc Benioff engaged directly with SIA's CEO to drive Gen-AI journey across contact center</p>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Leadership hierarchy icon -->
+                        <circle cx="30" cy="30" r="25" fill="#ff7675" opacity="0.1"/>
+                        <circle cx="30" cy="15" r="6" fill="#feca57"/>
+                        <path d="M27 15 L30 10 L33 15" fill="#feca57"/>
+                        <circle cx="20" cy="35" r="4" fill="#ff7675"/>
+                        <circle cx="40" cy="35" r="4" fill="#ff7675"/>
+                        <circle cx="30" cy="45" r="4" fill="#45b7d1"/>
+                        <path d="M26 19 L24 31 M34 19 L36 31 M30 19 L30 41" stroke="#ff7675" stroke-width="2"/>
+                    </svg>
+                    <h2>Leadership Engagement and Future Vision</h2>
                 </div>
-                <ul>
-                    <li><span class="key-point">Progress Updates:</span> Regular leadership sessions for alignment</li>
-                    <li><span class="key-point">Knowledge Sharing:</span> 
+                
+                <h3>Executive Escalation & Decision Flow</h3>
+                
+                <!-- Vertical flowchart showing leadership hierarchy and engagement -->
+                <div class="vertical-flowchart">
+                    <div class="flowchart-step" style="background: linear-gradient(135deg, #feca57, #f39c12); border-color: #f39c12;">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- CEO level icon -->
+                            <circle cx="15" cy="12" r="6" fill="white"/>
+                            <circle cx="15" cy="8" r="2" fill="#f39c12"/>
+                            <path d="M12 8 L15 5 L18 8" fill="#f39c12"/>
+                            <path d="M8 22 Q8 18 15 18 Q22 18 22 22" fill="white"/>
+                        </svg>
+                        <strong>CEO Level Engagement</strong><br/>
+                        <small>Marc Benioff ↔ SIA CEO</small>
+                    </div>
+                    
+                    <div class="vertical-arrow">↓</div>
+                    
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Strategic alignment icon -->
+                            <circle cx="15" cy="15" r="12" fill="#4ecdc4" opacity="0.3"/>
+                            <circle cx="10" cy="12" r="3" fill="#4ecdc4"/>
+                            <circle cx="20" cy="12" r="3" fill="#4ecdc4"/>
+                            <circle cx="15" cy="20" r="3" fill="#4ecdc4"/>
+                            <path d="M10 15 L15 17 L20 15" stroke="#4ecdc4" stroke-width="2"/>
+                        </svg>
+                        <strong>Strategic Alignment</strong><br/>
+                        <small>Gen-AI journey direction</small>
+                    </div>
+                    
+                    <div class="vertical-arrow">↓</div>
+                    
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Progress monitoring icon -->
+                            <circle cx="15" cy="15" r="12" fill="#45b7d1" opacity="0.3"/>
+                            <rect x="8" y="10" width="14" height="10" fill="none" stroke="#45b7d1" stroke-width="2" rx="2"/>
+                            <rect x="10" y="12" width="3" height="1" fill="#45b7d1"/>
+                            <rect x="10" y="14" width="5" height="1" fill="#45b7d1"/>
+                            <rect x="10" y="16" width="4" height="1" fill="#45b7d1"/>
+                            <circle cx="20" cy="8" r="2" fill="#45b7d1"/>
+                        </svg>
+                        <strong>Progress Updates</strong><br/>
+                        <small>Regular leadership sessions</small>
+                    </div>
+                    
+                    <div class="vertical-arrow">↓</div>
+                    
+                    <div class="flowchart-step">
+                        <svg width="30" height="30" viewBox="0 0 30 30" style="margin-bottom: 8px;">
+                            <!-- Knowledge sharing icon -->
+                            <circle cx="15" cy="15" r="12" fill="#96ceb4" opacity="0.3"/>
+                            <circle cx="10" cy="10" r="3" fill="#96ceb4"/>
+                            <circle cx="20" cy="10" r="3" fill="#96ceb4"/>
+                            <circle cx="15" cy="20" r="3" fill="#96ceb4"/>
+                            <path d="M10 13 L15 17 L20 13 M15 17 L15 20" stroke="#96ceb4" stroke-width="2"/>
+                            <circle cx="25" cy="15" r="2" fill="#96ceb4"/>
+                        </svg>
+                        <strong>Knowledge Sharing</strong><br/>
+                        <small>T&P Connections, Global Events</small>
+                    </div>
+                </div>
+                
+                <!-- Horizontal flow showing knowledge sharing reach -->
+                <div class="flowchart" style="margin-top: 30px;">
+                    <div class="flowchart-step" style="background: linear-gradient(135deg, #96ceb4, #74b9a4);">
+                        <strong>Singapore</strong><br/>
+                        <small>T&P Connections</small>
+                    </div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step" style="background: linear-gradient(135deg, #96ceb4, #74b9a4);">
+                        <strong>India</strong><br/>
+                        <small>Regional Events</small>
+                    </div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step" style="background: linear-gradient(135deg, #96ceb4, #74b9a4);">
+                        <strong>Global</strong><br/>
+                        <small>Blueprint Sharing</small>
+                    </div>
+                </div>
+                
+                <h3>Executive Level Partnership</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 10px;">
+                                <!-- Executive alignment icon -->
+                                <circle cx="15" cy="12" r="5" fill="#feca57"/>
+                                <circle cx="15" cy="8" r="2" fill="white"/>
+                                <path d="M13 8 L15 5 L17 8" fill="white"/>
+                                <path d="M8 22 Q8 18 15 18 Q22 18 22 22" fill="#feca57"/>
+                                <circle cx="25" cy="15" r="3" fill="#ff7675"/>
+                                <path d="M20 15 L22 15" stroke="#0f6fc7" stroke-width="2"/>
+                            </svg>
+                            <h4>Executive Alignment</h4>
+                        </div>
+                        <p>Marc Benioff engaged directly with SIA's CEO to drive Gen-AI journey across contact center</p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 10px;">
+                                <!-- Progress updates icon -->
+                                <circle cx="15" cy="15" r="12" fill="#45b7d1" opacity="0.2"/>
+                                <path d="M8 15 L22 15 M15 8 L15 22" stroke="#45b7d1" stroke-width="2"/>
+                                <circle cx="15" cy="15" r="3" fill="#45b7d1"/>
+                                <circle cx="10" cy="10" r="2" fill="#45b7d1"/>
+                                <circle cx="20" cy="10" r="2" fill="#45b7d1"/>
+                                <circle cx="10" cy="20" r="2" fill="#45b7d1"/>
+                                <circle cx="20" cy="20" r="2" fill="#45b7d1"/>
+                            </svg>
+                            <span class="key-point">Progress Updates</span>
+                        </div>
+                        <p>Regular leadership sessions for alignment</p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg width="30" height="30" viewBox="0 0 30 30" style="margin-right: 10px;">
+                                <!-- Knowledge sharing icon -->
+                                <circle cx="15" cy="15" r="12" fill="#96ceb4" opacity="0.2"/>
+                                <circle cx="15" cy="10" r="3" fill="#96ceb4"/>
+                                <circle cx="10" cy="18" r="2" fill="#96ceb4"/>
+                                <circle cx="20" cy="18" r="2" fill="#96ceb4"/>
+                                <circle cx="15" cy="22" r="2" fill="#96ceb4"/>
+                                <path d="M15 13 L10 16 M15 13 L20 16 M15 13 L15 20" stroke="#96ceb4" stroke-width="1.5"/>
+                            </svg>
+                            <span class="key-point">Knowledge Sharing</span>
+                        </div>
                         <ul>
                             <li>Success story shared at T&P Connections</li>
                             <li>Events in Singapore and India</li>
                             <li>Blueprint for Engineering-CSG collaboration</li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Outcomes and Value -->
             <section>
-                <h2>Outcomes and Value</h2>
-                <div class="outcome">
-                    <h4>🎯 Streamlined Customer Service</h4>
-                    <p>Improved SIA's contact center operations across people, process, and technology</p>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Success/achievement icon -->
+                        <circle cx="30" cy="30" r="25" fill="#4ecdc4" opacity="0.1"/>
+                        <circle cx="30" cy="30" r="20" fill="none" stroke="#4ecdc4" stroke-width="3"/>
+                        <path d="M20 30 L27 37 L42 22" stroke="#4ecdc4" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        <circle cx="30" cy="15" r="3" fill="#feca57"/>
+                        <path d="M28 15 L30 12 L32 15" fill="#feca57"/>
+                    </svg>
+                    <h2>Outcomes and Value</h2>
                 </div>
-                <div class="outcome">
-                    <h4>🚀 Foundation for Future AI Expansion</h4>
-                    <p>Platform for exploring additional use cases and potential Agentforce transition</p>
+                
+                <div style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                    <div class="stat-box">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Streamlined service icon -->
+                            <circle cx="25" cy="25" r="20" fill="white" opacity="0.2"/>
+                            <path d="M15 20 Q25 10 35 20 Q35 30 25 35 Q15 30 15 20" fill="white"/>
+                            <circle cx="20" cy="22" r="2" fill="#0f6fc7"/>
+                            <circle cx="30" cy="22" r="2" fill="#0f6fc7"/>
+                            <path d="M20 28 Q25 32 30 28" stroke="#0f6fc7" stroke-width="2" fill="none"/>
+                        </svg>
+                        <h4>Streamlined Customer Service</h4>
+                        <p>Improved SIA's contact center operations across people, process, and technology</p>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Growth/expansion icon -->
+                            <circle cx="25" cy="25" r="20" fill="white" opacity="0.2"/>
+                            <path d="M15 35 L35 15" stroke="white" stroke-width="3"/>
+                            <path d="M30 15 L35 15 L35 20" stroke="white" stroke-width="3" fill="none"/>
+                            <circle cx="18" cy="32" r="2" fill="white"/>
+                            <circle cx="25" cy="25" r="2" fill="white"/>
+                            <circle cx="32" cy="18" r="2" fill="white"/>
+                        </svg>
+                        <h4>Foundation for Future AI Expansion</h4>
+                        <p>Platform for exploring additional use cases and potential Agentforce transition</p>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <svg width="50" height="50" viewBox="0 0 50 50" style="margin-bottom: 10px;">
+                            <!-- Blueprint/model icon -->
+                            <circle cx="25" cy="25" r="20" fill="white" opacity="0.2"/>
+                            <rect x="15" y="15" width="20" height="15" fill="none" stroke="white" stroke-width="2" rx="2"/>
+                            <rect x="18" y="18" width="5" height="1.5" fill="white"/>
+                            <rect x="18" y="21" width="8" height="1" fill="white"/>
+                            <rect x="18" y="24" width="6" height="1" fill="white"/>
+                            <rect x="18" y="27" width="10" height="1" fill="white"/>
+                            <circle cx="35" cy="35" r="3" fill="white"/>
+                        </svg>
+                        <h4>Model for Enterprise AI Adoption</h4>
+                        <p>Blueprint for similar implementations at other enterprises</p>
+                    </div>
                 </div>
-                <div class="outcome">
-                    <h4>📋 Model for Enterprise AI Adoption</h4>
-                    <p>Blueprint for similar implementations at other enterprises</p>
-                </div>
-                <div class="highlight">
-                    <p><strong>Key Success Factor:</strong> Tight coordination across engineering, customer success, and implementation teams</p>
+                
+                <div class="highlight" style="text-align: center; padding: 25px;">
+                    <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; vertical-align: middle;">
+                        <!-- Team coordination icon -->
+                        <circle cx="15" cy="15" r="6" fill="#0f6fc7"/>
+                        <circle cx="25" cy="15" r="6" fill="#1798c1"/>
+                        <circle cx="20" cy="25" r="6" fill="#4ecdc4"/>
+                        <path d="M15 20 L20 20 L25 20" stroke="#0f6fc7" stroke-width="2"/>
+                        <path d="M17 20 L20 20" stroke="#0f6fc7" stroke-width="3"/>
+                        <path d="M23 20 L20 20" stroke="#0f6fc7" stroke-width="3"/>
+                    </svg>
+                    <strong style="font-size: 1.2em;">Key Success Factor:</strong> 
+                    <span style="color: #0f6fc7;">Tight coordination across engineering, customer success, and implementation teams</span>
                 </div>
             </section>
 
             <!-- Key Takeaways -->
             <section>
-                <h2>Key Takeaways</h2>
-                <ul>
-                    <li><span class="key-point">Early Partnership is Critical</span>
-                        <ul><li>Understanding customer needs before implementation</li></ul>
-                    </li>
-                    <li><span class="key-point">Cross-Functional Collaboration Works</span>
-                        <ul><li>Engineering + CSG partnership delivers results</li></ul>
-                    </li>
-                    <li><span class="key-point">Customer-Driven Innovation</span>
-                        <ul><li>Real customer needs drive product enhancements</li></ul>
-                    </li>
-                    <li><span class="key-point">Knowledge Transfer is Essential</span>
-                        <ul><li>Building customer capability for long-term success</li></ul>
-                    </li>
-                    <li><span class="key-point">Executive Engagement Accelerates Success</span>
-                        <ul><li>Leadership alignment removes barriers</li></ul>
-                    </li>
-                </ul>
-                <div class="highlight" style="text-align: center; margin-top: 30px;">
-                    <p><strong>Enterprise-grade AI delivery requires coordinated team effort</strong></p>
+                <div class="icon-section">
+                    <svg width="60" height="60" viewBox="0 0 60 60">
+                        <!-- Key insights icon -->
+                        <circle cx="30" cy="30" r="25" fill="#feca57" opacity="0.1"/>
+                        <path d="M20 15 L25 10 L30 15 L35 10 L40 15 L40 45 L20 45 Z" fill="none" stroke="#feca57" stroke-width="3"/>
+                        <circle cx="25" cy="22" r="2" fill="#feca57"/>
+                        <circle cx="35" cy="22" r="2" fill="#feca57"/>
+                        <circle cx="30" cy="30" r="2" fill="#feca57"/>
+                        <circle cx="25" cy="37" r="2" fill="#feca57"/>
+                        <circle cx="35" cy="37" r="2" fill="#feca57"/>
+                        <path d="M25 22 L30 30 L35 22 M25 37 L30 30 L35 37" stroke="#feca57" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <h2>Key Takeaways</h2>
+                </div>
+                
+                <div class="icon-grid">
+                    <div style="display: flex; align-items: flex-start; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; flex-shrink: 0;">
+                            <!-- Early partnership icon -->
+                            <circle cx="20" cy="20" r="18" fill="#4ecdc4" opacity="0.2"/>
+                            <circle cx="15" cy="15" r="4" fill="#4ecdc4"/>
+                            <circle cx="25" cy="15" r="4" fill="#4ecdc4"/>
+                            <path d="M12 25 Q20 30 28 25" stroke="#4ecdc4" stroke-width="3" fill="none"/>
+                            <circle cx="20" cy="8" r="2" fill="#feca57"/>
+                        </svg>
+                        <div>
+                            <h4 class="key-point">Early Partnership is Critical</h4>
+                            <p>Understanding customer needs before implementation</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; flex-shrink: 0;">
+                            <!-- Collaboration icon -->
+                            <circle cx="20" cy="20" r="18" fill="#45b7d1" opacity="0.2"/>
+                            <circle cx="12" cy="16" r="5" fill="#45b7d1"/>
+                            <circle cx="28" cy="16" r="5" fill="#45b7d1"/>
+                            <circle cx="20" cy="28" r="5" fill="#45b7d1"/>
+                            <path d="M12 20 L20 24 L28 20" stroke="#45b7d1" stroke-width="2"/>
+                        </svg>
+                        <div>
+                            <h4 class="key-point">Cross-Functional Collaboration Works</h4>
+                            <p>Engineering + CSG partnership delivers results</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; flex-shrink: 0;">
+                            <!-- Innovation icon -->
+                            <circle cx="20" cy="20" r="18" fill="#96ceb4" opacity="0.2"/>
+                            <path d="M20 8 L20 32 M12 20 L28 20 M15 13 L25 13 M15 27 L25 27" stroke="#96ceb4" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="6" fill="none" stroke="#96ceb4" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="2" fill="#96ceb4"/>
+                        </svg>
+                        <div>
+                            <h4 class="key-point">Customer-Driven Innovation</h4>
+                            <p>Real customer needs drive product enhancements</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; flex-shrink: 0;">
+                            <!-- Knowledge transfer icon -->
+                            <circle cx="20" cy="20" r="18" fill="#feca57" opacity="0.2"/>
+                            <rect x="10" y="12" width="20" height="16" fill="none" stroke="#feca57" stroke-width="2" rx="2"/>
+                            <rect x="13" y="16" width="6" height="1.5" fill="#feca57"/>
+                            <rect x="13" y="19" width="8" height="1.5" fill="#feca57"/>
+                            <rect x="13" y="22" width="5" height="1.5" fill="#feca57"/>
+                            <path d="M25 15 L30 20 L25 25" stroke="#feca57" stroke-width="2" fill="none"/>
+                        </svg>
+                        <div>
+                            <h4 class="key-point">Knowledge Transfer is Essential</h4>
+                            <p>Building customer capability for long-term success</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="margin-right: 15px; flex-shrink: 0;">
+                            <!-- Executive engagement icon -->
+                            <circle cx="20" cy="20" r="18" fill="#ff7675" opacity="0.2"/>
+                            <circle cx="20" cy="14" r="5" fill="#ff7675"/>
+                            <path d="M10 32 Q10 24 20 24 Q30 24 30 32" fill="#ff7675"/>
+                            <circle cx="20" cy="8" r="3" fill="#feca57"/>
+                            <path d="M18 8 L20 5 L22 8" fill="#feca57"/>
+                        </svg>
+                        <div>
+                            <h4 class="key-point">Executive Engagement Accelerates Success</h4>
+                            <p>Leadership alignment removes barriers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight" style="text-align: center; margin-top: 30px; padding: 25px;">
+                    <svg width="50" height="50" viewBox="0 0 50 50" style="margin-right: 15px; vertical-align: middle;">
+                        <!-- Team effort icon -->
+                        <circle cx="25" cy="25" r="20" fill="#0f6fc7" opacity="0.1"/>
+                        <circle cx="15" cy="20" r="4" fill="#0f6fc7"/>
+                        <circle cx="25" cy="15" r="4" fill="#1798c1"/>
+                        <circle cx="35" cy="20" r="4" fill="#4ecdc4"/>
+                        <circle cx="20" cy="30" r="4" fill="#96ceb4"/>
+                        <circle cx="30" cy="30" r="4" fill="#feca57"/>
+                        <path d="M15 23 L20 27 M25 18 L20 27 M35 23 L30 27 M30 27 L20 27" stroke="#0f6fc7" stroke-width="2"/>
+                    </svg>
+                    <strong style="font-size: 1.2em;">Enterprise-grade AI delivery requires coordinated team effort</strong>
                 </div>
             </section>
 
