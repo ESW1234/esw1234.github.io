@@ -104,19 +104,22 @@
             <svg width="80" height="53" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>
-                        .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: white; font-size: 9px; }
+                        .logo-text { font-family: Arial, sans-serif; font-weight: normal; fill: white; font-size: 9px; }
                         .logo-cloud { fill: #1798C1; }
                     </style>
                 </defs>
-                <!-- Main cloud body -->
-                <path class="logo-cloud" d="M25 45 C20 40, 20 32, 28 30 C30 22, 40 20, 45 28 C50 24, 58 26, 60 32 C65 30, 72 32, 75 38 C80 38, 85 42, 83 48 C88 50, 90 56, 85 60 L30 60 C22 60, 18 55, 20 50 C15 48, 12 42, 18 40 C15 35, 18 30, 25 32 Z"/>
-                <!-- Small cloud elements for detail -->
-                <circle class="logo-cloud" cx="35" cy="35" r="8"/>
-                <circle class="logo-cloud" cx="50" cy="30" r="6"/>
-                <circle class="logo-cloud" cx="65" cy="35" r="7"/>
-                <circle class="logo-cloud" cx="75" cy="42" r="5"/>
+                <!-- Accurate Salesforce cloud shape based on official logo -->
+                <g class="logo-cloud">
+                    <!-- Main cloud body with organic curves -->
+                    <path d="M18 52 C12 48, 12 40, 20 38 C18 30, 28 25, 36 28 C38 20, 50 18, 58 24 C64 18, 76 18, 82 26 C86 22, 94 24, 98 30 C104 30, 108 36, 106 42 C112 44, 114 52, 108 56 C110 60, 108 66, 102 68 L26 68 C18 68, 12 62, 12 54 C6 52, 2 44, 8 40 C4 36, 6 28, 14 30 C12 26, 14 20, 18 24 Z"/>
+                    <!-- Additional cloud bumps for more organic look -->
+                    <ellipse cx="32" cy="35" rx="8" ry="6" opacity="0.8"/>
+                    <ellipse cx="48" cy="30" rx="6" ry="5" opacity="0.7"/>
+                    <ellipse cx="68" cy="32" rx="7" ry="5" opacity="0.8"/>
+                    <ellipse cx="85" cy="38" rx="5" ry="4" opacity="0.6"/>
+                </g>
                 <!-- Salesforce text -->
-                <text class="logo-text" x="60" y="48" text-anchor="middle">salesforce</text>
+                <text class="logo-text" x="60" y="50" text-anchor="middle">salesforce</text>
             </svg>
         </div>
         <div class="slides">
