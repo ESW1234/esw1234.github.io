@@ -40,10 +40,35 @@
             font-weight: bold;
             color: #1589ee;
         }
+        .salesforce-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: auto;
+            z-index: 1000;
+            opacity: 0.9;
+        }
+        .reveal .slides {
+            position: relative;
+        }
     </style>
 </head>
 <body>
     <div class="reveal">
+        <!-- Salesforce logo on every slide -->
+        <div class="salesforce-logo">
+            <svg width="80" height="53" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: white; font-size: 12px; }
+                        .logo-cloud { fill: #00A1E0; }
+                    </style>
+                </defs>
+                <path class="logo-cloud" d="M20 45 C15 40, 15 30, 25 30 C30 20, 45 20, 50 30 C60 25, 70 30, 70 40 C80 40, 85 50, 75 55 L25 55 C15 55, 10 50, 20 45 Z"/>
+                <text class="logo-text" x="30" y="48" text-anchor="middle">salesforce</text>
+            </svg>
+        </div>
         <div class="slides">
             <!-- Title Slide -->
             <section class="title-slide">
