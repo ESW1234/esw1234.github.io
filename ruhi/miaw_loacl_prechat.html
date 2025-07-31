@@ -8,10 +8,18 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+			    console.log("Received the onEmbeddedMessagingReady event…");
+			
+			    // Send data to Salesforce
+			    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(
+				    {"CustomDisplayName" : "Yes"});
+			});
+			
 			embeddedservice_bootstrap.init(
 				'00Dxx0000006Gm7',
-				'MIAW9Jul',
-				'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAW9Jul1752053748065',
+				'MIAWPreChat',
+				'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWPreChat1753161881287',
 				{
 					scrt2URL: 'https://chatorg.my.localhost.sfdcdev.salesforce-scrt.com:18000'
 				}
@@ -21,7 +29,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAW9Jul1752053748065/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWPreChat1753161881287/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
