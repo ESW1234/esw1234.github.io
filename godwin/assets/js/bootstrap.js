@@ -106,7 +106,7 @@
 	/**
 	 * Gate names.
 	 */
-	const CWC_CLIENT_ENABLED_GATE = "com.salesforce.esw.cwc.isCustomerWebClientEnabled";
+	const CWC_CLIENT_ENABLED_GATE = "com.salesforce.esw.embeddedMessaging.web.hasCitationsSupport";
 
 	/**
 	 * Experience Site User Verification
