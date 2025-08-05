@@ -62,6 +62,7 @@
 	const MINIMIZED_NOTIFICATION_AREA_TEXT_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "Text";
 	const MINIMIZED_NOTIFICATION_AREA_DEFAULT_TEXT = "Something went wrong. Log in again to continue your messaging conversation.";
 	const MINIMIZED_NOTIFICATION_AREA_AGENT_UNAVAILABLE_DEFAULT_TEXT = "Service reps are not available right now. Try again later.";
+	const MINIMIZED_NOTIFICATION_AREA_INVITATIONS_DEFAULT_TEXT = "Have questions? Let’s chat";
 	const MINIMIZED_NOTIFICATION_AREA_DEFAULT_ASSISTIVE_TEXT = "Expand the text.";
 	const MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS = MINIMIZED_NOTIFICATION_AREA_CLASS + "DismissButton";
 	const MINIMIZED_NOTIFICATION_DISMISS_BTN_ID = "dismissButton-help";
@@ -77,16 +78,11 @@
 	const EMBEDDED_MESSAGING_ICON = "embeddedMessagingIcon";
 	const EMBEDDED_MESSAGING_ICON_CHAT = EMBEDDED_MESSAGING_ICON + "Chat";
 	const EMBEDDED_MESSAGING_ICON_CONTAINER = EMBEDDED_MESSAGING_ICON + "Container";
-	const EMBEDDED_MESSAGING_ICON_LOADING = EMBEDDED_MESSAGING_ICON + "Loading";
 	const EMBEDDED_MESSAGING_ICON_MINIMIZE = EMBEDDED_MESSAGING_ICON + "Minimize";
-	const EMBEDDED_MESSAGING_ICON_REFRESH = EMBEDDED_MESSAGING_ICON + "Refresh";
-
-	/**
-	 * Loading constants.
-	 */
-	const EMBEDDED_MESSAGING_LOADING = "embeddedMessagingLoading";
-	const EMBEDDED_MESSAGING_LOADING_SPINNER = EMBEDDED_MESSAGING_LOADING + "Spinner";
-	const EMBEDDED_MESSAGING_LOADING_CIRCLE = EMBEDDED_MESSAGING_LOADING + "Circle";
+	const EMBEDDED_MESSAGING_ICON_ERROR = EMBEDDED_MESSAGING_ICON + "Error";
+	const EMBEDDED_MESSAGING_ICON_PROGRESS_INDICATOR = EMBEDDED_MESSAGING_ICON + "ProgressIndicator";
+	const EMBEDDED_MESSAGING_ICON_INNER_ARC = EMBEDDED_MESSAGING_ICON + "InnerArc";
+	const EMBEDDED_MESSAGING_ICON_OUTER_ARC = EMBEDDED_MESSAGING_ICON + "OuterArc";
 
 	/**
 	 * SCRT Paths
@@ -106,6 +102,11 @@
 	const LIST_CONVERSATIONS_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + QUERIES_PATH + "/conversation/list";
 	const REGISTER_DEVICE_CAPABILITIES_PATH = IN_APP_API_PREFIX + IN_APP_API_VERSION + CAPABILITIES_PATH;
 	const TRANSCRIPT_PATH = "/transcript";
+
+	/**
+	 * Gate names.
+	 */
+	const CWC_CLIENT_ENABLED_GATE = "com.salesforce.esw.cwc.isCustomerWebClientEnabled";
 
 	/**
 	 * Experience Site User Verification
@@ -171,10 +172,15 @@
 	const EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE_EVENT_NAME = "EMBEDDED_MESSAGING_PUBLIC_SEND_TEXT_MESSAGE_API_RESPONSE";
 	const EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED_EVENT_NAME = "EMBEDDED_MESSAGING_CONVO_ERROR_DATA_RECEIVED";
 	const EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT = "EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT";
+	const EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATED = "EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATED";
+	const EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATED = "EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATED";
+	const EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATION_ERROR = "EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATION_ERROR";
+	const EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATION_ERROR = "EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATION_ERROR";
 	const EMBEDDED_MESSAGING_INVITATIONS_CONDITIONS_MET = "EMBEDDED_MESSAGING_INVITATIONS_CONDITIONS_MET";
 	const ERR_MESSAGE_ORG_NOT_SUPPORTED = "ORG_NOT_SUPPORTED";
 	const ERR_MESSAGE_ORG_UNDER_MAINTENANCE = "ORG_UNDER_MAINTENANCE";
 	const EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK = "EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK";
+	const ESW_APP_RESET_AND_RELAUNCH_EVENT_NAME = "ESW_APP_RESET_AND_RELAUNCH";
 
 	/**
 	 * Conversation transcript file name.
@@ -189,6 +195,11 @@
 	const BLACK_HEX_CODE = "#1A1B1E";
 	const A11Y_CONTRAST_THRESHOLD = 3.0;
 	const HEX_BASE = 16;
+
+	/**
+	 * Color constants used for to determine hover color.
+	 */
+	const THRESHOLD_LUMINANCE = 0.027321;
 
 	/**
 	 * Parameters for the identity token data object passed in via
@@ -338,6 +349,37 @@
 			const blue = parseInt(hex.slice(5, 7), HEX_BASE);
 			return { r: red, g: green, b: blue };
 		}
+
+		/**
+		 * Converts rgb value to its corresponding HEX representation.
+		 * @param {number} r - The red component value
+		 * @param {number} g - The green component value
+	     * @param {number} b - The blue component value
+		 * @returns {string} The hexadecimal color string in format "#RRGGBB"
+		 */
+		static convertRGBToHex(r,g,b) {
+			return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+		}
+
+		/**
+		 * Returns a hover background color that adapts based on the input color's luminance.
+		 * 
+		 * @param {string} hexColor - The input color in hex format
+		 * @returns {string} The hover color in hex format
+		 */
+		static getHoverBackgroundColor(hexColor) {
+			const rgb = this.convertHexToRGB(hexColor);
+
+			// For colors with low luminance (darker than threshold), the function lightens the color.
+			// For colors with high luminance (lighter than threshold), the function darkens the color.
+			const inputLuminance = this.getRelativeLuminance(rgb).toFixed(6);
+			const shadeFactor = inputLuminance >= THRESHOLD_LUMINANCE ? -22 : 22;
+
+			const updatedR = Math.max(0, rgb.r + shadeFactor);
+			const updatedG = Math.max(0, rgb.g + shadeFactor);
+			const updatedB = Math.max(0, rgb.b + shadeFactor);
+			return this.convertRGBToHex(updatedR, updatedG, updatedB);
+		}
 	}
 
 	/**
@@ -346,7 +388,7 @@
 	 * @returns {boolean} Returns true if the color contrast meets the accessibility threshold, otherwise false.
 	 */
 	function hasConversationButtonColorContrastMetA11yThreshold() {
-		return ColorContrastAccessibility.isValidContrastRatio(WHITE_HEX_CODE, getButtonColorFromBrandingConfig());
+		return ColorContrastAccessibility.isValidContrastRatio(WHITE_HEX_CODE, getTokenValueFromBrandingConfig("chatButton"));
 	};
 
 	/**
@@ -480,6 +522,24 @@
 	 * @type {string}
 	 */
 	const ON_EMBEDDED_MESSAGE_LINK_CLICKED_EVENT_NAME = "onEmbeddedMessageLinkClicked";
+
+	/**
+	 * Event dispatched to notify the host that invitation is shown.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_INVITATION_SHOWN_EVENT_NAME = "onEmbeddedMessagingInvitationShown";
+
+	/**
+	 * Event dispatched to notify the host that invitation is accpeted.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_INVITATION_ACCEPTED_EVENT_NAME = "onEmbeddedMessagingInvitationAccepted";
+
+	/**
+	 * Event dispatched to notify the host that invitation is rejected.
+	 * @type {string}
+	 */
+	const ON_EMBEDDED_MESSAGING_INVITATION_REJECTED_EVENT_NAME = "onEmbeddedMessagingInvitationRejected";
 
 	const SALESFORCE_DOMAINS = [
 		// Used by dev, blitz, and prod instances
@@ -708,7 +768,9 @@
 		FAILED_OUTBOUND_MESSAGE_ENTRIES: "FAILED_MESSAGES",
 		CONVERSATION_BUTTON_CLICK_TIME: "CONVERSATION_BUTTON_CLICK_TIME",
 		PAGE_COUNT : "PAGE_COUNT",
-		SITE_TIME : "SITE_TIME"
+		SITE_TIME : "SITE_TIME",
+		INVITATION_ACCEPTED: "INVITATION_ACCEPTED",
+		INVITATION_REJECTED: "INVITATION_REJECTED"
 	};
 
 	/**
@@ -1360,7 +1422,8 @@
 			...((typeof embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot === "boolean") && {enableUserInputForConversationWithBot: Boolean(embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot)}),
 			...((typeof embeddedservice_bootstrap.settings.shouldShowParticipantChgEvntInConvHist === "boolean") && {shouldShowParticipantChgEvntInConvHist: Boolean(embeddedservice_bootstrap.settings.shouldShowParticipantChgEvntInConvHist)}),
 			shouldMinimizeWindowOnNewTab: embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab,
-			...((typeof embeddedservice_bootstrap.settings.disableStreamingResponses === "boolean") && {disableStreamingResponses: Boolean(embeddedservice_bootstrap.settings.disableStreamingResponses)})
+			...((typeof embeddedservice_bootstrap.settings.disableStreamingResponses === "boolean") && {disableStreamingResponses: Boolean(embeddedservice_bootstrap.settings.disableStreamingResponses)}),
+			...((typeof embeddedservice_bootstrap.settings.sseRetryEnhancement === "boolean") && {sseRetryEnhancement: Boolean(embeddedservice_bootstrap.settings.sseRetryEnhancement)})
 		};
 
 		const finalConfigurationData = Object.assign({}, embeddedservice_bootstrap.settings.embeddedServiceConfig, {
@@ -1552,9 +1615,12 @@
 						break;
 					case EMBEDDED_MESSAGING_TEXT_MESSAGE_LINK_CLICK:
 						handleLinkClick(e);
-            			break;
+						break;
 					case EMBEDDED_MESSAGING_SCREENREADER_ANNOUNCEMENT:
 						handleScreenReaderAnnouncement(e.data.data);
+						break;
+					case ESW_APP_RESET_AND_RELAUNCH_EVENT_NAME:
+						handleAppResetAndRelaunch();
 						break;
 					default:
 						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
@@ -1562,9 +1628,21 @@
 				}
 			} else if (e.origin === window.location.origin && e.source === window){
 				switch(e.data.method) {
+					case EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATED:
+                        log("handleMessageEvent", `Invitations rule tree created from formula: ${e.data.data.formula}`);
+                        break;
+					case EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATED:
+						log("handleMessageEvent", `Invitations rule tree evaluated with result: ${e.data.data.result}`);
+						break;
 					case EMBEDDED_MESSAGING_INVITATIONS_CONDITIONS_MET:
 						handleInvitationConditionsMet();
 						break;
+					case EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_CREATION_ERROR:
+						error("handleMessageEvent", `Failed to create invitations rule tree with formula "${e.data.data.formula}": ${e.data.data.error}`);
+						break;
+					case EMBEDDED_MESSAGING_INVITATIONS_RULE_TREE_EVALUATION_ERROR:
+                        error("handleMessageEvent", `Failed to evaluate invitations rule tree: ${e.data.data.error}`);
+                        break;
 					default:
 						warning("handleMessageEvent", "Unrecognized event name: " + e.data.method);
 						break;
@@ -1572,6 +1650,28 @@
 			} else {
 				error("handleMessageEvent", `Unexpected message origin: ${e.origin}`);
 			}
+		}
+	}
+
+	/**
+	 * Resets the client using clearSession() API and relaunches the client using launchChat() API.
+	 */
+	function handleAppResetAndRelaunch() {
+		// Handle only for Unauth conversations.
+		if (!isUserVerificationEnabled()) {
+			/**
+			 * 1. End the conversation and reset the client in Unauth.
+			 * 2. Launch the client.
+			 */
+			embeddedservice_bootstrap.userVerificationAPI.clearSession().then(() => {
+				embeddedservice_bootstrap.utilAPI.launchChat().then(() => {
+					log("handleAppResetAndRelaunch", "Reset and Relaunched the client.");
+				}).catch((err) => {
+					error("handleAppResetAndRelaunch", `Failed to Reset and Relaunch the client: ${err}`);
+				});
+			}).catch((err) => {
+				error("handleAppResetAndRelaunch", `Failed to Reset and Relaunch the client: ${err}`);
+			})
 		}
 	}
 
@@ -1614,6 +1714,13 @@
 	 * Dispatch event to host for the first click only
 	 */
 	function onConversationButtonClick() {
+		// If invitation is currently shown, clicking on conversation button is an invitation accept
+		const invitationNotification = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
+
+		if (invitationNotification && invitationNotification.getAttribute("is-invitation") === "true") {
+			handleInvitationNotificationAction(true);
+		}
+
 		dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUTTON_CLICKED_EVENT_NAME);
 		return handleClick();
 	}
@@ -1911,6 +2018,28 @@
 
 			document.getElementsByTagName("head")[0].appendChild(link);
 		});
+	}
+
+	/**
+	 * Get gates data from the gates endpoint.
+	 * @returns {Promise}
+	 */
+	function getGatesData() {
+		const gatesURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION_TWO +
+			"/gates?orgId=" + embeddedservice_bootstrap.settings.orgId;
+
+		return sendXhrRequest(gatesURL, "GET", "getGatesData")
+			.then((response) => {
+				if (response.success && response.response && response.response.result) {
+					embeddedservice_bootstrap.gates = response.response.result;
+					log("getGatesData", `Successfully retrieved gates settings`);
+				} else {
+					error("getGatesData", `Failed to retrieve gates settings. Error : ${response.error.message}`, response.error.errorCode);
+				}
+			})
+			.catch((exception) => {
+				error("getGatesData", `Failed to retrieve gates settings. Error : ${exception}`);
+			});
 	}
 
 	/**
@@ -3100,22 +3229,6 @@
 	}
 
 	/**
-	 * Returns the custom header color branding token value for button background color.
-	 * @return {String}
-	 */
-	function getButtonColorFromBrandingConfig() {
-		return getTokenValueFromBrandingConfig("headerColor");
-	}
-
-	/**
-	 * Returns the custom secondary color branding token value for focus borders.
-	 * @return {String}
-	 */
-	function getButtonFocusBorderColorFromBrandingConfig() {
-		return getTokenValueFromBrandingConfig("secondaryColor");
-	}
-
-	/**
 	 * Returns the font branding token value for minimized notification area.
 	 * @return {String}
 	 */
@@ -3156,38 +3269,46 @@
 		let button = getEmbeddedMessagingConversationButton();
 		let iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		let chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
-		let loadingSpinner = document.createElement("div");
+		let progressIndicator = document.createElement("div");
 		let assistiveTextElement = document.createElement("span");
-		let circle;
-		let i = 1;
 
 		if(button) {
 			// Hide the default chat icon on the button.
 			chatIcon.style.display = "none";
 
-			// [Animations] Build loading spinner.
-			loadingSpinner.setAttribute("class", EMBEDDED_MESSAGING_LOADING_SPINNER);
-			loadingSpinner.setAttribute("id", EMBEDDED_MESSAGING_LOADING_SPINNER);
-			for(; i < 13; i++) {
-				circle = document.createElement("div");
-				circle.setAttribute("class", EMBEDDED_MESSAGING_LOADING_CIRCLE + i + " " + EMBEDDED_MESSAGING_LOADING_CIRCLE);
-				loadingSpinner.appendChild(circle);
-			}
+			// [Animations] Build loading progress indicator.
+			progressIndicator.setAttribute("class", EMBEDDED_MESSAGING_ICON_PROGRESS_INDICATOR);
+			progressIndicator.setAttribute("id", EMBEDDED_MESSAGING_ICON_PROGRESS_INDICATOR);
 
-			loadingSpinner.classList.add(EMBEDDED_MESSAGING_ICON_LOADING);
+			let outerArc = renderSVG(DEFAULT_ICONS.OUTER_ARC);
+			outerArc.setAttribute("class", EMBEDDED_MESSAGING_ICON_OUTER_ARC);
+
+			let innerArc = renderSVG(DEFAULT_ICONS.INNER_ARC);
+			innerArc.setAttribute("class", EMBEDDED_MESSAGING_ICON_INNER_ARC);
+
+			progressIndicator.appendChild(outerArc);
+			progressIndicator.appendChild(innerArc);
 
 			// Set loading state for the button.
 			button.classList.add(CONVERSATION_BUTTON_LOADING_CLASS);
 			// Load the animations for button.
-			iconContainer.insertBefore(loadingSpinner, chatIcon);
+			iconContainer.insertBefore(progressIndicator, chatIcon);
 			button.disabled = true;
 
 			// [A11Y] Screen reader announce loading status
 			assistiveTextElement.className = SLDS_ASSISTIVE_TEXT;
 			assistiveTextElement.setAttribute("role", "alert");
 			assistiveTextElement.innerHTML = getLabel("EmbeddedMessagingPrechat", "PrechatSubmitButtonLoading") || CHAT_BUTTON_LOADING_ASSISTIVE_TEXT;
-			loadingSpinner.appendChild(assistiveTextElement);
+			progressIndicator.appendChild(assistiveTextElement);
 		}
+	}
+
+	/**
+	 * Returns the background color for chat button on hover.
+	 * @return {String}
+	 */
+	function getButtonHoverColor() {
+		return ColorContrastAccessibility.getHoverBackgroundColor(getTokenValueFromBrandingConfig("chatButton"));
 	}
 
 	/**
@@ -3457,12 +3578,22 @@
 	};
 
 	/**
-	 * Returns true if inviations are enabled.
+	 * Returns true if invitations are enabled.
 	 *
 	 * @returns {boolean}
 	 */
 	function hasInvitationsEnabled() {
-		return embeddedservice_bootstrap.settings.embeddedServiceConfig.invitations;
+		return embeddedservice_bootstrap.settings.embeddedServiceConfig.invitation;
+	}
+
+	/**
+	 * Returns true if custom invitations are enabled.
+	 *
+	 * @returns {boolean}
+	 */
+	function hasCustomInvitationsEnabled() {
+		const invitationSetting = embeddedservice_bootstrap.settings.embeddedServiceConfig.invitation || {};
+		return Boolean(invitationSetting.isChatInvitationCustomizable);
 	}
 
 	/**
@@ -3480,6 +3611,12 @@
 	 * 
 	 */
 	function initializeInvitations(pageStartTime) {
+	    // Check if invitation should be shown based on previous actions and settings
+		if (!shouldShowInvitationBasedOnPreviousActions()) {
+			log("initializeInvitations", "Skipping invitation initialization due to previous actions and settings");
+			return;
+		}
+
 		// Create and load invitation script
 		if (!getInvitationScript()) {
 			const script = document.createElement("script");
@@ -3516,10 +3653,115 @@
 	 * Handle showing the invitation when rule conditions evaluate to true.
 	 */
 	function handleInvitationConditionsMet() {
-		// Handle invitation conditions accept/reject logic
-		const minimizedNotification = createMinimizedNotification("Hello! 👋🏼 Chat with a Fitness Expert about your summer wellness goals!");
+		// Check if invitation should be shown again based on previous actions and settings
+		if (!shouldShowInvitationBasedOnPreviousActions()) {
+			log("handleInvitationConditionsMet", "Invitation conditions met but should not show invitation based on settings/previous actions");
 
-		embeddedservice_bootstrap.settings.targetElement.appendChild(minimizedNotification);
+			// Reset invitation rules even if we don't show the invitation
+			embeddedservice_bootstrap.invitations.reset();
+			return;
+		}
+
+		// Check if using custom invitation
+		if (hasCustomInvitationsEnabled()) {
+			// Only dispatch the event, don't show the invitation
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INVITATION_SHOWN_EVENT_NAME);
+			log("handleInvitationConditionsMet", "Default invitation skipped to allow custom invitation");
+			
+			// Reset invitation rules even if we don't show the invitation
+			embeddedservice_bootstrap.invitations.reset();
+			return;
+		}
+
+		const button = getEmbeddedMessagingConversationButton();
+
+		if (!button) {
+			return;
+		}
+
+		if (button.style.display === "none") {
+			// Do not show invitation if outside of business hours or agent availability is enabled and there is no available agents 
+			if (!isWithinBusinessHours() || isAgentAvailabilityCheckEnabled()) {
+				return;
+			} 
+			embeddedservice_bootstrap.utilAPI.showChatButton();	
+		} else {
+			// Handle invitation conditions accept/reject logic
+			minimizedNotification = createMinimizedNotification(getLabel("EmbeddedMessagingInvitationWindow", "InvitationBodyText") || MINIMIZED_NOTIFICATION_AREA_INVITATIONS_DEFAULT_TEXT, true);
+
+			button.parentNode.insertBefore(minimizedNotification, button);
+
+			dispatchEventToHost(ON_EMBEDDED_MESSAGING_INVITATION_SHOWN_EVENT_NAME);
+
+			log("handleInvitationConditionsMet", "Invitation shown");
+
+			// Reset invitation rules
+			embeddedservice_bootstrap.invitations.reset();
+		}
+	}
+
+	/**
+	 * Check if invitation should be shown after accepting based on settings
+	 * @returns {boolean} Whether invitation should be shown after accepting
+	 */
+	function shouldShowInvitationAfterAccepting() {
+		const invitationSetting = embeddedservice_bootstrap.settings.embeddedServiceConfig.invitation;
+		return Boolean(invitationSetting.isSendInvtAllowedAfterAccept);
+	}
+
+	/**
+	 * Check if invitation should be shown after rejecting based on settings
+	 * @returns {boolean} Whether invitation should be shown after rejecting
+	 */
+	function shouldShowInvitationAfterRejecting() {
+		const invitationSetting = embeddedservice_bootstrap.settings.embeddedServiceConfig.invitation;
+		return Boolean(invitationSetting.isSendInvtAllowedAfterReject);
+	}
+
+	/**
+	 * Check if invitation has been previously accepted
+	 * @returns {boolean} Whether invitation has been accepted before
+	 */
+	function hasInvitationBeenAccepted() {
+		return Boolean(getItemInWebStorageByKey(STORAGE_KEYS.INVITATION_ACCEPTED, true));
+	}
+
+	/**
+	 * Check if invitation has been previously rejected
+	 * @returns {boolean} Whether invitation has been rejected before
+	 */
+	function hasInvitationBeenRejected() {
+		return Boolean(getItemInWebStorageByKey(STORAGE_KEYS.INVITATION_REJECTED, true));
+	}
+
+	/**
+	 * Check if invitation should be shown based on previous actions and settings
+	 * @returns {boolean} Whether invitation should be shown
+	 */
+	function shouldShowInvitationBasedOnPreviousActions() {
+		return hasInvitationsEnabled() &&
+			(shouldShowInvitationAfterAccepting() || !hasInvitationBeenAccepted()) &&
+       		(shouldShowInvitationAfterRejecting() || !hasInvitationBeenRejected());
+	}
+
+	/**
+	 * Handle invitation accept/reject event dispatch and storage
+	 * @param {boolean} isAccept - Whether this is an accept or reject
+	 */
+	function handleInvitationNotificationAction(isAccept) {
+		const config = isAccept ? {
+			storageKey: STORAGE_KEYS.INVITATION_ACCEPTED,
+			eventName: ON_EMBEDDED_MESSAGING_INVITATION_ACCEPTED_EVENT_NAME,
+			logMessage: "Invitation accepted"
+		} : {
+			storageKey: STORAGE_KEYS.INVITATION_REJECTED,
+			eventName: ON_EMBEDDED_MESSAGING_INVITATION_REJECTED_EVENT_NAME,
+			logMessage: "Invitation rejected"
+		};
+
+		setItemInWebStorage(config.storageKey, Date.now(), true);
+		dispatchEventToHost(config.eventName);
+		log("handleInvitationNotificationAction", config.logMessage);
 	}
 
 	/**
@@ -3764,6 +4006,10 @@
 								reject(err);
 							});
 						}
+
+						if (hasInvitationsEnabled()) {
+							embeddedservice_bootstrap.invitations.reset();
+						}
 					}).catch((err) => {
 						error("handleClick", `Failed to retrieve Agent Availability data. Returning with the default value as agentAvailable : false ${err}`);
 						reject(err);
@@ -3839,15 +4085,22 @@
 
 	/**
 	 * Handles notification area dismiss button click.
+	 * @param isUserDismiss - Whether user directly dismisses or dismisses by handleClick()
 	 */
-	function handleNotificationDismissButtonClick() {
+	function handleNotificationDismissButtonClick(isUserDismiss = false) {
 		const notificationArea = document.getElementById(MINIMIZED_NOTIFICATION_AREA_CLASS);
 		const button = getEmbeddedMessagingConversationButton();
 
 		// Removes the notification area.
 		if (notificationArea) {
+			// For invitations, store dismiss as reject in local storage
+			if (isUserDismiss && notificationArea.getAttribute("is-invitation") === "true") {
+				handleInvitationNotificationAction(false);
+			}
+			
 			notificationArea.parentNode.removeChild(notificationArea);
 		}
+
 		// Move focus to minimized button in minimized state.
 		if (button) {
 			button.focus();
@@ -3862,7 +4115,7 @@
 		if (evt.key === KEY_CODES.ENTER || evt.key === KEY_CODES.SPACE) {
 			// ENTER or SPACE dismisses the notification
 			evt.preventDefault();
-			handleNotificationDismissButtonClick();
+			handleNotificationDismissButtonClick(true);
 		}
 	}
 
@@ -3942,7 +4195,7 @@
 		let button = getEmbeddedMessagingConversationButton();
 		let iconContainer = document.getElementById(EMBEDDED_MESSAGING_ICON_CONTAINER);
 		let chatIcon = document.getElementById(EMBEDDED_MESSAGING_ICON_CHAT);
-		let loadingSpinner = document.getElementById(EMBEDDED_MESSAGING_LOADING_SPINNER);
+		let progressIndicator = document.getElementById(EMBEDDED_MESSAGING_ICON_PROGRESS_INDICATOR);
 		let iframe = embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame();
 
 		if(!iframe) {
@@ -3953,8 +4206,8 @@
 			warning("handleAfterAppLoad", "Embedded Messaging static button not available for post-app-load updates.");
 		} else {
 			// Reset the Conversation button once the aura application is loaded in the iframe. Ifame/Chat window is rendered on top of FAB.
-			if (iconContainer && loadingSpinner) {
-				iconContainer.removeChild(loadingSpinner);
+			if (iconContainer && progressIndicator) {
+				iconContainer.removeChild(progressIndicator);
 			}
 
 			if (chatIcon) {
@@ -4218,10 +4471,10 @@
 		// [A11Y] Assistive text
 		buttonElement.setAttribute("title", getLabel("EmbeddedMessagingMinimizedState", "DefaultMinimizedText") || CONVERSATION_BUTTON_DEFAULT_ASSISTIVE_TEXT);
 
-		// Update the color of FAB to match the color of Chat Header, i.e. --headerColor branding token from setup.
-		buttonElement.style.setProperty("--eswHeaderColor", getButtonColorFromBrandingConfig());
-		// Update the focus border color to match the Secondary Color, i.e. --secondaryColor branding token from setup.
-		buttonElement.style.setProperty("--eswSecondaryColor", getButtonFocusBorderColorFromBrandingConfig());
+		// Update the color of FAB to match the color of Chat Button, i.e. --chatButton branding token from setup.
+		buttonElement.style.setProperty("--eswButtonColor", getTokenValueFromBrandingConfig("chatButton"));
+		// Update the hover color to be a shade of the FAB color.
+		buttonElement.style.setProperty("--eswButtonHoverColor", getButtonHoverColor());
 
 		// Adjust button height if browser has bottom tab bar.
 		if(embeddedservice_bootstrap.settings.hasBottomTabBar) {
@@ -4251,6 +4504,25 @@
 	}
 
 	/**
+	 * Converts line breaks (<br>) to proper HTML.
+	 *
+	 * @param {string} text - The input markdown text
+	 * @returns {string} - The parsed HTML string
+	 */
+	function parseInvitationMarkdown(text) {
+		if (!text) {
+			return "";
+		}
+
+		try {
+			return text.replace(/<br>/gi, '<br/>');
+		} catch (e) {
+			error("parseInvitationMarkdown", `Failed to parse invitation markdown.`)
+			return "";
+		}
+	}
+
+	/**
 	 * Generates markup for the background overlay (for modal view displayed on mobile only).
 	 * @return {HTMLElement}
 	 */
@@ -4265,9 +4537,10 @@
 	/**
 	 * Generates markup for the minimized notification area element.
 	 * @param {string} notificationText - The notification text to display
+	 * @param {boolean} isInvitation - Whether the notification is invitation
 	 * @returns {HTMLElement}
 	 */
-	function createMinimizedNotification(notificationText) {
+	function createMinimizedNotification(notificationText, isInvitation = false) {
 		const notificationElement = document.createElement("div");
 		const notificationTextWrapperElement = document.createElement("div");
 		const notificationTextElement = document.createElement("span");
@@ -4277,13 +4550,36 @@
 		notificationElement.id = MINIMIZED_NOTIFICATION_AREA_CLASS;
 		notificationElement.className = MINIMIZED_NOTIFICATION_AREA_CLASS;
 
+		// Update the color of notification to match the color of Chat Button, i.e. --chatButton branding token from setup.
+		notificationElement.style.setProperty("--eswNotificationBackgroundColor", getTokenValueFromBrandingConfig("chatButton"));
+
+		// Set HTML direction based on language
+		if (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection && typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string") {
+			notificationElement.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
+		}
+
+		if (isInvitation) {
+			notificationElement.setAttribute("is-invitation", "true");
+			notificationElement.style.cursor = "pointer";
+			
+			// Handle invitation acceptance when user clicks the notification area (excluding dismiss button)
+			notificationElement.addEventListener("click", function(event) {
+				if (event && event.target && !event.target.closest("." + MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS)) {
+					handleInvitationNotificationAction(true);
+					
+					handleClick();
+				}
+			});
+		}
+
 		notificationTextWrapperElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_WRAPPER_CLASS;
 
 		notificationTextElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_CLASS;
 		notificationTextElement.role = "status";
 		notificationTextElement.title = notificationText;
-		notificationTextElement.innerHTML = notificationText;
+		notificationTextElement.innerHTML = parseInvitationMarkdown(notificationText);
 		notificationTextElement.style.setProperty("font-family", getFontFamilyFromBrandingConfig());
+		notificationTextElement.style.setProperty("--eswNotificationTextColor", getTokenValueFromBrandingConfig("invitationText"));
 
 		notificationAssistiveTextElement.className = SLDS_ASSISTIVE_TEXT;
 		notificationAssistiveTextElement.innerHTML = getLabel("EmbeddedMessagingMinimizedState", "MinimizedNotificationAssistiveText") || MINIMIZED_NOTIFICATION_AREA_DEFAULT_ASSISTIVE_TEXT;
@@ -4306,9 +4602,15 @@
 		const buttonAssistiveTextElement = document.createElement("span");
 
 		buttonElement.className = MINIMIZED_NOTIFICATION_DISMISS_BTN_CLASS;
-		buttonElement.addEventListener("click", handleNotificationDismissButtonClick);
+		buttonElement.addEventListener("click", (event) => {
+			event.stopPropagation();
+			handleNotificationDismissButtonClick(true);
+		});
 		buttonElement.addEventListener("keydown", handleDismissButtonKeyDown);
 		buttonElement.setAttribute("aria-describedby", MINIMIZED_NOTIFICATION_DISMISS_BTN_ID);
+
+		buttonElement.style.setProperty("--eswNotificationButtonColor", getTokenValueFromBrandingConfig("invitationDismissalButton"));
+		buttonElement.style.setProperty("--eswNotificationButtonHoverColor", getButtonHoverColor());
 
 		buttonIconElement.className = MINIMIZED_NOTIFICATION_DISMISS_BTN_TEXT_CLASS;
 		
@@ -4444,7 +4746,7 @@
 			sendPostMessageToAppIframe(EMBEDDED_MESSAGING_SET_IDENTITY_TOKEN_EVENT_NAME, identityToken);
 		} else if (!getEmbeddedMessagingConversationButton()) {
 			embeddedservice_bootstrap.generateMarkup();
-		} else if (getEmbeddedMessagingConversationButton() && document.getElementById(EMBEDDED_MESSAGING_ICON_REFRESH)) {
+		} else if (getEmbeddedMessagingConversationButton() && document.getElementById(EMBEDDED_MESSAGING_ICON_ERROR)) {
 			// Remove existing markup on the page if we're in error state before regenerating the button markup.
 			embeddedservice_bootstrap.removeMarkup();
 			embeddedservice_bootstrap.generateMarkup();
@@ -4629,7 +4931,7 @@
 		let button;
 		let chatIcon;
 		let iconContainer;
-		let refreshIcon;
+		let errorIcon;
 		let minimizedNotification;
 
 		// Handle client reset and surface error state only in the primary tab.
@@ -4664,10 +4966,10 @@
 			}
 
 			// Create the minimize button markup and insert into the DOM.
-			refreshIcon = renderSVG(DEFAULT_ICONS.REFRESH);
-			refreshIcon.setAttribute("id", EMBEDDED_MESSAGING_ICON_REFRESH);
-			refreshIcon.setAttribute("class", EMBEDDED_MESSAGING_ICON_REFRESH);
-			iconContainer.appendChild(refreshIcon);
+			errorIcon = renderSVG(DEFAULT_ICONS.ERROR);
+			errorIcon.setAttribute("id", EMBEDDED_MESSAGING_ICON_ERROR);
+			errorIcon.setAttribute("class", EMBEDDED_MESSAGING_ICON_ERROR);
+			iconContainer.appendChild(errorIcon);
 
 			minimizedNotification = createMinimizedNotification(getLabel("EmbeddedMessagingMinimizedState", "JWTRetrievalFailureText") || MINIMIZED_NOTIFICATION_AREA_DEFAULT_TEXT);
 
@@ -5208,6 +5510,12 @@
 			const conversationButton = getEmbeddedMessagingConversationButton();
 			if (conversationButton) {
 				conversationButton.style.display = "block";
+
+				// If invitations is enabled, evaluatue if invitation should be shown along with button.
+				if (hasInvitationsEnabled()) {
+					embeddedservice_bootstrap.invitations.evaluate();
+				}
+
 				return true;
 			} else if (isChannelMenuDeployment()) {
 				emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
@@ -5455,6 +5763,37 @@
 	}
 
 	/*********************************************************
+	 *		    Invitation API         *
+	 **********************************************************/
+
+	/**
+	 * Invitation API methods exposed in window.embeddedservice_bootstrap.invitationsAPI
+	 * for setting/updating/removing custom variables for invitations from the host domain.
+	 * @class
+	 */
+	function EmbeddedMessagingInvitation() {}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * 
+	 * Sets a new custom variable or updates an existing variable with the passed in value.
+     * @param {object} customVariables - an object (in the form of a Map) of key-value pairs (e.g. { CustomVariableName1 : CustomVariableValue1, CustomVariableName2 : CustomVariableValue2 }) of custom variables as set by the host.
+	 */
+	EmbeddedMessagingInvitation.prototype.setCustomVariables = function setCustomVariables(customVariables) {
+		embeddedservice_bootstrap.invitations.setCustomVariable(customVariables);
+	}
+
+	/**
+	 * EXTERNAL API - DO NOT CHANGE SHAPE!
+	 * 
+	 * Removes an existing custom variable with the passed in key name.
+	 * @param {object} customVariables - an object (in the form of an Array) of custom variable names (e.g. [ CustomVariableName1, CustomVariableName2 ]) to be removed/deleted.
+	 */
+	EmbeddedMessagingInvitation.prototype.removeCustomVariables = function removeCustomVariables(customVariables) {
+		embeddedservice_bootstrap.invitations.removeCustomVariables(customVariables);
+	}
+
+	/*********************************************************
 	 *		    Embedded Messaging Bootstrap Object          *
 	 **********************************************************/
 	/**
@@ -5480,11 +5819,17 @@
 			MINIMIZE_MODAL: {
 				value: "M47.6,17.8L27.1,38.5c-0.6,0.6-1.6,0.6-2.2,0L4.4,17.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2 c0.6-0.6,1.6-0.6,2.2,0l16.1,16.3c0.6,0.6,1.6,0.6,2.2,0l16.1-16.2c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2C48.1,16.3,48.1,17.2,47.6,17.8z"
 			},
-			REFRESH: {
-				value: "M46.5,4h-3C42.7,4,42,4.7,42,5.5v7c0,0.9-0.5,1.3-1.2,0.7l0,0c-0.3-0.4-0.6-0.7-1-1c-5-5-12-7.1-19.2-5.7 c-2.5,0.5-4.9,1.5-7,2.9c-6.1,4-9.6,10.5-9.7,17.5c-0.1,5.4,2,10.8,5.8,14.7c4,4.2,9.4,6.5,15.2,6.5c5.1,0,9.9-1.8,13.7-5 c0.7-0.6,0.7-1.6,0.1-2.2l-2.1-2.1c-0.5-0.5-1.4-0.6-2-0.1c-3.6,3-8.5,4.2-13.4,3c-1.3-0.3-2.6-0.9-3.8-1.6 C11.7,36.6,9,30,10.6,23.4c0.3-1.3,0.9-2.6,1.6-3.8C15,14.7,19.9,12,25.1,12c4,0,7.8,1.6,10.6,4.4c0.5,0.4,0.9,0.9,1.2,1.4 c0.3,0.8-0.4,1.2-1.3,1.2h-7c-0.8,0-1.5,0.7-1.5,1.5v3.1c0,0.8,0.6,1.4,1.4,1.4h18.3c0.7,0,1.3-0.6,1.3-1.3V5.5 C48,4.7,47.3,4,46.5,4z"
-			}, 
 			DISMISS: {
 				value: "M75.129 24.871a6.25 6.25 0 010 8.839L58.839 50l16.29 16.29a6.25 6.25 0 01-8.839 8.839L50 58.839 33.71 75.129a6.25 6.25 0 01-8.839-8.839L41.161 50 24.871 33.71a6.25 6.25 0 018.839-8.839L50 41.161l16.29-16.29a6.25 6.25 0 018.839 0z"
+			},
+			ERROR: {
+				value: "M15.9997 1.23096C7.87662 1.23096 1.23047 7.87711 1.23047 16.0002C1.23047 24.1233 7.87662 30.7694 15.9997 30.7694C24.1228 30.7694 30.7689 24.1233 30.7689 16.0002C30.7689 7.87711 24.1228 1.23096 15.9997 1.23096ZM4.92282 16.0001C4.92282 9.90783 9.90744 4.92321 15.9997 4.92321C18.3997 4.92321 20.6151 5.66167 22.3997 6.95398L6.95359 22.4001C5.66128 20.6155 4.92282 18.4001 4.92282 16.0001V16.0001ZM15.9995 27.0772C13.5995 27.0772 11.3841 26.3387 9.59946 25.0464L25.0456 9.60024C26.3379 11.3849 27.0764 13.6002 27.0764 16.0002C27.0764 22.0926 22.0918 27.0772 15.9995 27.0772Z"
+			},
+			INNER_ARC: {
+				value: "M35.526 48.684A35.526 35.526 0 0 0 0 13.158V0a48.684 48.684 0 0 1 0 97.368V84.211a35.526 35.526 0 0 0 35.526-35.527Z"
+			},
+			OUTER_ARC: {
+				value: "M50 8.333C26.987 8.333 8.333 26.987 8.333 50S26.987 91.667 50 91.667V100C22.387 100 0 77.613 0 50S22.387 0 50 0s50 22.387 50 50h-8.333C91.667 26.987 73.013 8.333 50 8.333Z"
 			}
 		});
 
@@ -5993,7 +6338,13 @@
 	 * @returns {boolean}
 	 */
 	function shouldLoadReCaptchaScript() {
-		return (isRecaptchaEnabled() && !sessionExists() && getAuthMode() !== AUTH_MODE.EXP_SITE_AUTH && (typeof grecaptcha === 'undefined'));
+		// Check if auth mode is not experience site auth
+		const isNotExpSiteAuth = getAuthMode() !== AUTH_MODE.EXP_SITE_AUTH;
+
+		// Check if reCAPTCHA client ID or grecaptcha is undefined
+		const isRecaptchaNotLoaded = typeof recaptchaClientId === 'undefined' || typeof grecaptcha === 'undefined';
+
+		return (isRecaptchaEnabled() && !sessionExists() && isNotExpSiteAuth && isRecaptchaNotLoaded);
 	}
 
 	/**
@@ -6139,6 +6490,26 @@
 	}
 
 	/**
+	 * Check if customer web client is enabled.
+	 * @returns {boolean}
+	 */
+	function isCustomerWebClientEnabled() {
+		return isGateOpen(CWC_CLIENT_ENABLED_GATE);
+	}
+
+	/**
+	 * Check if a boolean gate is open.
+	 * @param {string} gateName - The name of the gate.
+	 * @returns {boolean}
+	 */
+	function isGateOpen(gateName) {
+		if (embeddedservice_bootstrap.gates && embeddedservice_bootstrap.gates.length > 0) {
+			return embeddedservice_bootstrap.gates.some(gate => gate.name === gateName && gate.type === "Boolean" && Boolean(gate.booleanValue));
+		}
+		return false;
+	}
+
+	/**
 	 * Clears the agent availability timer and sets it to undefined to stop the agent availability API calls at every 30 seconds interval.
 	 */
 	function clearAgentAvailabilityTimer() {
@@ -6161,6 +6532,9 @@
 
 		// Initialize util API
 		embeddedservice_bootstrap.utilAPI = new EmbeddedMessagingUtil();
+
+		// Initialize invitation API
+		embeddedservice_bootstrap.invitationAPI = new EmbeddedMessagingInvitation();
 	}
 
 	/**
@@ -6234,50 +6608,64 @@
 				}
 			);
 
-			// Load config settings from SCRT 2.0.
-			const configPromise = getConfigurationData().then(
-				response => {
-					log("init", `Successfully retrieved configuration settings`);
-					// Merge the Config Settings into embeddedservice_bootstrap.settings.
-					mergeSettings(response);
-
-					// Prepare the branding data.
-					handleBrandingData(embeddedservice_bootstrap.settings.embeddedServiceConfig);
-
-					// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
-					embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = 'https://sachinsdb6.test1.my.pc-rnd.salesforce-scrt.com';
-					embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
-
-					validateSettings();
-
-					// Experience site user verification, since the setting is on a page level, it will override the org setting.
-					if (isExpSite()) {
-						log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
-						if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
-							// Auth mode must also be enabled on channel level for session-based auth for exp site.
-							// Otherwise proceed as unauth.
-							if (isUserVerificationEnabled()) {
-								embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
-							} else {
-								error("init", "User verification is not enabled in messaging channel.");
-								throw new Error("User verification is not enabled in messaging channel.");
-							}
-						}
-					} else {
-						log("init", "Messaging for Web used in External Site context.");
-					}
-
-					// We have to wait until we have configuration to do this
-					storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
-					createSiteContextFrame();
-				},
-				responseStatus => {
-					error("init", `Failed to retrieve configuration settings. Retrying the request`);
-					// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
+			// Get gates data and check if customer web client is enabled.
+			const gatesPromise = getGatesData().then(
+				() => {
 					return new Promise((resolve, reject) => {
-						getConfigurationData().then(resolve, reject);
+						if (isCustomerWebClientEnabled()) {
+							resolve();
+						} else {
+							reject();
+						}
 					});
 				}
+			);
+
+			// Load config settings from SCRT 2.0.
+			const configPromise = gatesPromise.then(() => {
+				return getConfigurationData().then(
+					response => {
+						log("init", `Successfully retrieved configuration settings`);
+						// Merge the Config Settings into embeddedservice_bootstrap.settings.
+						mergeSettings(response);
+
+						// Prepare the branding data.
+						handleBrandingData(embeddedservice_bootstrap.settings.embeddedServiceConfig);
+
+						// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
+						embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = embeddedservice_bootstrap.settings.scrt2URL;
+						embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
+
+						validateSettings();
+
+						// Experience site user verification, since the setting is on a page level, it will override the org setting.
+						if (isExpSite()) {
+							log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
+							if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
+								// Auth mode must also be enabled on channel level for session-based auth for exp site.
+								// Otherwise proceed as unauth.
+								if (isUserVerificationEnabled()) {
+									embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+								} else {
+									error("init", "User verification is not enabled in messaging channel.");
+									throw new Error("User verification is not enabled in messaging channel.");
+								}
+							}
+						} else {
+							log("init", "Messaging for Web used in External Site context.");
+						}
+
+						// We have to wait until we have configuration to do this
+						storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+						createSiteContextFrame();
+					},
+					responseStatus => {
+						error("init", `Failed to retrieve configuration settings. Retrying the request`);
+						// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
+						return new Promise((resolve, reject) => {
+							getConfigurationData().then(resolve, reject);
+						});
+					}
 			).catch(
 				() => {
 					emitEmbeddedMessagingInitErrorEvent();
@@ -6317,13 +6705,13 @@
 					throw new Error("Failed to retrieve Business Hours data.");
 				});
 
-			const agentAvailabilityPromise = Promise.all([configPromise, businessHoursPromise, sessionDataPromise]).then(() => {
+			const agentAvailabilityPromise = Promise.all([gatesPromise, configPromise, businessHoursPromise, sessionDataPromise]).then(() => {
 				return (!isAgentAvailabilityCheckEnabled() || !isWithinBusinessHours() || sessionExists())
 					? Promise.resolve(true)
 					: getAgentAvailability();
 			});
 			// Show button when we've loaded everything.
-			Promise.all([cssPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
+			Promise.all([cssPromise, gatesPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
 				initializeWebStorage();
 
 				logWebStorageItemsOnInit();
@@ -6343,11 +6731,11 @@
 						getExpSiteSessionTimeout();
 					}
 					embeddedservice_bootstrap.generateMarkup();
+				}
 
-					// Initialize invitations if enabled
-					if (hasInvitationsEnabled()){
-						initializeInvitations(Date.now());
-					}
+				// Initialize invitations if enabled
+				if (!sessionExists() && !isChannelMenuDeployment() && hasInvitationsEnabled()) {
+					initializeInvitations(Date.now());
 				}
 
 				// Launch chat immediately on init in inline display mode.
