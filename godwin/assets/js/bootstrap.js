@@ -2025,7 +2025,7 @@
 	 * @returns {Promise}
 	 */
 	function getGatesData() {
-		const gatesURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION_TWO +
+		const gatesURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION +
 			"/gates?orgId=" + embeddedservice_bootstrap.settings.orgId;
 
 		return sendXhrRequest(gatesURL, "GET", "getGatesData")
