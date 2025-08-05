@@ -6666,12 +6666,13 @@
 							getConfigurationData().then(resolve, reject);
 						});
 					}
-			).catch(
-				() => {
-					emitEmbeddedMessagingInitErrorEvent();
-					throw new Error("Unable to load Embedded Messaging configuration.");
-				}
-			);
+				).catch(
+					() => {
+						emitEmbeddedMessagingInitErrorEvent();
+						throw new Error("Unable to load Embedded Messaging configuration.");
+					}
+				);
+			});
 
 			let loadReCaptchaPromise = configPromise.then(() => {
 				if (shouldLoadReCaptchaScript()) {
