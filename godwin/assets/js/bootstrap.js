@@ -739,6 +739,11 @@
 	let businessHoursTimer;
 
 	/**
+	 * Store the gates timer, determines if the gates are open for the deployment.
+	 */
+	let gatesTimer;
+
+	/**
 	 * Store the experience site user session timer, determines if the session is still valid.
 	 */
 	let expSiteUserSessionTimer;
@@ -2032,7 +2037,19 @@
 			.then((response) => {
 				if (response.result) {
 					embeddedservice_bootstrap.gates = response.result;
-					log("getGatesData", `Successfully retrieved gates settings`);
+					log("getGatesData", `Successfully retrieved and storedgates settings`);
+
+					if (gatesTimer) {
+						clearTimeout(gatesTimer);
+					}
+					gatesTimer = setTimeout(() => {
+						// Check if the gates are open for the deployment every 2 minutes.
+						getGatesData()
+							.then(handleGatesValidation)
+							.catch(() => {
+								error("getGatesData", `Failed to retrieve gates settings.`);
+							});
+					}, 2 * 60 * 1000);
 				} else {
 					error("getGatesData", `Failed to retrieve gates settings.`);
 				}
@@ -6490,6 +6507,22 @@
 	}
 
 	/**
+	 * Handle the gates validation.
+	 * @returns {Promise} - Promise that resolves if the gates are open for the deployment and rejects otherwise.
+	 */
+	function handleGatesValidation() {
+		return new Promise((resolve, reject) => {
+			if (isCustomerWebClientEnabled()) {
+				resolve();
+			} else {
+				// Reset the client to initial state if the gates are not open for the deployment.
+				resetClientToInitialState(false, false);
+				reject();
+			}
+		});
+	}
+
+	/**
 	 * Check if customer web client is enabled.
 	 * @returns {boolean}
 	 */
@@ -6608,18 +6641,13 @@
 				}
 			);
 
-			// Get gates data and check if customer web client is enabled.
-			const gatesPromise = getGatesData().then(
-				() => {
-					return new Promise((resolve, reject) => {
-						if (isCustomerWebClientEnabled()) {
-							resolve();
-						} else {
-							reject();
-						}
-					});
-				}
-			);
+			// Get gates data and check if necessary gates are open for the deployment.
+			const gatesPromise = getGatesData()
+				.then(handleGatesValidation)
+				.catch(() => {
+					error("init", `Gate is not open for the deployment. Aborting the init process.`);
+					emitEmbeddedMessagingInitErrorEvent();
+				});
 
 			// Load config settings from SCRT 2.0.
 			const configPromise = gatesPromise.then(() => {
@@ -6672,9 +6700,6 @@
 						throw new Error("Unable to load Embedded Messaging configuration.");
 					}
 				);
-			}).catch(err => {
-				error("init", `Gate is not open for the deployment. Aborting the init process.`);
-				throw new Error("Gate is not open for the deployment.");
 			});
 
 			let loadReCaptchaPromise = configPromise.then(() => {
@@ -6714,6 +6739,7 @@
 					? Promise.resolve(true)
 					: getAgentAvailability();
 			});
+
 			// Show button when we've loaded everything.
 			Promise.all([cssPromise, gatesPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
 				initializeWebStorage();
