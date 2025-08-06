@@ -6734,14 +6734,14 @@
 					throw new Error("Failed to retrieve Business Hours data.");
 				});
 
-			const agentAvailabilityPromise = Promise.all([gatesPromise, configPromise, businessHoursPromise, sessionDataPromise]).then(() => {
+			const agentAvailabilityPromise = Promise.all([configPromise, businessHoursPromise, sessionDataPromise]).then(() => {
 				return (!isAgentAvailabilityCheckEnabled() || !isWithinBusinessHours() || sessionExists())
 					? Promise.resolve(true)
 					: getAgentAvailability();
 			});
 
 			// Show button when we've loaded everything.
-			Promise.all([cssPromise, gatesPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
+			Promise.all([cssPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
 				initializeWebStorage();
 
 				logWebStorageItemsOnInit();
