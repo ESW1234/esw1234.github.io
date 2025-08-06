@@ -6527,7 +6527,8 @@
 	 * @returns {boolean}
 	 */
 	function isCustomerWebClientEnabled() {
-		return isGateOpen(CWC_CLIENT_ENABLED_GATE);
+		//return isGateOpen(CWC_CLIENT_ENABLED_GATE);
+		return isGateOpen(embeddedservice_bootstrap.settings.gate);
 	}
 
 	/**
