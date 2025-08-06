@@ -6516,7 +6516,7 @@
 				resolve();
 			} else {
 				// Reset the client to initial state if the gates are not open for the deployment.
-				resetClientToInitialState(false, false);
+				embeddedservice_bootstrap.removeMarkup(true);
 				reject();
 			}
 		});
