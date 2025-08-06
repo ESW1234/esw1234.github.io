@@ -6672,6 +6672,9 @@
 						throw new Error("Unable to load Embedded Messaging configuration.");
 					}
 				);
+			}).catch(err => {
+				error("init", `Gate is not open for the deployment. Aborting the init process.`);
+				throw new Error("Gate is not open for the deployment.");
 			});
 
 			let loadReCaptchaPromise = configPromise.then(() => {
