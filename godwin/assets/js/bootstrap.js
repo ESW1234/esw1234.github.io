@@ -2030,8 +2030,8 @@
 
 		return sendXhrRequest(gatesURL, "GET", "getGatesData")
 			.then((response) => {
-				if (response.success && response.response && response.response.result) {
-					embeddedservice_bootstrap.gates = response.response.result;
+				if (response.result) {
+					embeddedservice_bootstrap.gates = response.result;
 					log("getGatesData", `Successfully retrieved gates settings`);
 				} else {
 					error("getGatesData", `Failed to retrieve gates settings. Error : ${response.error.message}`, response.error.errorCode);
