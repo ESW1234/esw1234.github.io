@@ -2034,7 +2034,7 @@
 					embeddedservice_bootstrap.gates = response.result;
 					log("getGatesData", `Successfully retrieved gates settings`);
 				} else {
-					error("getGatesData", `Failed to retrieve gates settings. Error : ${response.error.message}`, response.error.errorCode);
+					error("getGatesData", `Failed to retrieve gates settings.`);
 				}
 			})
 			.catch((exception) => {
