@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Salesforce Chatbot Test</title>
+  </head>
+  <body>
+    <h1>Salesforce Chatbot</h1>
+
+    <script type="text/javascript">
+      function initEmbeddedMessaging() {
+        try {
+          embeddedservice_bootstrap.settings.language = "el";
+
+          embeddedservice_bootstrap.init(
+            "00DPv000003gpqn",
+            "MessagingInApp",
+            "https://moh--coraluat.sandbox.my.site.com/ESWMessagingInApp1739979375032",
+            {
+              scrt2URL: "https://moh--coraluat.sandbox.my.salesforce-scrt.com",
+            }
+          );
+        } catch (err) {
+          console.error("Error loading Embedded Messaging: ", err);
+        }
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="https://moh--coraluat.sandbox.my.site.com/ESWMessagingInApp1739979375032/assets/js/bootstrap.min.js"
+      onload="initEmbeddedMessaging()"
+    ></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+      integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+      data-cf-beacon='{"rayId":"9594bf29fdd56f49","serverTiming":{"name":{"cfL4":true}},"version":"2025.6.2","token":"de0a59b804bf49eea8503a73f5616fac"}'
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
