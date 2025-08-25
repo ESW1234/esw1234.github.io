@@ -1,0 +1,29 @@
+html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<h1> ASA Client</h1>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.init(
+				'00DVR000001qWhZ',
+				'Nelly_Bot_Deployment',
+				'https://dvr000001qwhz2au.perf1v.my.pc-rnd.site.com/ESWNellyBotDeployment1722500139981',
+				{
+					scrt2URL: 'https://dvr000001qwhz2au.perf1v.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://dvr000001qwhz2au.perf1v.my.pc-rnd.site.com/ESWNellyBotDeployment1722500139981/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script></body>
+</html>
