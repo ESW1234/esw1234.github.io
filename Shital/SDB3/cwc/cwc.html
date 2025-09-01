@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<h1> In APP Web Client for Org: "bt20250106"</h1>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			agentforce_messaging.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			agentforce_messaging.init(
+				'00DSB00000YNFnZ',
+				'MIAW_CWC_Channel',
+				'https://orgfarm-d2bfcead84.demo.test1.my.pc-rnd.site.com/ESWMIAWCWCChannel1756711196785',
+				{
+					scrt2URL: 'https://orgfarm-d2bfcead84.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-d2bfcead84.demo.test1.my.pc-rnd.site.com/ESWMIAWCWCChannel1756711196785/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
