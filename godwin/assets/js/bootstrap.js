@@ -2532,7 +2532,7 @@
 					if (!response.ok) {
 						throw response;
 					}
-					initializeChatUnavailableState(errorData);
+					initializeChatUnavailableState();
 					return response.json();
 				})
 				.catch(err => {
@@ -3038,7 +3038,7 @@
 	 * @returns {Promise}
 	 */
 	function sendRequest(apiPath, method, mode, requestHeaders, requestBody, caller) {
-		initializeChatUnavailableState(errorData);
+		initializeChatUnavailableState();
 		return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller)
 			.catch(err => {
 				return handleSendFetchRequestError(err, apiPath, method, mode, requestHeaders, requestBody, caller);
