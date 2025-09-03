@@ -104,11 +104,6 @@
 	const TRANSCRIPT_PATH = "/transcript";
 
 	/**
-	 * Gate names.
-	 */
-	const CWC_CLIENT_ENABLED_GATE = "com.salesforce.esw.cwc.isCustomerWebClientEnabled";
-
-	/**
 	 * Experience Site User Verification
 	 */
 	const EXP_SITE_ACCESS_TOKEN_PATH = "/miaw/auth/accesstoken";
@@ -737,11 +732,6 @@
 	 * Store the business hours timer, determines the visibility of the chat button when invoked.
 	 */
 	let businessHoursTimer;
-
-	/**
-	 * Store the gates timer, determines if the gates are open for the deployment.
-	 */
-	let gatesTimer;
 
 	/**
 	 * Store the experience site user session timer, determines if the session is still valid.
@@ -1541,7 +1531,8 @@
 						break;
 				}
 			} else if((getSiteURL().indexOf(e.origin) === 0 && 
-				embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame().contentWindow === e.source && 
+				(embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame() 
+				&& embeddedservice_bootstrap.utilAPI.getEmbeddedMessagingFrame().contentWindow === e.source) && 
 				embeddedservice_bootstrap.isMessageFromSalesforceDomain(e.origin)) || 
 				(embeddedservice_bootstrap.settings.customDomain && 
 				embeddedservice_bootstrap.isMessageFromCustomDomain(e.origin))) {
@@ -2023,40 +2014,6 @@
 
 			document.getElementsByTagName("head")[0].appendChild(link);
 		});
-	}
-
-	/**
-	 * Get gates data from the gates endpoint.
-	 * @returns {Promise}
-	 */
-	function getGatesData() {
-		const gatesURL = embeddedservice_bootstrap.settings.scrt2URL + "/" + IN_APP_SCRT2_API_PREFIX + "/" + IN_APP_SCRT2_API_VERSION +
-			"/gates?orgId=" + embeddedservice_bootstrap.settings.orgId;
-
-		return sendXhrRequest(gatesURL, "GET", "getGatesData")
-			.then((response) => {
-				if (response.result) {
-					embeddedservice_bootstrap.gates = response.result;
-					log("getGatesData", `Successfully retrieved and storedgates settings`);
-
-					if (gatesTimer) {
-						clearTimeout(gatesTimer);
-					}
-					gatesTimer = setTimeout(() => {
-						// Check if the gates are open for the deployment every 2 minutes.
-						getGatesData()
-							.then(handleGatesValidation)
-							.catch(() => {
-								error("getGatesData", `Failed to retrieve gates settings.`);
-							});
-					}, 2 * 60 * 1000);
-				} else {
-					error("getGatesData", `Failed to retrieve gates settings.`);
-				}
-			})
-			.catch((exception) => {
-				error("getGatesData", `Failed to retrieve gates settings. Error : ${exception}`);
-			});
 	}
 
 	/**
@@ -2575,6 +2532,7 @@
 					if (!response.ok) {
 						throw response;
 					}
+					initializeChatUnavailableState(errorData);
 					return response.json();
 				})
 				.catch(err => {
@@ -3080,6 +3038,7 @@
 	 * @returns {Promise}
 	 */
 	function sendRequest(apiPath, method, mode, requestHeaders, requestBody, caller) {
+		initializeChatUnavailableState(errorData);
 		return sendFetchRequest(apiPath, method, mode, requestHeaders, requestBody, caller)
 			.catch(err => {
 				return handleSendFetchRequestError(err, apiPath, method, mode, requestHeaders, requestBody, caller);
@@ -3432,9 +3391,9 @@
 
 				// Fires an event to the host to indicate business hours interval change.
 				if (isCurrentlyWithinBH) {
-					dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_ENDED_EVENT_NAME);
-				} else {
 					dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_STARTED_EVENT_NAME);
+				} else {
+					dispatchEventToHost(ON_EMBEDDED_MESSAGING_BUSINESS_HOURS_ENDED_EVENT_NAME);
 				}
 
 			}, (targetTime - Date.now()));
@@ -4590,8 +4549,17 @@
 		}
 
 		notificationTextWrapperElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_WRAPPER_CLASS;
+		// Set HTML direction based on language
+		if (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection && typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string") {
+			notificationTextWrapperElement.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
+		}
 
 		notificationTextElement.className = MINIMIZED_NOTIFICATION_AREA_TEXT_CLASS;
+		// Set HTML direction based on language
+		if (embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection && typeof embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection === "string") {
+			notificationTextElement.setAttribute("dir", embeddedservice_bootstrap.settings.embeddedServiceConfig.htmlDirection.toLowerCase());
+		}
+
 		notificationTextElement.role = "status";
 		notificationTextElement.title = notificationText;
 		notificationTextElement.innerHTML = parseInvitationMarkdown(notificationText);
@@ -6507,43 +6475,6 @@
 	}
 
 	/**
-	 * Handle the gates validation.
-	 * @returns {Promise} - Promise that resolves if the gates are open for the deployment and rejects otherwise.
-	 */
-	function handleGatesValidation() {
-		return new Promise((resolve, reject) => {
-			if (isCustomerWebClientEnabled()) {
-				resolve();
-			} else {
-				// Reset the client to initial state if the gates are not open for the deployment.
-				embeddedservice_bootstrap.removeMarkup(true);
-				reject();
-			}
-		});
-	}
-
-	/**
-	 * Check if customer web client is enabled.
-	 * @returns {boolean}
-	 */
-	function isCustomerWebClientEnabled() {
-		//return isGateOpen(CWC_CLIENT_ENABLED_GATE);
-		return isGateOpen(embeddedservice_bootstrap.settings.gate);
-	}
-
-	/**
-	 * Check if a boolean gate is open.
-	 * @param {string} gateName - The name of the gate.
-	 * @returns {boolean}
-	 */
-	function isGateOpen(gateName) {
-		if (embeddedservice_bootstrap.gates && embeddedservice_bootstrap.gates.length > 0) {
-			return embeddedservice_bootstrap.gates.some(gate => gate.name === gateName && gate.type === "Boolean" && Boolean(gate.booleanValue));
-		}
-		return false;
-	}
-
-	/**
 	 * Clears the agent availability timer and sets it to undefined to stop the agent availability API calls at every 30 seconds interval.
 	 */
 	function clearAgentAvailabilityTimer() {
@@ -6642,66 +6573,56 @@
 				}
 			);
 
-			// Get gates data and check if necessary gates are open for the deployment.
-			const gatesPromise = getGatesData()
-				.then(handleGatesValidation)
-				.catch(() => {
-					error("init", `Gate is not open for the deployment. Aborting the init process.`);
-					emitEmbeddedMessagingInitErrorEvent();
-				});
-
 			// Load config settings from SCRT 2.0.
-			const configPromise = gatesPromise.then(() => {
-				return getConfigurationData().then(
-					response => {
-						log("init", `Successfully retrieved configuration settings`);
-						// Merge the Config Settings into embeddedservice_bootstrap.settings.
-						mergeSettings(response);
+			const configPromise = getConfigurationData().then(
+				response => {
+					log("init", `Successfully retrieved configuration settings`);
+					// Merge the Config Settings into embeddedservice_bootstrap.settings.
+					mergeSettings(response);
 
-						// Prepare the branding data.
-						handleBrandingData(embeddedservice_bootstrap.settings.embeddedServiceConfig);
+					// Prepare the branding data.
+					handleBrandingData(embeddedservice_bootstrap.settings.embeddedServiceConfig);
 
-						// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
-						embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = embeddedservice_bootstrap.settings.scrt2URL;
-						embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
+					// Merge SCRT 2.0 URL and Org Id into the Config Settings object, to be passed to the iframe.
+					embeddedservice_bootstrap.settings.embeddedServiceConfig.scrt2URL = embeddedservice_bootstrap.settings.scrt2URL;
+					embeddedservice_bootstrap.settings.embeddedServiceConfig.orgId = embeddedservice_bootstrap.settings.orgId;
 
-						validateSettings();
+					validateSettings();
 
-						// Experience site user verification, since the setting is on a page level, it will override the org setting.
-						if (isExpSite()) {
-							log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
-							if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
-								// Auth mode must also be enabled on channel level for session-based auth for exp site.
-								// Otherwise proceed as unauth.
-								if (isUserVerificationEnabled()) {
-									embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
-								} else {
-									error("init", "User verification is not enabled in messaging channel.");
-									throw new Error("User verification is not enabled in messaging channel.");
-								}
+					// Experience site user verification, since the setting is on a page level, it will override the org setting.
+					if (isExpSite()) {
+						log("init", `Messaging for Web used in ${embeddedservice_bootstrap.settings.snippetConfig.expSiteContext} Experience Site context.`);
+						if (embeddedservice_bootstrap.settings.expSiteAuthMode) {
+							// Auth mode must also be enabled on channel level for session-based auth for exp site.
+							// Otherwise proceed as unauth.
+							if (isUserVerificationEnabled()) {
+								embeddedservice_bootstrap.settings.embeddedServiceConfig.embeddedServiceMessagingChannel.authMode = AUTH_MODE.EXP_SITE_AUTH;
+							} else {
+								error("init", "User verification is not enabled in messaging channel.");
+								throw new Error("User verification is not enabled in messaging channel.");
 							}
-						} else {
-							log("init", "Messaging for Web used in External Site context.");
 						}
+					} else {
+						log("init", "Messaging for Web used in External Site context.");
+					}
 
-						// We have to wait until we have configuration to do this
-						storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
-						createSiteContextFrame();
-					},
-					responseStatus => {
-						error("init", `Failed to retrieve configuration settings. Retrying the request`);
-						// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
-						return new Promise((resolve, reject) => {
-							getConfigurationData().then(resolve, reject);
-						});
-					}
-				).catch(
-					() => {
-						emitEmbeddedMessagingInitErrorEvent();
-						throw new Error("Unable to load Embedded Messaging configuration.");
-					}
-				);
-			});
+					// We have to wait until we have configuration to do this
+					storageKey = `${embeddedservice_bootstrap.settings.orgId}_WEB_STORAGE`;
+					createSiteContextFrame();
+				},
+				responseStatus => {
+					error("init", `Failed to retrieve configuration settings. Retrying the request`);
+					// Retry one more time to load config settings from SCRT 2.0 if the first attempt fails.
+					return new Promise((resolve, reject) => {
+						getConfigurationData().then(resolve, reject);
+					});
+				}
+			).catch(
+				() => {
+					emitEmbeddedMessagingInitErrorEvent();
+					throw new Error("Unable to load Embedded Messaging configuration.");
+				}
+			);
 
 			let loadReCaptchaPromise = configPromise.then(() => {
 				if (shouldLoadReCaptchaScript()) {
@@ -6740,7 +6661,6 @@
 					? Promise.resolve(true)
 					: getAgentAvailability();
 			});
-
 			// Show button when we've loaded everything.
 			Promise.all([cssPromise, configPromise, businessHoursPromise, sessionDataPromise, loadReCaptchaPromise, agentAvailabilityPromise]).then(() => {
 				initializeWebStorage();
