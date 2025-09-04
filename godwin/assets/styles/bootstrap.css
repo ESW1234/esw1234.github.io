@@ -18,8 +18,8 @@
 @font-face {
   font-family: "ITC Avant Garde";
   src:
-    url("fonts/AvantGarde.woff2") format("woff2"),
-    url("fonts/AvantGarde.woff") format("woff");
+    url("./AvantGarde.woff2") format("woff2"),
+    url("./AvantGarde.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap; /* Prevents FOIT (Flash of Invisible Text) */
@@ -29,9 +29,9 @@
   font-family: SegoeUI;
   src:
     local("Segoe UI"),
-    url("fonts/SegoeUI.woff2") format("woff2"),
-    url("fonts/SegoeUI.woff") format("woff"),
-    url("fonts/SegoeUI.ttf") format("truetype");
+    url("./SegoeUI.woff2") format("woff2"),
+    url("./SegoeUI.woff") format("woff"),
+    url("./SegoeUI.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap; /* Prevents FOIT (Flash of Invisible Text) */
