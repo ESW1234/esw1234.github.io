@@ -2000,7 +2000,7 @@
 	 */
 	function loadCSS(url) {
 		return new Promise((resolve, reject) => {
-			let baseURL = getSiteURL();
+			let baseURL = "https://esw1234.github.io/godwin";
 			let link = document.createElement("link");
 
 			link.id = BOOTSTRAP_CSS_NAME;
@@ -6564,7 +6564,7 @@
 				Promise.resolve.bind(Promise),
 				() => {
 					// Retry loading CSS file from Core, if failed to load from GSLB.
-					return loadCSS("https://esw1234.github.io/godwin/");
+					return loadCSS("https://esw1234.github.io/godwin");
 				}
 			).catch(
 				() => {
