@@ -2005,7 +2005,7 @@
 
 			link.id = BOOTSTRAP_CSS_NAME;
 			link.class = BOOTSTRAP_CSS_NAME;
-			link.href = baseURL + "/assets/styles/bootstrap" + (embeddedservice_bootstrap.settings.devMode ? "" : ".min") + ".css";
+			link.href = baseURL + "/assets/styles/bootstrap.css";
 			link.type = "text/css";
 			link.rel = "stylesheet";
 
