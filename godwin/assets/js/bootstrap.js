@@ -6564,7 +6564,7 @@
 				Promise.resolve.bind(Promise),
 				() => {
 					// Retry loading CSS file from Core, if failed to load from GSLB.
-					return loadCSS(getSiteURL());
+					return loadCSS("https://esw1234.github.io/godwin/");
 				}
 			).catch(
 				() => {
