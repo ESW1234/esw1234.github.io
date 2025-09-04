@@ -8,6 +8,33 @@
 :root {
 	--eswIconFillColor: #FFFFFF;
 	--eswIconFontSize: 16px;
+	--font-segoe-ui: SegoeUI, ui-sans-serif;
+	--font-mono:
+	ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+	"Courier New", monospace;
+	--font-avant-garde: "ITC Avant Garde", sans-serif;
+}
+
+@font-face {
+  font-family: "ITC Avant Garde";
+  src:
+    url("fonts/AvantGarde.woff2") format("woff2"),
+    url("fonts/AvantGarde.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Prevents FOIT (Flash of Invisible Text) */
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src:
+    local("Segoe UI"),
+    url("fonts/SegoeUI.woff2") format("woff2"),
+    url("fonts/SegoeUI.woff") format("woff"),
+    url("fonts/SegoeUI.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Prevents FOIT (Flash of Invisible Text) */
 }
 
 /* Default iframe specs. */
@@ -90,7 +117,7 @@
 	background: transparent;
 	box-shadow: none;
 	overflow: visible;
-	font-family: sans-serif;
+	font-family: var(--font-avant-garde);
 	top: 0;
 	left: 0;
 }
