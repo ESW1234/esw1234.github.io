@@ -1,0 +1,39 @@
+<html>
+   <head>
+       <title>SDB3 CWC page</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+   </head>
+   <body>
+	<h1>SDB3 CWC page</h1>
+	<h2>godwin@agent.sdb3.org</h2>
+
+	<!-- Edit page link -->
+	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	</br>
+	<label for="idToken">Set identity token:</label>
+	<input type="text" id="idToken" name="idToken" size="50">
+	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
+	</br>
+	</br>
+	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+  <script type='text/javascript'>
+  	function initEmbeddedMessaging() {
+  		try {
+  			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+  
+  			embeddedservice_bootstrap.init(
+  				'00DSB00000RoOKZ',
+  				'CWC5',
+  				'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCWC51757345050213',
+  				{
+  					scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
+  				}
+  			);
+  		} catch (err) {
+  			console.error('Error loading Embedded Messaging: ', err);
+  		}
+  	};
+  </script>
+  <script type='text/javascript' src='https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCWC51757345050213/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	</body>
+</html>
