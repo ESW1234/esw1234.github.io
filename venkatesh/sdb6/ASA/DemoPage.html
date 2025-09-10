@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>InApp + eCommerce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <!-- Page 2 styles -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css">
+  <link rel="modulepreload" href="/_app/entry-9ed597de.js">
+  <link rel="modulepreload" href="/_app/navigation-5bb05546.js">
+  <link rel="modulepreload" href="/_app/inject_styles-cd877ae9.js">
+  <link rel="modulepreload" href="/_app/index-538d1bc5.js">
+  <link rel="modulepreload" href="/_app/Stencil-212aa1cf.js">
+  <link rel="stylesheet" href="/_app/navigation-b89da28e.css">
+  <link rel="stylesheet" href="/_app/entry.css">
+  <link rel="stylesheet" href="/_app/Stencil-0c30128c.css">
+  <link rel="stylesheet" href="/_app/index-3228f787.css">
+
+  <!-- Page 2 app loader -->
+  <script type="module">
+    import { start } from '/_app/entry-9ed597de.js';
+    start({ target: document.body });
+  </script>
+</head>
+<body>
+  <!-- ===== Page 1 Content ===== -->
+  <section id="page1">
+    <h1>In APP Web Client for Org: "admin username"</h1>
+    <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+    <script>
+      document.getElementById('editThisPageLink').href =
+        "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+    </script>
+    <script type="text/javascript">
+      function initEmbeddedMessaging() {
+        try {
+          embeddedservice_bootstrap.settings.language = 'en_US';
+          embeddedservice_bootstrap.init(
+            '00DSB00000XqLAD',
+            'MIAWDepASA',
+            'https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.site.com/ESWMIAWDepASA1756481178092',
+            {
+              scrt2URL: 'https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.salesforce-scrt.com'
+            }
+          );
+        } catch (err) {
+          console.error('Error loading Embedded Messaging: ', err);
+        }
+      };
+    </script>
+    <script type="text/javascript"
+      src="https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.site.com/ESWMIAWDepASA1756481178092/assets/js/bootstrap.min.js"
+      onload="initEmbeddedMessaging()"></script>
+  </section>
+
+  <hr>
+
+  <!-- ===== Page 2 Content ===== -->
+  <section id="page2">
+    <div class="slds-context-bar">
+      <div class="slds-context-bar__primary">
+        <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+          <span class="slds-context-bar__label-action slds-context-bar__app-name">
+            <span class="slds-truncate" title="eCommerce">eCommerce</span>
+          </span>
+        </div>
+      </div>
+      <nav class="slds-context-bar__secondary" role="navigation">
+        <!-- navigation items preserved -->
+        ...
+      </nav>
+    </div>
+
+    <!-- All your product grid and images -->
+    <div class="wrapper svelte-1pa2c2t">
+      <main class="svelte-1pa2c2t">
+        <!-- Page 2 content here -->
+        ...
+      </main>
+      <div id="sdk-switcher" class="svelte-1pa2c2t">
+        <span data-settings class="slds-icon_container slds-icon-standard-settings svelte-1pa2c2t">
+          <svg class="slds-icon" aria-hidden="true">
+            <use xlink:href="/@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg#settings"></use>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    __SVELTE__ = {
+      baseUrl: "",
+      status: 200,
+      error: null,
+      preloaded: [{}, {}],
+      session: void 0
+    };
+  </script>
+</body>
+</html>
