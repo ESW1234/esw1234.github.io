@@ -1,102 +1,125 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>InApp + eCommerce</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta charset="utf-8">
+	<link rel="icon" href="/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css">
+	
 
-  <!-- Page 2 styles -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css">
-  <link rel="modulepreload" href="/_app/entry-9ed597de.js">
-  <link rel="modulepreload" href="/_app/navigation-5bb05546.js">
-  <link rel="modulepreload" href="/_app/inject_styles-cd877ae9.js">
-  <link rel="modulepreload" href="/_app/index-538d1bc5.js">
-  <link rel="modulepreload" href="/_app/Stencil-212aa1cf.js">
-  <link rel="stylesheet" href="/_app/navigation-b89da28e.css">
-  <link rel="stylesheet" href="/_app/entry.css">
-  <link rel="stylesheet" href="/_app/Stencil-0c30128c.css">
-  <link rel="stylesheet" href="/_app/index-3228f787.css">
+	<link rel="modulepreload" href="/_app/entry-9ed597de.js">
+	<link rel="modulepreload" href="/_app/navigation-5bb05546.js">
+	<link rel="modulepreload" href="/_app/inject_styles-cd877ae9.js">
+	<link rel="modulepreload" href="/_app/index-538d1bc5.js">
+	<link rel="modulepreload" href="/_app/Stencil-212aa1cf.js">
+	<link rel="stylesheet" href="/_app/navigation-b89da28e.css">
+	<link rel="stylesheet" href="/_app/entry.css">
+	<link rel="stylesheet" href="/_app/Stencil-0c30128c.css">
+	<link rel="stylesheet" href="/_app/index-3228f787.css">
+	
 
-  <!-- Page 2 app loader -->
-  <script type="module">
-    import { start } from '/_app/entry-9ed597de.js';
-    start({ target: document.body });
-  </script>
+	<script type="module">
+		import { start } from '/_app/entry-9ed597de.js';
+
+		start({
+			target: document.body
+		});
+	</script>
 </head>
 <body>
-  <!-- ===== Page 1 Content ===== -->
-  <section id="page1">
-    <h1>In APP Web Client for Org: "admin username"</h1>
-    <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-    <script>
-      document.getElementById('editThisPageLink').href =
-        "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-    </script>
-    <script type="text/javascript">
-      function initEmbeddedMessaging() {
-        try {
-          embeddedservice_bootstrap.settings.language = 'en_US';
-          embeddedservice_bootstrap.init(
-            '00DSB00000XqLAD',
-            'MIAWDepASA',
-            'https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.site.com/ESWMIAWDepASA1756481178092',
-            {
-              scrt2URL: 'https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.salesforce-scrt.com'
-            }
-          );
-        } catch (err) {
-          console.error('Error loading Embedded Messaging: ', err);
-        }
-      };
-    </script>
-    <script type="text/javascript"
-      src="https://orgfarm-5cd2800fde.demo.test1.my.pc-rnd.site.com/ESWMIAWDepASA1756481178092/assets/js/bootstrap.min.js"
-      onload="initEmbeddedMessaging()"></script>
-  </section>
+	
 
-  <hr>
 
-  <!-- ===== Page 2 Content ===== -->
-  <section id="page2">
-    <div class="slds-context-bar">
-      <div class="slds-context-bar__primary">
-        <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
-          <span class="slds-context-bar__label-action slds-context-bar__app-name">
-            <span class="slds-truncate" title="eCommerce">eCommerce</span>
-          </span>
-        </div>
+<div class="slds-context-bar"><div class="slds-context-bar__primary"><div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover"><span class="slds-context-bar__label-action slds-context-bar__app-name"><span class="slds-truncate" title="eCommerce">eCommerce</span></span></div></div>
+
+    <nav class="slds-context-bar__secondary" role="navigation"><ul class="slds-grid"><li class="slds-context-bar__item  slds-is-active"><a href="/" class="slds-context-bar__label-action" title="Home"><span class="slds-truncate" title="Home">Home</span></a>
+                    
+                </li><li class="slds-context-bar__item   slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click"><a href="javascript:void(0)" class="slds-context-bar__label-action" title="Products"><span class="slds-truncate" title="Products">Products</span></a>
+                    <div class="slds-context-bar__icon-action slds-p-left_none"><button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="true" title="Open Products submenu"><svg class="slds-button__icon" aria-hidden="true"><use xlink:href="/@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use></svg>
+                              <span class="slds-assistive-text">Open Products submenu</span>
+                            </button></div>
+                        <div class="slds-dropdown slds-dropdown_right"><ul class="slds-dropdown__list" role="menu"><li class="slds-dropdown__item" role="presentation"><a href="/products/view" role="menuitem" tabindex="-1"><span class="slds-truncate" title="Product View">Product View</span></a>
+                                    </li><li class="slds-dropdown__item" role="presentation"><a href="/products/list" role="menuitem" tabindex="-1"><span class="slds-truncate" title="Product List">Product List</span></a>
+                                    </li></ul>
+                        </div>
+                </li><li class="slds-context-bar__item   slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click"><a href="javascript:void(0)" class="slds-context-bar__label-action" title="Cart"><span class="slds-truncate" title="Cart">Cart</span></a>
+                    <div class="slds-context-bar__icon-action slds-p-left_none"><button class="slds-button slds-button_icon slds-button_icon slds-context-bar__button" aria-haspopup="true" title="Open Cart submenu"><svg class="slds-button__icon" aria-hidden="true"><use xlink:href="/@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use></svg>
+                              <span class="slds-assistive-text">Open Cart submenu</span>
+                            </button></div>
+                        <div class="slds-dropdown slds-dropdown_right"><ul class="slds-dropdown__list" role="menu"><li class="slds-dropdown__item" role="presentation"><a href="/cart" role="menuitem" tabindex="-1"><span class="slds-truncate" title="View Cart">View Cart</span></a>
+                                    </li><li class="slds-dropdown__item" role="presentation"><a href="/cart/checkout" role="menuitem" tabindex="-1"><span class="slds-truncate" title="Checkout">Checkout</span></a>
+                                    </li></ul>
+                        </div>
+                </li><li class="slds-context-bar__item"><a href="/orders" class="slds-context-bar__label-action" title="Orders"><span class="slds-truncate" title="Orders">Orders</span></a>
+                    
+                </li></ul></nav>
+
+  <div class="slds-float_right slds-clearfix slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click"><div class="slds-context-bar__label-action"><span class="slds-truncate" title="Log In">Log In</span></div></div>
+
+  <div class="slds-float_right slds-clearfix slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click"><div class="slds-context-bar__label-action"><span class="slds-truncate" title="Register">Register</span></div></div>
+
+  
+
+  
+
+  </div>
+
+<div class="wrapper svelte-1pa2c2t"><main class="svelte-1pa2c2t"><div><div class="slds-col slds-var-m-bottom_xx-large slds-grid_vertical-stretch"><div><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/dw/image/v2/BDPX_PRD/on/demandware.static/-/Library-Sites-NTO-SFRASharedLibrary/default/dw4cc45dcb/images/stories/stories-category-1680-400.jpg" alt="Promo #1">
+<div class="slds-text-heading_large slds-align_absolute-center"></div>
+</div></div></div>
+
+<div class="slds-grid slds-gutters slds-grid_vertical-stretch slds-var-m-bottom_xx-large svelte-4xf3jg"><div class="slds-col slds-size_1-of-4"><div id="yeti"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-alpine-nutrition/default/dw26816003/images/medium/alpine-nutrition-yeti-tartcherrybison.jpg" alt="Nutrition">
+<div class="slds-text-heading_large slds-align_absolute-center">Nutrition</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="womensJacket"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw6f40b1c3/images/medium/2010752AVK-0.jpg" alt="Women’s Jacket">
+<div class="slds-text-heading_large slds-align_absolute-center">Women’s Jacket</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="mensJacket"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw7fb9b3c8/images/medium/2010699AU3-0.jpg" alt="Men’s Jacket">
+<div class="slds-text-heading_large slds-align_absolute-center">Men’s Jacket</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="electronics"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-electronics/default/dwf417e366/images/medium/503800.jpg" alt="Electronics">
+<div class="slds-text-heading_large slds-align_absolute-center">Electronics</div>
+</div></div></div>
+
+
+
+<div class="slds-grid slds-gutters slds-grid_vertical-stretch slds-var-m-bottom_xx-large svelte-4xf3jg"><div class="slds-col slds-size_1-of-4"><div id="mensShoe"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw0ec2779e/images/medium/1050073ATJ-0.jpg" alt="Men's Shoe">
+<div class="slds-text-heading_large slds-align_absolute-center">Men's Shoe</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="womensShoe"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dwd7e6efbf/images/medium/1050127AIW-0.jpg" alt="Women’s Shoe">
+<div class="slds-text-heading_large slds-align_absolute-center">Women’s Shoe</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="womensBackpack"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-gear/default/dw8f2bdb3e/images/medium/4060194AV7-0.jpg" alt="Women’s Backpack">
+<div class="slds-text-heading_large slds-align_absolute-center">Women’s Backpack</div>
+</div></div>
+  <div class="slds-col slds-size_1-of-4"><div id="mensBackpack"><img class="stencil  svelte-m8ypxz" src="https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-gear/default/dw9a7a9411/images/medium/4060521ACD-0.jpg" alt="Men’s Backpack">
+<div class="slds-text-heading_large slds-align_absolute-center">Men’s Backpack</div>
+</div></div></div>
+
+<div class="slds-grid slds-gutters slds-grid_vertical-stretch slds-var-m-bottom_xx-large svelte-4xf3jg"><div class="slds-col slds-size_1-of-3"><div id="promo1"><img class="stencil  svelte-m8ypxz" src="images/promo1.png" alt="Promo 1">
+<div class="slds-text-heading_large slds-align_absolute-center"></div>
+</div></div>
+  <div class="slds-col slds-size_1-of-3"><div id="promo2"><img class="stencil  svelte-m8ypxz" src="images/promo2.png" alt="Promo 2">
+<div class="slds-text-heading_large slds-align_absolute-center"></div>
+</div></div>
+  <div class="slds-col slds-size_1-of-3"><div id="promo3"><img class="stencil  svelte-m8ypxz" src="images/promo3.png" alt="Promo 3">
+<div class="slds-text-heading_large slds-align_absolute-center"></div>
+</div></div>
+</div></main>
+
+    <div id="sdk-switcher" class="svelte-1pa2c2t"><span data-settings class="slds-icon_container slds-icon-standard-settings svelte-1pa2c2t"><svg class="slds-icon" aria-hidden="true"><use xlink:href="/@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg#settings"></use></svg></span>
+
       </div>
-      <nav class="slds-context-bar__secondary" role="navigation">
-        <!-- navigation items preserved -->
-        ...
-      </nav>
-    </div>
-
-    <!-- All your product grid and images -->
-    <div class="wrapper svelte-1pa2c2t">
-      <main class="svelte-1pa2c2t">
-        <!-- Page 2 content here -->
-        ...
-      </main>
-      <div id="sdk-switcher" class="svelte-1pa2c2t">
-        <span data-settings class="slds-icon_container slds-icon-standard-settings svelte-1pa2c2t">
-          <svg class="slds-icon" aria-hidden="true">
-            <use xlink:href="/@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg#settings"></use>
-          </svg>
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    __SVELTE__ = {
-      baseUrl: "",
-      status: 200,
-      error: null,
-      preloaded: [{}, {}],
-      session: void 0
-    };
-  </script>
+</div>
+<script>
+	__SVELTE__ = {
+		baseUrl: "",
+		status: 200,
+		error: null,
+		preloaded: [{},{}],
+		session: void 0
+	};
+</script>
 </body>
 </html>
