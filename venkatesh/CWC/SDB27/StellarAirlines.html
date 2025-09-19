@@ -1,0 +1,167 @@
+<html>
+<head>
+  <title>InApp - Flight Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+    }
+    header {
+      background: #002244;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+    .hero {
+      background: url("https://dummyimage.com/1600x400/002244/ffffff&text=Welcome+to+InApp+Airlines") no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      padding: 80px 30px;
+      text-align: center;
+    }
+    .booking-box {
+      background: #fff;
+      padding: 25px;
+      margin: -50px auto 40px;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .booking-box h2 {
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .form-row input, .form-row select {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #002244;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    footer {
+      background: #002244;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 50px;
+    }
+    p.debug-info {
+      margin: 20px;
+      font-size: 12px;
+      color: #444;
+      background: #eef1f5;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>InApp Airlines</h1>
+    <nav>
+      <a href="#">Book a Flight</a>
+      <a href="#">Manage Booking</a>
+      <a href="#">Check-in</a>
+      <a href="#">Flight Status</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Your Journey Begins Here</h2>
+    <p>Book your flights quickly and easily with InApp Airlines</p>
+  </div>
+
+  <div class="booking-box">
+    <h2>Book a Flight</h2>
+    <form>
+      <div class="form-row">
+        <input type="text" placeholder="From">
+        <input type="text" placeholder="To">
+      </div>
+      <div class="form-row">
+        <input type="date" placeholder="Departure Date">
+        <input type="date" placeholder="Return Date">
+      </div>
+      <div class="form-row">
+        <select>
+          <option>1 Adult</option>
+          <option>2 Adults</option>
+          <option>3 Adults</option>
+        </select>
+        <select>
+          <option>Economy</option>
+          <option>Business</option>
+          <option>First Class</option>
+        </select>
+      </div>
+      <a href="#" class="btn">Search Flights</a>
+    </form>
+  </div>
+
+  <p class="debug-info">
+    Debug Info (from original code):  
+    SDB27 CWCChannelwASA3 cwcuser3@test.com / test1234
+  </p>
+
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <script>
+    document.getElementById('editThisPageLink').href =
+      "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+  </script>
+
+  <!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'></script> -->
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        agentforce_messaging.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+        agentforce_messaging.settings.devMode = true;
+        agentforce_messaging.init(
+          '00DLT000008rciV',
+          'CWCChannelwASA3',
+          'https://orgfarm-e47cee3d5f.demo.test1.my.pc-rnd.site.com/ESWCWCChannelwASA31758191132586',
+          {
+            scrt2URL: 'https://orgfarm-e47cee3d5f.demo.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://orgfarm-e47cee3d5f.demo.test1.my.pc-rnd.site.com/ESWCWCChannelwASA31758191132586/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+
+  <footer>
+    &copy; 2025 InApp Airlines (Dummy Site for Testing)
+  </footer>
+</body>
+</html>
