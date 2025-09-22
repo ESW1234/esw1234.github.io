@@ -56,12 +56,22 @@
 				agentforce_messaging.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 				
 				// SDB27
-				agentforce_messaging.init(
-    				'00DLT000009AACD',
-    				'CWC',
+				// agentforce_messaging.init(
+    // 				'00DLT000009AACD',
+    // 				'CWC',
+				// 	'https://orgfarm-152e83a520.my.site-com.or99gum5osft0k2npmgfv7dl418f4k.wb.crm.dev:6101/ESWCWC1758556968883',
+				// 	{
+    // 					scrt2URL: 'https://orgfarm-d4cf2dec58.test1.my.pc-rnd.salesforce-scrt.com'
+				// 	}
+				// );
+
+				// SDB3
+				embeddedservice_bootstrap.init(
+					'00DSB00000RoOKZ',
+					'CustomerWebClient',
 					'https://orgfarm-152e83a520.my.site-com.or99gum5osft0k2npmgfv7dl418f4k.wb.crm.dev:6101/ESWCWC1758556968883',
 					{
-    					scrt2URL: 'https://orgfarm-d4cf2dec58.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
 					}
 				);
 				
