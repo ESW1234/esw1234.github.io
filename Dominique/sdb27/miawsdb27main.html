@@ -12,24 +12,24 @@
 
 
     <script type='text/javascript'>
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-    
-                embeddedservice_bootstrap.init(
-                    '00DLT0000004Q7B',
-                    'MyEmbeddedDeploymentOne',
-                    'https://sdb27-scrt-main.test1.my.pc-rnd.site.com/ESWMyEmbeddedDeploymentOn1710167731162',
-                    {
-                        scrt2URL: 'https://sdb27-scrt-main.test1.my.pc-rnd.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        };
-    </script>
-    <script type='text/javascript' src='https://sdb27-scrt-main.test1.my.pc-rnd.site.com/ESWMyEmbeddedDeploymentOn1710167731162/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>    
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DLT0000089dlV',
+				'MIAW',
+				'https://rc-mt-sdb27.test1.my.pc-rnd.site.com/ESWMIAW1750706498425',
+				{
+					scrt2URL: 'https://rc-mt-sdb27.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://rc-mt-sdb27.test1.my.pc-rnd.site.com/ESWMIAW1750706498425/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>    
 
 
 </body>
