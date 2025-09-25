@@ -1,26 +1,26 @@
 <html>
 <body>
     
-<script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			agentforce_messaging.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-			agentforce_messaging.settings.devMode = true;
+<script type="text/javascript">
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+            embeddedservice_bootstrap.settings.devMode = true;
 
-			agentforce_messaging.init(
-				'00DSG00000WuEp3',
-				'CWC_3',
-				'https://orgfarm-a504d7a61b.test1.my.pc-rnd.site.com/ESWCWC31756312718729',
-				{
-					scrt2URL: 'https://orgfarm-a504d7a61b.test1.my.pc-rnd.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+            embeddedservice_bootstrap.init(
+                '00DSG00000WuEp3',
+                'CWC_6',
+                'https://orgfarm-a504d7a61b.test1.my.pc-rnd.site.com/ESWCWC61757347888126',
+                {
+                    scrt2URL: 'https://orgfarm-a504d7a61b.test1.my.pc-rnd.salesforce-scrt.com'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
 </script>
-<script type='text/javascript' src='https://orgfarm-a504d7a61b.test1.my.pc-rnd.site.com/ESWCWC31756312718729/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+<script onload="initEmbeddedMessaging()" src="https://orgfarm-a504d7a61b.test1.my.pc-rnd.site.com/ESWCWC61757347888126/assets/js/bootstrap.js" type="text/javascript"></script>
 
 </body>
 </html>
