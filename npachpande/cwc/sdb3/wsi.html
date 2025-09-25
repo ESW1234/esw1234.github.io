@@ -1,0 +1,25 @@
+<html>
+<body>
+
+<script type="text/javascript">
+ function initEmbeddedMessaging() {
+  try {
+   embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+   embeddedservice_bootstrap.init(
+    '00DSB00000bwdTV',
+    'WSI_Chef_Web',
+    'https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.site.com/ESWWSIChefWeb1758610527805',
+    {
+     scrt2URL: 'https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.salesforce-scrt.com'
+    }
+   );
+  } catch (err) {
+   console.error('Error loading Embedded Messaging: ', err);
+  }
+ };
+</script>
+<script onload="initEmbeddedMessaging()" src="https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.site.com/ESWWSIChefWeb1758610527805/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+</html>
