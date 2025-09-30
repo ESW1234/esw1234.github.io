@@ -1,0 +1,12 @@
+<!DOCTYPE html> 
+<html>
+   <head>
+      <title>API Fetch Example</title>
+   </head>
+   <body>
+      <h2>API Response:</h2>
+      <pre id="responseBox">Loading...</pre>
+      <script> const url = "https://sachinsdb6.test1.my.pc-rnd.salesforce.com/miaw/auth/accesstoken?platformType=Web&developerName=WebAuth1&capabilitiesVersion=248"; 
+        fetch(url) .then(response => { if (!response.ok) { throw new Error("HTTP error " + response.status); } return response.text(); // could also use .json() if response is JSON }) .then(data => { document.getElementById("responseBox").textContent = data; }) .catch(error => { document.getElementById("responseBox").textContent = "Error: " + error; }); </script> 
+   </body>
+</html>
