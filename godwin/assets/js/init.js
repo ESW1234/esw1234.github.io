@@ -603,18 +603,30 @@
      * @returns {string} Width in rem (e.g., "7.5rem").
      */
     function calculateChatButtonWidth() {
-        const MIN_WIDTH = 3.875;
-        const MAX_WIDTH = 15.625;
-        const PADDING = 1.5;
-        const CHAR_WIDTH = 0.72;
+        // const MIN_WIDTH = 3.875;
+        // const MAX_WIDTH = 15.625;
+		const SPACING = '0.75rem';
+		const HORIZONTAL_PADDING = '1.5rem';
+		const ICON_WIDTH = '1.5rem'
+        // const CHAR_WIDTH = 0.72;
         const labelText = chatButtonLabel;
-        if (!labelText || labelText.length === 0) {
-            return `${MIN_WIDTH}rem`;
-        }
-        const calculatedWidth = ((labelText.length + PADDING * 2) * CHAR_WIDTH);
-        const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
-        return `${width}rem`;
+        // if (!labelText || labelText.length === 0) {
+        //     return `${MIN_WIDTH}rem`;
+        // }
+        // const calculatedWidth = (labelText.length * CHAR_WIDTH);
+        // const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
+        // return `${width}rem`;
+		return `calc(${getTextWidth(labelText, '700 16px "ITC Avant Garde"')} + ${SPACING} + ${ICON_WIDTH} + ${HORIZONTAL_PADDING} * 2)`; 
     }
+
+	function getTextWidth(text, font) {
+	  // re-use canvas object for better performance
+	  const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+	  const context = canvas.getContext("2d");
+	  context.font = font;
+	  const metrics = context.measureText(text);
+	  return metrics.width;
+	}
 
     function callRpcClient(eventName, eventData = {}) {
         if (!rpcManager) {
