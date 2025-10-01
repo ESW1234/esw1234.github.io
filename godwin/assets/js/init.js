@@ -616,7 +616,7 @@
         // const calculatedWidth = (labelText.length * CHAR_WIDTH);
         // const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
         // return `${width}rem`;
-		return `calc(${getTextWidth(labelText, '700 16px "ITC Avant Garde"')}px + ${SPACING} + ${ICON_WIDTH} + ${HORIZONTAL_PADDING} * 2)`; 
+		return `calc(${getTextWidth(labelText, '700 1rem "ITC Avant Garde"')}px + ${SPACING} + ${ICON_WIDTH} + ${HORIZONTAL_PADDING} * 2)`; 
     }
 
 	function getTextWidth(text, font) {
