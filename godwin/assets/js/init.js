@@ -605,9 +605,9 @@
     function calculateChatButtonWidth() {
         // const MIN_WIDTH = 3.875;
         // const MAX_WIDTH = 15.625;
-		const SPACING = '0.75rem';
-		const HORIZONTAL_PADDING = '1.5rem';
-		const ICON_WIDTH = '1.5rem'
+		const SPACING = '12';
+		const HORIZONTAL_PADDING = '24';
+		const ICON_WIDTH = '24'
         // const CHAR_WIDTH = 0.72;
         const labelText = chatButtonLabel;
         // if (!labelText || labelText.length === 0) {
@@ -616,11 +616,10 @@
         // const calculatedWidth = (labelText.length * CHAR_WIDTH);
         // const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
         // return `${width}rem`;
-		return `calc(${getTextWidth(labelText, '700 1rem "ITC Avant Garde"')}px + ${SPACING} + ${ICON_WIDTH} + ${HORIZONTAL_PADDING} * 2)`; 
+		return getTextWidth(labelText, '700 16px "ITC Avant Garde"') + SPACING + ICON_WIDTH + HORIZONTAL_PADDING * 2; 
     }
 
 	function getTextWidth(text, font) {
-	  // re-use canvas object for better performance
 	  const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
 	  const context = canvas.getContext("2d");
 	  context.font = font;
