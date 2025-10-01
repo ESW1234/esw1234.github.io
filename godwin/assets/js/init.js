@@ -605,9 +605,9 @@
     function calculateChatButtonWidth() {
         // const MIN_WIDTH = 3.875;
         // const MAX_WIDTH = 15.625;
-		const SPACING = '12';
-		const HORIZONTAL_PADDING = '24';
-		const ICON_WIDTH = '24'
+		const SPACING = 12;
+		const HORIZONTAL_PADDING = 24;
+		const ICON_WIDTH = 24;
         // const CHAR_WIDTH = 0.72;
         const labelText = chatButtonLabel;
         // if (!labelText || labelText.length === 0) {
