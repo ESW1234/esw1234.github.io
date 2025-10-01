@@ -606,13 +606,13 @@
         const MIN_WIDTH = 3.875;
         const MAX_WIDTH = 15.625;
         const PADDING = 1.5;
-        const CHAR_WIDTH = 0.5;
+        const CHAR_WIDTH = 0.72;
         const labelText = chatButtonLabel;
         if (!labelText || labelText.length === 0) {
             return `${MIN_WIDTH}rem`;
         }
-        const calculatedWidth = (labelText.length * CHAR_WIDTH) + PADDING;
-        const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH);
+        const calculatedWidth = ((labelText.length + PADDING * 2) * CHAR_WIDTH);
+        const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
         return `${width}rem`;
     }
 
