@@ -16,6 +16,12 @@
 	</br>
 	</br>
 	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
+    <style>
+		.agentforce-messaging > .agentforce-messaging-frame[class~="initial"], .agentforce-messaging > .agentforce-messaging-frame[class~="minimized"] {
+			/** Manually override width of chat button for custom label **/
+			width: 185px; /** etc. "Ask AI Agent" **/
+		}
+	</style>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
