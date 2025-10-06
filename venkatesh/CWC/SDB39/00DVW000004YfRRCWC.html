@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>This is CWC test Page Sdb39(258 patch)</head>
+<body>
+ <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DVW000004YfRR',
+				'test_cwc',
+				'https://orgfarm-73dbbe4ff6.test1.my.pc-rnd.site.com/ESWtestcwc1757671390570',
+				{
+					scrt2URL: 'https://orgfarm-73dbbe4ff6.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-73dbbe4ff6.test1.my.pc-rnd.site.com/ESWtestcwc1757671390570/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+
+</html>
