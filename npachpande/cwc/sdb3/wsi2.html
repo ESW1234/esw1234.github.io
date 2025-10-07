@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Williams Sonoma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+body {
+    overflow: hidden;
+}
+.background-container {
+    width: 100%;
+}
+
+.background-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.custom-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+}
+</style>
+
+<div class="background-container">
+  <img src="https://esw1234.github.io/wsi.png" alt="Background">
+</div>
+
+<script type="text/javascript">
+ function initEmbeddedMessaging() {
+  try {
+   embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+    embeddedservice_bootstrap.settings.devMode = true;
+
+   embeddedservice_bootstrap.init(
+    '00DSB00000bwdTV',
+    'WSI_Chef_Web',
+    'https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.site.com/ESWWSIChefWeb1758610527805',
+    {
+     scrt2URL: 'https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.salesforce-scrt.com'
+    }
+   );
+  } catch (err) {
+   console.error('Error loading Embedded Messaging: ', err);
+  }
+ };
+</script>
+<script onload="initEmbeddedMessaging()" src="https://orgfarm-f53fb7a3e0.test1.my.pc-rnd.site.com/ESWWSIChefWeb1758610527805/assets/js/init.js" type="text/javascript"></script>
+
+</body>
+</html>
