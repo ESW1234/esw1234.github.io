@@ -18,21 +18,22 @@ body {
     width: 100%;
     height: auto;
 }
-
-.custom-fab {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-}
 </style>
 
 
 <style>
    .agentforce-messaging > .agentforce-messaging-frame[class~="initial"],
-   .agentforce-messaging > .agentforce-messaging-frame[class~="minimized"]
+   .agentforce-messaging > .agentforce-messaging-frame[class~="minimized"],
+   .custom-fab
    {
       display: none;
    }
+
+  .custom-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+  }
 </style>
 
 
@@ -43,19 +44,26 @@ body {
 <button type="button" class="custom-fab" onclick="onCustomFabClick()">my custom fab</button>
 
 <script type="text/javascript">
-window.addEventListener("onEmbeddedMessagingWindowMaximized", (event) => {
-  document.querySelector(".custom-fab").style.display = "none";
-});
-
-window.addEventListener("onEmbeddedMessagingWindowMinimized", (event) => {
-  document.querySelector(".custom-fab").style.display = "block";
-});
-
+  window.addEventListener("onEmbeddedMessagingReady", (event) => {
+    toggleCustomFabVisbility(true);
+  });
+  window.addEventListener("onEmbeddedMessagingWindowMaximized", (event) => {
+    toggleCustomFabVisbility(false);
+  });
   
+  window.addEventListener("onEmbeddedMessagingWindowMinimized", (event) => {
+    toggleCustomFabVisbility(true);
+  });
+
+  function toggleCustomFabVisbility(shouldShow) {
+     if (shouldHide) {
+       document.querySelector(".custom-fab").style.display = shouldShow ? "block" : "none"; 
+     }
+  }
   
-function onCustomFabClick() {
-   embeddedservice_bootstrap.utilAPI.launchChat();
-}
+  function onCustomFabClick() {
+     embeddedservice_bootstrap.utilAPI.launchChat();
+  }
  function initEmbeddedMessaging() {
   try {
    embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
