@@ -18,6 +18,10 @@ body {
     width: 100%;
     height: auto;
 }
+
+.custom-fab {
+  
+}
 </style>
 
 
@@ -34,7 +38,12 @@ body {
   <img src="https://esw1234.github.io/wsi.png" alt="Background">
 </div>
 
+<button type="button" class="custom-fab" onclick="onCustomFabClick()">Click Me!</button>
+
 <script type="text/javascript">
+function onCustomFabClick() {
+   embeddedservice_bootstrap.utilAPI.launchChat();
+}  
  function initEmbeddedMessaging() {
   try {
    embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
