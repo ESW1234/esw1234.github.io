@@ -34,6 +34,16 @@ body {
     bottom: 24px;
     right: 24px;
   }
+
+  /* mobile phones (240px-767px) */
+  @media only screen and (min-width: 15em) and (max-width: 47.9375em) {
+     /* do not allow background clicks or scrolling on mobile devices when client is maximized */
+     .prevent-background-scrolling {
+        overflow: hidden;
+        cursor: none;
+     }
+  }
+
 </style>
 
 
@@ -45,19 +55,17 @@ body {
 
 <script type="text/javascript">
   window.addEventListener("onEmbeddedMessagingReady", (event) => {
-    toggleCustomFabVisbility(true);
+    document.querySelector(".custom-fab").style.display = "block";
   });
   window.addEventListener("onEmbeddedMessagingWindowMaximized", (event) => {
-    toggleCustomFabVisbility(false);
+    document.querySelector(".custom-fab").style.display = "none";
+    document.body.classList.add("prevent-background-scrolling");
   });
   
   window.addEventListener("onEmbeddedMessagingWindowMinimized", (event) => {
-    toggleCustomFabVisbility(true);
+    document.querySelector(".custom-fab").style.display = "block";
+    document.body.classList.remove("prevent-background-scrolling");
   });
-
-  function toggleCustomFabVisbility(shouldShow) {
-     document.querySelector(".custom-fab").style.display = shouldShow ? "block" : "none";
-  }
   
   function onCustomFabClick() {
      embeddedservice_bootstrap.utilAPI.launchChat();
