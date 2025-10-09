@@ -1,0 +1,94 @@
+<html>
+<head>
+  <title>Williams Sonoma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<style>
+body {
+    /*overflow: hidden*/;
+}
+.background-container {
+    width: 100%;
+}
+
+.background-container img {
+    display: block;
+    width: 100%;
+    height: 200%;
+}
+</style>
+
+
+<style>
+   .agentforce-messaging > .agentforce-messaging-frame[class~="initial"],
+   .agentforce-messaging > .agentforce-messaging-frame[class~="minimized"],
+   .custom-fab
+   {
+      display: none;
+   }
+
+  .custom-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+  }
+
+  /* mobile phones (240px-767px) */
+  @media only screen and (min-width: 15em) and (max-width: 47.9375em) {
+     /* do not allow background clicks or scrolling on mobile devices when client is maximized */
+     .prevent-background-scrolling {
+        overflow: hidden;
+        cursor: none;
+     }
+  }
+
+</style>
+
+
+<div class="background-container">
+  <img src="https://esw1234.github.io/wsi.png" alt="Background">
+</div>
+
+<button type="button" class="custom-fab" onclick="onCustomFabClick()">my custom fab</button>
+
+<script type="text/javascript">
+  window.addEventListener("onEmbeddedMessagingReady", (event) => {
+    document.querySelector(".custom-fab").style.display = "block";
+  });
+  window.addEventListener("onEmbeddedMessagingWindowMaximized", (event) => {
+    document.querySelector(".custom-fab").style.display = "none";
+    document.body.classList.add("prevent-background-scrolling");
+  });
+  
+  window.addEventListener("onEmbeddedMessagingWindowMinimized", (event) => {
+    document.querySelector(".custom-fab").style.display = "block";
+    document.body.classList.remove("prevent-background-scrolling");
+  });
+  
+  function onCustomFabClick() {
+     embeddedservice_bootstrap.utilAPI.launchChat();
+  }
+  
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DWD000008lgC5',
+				'Sous_Chef_Agent_Olive',
+				'https://wsgc--lyltyfull.sandbox.my.site.com/ESWSousChefAgentOlive1759423665618',
+				{
+					scrt2URL: 'https://wsgc--lyltyfull.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://wsgc--lyltyfull.sandbox.my.site.com/ESWSousChefAgentOlive1759423665618/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
