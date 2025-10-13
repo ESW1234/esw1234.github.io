@@ -49,6 +49,15 @@
         ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMaximized"
     };
 
+    /**
+     * The dimensions of the chat button.
+     * @type {{width: number, height: number}}
+     */
+    let buttonDimensions = {
+        width: '',
+        height: ''
+    }
+
     // =========================
     //  Utils
     // =========================
@@ -210,6 +219,10 @@
         const frame = getIframe();
 
         if (frame) {
+            // Update frame dimensions to default button dimensions
+            frame.style.width = buttonDimensions.width;
+            frame.style.height = buttonDimensions.height;
+
             // Update width and height if options are provided
             if (postMessage.width || postMessage.height) {
                 if (postMessage.width) {
@@ -232,6 +245,10 @@
         const frame = getIframe();
 
         if (frame) {
+            // Unset manual frame dimensions override
+            frame.style.width = '';
+            frame.style.height = '';
+
             // Update width and height if options are provided
             if (postMessage.width || postMessage.height) {
                 if (postMessage.width) {
@@ -648,7 +665,9 @@
 
         // Iframe chat button ready event handler
         rpcManager.registerHandler("ESW_CHAT_BUTTON_READY_EVENT", (event) => {
-            unhideIframe(event?.data?.buttonDimensions);
+            buttonDimensions.width = event?.data?.buttonDimensions?.width || '';
+            buttonDimensions.height = event?.data?.buttonDimensions?.height || '';
+            unhideIframe();
         })
 
         // Iframe maximize/minimize event handler
@@ -721,18 +740,12 @@
         return topContainerElement;
     }
 
-    function unhideIframe(buttonDimensions) {
+    function unhideIframe() {
         const iframe = getIframe();
 
         if (iframe) {
-            if (buttonDimensions) {
-                if (buttonDimensions.width) {
-                    iframe.style.width = buttonDimensions.width;
-                }
-                if (buttonDimensions.height) {
-                    iframe.style.height = buttonDimensions.height;
-                }
-            }
+            iframe.style.width = buttonDimensions.width;
+            iframe.style.height = buttonDimensions.height;
             iframe.classList.add("initial");
         }
     }
