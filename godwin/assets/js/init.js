@@ -10,6 +10,7 @@
      */
     const TOP_CONTAINER_NAME = "agentforce-messaging";
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
+    const LWR_IFRAME_TITLE = "Chat Window";
 
     /**
      * Attributes required to construct SCRT 2.0 Service URL.
@@ -17,11 +18,6 @@
     const IN_APP_SCRT2_API_PREFIX = "embeddedservice";
     const IN_APP_SCRT2_API_VERSION = "v1";
 
-    /**
-     * Default label for the chat button.
-     * @type {string}
-     */
-    const DEFAULT_CHAT_BUTTON_LABEL = "Chat";
 
     let rpcManager;
 
@@ -41,18 +37,17 @@
     let hasEmbeddedMessagingReadyEventFired = false;
 
     /**
-	 * This is a resolver function for when the iframe is ready for data.
+	 * This is a resolver function for when the app is ready to be used.
      */
-  let resolveLwrIframeReady;
-  let lwrIframeReadyPromise = new Promise((resolve) => {
-    resolveLwrIframeReady = resolve;
-  });
+	let resolveAppReadyPromise;
+	let appReadyPromise = new Promise((resolve) => {
+		resolveAppReadyPromise = resolve;
+	});
 
-    /**
-     * The label for the chat button.
-     * @type {string}
-     */
-    let chatButtonLabel = DEFAULT_CHAT_BUTTON_LABEL;
+    const hostEvents = {
+        ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMinimized",
+        ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMaximized"
+    };
 
     // =========================
     //  Utils
@@ -225,8 +220,11 @@
                 }
             }
 
+            frame.classList.remove("initial");
             frame.classList.add("minimized");
             frame.classList.remove("maximized");
+
+            dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME);
         }
     }
 
@@ -244,8 +242,11 @@
                 }
             }
 
+            frame.classList.remove("initial");
             frame.classList.add("maximized");
             frame.classList.remove("minimized");
+
+            dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
         }
     }
 
@@ -266,37 +267,6 @@
         } catch (err) {
             console.error(`Error retrieving site URL: ${err}`);
         }
-    }
-
-    function getButtonLabel(configData) {
-        const customLabels = configData?.embeddedServiceConfig?.customLabels || [];
-        const standardLabels = configData?.standardLabels || [];
-
-        const customLabel = customLabels.find(label =>
-            label.sectionName === "EmbeddedMessagingMinimizedState" &&
-            label.labelName === "CwcMinimizedState"
-        );
-
-        if (customLabel) {
-            return customLabel.labelValue;
-        }
-
-        const standardLabel = standardLabels.find(label =>
-            label.sectionName === "EmbeddedMessagingMinimizedState" &&
-            label.labelName === "CwcMinimizedState"
-        );
-
-        return standardLabel?.labelValue || "Chat";
-    }
-
-    /**
-	 * Clear all in-memory data tracked on the client side, for the current conversation.
-	 */
-	function clearInMemoryData() {
-		// Reset LWR iframe ready promise.
-		lwrIframeReadyPromise = new Promise((resolve) => {
-			resolveLwrIframeReady = resolve;
-		});
     }
 
     // =========================
@@ -329,19 +299,17 @@
     /**
      * Client API method to send a text message programatically 
      */
-    AgentforceMessagingUtil.prototype.sendTextMessage = function (message) {
+    AgentforceMessagingUtil.prototype.sendTextMessage = function (message, context) {
         try {
             shouldProcessApiCall();
-            
-            if (typeof message !== 'string') {
-                throw new Error("Message must be a string");
-            }
-            if (message.trim() === "") {
-                throw new Error("Message must be non empty");
-            }
-
-            return callRpcClient("sendTextMessage", { message })
-                .then(() => Promise.resolve())
+            return callRpcClient("sendTextMessage", { message, context })
+                .then((response) => {
+                    if (response.success) {
+                        return Promise.resolve();
+                    } else {
+                        return Promise.reject(response.error);
+                    }
+                })
                 .catch((error) => {
                     throw error;
                 });
@@ -350,53 +318,6 @@
             return Promise.reject(error);
         }
     };
-
-    /**
-     * Validate the session context object.
-     * @param {object} context 
-     * @throws {Error} - Throws an Error if validation fails
-     */
-    function validateSessionContext(context) {
-        // Check if context exists and is an array
-        if (!context || !Array.isArray(context)) {
-            throw new Error("Context must be an array");
-        }
-
-        // Check if array is not empty
-        if (context.length === 0) {
-            throw new Error("Context array cannot be empty");
-        }
-
-        // Validate each context item
-        for (let i = 0; i < context.length; i++) {
-            const item = context[i];
-            
-            // Check if item has required properties
-            if (!item || typeof item !== 'object') {
-                throw new Error(`Context item at index ${i} must be an object`);
-            }
-
-            // Validate 'name' property
-            if (!item.name || typeof item.name !== 'string') {
-                throw new Error(`Context item at index ${i} must have a valid 'name' property`);
-            }
-
-            // Validate 'value' property exists
-            if (!item.value || typeof item.value !== 'object') {
-                throw new Error(`Context item at index ${i} must have a valid 'value' property`);
-            }
-
-            // Validate 'valueType' property
-            if (!item.value.valueType || typeof item.value.valueType !== 'string' || item.value.valueType !== "StructuredValue") {
-                throw new Error(`Context item at index ${i} must have a valid 'valueType' property`);
-            }
-
-            // Validate 'value.value' property
-            if (!item.value.value || typeof item.value.value !== 'object') {
-                throw new Error(`Context item at index ${i} must have a valid 'value.value' property`);
-            }
-        }
-    }
 
     /**
      * Client API method to set agent context programatically.
@@ -432,13 +353,16 @@
     AgentforceMessagingUtil.prototype.setSessionContext = function (context) {
         try {
             shouldProcessApiCall();
-            validateSessionContext(context);
-
             return callRpcClient("setSessionContext", context)
-                .then(() => Promise.resolve())
+                .then((response) => {
+                    if (response.success) {
+                        return Promise.resolve();
+                    } else {
+                        return Promise.reject(response.error);
+                    }
+                })
                 .catch((error) => {
-                    console.error("Failed to set session context:", error.message);
-                    Promise.reject(error);
+                    throw error;
                 });
         } catch (error) {
             console.error("Failed to set session context:", error.message);
@@ -511,7 +435,7 @@
             shouldProcessApiCall();
 
             const iframe = getIframe();
-            if (iframe && iframe.classList.contains("minimized")) {
+            if (iframe && !iframe.classList.contains("maximized")) {
                 // Unhide iframe in case hideChatButton was previously called.
                 toggleChatFabVisibility(false);
                 return callRpcClient("launchChat")
@@ -598,35 +522,6 @@
         }
     }
 
-    /**
-     * Calculate dynamic width based on label text length.
-     * @returns {string} Width in rem (e.g., "7.5rem").
-     */
-    function calculateChatButtonWidth() {
-        // const MIN_WIDTH = 3.875;
-        // const MAX_WIDTH = 15.625;
-		const SPACING = 12;
-		const HORIZONTAL_PADDING = 24;
-		const ICON_WIDTH = 24;
-        // const CHAR_WIDTH = 0.72;
-        const labelText = chatButtonLabel;
-        // if (!labelText || labelText.length === 0) {
-        //     return `${MIN_WIDTH}rem`;
-        // }
-        // const calculatedWidth = (labelText.length * CHAR_WIDTH);
-        // const width = Math.min(Math.max(calculatedWidth, MIN_WIDTH), MAX_WIDTH) + PADDING * 2;
-        // return `${width}rem`;
-		return getTextWidth(labelText, '700 16px "ITC Avant Garde"') + SPACING + ICON_WIDTH + HORIZONTAL_PADDING * 2; 
-    }
-
-	function getTextWidth(text, font) {
-	  const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-	  const context = canvas.getContext("2d");
-	  context.font = font;
-	  const metrics = context.measureText(text);
-	  return metrics.width;
-	}
-
     function callRpcClient(eventName, eventData = {}) {
         if (!rpcManager) {
             console.error("RPC not available");
@@ -693,8 +588,9 @@
             script.src = new URL("assets/js/rpc-manager.iife.js", siteUrl + "/").href;
             script.onload = () => {
                 initializeRPC();
+                resolve(true);
             };
-            script.onerror = () => reject(new Error("Failed to load RPC script"));
+            script.onerror = reject;
             document.head.appendChild(script);
         });
     }
@@ -744,11 +640,16 @@
 
     function registerRpcHandlers() {
         // Iframe app ready event handler
-        rpcManager.registerHandler("ESW_APP_READY_EVENT", () => {
-            unhideIframe();
+        rpcManager.registerHandler("ESW_APP_READY_EVENT", async () => {
+            await appReadyPromise;
             const configuration = prepareConfigObject();
             return { configuration };
         });
+
+        // Iframe chat button ready event handler
+        rpcManager.registerHandler("ESW_CHAT_BUTTON_READY_EVENT", (event) => {
+            unhideIframe(event?.data?.buttonDimensions);
+        })
 
         // Iframe maximize/minimize event handler
         rpcManager.registerHandler("ESW_APP_MAXIMIZE", handleMaximize);
@@ -761,12 +662,35 @@
         rpcManager.registerHandler("cwcsetconversationstatus", (event) => {
             conversationStatus = event?.data?.conversationStatus || CONVERSATION_STATUS.NOT_STARTED;
         });
+
+        rpcManager.registerHandler("dispatchEventToHost", (event) => {
+            const { eventName, eventData } = event.data;
+            if (eventData) {
+                dispatchEventToHost(eventName, { detail: eventData });
+            } else {
+                dispatchEventToHost(eventName);
+            }
+        });
+    }
+
+    function dispatchEventToHost(eventName, options = { detail: {}}) {
+        if (!eventName) {
+			throw new Error(`Expected an eventName parameter with a string value. Instead received ${eventName}.`);
+		}
+		if (options && !('detail' in options)) {
+			throw new Error(`The options parameter of the event is malformed: ${options}.`);
+		}
+        try {
+			window.dispatchEvent(new CustomEvent(eventName, options));
+		} catch(err) {
+			throw new Error("Something went wrong while dispatching the event " + eventName + ":" + err);
+		}
     }
 
     function emitEmbeddedMessagingReadyEvent() {
         hasEmbeddedMessagingReadyEventFired = true;
 		try {
-			window.dispatchEvent(new CustomEvent("onEmbeddedMessagingReady", { detail: {} }));
+            dispatchEventToHost("onEmbeddedMessagingReady");
 		} catch(err) {
 			hasEmbeddedMessagingReadyEventFired = false;
 			console.error(`emitEmbeddedMessagingReadyEvent: Something went wrong in firing onEmbeddedMessagingReady event ${err}.`);
@@ -797,12 +721,19 @@
         return topContainerElement;
     }
 
-    function unhideIframe() {
+    function unhideIframe(buttonDimensions) {
         const iframe = getIframe();
-        let buttonWidth = calculateChatButtonWidth();
+
         if (iframe) {
-            iframe.style.width = buttonWidth;
-            iframe.classList.add("minimized");
+            if (buttonDimensions) {
+                if (buttonDimensions.width) {
+                    iframe.style.width = buttonDimensions.width;
+                }
+                if (buttonDimensions.height) {
+                    iframe.style.height = buttonDimensions.height;
+                }
+            }
+            iframe.classList.add("initial");
         }
     }
 
@@ -872,7 +803,7 @@
                 const topContainer = createTopContainer();
                 const iframe = document.createElement("iframe");
 
-                iframe.title = LWR_IFRAME_NAME;
+                iframe.title = LWR_IFRAME_TITLE;
                 iframe.className = LWR_IFRAME_NAME;
                 iframe.id = LWR_IFRAME_NAME;
 
@@ -926,47 +857,54 @@
             mergeObjects(agentforce_messaging.settings, snippetConfig);
 
             // Load CSS file.
-            loadCSS()
+            const cssPromise = loadCSS()
                 .then(() => {
                     console.log(`Loaded CSS`);
                 })
                 .catch(() => {
-                    console.error(`Error loading CSS`);
+                    throw new Error(`Error loading CSS`);
                 });
 
             // Load the RPC script for iframe & host communication
-            loadRPCScript()
+            const rpcPromise = loadRPCScript()
                 .then(() => {
                     console.debug(`Loaded RPC script`);
                 })
                 .catch(() => {
-                    console.error(`Error loading RPC script`);
+                    throw new Error(`Error loading RPC script`);
                 });
 
             // Load configuration settings from SCRT 2.0.
-            loadConfigurationSettings()
+            const configPromise = loadConfigurationSettings()
                 .then((data) => {
                     console.debug(`Loaded configuration settings`);
-                    chatButtonLabel = getButtonLabel(data);
                     mergeObjects(agentforce_messaging.settings, data);
                 })
                 .catch(() => {
-                    console.error(`Error loading configuration settings`);
+                    throw new Error(`Error loading configuration settings`);
                 });
 
             // Load LWR site on page load.
-            agentforce_messaging
+            const iframePromise = agentforce_messaging
                 .createIframe()
                 .then(() => {
                     console.log(`Created Agentforce Messaging frame`);
                 })
                 .catch((e) => {
-                    console.error(
+                    throw new Error(
                         `Error creating Agentforce Messaging frame: ${e}`
                     );
                 });
+
+            Promise.all([cssPromise, rpcPromise, configPromise, iframePromise])
+                .then(() => {
+                    // Initialize app after all promises are resolved.
+                    resolveAppReadyPromise();
+                }).catch((err) => {
+                    console.error(`Error initializing app: ${err}`);
+                });
         } catch (initError) {
-            console.error(initError);
+            throw new Error(initError);
         }
     };
 
@@ -997,13 +935,13 @@
 
     if (!window.agentforce_messaging) {
         window.agentforce_messaging = new AgentforceMessaging();
-        window.agentforce_messaging.util = new AgentforceMessagingUtil();
+        window.agentforce_messaging.utilAPI = new AgentforceMessagingUtil();
         
-        // Create proxies for embeddedservice_bootstrap and its utilApi
+        // Create proxies for embeddedservice_bootstrap and its utilAPI
         window.embeddedservice_bootstrap = createProxy(window.agentforce_messaging, 'agentforce_messaging');
-        window.agentforce_messaging.utilApi = createProxy(
-            window.agentforce_messaging.util, 
-            'agentforce_messaging.util'
+        window.agentforce_messaging.utilAPI = createProxy(
+            window.agentforce_messaging.utilAPI, 
+            'agentforce_messaging.utilAPI'
         );
     } else {
         console.error(`Agentforce Messaging has already been initialized`);
