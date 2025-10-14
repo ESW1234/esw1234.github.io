@@ -228,6 +228,15 @@
     function handleMinimize() {
         const frame = getIframe();
 
+		if (document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
+			// [Mobile] Remove class that prevents background clicking and scrolling.
+			// Restore document body's scroll position only for mobile devices
+			document.body.classList.remove(PREVENT_SCROLLING_CLASS);
+			if (embeddedservice_bootstrap.documentScrollPosition) {
+				window.scrollTo(0, embeddedservice_bootstrap.documentScrollPosition);
+			}
+		}
+
         if (frame) {
             // Update frame dimensions to default button dimensions
             frame.style.width = buttonDimensions.width;
@@ -255,6 +264,12 @@
         const frame = getIframe();
 
 		if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
+			if (document.scrollingElement) {
+				embeddedservice_bootstrap.documentScrollPosition = document.scrollingElement.scrollTop;
+			} else {
+				const docElementRect = document.documentElement.getBoundingClientRect();
+				embeddedservice_bootstrap.documentScrollPosition = Math.abs(docElementRect.top);
+			}
 			document.body.classList.add(PREVENT_SCROLLING_CLASS);
 		}
 
