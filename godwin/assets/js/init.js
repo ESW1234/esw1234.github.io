@@ -198,6 +198,15 @@
         return { name: "unknown", version: 0 };
     }
 
+	/**
+	 * Check if we are on a Desktop (non mobile) based on information in the user agent.
+	 * Browsers on tablets behave the same as mobile devices.
+	 * @returns {boolean} - True if Desktop, false if Mobile client.
+	 */
+	function isDesktop() {
+		return navigator.userAgent.indexOf("Mobi") === -1;
+	}
+
     /**
      * Check if web client is being used in a Mobile Publisher context.
      * Detect Mobile Publisher (https://sourcegraph.soma.salesforce.com/perforce.soma.salesforce.com/app/main/core@HEAD/-/blob/sites/java/src/sites/communities/hybridapp/util/CoreCommunityHybridAppUtilImpl.java?L25).
@@ -243,6 +252,10 @@
 
     function handleMaximize() {
         const frame = getIframe();
+
+		if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
+			document.body.classList.add(PREVENT_SCROLLING_CLASS);
+		}
 
         if (frame) {
             // Unset manual frame dimensions override
