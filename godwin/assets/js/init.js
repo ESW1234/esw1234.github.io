@@ -11,7 +11,7 @@
     const TOP_CONTAINER_NAME = "agentforce-messaging";
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
     const LWR_IFRAME_TITLE = "Chat Window";
-	const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
+    const PREVENT_SCROLLING_CLASS = "agentforceMessagingPreventScrolling";
 
     /**
      * Attributes required to construct SCRT 2.0 Service URL.
@@ -33,7 +33,7 @@
     let conversationStatus = CONVERSATION_STATUS.NOT_STARTED
 
     /**
-     * 
+     *
      */
     let hasEmbeddedMessagingReadyEventFired = false;
 
@@ -49,15 +49,6 @@
         ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMinimized",
         ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMaximized"
     };
-
-    /**
-     * The dimensions of the chat button.
-     * @type {{width: number, height: number}}
-     */
-    let buttonDimensions = {
-        width: '',
-        height: ''
-    }
 
     // =========================
     //  Utils
@@ -199,14 +190,14 @@
         return { name: "unknown", version: 0 };
     }
 
-	/**
-	 * Check if we are on a Desktop (non mobile) based on information in the user agent.
-	 * Browsers on tablets behave the same as mobile devices.
-	 * @returns {boolean} - True if Desktop, false if Mobile client.
-	 */
-	function isDesktop() {
-		return navigator.userAgent.indexOf("Mobi") === -1;
-	}
+    /**
+     * Check if we are on a Desktop (or non-mobile client) based on information in the user agent.
+     * Browsers on tablets behave the same as mobile devices.
+     * @returns {boolean} - True if Desktop, false if not.
+     */
+    function isDesktop() {
+        return navigator.userAgent.indexOf("Mobi") === -1;
+    }
 
     /**
      * Check if web client is being used in a Mobile Publisher context.
@@ -228,20 +219,16 @@
     function handleMinimize() {
         const frame = getIframe();
 
-		if (document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
-			// [Mobile] Remove class that prevents background clicking and scrolling.
-			// Restore document body's scroll position only for mobile devices
-			document.body.classList.remove(PREVENT_SCROLLING_CLASS);
-			if (agentforce_messaging.documentScrollPosition) {
-				window.scrollTo(0, agentforce_messaging.documentScrollPosition);
-			}
-		}
+        if (document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
+            // [Mobile] Remove class that prevents background clicking and scrolling.
+            // Restore document body's scroll position only for mobile devices
+            document.body.classList.remove(PREVENT_SCROLLING_CLASS);
+            if (agentforce_messaging.documentScrollPosition) {
+                window.scrollTo(0, agentforce_messaging.documentScrollPosition);
+            }
+        }
 
         if (frame) {
-            // Update frame dimensions to default button dimensions
-            frame.style.width = buttonDimensions.width;
-            frame.style.height = buttonDimensions.height;
-
             // Update width and height if options are provided
             if (postMessage.width || postMessage.height) {
                 if (postMessage.width) {
@@ -263,21 +250,17 @@
     function handleMaximize() {
         const frame = getIframe();
 
-		if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
-			if (document.scrollingElement) {
-				agentforce_messaging.documentScrollPosition = document.scrollingElement.scrollTop;
-			} else {
-				const docElementRect = document.documentElement.getBoundingClientRect();
-				agentforce_messaging.documentScrollPosition = Math.abs(docElementRect.top);
-			}
-			document.body.classList.add(PREVENT_SCROLLING_CLASS);
-		}
+        if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
+            if (document.scrollingElement) {
+                agentforce_messaging.documentScrollPosition = document.scrollingElement.scrollTop;
+            } else {
+                const docElementRect = document.documentElement.getBoundingClientRect();
+                agentforce_messaging.documentScrollPosition = Math.abs(docElementRect.top);
+            }
+            document.body.classList.add(PREVENT_SCROLLING_CLASS);
+        }
 
         if (frame) {
-            // Unset manual frame dimensions override
-            frame.style.width = '';
-            frame.style.height = '';
-
             // Update width and height if options are provided
             if (postMessage.width || postMessage.height) {
                 if (postMessage.width) {
@@ -343,7 +326,7 @@
     }
 
     /**
-     * Client API method to send a text message programatically 
+     * Client API method to send a text message programatically
      */
     AgentforceMessagingUtil.prototype.sendTextMessage = function (message, context) {
         try {
@@ -381,7 +364,7 @@
                 },
                 "search": {
                     "term": "",
-                    
+
                 },
                 "timezone": {
                     "type": ""
@@ -426,7 +409,7 @@
     AgentforceMessagingUtil.prototype.setHiddenPrechatFields = function (hiddenFields) {
         try {
             shouldProcessApiCall();
-            
+
             // TODO: Validate hidden fields
 
             if (hiddenFields && typeof hiddenFields === "object") {
@@ -541,7 +524,7 @@
 
     /**
      * Helper function for show/hideChatButton.
-     * @param {boolean} isHidden 
+     * @param {boolean} isHidden
      */
     function toggleChatFabVisibility(isHidden) {
         try {
@@ -559,7 +542,7 @@
 
     /**
      * Toggle iframe between display none to visible.
-     * @param {boolean} isHidden 
+     * @param {boolean} isHidden
      */
     function toggleIframeVisibility(isHidden) {
         const iframe = getIframe();
@@ -688,16 +671,10 @@
         // Iframe app ready event handler
         rpcManager.registerHandler("ESW_APP_READY_EVENT", async () => {
             await appReadyPromise;
+            unhideIframe();
             const configuration = prepareConfigObject();
             return { configuration };
         });
-
-        // Iframe chat button ready event handler
-        rpcManager.registerHandler("ESW_CHAT_BUTTON_READY_EVENT", (event) => {
-            buttonDimensions.width = event?.data?.buttonDimensions?.width || '';
-            buttonDimensions.height = event?.data?.buttonDimensions?.height || '';
-            unhideIframe();
-        })
 
         // Iframe maximize/minimize event handler
         rpcManager.registerHandler("ESW_APP_MAXIMIZE", handleMaximize);
@@ -771,23 +748,20 @@
 
     function unhideIframe() {
         const iframe = getIframe();
-
         if (iframe) {
-            iframe.style.width = buttonDimensions.width;
-            iframe.style.height = buttonDimensions.height;
             iframe.classList.add("initial");
         }
     }
 
     /**
-    * Load the configuration settings from SCRT 2.0.   
+    * Load the configuration settings from SCRT 2.0.
     * Congiguration object shape:
     * {
     *      "embeddedServiceConfig": {
     *          "customLabels": {},
     *          "standardLabels": {}
     *      }
-    *  } 
+    *  }
     * @returns {Promise}
     */
     function loadConfigurationSettings() {
@@ -978,11 +952,11 @@
     if (!window.agentforce_messaging) {
         window.agentforce_messaging = new AgentforceMessaging();
         window.agentforce_messaging.utilAPI = new AgentforceMessagingUtil();
-        
+
         // Create proxies for embeddedservice_bootstrap and its utilAPI
         window.embeddedservice_bootstrap = createProxy(window.agentforce_messaging, 'agentforce_messaging');
         window.agentforce_messaging.utilAPI = createProxy(
-            window.agentforce_messaging.utilAPI, 
+            window.agentforce_messaging.utilAPI,
             'agentforce_messaging.utilAPI'
         );
     } else {
