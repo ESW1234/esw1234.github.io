@@ -11,6 +11,7 @@
     const TOP_CONTAINER_NAME = "agentforce-messaging";
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
     const LWR_IFRAME_TITLE = "Chat Window";
+	const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
 
     /**
      * Attributes required to construct SCRT 2.0 Service URL.
