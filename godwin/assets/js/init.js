@@ -232,8 +232,8 @@
 			// [Mobile] Remove class that prevents background clicking and scrolling.
 			// Restore document body's scroll position only for mobile devices
 			document.body.classList.remove(PREVENT_SCROLLING_CLASS);
-			if (embeddedservice_bootstrap.documentScrollPosition) {
-				window.scrollTo(0, embeddedservice_bootstrap.documentScrollPosition);
+			if (agentforce_messaging.documentScrollPosition) {
+				window.scrollTo(0, agentforce_messaging.documentScrollPosition);
 			}
 		}
 
@@ -265,10 +265,10 @@
 
 		if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
 			if (document.scrollingElement) {
-				embeddedservice_bootstrap.documentScrollPosition = document.scrollingElement.scrollTop;
+				agentforce_messaging.documentScrollPosition = document.scrollingElement.scrollTop;
 			} else {
 				const docElementRect = document.documentElement.getBoundingClientRect();
-				embeddedservice_bootstrap.documentScrollPosition = Math.abs(docElementRect.top);
+				agentforce_messaging.documentScrollPosition = Math.abs(docElementRect.top);
 			}
 			document.body.classList.add(PREVENT_SCROLLING_CLASS);
 		}
