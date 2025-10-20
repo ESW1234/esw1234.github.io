@@ -8,12 +8,13 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			agentforce_messaging.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			agentforce_messaging.settings.devMode = true;
-			agentforce_messaging.init(
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
 				'00DSG00000WuEp3',
 				'CWC_3',
-				'https://orgfarm-2324c5b062.my.site-com.q0dvu5p83bbx0pgwm0m0qy.wa.crm.dev:6101/ESWCWC41758048113963',
+				'https://orgfarm-43fda76695.my.site-com.lbcvof7nr4d014x3rrdtz03lb15.wc.crm.dev:6101/ESWCWC11760982280050',
 				{
 					scrt2URL: 'https://orgfarm-a504d7a61b.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -23,10 +24,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://orgfarm-2324c5b062.my.site-com.q0dvu5p83bbx0pgwm0m0qy.wa.crm.dev:6101/ESWCWC41758048113963/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
-
-
-	
+<script type='text/javascript' src='https://orgfarm-43fda76695.my.site-com.lbcvof7nr4d014x3rrdtz03lb15.wc.crm.dev:6101/ESWCWC11760982280050/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
