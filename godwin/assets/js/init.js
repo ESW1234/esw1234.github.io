@@ -11,7 +11,7 @@
     const TOP_CONTAINER_NAME = "agentforce-messaging";
     const LWR_IFRAME_NAME = "agentforce-messaging-frame";
     const LWR_IFRAME_TITLE = "Chat Window";
-    const PREVENT_SCROLLING_CLASS = "agentforceMessagingPreventScrolling";
+    const PREVENT_SCROLLING_CLASS = "embeddedMessagingPreventScrolling";
 
     /**
      * Attributes required to construct SCRT 2.0 Service URL.
@@ -44,11 +44,6 @@
 	let appReadyPromise = new Promise((resolve) => {
 		resolveAppReadyPromise = resolve;
 	});
-
-    const hostEvents = {
-        ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMinimized",
-        ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMaximized"
-    };
 
     // =========================
     //  Utils
@@ -219,14 +214,8 @@
     function handleMinimize() {
         const frame = getIframe();
 
-        if (document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
-            // [Mobile] Remove class that prevents background clicking and scrolling.
-            // Restore document body's scroll position only for mobile devices
-            document.body.classList.remove(PREVENT_SCROLLING_CLASS);
-            if (agentforce_messaging.documentScrollPosition) {
-                window.scrollTo(0, agentforce_messaging.documentScrollPosition);
-            }
-        }
+        // [Mobile] Remove class that prevents background clicking and scrolling.
+        document.body.classList.remove(PREVENT_SCROLLING_CLASS);
 
         if (frame) {
             // Update width and height if options are provided
@@ -239,24 +228,16 @@
                 }
             }
 
-            frame.classList.remove("initial");
             frame.classList.add("minimized");
             frame.classList.remove("maximized");
-
-            dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME);
         }
     }
 
     function handleMaximize() {
         const frame = getIframe();
 
-        if(!isDesktop() && !document.body.classList.contains(PREVENT_SCROLLING_CLASS)) {
-            if (document.scrollingElement) {
-                agentforce_messaging.documentScrollPosition = document.scrollingElement.scrollTop;
-            } else {
-                const docElementRect = document.documentElement.getBoundingClientRect();
-                agentforce_messaging.documentScrollPosition = Math.abs(docElementRect.top);
-            }
+        if(!isDesktop()) {
+            // [Mobile] Add class that prevents background clicking and scrolling.
             document.body.classList.add(PREVENT_SCROLLING_CLASS);
         }
 
@@ -271,11 +252,8 @@
                 }
             }
 
-            frame.classList.remove("initial");
             frame.classList.add("maximized");
             frame.classList.remove("minimized");
-
-            dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
         }
     }
 
@@ -464,7 +442,7 @@
             shouldProcessApiCall();
 
             const iframe = getIframe();
-            if (iframe && !iframe.classList.contains("maximized")) {
+            if (iframe && iframe.classList.contains("minimized")) {
                 // Unhide iframe in case hideChatButton was previously called.
                 toggleChatFabVisibility(false);
                 return callRpcClient("launchChat")
@@ -573,6 +551,32 @@
     };
 
     /**
+     * Handle the onEmbeddedMessagingButtonCreated event.
+     * Sets CSS variables for minimized iframe dimensions and unhides the iframe.
+     * @param {CustomEvent} event - Button created event containing button dimensions
+     */
+    function handleButtonCreatedEvent(event) {
+        const buttonWidth = event?.detail?.buttonDimensions?.width;
+        const buttonHeight = event?.detail?.buttonDimensions?.height;
+
+        if (buttonWidth) {
+            document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth);
+        }
+        if (buttonHeight) {
+            document.documentElement.style.setProperty('--minimized-iframe-height', buttonHeight);
+        }
+
+        unhideIframe();
+    }
+
+    /**
+     * Adds event listeners on host window.
+     */
+    function addEventHandlers() {
+        window.addEventListener('onEmbeddedMessagingButtonCreated', handleButtonCreatedEvent);
+    }
+
+    /**
      * Load the bootstrap.css file for this static file.
      */
     function loadCSS() {
@@ -671,7 +675,6 @@
         // Iframe app ready event handler
         rpcManager.registerHandler("ESW_APP_READY_EVENT", async () => {
             await appReadyPromise;
-            unhideIframe();
             const configuration = prepareConfigObject();
             return { configuration };
         });
@@ -793,12 +796,62 @@
      * @param {object} additionalSettings - A key-value mapping.
      */
     function mergeObjects(targetObj, sourceObj) {
+        /**
+         * Helper function to create a map from array items based on key properties
+         * @param {Array} array - The array to create a map from
+         * @param {Function} keyExtractor - Function to extract key from array item
+         * @returns {Map} Map of key to index
+         */
+        function createArrayMap(array, keyExtractor) {
+            const map = new Map();
+            array.forEach((item, index) => {
+                if (typeof item === 'object' && item !== null) {
+                    const key = keyExtractor(item);
+                    if (key !== null) {
+                        map.set(key, index);
+                    }
+                }
+            });
+            return map;
+        }
+
+        /**
+         * Helper function to merge arrays with custom key matching
+         * @param {Array} targetArray - Target array to merge into
+         * @param {Array} sourceArray - Source array to merge from
+         * @param {Function} keyExtractor - Function to extract key from array item
+         */
+        function mergeArraysWithKeyMatching(targetArray, sourceArray, keyExtractor) {
+            const targetMap = createArrayMap(targetArray, keyExtractor);
+            
+            sourceArray.forEach((sourceItem) => {
+                if (typeof sourceItem === 'object' && sourceItem !== null) {
+                    const key = keyExtractor(sourceItem);
+                    if (key !== null && !targetMap.has(key)) {
+                        targetArray.push(sourceItem);
+                    }
+                }
+            });
+        }
+
         Object.keys(sourceObj).forEach((key) => {
             if (Array.isArray(sourceObj[key])) {
                 // Handle array merging
                 if (Array.isArray(targetObj[key])) {
-                    // If both are arrays, append items in source array to target array
-                    targetObj[key].push(...sourceObj[key]);
+                    if (key === 'branding') {
+                        // For branding, merge arrays based on 'n' property
+                        mergeArraysWithKeyMatching(targetObj[key], sourceObj[key], (item) => 
+                            Object.hasOwn(item, 'n') ? item.n : null
+                        );
+                    } else if (key === 'customLabels') {
+                        // For custom labels, merge arrays based on 'sectionName' and 'labelName' properties
+                        mergeArraysWithKeyMatching(targetObj[key], sourceObj[key], (item) => 
+                            (Object.hasOwn(item, 'sectionName') && Object.hasOwn(item, 'labelName')) 
+                                ? item.sectionName + item.labelName 
+                                : null
+                        );
+                    }
+                    // For other array types, keep target array as is (no merging)
                 } else if (targetObj[key] === undefined) {
                     // If array exists in source but not target, just use it
                     targetObj[key] = sourceObj[key];
@@ -812,6 +865,7 @@
             }
         });
     }
+    
     AgentforceMessaging.prototype.createIframe = function createIframe() {
         return new Promise((resolve, reject) => {
             try {
@@ -872,6 +926,9 @@
             agentforce_messaging.settings.snippetConfig = snippetConfig;
             mergeObjects(agentforce_messaging.settings, snippetConfig);
 
+            // Add event listeners.
+            addEventHandlers();
+
             // Load CSS file.
             const cssPromise = loadCSS()
                 .then(() => {
@@ -922,6 +979,13 @@
         } catch (initError) {
             throw new Error(initError);
         }
+    };
+
+    /**
+     * Remove event listeners on host window.
+     */
+    AgentforceMessaging.prototype.removeEventHandlers = function removeEventHandlers() {
+        window.removeEventListener('onEmbeddedMessagingButtonCreated', handleButtonCreatedEvent);
     };
 
     // Function to create a proxy that forwards to a target object
