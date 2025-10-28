@@ -559,11 +559,13 @@
         const buttonWidth = event?.detail?.buttonDimensions?.width;
         const buttonHeight = event?.detail?.buttonDimensions?.height;
 
+		const baseFontSize = window.getComputedStyle(document.documentElement).getPropertyValue('font-size')
+
         if (buttonWidth) {
-            document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth + "px");
+            document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth / baseFontSize + "rem");
         }
         if (buttonHeight) {
-            document.documentElement.style.setProperty('--minimized-iframe-height', buttonHeight + "px");
+            document.documentElement.style.setProperty('--minimized-iframe-height', buttonHeight / bazeFontSize + "rem");
         }
 
         unhideIframe();
