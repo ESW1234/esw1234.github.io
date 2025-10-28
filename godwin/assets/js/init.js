@@ -560,10 +560,10 @@
         const buttonHeight = event?.detail?.buttonDimensions?.height;
 
         if (buttonWidth) {
-            document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth);
+            document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth + "px");
         }
         if (buttonHeight) {
-            document.documentElement.style.setProperty('--minimized-iframe-height', buttonHeight);
+            document.documentElement.style.setProperty('--minimized-iframe-height', buttonHeight + "px");
         }
 
         unhideIframe();
