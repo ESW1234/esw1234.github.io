@@ -24,22 +24,14 @@
 	    		try {
 	    			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 	    			embeddedservice_bootstrap.settings.devMode = true;
-	    			// embeddedservice_bootstrap.init(
-	    			// 	'00DSG000003UGaH',
-	    			// 	'CWC',
-	    			// 	'https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWCWC1757100806601',
-	    			// 	{
-	    			// 		scrt2URL: 'https://godwin-sdb6.demo.test1.my.pc-rnd.salesforce-scrt.com'
-	    			// 	}
-	    			// );
-					embeddedservice_bootstrap.init(
-						'00DSG00000YKxI5',
-						'ASA_1',
-						'https://orgfarm-956de39b86.test1.my.pc-rnd.site.com/ESWASA11757374899000',
-						{
-							scrt2URL: 'https://orgfarm-956de39b86.test1.my.pc-rnd.salesforce-scrt.com'
-						}
-					);
+	    			embeddedservice_bootstrap.init(
+	    				'00DSG000003UGaH',
+	    				'CWC',
+	    				'https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWCWC1757100806601',
+	    				{
+	    					scrt2URL: 'https://godwin-sdb6.demo.test1.my.pc-rnd.salesforce-scrt.com'
+	    				}
+	    			);
 	    		} catch (err) {
 	    			console.error('Error loading Embedded Messaging: ', err);
 	    		}
