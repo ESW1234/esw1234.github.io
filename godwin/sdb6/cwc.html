@@ -24,6 +24,21 @@
 	    		try {
 	    			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 	    			embeddedservice_bootstrap.settings.devMode = true;
+					agentforce_messaging.settings.embeddedServiceConfig = {
+					   "branding":[
+					      {
+					         "n":"botImage",
+					         "v":"https://icons.iconarchive.com/icons/hopstarter/malware/256/Spy-icon.png"
+					      }
+					   ],
+					   "customLabels":[
+					      {
+					         "sectionName":"EmbeddedMessagingChatHeader",
+					         "LabelName":"DefaultHeaderText",
+					         "LabelValue":"This is my custom label"
+					      }
+					   ]
+					};
 	    			embeddedservice_bootstrap.init(
 						'00DSG000003UGaH',
 						'CWC3',
