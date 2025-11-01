@@ -4,24 +4,24 @@
         <title>Test Page</title>
    </head>
    <body><script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+    function initEmbeddedMessaging() {
+        try {
+            embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-			embeddedservice_bootstrap.init(
-				'00Dxx0000006Gnj',
-				'MIAWChannel',
-				'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWChannel1760285033828',
-				{
-					scrt2URL: 'https://chatorg.my.localhost.sfdcdev.salesforce-scrt.com:18000'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
+            embeddedservice_bootstrap.init(
+                '00Dxx0000006Gnj',
+                'MIAWPreChat',
+                'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWPreChat1760792844496',
+                {
+                    scrt2URL: 'https://chatorg.my.localhost.sfdcdev.salesforce-scrt.com:18000'
+                }
+            );
+        } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+        }
+    };
 </script>
-<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWChannel1760285033828/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWPreChat1760792844496/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
