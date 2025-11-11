@@ -13,15 +13,11 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-window.addEventListener("onEmbeddedMessagingReady", () => {
-            embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                    "Language" : "Arabic"
-             });
-});  
+
 			embeddedservice_bootstrap.init(
 				'00DSG00000aBjhp',
-				'Auth_DN',
-				'https://orgfarm-89cf0137bd.test1.my.pc-rnd.site.com/ESWAuthDN1762876035682',
+				'Auth_Channel',
+				'https://orgfarm-89cf0137bd.test1.my.pc-rnd.site.com/ESWAuthChannel1762877624151',
 				{
 					scrt2URL: 'https://orgfarm-89cf0137bd.test1.my.pc-rnd.salesforce-scrt.com'
 				}
@@ -31,6 +27,6 @@ window.addEventListener("onEmbeddedMessagingReady", () => {
 		}
 	};
 </script>
-<script type='text/javascript' src='https://orgfarm-89cf0137bd.test1.my.pc-rnd.site.com/ESWAuthDN1762876035682/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-89cf0137bd.test1.my.pc-rnd.site.com/ESWAuthChannel1762877624151/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
