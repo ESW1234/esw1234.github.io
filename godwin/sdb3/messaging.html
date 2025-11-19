@@ -67,6 +67,30 @@
 		  	console.log("Received the onEmbeddedMessagingBusinessHoursEnded event…");
 		 	console.log("Event detail: ", event.detail);
 		});
+
+		// Listen for visibility changes
+	    document.addEventListener('visibilitychange', () => {
+	      if (document.visibilityState === 'hidden') {
+	        // Call the API when the page is hidden
+	        embeddedservice_bootstrap.userVerificationAPI
+	          .clearSession(true)
+	          .then(() => {
+	            // ✅ Success handling
+	            console.log('Session cleared successfully.');
+				embeddedservice_bootstrap.utilAPI.removeAllComponents();
+				console.log('Removed components successfully.');
+				debugger;
+	          })
+	          .catch(error => {
+	            // ❌ Error handling
+	            console.error('Error clearing session:', error);
+	          })
+	          .finally(() => {
+	            // 🛡️ Code that should run regardless of outcome
+	            console.log('clearSession finished (success or error).');
+	          });
+	      }
+	    });
 	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
