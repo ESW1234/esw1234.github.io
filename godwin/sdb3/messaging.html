@@ -19,6 +19,9 @@
 
 	<script type='text/javascript'>
 		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+		var isInitialized = false,
+		    isLaunched = false,
+		    isWithinBusinessHours = false;
 
 		function clearAuthSession() {
 			console.log("Clearing user session.");
