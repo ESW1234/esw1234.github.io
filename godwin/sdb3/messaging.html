@@ -77,7 +77,7 @@
 		        var launchChat = () => {
 		            console.log('pointerdown: isWithinBusinessHours = ' + isWithinBusinessHours);
 		            if (isWithinBusinessHours) {
-		                window? .embeddedservice_bootstrap?.utilAPI?.launchChat();
+		                window?.embeddedservice_bootstrap?.utilAPI?.launchChat();
 		            }
 		        };
 		        document.getElementById("embeddedMessagingConversationButton").addEventListener("pointerdown", launchChat, true);
