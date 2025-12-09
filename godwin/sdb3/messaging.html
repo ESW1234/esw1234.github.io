@@ -71,6 +71,27 @@
 		    isWithinBusinessHours = true;
 		    console.log('onEmbeddedMessagingWithinBusinessHours: ' + isWithinBusinessHours);
 		});
+		window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+		    console.log('onEmbeddedMessagingButtonCreated: fired, isWithinBusinessHours = ' + isWithinBusinessHours);
+		    try {
+		        var launchChat = () => {
+		            console.log('pointerdown: isWithinBusinessHours = ' + isWithinBusinessHours);
+		            if (isWithinBusinessHours) {
+		                window ? .embeddedservice_bootstrap ? .utilAPI ? .launchChat();
+		            }
+		        };
+		        document.getElementById("embeddedMessagingConversationButton").addEventListener("pointerdown", launchChat, true);
+		        if (!window ? .embeddedservice_bootstrap ? .prechatAPI || isLaunched)
+		            return;
+		        if (isWithinBusinessHours) {
+		            console.log('onEmbeddedMessagingButtonCreated: auto-launching chat');
+		            window ? .embeddedservice_bootstrap ? .utilAPI ? .launchChat();
+		            isLaunched = true;
+		        }
+		    } catch (err) {
+		        console.error('Error launching chat: ', err);
+		    }
+		});
 	  </script>
 	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
