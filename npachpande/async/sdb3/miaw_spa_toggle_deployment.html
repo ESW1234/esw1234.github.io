@@ -1,6 +1,14 @@
 <html>
 <body>
+<button onclick="toggleDeployment()">Toggle Deployment</button>
 <script type='text/javascript'>
+
+	function toggleDeployment() {
+  		embeddedservice_bootstrap.userVerificationAPI.clearSession(true).then(() => {
+		  embeddedservice_bootstrap.utilAPI.removeAllComponents();
+		});
+	};
+
     function initEmbeddedMessaging() {
   		try {
   			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
