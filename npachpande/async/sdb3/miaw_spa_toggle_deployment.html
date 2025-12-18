@@ -13,15 +13,15 @@
 		});
 	};
 
-    function initEmbeddedMessaging() {
+    function initEmbeddedMessaging(deploymentName, siteUrl) {
   		try {
   			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
   			embeddedservice_bootstrap.settings.devMode = true;
   
   			embeddedservice_bootstrap.init(
   				'00DSB00000aGFJL',
-  				'MIAW_4',
-  				'https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWMIAW41764797622078',
+  				deploymentName,
+  				siteUrl,
   				{
   					scrt2URL: 'https://orgfarm-d585323017.test1.my.pc-rnd.salesforce-scrt.com'
   				}
@@ -31,24 +31,27 @@
   		}
 	};
   
-    function loadInitScript() {
+    function loadInitScript(isGuest = true) {
+		const deploymentName = isGuest ? 'guestDeployment' : 'verifiedDeployment';
+		const siteUrl = isGuest ? 'https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWguestDeployment1766092125646' : 'https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWverifiedDeployment1766092284663';
+		
         let script = document.createElement("script");
-        script.src = "https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWMIAW41764797622078/assets/js/bootstrap.js";
+        script.src = siteUrl + "/assets/js/bootstrap.js";
         script.type = "text/javascript";
 
         script.onerror = () => {
             console.error("Failed to load bootstrap.js");
         };
         script.onload = () => {
-            initEmbeddedMessaging();
+            initEmbeddedMessaging(deploymentName, siteUrl);
         };
 
         document.body.appendChild(script);
     };
 
     document.addEventListener("DOMContentLoaded", (event) => {
-        // optionally add a check for document.body       
-        loadInitScript();
+        // default to guest deployment
+        loadInitScript(true);
     });
 </script>
 
