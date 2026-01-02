@@ -12,6 +12,10 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
 
+			const myElement = document.querySelector('.chat-container');
+			embeddedservice_bootstrap.settings.targetElement = myElement;
+			embeddedservice_bootstrap.settings.displayMode = 'inline';
+
 			embeddedservice_bootstrap.init(
 				'00DSB00000aGFJL',
 				'CWC_8',
