@@ -102,7 +102,7 @@
 			console.log(data.detail);
 		});
 	</script>
-	<script type='text/javascript'>
+	<!-- <script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
@@ -121,10 +121,29 @@
 			}
 		};
 	</script>
-	<!---->
+	<!--
 	<script type='text/javascript' src='https://orgfarm-7bf91d4a0a.my.site-com.sqf1duuq34t60l3zy9bcwmf1c1ru3.wa.crm.dev:6101/ESWCWC11767990406637/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 	<!--
-	<script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
-	-->
+	<script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/init.js' onload='initEmbeddedMessaging()'></script> -->
+	<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DSB00000da1NJ',
+				'CWC01_External',
+				'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129',
+				{
+					scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
    </body>
 </html>
