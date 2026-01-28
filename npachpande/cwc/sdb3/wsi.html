@@ -25,8 +25,17 @@ body {
   <!-- <img src="https://esw1234.github.io/wsi.png" alt="Background"> -->
 </div>
 
-<button type="button" class="custom-fab" onclick="onCustomFabClick()">my custom fab</button>
+<button type="button" class="custom-fab" onclick="launchChat()">launch chat</button>
+	<button type="button" class="custom-fab" onclick="sendNudge()">send nudge</button>
 <script type='text/javascript'>
+	fucntion sendNudge(nudge) {
+		embeddedservice_bootstrap.utilAPI.sendTextMessage("Text");
+	}
+
+	function launchChat() {
+		embeddedservice_bootstrap.utilAPI.launchChat();
+	}
+	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
