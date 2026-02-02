@@ -30,7 +30,7 @@ body {
 <script type='text/javascript'>
     let conversationOpenedPromise, conversationOpenedPromiseResolve;
     let firstBotMessagePromise, firstBotMessagePromiseResolve;
-    let oliveReadyPromise;
+    let oliveReadyPromise, oliveReadyPromiseResolve;
     let isNewConversation = false;
 
     window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -40,7 +40,9 @@ body {
         firstBotMessagePromise = new Promise((resolve) => {
             firstBotMessagePromiseResolve = resolve;
         });
-        oliveReadyPromise = new Promise();
+        oliveReadyPromise = new Promise((resolve) => {
+            oliveReadyPromiseResolve = resolve;
+        });
     });
 
     window.addEventListener("onEmbeddedMessagingConversationStarted", () => {
@@ -48,11 +50,7 @@ body {
     });
 
     window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
-        if (isNewConversation) {
-            oliveReadyPromise = firstBotMessagePromise;
-        } else {
-            oliveReadyPromise = conversationOpenedPromise;
-        }
+        oliveReadyPromiseResolve = isNewConversation ? firstBotMessagePromiseResolve : conversationOpenedPromiseResolve;
         resolveConversationOpenedPromise();
     });
 
