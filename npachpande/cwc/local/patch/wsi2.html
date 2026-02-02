@@ -32,9 +32,7 @@ body {
     let isNewConversation = false;
 
     window.addEventListener("onEmbeddedMessagingReady", () => {
-        oliveReadyPromise = new Promise((resolve) => {
-            oliveReadyPromiseResolve = resolve;
-        });
+        resetOliveReadyPromise();
     });
 
     window.addEventListener("onEmbeddedMessagingConversationStarted", () => {
@@ -50,6 +48,12 @@ body {
     window.addEventListener("onEmbeddedMessagingFirstBotMessageSent", () => {
         resolveOliveReadyPromise();
     });
+
+    function resetOliveReadyPromise() {
+        oliveReadyPromise = new Promise((resolve) => {
+            oliveReadyPromiseResolve = resolve;
+        });
+    }
 
     function resolveOliveReadyPromise() {
         if (oliveReadyPromiseResolve) {
