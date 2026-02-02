@@ -28,18 +28,10 @@ body {
 <input type="text" id="nudgeInput"><br><br>
 <button type="button" onclick="sendNudge()">send nudge</button>
 <script type='text/javascript'>
-    let conversationOpenedPromise, conversationOpenedPromiseResolve;
-    let firstBotMessagePromise, firstBotMessagePromiseResolve;
     let oliveReadyPromise, oliveReadyPromiseResolve;
     let isNewConversation = false;
 
     window.addEventListener("onEmbeddedMessagingReady", () => {
-        conversationOpenedPromise = new Promise((resolve) => {
-            conversationOpenedPromiseResolve = resolve;
-        });
-        firstBotMessagePromise = new Promise((resolve) => {
-            firstBotMessagePromiseResolve = resolve;
-        });
         oliveReadyPromise = new Promise((resolve) => {
             oliveReadyPromiseResolve = resolve;
         });
@@ -50,23 +42,18 @@ body {
     });
 
     window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
-        oliveReadyPromiseResolve = isNewConversation ? firstBotMessagePromiseResolve : conversationOpenedPromiseResolve;
-        resolveConversationOpenedPromise();
+        if (!isNewConversation) {
+            resolveOliveReadyPromise();
+        }
     });
 
     window.addEventListener("onEmbeddedMessagingFirstBotMessageSent", () => {
-        resolveFirstBotMessagePromise();
+        resolveOliveReadyPromise();
     });
 
-    function resolveConversationOpenedPromise() {
-        if (conversationOpenedPromiseResolve) {
-            conversationOpenedPromiseResolve();
-        }
-    }
-
-    function resolveFirstBotMessagePromise() {
-        if (firstBotMessagePromiseResolve) {
-            firstBotMessagePromiseResolve();
+    function resolveOliveReadyPromise() {
+        if (oliveReadyPromiseResolve) {
+            oliveReadyPromiseResolve();
         }
     }
 	
