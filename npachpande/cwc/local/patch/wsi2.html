@@ -40,6 +40,7 @@ body {
         firstBotMessagePromise = new Promise((resolve) => {
             firstBotMessagePromiseResolve = resolve;
         });
+        oliveReadyPromise = new Promise();
     });
 
     window.addEventListener("onEmbeddedMessagingConversationStarted", () => {
