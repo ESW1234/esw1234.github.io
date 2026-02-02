@@ -25,8 +25,8 @@ body {
   <!-- <img src="https://esw1234.github.io/wsi.png" alt="Background"> -->
 </div>
 
-
-<button type="button" class="custom-fab" onclick="sendNudge()">send nudge</button>
+<input type="text" id="nudgeInput"><br><br>
+<button type="button" onclick="sendNudge()">send nudge</button>
 <script type='text/javascript'>
     let oliveReadyPromise, oliveReadyPromiseResolve;
 
@@ -34,18 +34,9 @@ body {
         oliveReadyPromise = new Promise((resolve) => {
             oliveReadyPromiseResolve = resolve;
         });
-        if (Boolean(localStorage.getItem("isEmbeddedMessagingFirstBotMessageSent"))) {
-            resolveOliveReadyPromise();
-        }
     });
 
-    window.addEventListener("onEmbeddedMessagingFirstBotMessageSent", () => {
-        localStorage.setItem("isEmbeddedMessagingFirstBotMessageSent", true);
-        resolveOliveReadyPromise();
-    });
-
-     window.addEventListener("onEmbeddedMessagingConversationClosed", () => {
-        localStorage.setItem("isEmbeddedMessagingFirstBotMessageSent", false);
+    window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
         resolveOliveReadyPromise();
     });
 
@@ -55,17 +46,14 @@ body {
         }
     }
 	
-	function sendNudge(nudge) {
+	function sendNudge() {
+        const nudgeText = document.getElementById("nudgeInput").value;
         embeddedservice_bootstrap.utilAPI.launchChat();
         oliveReadyPromise.then(() => {
-            embeddedservice_bootstrap.utilAPI.sendTextMessage("Text");
+            embeddedservice_bootstrap.utilAPI.sendTextMessage(nudgeText);
         });
 	}
 
-	function launchChat() {
-		embeddedservice_bootstrap.utilAPI.launchChat();
-	}
-	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
