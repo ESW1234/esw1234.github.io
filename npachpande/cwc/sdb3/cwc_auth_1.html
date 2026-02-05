@@ -7,17 +7,17 @@
 
 <script type='text/javascript'>
 	async function fetchAndSetIdentityToken() {
-		const identityToken = await fetchIdentityToken();
+		const identityTokenData = await fetchIdentityToken();
 		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
 			identityTokenType: "JWT",
-			identityToken: identityToken
+			identityToken: identityTokenData.accessToken
 		});
 	}
 
 	function fetchIdentityToken() {
 		const porticoURL = "https://portico.sfproxy.controltelemetry-s.aws-esvc1-useast2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject@cwc.com&jwtExpInSeconds=600&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 		return fetch(porticoURL).then(function(response) {
-			return response.json().accessToken;
+			return response.json();
 		});
 	}
 
