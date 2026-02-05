@@ -5,6 +5,8 @@
 </head>
 <body>
 
+<button type="button" onclick="clearSession()">clearSession</button>
+
 <script type='text/javascript'>
 	async function fetchAndSetIdentityToken() {
 		const identityTokenData = await fetchIdentityToken();
@@ -21,6 +23,9 @@
 		});
 	}
 
+	function clearSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+	}
 
 	window.addEventListener("onEmbeddedMessagingReady", () => {
 		 console.log("Received the onEmbeddedMessagingReady event…");
