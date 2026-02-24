@@ -10,6 +10,11 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.embeddedServiceConfig = {
+				embeddedServiceMessagingChannel: {
+					authMode: "SalesforceSessionToken"
+				}
+			};
 
 			/*
 			// SDB3
