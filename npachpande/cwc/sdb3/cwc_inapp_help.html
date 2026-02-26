@@ -13,7 +13,7 @@
 		embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
 			identityTokenType: "SalesforceSessionToken",
 			identityToken: identityToken,
-      myDomainUrl: "https://orgfarm-d585323017.test1.my.pc-rnd.salesforce.com"
+      		myDomainUrl: "https://orgfarm-d585323017.test1.my.pc-rnd.salesforce.com"
 		});
 	}
 
@@ -43,7 +43,12 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.devMode = true;
+      		embeddedservice_bootstrap.settings.devMode = true;
+			embeddedservice_bootstrap.settings.embeddedServiceConfig = {
+			    embeddedServiceMessagingChannel: {
+			        authMode: "SalesforceSessionAuth"
+			    }
+			};
 
 			embeddedservice_bootstrap.init(
 				'00DSB00000aGFJL',
