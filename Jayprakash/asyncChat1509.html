@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<br><br>
+		<title>In App Web Client for giadev1 SDB2 org with ID: 00DGB0000000001. This is for testing CSS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	</head>
+
+	<body>
+		<p>
+			<a id="editThisPageLink" target="_blank" style="color:red">Edit this page</a>
+		</p>
+		
+		<script>
+			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+		</script>
+		<br>
+		<h2 align="center"><font color ="green">STG Gov ESWCHAT </font></h2>
+
+		<br/>
+
+		<!-- 5.0 snippet -->
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DGB0000000001',
+				'EmbeddedServiceForWeb',
+				'https://jpdatani.giadev1.pc-rnd.force.com/ESWEmbeddedServiceForWeb1749730579471',
+				{
+					scrt2URL: 'https://sdb2bt.giadev1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://jpdatani.giadev1.pc-rnd.force.com/ESWEmbeddedServiceForWeb1749730579471/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>    	</body>
+</html>
