@@ -10,6 +10,8 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.settings.expSiteAuthMode = "ExperienceSiteAuth";
 			
 			// SDB3
 			embeddedservice_bootstrap.init(
@@ -17,7 +19,9 @@
 				'CWC_8',
 				'https://orgfarm-98c2ae2584.my.site-com.m0yvfb6f6po81l80hevqmjcd.wb.crm.dev:6101/ESWCWC11773184814398',
 				{
-					scrt2URL: 'https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
+					scrt2URL: 'https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net',
+					expSiteUrl: ,
+					isExpSiteGuestUser: false
 				}
 			);
 
