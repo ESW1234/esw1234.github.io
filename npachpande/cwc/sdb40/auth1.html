@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DoB000000ljzO',
+				'CWC_Auth_1',
+				'https://orgfarm-20bf165a71.test2.my.pc-rnd.site.com/ESWCWCAuth11774904606539',
+				{
+					scrt2URL: 'https://orgfarm-20bf165a71.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-20bf165a71.test2.my.pc-rnd.site.com/ESWCWCAuth11774904606539/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+</body>
+</html>
