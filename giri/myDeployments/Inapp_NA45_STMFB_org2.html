@@ -14,14 +14,14 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
-			embeddedservice_bootstrap.settings.language = 'en'; // For example, enter 'en' or 'en-US'
-			embeddedservice_bootstrap.settings.debugMode = true; 
-		embeddedservice_bootstrap.init(
-				'00DS70000000V2v',
-				'InAppDep',
-				'https://org4.stmfb.my.stm.salesforce.com',
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DXR000000BIWH',
+				'FreddyWeb',
+				'https://orgfarm-9a9f1b9f85.test1.my.pc-rnd.site.com/ESWFreddyWeb1737186652093',
 				{
-					scrt2URL: 'https://org4.stmfb.my.stm.salesforce-scrt.com'
+					scrt2URL: 'https://orgfarm-9a9f1b9f85.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -29,7 +29,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://org4.stmfb.lightning.stm.force.com/embeddedservice/asyncclient/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-9a9f1b9f85.test1.my.pc-rnd.site.com/ESWFreddyWeb1737186652093/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script
 
 </body>
 </html>
