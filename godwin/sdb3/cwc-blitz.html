@@ -28,45 +28,22 @@
 	</script>
 	<div id="chat-container">
 	</div>
-	<!-- godwin@agent.sdb3.org -->
-  <script type='text/javascript'>
-  	function initEmbeddedMessaging() {
-  		try {
-  			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-            embeddedservice_bootstrap.settings.displayMode = 'inline';
-            embeddedservice_bootstrap.settings.targetElement = document.querySelector('#chat-container');
-			
-  			embeddedservice_bootstrap.init(
-  				'00DSB00000da1NJ',
-  				'CWC08_External',
-  				'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC08External1763578855396',
-  				{
-  					scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
-  				}
-  			);
-  		} catch (err) {
-  			console.error('Error loading Embedded Messaging: ', err);
-  		}
-  	};
-  </script>
-  <!---->
-  <script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC08External1763578855396/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-	<!--
-	<script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
-	<!---->
-
-	<!-- godwin@sdb3.org -->
-    <!--<script type='text/javascript'>
+	<script type='text/javascript'>
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-	
+				embeddedservice_bootstrap.settings.expSiteAuthMode = true;
+
 				embeddedservice_bootstrap.init(
-					'00DSB0000004st3',
-					'Customer_Web_Client',
-					'https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWCustomerWebClient1756835232970',
+					'00DSB00000da1NJ',
+					'cwc_dev_01',
+					'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWcwcdev011765237733238',
 					{
-						scrt2URL: 'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce-scrt.com'
+						scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com',
+						expSiteUrl: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/customerservice',
+						userId: '<>',
+        				expSiteContext: 'AURA',
+        				isExpSiteGuestUser: false
 					}
 				);
 			} catch (err) {
@@ -74,6 +51,6 @@
 			}
 		};
 	</script>
-	<script type='text/javascript' src='https://godwinlaw-sdb3.test1.my.pc-rnd.site.com/ESWCustomerWebClient1756835232970/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>-->
+	<script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWcwcdev011765237733238/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
    </body>
 </html>
