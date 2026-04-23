@@ -1,0 +1,42 @@
+
+<html>
+<head>
+<title>InApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"+Sheet2!B21>
+</head>
+<body>
+<h3 style="white-space: pre;"> 
+ECv2 CWC Voice Web Page<br>
+Org Id:		00DoB000001xDrt
+Instance:	SDB40
+URL:		https://sdb40.test2.pc-rnd.pc-aws.salesforce.com/
+User/PW:	cwcblitzuser1@test.com / test12345<br>
+ASA NGA Agent:		cwcBlitzAgent1
+Escalation Flow:		CWCFlow1
+ECv2 Deployment:	cwcBlitzChannel1
+Messaging Channel:	cwcBlitzChannel1
+</h3>
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+<script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+<!-- <script type='text/javascript' src='https://service.force.com/asyncclient/bootstrap.js'>> -->
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DoB000001PM6P',
+				'cwcBlitzChannel6',
+				'https://orgfarm-ae26564531.test2.my.pc-rnd.site.com/ESWcwcBlitzChannel61776932823490',
+				{
+					scrt2URL: 'https://orgfarm-ae26564531.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-ae26564531.test2.my.pc-rnd.site.com/ESWcwcBlitzChannel61776932823490/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
