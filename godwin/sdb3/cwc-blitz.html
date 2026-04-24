@@ -32,18 +32,18 @@
 		function initEmbeddedMessaging() {
 			try {
 				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-				embeddedservice_bootstrap.settings.expSiteAuthMode = true;
+				//embeddedservice_bootstrap.settings.expSiteAuthMode = true;
 
 				embeddedservice_bootstrap.init(
 					'00DSB00000da1NJ',
 					'cwc_dev_01',
 					'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWcwcdev011765237733238',
 					{
-						scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com',
-						expSiteUrl: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/customerservice',
-						userId: '<>',
-        				expSiteContext: 'AURA',
-        				isExpSiteGuestUser: false
+						scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+						// expSiteUrl: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/customerservice',
+						// userId: '<>',
+		   				// expSiteContext: 'AURA',
+		  				// isExpSiteGuestUser: false
 					}
 				);
 			} catch (err) {
