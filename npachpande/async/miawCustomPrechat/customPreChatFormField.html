@@ -1,0 +1,18 @@
+<template>
+    <template lwc:if={isTypeChoiceList}>
+        <lightning-combobox key={fieldInfo.name}
+                            label={fieldInfo.labels.display}
+                            options={choiceListOptions}
+                            value={choiceListDefaultValue}
+                            required={fieldInfo.required}>
+        </lightning-combobox>
+    </template>
+    <template lwc:else>
+        <lightning-input key={fieldInfo.name}
+                         type={type}
+                         label={fieldInfo.labels.display}
+                         max-length={fieldInfo.maxLength}
+                         required={fieldInfo.required}>
+        </lightning-input>
+    </template>
+</template>
