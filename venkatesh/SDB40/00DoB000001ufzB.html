@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIAW ECv1 Test Page (Created by Claude Code)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: #032d60;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .info p { margin: 8px 0; }
+        .label { font-weight: bold; color: #032d60; }
+        .tag { display: inline-block; background: #e8f4fd; color: #032d60; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MIAW Test Page <span class="tag">_cc</span></h1>
+        <p>Embedded Messaging for In-App and Web — ECv1</p>
+    </div>
+    <div class="info">
+        <p><span class="label">Org URL:</span> https://orgfarm-30a1268fe2.test2.my.pc-rnd.site.com/ESWECv1Channelcc</p>
+        <p><span class="label">Deployment:</span> ECv1_Channel_cc</p>
+        <p><span class="label">Channel:</span> ECv1_Channel_cc</p>
+        <p><span class="label">Generated:</span> 2026-04-27T05:10:01Z</p>
+        <p>The chat widget should appear in the bottom-right corner.</p>
+    </div>
+
+    <script type='text/javascript'>
+        function initEmbeddedMessaging() {
+            try {
+                embeddedservice_bootstrap.settings.language = 'en_US';
+                embeddedservice_bootstrap.init(
+                    '00DoB000001ufzB',
+                    'ECv1_Channel_cc',
+                    'https://orgfarm-30a1268fe2.test2.my.pc-rnd.site.com/ESWECv1Channelcc',
+                    {
+                        scrt2URL: 'https://orgfarm-30a1268fe2.test2.my.pc-rnd.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        }
+    </script>
+    <script type='text/javascript' src='https://orgfarm-30a1268fe2.test2.my.pc-rnd.site.com/ESWECv1Channelcc/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
