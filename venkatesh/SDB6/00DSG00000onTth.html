@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIAW ECv1 Test Page — SDB6</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
         .header { background: #032d60; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
         .info { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .info p { margin: 8px 0; }
         .label { font-weight: bold; color: #032d60; }
         .tag { display: inline-block; background: #e8f4fd; color: #032d60; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
         .badge { background: #2e844a; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px; }
+        .flow { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
+        .flow h2 { color: #032d60; font-size: 14px; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.05em; }
+        .flow-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .flow-table th { background: #032d60; color: white; padding: 8px 12px; text-align: left; font-weight: 600; }
+        .flow-table td { padding: 8px 12px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+        .flow-table tr:last-child td { border-bottom: none; }
+        .flow-table tr:nth-child(even) td { background: #f9fafb; }
+        .flow-step { font-weight: 600; color: #032d60; white-space: nowrap; }
+        .flow-name { font-family: monospace; background: #f3f4f6; padding: 1px 6px; border-radius: 3px; font-size: 12px; }
+        .flow-arrow { color: #9ca3af; text-align: center; font-size: 16px; padding: 4px 8px; }
     </style>
 </head>
 <body>
@@ -27,6 +37,78 @@
         <p><span class="label">Site:</span> ESW_ECv1_Channel_cc_17774416803791</p>
         <p><span class="label">Generated:</span> 2026-04-29</p>
         <p>The chat widget should appear in the bottom-right corner.</p>
+    </div>
+
+    <div class="flow">
+        <h2>Routing Flow</h2>
+        <table class="flow-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Step</th>
+                    <th>Component</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="flow-arrow">1</td>
+                    <td class="flow-step">End User Page</td>
+                    <td><span class="flow-name">ESW_ECv1_Channel_cc_17774416803791</span></td>
+                    <td>Bootstrap URL: <span class="flow-name">https://orgfarm-040c20beec.test1.my.pc-rnd.site.com/ESWECv1Channelcc1777441680379/assets/js/bootstrap.min.js</span></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">↓</td>
+                    <td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">2</td>
+                    <td class="flow-step">Deployment</td>
+                    <td><span class="flow-name">ECv1_Channel_cc</span></td>
+                    <td>EmbeddedServiceConfig ID: <span class="flow-name">04ISG000000B1Qb2AK</span> — scrt2: <span class="flow-name">https://orgfarm-040c20beec.test1.my.pc-rnd.salesforce-scrt.com</span></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">↓</td>
+                    <td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">3</td>
+                    <td class="flow-step">Messaging Channel</td>
+                    <td><span class="flow-name">ECv1_Channel_cc</span></td>
+                    <td>MessagingChannel ID: <span class="flow-name">0MjSG000000MI370AG</span></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">↓</td>
+                    <td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">4</td>
+                    <td class="flow-step">Omni-Channel Flow</td>
+                    <td><span class="flow-name">ECv1_Flow_cc</span></td>
+                    <td>RoutingFlow — routes work to queue</td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">↓</td>
+                    <td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">5</td>
+                    <td class="flow-step">Queue</td>
+                    <td><span class="flow-name">ECv1_Queue_cc</span></td>
+                    <td>Queue ID: <span class="flow-name">00GSG00000JkN8L2AV</span> — Routing Config: <span class="flow-name">ECv1_RC_cc</span></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">↓</td>
+                    <td></td><td></td><td></td>
+                </tr>
+                <tr>
+                    <td class="flow-arrow">6</td>
+                    <td class="flow-step">Human Agent</td>
+                    <td><span class="flow-name">epic.out.46ff840d242a@orgfarm.salesforce.com</span></td>
+                    <td>User ID: <span class="flow-name">005SG00000ZYeenYAD</span> — answers in Omni-Channel widget</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script type='text/javascript'>
