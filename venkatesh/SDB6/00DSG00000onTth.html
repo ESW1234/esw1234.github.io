@@ -14,11 +14,11 @@
         .badge { background: #2e844a; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px; }
         .flow { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
         .flow h2 { color: #032d60; font-size: 14px; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.05em; }
-        .flow-chain { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; font-size: 13px; }
-        .flow-node { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 14px; }
+        .flow-chain { display: flex; align-items: center; gap: 4px; font-size: 13px; overflow-x: auto; white-space: nowrap; }
+        .flow-node { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 14px; flex-shrink: 0; }
         .flow-node-label { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
         .flow-node-name { font-family: monospace; font-size: 13px; color: #032d60; font-weight: 600; }
-        .flow-sep { color: #9ca3af; font-size: 18px; padding: 0 2px; }
+        .flow-sep { color: #9ca3af; font-size: 18px; flex-shrink: 0; }
     </style>
 </head>
 <body>
@@ -47,11 +47,6 @@
             <div class="flow-node">
                 <div class="flow-node-label">Messaging Channel</div>
                 <div class="flow-node-name">ECv1_Channel_cc</div>
-            </div>
-            <span class="flow-sep">→</span>
-            <div class="flow-node">
-                <div class="flow-node-label">Omni-Channel Flow</div>
-                <div class="flow-node-name">ECv1_Flow_cc</div>
             </div>
             <span class="flow-sep">→</span>
             <div class="flow-node">
