@@ -25,7 +25,34 @@
 	</style>
 	<script type='text/javascript'>
 		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
-	</script>
+		var isInitialized = false,
+		    isLaunched = false,
+		    isWithinBusinessHours = false;
+
+		function clearAuthSession() {
+			console.log("Clearing user session.");
+			embeddedservice_bootstrap.userVerificationAPI.clearSession();
+		}
+
+		function setIdentityToken(token) {
+			var token = document.getElementById("idToken").value;
+
+			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+				"identityTokenType":"JWT",
+				// Valid JWT
+				"identityToken": token
+			});
+		}
+		
+		window.addEventListener("onEmbeddedMessagingReady", () => {
+			console.log("onEmbeddedMessagingReady emitted");
+		});
+
+		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
+			console.log("onEmbeddedMessagingIdentityTokenExpired emitted");
+		});
+	  </script>
+	
 	<div id="chat-container">
 	</div>
 	<script type='text/javascript'>
