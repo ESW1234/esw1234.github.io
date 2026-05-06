@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIAW ECv1 Test Page (Created by Claude Code)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: #032d60;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .info p { margin: 8px 0; }
+        .label { font-weight: bold; color: #032d60; }
+        .tag { display: inline-block; background: #e8f4fd; color: #032d60; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+        .badge { background: #2e844a; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px; }
+        .flow { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 20px; }
+        .flow h2 { color: #032d60; font-size: 14px; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.05em; }
+        .flow-chain { display: flex; align-items: center; gap: 4px; font-size: 13px; overflow-x: auto; white-space: nowrap; }
+        .flow-node { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 14px; flex-shrink: 0; }
+        .flow-node-label { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+        .flow-node-name { font-family: monospace; font-size: 13px; color: #032d60; font-weight: 600; }
+        .flow-sep { color: #9ca3af; font-size: 18px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MIAW Test Page <span class="tag">_cc</span> <span class="badge">Aura-automated</span></h1>
+    </div>
+    <div class="info">
+        <p><span class="label">Org ID:</span> 00DSG00000oubL4</p>
+        <p><span class="label">Instance URL:</span> https://orgfarm-334d6c3ed9.test1.my.pc-rnd.salesforce.com</p>
+        <p><span class="label">User ID:</span> 005SG00000ZcI9RYAV</p>
+        <p><span class="label">Username:</span> vginne</p>
+        <p><span class="label">Deployment:</span> EC_QueueChannel_cc</p>
+        <p><span class="label">Site:</span> ESW_EC_QueueChannel_cc_17780649582171</p>
+        <p><span class="label">Generated:</span> 2026-05-06</p>
+        <p>The chat widget should appear in the bottom-right corner.</p>
+    </div>
+
+    <div class="flow">
+        <h2>Routing Flow</h2>
+        <div class="flow-chain">
+            <div class="flow-node">
+                <div class="flow-node-label">Deployment</div>
+                <div class="flow-node-name">EC_QueueChannel_cc</div>
+            </div>
+            <span class="flow-sep">→</span>
+            <div class="flow-node">
+                <div class="flow-node-label">Messaging Channel</div>
+                <div class="flow-node-name">EC_QueueChannel_cc</div>
+            </div>
+            <span class="flow-sep">→</span>
+            <div class="flow-node"><div class="flow-node-label">Queue</div><div class="flow-node-name">EC_Queue_cc</div></div><span class="flow-sep">→</span>
+            <div class="flow-node">
+                <div class="flow-node-label">Human Agent</div>
+                <div class="flow-node-name">vginne</div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        function initEmbeddedMessaging() {
+            try {
+                embeddedservice_bootstrap.settings.language = 'en_US';
+                embeddedservice_bootstrap.init(
+                    '00DSG00000oubL4',
+                    'EC_QueueChannel_cc',
+                    'https://orgfarm-334d6c3ed9.test1.my.pc-rnd.site.com/ESWECQueueChannelcc1778064958217',
+                    { scrt2URL: 'https://orgfarm-334d6c3ed9.test1.my.pc-rnd.salesforce-scrt.com' }
+                );
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        }
+    </script>
+    <script type='text/javascript' src='https://orgfarm-334d6c3ed9.test1.my.pc-rnd.site.com/ESWECQueueChannelcc1778064958217/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
