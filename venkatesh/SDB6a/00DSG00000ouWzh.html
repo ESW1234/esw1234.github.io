@@ -45,12 +45,13 @@
     <div class="info">
         <p><span class="label">Org ID:</span> 00DSG00000ouWzh</p>
         <p><span class="label">Instance URL:</span> https://orgfarm-71906803c5.test1.my.pc-rnd.salesforce.com</p>
+        <p><span class="label">Login URL:</span> <a href="https://orgfarm-71906803c5.test1.my.pc-rnd.salesforce.com" target="_blank" rel="noopener">https://orgfarm-71906803c5.test1.my.pc-rnd.salesforce.com</a></p>
         <p><span class="label">User ID:</span> 005SG00000ZcFebYAF</p>
         <p><span class="label">Username:</span> epic.out.ccfb55f76379@orgfarm.salesforce.com</p>
         <p><span class="label">Deployment:</span> EC_QueueChannel_cc</p>
         <p><span class="label">Site:</span> ESW_EC_QueueChannel_cc_17780809924011</p>
         <p><span class="label">Generated:</span> 2026-05-06</p>
-        <p>The chat widget should appear in the bottom-right corner.</p>
+        <p>The chat widget should appear in the bottom-right corner. <span id="chat-status" style="font-size:12px;color:#6b7280;"></span></p>
     </div>
 
     <div class="flow">
@@ -75,6 +76,46 @@
     </div>
 
     <script type='text/javascript'>
+        // Auto-refresh up to 3 times at 10-second intervals if the chat icon doesn't appear.
+        // GitHub Pages publish lag and ESW bootstrap warm-up can both make the widget invisible
+        // on the very first load after deployment.
+        (function autoRefreshUntilChatVisible() {
+            var REFRESH_KEY = 'miawTestPageRefreshCount';
+            var MAX_REFRESHES = 3;
+            var WAIT_MS = 10000;
+            var count = parseInt(sessionStorage.getItem(REFRESH_KEY) || '0', 10);
+            var statusEl = function(){ return document.getElementById('chat-status'); };
+
+            function isChatVisible() {
+                // ESW renders the launcher button as <div> / <button> with class containing "embeddedMessagingFrame" or "helpButtonContainer".
+                return !!document.querySelector('.embeddedMessagingFrame, .helpButtonContainer, [class*="embeddedMessaging"]');
+            }
+
+            function setStatus(msg) {
+                var el = statusEl();
+                if (el) el.textContent = msg;
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    if (isChatVisible()) {
+                        sessionStorage.removeItem(REFRESH_KEY);
+                        setStatus('(widget detected ✓)');
+                        return;
+                    }
+                    if (count < MAX_REFRESHES) {
+                        count += 1;
+                        sessionStorage.setItem(REFRESH_KEY, String(count));
+                        setStatus('(no widget yet — auto-refresh ' + count + '/' + MAX_REFRESHES + ' in ' + (WAIT_MS/1000) + 's)');
+                        setTimeout(function() { window.location.reload(); }, WAIT_MS);
+                    } else {
+                        setStatus('(widget did not load after ' + MAX_REFRESHES + ' attempts — check console)');
+                        sessionStorage.removeItem(REFRESH_KEY);
+                    }
+                }, WAIT_MS);
+            });
+        })();
+
         function initEmbeddedMessaging() {
             try {
                 embeddedservice_bootstrap.settings.language = 'en_US';
