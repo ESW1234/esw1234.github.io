@@ -15,7 +15,7 @@
 			document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 		</script>
 		<br>
-		<h2 align="center"><font color ="green">XRR101 STANDARD CHAT </font></h2>
+		<h2 align="center"><font color ="green">XRR101 SCRT1 ACRAC STANDARD CHAT </font></h2>
 
 		<br/>
 
@@ -55,17 +55,17 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://xrr101apr29.test1.my.pc-rnd.salesforce.com',
-			'https://xrr101apr29.test1.my.pc-rnd.site.com/cs',
+			'https://scrt1acrc.test1.my.pc-rnd.salesforce.com',
+			'https://scrt1acrc.test1.my.pc-rnd.site.com/cs',
 			gslbBaseURL,
-			'00Dfih000002KfN',
-			'ESW_Chat',
+			'00Dfih000003LSv',
+			'LegacyChat',
 			{
 				baseLiveAgentContentURL: 'https://c.la11-perf1-useast2-core1.pc-aws.salesforceliveagent.com/content',
-				deploymentId: '572fih000000u3p',
-				buttonId: '573fih000000isH',
+				deploymentId: '572fih000001ABp',
+				buttonId: '573fih000000yU1',
 				baseLiveAgentURL: 'https://d.la11-perf1-useast2-core1.pc-aws.salesforceliveagent.com/chat',
-				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ifih00000037ZEAQ_19ddc2d5a17',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Ifih0000003NhEAI_19e22c88dbd',
 				isOfflineSupportEnabled: false
 			}
 		);
@@ -73,7 +73,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://xrr101apr29.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://scrt1acrc.test1.my.pc-rnd.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
