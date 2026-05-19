@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>TC01 - Happy Path Small File Download</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #1a1a2e; color: #eee; }
+    .test-card { background: #16213e; border-radius: 8px; padding: 24px; max-width: 700px; margin: 0 auto 20px; }
+    h1 { color: #0af; font-size: 1.4em; margin-top: 0; }
+    h2 { color: #4cc9f0; font-size: 1.1em; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
+    .manual { background: #f72585; }
+    .suite { background: #3a0ca3; }
+    ol { padding-left: 20px; }
+    li { margin-bottom: 8px; line-height: 1.5; }
+    .expected { background: #0d1b2a; border-left: 3px solid #0af; padding: 12px; margin-top: 12px; border-radius: 4px; }
+    code { background: #0d1b2a; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="test-card">
+    <span class="badge suite">Functional Correctness</span>
+    <span class="badge manual">Manual</span>
+    <h1>TC01: Same-tab Download of a Small PDF Completes Under Normal Network</h1>
+    <h2>Pre-conditions</h2>
+    <ul>
+      <li>Bootstrap loaded with default settings (<code>shouldOpenFileInNewTab=false</code>)</li>
+      <li>Active live-agent session in MIAW Enhanced Messaging</li>
+      <li>Agent has just sent a small PDF (&lt;100KB)</li>
+    </ul>
+    <h2>Steps to Reproduce</h2>
+    <ol>
+      <li>Open this page and wait for the chat widget to appear (bottom-right).</li>
+      <li>Click the chat FAB to open the conversation.</li>
+      <li>Start a conversation with the agent. Ask it to send you a file.</li>
+      <li>When the agent sends a file attachment, click the <strong>download button</strong> on the attachment.</li>
+      <li>Wait for the browser to commit the download.</li>
+      <li>Inspect the OS download folder for the file.</li>
+      <li>Open the file and verify the content matches the source.</li>
+    </ol>
+    <div class="expected">
+      <h2>Expected Results</h2>
+      <ul>
+        <li>File downloads on first click without retry.</li>
+        <li>File name and content match the source byte-for-byte.</li>
+        <li>DevTools Network tab shows the iframe request reaches Status 200/finished &mdash; never <code>(canceled)</code>.</li>
+        <li>Console is free of errors and warnings.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.init(
+          '00DSB00000da1NJ',
+          'CWC01_External',
+          'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129',
+          {
+            scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
