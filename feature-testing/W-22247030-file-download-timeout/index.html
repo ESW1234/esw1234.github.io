@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>W-22247030 - File Download Iframe Cleanup Timeout - Test Cases</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #1a1a2e; color: #eee; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { color: #0af; }
+    h2 { color: #4cc9f0; margin-top: 30px; }
+    .description { background: #16213e; border-radius: 8px; padding: 16px; margin-bottom: 20px; line-height: 1.6; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th { background: #0d1b2a; text-align: left; padding: 10px 12px; font-size: 0.9em; color: #4cc9f0; }
+    td { padding: 10px 12px; border-bottom: 1px solid #16213e; }
+    a { color: #0af; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75em; font-weight: 600; }
+    .critical { background: #e63946; }
+    .high { background: #f77f00; }
+    .medium { background: #3a0ca3; }
+    .info { background: #16213e; border: 1px solid #4cc9f0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>W-22247030: File Downloads Aborted by 1000ms Iframe Cleanup Timeout</h1>
+    <div class="description">
+      <strong>Bug Summary:</strong> When an end user clicks the download button on an agent-sent file in Enhanced Messaging, the bootstrap layer creates a hidden iframe and unconditionally removes it after 1000ms. If the response hasn't committed by then, the download silently fails with <code>net::ERR_ABORTED</code>.
+      <br><br>
+      <strong>Org:</strong> SDB3 (OrgFarm) &mdash; <code>00DSB00000da1NJ</code><br>
+      <strong>Deployment:</strong> CWC01_External &mdash; MessagingChannel01 &mdash; Food Service Agent1<br>
+      <strong>Agent Login:</strong> agent1@cwc.org / test1234<br>
+      <strong>Sprint:</strong> 2026.05b-ESW
+    </div>
+
+    <h2>Test Cases</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Test Case</th>
+        <th>Suite</th>
+        <th>Priority</th>
+      </tr>
+      <tr>
+        <td>TC01</td>
+        <td><a href="TC01-happy-path-small-file.html">Same-tab download of a small PDF completes</a></td>
+        <td>Functional Correctness</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>TC02</td>
+        <td><a href="TC02-slow-network-large-file.html">Slow 3G download of 5MB PDF succeeds first try (customer repro)</a></td>
+        <td>Slow-Network Resilience</td>
+        <td><span class="badge critical">Critical</span></td>
+      </tr>
+      <tr>
+        <td>TC03</td>
+        <td><a href="TC03-dom-hygiene-50-downloads.html">50 sequential downloads do not leak DOM nodes</a></td>
+        <td>Iframe Lifecycle &amp; DOM Hygiene</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>TC04</td>
+        <td><a href="TC04-concurrent-downloads.html">Back-to-back download clicks do not abort each other</a></td>
+        <td>Functional Correctness</td>
+        <td><span class="badge high">High</span></td>
+      </tr>
+      <tr>
+        <td>TC05</td>
+        <td><a href="TC05-network-drop-mid-download.html">Network drops mid-download: observable failure, retry works</a></td>
+        <td>Error Handling</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+      <tr>
+        <td>TC06</td>
+        <td><a href="TC06-accessibility-hidden-iframe.html">Hidden iframe stays out of focus order &amp; a11y tree</a></td>
+        <td>Accessibility Regression</td>
+        <td><span class="badge medium">Medium</span></td>
+      </tr>
+    </table>
+
+    <h2>How to Test</h2>
+    <div class="description">
+      <ol>
+        <li>Click a test case link above to open the test page with the embedded chat widget.</li>
+        <li>Follow the steps listed on the page.</li>
+        <li>To send files AS the agent, log into the org's Service Console:<br>
+          <code>https://orgfarm-46c4c41fb0.test1.lightning.pc-rnd.force.com</code><br>
+          Agent: <code>agent1@cwc.org</code> / <code>test1234</code><br>
+          Open Omni-Channel, set status to Available, and accept the incoming messaging session.</li>
+        <li>From the agent console, use the attachment button to send files to the end user.</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
