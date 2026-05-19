@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>TC04 - Back-to-Back Concurrent Downloads</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #1a1a2e; color: #eee; }
+    .test-card { background: #16213e; border-radius: 8px; padding: 24px; max-width: 700px; margin: 0 auto 20px; }
+    h1 { color: #0af; font-size: 1.4em; margin-top: 0; }
+    h2 { color: #4cc9f0; font-size: 1.1em; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
+    .manual { background: #f72585; }
+    .suite { background: #3a0ca3; }
+    ol { padding-left: 20px; }
+    li { margin-bottom: 8px; line-height: 1.5; }
+    .expected { background: #0d1b2a; border-left: 3px solid #0af; padding: 12px; margin-top: 12px; border-radius: 4px; }
+    code { background: #0d1b2a; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="test-card">
+    <span class="badge suite">Functional Correctness</span>
+    <span class="badge manual">Manual</span>
+    <h1>TC04: Back-to-Back Download Clicks Do Not Abort Each Other</h1>
+    <h2>Pre-conditions</h2>
+    <ul>
+      <li>Active session with the agent</li>
+      <li>Agent has sent at least two file attachments (e.g. two 2MB PDFs)</li>
+      <li>DevTools Network tab open</li>
+    </ul>
+    <h2>Steps to Reproduce</h2>
+    <ol>
+      <li>Open this page and start a chat session.</li>
+      <li>Ask the agent to send two file attachments.</li>
+      <li>Once both attachments are visible in the chat, click download on the <strong>first file</strong>.</li>
+      <li>Within ~200ms (immediately after), click download on the <strong>second file</strong> before the first finishes.</li>
+      <li>Wait for both to commit.</li>
+      <li>Check the OS download folder for both files.</li>
+      <li>Check DevTools Network panel for any <code>(canceled)</code> requests.</li>
+    </ol>
+    <div class="expected">
+      <h2>Expected Results</h2>
+      <ul>
+        <li>Both files arrive in the OS download folder.</li>
+        <li>Neither request shows as <code>(canceled)</code> in DevTools Network.</li>
+        <li>No DOM iframe leak after both complete (check with <code>document.querySelectorAll('iframe').length</code>).</li>
+        <li>No console errors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.init(
+          '00DSB00000da1NJ',
+          'CWC01_External',
+          'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129',
+          {
+            scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

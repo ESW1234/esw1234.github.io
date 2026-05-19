@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>TC05 - Network Drop Mid-Download</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #1a1a2e; color: #eee; }
+    .test-card { background: #16213e; border-radius: 8px; padding: 24px; max-width: 700px; margin: 0 auto 20px; }
+    h1 { color: #0af; font-size: 1.4em; margin-top: 0; }
+    h2 { color: #4cc9f0; font-size: 1.1em; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; }
+    .manual { background: #f72585; }
+    .suite { background: #3a0ca3; }
+    ol { padding-left: 20px; }
+    li { margin-bottom: 8px; line-height: 1.5; }
+    .expected { background: #0d1b2a; border-left: 3px solid #0af; padding: 12px; margin-top: 12px; border-radius: 4px; }
+    code { background: #0d1b2a; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="test-card">
+    <span class="badge suite">Error Handling &amp; Recoverability</span>
+    <span class="badge manual">Manual</span>
+    <h1>TC05: Network Drops Mid-Download</h1>
+    <h2>Pre-conditions</h2>
+    <ul>
+      <li>Active session with the agent</li>
+      <li>A large file (~10MB+) ready to be sent by agent (to keep download in-flight long enough)</li>
+      <li>DevTools open with Network tab and Console visible</li>
+    </ul>
+    <h2>Steps to Reproduce</h2>
+    <ol>
+      <li>Open this page and start a chat session.</li>
+      <li>Ask the agent to send a large file attachment (~10MB).</li>
+      <li>Click the download button on the attachment.</li>
+      <li>While the download is <strong>in-flight</strong> (visible in Network panel as pending), toggle the browser to <strong>Offline</strong> mode:
+        <br>DevTools &rarr; Network &rarr; check "Offline" checkbox.</li>
+      <li>Observe the Console for errors.</li>
+      <li>Toggle back <strong>Online</strong> (uncheck "Offline").</li>
+      <li>Click the download button again to retry.</li>
+    </ol>
+    <div class="expected">
+      <h2>Expected Results</h2>
+      <ul>
+        <li>First attempt surfaces a clear failure (event/log in console) &mdash; NOT a silent abort.</li>
+        <li>The iframe is still cleaned up (no orphan iframe after failure).</li>
+        <li>Retry after reconnect succeeds &mdash; file downloads completely.</li>
+        <li>No uncaught exceptions that break subsequent downloads.</li>
+        <li>No <code>removeChild</code>-on-detached-node error in console.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.init(
+          '00DSB00000da1NJ',
+          'CWC01_External',
+          'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129',
+          {
+            scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
