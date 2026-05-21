@@ -1684,9 +1684,14 @@
 
         /**
          * Fires onEmbeddedMessagingChannelMenuVisibilityChanged to notify Channel Menu of visibility changes.
+         * Suppressed while the chat client is maximized — Channel Menu shouldn't repaint visibility while
+         * the user is mid-conversation.
          * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
          */
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
+            if (isClientMaximized()) {
+                return;
+            }
             const isVisible = shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility);
 
             try {
@@ -1765,6 +1770,14 @@
 
         function getIframe() {
             return document.getElementById(LWR_IFRAME_NAME);
+        }
+
+        /**
+         * Whether the chat client iframe is currently maximized (chat window open).
+         * @returns {boolean}
+         */
+        function isClientMaximized() {
+            return Boolean(getIframe()?.classList.contains("maximized"));
         }
 
         // =========================
