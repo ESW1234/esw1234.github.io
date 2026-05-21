@@ -44,6 +44,19 @@
       window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
         console.log('onEmbeddedMessagingButtonCreated emitted');
       });
+
+      // WORKAROUND: the Layer 2 LWR app served by this MIAW deployment does not currently
+      // emit `cwcfabready` over RPC, so init.js's handleFabReadyEvent never runs and our
+      // visibility-change event never fires automatically. Dispatch it manually 3s after
+      // page load so Channel Menu unblocks and renders the MIAW item.
+      setTimeout(function() {
+        if (!window.__channelMenuVisibilityFiredByInit) {
+          window.dispatchEvent(new CustomEvent('onEmbeddedMessagingChannelMenuVisibilityChanged', {
+            detail: { devName: 'MessagingWeb_One', isVisible: true }
+          }));
+          console.log('[menu.html] manually fired onEmbeddedMessagingChannelMenuVisibilityChanged workaround');
+        }
+      }, 3000);
     </script>
   </body>
 </html>
