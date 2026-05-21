@@ -1684,14 +1684,9 @@
 
         /**
          * Fires onEmbeddedMessagingChannelMenuVisibilityChanged to notify Channel Menu of visibility changes.
-         * Suppressed while the chat client is maximized — Channel Menu shouldn't repaint visibility while
-         * the user is mid-conversation.
          * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
          */
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
-            if (isClientMaximized()) {
-                return;
-            }
             const isVisible = shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility);
 
             try {
@@ -2364,8 +2359,9 @@
             setIframeDisplayMode();
             emitEmbeddedMessagingButtonCreatedEvent();
 
-            if (isChannelMenuDeployment()) {
+            if (isChannelMenuDeployment() && !isClientMaximized()) {
                 // Channel Menu owns its own button rendering; report visibility instead of showing the iframe FAB.
+                // Skip while the client is maximized — CM shouldn't repaint while the user is mid-conversation.
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 return;
             }
