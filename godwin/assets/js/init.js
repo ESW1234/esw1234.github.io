@@ -1687,6 +1687,7 @@
          * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
          */
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
+            debugger;
             const isVisible = shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility);
 
             try {
