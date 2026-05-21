@@ -8,17 +8,19 @@
     <!--
       Custom Channel Menu chain hosted on GitHub Pages.
       fab.js -> channelMenu.js (custom: loads our init.js) -> init.js (ECV2 host bootstrap with channel-menu support).
+      Pointed at the esw-sdb3-blitz / CM01 deployment — its Layer 2 LWR site speaks RPCManager and
+      emits cwcfabready, so the visibility event flows automatically (no host-page workaround needed).
     -->
     <script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/fab.js'></script>
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
         embedded_svc.menu.settings.devMode = true;
         embedded_svc.menu.init(
-          'https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce.com',
-          'https://d.la3-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+          'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com',
+          'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
           gslbBaseURL,
-          '00DSB0000004st3',
-          'Embedded_Channel_Menu'
+          '00DSB0000005YCL',
+          'CM01'
         );
       };
 
@@ -30,7 +32,7 @@
         };
         document.body.appendChild(s);
       } else {
-        initESW('https://godwinlaw-sdb3.test1.my.pc-rnd.salesforce.com');
+        initESW('https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com');
       }
     </script>
 
@@ -44,19 +46,6 @@
       window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
         console.log('onEmbeddedMessagingButtonCreated emitted');
       });
-
-      // WORKAROUND: the Layer 2 LWR app served by this MIAW deployment does not currently
-      // emit `cwcfabready` over RPC, so init.js's handleFabReadyEvent never runs and our
-      // visibility-change event never fires automatically. Dispatch it manually 3s after
-      // page load so Channel Menu unblocks and renders the MIAW item.
-      setTimeout(function() {
-        if (!window.__channelMenuVisibilityFiredByInit) {
-          window.dispatchEvent(new CustomEvent('onEmbeddedMessagingChannelMenuVisibilityChanged', {
-            detail: { devName: 'MessagingWeb_One', isVisible: true }
-          }));
-          console.log('[menu.html] manually fired onEmbeddedMessagingChannelMenuVisibilityChanged workaround');
-        }
-      }, 3000);
     </script>
   </body>
 </html>
