@@ -1,0 +1,53 @@
+<html>
+  <head><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></head>
+  <body>
+    <h1>SDB3 Channel Menu (ECV1 + Web)</h1>
+    <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+    <script>document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;</script>
+
+    <script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js'></script>
+    <script type='text/javascript'>
+    	var initESW = function(gslbBaseURL) {
+    		// Required if you want labels in a language that’s different from your user’s context.
+    		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
+    		embedded_svc.menu.settings.scrt2BaseUrl = 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com';
+    
+    		embedded_svc.menu.init(
+    			'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com',
+    			'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+    			gslbBaseURL,
+    			'00DSB0000005YCL',
+    			'CM_with_only_MIAW'
+    		);
+    	};
+    
+    	if (!window.embedded_svc || !window.embedded_svc.menu) {
+    		var s = document.createElement('script');
+    		s.setAttribute('src', 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+    		s.onload = function() {
+    			initESW(null);
+    		};
+    		document.body.appendChild(s);
+    	} else {
+    		initESW('https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com');
+    	}
+    </script>
+
+    <script type='text/javascript'>
+      window.addEventListener('onEmbeddedMessagingChannelMenuVisibilityChanged', function(event) {
+        console.log('onEmbeddedMessagingChannelMenuVisibilityChanged:', event.detail);
+      });
+      window.addEventListener('onEmbeddedMessagingReady', function() {
+        console.log('onEmbeddedMessagingReady emitted');
+      });
+      window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+        console.log('onEmbeddedMessagingButtonCreated emitted');
+      });
+    </script>
+  </body>
+</html>
+    <style>
+       body {
+         backg.hiijxderound: url("https://esw1234.github.io/Spotify-large.png") no-repeat;
+      }
+    </style>
