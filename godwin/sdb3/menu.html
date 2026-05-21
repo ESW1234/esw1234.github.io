@@ -14,14 +14,15 @@
     <script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/fab.js'></script>
     <script type='text/javascript'>
       var initESW = function(gslbBaseURL) {
+        //embedded_svc.menu.settings.scrt2BaseUrl = 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com';
         embedded_svc.menu.settings.devMode = true;
-        embedded_svc.menu.init(
-          'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com',
-          'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
-          gslbBaseURL,
-          '00DSB0000005YCL',
-          'CM01'
-        );
+    		embedded_svc.menu.init(
+    			'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com',
+    			'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+    			gslbBaseURL,
+    			'00DSB00000da1NJ',
+    			'CM'
+    		);
       };
 
       if (!window.embedded_svc || !window.embedded_svc.menu) {
@@ -32,7 +33,7 @@
         };
         document.body.appendChild(s);
       } else {
-        initESW('https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com');
+        initESW('https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com');
       }
     </script>
 
