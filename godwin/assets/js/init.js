@@ -1578,8 +1578,10 @@
         // True: the iframe is the FAB (host toggles iframe display directly). One-way; page refresh resets.
         let hostOwnsFab = false;
 
-        // Sticky flag — container only sends cwcfabready once per page lifetime. Survives
-        // resetInMemoryState (which resets hasEmbeddedMessagingButtonCreatedEventFired).
+        // Sticky flag — true once Layer 2 has sent at least one cwcfabready. Used to gate
+        // post-handoff re-auth (e.g. after clearSession): we know handleFabReadyEvent has
+        // run at least once, so direct iframe-show in setIdentityToken is safe.
+        // Survives resetInMemoryState (which resets hasEmbeddedMessagingButtonCreatedEventFired).
         let cwcFabReadyHasFired = false;
 
         /**
