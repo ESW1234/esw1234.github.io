@@ -1725,6 +1725,12 @@
                 frame.classList.add("minimized");
                 frame.classList.remove("maximized");
 
+                // In CM, hide the iframe entirely — Channel Menu owns the FAB, so a minimized
+                // iframe-FAB would render alongside it. Non-CM keeps the iframe visible as the FAB.
+                if (isChannelMenuDeployment()) {
+                    frame.style.display = "none";
+                }
+
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MINIMIZED_EVENT_NAME);
             }
         }
@@ -1751,6 +1757,10 @@
                 frame.classList.remove("initial");
                 frame.classList.add("maximized");
                 frame.classList.remove("minimized");
+
+                // Ensure the iframe is visible — in CM, toggleChatFabVisibility leaves display alone,
+                // so the chat surface still needs to be unhidden when the user launches the chat.
+                frame.style.display = "";
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
             }
@@ -2286,9 +2296,15 @@
             try {
                 validateEmbeddedMessagingButtonCreatedEventFired();
                 if (show || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                    toggleIframeVisibility(show);
-                    if (isChannelMenuDeployment() && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                        emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
+                    if (isChannelMenuDeployment()) {
+                        // Channel Menu owns its FAB; never toggle the iframe display from this API,
+                        // or we'd render a stray iframe-FAB next to CM's FAB. The iframe display is
+                        // managed by handleMaximize/handleMinimize once a chat is launched.
+                        if (conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
+                            emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
+                        }
+                    } else {
+                        toggleIframeVisibility(show);
                     }
                     return true;
                 }
