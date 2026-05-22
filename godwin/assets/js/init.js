@@ -1741,6 +1741,13 @@
                 // Ensure the iframe is visible — pre-swap CM left it hidden so the chat surface needs unhiding.
                 frame.style.display = "";
 
+                // CM: any maximize (including Layer 2-driven session restore) means the iframe owns the
+                // FAB. Flip the latch and hide CM's surface so it doesn't render behind the modal.
+                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                    hasBootstrappedFromChannelMenu = true;
+                    try { window.embedded_svc?.menu?.hideTopContainer?.(); } catch (_) {}
+                }
+
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
             }
         }
