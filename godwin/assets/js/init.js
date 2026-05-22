@@ -1574,9 +1574,9 @@
         // Identity token cached so Channel Menu visibility checks can validate it without an RPC round-trip.
         let identityToken;
 
-        // Tracks who owns the FAB in a Channel Menu deployment. False: CM owns the FAB
-        // (host emits visibility events for CM to render the menu item). True: the CWC iframe
-        // owns the FAB (host toggles iframe display directly). One-way; page refresh resets.
+        // Tracks who owns the FAB in a Channel Menu deployment. 
+        // If false, CM owns the FAB (CWC emits visibility events for CM to render the menu item).
+        // If true, the CWC iframe owns the FAB (CWC toggles iframe display directly).
         let cwcOwnsFab = false;
 
         // Sticky flag — true once Layer 2 has sent at least one cwcfabready. Used to gate
@@ -2402,8 +2402,12 @@
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
-            // Don't hide the iframe mid-conversation (cwcfabready can re-fire after a failed connect retry).
-            if (conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
+            // CM only: skip the iframe-hide mid-conversation. cwcfabready can re-fire after a
+            // failed connect retry, and once CWC owns the FAB the iframe is the visible surface —
+            // hiding it would collapse the modal. Non-CM keeps master's unconditional hide.
+            const skipHideForCmMidConversation = isChannelMenuDeployment()
+                && conversationStatus !== CONVERSATION_STATUS.NOT_STARTED;
+            if (!skipHideForCmMidConversation) {
                 toggleIframeVisibility(false);
             }
 
