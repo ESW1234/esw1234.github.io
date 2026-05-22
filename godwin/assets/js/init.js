@@ -1574,9 +1574,10 @@
         // Identity token cached so Channel Menu visibility checks can validate it without an RPC round-trip.
         let identityToken;
 
-        // FAB-ownership flag for Channel Menu. False: CM owns the FAB (host emits visibility events).
-        // True: the iframe is the FAB (host toggles iframe display directly). One-way; page refresh resets.
-        let hostOwnsFab = false;
+        // Tracks who owns the FAB in a Channel Menu deployment. False: CM owns the FAB
+        // (host emits visibility events for CM to render the menu item). True: the CWC iframe
+        // owns the FAB (host toggles iframe display directly). One-way; page refresh resets.
+        let cwcOwnsFab = false;
 
         // Sticky flag — true once Layer 2 has sent at least one cwcfabready. Used to gate
         // post-handoff re-auth (e.g. after clearSession): we know handleFabReadyEvent has
@@ -1704,13 +1705,13 @@
         }
 
         /**
-         * Hand off the FAB from Channel Menu to the host iframe. Idempotent. Flips the latch,
+         * Transfer FAB ownership from Channel Menu to the CWC iframe. Idempotent. Sets cwcOwnsFab,
          * hides CM's surface, and overrides showTopContainer so channelMenu.js's own paths
-         * (10s timeout, reorder API) can't re-show CM after we've taken ownership.
+         * (10s timeout, reorder API) can't re-show CM after CWC has taken ownership.
          */
-        function transferFabToHost() {
+        function transferFabToCwc() {
             if (!isChannelMenuDeployment()) return;
-            hostOwnsFab = true;
+            cwcOwnsFab = true;
             try {
                 const cm = window.embedded_svc?.menu;
                 if (cm) {
@@ -1745,8 +1746,8 @@
                 frame.classList.remove("maximized");
 
                 // CM owns the FAB: hide our iframe so it doesn't render alongside CM's FAB.
-                // Host owns the FAB: leave display alone — the iframe is now the FAB.
-                if (isChannelMenuDeployment() && !hostOwnsFab) {
+                // CWC owns the FAB: leave display alone — the iframe is now the FAB.
+                if (isChannelMenuDeployment() && !cwcOwnsFab) {
                     frame.style.display = "none";
                 }
 
@@ -1781,7 +1782,7 @@
                     // While CM owned the FAB, handleMinimize hid the iframe; ensure it's visible on maximize.
                     frame.style.display = "";
                     // Any maximize (including session restore via ESW_APP_MAXIMIZE) means iframe owns the FAB.
-                    transferFabToHost();
+                    transferFabToCwc();
                 }
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
@@ -2135,8 +2136,8 @@
                 const iframe = getIframe();
                 if (iframe) {
                     // Iframe owns the FAB from here on; handle CM hand-off before toggling visibility
-                    // so toggleChatFabVisibility(true) hits the host-owns-FAB branch instead of emitting.
-                    transferFabToHost();
+                    // so toggleChatFabVisibility(true) hits the cwc-owns-FAB branch instead of emitting.
+                    transferFabToCwc();
                     // Unhide iframe in case hideChatButton was previously called.
                     toggleChatFabVisibility(true);
                     return callRpcClient("launchChat", options)
@@ -2233,8 +2234,8 @@
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
                 if (isChannelMenuDeployment()) {
-                    if (hostOwnsFab && cwcFabReadyHasFired) {
-                        // Host-owns-FAB re-auth (e.g. after clearSession): cwcfabready already fired
+                    if (cwcOwnsFab && cwcFabReadyHasFired) {
+                        // CWC-owns-FAB re-auth (e.g. after clearSession): cwcfabready already fired
                         // earlier so handleFabReadyEvent won't run again. Unhide the iframe
                         // directly and restore the validation flag for subsequent utilAPI calls.
                         hasEmbeddedMessagingButtonCreatedEventFired = true;
@@ -2247,7 +2248,7 @@
                     }
                     // Initial JWT-set in single-item CM (latch pre-flipped at init, but cwcfabready
                     // hasn't fired yet): no-op — container will send cwcfabready post-JWT, and
-                    // handleFabReadyEvent's host-owns-FAB fall-through will show the iframe.
+                    // handleFabReadyEvent's cwc-owns-FAB fall-through will show the iframe.
                 }
             }
             catch (error) {
@@ -2312,10 +2313,10 @@
             if (!isAuthenticatedMode()) {
                 emitEmbeddedMessagingButtonCreatedEvent();
             }
-            // Skip the CM emit if the host already owns the FAB: the iframe owns the surface
+            // Skip the CM emit if CWC already owns the FAB: the iframe owns the surface
             // and channelMenu.js is hidden. Re-emitting would trigger reorder + animation flicker
             // for a CM that the user can no longer see anyway.
-            if (isChannelMenuDeployment() && !hostOwnsFab) {
+            if (isChannelMenuDeployment() && !cwcOwnsFab) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
             }
         }
@@ -2345,7 +2346,7 @@
                 }
 
                 if (show || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                    if (isChannelMenuDeployment() && !hostOwnsFab) {
+                    if (isChannelMenuDeployment() && !cwcOwnsFab) {
                         // CM owns the FAB: emit visibility, do not touch iframe display.
                         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
                     } else {
@@ -2418,7 +2419,7 @@
 
             // CM owns the FAB: report visibility instead of unhiding the iframe-FAB.
             if (isChannelMenuDeployment()
-                && !hostOwnsFab
+                && !cwcOwnsFab
                 && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 return;
@@ -2569,7 +2570,7 @@
                     // Existing-session restore: container sends OPEN before any user click.
                     // Hand off the FAB so CM can't render behind the auto-opened modal.
                     if (wasNotStarted) {
-                        transferFabToHost();
+                        transferFabToCwc();
                     }
                 }
             });
@@ -2634,7 +2635,7 @@
             // Show or hide chat button based on business hours transition & dispatch events to host
             if (wasWithinBusinessHours) {
                 loggingUtils.debug("businessHoursTimerCallback", `Leaving business hours - hiding chat button`);
-                if (isChannelMenuDeployment() && !hostOwnsFab) {
+                if (isChannelMenuDeployment() && !cwcOwnsFab) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
                 } else {
                     agentforce_messaging.utilAPI.hideChatButton();
@@ -2647,7 +2648,7 @@
                 }
             } else {
                 loggingUtils.debug("businessHoursTimerCallback", `Entering business hours - showing chat button`);
-                if (isChannelMenuDeployment() && !hostOwnsFab) {
+                if (isChannelMenuDeployment() && !cwcOwnsFab) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
                 } else {
                     agentforce_messaging.utilAPI.showChatButton();
@@ -2827,7 +2828,7 @@
                 // let the iframe render as the FAB directly. Pre-flip the latch so all CM-gated
                 // branches behave like non-CM.
                 if (isChannelMenuOnlyEmbeddedMessaging()) {
-                    transferFabToHost();
+                    transferFabToCwc();
                 }
 
                 // Apply `chatButtonPosition` snippet setting.
