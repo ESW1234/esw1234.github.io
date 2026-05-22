@@ -1681,6 +1681,23 @@
             }
         }
 
+        /**
+         * Hand off the FAB from Channel Menu to the host iframe. Idempotent. Flips the latch,
+         * hides CM's surface, and overrides showTopContainer so channelMenu.js's own paths
+         * (10s timeout, reorder API) can't re-show CM after we've taken ownership.
+         */
+        function handOffFabFromChannelMenu() {
+            if (!isChannelMenuDeployment()) return;
+            hasBootstrappedFromChannelMenu = true;
+            try {
+                const cm = window.embedded_svc?.menu;
+                if (cm) {
+                    cm.hideTopContainer?.();
+                    cm.showTopContainer = function noopShowTopContainer() {};
+                }
+            } catch (_) {}
+        }
+
         // =========================
         //  Minimization / Maximization
         // =========================
@@ -1741,12 +1758,8 @@
                 // Ensure the iframe is visible — pre-swap CM left it hidden so the chat surface needs unhiding.
                 frame.style.display = "";
 
-                // CM: any maximize (including Layer 2-driven session restore) means the iframe owns the
-                // FAB. Flip the latch and hide CM's surface so it doesn't render behind the modal.
-                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
-                    hasBootstrappedFromChannelMenu = true;
-                    try { window.embedded_svc?.menu?.hideTopContainer?.(); } catch (_) {}
-                }
+                // Any maximize (including session restore via ESW_APP_MAXIMIZE) means iframe owns the FAB.
+                handOffFabFromChannelMenu();
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
             }
@@ -2098,13 +2111,9 @@
 
                 const iframe = getIframe();
                 if (iframe) {
-                    // CM: flip the FAB-swap latch and hide CM's own surface so the iframe owns the FAB
-                    // from here on. This covers both the channelMenu.js click path (which also calls
-                    // hideTopContainer itself) and direct launchChat invocations.
-                    if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
-                        hasBootstrappedFromChannelMenu = true;
-                        try { window.embedded_svc?.menu?.hideTopContainer?.(); } catch (_) {}
-                    }
+                    // Iframe owns the FAB from here on; handle CM hand-off before toggling visibility
+                    // so toggleChatFabVisibility(true) hits the post-swap branch instead of emitting.
+                    handOffFabFromChannelMenu();
                     // Unhide iframe in case hideChatButton was previously called.
                     toggleChatFabVisibility(true);
                     return callRpcClient("launchChat", options)
@@ -2516,10 +2525,10 @@
                 conversationStatus = incoming;
                 if (incoming === CONVERSATION_STATUS.OPEN) {
                     hideRecaptchaBadge();
-                    // Existing-session restore on page load: Layer 2 sends OPEN before any user click.
-                    // Treat as if CM had already bootstrapped — iframe is the FAB henceforth.
-                    if (wasNotStarted && isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
-                        hasBootstrappedFromChannelMenu = true;
+                    // Existing-session restore: Layer 2 sends OPEN before any user click.
+                    // Hand off the FAB so CM can't render behind the auto-opened modal.
+                    if (wasNotStarted) {
+                        handOffFabFromChannelMenu();
                     }
                 }
             });
