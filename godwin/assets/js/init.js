@@ -2210,11 +2210,20 @@
                     .catch((error) => {
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
-                // Only emit on token refresh (post-cwcfabready). The initial JWT-set is followed by
-                // Layer 2's cwcfabready -> handleFabReadyEvent which already emits; emitting here
-                // too would cause channelMenu.js to reorder twice and the FAB to flicker.
-                if (isChannelMenuDeployment() && hasEmbeddedMessagingButtonCreatedEventFired) {
-                    emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
+                if (isChannelMenuDeployment()) {
+                    if (hasBootstrappedFromChannelMenu) {
+                        // Post-swap (e.g. re-auth after clearSession): iframe is the FAB and CM is
+                        // hidden permanently. Unhide the iframe directly — cwcfabready won't fire
+                        // again this page lifetime, so handleFabReadyEvent's path is unavailable.
+                        // Also restore the button-created flag so subsequent utilAPI calls validate.
+                        hasEmbeddedMessagingButtonCreatedEventFired = true;
+                        toggleIframeVisibility(true);
+                    } else if (hasEmbeddedMessagingButtonCreatedEventFired) {
+                        // Pre-swap token refresh: emit so channelMenu.js reorders MIAW back in.
+                        // (Skipped on initial JWT-set because Layer 2's upcoming cwcfabready will
+                        // fire handleFabReadyEvent which emits; double-emit would cause flicker.)
+                        emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
+                    }
                 }
             }
             catch (error) {
