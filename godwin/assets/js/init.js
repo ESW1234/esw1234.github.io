@@ -2279,7 +2279,10 @@
             if (!isAuthenticatedMode()) {
                 emitEmbeddedMessagingButtonCreatedEvent();
             }
-            if (isChannelMenuDeployment()) {
+            // Skip the CM emit if the FAB-swap latch is set: the iframe already owns the surface
+            // and channelMenu.js is hidden. Re-emitting would trigger reorder + animation flicker
+            // for a CM that the user can no longer see anyway.
+            if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
             }
         }
