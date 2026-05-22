@@ -2365,9 +2365,10 @@
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
-            // cwcfabready can re-fire mid-session (e.g. after a failed connect retry).
-            // Don't hide the iframe if the user already has the modal open.
-            if (!isClientMaximized()) {
+            // In CM, cwcfabready can re-fire mid-session (e.g. after a failed connect retry);
+            // skip the hide so we don't close the modal out from under the user.
+            // Non-CM keeps its original unconditional hide.
+            if (!(isChannelMenuDeployment() && isClientMaximized())) {
                 toggleIframeVisibility(false);
             }
 
