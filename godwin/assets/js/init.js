@@ -1578,6 +1578,10 @@
         // True: the iframe is the FAB (host toggles iframe display directly). Page refresh resets.
         let hasBootstrappedFromChannelMenu = false;
 
+        // Sticky flag — Layer 2 only sends cwcfabready once per page lifetime. Survives
+        // resetInMemoryState (which resets hasEmbeddedMessagingButtonCreatedEventFired).
+        let cwcFabReadyHasFired = false;
+
         /**
          * Whether the onEmbeddedMessagingReady event has been fired.
          */
@@ -1678,6 +1682,22 @@
                 });
             } catch (err) {
                 loggingUtils?.error("emitEmbeddedMessagingChannelMenuVisibilityChangeEvent", `Failed to fire visibility-change event: ${err}`);
+            }
+        }
+
+        /**
+         * Returns true when the Channel Menu deployment has exactly one menu item and that item
+         * is the Embedded Messaging channel — in which case CM is redundant and the host should
+         * skip the CM FAB entirely, rendering the ECv2 iframe FAB directly.
+         */
+        function isChannelMenuOnlyEmbeddedMessaging() {
+            try {
+                const items = window.embedded_svc?.menu?.menuConfig?.menuItems;
+                return Array.isArray(items)
+                    && items.length === 1
+                    && items[0]?.channelType === "EmbeddedMessaging";
+            } catch (_) {
+                return false;
             }
         }
 
@@ -2211,11 +2231,10 @@
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
                 if (isChannelMenuDeployment()) {
-                    if (hasBootstrappedFromChannelMenu) {
-                        // Post-swap (e.g. re-auth after clearSession): iframe is the FAB and CM is
-                        // hidden permanently. Unhide the iframe directly — cwcfabready won't fire
-                        // again this page lifetime, so handleFabReadyEvent's path is unavailable.
-                        // Also restore the button-created flag so subsequent utilAPI calls validate.
+                    if (hasBootstrappedFromChannelMenu && cwcFabReadyHasFired) {
+                        // Post-swap re-auth (e.g. after clearSession): cwcfabready already fired
+                        // earlier so handleFabReadyEvent won't run again. Unhide the iframe
+                        // directly and restore the validation flag for subsequent utilAPI calls.
                         hasEmbeddedMessagingButtonCreatedEventFired = true;
                         toggleIframeVisibility(true);
                     } else if (hasEmbeddedMessagingButtonCreatedEventFired) {
@@ -2224,6 +2243,9 @@
                         // fire handleFabReadyEvent which emits; double-emit would cause flicker.)
                         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                     }
+                    // Initial JWT-set in single-item CM (latch pre-flipped at init, but cwcfabready
+                    // hasn't fired yet): no-op — Layer 2 will send cwcfabready post-JWT, and
+                    // handleFabReadyEvent's post-swap fall-through will show the iframe.
                 }
             }
             catch (error) {
@@ -2373,6 +2395,7 @@
          * @param {CustomEvent} event - Button created event containing button dimensions
          */
         function handleFabReadyEvent(event) {
+            cwcFabReadyHasFired = true;
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
@@ -2797,6 +2820,13 @@
                     snippetConfig,
                     language: agentforce_messaging.settings.language,
                 });
+
+                // CM with only an Embedded Messaging item is redundant — skip the CM surface and
+                // let the iframe render as the FAB directly. Pre-flip the latch so all CM-gated
+                // branches behave like non-CM.
+                if (isChannelMenuOnlyEmbeddedMessaging()) {
+                    handOffFabFromChannelMenu();
+                }
 
                 // Apply `chatButtonPosition` snippet setting.
                 applyChatButtonPosition(agentforce_messaging.settings.chatButtonPosition);
