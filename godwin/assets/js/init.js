@@ -1571,6 +1571,13 @@
         // Track conversation status
         let conversationStatus = CONVERSATION_STATUS.NOT_STARTED;
 
+        // Identity token cached so Channel Menu visibility checks can validate it without an RPC round-trip.
+        let identityToken;
+
+        // FAB-swap latch for Channel Menu. False: CM owns the FAB (host emits visibility events).
+        // True: the iframe is the FAB (host toggles iframe display directly). Page refresh resets.
+        let hasBootstrappedFromChannelMenu = false;
+
         /**
          * Whether the onEmbeddedMessagingReady event has been fired.
          */
@@ -1594,12 +1601,6 @@
             ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME: "onEmbeddedMessagingWindowMaximized",
             ON_EMBEDDED_MESSAGING_CHANNEL_MENU_VISIBILITY_CHANGE_EVENT_NAME: "onEmbeddedMessagingChannelMenuVisibilityChanged"
         };
-
-        /**
-         * Customer-supplied identity token (JWT) tracked for Channel Menu visibility checks.
-         * Set in #setIdentityToken; the iframe (Layer 2) is the source of truth for authenticated session state.
-         */
-        let identityToken;
 
     	/**
     	 * Internal property to track page-specific parameters set by a customer for appending query strings to the Auto-Response URL.
@@ -1637,58 +1638,37 @@
         // =========================
         //  Channel Menu
         // =========================
-        /**
-         * Determines whether the deployment is a channel menu deployment.
-         *
-         * @returns {boolean} True if its a channel menu.
-         */
+
         function isChannelMenuDeployment() {
-            // Always throws an error for non-CM MIAW deployments.
             try {
-                if (embedded_svc && embedded_svc.menu) {
-                    return true;
-                }
-                return false;
+                return Boolean(window.embedded_svc && window.embedded_svc.menu);
             } catch (e) {
                 return false;
             }
         }
 
-        /**
-         * Determine whether to show chat button in initial state based on business hours and static setting.
-         * @returns {boolean} True if chat button should be shown on page load and false otherwise.
-         */
         function shouldShowChatButtonInInitialState() {
             return Boolean(businessHoursUtils?.isWithinBusinessHours()) && !embeddedservice_bootstrap.settings.hideChatButtonOnLoad;
         }
 
         /**
-         * Determines whether the Embedded Messaging channel should be rendered in Channel Menu.
-         *
-         * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
-         * @returns {boolean} True if the Embedded Messaging channel should be rendered and false otherwise.
+         * Decide whether the Embedded Messaging channel should be visible in Channel Menu.
+         * Mirrors V1's `shouldShowChatButtonInInitialState` + auth gating.
+         * @param {Boolean} setUtilAPIVisibility - explicit override from utilAPI.show/hideChatButton.
          */
         function shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility) {
             let shouldRender = shouldShowChatButtonInInitialState();
-
             if (setUtilAPIVisibility !== undefined && setUtilAPIVisibility !== null) {
                 shouldRender = setUtilAPIVisibility;
             }
-
             if (configUtils?.getAuthMode() === AUTH_MODE.AUTH) {
                 shouldRender = shouldRender && validateJwt(identityToken);
             }
-
             return shouldRender;
         }
 
-        /**
-         * Fires onEmbeddedMessagingChannelMenuVisibilityChanged to notify Channel Menu of visibility changes.
-         * @param {Boolean} setUtilAPIVisibility - Visibility value set via utilAPI.
-         */
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
             const isVisible = shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility);
-
             try {
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_CHANNEL_MENU_VISIBILITY_CHANGE_EVENT_NAME, {
                     detail: {
@@ -1697,7 +1677,7 @@
                     }
                 });
             } catch (err) {
-                loggingUtils?.error("emitEmbeddedMessagingChannelMenuVisibilityChangeEvent", `Something went wrong in firing emitEmbeddedMessagingChannelMenuVisibilityChange event ${err}.`);
+                loggingUtils?.error("emitEmbeddedMessagingChannelMenuVisibilityChangeEvent", `Failed to fire visibility-change event: ${err}`);
             }
         }
 
@@ -1725,9 +1705,9 @@
                 frame.classList.add("minimized");
                 frame.classList.remove("maximized");
 
-                // In CM, hide the iframe entirely — Channel Menu owns the FAB, so a minimized
-                // iframe-FAB would render alongside it. Non-CM keeps the iframe visible as the FAB.
-                if (isChannelMenuDeployment()) {
+                // Pre-swap CM: hide our iframe so it doesn't render alongside CM's FAB.
+                // Post-swap: leave display alone — the iframe is now the FAB.
+                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
                     frame.style.display = "none";
                 }
 
@@ -1758,8 +1738,7 @@
                 frame.classList.add("maximized");
                 frame.classList.remove("minimized");
 
-                // Ensure the iframe is visible — in CM, toggleChatFabVisibility leaves display alone,
-                // so the chat surface still needs to be unhidden when the user launches the chat.
+                // Ensure the iframe is visible — pre-swap CM left it hidden so the chat surface needs unhiding.
                 frame.style.display = "";
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
@@ -1775,16 +1754,6 @@
 
         function getIframe() {
             return document.getElementById(LWR_IFRAME_NAME);
-        }
-
-        /**
-         * Whether the chat client iframe is currently maximized (chat window open).
-         * Used to guard DOM-affecting actions that could close an open modal mid-session;
-         * for conversation lifecycle decisions, prefer the RPC-driven conversationStatus.
-         * @returns {boolean}
-         */
-        function isClientMaximized() {
-            return Boolean(getIframe()?.classList.contains("maximized"));
         }
 
         // =========================
@@ -2209,7 +2178,7 @@
                 if (!validateIdentityTokenData(identityTokenData) || !validateIdentityToken(identityTokenType, token, myDomainUrl)) {
                     return false;
                 }
-                // Track JWT in memory so Channel Menu visibility checks can validate it.
+                // Cache JWT in memory for Channel Menu visibility checks (avoids RPC round-trip).
                 if (identityTokenType === ID_TOKEN_TYPE.JWT) {
                     identityToken = token;
                 }
@@ -2305,14 +2274,17 @@
         function toggleChatFabVisibility(show) {
             try {
                 validateEmbeddedMessagingButtonCreatedEventFired();
+
+                // V1 parity: refuse to hide while a conversation is open.
+                if (!show && conversationStatus !== CONVERSATION_STATUS.NOT_STARTED) {
+                    loggingUtils.error("hideChatButton", "Can't call hideChatButton once the messaging window is showing.");
+                    return false;
+                }
+
                 if (show || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                    if (isChannelMenuDeployment()) {
-                        // Channel Menu owns its FAB; never toggle the iframe display from this API,
-                        // or we'd render a stray iframe-FAB next to CM's FAB. The iframe display is
-                        // managed by handleMaximize/handleMinimize once a chat is launched.
-                        if (conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                            emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
-                        }
+                    if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                        // Pre-swap CM: emit visibility, do not touch iframe display.
+                        emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
                     } else {
                         toggleIframeVisibility(show);
                     }
@@ -2365,10 +2337,8 @@
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
-            // In CM, cwcfabready can re-fire mid-session (e.g. after a failed connect retry);
-            // skip the hide so we don't close the modal out from under the user.
-            // Non-CM keeps its original unconditional hide.
-            if (!(isChannelMenuDeployment() && isClientMaximized())) {
+            // Don't hide the iframe mid-conversation (cwcfabready can re-fire after a failed connect retry).
+            if (conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 toggleIframeVisibility(false);
             }
 
@@ -2382,9 +2352,10 @@
             setIframeDisplayMode();
             emitEmbeddedMessagingButtonCreatedEvent();
 
-            if (isChannelMenuDeployment() && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                // Channel Menu owns its own button rendering; report visibility instead of showing the iframe FAB.
-                // Skip during a live conversation so CM doesn't repaint mid-session.
+            // Pre-swap CM: report visibility instead of unhiding the iframe-FAB.
+            if (isChannelMenuDeployment()
+                && !hasBootstrappedFromChannelMenu
+                && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 return;
             }
@@ -2526,9 +2497,16 @@
             });
 
             rpcManager.registerHandler("cwcsetconversationstatus", (event) => {
-                conversationStatus = event?.data?.conversationStatus || CONVERSATION_STATUS.NOT_STARTED;
-                if (conversationStatus === CONVERSATION_STATUS.OPEN) {
+                const incoming = event?.data?.conversationStatus || CONVERSATION_STATUS.NOT_STARTED;
+                const wasNotStarted = conversationStatus === CONVERSATION_STATUS.NOT_STARTED;
+                conversationStatus = incoming;
+                if (incoming === CONVERSATION_STATUS.OPEN) {
                     hideRecaptchaBadge();
+                    // Existing-session restore on page load: Layer 2 sends OPEN before any user click.
+                    // Treat as if CM had already bootstrapped — iframe is the FAB henceforth.
+                    if (wasNotStarted && isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                        hasBootstrappedFromChannelMenu = true;
+                    }
                 }
             });
 
@@ -2588,11 +2566,11 @@
          */
         async function businessHoursTimerCallback(wasWithinBusinessHours) {
             loggingUtils.debug("businessHoursTimerCallback", `Business hours timer expired. Was within business hours: ${wasWithinBusinessHours}`);
-
+            
             // Show or hide chat button based on business hours transition & dispatch events to host
             if (wasWithinBusinessHours) {
                 loggingUtils.debug("businessHoursTimerCallback", `Leaving business hours - hiding chat button`);
-                if (isChannelMenuDeployment()) {
+                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
                 } else {
                     agentforce_messaging.utilAPI.hideChatButton();
@@ -2605,7 +2583,7 @@
                 }
             } else {
                 loggingUtils.debug("businessHoursTimerCallback", `Entering business hours - showing chat button`);
-                if (isChannelMenuDeployment()) {
+                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
                 } else {
                     agentforce_messaging.utilAPI.showChatButton();
@@ -2898,15 +2876,17 @@
 
         /**
          * EXTERNAL API - DO NOT CHANGE SHAPE
-         * Invoked by Channel Menu (channelMenu.js#bootstrapEmbeddedMessagingInChannelMenu) when an end user clicks
-         * the embedded messaging channel item. Delegates to launchChat to maximize the iframe.
-         *
-         * @returns {Promise} - Resolves if chat client is launched successfully, or rejects if there was an error launching chat.
+         * Invoked by Channel Menu (channelMenu.js#bootstrapEmbeddedMessagingInChannelMenu) when an
+         * end user clicks the embedded messaging item.
          */
         AgentforceMessaging.prototype.bootstrapEmbeddedMessaging = function bootstrapEmbeddedMessaging() {
             try {
+                // Latch FAB-swap: from this point on, the iframe is the FAB.
+                hasBootstrappedFromChannelMenu = true;
                 return embeddedservice_bootstrap.utilAPI.launchChat();
             } catch (e) {
+                // Unwind only on synchronous setup failure so a fresh CM click can re-enter the flow.
+                hasBootstrappedFromChannelMenu = false;
                 throw new Error("[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: " + e);
             }
         };
