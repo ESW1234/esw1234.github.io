@@ -1767,14 +1767,6 @@
             return document.getElementById(LWR_IFRAME_NAME);
         }
 
-        /**
-         * Whether the chat client iframe is currently maximized (chat window open).
-         * @returns {boolean}
-         */
-        function isClientMaximized() {
-            return Boolean(getIframe()?.classList.contains("maximized"));
-        }
-
         // =========================
         //  Initialization
         // =========================
@@ -2359,9 +2351,9 @@
             setIframeDisplayMode();
             emitEmbeddedMessagingButtonCreatedEvent();
 
-            if (isChannelMenuDeployment() && !isClientMaximized()) {
+            if (isChannelMenuDeployment() && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 // Channel Menu owns its own button rendering; report visibility instead of showing the iframe FAB.
-                // Skip while the client is maximized — CM shouldn't repaint while the user is mid-conversation.
+                // Skip during a live conversation so CM doesn't repaint mid-session.
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 return;
             }
