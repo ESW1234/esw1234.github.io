@@ -1755,11 +1755,12 @@
                 frame.classList.add("maximized");
                 frame.classList.remove("minimized");
 
-                // Ensure the iframe is visible — pre-swap CM left it hidden so the chat surface needs unhiding.
-                frame.style.display = "";
-
-                // Any maximize (including session restore via ESW_APP_MAXIMIZE) means iframe owns the FAB.
-                handOffFabFromChannelMenu();
+                if (isChannelMenuDeployment()) {
+                    // Pre-swap CM hid the iframe via handleMinimize; ensure it's visible on maximize.
+                    frame.style.display = "";
+                    // Any maximize (including session restore via ESW_APP_MAXIMIZE) means iframe owns the FAB.
+                    handOffFabFromChannelMenu();
+                }
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
             }
