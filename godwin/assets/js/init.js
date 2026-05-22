@@ -1574,11 +1574,11 @@
         // Identity token cached so Channel Menu visibility checks can validate it without an RPC round-trip.
         let identityToken;
 
-        // FAB-swap latch for Channel Menu. False: CM owns the FAB (host emits visibility events).
-        // True: the iframe is the FAB (host toggles iframe display directly). Page refresh resets.
-        let hasBootstrappedFromChannelMenu = false;
+        // FAB-ownership flag for Channel Menu. False: CM owns the FAB (host emits visibility events).
+        // True: the iframe is the FAB (host toggles iframe display directly). One-way; page refresh resets.
+        let hostOwnsFab = false;
 
-        // Sticky flag — Layer 2 only sends cwcfabready once per page lifetime. Survives
+        // Sticky flag — container only sends cwcfabready once per page lifetime. Survives
         // resetInMemoryState (which resets hasEmbeddedMessagingButtonCreatedEventFired).
         let cwcFabReadyHasFired = false;
 
@@ -1706,9 +1706,9 @@
          * hides CM's surface, and overrides showTopContainer so channelMenu.js's own paths
          * (10s timeout, reorder API) can't re-show CM after we've taken ownership.
          */
-        function handOffFabFromChannelMenu() {
+        function transferFabToHost() {
             if (!isChannelMenuDeployment()) return;
-            hasBootstrappedFromChannelMenu = true;
+            hostOwnsFab = true;
             try {
                 const cm = window.embedded_svc?.menu;
                 if (cm) {
@@ -1742,9 +1742,9 @@
                 frame.classList.add("minimized");
                 frame.classList.remove("maximized");
 
-                // Pre-swap CM: hide our iframe so it doesn't render alongside CM's FAB.
-                // Post-swap: leave display alone — the iframe is now the FAB.
-                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                // CM owns the FAB: hide our iframe so it doesn't render alongside CM's FAB.
+                // Host owns the FAB: leave display alone — the iframe is now the FAB.
+                if (isChannelMenuDeployment() && !hostOwnsFab) {
                     frame.style.display = "none";
                 }
 
@@ -1776,10 +1776,10 @@
                 frame.classList.remove("minimized");
 
                 if (isChannelMenuDeployment()) {
-                    // Pre-swap CM hid the iframe via handleMinimize; ensure it's visible on maximize.
+                    // While CM owned the FAB, handleMinimize hid the iframe; ensure it's visible on maximize.
                     frame.style.display = "";
                     // Any maximize (including session restore via ESW_APP_MAXIMIZE) means iframe owns the FAB.
-                    handOffFabFromChannelMenu();
+                    transferFabToHost();
                 }
 
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_WINDOW_MAXIMIZED_EVENT_NAME);
@@ -2133,8 +2133,8 @@
                 const iframe = getIframe();
                 if (iframe) {
                     // Iframe owns the FAB from here on; handle CM hand-off before toggling visibility
-                    // so toggleChatFabVisibility(true) hits the post-swap branch instead of emitting.
-                    handOffFabFromChannelMenu();
+                    // so toggleChatFabVisibility(true) hits the host-owns-FAB branch instead of emitting.
+                    transferFabToHost();
                     // Unhide iframe in case hideChatButton was previously called.
                     toggleChatFabVisibility(true);
                     return callRpcClient("launchChat", options)
@@ -2231,21 +2231,21 @@
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
                 if (isChannelMenuDeployment()) {
-                    if (hasBootstrappedFromChannelMenu && cwcFabReadyHasFired) {
-                        // Post-swap re-auth (e.g. after clearSession): cwcfabready already fired
+                    if (hostOwnsFab && cwcFabReadyHasFired) {
+                        // Host-owns-FAB re-auth (e.g. after clearSession): cwcfabready already fired
                         // earlier so handleFabReadyEvent won't run again. Unhide the iframe
                         // directly and restore the validation flag for subsequent utilAPI calls.
                         hasEmbeddedMessagingButtonCreatedEventFired = true;
                         toggleIframeVisibility(true);
                     } else if (hasEmbeddedMessagingButtonCreatedEventFired) {
-                        // Pre-swap token refresh: emit so channelMenu.js reorders MIAW back in.
-                        // (Skipped on initial JWT-set because Layer 2's upcoming cwcfabready will
+                        // CM-owns-FAB token refresh: emit so channelMenu.js reorders MIAW back in.
+                        // (Skipped on initial JWT-set because container's upcoming cwcfabready will
                         // fire handleFabReadyEvent which emits; double-emit would cause flicker.)
                         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                     }
                     // Initial JWT-set in single-item CM (latch pre-flipped at init, but cwcfabready
-                    // hasn't fired yet): no-op — Layer 2 will send cwcfabready post-JWT, and
-                    // handleFabReadyEvent's post-swap fall-through will show the iframe.
+                    // hasn't fired yet): no-op — container will send cwcfabready post-JWT, and
+                    // handleFabReadyEvent's host-owns-FAB fall-through will show the iframe.
                 }
             }
             catch (error) {
@@ -2310,10 +2310,10 @@
             if (!isAuthenticatedMode()) {
                 emitEmbeddedMessagingButtonCreatedEvent();
             }
-            // Skip the CM emit if the FAB-swap latch is set: the iframe already owns the surface
+            // Skip the CM emit if the host already owns the FAB: the iframe owns the surface
             // and channelMenu.js is hidden. Re-emitting would trigger reorder + animation flicker
             // for a CM that the user can no longer see anyway.
-            if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+            if (isChannelMenuDeployment() && !hostOwnsFab) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
             }
         }
@@ -2343,8 +2343,8 @@
                 }
 
                 if (show || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                    if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
-                        // Pre-swap CM: emit visibility, do not touch iframe display.
+                    if (isChannelMenuDeployment() && !hostOwnsFab) {
+                        // CM owns the FAB: emit visibility, do not touch iframe display.
                         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
                     } else {
                         toggleIframeVisibility(show);
@@ -2414,9 +2414,9 @@
             setIframeDisplayMode();
             emitEmbeddedMessagingButtonCreatedEvent();
 
-            // Pre-swap CM: report visibility instead of unhiding the iframe-FAB.
+            // CM owns the FAB: report visibility instead of unhiding the iframe-FAB.
             if (isChannelMenuDeployment()
-                && !hasBootstrappedFromChannelMenu
+                && !hostOwnsFab
                 && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 return;
@@ -2564,10 +2564,10 @@
                 conversationStatus = incoming;
                 if (incoming === CONVERSATION_STATUS.OPEN) {
                     hideRecaptchaBadge();
-                    // Existing-session restore: Layer 2 sends OPEN before any user click.
+                    // Existing-session restore: container sends OPEN before any user click.
                     // Hand off the FAB so CM can't render behind the auto-opened modal.
                     if (wasNotStarted) {
-                        handOffFabFromChannelMenu();
+                        transferFabToHost();
                     }
                 }
             });
@@ -2632,7 +2632,7 @@
             // Show or hide chat button based on business hours transition & dispatch events to host
             if (wasWithinBusinessHours) {
                 loggingUtils.debug("businessHoursTimerCallback", `Leaving business hours - hiding chat button`);
-                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                if (isChannelMenuDeployment() && !hostOwnsFab) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
                 } else {
                     agentforce_messaging.utilAPI.hideChatButton();
@@ -2645,7 +2645,7 @@
                 }
             } else {
                 loggingUtils.debug("businessHoursTimerCallback", `Entering business hours - showing chat button`);
-                if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                if (isChannelMenuDeployment() && !hostOwnsFab) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
                 } else {
                     agentforce_messaging.utilAPI.showChatButton();
@@ -2825,7 +2825,7 @@
                 // let the iframe render as the FAB directly. Pre-flip the latch so all CM-gated
                 // branches behave like non-CM.
                 if (isChannelMenuOnlyEmbeddedMessaging()) {
-                    handOffFabFromChannelMenu();
+                    transferFabToHost();
                 }
 
                 // Apply `chatButtonPosition` snippet setting.
