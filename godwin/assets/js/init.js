@@ -2091,6 +2091,13 @@
 
                 const iframe = getIframe();
                 if (iframe) {
+                    // CM: flip the FAB-swap latch and hide CM's own surface so the iframe owns the FAB
+                    // from here on. This covers both the channelMenu.js click path (which also calls
+                    // hideTopContainer itself) and direct launchChat invocations.
+                    if (isChannelMenuDeployment() && !hasBootstrappedFromChannelMenu) {
+                        hasBootstrappedFromChannelMenu = true;
+                        try { window.embedded_svc?.menu?.hideTopContainer?.(); } catch (_) {}
+                    }
                     // Unhide iframe in case hideChatButton was previously called.
                     toggleChatFabVisibility(true);
                     return callRpcClient("launchChat", options)
@@ -2881,12 +2888,9 @@
          */
         AgentforceMessaging.prototype.bootstrapEmbeddedMessaging = function bootstrapEmbeddedMessaging() {
             try {
-                // Latch FAB-swap: from this point on, the iframe is the FAB.
-                hasBootstrappedFromChannelMenu = true;
+                // Latch + CM-hide are owned by launchChat so direct launchChat calls behave identically.
                 return embeddedservice_bootstrap.utilAPI.launchChat();
             } catch (e) {
-                // Unwind only on synchronous setup failure so a fresh CM click can re-enter the flow.
-                hasBootstrappedFromChannelMenu = false;
                 throw new Error("[Bootstrap API] Something went wrong bootstrapping Embedded Messaging: " + e);
             }
         };
