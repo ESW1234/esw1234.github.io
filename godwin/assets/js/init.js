@@ -2405,9 +2405,7 @@
             // CM only: skip the iframe-hide mid-conversation. cwcfabready can re-fire after a
             // failed connect retry, and once CWC owns the FAB the iframe is the visible surface —
             // hiding it would collapse the modal. Non-CM keeps master's unconditional hide.
-            const skipHideForCmMidConversation = isChannelMenuDeployment()
-                && conversationStatus !== CONVERSATION_STATUS.NOT_STARTED;
-            if (!skipHideForCmMidConversation) {
+            if (!isChannelMenuDeployment() || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                 toggleIframeVisibility(false);
             }
 
