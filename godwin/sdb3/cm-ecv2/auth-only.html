@@ -81,7 +81,7 @@
           try {
             var parsed = JSON.parse(body);
             if (parsed && typeof parsed === 'object') {
-              token = parsed.token || parsed.jwt || parsed.identityToken || token;
+              token = parsed.accessToken || parsed.token || parsed.jwt || parsed.identityToken || token;
             }
           } catch (_) { /* plain string token */ }
           document.getElementById('idToken').value = token;
