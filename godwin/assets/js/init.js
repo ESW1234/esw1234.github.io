@@ -2287,7 +2287,7 @@
                 validateEmbeddedMessagingButtonCreatedEventFired();
                 if (show || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                     toggleIframeVisibility(show);
-                    if (isChannelMenuDeployment()) {
+                    if (isChannelMenuDeployment() && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
                         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(show);
                     }
                     return true;
