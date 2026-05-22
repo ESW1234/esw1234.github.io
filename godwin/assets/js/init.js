@@ -2209,7 +2209,10 @@
                     .catch((error) => {
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
-                if (isChannelMenuDeployment()) {
+                // Only emit on token refresh (post-cwcfabready). The initial JWT-set is followed by
+                // Layer 2's cwcfabready -> handleFabReadyEvent which already emits; emitting here
+                // too would cause channelMenu.js to reorder twice and the FAB to flicker.
+                if (isChannelMenuDeployment() && hasEmbeddedMessagingButtonCreatedEventFired) {
                     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
                 }
             }
