@@ -1777,6 +1777,16 @@
             return document.getElementById(LWR_IFRAME_NAME);
         }
 
+        /**
+         * Whether the chat client iframe is currently maximized (chat window open).
+         * Used to guard DOM-affecting actions that could close an open modal mid-session;
+         * for conversation lifecycle decisions, prefer the RPC-driven conversationStatus.
+         * @returns {boolean}
+         */
+        function isClientMaximized() {
+            return Boolean(getIframe()?.classList.contains("maximized"));
+        }
+
         // =========================
         //  Initialization
         // =========================
@@ -2355,7 +2365,11 @@
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
-            toggleIframeVisibility(false);
+            // cwcfabready can re-fire mid-session (e.g. after a failed connect retry).
+            // Don't hide the iframe if the user already has the modal open.
+            if (!isClientMaximized()) {
+                toggleIframeVisibility(false);
+            }
 
             if (buttonWidth) {
                 document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth + "px");
