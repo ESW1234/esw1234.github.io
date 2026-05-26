@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CM ECV1 — Unauth Only</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<body>
+  <h1>CM ECV1 — Unauth Only</h1>
+  <h2>esw-sdb3-blitz / CM_with_only_MIAW</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+  </script>
+
+  <script type='text/javascript' src='https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js'></script>
+  <script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+      embedded_svc.menu.settings.scrt2BaseUrl = 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce-scrt.com';
+
+      embedded_svc.menu.init(
+        'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com',
+        'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+        gslbBaseURL,
+        '00DSB0000005YCL',
+        'CM_with_only_MIAW'
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+      s.onload = function() { initESW(null); };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://esw-sdb3-blitz.test1.my.pc-rnd.salesforce.com');
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingChannelMenuVisibilityChanged', function(e) {
+      console.log('onEmbeddedMessagingChannelMenuVisibilityChanged:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+</body>
+</html>
