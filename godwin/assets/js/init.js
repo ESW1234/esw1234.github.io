@@ -1716,37 +1716,10 @@
 
         /**
          * Transfer FAB ownership from Channel Menu to the CWC iframe.
-         *
-         * Hides CM's surface and installs a runtime guard on `cm.showTopContainer` so
-         * channelMenu.js's own paths (10s init timeout, reorder API) are suppressed
-         * while CWC owns the FAB. The guard checks `cwcOwnsFab` at call time and
-         * delegates to the original implementation when the latch is false — so
-         * resetting `cwcOwnsFab` (e.g. via `resetInMemoryState` after `clearSession`)
-         * naturally restores CM's behaviour without an unwrap step.
          */
         function transferFabToCwc() {
             if (!isChannelMenuDeployment()) return;
-            try {
-                const cm = window.embedded_svc?.menu;
-                if (cm) {
-                    cm.hideTopContainer?.();
-                    // Install the guard once; preserve the original on the menu so a
-                    // second transferFabToCwc() call (idempotent) doesn't re-wrap.
-                    if (cm.showTopContainer && !cm._eswOriginalShowTopContainer) {
-                        cm._eswOriginalShowTopContainer = cm.showTopContainer;
-                        cm.showTopContainer = function eswGuardedShowTopContainer() {
-                            if (cwcOwnsFab) return;
-                            return cm._eswOriginalShowTopContainer.apply(cm, arguments);
-                        };
-                    }
-                }
-                // Flip the latch only after the guard install succeeds, so a partial
-                // failure (e.g. hideTopContainer throws, showTopContainer is a frozen
-                // accessor) doesn't leave the latch set with CM still able to re-show.
-                cwcOwnsFab = true;
-            } catch (error) {
-                loggingUtils?.error("transferFabToCwc", `Failed to transfer FAB ownership to CWC: ${error}`);
-            }
+            cwcOwnsFab = true;
         }
 
         // =========================
