@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CM ECV2 — No showTopContainer Override (BUGGY DEMO)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <style>
+    .warning { background: #fff3cd; border: 1px solid #ffc107; padding: 12px; margin: 12px 0; border-radius: 4px; }
+    .repro { background: #f6f8fa; border-left: 4px solid #0366d6; padding: 12px; margin: 12px 0; }
+    code { background: #f6f8fa; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>CM ECV2 — No <code>showTopContainer</code> Override (BUGGY DEMO)</h1>
+  <h2>orgfarm-46c4c41fb0 / CM_ECV2_Unauth_Plus_Two</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <div class="warning">
+    <strong>This page intentionally loads a buggy <code>init.js</code> to demonstrate what happens when the
+    <code>showTopContainer</code> override in <code>transferFabToCwc</code> is removed.</strong>
+    <br><br>
+    Compare against the working version at
+    <a href="https://esw1234.github.io/godwin/sdb3/cm-ecv2/unauth-plus-two.html">unauth-plus-two.html</a>.
+  </div>
+
+  <div class="repro">
+    <strong>Reproduction steps:</strong>
+    <ol>
+      <li>Click the Channel Menu FAB (bottom-right).</li>
+      <li>Click <strong>Embedded Messaging</strong> in the dropdown — chat modal opens, CM hides.</li>
+      <li>Trigger a CM repaint by calling <code>embedded_svc.menu.reorder(['EmbeddedMessaging', 'AppleBusinessChat'])</code> from devtools console
+          (or use the button below).</li>
+      <li><strong>Observe the bug:</strong> CM dropdown FAB resurfaces alongside the open chat modal — both UI surfaces visible at once.</li>
+      <li>On the working page (with the override), the same reorder call leaves the chat modal in sole possession of the surface.</li>
+    </ol>
+    <p>The 10s init-timeout watchdog scenario is harder to repro on demand but follows the same pattern: any
+       channelMenu.js codepath that calls <code>showTopContainer()</code> after the FAB hand-off will resurface CM.</p>
+  </div>
+
+  <p style="font-family:monospace">
+    Test buttons (call host APIs):
+    <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+  </p>
+
+  <p style="font-family:monospace">
+    Trigger the bug:
+    <button onclick="embedded_svc.menu.reorder(['EmbeddedMessaging', 'AppleBusinessChat'])">reorder() &mdash; resurfaces CM</button>
+    <button onclick="embedded_svc.menu.showTopContainer()">showTopContainer() direct call</button>
+  </p>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+  </script>
+
+  <!--
+    BUGGY chain: fab-no-stc-override.js -> channelMenu-no-stc-override.js -> init-no-stc-override.js
+    The init.js at the end has transferFabToCwc() WITHOUT the showTopContainer guard.
+  -->
+  <script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/fab-no-stc-override.js'></script>
+  <script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+      embedded_svc.menu.settings.devMode = true;
+      embedded_svc.menu.init(
+        'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com',
+        'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+        gslbBaseURL,
+        '00DSB00000da1NJ',
+        'CM_ECV2_Unauth_Plus_Two'
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://esw1234.github.io/godwin/assets/js/fab-no-stc-override.js');
+      s.onload = function() { initESW(null); };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com');
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingChannelMenuVisibilityChanged', function(e) {
+      console.log('onEmbeddedMessagingChannelMenuVisibilityChanged:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+</body>
+</html>
