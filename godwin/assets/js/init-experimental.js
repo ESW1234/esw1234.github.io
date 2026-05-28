@@ -1685,12 +1685,12 @@
         }
 
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
-            const isVisible = shouldRenderEmbeddedMessagingInChannelMenu(setUtilAPIVisibility);
+            const isVisible = setUtilAPIVisibility;
             try {
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_CHANNEL_MENU_VISIBILITY_CHANGE_EVENT_NAME, {
                     detail: {
                         devName: configUtils?.getEswConfigDevName(),
-                        isVisible
+                        setUtilAPIVisibility
                     }
                 });
             } catch (err) {
