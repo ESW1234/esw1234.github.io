@@ -2360,9 +2360,9 @@
             }
             // Skip if CWC already owns the FAB. Re-emitting would trigger reorder + 
             // animation flicker for a Channel Menu that the user can no longer see anyway.
-            if (isChannelMenuDeployment() && !cwcOwnsFab) {
-                emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
-            }
+            // if (isChannelMenuDeployment() && !cwcOwnsFab) {
+            //     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
+            // }
         }
 
         /**
