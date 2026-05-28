@@ -2463,9 +2463,7 @@
 
             // For Channel Menu, skip the iframe-hide mid-conversation. 
             // Once CWC owns the FAB, the iframe is the visible surface so hiding it would collapse the modal.
-            if (!isChannelMenuDeployment() || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                toggleIframeVisibility(false);
-            }
+            toggleIframeVisibility(false);
 
             if (buttonWidth) {
                 document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth + "px");
@@ -2478,12 +2476,12 @@
             emitEmbeddedMessagingButtonCreatedEvent();
 
             // If Channel Menu owns the FAB, report visibility instead of unhiding the iframe-FAB.
-            if (isChannelMenuDeployment()
-                && !cwcOwnsFab
-                && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
-                emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
-                return;
-            }
+            // if (isChannelMenuDeployment()
+            //     && !cwcOwnsFab
+            //     && conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
+            //     emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
+            //     return;
+            // }
 
             if (shouldShowChatButtonOnLoad()) {
                 if (conversationStatus !== CONVERSATION_STATUS.NOT_STARTED) loggingUtils.debug("handleFabReadyEvent", "Active conversation outside business hours - showing iframe");
