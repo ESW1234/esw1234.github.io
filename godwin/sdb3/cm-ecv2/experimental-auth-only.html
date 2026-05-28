@@ -162,6 +162,13 @@
   <script type='text/javascript'>
     var initESW = function(gslbBaseURL) {
       embedded_svc.menu.settings.devMode = true;
+      embedded_svc.menu.snippetSettingsFile = {
+        CWC_Auth: {
+            settings: {
+                hideChatButtonOnLoad: true
+            }
+        }
+      };
       embedded_svc.menu.init(
         'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com',
         'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
