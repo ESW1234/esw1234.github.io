@@ -1685,6 +1685,7 @@
         }
 
         function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(isVisible) {
+            if (isVisible) validateEmbeddedMessagingButtonCreatedEventFired();
             try {
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_CHANNEL_MENU_VISIBILITY_CHANGE_EVENT_NAME, {
                     detail: {
@@ -2202,7 +2203,6 @@
         AgentforceMessagingUtil.prototype.showChatButton = function () {
             if (isChannelMenuDeployment()) {
                 return emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
-                if (!isChannelMenuOnlyEmbeddedMessaging()) return;
             }
             return toggleChatFabVisibility(true);
         };
