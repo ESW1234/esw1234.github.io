@@ -2855,6 +2855,7 @@
             siteURL,
             snippetConfig
         ) {
+            embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
             try {
                 // Record the time when CWC init was invoked for evaluating perf metrics.
                 agentforce_messaging.settings.metrics = {
@@ -2879,11 +2880,6 @@
                     snippetConfig,
                     language: agentforce_messaging.settings.language,
                 });
-
-                // If CWC is the only channel in CM, transfer FAB ownership to CWC.
-                if (isChannelMenuOnlyEmbeddedMessaging()) {
-                    transferFabToCwc();
-                }
 
                 // Apply `chatButtonPosition` snippet setting.
                 applyChatButtonPosition(agentforce_messaging.settings.chatButtonPosition);
