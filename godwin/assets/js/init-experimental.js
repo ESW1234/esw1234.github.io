@@ -2215,7 +2215,6 @@
         AgentforceMessagingUtil.prototype.hideChatButton = function () {
             if (isChannelMenuDeployment()) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
-                if (!isChannelMenuOnlyEmbeddedMessaging()) return;
             }
             return toggleChatFabVisibility(false);
         };
