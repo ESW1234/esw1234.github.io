@@ -2463,7 +2463,9 @@
 
             // For Channel Menu, skip the iframe-hide mid-conversation. 
             // Once CWC owns the FAB, the iframe is the visible surface so hiding it would collapse the modal.
-            toggleIframeVisibility(false);
+            // if (!isChannelMenuDeployment() || conversationStatus === CONVERSATION_STATUS.NOT_STARTED) {
+                toggleIframeVisibility(false);
+            //}
 
             if (buttonWidth) {
                 document.documentElement.style.setProperty('--minimized-iframe-width', buttonWidth + "px");
