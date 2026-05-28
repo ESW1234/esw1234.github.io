@@ -2180,6 +2180,22 @@
         };
 
         /**
+         * Returns true when the Channel Menu deployment has exactly one menu item and that item
+         * is the Embedded Messaging channel.
+         */
+        function isChannelMenuOnlyEmbeddedMessaging() {
+            try {
+                const items = window.embedded_svc?.menu?.menuConfig?.configuredChannels;
+                return Array.isArray(items)
+                    && items.length === 1
+                    && items[0]?.channelType === CHANNEL_TYPE.EMBEDDED_MESSAGING;
+            } catch (error) {
+                loggingUtils?.error("isChannelMenuOnlyEmbeddedMessaging", `Failed to check if Channel Menu is only Embedded Messaging: ${error}`);
+                return false;
+            }
+        }
+        
+        /**
     	 * EXTERNAL API - DO NOT CHANGE SHAPE!
     	 * A publicly exposed API for the host (i.e. customer) to show chat button programatically.
     	 *
@@ -2187,6 +2203,7 @@
         AgentforceMessagingUtil.prototype.showChatButton = function () {
             if (isChannelMenuDeployment()) {
                 emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
+                if (!isChannelMenuOnlyEmbeddedMessaging()) return;
             }
             return toggleChatFabVisibility(true);
         };
