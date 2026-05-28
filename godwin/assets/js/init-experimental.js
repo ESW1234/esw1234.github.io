@@ -1684,13 +1684,12 @@
             return shouldRender;
         }
 
-        function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(setUtilAPIVisibility) {
-            const isVisible = setUtilAPIVisibility;
+        function emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(isVisible) {
             try {
                 dispatchEventToHost(hostEvents.ON_EMBEDDED_MESSAGING_CHANNEL_MENU_VISIBILITY_CHANGE_EVENT_NAME, {
                     detail: {
                         devName: configUtils?.getEswConfigDevName(),
-                        setUtilAPIVisibility
+                        isVisible
                     }
                 });
             } catch (err) {
