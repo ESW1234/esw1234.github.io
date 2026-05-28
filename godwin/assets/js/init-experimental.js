@@ -2202,7 +2202,7 @@
     	 */
         AgentforceMessagingUtil.prototype.showChatButton = function () {
             if (isChannelMenuDeployment()) {
-                emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
+                return emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
                 if (!isChannelMenuOnlyEmbeddedMessaging()) return;
             }
             return toggleChatFabVisibility(true);
