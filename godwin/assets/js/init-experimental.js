@@ -2457,7 +2457,7 @@
          * @param {CustomEvent} event - Button created event containing button dimensions
          */
         function handleFabReadyEvent(event) {
-            cwcFabReadyHasFired = true;
+            //cwcFabReadyHasFired = true;
             const buttonWidth = event?.data?.buttonDimensions?.width;
             const buttonHeight = event?.data?.buttonDimensions?.height;
 
