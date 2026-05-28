@@ -2186,7 +2186,7 @@
     	 */
         AgentforceMessagingUtil.prototype.showChatButton = function () {
             if (isChannelMenuDeployment()) {
-                return emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
+                emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(true);
             }
             return toggleChatFabVisibility(true);
         };
@@ -2198,7 +2198,7 @@
     	 */
         AgentforceMessagingUtil.prototype.hideChatButton = function () {
             if (isChannelMenuDeployment()) {
-                return emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
+                emitEmbeddedMessagingChannelMenuVisibilityChangeEvent(false);
             }
             return toggleChatFabVisibility(false);
         };
