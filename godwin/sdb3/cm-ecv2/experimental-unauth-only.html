@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CM ECV2 — Experimental Unauth Only (utilAPI short-circuit)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <style>
+    .info { background: #e7f3ff; border: 1px solid #0366d6; padding: 12px; margin: 12px 0; border-radius: 4px; }
+    .repro { background: #f6f8fa; border-left: 4px solid #0366d6; padding: 12px; margin: 12px 0; }
+    code { background: #f6f8fa; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>CM ECV2 — Experimental Unauth Only (utilAPI short-circuit)</h1>
+  <h2>orgfarm-46c4c41fb0 / CM_ECV2_Unauth_Only</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <div class="info">
+    <strong>Experimental design:</strong>
+    <ul>
+      <li><code>showChatButton</code> / <code>hideChatButton</code> short-circuit in CM deployments — emit
+          <code>onEmbeddedMessagingChannelMenuVisibilityChanged</code> only, never touch the iframe FAB.</li>
+      <li><code>toggleChatFabVisibility</code> drops its CM branch (now reachable only via <code>launchChat</code>
+          post-handoff or non-CM).</li>
+      <li><code>businessHoursTimerCallback</code> just calls <code>utilAPI.show/hideChatButton</code> — the
+          short-circuit handles CM/non-CM dispatch internally.</li>
+      <li>Lifecycle paths (<code>setIdentityToken</code>, <code>resetClientToInitialState</code>,
+          <code>handleFabReadyEvent</code>, <code>handleMinimize</code>) keep their <code>cwcOwnsFab</code>
+          reads — these aren't customer-facing API entry points.</li>
+    </ul>
+    Compare against the canonical version at
+    <a href="https://esw1234.github.io/godwin/sdb3/cm-ecv2/unauth-only.html">unauth-only.html</a>,
+    or the experimental plus-two unauth at
+    <a href="https://esw1234.github.io/godwin/sdb3/cm-ecv2/experimental.html">experimental.html</a>.
+  </div>
+
+  <div class="repro">
+    <strong>What to test (Unauth_Only — the only MIAW item in CM):</strong>
+    <ol>
+      <li>Click CM FAB → click <strong>Embedded Messaging</strong> → modal opens. (<code>cwcOwnsFab=true</code>.)</li>
+      <li>Call <code>embeddedservice_bootstrap.utilAPI.hideChatButton()</code> in console.
+          <strong>Expected:</strong> CM emits <code>{isVisible:false}</code> only. Iframe modal stays untouched.
+          <em>(Old behavior post-handoff: would also hide the iframe FAB.)</em></li>
+      <li>Call <code>embeddedservice_bootstrap.utilAPI.showChatButton()</code>. CM emits <code>{isVisible:true}</code>;
+          iframe stays untouched.</li>
+      <li>Trigger BH transition (mockbench or natural cutover) — CM gets emit; iframe untouched.</li>
+      <li>Minimize the modal — iframe hides via <code>handleMinimize</code> (not via utilAPI), CM resurfaces.</li>
+    </ol>
+  </div>
+
+  <p style="font-family:monospace">
+    Test buttons (call host APIs):
+    <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+    <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+  </p>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+  </script>
+
+  <!--
+    Experimental chain: fab-experimental.js -> channelMenu-experimental.js -> init-experimental.js
+    init.js source: experiment/yat-law/cwc-owns-fab-removal branch in esw-template-frame.
+  -->
+  <script type='text/javascript' src='https://esw1234.github.io/godwin/assets/js/fab-experimental.js'></script>
+  <script type='text/javascript'>
+    var initESW = function(gslbBaseURL) {
+      embedded_svc.menu.settings.devMode = true;
+      embedded_svc.menu.init(
+        'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com',
+        'https://d.la13-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+        gslbBaseURL,
+        '00DSB00000da1NJ',
+        'CM_ECV2_Unauth_Only'
+      );
+    };
+
+    if (!window.embedded_svc || !window.embedded_svc.menu) {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://esw1234.github.io/godwin/assets/js/fab-experimental.js');
+      s.onload = function() { initESW(null); };
+      document.body.appendChild(s);
+    } else {
+      initESW('https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce.com');
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingChannelMenuVisibilityChanged', function(e) {
+      console.log('onEmbeddedMessagingChannelMenuVisibilityChanged:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+</body>
+</html>
