@@ -2291,6 +2291,7 @@
             try {
                 validateEmbeddedMessagingReadyEventFired();
 
+                cwcFabReadyHasFired = false;
                 return callRpcClient("clearSession", { shouldEndSession })
                     .then(() => {
                         resetClientToInitialState();
