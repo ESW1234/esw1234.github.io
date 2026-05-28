@@ -2254,22 +2254,22 @@
                     .catch((error) => {
                         throw new Error(`Failed to set identity token: ${error}`);
                     });
-                if (isChannelMenuDeployment()) {
-                    // Three lifecycle cases for setIdentityToken in CM:
-                    //   (a) post-handoff re-auth (after clearSession): cwcfabready won't re-fire,
-                    //       so unhide the iframe directly and restore the validation flag.
-                    //   (b) pre-handoff token refresh: emit visibility so channelMenu.js reorders MIAW back in.
-                    //   (c) initial JWT: no-op here; cwcfabready -> handleFabReadyEvent will emit.
-                    if (cwcOwnsFab && cwcFabReadyHasFired) {
-                        // (a) re-auth after clearSession
-                        hasEmbeddedMessagingButtonCreatedEventFired = true;
-                        toggleIframeVisibility(true);
-                    } else if (hasEmbeddedMessagingButtonCreatedEventFired) {
-                        // (b) token refresh while CM still owns the FAB
-                        emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
-                    }
-                    // (c) initial JWT: implicit fall-through; no-op here
-                }
+                // if (isChannelMenuDeployment()) {
+                //     // Three lifecycle cases for setIdentityToken in CM:
+                //     //   (a) post-handoff re-auth (after clearSession): cwcfabready won't re-fire,
+                //     //       so unhide the iframe directly and restore the validation flag.
+                //     //   (b) pre-handoff token refresh: emit visibility so channelMenu.js reorders MIAW back in.
+                //     //   (c) initial JWT: no-op here; cwcfabready -> handleFabReadyEvent will emit.
+                //     if (cwcOwnsFab && cwcFabReadyHasFired) {
+                //         // (a) re-auth after clearSession
+                //         hasEmbeddedMessagingButtonCreatedEventFired = true;
+                //         toggleIframeVisibility(true);
+                //     } else if (hasEmbeddedMessagingButtonCreatedEventFired) {
+                //         // (b) token refresh while CM still owns the FAB
+                //         emitEmbeddedMessagingChannelMenuVisibilityChangeEvent();
+                //     }
+                //     // (c) initial JWT: implicit fall-through; no-op here
+                // }
             }
             catch (error) {
                 loggingUtils.error("setIdentityToken", `Failed to set identity token: ${error}`);
