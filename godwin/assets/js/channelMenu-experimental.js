@@ -3737,9 +3737,11 @@
 		var labelsLanguage = embedded_svc.menu.menuConfig.additionalSettings.labelsLanguage;
 		var baseURL = menuItemData.siteUrl;
 
-		// CUSTOM: Load init.js (ECV2 host bootstrap) from github.io instead of the MIAW deployment's LWR site endpoint.
+		// CUSTOM: Load init.js (ECV2 host bootstrap) from the MIAW deployment's LWR site endpoint
+		// (the original non-overridden behavior). The experimental pages set siteUrl to the
+		// orgfarm site URL so init.js comes from the same place as the iframe (container).
 		embedded_svc.utils.loadScriptFromUrl(
-			"https://esw1234.github.io/godwin/assets/js/init-experimental.js",
+			baseURL + "/assets/js/init.js",
 			function() {
 				// Verify global object is available.
 				if(!window.embeddedservice_bootstrap || !embeddedservice_bootstrap) {
