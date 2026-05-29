@@ -3743,7 +3743,7 @@
 
 		// CUSTOM: Load init.js (ECV2 host bootstrap) from the LWR site endpoint we just overrode.
 		embedded_svc.utils.loadScriptFromUrl(
-			baseURL + "/assets/js/init.js",
+			baseURL + "/assets/js/bootstrap.js",
 			function() {
 				// Verify global object is available.
 				if(!window.embeddedservice_bootstrap || !embeddedservice_bootstrap) {
