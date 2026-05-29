@@ -3735,11 +3735,13 @@
 	 */
 	embedded_svc.menu.initializeEmbeddedMessaging = function initializeEmbeddedMessaging(menuItemData) {
 		var labelsLanguage = embedded_svc.menu.menuConfig.additionalSettings.labelsLanguage;
-		var baseURL = menuItemData.siteUrl;
+		// CUSTOM: Override siteUrl with the new orgfarm-8a4793cc19 LWR site URL so init.js
+		// and the iframe (container) both load from there. The pages still pass the
+		// original orgfarm-46c4c41fb0 siteUrl through embedded_svc.menu.init() — this
+		// override replaces it at the point we hand control to the iframe.
+		var baseURL = "https://orgfarm-8a4793cc19.my.site-com.xits6ctciqmx0nkcmpn0wq2bt1sz0.wc.crm.dev:6101/ESWECV21780079367002";
 
-		// CUSTOM: Load init.js (ECV2 host bootstrap) from the MIAW deployment's LWR site endpoint
-		// (the original non-overridden behavior). The experimental pages set siteUrl to the
-		// orgfarm site URL so init.js comes from the same place as the iframe (container).
+		// CUSTOM: Load init.js (ECV2 host bootstrap) from the LWR site endpoint we just overrode.
 		embedded_svc.utils.loadScriptFromUrl(
 			baseURL + "/assets/js/init.js",
 			function() {
@@ -3770,7 +3772,7 @@
 				embeddedservice_bootstrap.init(
 					embedded_svc.menu.settings.orgId,
 					menuItemData.channel,
-					menuItemData.siteUrl,
+					baseURL,
 					{
 						scrt2URL: menuItemData.scrt2Url
 					}
