@@ -1,72 +1,268 @@
+<!DOCTYPE html>
 <html>
-   <head>
-       <title>sfw-20260601-1414</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
-   </head>
-   <body>
-	<h1>sfw-20260601-1414</h1>
-	<h2>SDB3: godwin@agent.sdb3.org</h2>
+<head>
+  <title>ecv1-settings-parity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; }
+    .panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; margin-bottom: 12px; max-width: 760px; }
+    .panel h3 { margin: 0 0 8px 0; font-size: 14px; }
+    .row { display: flex; gap: 8px; align-items: center; margin: 6px 0; flex-wrap: wrap; }
+    label { font-size: 12px; color: #555; }
+    input { font-family: monospace; padding: 4px 6px; }
+    input[type="text"] { min-width: 280px; }
+    button { padding: 4px 10px; }
+    .small { font-size: 11px; color: #888; }
+    code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+    table.settings { border-collapse: collapse; font-size: 12px; width: 100%; }
+    table.settings th, table.settings td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+    table.settings th { color: #555; font-weight: 600; }
+    .val-true { color: #137333; font-weight: 600; }
+    .val-false { color: #a50e0e; font-weight: 600; }
+    .toggle { font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h1>ecv1-settings-parity</h1>
+  <h2>godwinlaw-sdb3-agentforce / CustomerWebClient</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
 
-	<!-- Edit page link -->
-	<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
-	</br>
+  <div class="panel">
+    <h3>Settings API (override via URL, then reload)</h3>
+    <p class="small">
+      Each setting is read from a URL query param and applied before <code>init()</code>, so you can flip one and
+      reload to test parity. Booleans accept <code>true</code>/<code>false</code>; click a toggle link to flip it.
+      Source: <a href="https://developer.salesforce.com/docs/service/messaging-web/references/m4w-reference/settingsAPI.html?d=afx" target="_blank">Settings API reference</a>.
+    </p>
+    <table class="settings">
+      <thead>
+        <tr><th>Setting</th><th>Active value</th><th></th></tr>
+      </thead>
+      <tbody id="settingsTableBody"></tbody>
+    </table>
+  </div>
 
-	<label for="idToken">Set identity token:</label>
-	<input type="text" id="idToken" name="idToken" size="50">
-	<button type="button" id="setIdentityToken" onclick="setIdentityToken()"> Confirm </button>
-	</br>
-	</br>
-	<button type="button" id="clearAuthBtn" onclick="clearAuthSession()"> Clear Authorization Session </button>
-	<script type='text/javascript'>
-		document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+  <div class="panel">
+    <h3>Identity token (auth)</h3>
+    <div class="row">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" value="testSubject12345" size="30">
+      <button type="button" onclick="getJwtAndSet()">Get JWT &amp; Set</button>
+    </div>
+    <div class="row">
+      <label for="idToken">Token:</label>
+      <input type="text" id="idToken" size="60" placeholder="auto-populated by Get JWT, or paste manually">
+      <button type="button" onclick="setIdentityTokenFromInput()">Set from input</button>
+    </div>
+    <div class="row">
+      <button type="button" onclick="clearAuthSession()">Clear session</button>
+    </div>
+    <p class="small">JWT fetched from portico (kid <code>5f103f1b-ee38-404c-ac94-83c427764813</code>, expires in 7 days).</p>
+  </div>
 
-		function clearAuthSession() {
-			console.log("Clearing user session.");
-			embeddedservice_bootstrap.userVerificationAPI.clearSession();
-		}
+  <div class="panel">
+    <h3>Host APIs (unauth)</h3>
+    <div class="row">
+      <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+    </div>
+  </div>
 
-		function setIdentityToken(token) {
-			var token = document.getElementById("idToken").value;
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
 
-			embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-				"identityTokenType":"JWT",
-				// Valid JWT
-				"identityToken": token
-			});
-		}
+    // Settings exposed by the Messaging-for-Web Settings API. Each is overridable via a URL query
+    // param of the same name so this page can exercise ECv1<->ECv2 parity without code edits.
+    var SETTINGS_SPEC = [
+      { key: 'language',                              type: 'string',  def: 'en_US' },
+      { key: 'devMode',                               type: 'boolean', def: true },
+      { key: 'hideChatButtonOnLoad',                  type: 'boolean', def: false },
+      { key: 'disableInlineAutoLaunch',               type: 'boolean', def: false },
+      { key: 'enableUserInputForConversationWithBot', type: 'boolean', def: false },
+      { key: 'shouldOpenLinksInSameTab',              type: 'boolean', def: false },
+      { key: 'shouldShowParticipantChgEvntInConvHist',type: 'boolean', def: true },
+      { key: 'restrictSessionOnMessagingChannel',     type: 'boolean', def: false },
+      { key: 'shouldMinimizeWindowOnNewTab',          type: 'boolean', def: false },
+      { key: 'chatButtonPosition',                    type: 'string',  def: '25px, 30px' }
+    ];
 
-		window.addEventListener("onEmbeddedMessagingReady", () => {
-			console.log("onEmbeddedMessagingReady emitted");
-		});
+    function resolveSettings() {
+      var params = new URLSearchParams(window.location.search);
+      var resolved = {};
+      SETTINGS_SPEC.forEach(function(spec) {
+        var raw = params.get(spec.key);
+        if (raw === null) {
+          resolved[spec.key] = spec.def;
+        } else if (spec.type === 'boolean') {
+          resolved[spec.key] = (raw === 'true' || raw === '1');
+        } else {
+          resolved[spec.key] = raw;
+        }
+      });
+      return resolved;
+    }
 
-		window.addEventListener("onEmbeddedMessageSent", (data) => {
-			console.log("onEmbeddedMessageSent emitted");
-			console.log(data.detail);
-		});
+    function applySettings() {
+      var resolved = resolveSettings();
+      SETTINGS_SPEC.forEach(function(spec) {
+        embeddedservice_bootstrap.settings[spec.key] = resolved[spec.key];
+      });
+      console.log('Applied Settings API values:', resolved);
+    }
 
-		window.addEventListener("onEmbeddedMessageLinkClicked", (data) => {
-			console.log("onEmbeddedMessageLinkClick emitted");
-			console.log(data.detail);
-		});
-	</script>
-	<script type='text/javascript'>
-		function initEmbeddedMessaging() {
-			try {
-				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-				embeddedservice_bootstrap.settings.devMode = true;
-				embeddedservice_bootstrap.init(
-					'00DSB00000RoOKZ',
-					'CustomerWebClient',
-				    'https://orgfarm-73ed759a43.my.site-com.d1z7dl793wq619iyr7evgzpp.wc.crm.dev:6101/ESWECV21780347528887',
-					{
-						scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
-					}
-				);
-			} catch (err) {
-				console.error('Error loading Embedded Messaging: ', err);
-			}
-		};
-	</script>
-	<script type='text/javascript' src='https://orgfarm-73ed759a43.my.site-com.d1z7dl793wq619iyr7evgzpp.wc.crm.dev:6101/ESWECV21780347528887/assets/js/bootstrap.js' onload='initEmbeddedMessaging()'></script>
-   </body>
+    function renderSettingsTable() {
+      var resolved = resolveSettings();
+      var body = document.getElementById('settingsTableBody');
+      body.innerHTML = '';
+      SETTINGS_SPEC.forEach(function(spec) {
+        var value = resolved[spec.key];
+        var tr = document.createElement('tr');
+
+        var nameCell = document.createElement('td');
+        var nameCode = document.createElement('code');
+        nameCode.textContent = spec.key;
+        nameCell.appendChild(nameCode);
+
+        var valCell = document.createElement('td');
+        if (spec.type === 'boolean') {
+          valCell.innerHTML = '<span class="' + (value ? 'val-true' : 'val-false') + '">' + value + '</span>';
+        } else {
+          valCell.textContent = String(value);
+        }
+
+        var actionCell = document.createElement('td');
+        if (spec.type === 'boolean') {
+          var params = new URLSearchParams(window.location.search);
+          params.set(spec.key, String(!value));
+          var a = document.createElement('a');
+          a.className = 'toggle';
+          a.href = window.location.pathname + '?' + params.toString();
+          a.textContent = 'set ' + (!value);
+          actionCell.appendChild(a);
+        } else {
+          actionCell.innerHTML = '<span class="small">?' + spec.key + '=...</span>';
+        }
+
+        tr.appendChild(nameCell);
+        tr.appendChild(valCell);
+        tr.appendChild(actionCell);
+        body.appendChild(tr);
+      });
+    }
+
+    renderSettingsTable();
+
+    var PORTICO_BASE = 'https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken';
+    var KEY_ID = '5f103f1b-ee38-404c-ac94-83c427764813';
+    var EXP_SECONDS = 7 * 24 * 60 * 60; // 1 week
+
+    function buildPorticoUrl(subject) {
+      var params = new URLSearchParams({
+        issuer: 'testIssuer',
+        subject: subject || 'testSubject12345',
+        jwtExpInSeconds: String(EXP_SECONDS),
+        keyId: KEY_ID
+      });
+      return PORTICO_BASE + '?' + params.toString();
+    }
+
+    function getJwtAndSet() {
+      var subject = document.getElementById('subject').value || 'testSubject12345';
+      var url = buildPorticoUrl(subject);
+      console.log('Fetching JWT for subject=' + subject + ' from portico');
+      fetch(url)
+        .then(function(r) {
+          if (!r.ok) throw new Error('portico returned HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(body) {
+          var token = body.trim();
+          // Some endpoints wrap the token in a JSON object; tolerate both shapes.
+          try {
+            var parsed = JSON.parse(body);
+            if (parsed && typeof parsed === 'object') {
+              token = parsed.accessToken || parsed.token || parsed.jwt || parsed.identityToken || token;
+            }
+          } catch (_) { /* plain string token */ }
+          document.getElementById('idToken').value = token;
+          console.log('JWT received; calling setIdentityToken');
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType: 'JWT',
+            identityToken: token
+          });
+        })
+        .catch(function(err) {
+          console.error('JWT fetch failed:', err);
+        });
+    }
+
+    function setIdentityTokenFromInput() {
+      var token = document.getElementById('idToken').value.trim();
+      if (!token) {
+        console.warn('Token input is empty');
+        return;
+      }
+      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        identityTokenType: 'JWT',
+        identityToken: token
+      });
+    }
+
+    function clearAuthSession() {
+      console.log('Clearing user session');
+      embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingIdentityTokenExpired', function() {
+      console.log('onEmbeddedMessagingIdentityTokenExpired emitted');
+    });
+    window.addEventListener('onEmbeddedMessageSent', function(data) {
+      console.log('onEmbeddedMessageSent emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessageLinkClicked', function(data) {
+      console.log('onEmbeddedMessageLinkClicked emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        applySettings();
+        embeddedservice_bootstrap.init(
+          '00DSB00000RoOKZ',
+          'CustomerWebClient',
+          'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCustomerWebClient1757687068395',
+          {
+            scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCustomerWebClient1757687068395/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
 </html>
