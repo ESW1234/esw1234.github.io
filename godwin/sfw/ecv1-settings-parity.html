@@ -250,6 +250,7 @@
     function initEmbeddedMessaging() {
       try {
         applySettings();
+        embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab = true;
         embeddedservice_bootstrap.init(
           '00DSB00000RoOKZ',
           'CustomerWebClient',
