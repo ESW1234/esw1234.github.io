@@ -250,7 +250,8 @@
     function initEmbeddedMessaging() {
       try {
         applySettings();
-        embeddedservice_bootstrap.settings.shouldMinimizeWindowOnNewTab = true;
+        embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = true;
+        embeddedservice_bootstrap.settings.shouldShowParticipantChgEvntInConvHist = true;
         embeddedservice_bootstrap.init(
           '00DSB00000RoOKZ',
           'CustomerWebClient',
