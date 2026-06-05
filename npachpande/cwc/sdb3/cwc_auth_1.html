@@ -29,13 +29,13 @@
 
 	window.addEventListener("onEmbeddedMessagingReady", () => {
 		 console.log("Received the onEmbeddedMessagingReady event…");
-		 fetchAndSetIdentityToken();
+		 //fetchAndSetIdentityToken();
 	});
 
 
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		 console.log("Received the onEmbeddedMessagingTokenExpired event…");
-		 fetchAndSetIdentityToken();
+		 //fetchAndSetIdentityToken();
 	});
 </script>
 
@@ -48,9 +48,9 @@
 			embeddedservice_bootstrap.init(
 				'00DSB00000aGFJL',
 				'CWC_Auth_3',
-				'https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWCWCAuth31771625860576',
+				'https://orgfarm-d585323017.demo.test1.my.pc-rnd.site.com/ESWCWCAuth31771625860576',
 				{
-					scrt2URL: 'https://orgfarm-d585323017.test1.my.pc-rnd.salesforce-scrt.com'
+					scrt2URL: 'https://orgfarm-d585323017.demo.test1.my.pc-rnd.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -58,7 +58,7 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://orgfarm-d585323017.test1.my.pc-rnd.site.com/ESWCWCAuth31771625860576/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-d585323017.demo.test1.my.pc-rnd.site.com/ESWCWCAuth31771625860576/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
 
 
 </body>
