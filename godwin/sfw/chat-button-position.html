@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>chat-button-position</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; }
+    .panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; margin-bottom: 12px; max-width: 860px; }
+    .panel h3 { margin: 0 0 8px 0; font-size: 14px; }
+    .panel.feature { border-color: #1a73e8; border-width: 2px; }
+    .row { display: flex; gap: 8px; align-items: center; margin: 6px 0; flex-wrap: wrap; }
+    label { font-size: 12px; color: #555; }
+    input { font-family: monospace; padding: 4px 6px; }
+    input[type="text"] { min-width: 200px; }
+    button { padding: 4px 10px; }
+    .small { font-size: 11px; color: #888; }
+    code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+    .activeVal { font-family: monospace; font-weight: 600; color: #1a73e8; }
+    .preset a, .stateBtns a { display: inline-block; padding: 5px 10px; border-radius: 4px; text-decoration: none; font-size: 12px; border: 1px solid #ccc; color: #1a73e8; }
+    .preset a.active, .stateBtns a.active { background: #1a73e8; color: #fff; border-color: #1a73e8; cursor: default; }
+    .preset a.bad { color: #a50e0e; border-color: #f0c0bc; }
+    .preset a.bad.active { background: #a50e0e; color: #fff; border-color: #a50e0e; }
+    table.claims { border-collapse: collapse; font-size: 12px; width: 100%; }
+    table.claims th, table.claims td { text-align: left; padding: 5px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+    table.claims th { color: #555; font-weight: 600; }
+    table.claims td.verdict { white-space: nowrap; }
+    .live { font-family: monospace; font-size: 12px; }
+    .live b { color: #137333; }
+    .live i { color: #a50e0e; font-style: normal; }
+    .measured { font-family: monospace; font-size: 12px; background: #f4f4f4; padding: 8px; border-radius: 4px; white-space: pre-wrap; }
+    .step { margin: 4px 0; font-size: 12px; }
+    .console { font-family: monospace; font-size: 11px; background: #1e1e1e; color: #d4d4d4; padding: 8px; border-radius: 4px; max-height: 160px; overflow: auto; white-space: pre-wrap; }
+    .console .err { color: #f48771; }
+    .pass { color: #137333; font-weight: 600; }
+    .fail { color: #a50e0e; font-weight: 600; }
+    .pending { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>chat-button-position</h1>
+  <h2>godwinlaw-sdb3-agentforce / CustomerWebClient</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <div class="panel feature">
+    <h3><code>embeddedservice_bootstrap.settings.chatButtonPosition</code></h3>
+    <p class="small">
+      Repositions <strong>both</strong> the floating chat button and the <strong>minimized</strong> chat frame in ECv2.
+      Value format is <code>"&lt;bottom&gt;, &lt;right&gt;"</code> — distance from the bottom and right edges of the
+      viewport. The value below is written to <code>chatButtonPosition</code> before <code>init()</code>; pick a preset
+      (or type one) and the page reloads with it applied. Source-of-truth verified against the live
+      <code>bootstrap.min.js</code> and <code>init.css</code> on 2026-06-08.
+    </p>
+    <div class="row">
+      <label>Active <code>chatButtonPosition</code>:</label>
+      <span id="activeVal" class="activeVal">…</span>
+    </div>
+    <div class="row preset" id="presetRow"></div>
+    <div class="row">
+      <label for="customVal">Custom:</label>
+      <input type="text" id="customVal" placeholder='e.g. 1.5rem, 10%'>
+      <button type="button" onclick="applyCustom()">Apply &amp; reload</button>
+      <a id="clearLink" href="#" style="font-size:12px;">unset (use default)</a>
+    </div>
+    <p class="small">
+      Presets in <span style="color:#a50e0e">red</span> are intentionally <em>invalid</em> (wrong number of
+      comma-separated values, or a non-string) to exercise the Troubleshooting section.
+    </p>
+  </div>
+
+  <div class="panel">
+    <h3>Live measurement — what the page actually reflects</h3>
+    <p class="small">
+      Read live from the DOM after <code>init()</code>. <b>Green</b> = matches the doc's claim, <i>red</i> = mismatch.
+      Re-run after the button renders, and again after you minimize the open chat, since the minimized frame is the
+      second half of claim&nbsp;5.
+    </p>
+    <div class="row">
+      <button type="button" onclick="measure()">Measure now</button>
+      <span class="small">(auto-runs on load, on button-created, and on minimize)</span>
+    </div>
+    <div id="measured" class="measured">not measured yet</div>
+  </div>
+
+  <div class="panel">
+    <h3>Claim-by-claim checklist (from the help doc)</h3>
+    <p class="small">Verdicts marked <span class="pass">auto</span> are evaluated by this page from the live DOM/CSS and the active value; <span class="pending">manual</span> ones need your eyes on the widget.</p>
+    <table class="claims">
+      <thead><tr><th>#</th><th>Claim</th><th>How to test on this page</th><th class="verdict">Verdict</th></tr></thead>
+      <tbody id="claimsBody"></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h3>Captured console output</h3>
+    <p class="small">
+      This page mirrors <code>console.error/warn/log</code> here so you can see the Troubleshooting message without
+      opening devtools. Note: the bootstrap only prints when <code>devMode = true</code> (it is, below) and it
+      <strong>prefixes</strong> the message with <code>[EmbeddedServiceBootstrap]</code>.
+    </p>
+    <div id="consoleMirror" class="console">(console output appears here)</div>
+  </div>
+
+  <div class="panel">
+    <h3>Host APIs (drive the widget)</h3>
+    <div class="row">
+      <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+    </div>
+    <p class="small">To test the minimized frame: <em>launchChat</em> → send/observe → <em>minimizeChat</em>, then <em>Measure now</em>.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Identity token (auth)</h3>
+    <div class="row">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" value="testSubject12345" size="30">
+      <button type="button" onclick="getJwtAndSet()">Get JWT &amp; Set</button>
+    </div>
+    <div class="row">
+      <label for="idToken">Token:</label>
+      <input type="text" id="idToken" size="60" placeholder="auto-populated by Get JWT, or paste manually">
+      <button type="button" onclick="setIdentityTokenFromInput()">Set from input</button>
+    </div>
+    <div class="row">
+      <button type="button" onclick="clearAuthSession()">Clear session</button>
+    </div>
+    <p class="small">JWT fetched from portico (kid <code>5f103f1b-ee38-404c-ac94-83c427764813</code>, expires in 7 days).</p>
+  </div>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+    // ---- chatButtonPosition driver ---------------------------------------------------------
+    // The value is read from the `pos` URL param and applied to settings before init(). A
+    // missing param means "do not set chatButtonPosition at all" so we can verify the default.
+    var DEFAULT_POS = '24px';                 // init.css :root default for both --eswButtonBottom/Right
+    var FEATURE_KEY = 'pos';
+
+    // Presets: each [label, value-or-sentinel, isInvalid]. The __null__/__num__ sentinels exercise the
+    // "silently ignored when not a string / null" branch — they can't be expressed as a URL string otherwise.
+    var PRESETS = [
+      { label: 'unset (default 24px)', value: null,            invalid: false },
+      { label: '"25px, 30px"',         value: '25px, 30px',    invalid: false },
+      { label: '"100px, 100px"',       value: '100px, 100px',  invalid: false },
+      { label: '"  40px ,  60px  "',   value: '  40px ,  60px  ', invalid: false }, // whitespace-trim claim
+      { label: '"1.5rem, 10%"',        value: '1.5rem, 10%',   invalid: false },    // non-px units claim
+      { label: '"25px"  (1 value)',    value: '25px',          invalid: true },
+      { label: '"25px, 30px, 40px"',   value: '25px, 30px, 40px', invalid: true },
+      { label: '""  (empty string)',   value: '',              invalid: true },     // silently ignored
+      { label: 'null  (sentinel)',     value: '__null__',      invalid: true }      // silently ignored
+    ];
+
+    function getActiveRaw() {
+      var params = new URLSearchParams(window.location.search);
+      return params.has(FEATURE_KEY) ? params.get(FEATURE_KEY) : null; // null => not set
+    }
+
+    // Returns the value to assign to settings.chatButtonPosition, or the special NO_SET marker
+    // meaning "do not assign the property at all" (to test the genuine default path).
+    var NO_SET = {};
+    function resolveSettingValue() {
+      var raw = getActiveRaw();
+      if (raw === null) return NO_SET;          // param absent -> leave property unset
+      if (raw === '__null__') return null;       // sentinel -> assign literal null
+      if (raw === '__num__') return 123;         // sentinel -> assign a non-string number
+      return raw;                                // everything else assigned verbatim (incl. "")
+    }
+
+    function urlWithPos(value) {
+      var params = new URLSearchParams(window.location.search);
+      if (value === null) { params.delete(FEATURE_KEY); }
+      else { params.set(FEATURE_KEY, value); }
+      var qs = params.toString();
+      return window.location.pathname + (qs ? '?' + qs : '');
+    }
+
+    function renderActiveVal() {
+      var raw = getActiveRaw();
+      var el = document.getElementById('activeVal');
+      if (raw === null) el.textContent = '(unset — default ' + DEFAULT_POS + ')';
+      else if (raw === '') el.textContent = '"" (empty string)';
+      else el.textContent = JSON.stringify(raw);
+    }
+
+    function renderPresets() {
+      var raw = getActiveRaw();
+      var rowEl = document.getElementById('presetRow');
+      rowEl.innerHTML = '';
+      PRESETS.forEach(function(p) {
+        var a = document.createElement('a');
+        a.href = urlWithPos(p.value);
+        a.textContent = p.label;
+        if (p.invalid) a.classList.add('bad');
+        var isActive = (p.value === null && raw === null) || (p.value !== null && raw === p.value);
+        if (isActive) a.classList.add('active');
+        rowEl.appendChild(a);
+      });
+      document.getElementById('clearLink').href = urlWithPos(null);
+    }
+
+    function applyCustom() {
+      var v = document.getElementById('customVal').value;
+      window.location.href = urlWithPos(v);
+    }
+
+    renderActiveVal();
+    renderPresets();
+
+    // ---- console mirror (so the Troubleshooting error is visible without devtools) ----------
+    (function mirrorConsole() {
+      var box = document.getElementById('consoleMirror');
+      function append(level, args) {
+        var line = document.createElement('div');
+        if (level === 'error') line.className = 'err';
+        line.textContent = '[' + level + '] ' + Array.prototype.map.call(args, function(a) {
+          try { return typeof a === 'string' ? a : JSON.stringify(a); } catch (e) { return String(a); }
+        }).join(' ');
+        if (box.textContent === '(console output appears here)') box.textContent = '';
+        box.appendChild(line);
+        box.scrollTop = box.scrollHeight;
+      }
+      ['log', 'warn', 'error'].forEach(function(level) {
+        var orig = console[level].bind(console);
+        console[level] = function() { append(level, arguments); orig.apply(console, arguments); };
+      });
+    })();
+
+    // ---- live measurement -------------------------------------------------------------------
+    // Reads the CSS custom props off <html>, plus the resolved bottom/right of the button frame
+    // ("initial") and, if present, the minimized frame ("minimized").
+    function frameRect(cls) {
+      var nodes = document.querySelectorAll('.embedded-messaging > .embeddedMessagingFrame');
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].className.split(/\s+/).indexOf(cls) !== -1) {
+          var cs = getComputedStyle(nodes[i]);
+          return { found: true, bottom: cs.bottom, right: cs.right };
+        }
+      }
+      return { found: false };
+    }
+
+    function measure() {
+      var rootStyle = getComputedStyle(document.documentElement);
+      var varBottom = rootStyle.getPropertyValue('--eswButtonBottom').trim();
+      var varRight = rootStyle.getPropertyValue('--eswButtonRight').trim();
+      var btn = frameRect('initial');
+      var minz = frameRect('minimized');
+      var maxz = frameRect('maximized');
+
+      var out = '';
+      out += '--eswButtonBottom (on <html>): ' + (varBottom || '(empty)') + '\n';
+      out += '--eswButtonRight  (on <html>): ' + (varRight || '(empty)') + '\n';
+      out += 'button frame  [initial]: ' + (btn.found ? ('bottom=' + btn.bottom + '  right=' + btn.right) : '(not rendered)') + '\n';
+      out += 'minimized frame:         ' + (minz.found ? ('bottom=' + minz.bottom + '  right=' + minz.right) : '(not currently minimized)') + '\n';
+      out += 'maximized frame:         ' + (maxz.found ? ('bottom=' + maxz.bottom + '  right=' + maxz.right + '  (should stay at fixed 24px)') : '(not currently maximized)');
+      document.getElementById('measured').textContent = out;
+
+      renderClaims({ varBottom: varBottom, varRight: varRight, btn: btn, minz: minz, maxz: maxz });
+    }
+
+    // ---- claim checklist --------------------------------------------------------------------
+    function expectedParts() {
+      // Returns {bottom, right} the value SHOULD produce, or null if value is invalid/unset.
+      var v = resolveSettingValue();
+      if (v === NO_SET) return { bottom: DEFAULT_POS, right: DEFAULT_POS, fromDefault: true };
+      if (typeof v !== 'string' || v.length === 0) return null; // silently ignored -> default, but not "applied"
+      var parts = v.split(',');
+      if (parts.length !== 2) return null; // invalid -> error, default used
+      return { bottom: parts[0].trim(), right: parts[1].trim(), fromDefault: false };
+    }
+
+    function verdict(ok) {
+      if (ok === null) return '<span class="pending">manual</span>';
+      return ok ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
+    }
+
+    function renderClaims(m) {
+      var exp = expectedParts();
+      var raw = getActiveRaw();
+      var isUnset = raw === null;
+      var isEmptyOrNull = raw === '' || raw === '__null__' || raw === '__num__';
+      var parts = (typeof resolveSettingValue() === 'string') ? resolveSettingValue().split(',') : [];
+      var isTwoPart = parts.length === 2;
+      var isInvalidCount = (typeof resolveSettingValue() === 'string' && resolveSettingValue().length > 0 && parts.length !== 2);
+
+      // Auto-verdicts when we have a measurement and a determinate expectation.
+      var haveM = !!m;
+      function eq(a, b) { return a && b && a === b; }
+
+      var rows = [
+        {
+          n: 1,
+          claim: 'Format is "&lt;bottom&gt;, &lt;right&gt;" — exactly two comma-separated values; first is bottom, second is right.',
+          how: 'Pick "25px, 30px". Expect --eswButtonBottom=25px, --eswButtonRight=30px.',
+          ok: (haveM && exp && !exp.fromDefault) ? (eq(m.varBottom, exp.bottom) && eq(m.varRight, exp.right)) : null
+        },
+        {
+          n: 2,
+          claim: 'Whitespace around each value is trimmed automatically.',
+          how: 'Pick "  40px ,  60px  ". Expect trimmed --eswButtonBottom=40px, --eswButtonRight=60px.',
+          ok: (haveM && raw === '  40px ,  60px  ') ? (eq(m.varBottom, '40px') && eq(m.varRight, '60px')) : null
+        },
+        {
+          n: 3,
+          claim: 'Units other than px accepted (rem, em, %).',
+          how: 'Pick "1.5rem, 10%". Expect --eswButtonBottom=1.5rem, --eswButtonRight=10%.',
+          ok: (haveM && raw === '1.5rem, 10%') ? (eq(m.varBottom, '1.5rem') && eq(m.varRight, '10%')) : null
+        },
+        {
+          n: 4,
+          claim: 'First value → CSS var --eswButtonBottom, second → --eswButtonRight, both on the &lt;html&gt; root element.',
+          how: 'Any valid value: the two vars above are read off document.documentElement.',
+          ok: (haveM && exp && !exp.fromDefault) ? (eq(m.varBottom, exp.bottom) && eq(m.varRight, exp.right)) : null
+        },
+        {
+          n: 5,
+          claim: 'Repositions BOTH the chat button AND the minimized frame (kept aligned); maximized window is unaffected.',
+          how: 'Apply a non-default value; confirm the button sits there. Then launchChat → minimizeChat → Measure: minimized frame bottom/right must equal the button’s. Maximized stays at 24px.',
+          ok: (haveM && exp && !exp.fromDefault && m.btn.found && m.minz.found)
+                ? (eq(m.btn.bottom, m.minz.bottom) && eq(m.btn.right, m.minz.right))
+                : null
+        },
+        {
+          n: 6,
+          claim: 'Default when unset: bottom 24px, right 24px.',
+          how: 'Pick "unset (default 24px)". Expect both vars = 24px and button at 24px/24px.',
+          ok: (haveM && isUnset) ? (eq(m.varBottom, '24px') && eq(m.varRight, '24px')) : null
+        },
+        {
+          n: 7,
+          claim: 'Invalid count (≠ 2 values) logs: [EmbeddedServiceBootstrap] Invalid …chatButtonPosition value specified: &lt;value&gt;. Valid format is "25px, 30px". CSS vars unchanged → default 24px used.',
+          how: 'Pick "25px" or "25px, 30px, 40px" (red). Check the console box for the error and that vars stayed 24px.',
+          ok: (haveM && isInvalidCount) ? (eq(m.varBottom, '24px') && eq(m.varRight, '24px')) : null
+        },
+        {
+          n: 8,
+          claim: 'Silently ignored (no error, no change) when undefined / null / empty string / not a string.',
+          how: 'Pick "" or null sentinel (red). Console box should show NO chatButtonPosition error; vars stay 24px.',
+          ok: (haveM && isEmptyOrNull) ? (eq(m.varBottom, '24px') && eq(m.varRight, '24px')) : null
+        }
+      ];
+
+      var body = document.getElementById('claimsBody');
+      body.innerHTML = '';
+      rows.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + r.n + '</td><td>' + r.claim + '</td><td>' + r.how + '</td><td class="verdict">' + verdict(r.ok) + '</td>';
+        body.appendChild(tr);
+      });
+    }
+
+    renderClaims(null);
+
+    // ---- auth helpers (portico JWT) ---------------------------------------------------------
+    var PORTICO_BASE = 'https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken';
+    var KEY_ID = '5f103f1b-ee38-404c-ac94-83c427764813';
+    var EXP_SECONDS = 7 * 24 * 60 * 60; // 1 week
+
+    function buildPorticoUrl(subject) {
+      var params = new URLSearchParams({
+        issuer: 'testIssuer',
+        subject: subject || 'testSubject12345',
+        jwtExpInSeconds: String(EXP_SECONDS),
+        keyId: KEY_ID
+      });
+      return PORTICO_BASE + '?' + params.toString();
+    }
+
+    function getJwtAndSet() {
+      var subject = document.getElementById('subject').value || 'testSubject12345';
+      var url = buildPorticoUrl(subject);
+      console.log('Fetching JWT for subject=' + subject + ' from portico');
+      fetch(url)
+        .then(function(r) {
+          if (!r.ok) throw new Error('portico returned HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(body) {
+          var token = body.trim();
+          try {
+            var parsed = JSON.parse(body);
+            if (parsed && typeof parsed === 'object') {
+              token = parsed.accessToken || parsed.token || parsed.jwt || parsed.identityToken || token;
+            }
+          } catch (_) { /* plain string token */ }
+          document.getElementById('idToken').value = token;
+          console.log('JWT received; calling setIdentityToken');
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType: 'JWT',
+            identityToken: token
+          });
+        })
+        .catch(function(err) {
+          console.error('JWT fetch failed:', err);
+        });
+    }
+
+    function setIdentityTokenFromInput() {
+      var token = document.getElementById('idToken').value.trim();
+      if (!token) { console.warn('Token input is empty'); return; }
+      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        identityTokenType: 'JWT',
+        identityToken: token
+      });
+    }
+
+    function clearAuthSession() {
+      console.log('Clearing user session');
+      embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+      setTimeout(measure, 50);
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+      setTimeout(measure, 350); // wait out the 0.25s minimize transition
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+      setTimeout(measure, 50);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
+        embeddedservice_bootstrap.settings.devMode = true; // required for the Troubleshooting console error to print
+        var v = resolveSettingValue();
+        if (v !== NO_SET) {
+          // Assign verbatim (including "", null, or a number) so the bootstrap's own validation runs.
+          embeddedservice_bootstrap.settings.chatButtonPosition = v;
+          console.log('Set chatButtonPosition =', v);
+        } else {
+          console.log('chatButtonPosition left unset (testing default)');
+        }
+        embeddedservice_bootstrap.init(
+          '00DSB00000RoOKZ',
+          'CustomerWebClient',
+          'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCustomerWebClient1757687068395',
+          {
+            scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+        setTimeout(measure, 1500);
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.site.com/ESWCustomerWebClient1757687068395/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
