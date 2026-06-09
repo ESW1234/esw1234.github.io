@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cwc-dev-03</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; }
+    .panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; margin-bottom: 12px; max-width: 720px; }
+    .panel h3 { margin: 0 0 8px 0; font-size: 14px; }
+    .row { display: flex; gap: 8px; align-items: center; margin: 6px 0; flex-wrap: wrap; }
+    label { font-size: 12px; color: #555; }
+    input { font-family: monospace; padding: 4px 6px; }
+    input[type="text"] { min-width: 280px; }
+    button { padding: 4px 10px; }
+    .small { font-size: 11px; color: #888; }
+    code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>cwc-dev-03</h1>
+  <h2>godwin-sdb6 / cwc_dev_03</h2>
+  <p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+
+  <div class="panel">
+    <h3>Identity token (auth)</h3>
+    <div class="row">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" value="testSubject12345" size="30">
+      <button type="button" onclick="getJwtAndSet()">Get JWT &amp; Set</button>
+    </div>
+    <div class="row">
+      <label for="idToken">Token:</label>
+      <input type="text" id="idToken" size="60" placeholder="auto-populated by Get JWT, or paste manually">
+      <button type="button" onclick="setIdentityTokenFromInput()">Set from input</button>
+    </div>
+    <div class="row">
+      <button type="button" onclick="clearAuthSession()">Clear session</button>
+    </div>
+    <p class="small">JWT fetched from portico (kid <code>5f103f1b-ee38-404c-ac94-83c427764813</code>, expires in 7 days).</p>
+  </div>
+
+  <div class="panel">
+    <h3>Host APIs (unauth)</h3>
+    <div class="row">
+      <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://github.com/ESW1234/esw1234.github.io/edit/master" + window.location.pathname;
+
+    var PORTICO_BASE = 'https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken';
+    var KEY_ID = '5f103f1b-ee38-404c-ac94-83c427764813';
+    var EXP_SECONDS = 7 * 24 * 60 * 60; // 1 week
+
+    function buildPorticoUrl(subject) {
+      var params = new URLSearchParams({
+        issuer: 'testIssuer',
+        subject: subject || 'testSubject12345',
+        jwtExpInSeconds: String(EXP_SECONDS),
+        keyId: KEY_ID
+      });
+      return PORTICO_BASE + '?' + params.toString();
+    }
+
+    function getJwtAndSet() {
+      var subject = document.getElementById('subject').value || 'testSubject12345';
+      var url = buildPorticoUrl(subject);
+      console.log('Fetching JWT for subject=' + subject + ' from portico');
+      fetch(url)
+        .then(function(r) {
+          if (!r.ok) throw new Error('portico returned HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(body) {
+          var token = body.trim();
+          // Some endpoints wrap the token in a JSON object; tolerate both shapes.
+          try {
+            var parsed = JSON.parse(body);
+            if (parsed && typeof parsed === 'object') {
+              token = parsed.accessToken || parsed.token || parsed.jwt || parsed.identityToken || token;
+            }
+          } catch (_) { /* plain string token */ }
+          document.getElementById('idToken').value = token;
+          console.log('JWT received; calling setIdentityToken');
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType: 'JWT',
+            identityToken: token
+          });
+        })
+        .catch(function(err) {
+          console.error('JWT fetch failed:', err);
+        });
+    }
+
+    function setIdentityTokenFromInput() {
+      var token = document.getElementById('idToken').value.trim();
+      if (!token) {
+        console.warn('Token input is empty');
+        return;
+      }
+      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        identityTokenType: 'JWT',
+        identityToken: token
+      });
+    }
+
+    function clearAuthSession() {
+      console.log('Clearing user session');
+      embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingIdentityTokenExpired', function() {
+      console.log('onEmbeddedMessagingIdentityTokenExpired emitted');
+    });
+    window.addEventListener('onEmbeddedMessageSent', function(data) {
+      console.log('onEmbeddedMessageSent emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessageLinkClicked', function(data) {
+      console.log('onEmbeddedMessageLinkClicked emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+        embeddedservice_bootstrap.settings.devMode = true;
+        embeddedservice_bootstrap.init(
+          '00DSG000003UGaH',
+          'cwc_dev_03',
+          'https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWcwcdev031781048119883',
+          {
+            scrt2URL: 'https://godwin-sdb6.demo.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWcwcdev031781048119883/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
