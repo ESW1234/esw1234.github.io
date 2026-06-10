@@ -5,6 +5,9 @@
 </head>
 <body>
 
+	<button type="button" onclick="fetchAndSetIdentityToken()">setIdentityToken</button><br/><br/>
+	<button type="button" onclick="clearSession()">clearSession</button>
+
 <script type='text/javascript'>
 	function fetchAndSetToken() {
 		     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=testSubject12345@esw.com&jwtExpInSeconds=6000&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
@@ -19,6 +22,10 @@
 			  console.log('Fetch Error :', err);
 		     });
 		}
+
+	function clearSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+	}
 
 
 		window.addEventListener("onEmbeddedMessagingReady", () => {
@@ -43,7 +50,7 @@
 			// SDB3
 			embeddedservice_bootstrap.init(
 				'00DSB00000aGFJL',
-				'CWC_8',
+				'CWC_Auth_3',
 				'https://orgfarm-4e144523bd.my.site-com.e9oo09xafvy21r6fh7zthvnm8.wc.crm.dev:6101/ESWCWC11775513809347',
 				{
 					scrt2URL: 'https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
