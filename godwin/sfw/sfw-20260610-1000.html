@@ -149,10 +149,11 @@
       try {
         embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
         embeddedservice_bootstrap.settings.devMode = true;
+        /** init params are from my sdb3 org **/
         embeddedservice_bootstrap.init(
           '00DSB00000RoOKZ',
           'CustomerWebClient',
-          'https://orgfarm-cc660da9d8.my.localhost.sfdcdev.site.com:6101/ESWCWC011781107313970',
+          'https://orgfarm-cc660da9d8.my.localhost.sfdcdev.site.com:6101/ESWCWC011781107313970', /** local site **/
           {
             scrt2URL: 'https://godwinlaw-sdb3-agentforce.demo.test1.my.pc-rnd.salesforce-scrt.com'
           }
@@ -162,6 +163,7 @@
       }
     };
   </script>
+  <!-- local site below -->
   <script type='text/javascript' src='https://orgfarm-cc660da9d8.my.localhost.sfdcdev.site.com:6101/ESWCWC011781107313970/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
