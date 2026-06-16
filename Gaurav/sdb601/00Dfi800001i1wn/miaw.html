@@ -1,0 +1,32 @@
+
+<html>
+<head>
+	<title>SDB601-MIAW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+	<h1> SDB601 FIT Test for Mobile Use Case</h1>
+Agent: mobileagent@sdb601.fit
+<p><a id="editThisPageLink" target="_blank" style="color:blue">Edit this page</a></p>
+	
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dfi800001i1wn',
+				'MiawMobileInbox',
+				'https://sdb601ccqfit-org2.demo.test1.my.pc-rnd.site.com/ESWMiawMobileInbox1781628085140',
+				{
+					scrt2URL: 'https://sdb601ccqfit-org2.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://sdb601ccqfit-org2.demo.test1.my.pc-rnd.site.com/ESWMiawMobileInbox1781628085140/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  </body>
+  </html>
