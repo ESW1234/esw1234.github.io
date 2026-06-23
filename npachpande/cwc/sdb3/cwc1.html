@@ -4,11 +4,24 @@
 </head>
 <body>
 
+<button type="button" onclick="clearSession()">clearSession</button>
+<button type="button" onclick="launchChat()">launchChat</button>
+
+
 <script type='text/javascript'>
+
+	function clearSession() {
+		embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+	}
+
+	function launchChat() {
+		embeddedservice_bootstrap.utilAPI.launchChat();
+	}
+	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-      embeddedservice_bootstrap.settings.devMode = true;
+     		embeddedservice_bootstrap.settings.devMode = true;
 
 			embeddedservice_bootstrap.init(
 				'00DSB00000aGFJL',
