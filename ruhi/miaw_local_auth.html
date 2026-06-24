@@ -1,0 +1,38 @@
+<html>
+   <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>Test Page</title>
+   </head>
+   <body><script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx0000006Gm7',
+				'MIAWAuth28Sept',
+				'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWAuth28Sept1759044962682',
+				{
+					scrt2URL: 'https://chatorg.my.localhost.sfdcdev.salesforce-scrt.com:18000'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+
+	    function setJwtToken(){
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType : "JWT",
+            identityToken : "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3NTMzMzUwNTcsImlhdCI6MTc1MjczNTA1N30.GZRy0bVr5df4LrXt6tTKueE22AlJAQF3qOYUOW0yDOmKA5W9QCNIrf41P7XFEssgGwI5yxY82t3KunXz1T0_hD2yd3mlCFHxJMJFnAj4Svgi282Nc8bOqg-E1qJngcf7WhLrtmqxibwI5kJlHYeNnpzg7GCX7-mMMGX4NUUiITZva6Wt10ZvCsrf_16_RSEwdi_R_fqHW3o2ZGGB6ug1b118JYn27zbprhzWp1MPQkR9tpxbwJCS3I_kMDRsc0cjdSOjWtsygNbzze2_p7sf6vtz9vZNQGgBOOKrMzhzyqKT0iTb5SdG_LQqzHVVm64twfLdAvGJfOsMKBN-jD4wvQ" // paste the JWT token created inside the quotes
+        });
+        }
+    window.addEventListener("onEmbeddedMessagingReady",() => {
+        setJwtToken();
+        console.log("JWT Token is Set");
+    });
+</script>
+<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWAuth28Sept1759044962682/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
