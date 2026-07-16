@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>sdb40 unauth1.html</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DoB0000011og3',
+				'Custom_Options',
+				'https://orgfarm-17a3359b7e.test2.my.pc-rnd.site.com/ESWCustomOptions1765839575803',
+				{
+					scrt2URL: 'https://orgfarm-17a3359b7e.test2.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-17a3359b7e.test2.my.pc-rnd.site.com/ESWCustomOptions1765839575803/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+
+
+
+	
+</body>
+</html>
