@@ -33,6 +33,10 @@
 		     // fetchAndSetToken();
 		});
 
+		window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
+			 console.log("Received the onEmbeddedMessagingButtonCreated event…");
+		});
+
 
 		window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		     console.log("Received the onEmbeddedMessagingTokenExpired event…");
