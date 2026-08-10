@@ -30,7 +30,15 @@
 
 	window.addEventListener("onEmbeddedMessagingReady", () => {
 		 console.log("Received the onEmbeddedMessagingReady event…");
-		 //fetchAndSetIdentityToken();
+		 const chatActive = localStorage.getItem("chatActive");
+		 if (chatActive) {
+			 embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+		 }
+		
+	});
+
+	window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
+		 localStorage.setItem("chatActive", true);
 	});
 
 
