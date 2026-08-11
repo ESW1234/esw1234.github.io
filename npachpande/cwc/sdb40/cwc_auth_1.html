@@ -30,13 +30,22 @@
 
 	window.addEventListener("onEmbeddedMessagingReady", () => {
 		 console.log("Received the onEmbeddedMessagingReady event…");
-		 // fetchAndSetIdentityToken();
+		 const chatActive = localStorage.getItem("chatActive");
+		 if (chatActive) {
+			 embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+			 localStorage.removeItem("chatActive");
+		 }
+		
+	});
+
+	window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
+		 localStorage.setItem("chatActive", true);
 	});
 
 
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		 console.log("Received the onEmbeddedMessagingTokenExpired event…");
-		 //fetchAndSetIdentityToken();
+		 fetchAndSetIdentityToken();
 	});
 </script>
 
