@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: hidden;
+    background: #FFFFFF;
+    padding: 2em;
+}
+
+lightning-button {
+    padding-top: 2em;
+    text-align: center;
+}
