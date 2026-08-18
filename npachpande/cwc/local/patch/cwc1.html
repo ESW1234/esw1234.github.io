@@ -23,15 +23,16 @@
 		     });
 		}
 
-	function clearSession() {
-		embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
-	}
+		function clearSession() {
+			embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+		}
 
 
 		window.addEventListener("onEmbeddedMessagingReady", () => {
-		     console.log("Received the onEmbeddedMessagingReady event…");
-		     // fetchAndSetToken();
-		});
+		    console.log("Received the onEmbeddedMessagingReady event…");
+		    // fetchAndSetToken();
+			embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+		}, { once: true });
 
 		window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
 			 console.log("Received the onEmbeddedMessagingButtonCreated event…");
