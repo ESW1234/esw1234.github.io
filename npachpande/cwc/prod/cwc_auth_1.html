@@ -28,7 +28,7 @@
 			embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
 		}
 
-		const isSessionCleared = false;
+		let isSessionCleared = false;
 
 		window.addEventListener("onEmbeddedMessagingReady", async () => {
 		    console.log("Received the once onEmbeddedMessagingReady event…");
