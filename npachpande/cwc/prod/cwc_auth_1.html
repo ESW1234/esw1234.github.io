@@ -9,7 +9,7 @@
 	<button type="button" onclick="clearSession()">clearSession</button>
 
 <script type='text/javascript'>
-	function fetchAndSetToken() {
+		function fetchAndSetToken() {
 			 const subject = localStorage.getItem("activeUser");
 		     var porticoURL = "https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken?issuer=testIssuer&subject=" + subject + "&jwtExpInSeconds=6000&keyId=5f103f1b-ee38-404c-ac94-83c427764813";
 		     fetch(porticoURL).then(function(response) {
@@ -28,10 +28,14 @@
 			embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
 		}
 
+		const isSessionCleared = false;
 
 		window.addEventListener("onEmbeddedMessagingReady", async () => {
 		    console.log("Received the once onEmbeddedMessagingReady event…");
-		    await embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+			if (!isSessionCleared) {
+				await embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+				isSessionCleared = true;
+			}
 			fetchAndSetToken();
 		}, { once: true });
 
