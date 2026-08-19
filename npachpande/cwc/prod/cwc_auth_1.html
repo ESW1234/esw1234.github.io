@@ -29,10 +29,10 @@
 		}
 
 
-		window.addEventListener("onEmbeddedMessagingReady", () => {
+		window.addEventListener("onEmbeddedMessagingReady", async () => {
 		    console.log("Received the onEmbeddedMessagingReady event…");
-		    // fetchAndSetToken();
-			 // embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+		    await embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+			fetchAndSetToken();
 		}, { once: true });
 
 		window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
