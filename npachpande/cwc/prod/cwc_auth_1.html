@@ -37,7 +37,7 @@
 				isSessionCleared = true;
 			}
 			fetchAndSetToken();
-		}, { once: true });
+		});
 
 		window.addEventListener("onEmbeddedMessagingReady", async () => {
 		    console.log("Received the onEmbeddedMessagingReady event…");
