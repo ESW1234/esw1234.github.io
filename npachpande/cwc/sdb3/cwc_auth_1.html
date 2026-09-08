@@ -39,13 +39,13 @@
 	});
 
 	window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
-		 localStorage.setItem("chatActive", true);
+		 // localStorage.setItem("chatActive", true);
 	});
 
 
 	window.addEventListener("onEmbeddedMessagingIdentityTokenExpired", () => {
 		 console.log("Received the onEmbeddedMessagingTokenExpired event…");
-		 fetchAndSetIdentityToken();
+		 // fetchAndSetIdentityToken();
 	});
 </script>
 
