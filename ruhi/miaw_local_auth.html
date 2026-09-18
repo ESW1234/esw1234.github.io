@@ -9,11 +9,11 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00Dxx0000006Gm7',
-				'MIAWAuth28Sept',
-				'https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWAuth28Sept1759044962682',
+				'00Dxx00YCks5JCC',
+				'AuthChannel',
+				'https://orgfarm-2d2ee86721.my.site-com.xikeg443qmhl0vvom71kewqxq05mo.ab.crm.dev:6101/ESWAuthChannel1789622408782',
 				{
-					scrt2URL: 'https://chatorg.my.localhost.sfdcdev.salesforce-scrt.com:18000'
+					scrt2URL: 'https://orgfarm-2d2ee86721.my.salesforce-scrt.xikeg443qmhl0vvom71kewqxq05mo.ab.crm.dev:18000'
 				}
 			);
 		} catch (err) {
@@ -24,7 +24,7 @@
 	    function setJwtToken(){
         embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
             identityTokenType : "JWT",
-            identityToken : "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3NTMzMzUwNTcsImlhdCI6MTc1MjczNTA1N30.GZRy0bVr5df4LrXt6tTKueE22AlJAQF3qOYUOW0yDOmKA5W9QCNIrf41P7XFEssgGwI5yxY82t3KunXz1T0_hD2yd3mlCFHxJMJFnAj4Svgi282Nc8bOqg-E1qJngcf7WhLrtmqxibwI5kJlHYeNnpzg7GCX7-mMMGX4NUUiITZva6Wt10ZvCsrf_16_RSEwdi_R_fqHW3o2ZGGB6ug1b118JYn27zbprhzWp1MPQkR9tpxbwJCS3I_kMDRsc0cjdSOjWtsygNbzze2_p7sf6vtz9vZNQGgBOOKrMzhzyqKT0iTb5SdG_LQqzHVVm64twfLdAvGJfOsMKBN-jD4wvQ" // paste the JWT token created inside the quotes
+            identityToken : "eyJraWQiOiIxMjM0NiIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3OTAzMTQ3NDMsImlhdCI6MTc4OTcxNDc0M30.odyZIClJxdZlyq6xtdQ9V8sOal9JQAukyUAMG0NkCF71sbH_cy6N4mMGj8EfmRVjB_lcI_D0A8q1yAe1URy4yfbOtR3Mf8ZOElktbvcJHtyf7tr0ldKtDuPWVSRWasjjrvi1vZ36eRsbxv-T-pxjNFb-FKX0u81dM0y1BStmkrEGBXOewTZT1kuZRSvuTcJS9vhWaNhcWW1VAKm7VOCsQz3a-3M3lMGLJL4aTggkIwwCshwdaZrBguNMtJ2hNG5tu3u5yImEOqulXC_AawQPqr2zyTPe0k4iDVkBNQQEwNUCdg2PjQIs30r_mBNEctI03tuW8uPdY8zqsXAEEjX5Ag" // paste the JWT token created inside the quotes
         });
         }
     window.addEventListener("onEmbeddedMessagingReady",() => {
@@ -32,7 +32,7 @@
         console.log("JWT Token is Set");
     });
 </script>
-<script type='text/javascript' src='https://chatorg.my.localhost.sfdcdev.site.com:6101/ESWMIAWAuth28Sept1759044962682/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-2d2ee86721.my.site-com.xikeg443qmhl0vvom71kewqxq05mo.ab.crm.dev:6101/ESWAuthChannel1789622408782/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
    </body>
 </html>
