@@ -1,0 +1,38 @@
+<html>
+   <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <title>Test Page</title>
+   </head>
+   <body><script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dxx00YCks5JCC',
+				'AuthChannel',
+				'https://orgfarm-2d2ee86721.my.site-com.xikeg443qmhl0vvom71kewqxq05mo.ab.crm.dev:6101/ESWAuthChannel1789622408782',
+				{
+					scrt2URL: 'https://localhost:18000'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+
+	    function setJwtToken(){
+        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType : "JWT",
+            identityToken : "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3OTAzMjY5NzAsImlhdCI6MTc4OTcyNjk3MH0.N8kP6nygehnhdfaPQjYk_aKGqIDNLybixzVFBWP5WPv8oHVvDHvwNaCCzVHDKm9YslRYRTalIbK9C7lFOspYrOh0xKnZ26oOdsUwpozJ8xi7OHpy80lCMHPzt58rykkGd6DZ-gRIH94GSdQCxx4QpefDVkc99nzmbYkqH3wKGgijUb_xWSiGI18qz7skE8KMK4MWfJ-QRNFGUfGuZHkkO-uCQQwFWZhj87MLVTmitXUofS-Ues9Ebd9J4iFlOBln1uUxHH4fbv3Aa-sfzR4UuGiMm63aF7Jin3Mkt81AUF_zsOHruAXZuO72gzOCbJujUx2cmq97TZRxwdmUqDsy2w" // paste the JWT token created inside the quotes
+        });
+        }
+    window.addEventListener("onEmbeddedMessagingReady",() => {
+        setJwtToken();
+        console.log("JWT Token is Set");
+    });
+</script>
+<script type='text/javascript' src='https://orgfarm-2d2ee86721.my.site-com.xikeg443qmhl0vvom71kewqxq05mo.ab.crm.dev:6101/ESWAuthChannel1789622408782/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+   </body>
+</html>
