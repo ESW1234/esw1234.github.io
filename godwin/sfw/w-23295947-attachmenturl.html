@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>w-23295947-attachmenturl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; }
+    .panel { border: 1px solid #ddd; padding: 12px; border-radius: 6px; margin-bottom: 12px; max-width: 720px; }
+    .panel h3 { margin: 0 0 8px 0; font-size: 14px; }
+    .row { display: flex; gap: 8px; align-items: center; margin: 6px 0; flex-wrap: wrap; }
+    label { font-size: 12px; color: #555; }
+    input { font-family: monospace; padding: 4px 6px; }
+    input[type="text"] { min-width: 280px; }
+    button { padding: 4px 10px; }
+    .small { font-size: 11px; color: #888; }
+    code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>w-23295947-attachmenturl</h1>
+  <h2>sdb3-blitz / CWC01_External</h2>
+  <p><a id="editThisPageLink" target="_blank" rel="noopener noreferrer" aria-label="Edit this page (opens in new window)" style="color:blue">Edit this page</a></p>
+
+  <div class="panel">
+    <h3>Identity token (auth)</h3>
+    <div class="row">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" value="testSubject12345" size="30">
+      <button type="button" onclick="getJwtAndSet()">Get JWT &amp; Set</button>
+    </div>
+    <div class="row">
+      <label for="idToken">Token:</label>
+      <input type="text" id="idToken" size="60" placeholder="auto-populated by Get JWT, or paste manually">
+      <button type="button" onclick="setIdentityTokenFromInput()">Set from input</button>
+    </div>
+    <div class="row">
+      <button type="button" onclick="clearAuthSession()">Clear session</button>
+    </div>
+    <p class="small">JWT fetched from portico (kid <code>5f103f1b-ee38-404c-ac94-83c427764813</code>, expires in 7 days).</p>
+  </div>
+
+  <div class="panel">
+    <h3>Host APIs (unauth)</h3>
+    <div class="row">
+      <button onclick="embeddedservice_bootstrap.utilAPI.showChatButton()">showChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.hideChatButton()">hideChatButton</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.launchChat()">launchChat</button>
+      <button onclick="embeddedservice_bootstrap.utilAPI.minimizeChat()">minimizeChat</button>
+    </div>
+  </div>
+
+  <div class="panel" style="max-width: 960px;">
+    <h3>W-23295947 file-preview attachmentUrl tests</h3>
+    <p class="small">
+      Harness iframe loads <code>&lt;site&gt;/assets/htdocs/filepreview.html?parent_domain=&lt;this page origin&gt;</code>. This page is not a Salesforce domain, so it reproduces the attacker-embed scenario (Functional 2, Unit/E2E negatives).
+      <b>Pre-fix:</b> <code>javascript:</code> payloads show an alert with the site domain. <b>Fixed (PR #831):</b> no alert and the PDF iframe <code>src</code> is empty.
+      Inspect via DevTools: select the harness frame in the Console context dropdown, then <code>document.querySelector('.embeddedMessagingFullSizePdfViewer').getAttribute('src')</code>.
+    </p>
+    <div class="row">
+      <label for="fpTarget">Target:</label>
+      <select id="fpTarget">
+        <option value="harness">Harness iframe (attacker embed)</option>
+        <option value="live">Live chat file-preview iframe (legit parent)</option>
+      </select>
+      <label for="fpType">Type:</label>
+      <select id="fpType">
+        <option value="application/pdf">application/pdf (iframe sink)</option>
+        <option value="image/png">image/png (img sink)</option>
+      </select>
+      <button type="button" onclick="fpReloadHarness()">Reload harness</button>
+      <button type="button" onclick="fpRunAllBlocked()">Run all blocked vectors</button>
+    </div>
+    <div class="row">
+      <label for="fpCustom">Custom URL:</label>
+      <input type="text" id="fpCustom" size="70" placeholder="attachmentUrl to send">
+      <button type="button" onclick="fpSend(document.getElementById('fpCustom').value)">Send custom</button>
+    </div>
+    <div id="fpPresets" class="row"></div>
+    <iframe id="fpHarness" title="file preview harness" style="width:100%; height:360px; border:1px solid #999; margin-top:8px;"></iframe>
+    <pre id="fpLog" class="small" style="max-height:140px; overflow:auto; background:#f9f9f9; padding:6px;"></pre>
+  </div>
+
+  <script>
+    var FP_SITE = 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129';
+    var FP_EVENT = 'ESW_SHOW_FULL_SIZE_FILE_PREVIEW';
+    var FP_LONG = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf?pad=' + new Array(2401).join('A');
+    var FP_VALID = [
+      ['valid https PDF', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', 'application/pdf'],
+      ['valid https image', 'https://www.w3.org/Icons/w3c_home.png', 'image/png'],
+      ['mixed-case HTTPS PDF', 'HTTPS://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', 'application/pdf'],
+      ['signed-style encoded query', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf?sig=abc%3D&exp=123', 'application/pdf'],
+      ['2,500+ char https', FP_LONG, 'application/pdf']
+    ];
+    var FP_BLOCKED = [
+      ['javascript: alert', 'javascript:alert("XSS on "+document.domain)'],
+      ['JavaScript: mixed case', 'JavaScript:alert("XSS mixed-case "+document.domain)'],
+      ['java\\tscript:', 'java\tscript:alert("XSS tab "+document.domain)'],
+      ['data:text/html', 'data:text/html,<script>alert("XSS data "+document.domain)<\/script>'],
+      ['blob:', 'blob:https://example.com/12345'],
+      ['http:', 'http://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'],
+      ['vbscript:', 'vbscript:msgbox(1)'],
+      ['file:', 'file:///etc/passwd'],
+      ['protocol-relative', '//www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'],
+      ['relative path', '/relative/path.pdf'],
+      ['empty string', ''],
+      ['omitted (undefined)', undefined],
+      ['null', null],
+      ['number', 12345]
+    ];
+
+    function fpLog(msg) {
+      var el = document.getElementById('fpLog');
+      el.textContent = new Date().toLocaleTimeString() + ' ' + msg + '\n' + el.textContent;
+    }
+
+    function fpReloadHarness() {
+      document.getElementById('fpHarness').src = FP_SITE + '/assets/htdocs/filepreview.html?parent_domain=' + encodeURIComponent(window.location.origin);
+      fpLog('Harness loaded with parent_domain=' + window.location.origin);
+    }
+
+    function fpTargetWindow() {
+      if (document.getElementById('fpTarget').value === 'harness') {
+        return document.getElementById('fpHarness').contentWindow;
+      }
+      var f = document.querySelector('iframe[src*="filepreview"]');
+      return f ? f.contentWindow : null;
+    }
+
+    function fpSend(url, typeOverride) {
+      var w = fpTargetWindow();
+      if (!w) {
+        fpLog('No file-preview iframe found. For Live target, open an attachment preview in chat first, or use the Harness target.');
+        return;
+      }
+      var type = typeOverride || document.getElementById('fpType').value;
+      var data = { attachmentType: type };
+      if (url !== undefined) { data.attachmentUrl = url; }
+      w.postMessage({ method: FP_EVENT, data: data }, '*');
+      fpLog('Sent ' + type + ' -> ' + (url === undefined ? '(omitted)' : JSON.stringify(url).slice(0, 120)));
+    }
+
+    function fpRunAllBlocked() {
+      FP_BLOCKED.forEach(function(v, i) {
+        setTimeout(function() { fpLog('[' + v[0] + ']'); fpSend(v[1]); }, i * 1500);
+      });
+    }
+
+    (function buildPresets() {
+      var host = document.getElementById('fpPresets');
+      function add(group, list, blocked) {
+        var lab = document.createElement('label');
+        lab.textContent = group;
+        lab.style.width = '100%';
+        host.appendChild(lab);
+        list.forEach(function(v) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.textContent = v[0];
+          if (blocked) { b.style.background = '#fde8e8'; }
+          b.onclick = function() { fpSend(v[1], v[2]); };
+          host.appendChild(b);
+        });
+      }
+      add('Should RENDER (fixed and pre-fix):', FP_VALID, false);
+      add('Should be BLOCKED after fix (src empty, no alert):', FP_BLOCKED, true);
+    })();
+
+    fpReloadHarness();
+  </script>
+
+  <script>
+    document.getElementById('editThisPageLink').href = "https://git.soma.salesforce.com/embedded-service-for-web/enhanced-chat/edit/master" + window.location.pathname.replace(/^\/pages\/embedded-service-for-web\/enhanced-chat/, '');
+
+    var PORTICO_BASE = 'https://portico.sfproxy.controltelemetry.aws-dev2-uswest2.aws.sfdc.cl/api/v1/miaw/getJwtToken';
+    var KEY_ID = '5f103f1b-ee38-404c-ac94-83c427764813';
+    var EXP_SECONDS = 7 * 24 * 60 * 60; // 1 week
+
+    function buildPorticoUrl(subject) {
+      var params = new URLSearchParams({
+        issuer: 'testIssuer',
+        subject: subject || 'testSubject12345',
+        jwtExpInSeconds: String(EXP_SECONDS),
+        keyId: KEY_ID
+      });
+      return PORTICO_BASE + '?' + params.toString();
+    }
+
+    function getJwtAndSet() {
+      var subject = document.getElementById('subject').value || 'testSubject12345';
+      var url = buildPorticoUrl(subject);
+      console.log('Fetching JWT for subject=' + subject + ' from portico');
+      fetch(url)
+        .then(function(r) {
+          if (!r.ok) throw new Error('portico returned HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function(body) {
+          var token = body.trim();
+          // Some endpoints wrap the token in a JSON object; tolerate both shapes.
+          try {
+            var parsed = JSON.parse(body);
+            if (parsed && typeof parsed === 'object') {
+              token = parsed.accessToken || parsed.token || parsed.jwt || parsed.identityToken || token;
+            }
+          } catch (_) { /* plain string token */ }
+          document.getElementById('idToken').value = token;
+          console.log('JWT received; calling setIdentityToken');
+          embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+            identityTokenType: 'JWT',
+            identityToken: token
+          });
+        })
+        .catch(function(err) {
+          console.error('JWT fetch failed:', err);
+        });
+    }
+
+    function setIdentityTokenFromInput() {
+      var token = document.getElementById('idToken').value.trim();
+      if (!token) {
+        console.warn('Token input is empty');
+        return;
+      }
+      embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+        identityTokenType: 'JWT',
+        identityToken: token
+      });
+    }
+
+    function clearAuthSession() {
+      console.log('Clearing user session');
+      embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+    }
+  </script>
+
+  <script type='text/javascript'>
+    window.addEventListener('onEmbeddedMessagingReady', function() {
+      console.log('onEmbeddedMessagingReady emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingButtonCreated', function() {
+      console.log('onEmbeddedMessagingButtonCreated emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingIdentityTokenExpired', function() {
+      console.log('onEmbeddedMessagingIdentityTokenExpired emitted');
+    });
+    window.addEventListener('onEmbeddedMessageSent', function(data) {
+      console.log('onEmbeddedMessageSent emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessageLinkClicked', function(data) {
+      console.log('onEmbeddedMessageLinkClicked emitted', data.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMinimized', function() {
+      console.log('onEmbeddedMessagingWindowMinimized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingWindowMaximized', function() {
+      console.log('onEmbeddedMessagingWindowMaximized emitted');
+    });
+    window.addEventListener('onEmbeddedMessagingConversationOpened', function(e) {
+      console.log('onEmbeddedMessagingConversationOpened:', e.detail);
+    });
+    window.addEventListener('onEmbeddedMessagingConversationClosed', function(e) {
+      console.log('onEmbeddedMessagingConversationClosed:', e.detail);
+    });
+  </script>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+        embeddedservice_bootstrap.settings.devMode = true;
+        embeddedservice_bootstrap.init(
+          '00DSB00000da1NJ',
+          'CWC01_External',
+          'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129',
+          {
+            scrt2URL: 'https://orgfarm-46c4c41fb0.test1.my.pc-rnd.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://orgfarm-46c4c41fb0.test1.my.pc-rnd.site.com/ESWCWC01External1763517787129/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
