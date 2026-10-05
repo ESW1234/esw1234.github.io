@@ -5,31 +5,31 @@
 </head>
 <body>
 <h1> Channel Menu Web Client for : "Shital Malviya"</h1>
-<<script type='text/javascript' src='https://sdb6com-1a1.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js'></script>
+<script type='text/javascript' src='https://miawjul2usa12.demo.my.salesforce.com/embeddedservice/menu/fab.min.js'></script>
 <script type='text/javascript'>
 	var initESW = function(gslbBaseURL) {
 		// Required if you want labels in a language that’s different from your user’s context.
 		//embedded_svc.menu.settings.language = ''; //For example, enter 'en' or 'en-US'
-		embedded_svc.menu.settings.scrt2BaseUrl = 'https://sdb6com-1a1.test1.my.pc-rnd.salesforce-scrt.com';
+		embedded_svc.menu.settings.scrt2BaseUrl = 'https://miawjul2usa12.demo.my.salesforce-scrt.com';
 
 		embedded_svc.menu.init(
-			'https://sdb6com-1a1.test1.my.pc-rnd.salesforce.com',
-			'https://d.la15-test1-uswest2-core4.pc-aws.salesforceliveagent.com/chat',
+			'https://miawjul2usa12.demo.my.salesforce.com',
+			'https://d.la11-core1.sfdc-ypmv18.salesforceliveagent.com/chat',
 			gslbBaseURL,
-			'00DSG00000CE2aR',
-			'CHANNEL_MENU_SCRT2'
+			'00DEE0000016qY1',
+			'Channel_menu_test'
 		);
 	};
 
 	if (!window.embedded_svc || !window.embedded_svc.menu) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://sdb6com-1a1.test1.my.pc-rnd.salesforce.com/embeddedservice/menu/fab.min.js');
+		s.setAttribute('src', 'https://miawjul2usa12.demo.my.salesforce.com/embeddedservice/menu/fab.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
 		document.body.appendChild(s);
 	} else {
-		initESW('https://service.force.com');
+		initESW('https://miawjul2usa12.demo.my.salesforce.com');
 	}
 </script>
 </body>
