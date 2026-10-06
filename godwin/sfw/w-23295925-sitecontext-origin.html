@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>w-23295925-sitecontext-origin</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 1rem 2rem; max-width: 960px; }
+  #panel { background: #111; color: #ddd; padding: .6rem; font: 12px/1.4 ui-monospace, monospace; white-space: pre-wrap; max-height: 260px; overflow: auto; }
+  code { background: #eee; padding: 0 .2rem; }
+</style>
+</head>
+<body>
+<h2>Chat on <code id="origin"></code></h2>
+<p>Chat on an external origin (cases 1, 5, 6, 8, 9). The panel below logs the sitecontext storage messages this page receives.</p>
+<p>Frame parent_domain: <code id="pd">(waiting for frame)</code></p>
+<div id="panel"></div>
+
+<script>
+  document.getElementById('origin').textContent = location.origin;
+  const panel = document.getElementById('panel');
+  window.addEventListener('message', (event) => {
+    if (!event.data || typeof event.data.method !== 'string' || !event.data.method.startsWith('ESW_3RDPARTY')) return;
+    const line = document.createElement('div');
+    const size = event.data.data ? JSON.stringify(event.data.data).length : 0;
+    line.textContent = `${new Date().toISOString().slice(11, 23)} ${event.data.method} from ${event.origin} (payload ${size} chars)`;
+    panel.appendChild(line);
+  });
+  const poll = setInterval(() => {
+    const f = [...document.querySelectorAll('iframe')].find((i) => i.src.includes('sitecontext'));
+    if (f) {
+      document.getElementById('pd').textContent = new URL(f.src).searchParams.get('parent_domain');
+      clearInterval(poll);
+    }
+  }, 500);
+</script>
+
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US';
+
+      embeddedservice_bootstrap.init(
+        '00DSG000003UGaH',
+        'CWC6',
+        'https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWCWC61789582410458',
+        {
+          scrt2URL: 'https://godwin-sdb6.demo.test1.my.pc-rnd.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
+</script>
+<script type='text/javascript'
+src='https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWCWC61789582410458/assets/js/bootstrap.min.js'
+onload='initEmbeddedMessaging()'></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>w-23295925-sitecontext-origin-hostile</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 1rem 2rem; max-width: 960px; }
+  label { display: block; margin: .5rem 0 .1rem; font-weight: 600; }
+  input, select { width: 100%; padding: .3rem; box-sizing: border-box; }
+  button { margin: .6rem .4rem 0 0; padding: .4rem .8rem; }
+  #verdict { margin: 1rem 0; padding: .6rem 1rem; font-weight: 700; background: #eee; }
+  #verdict.pass { background: #cfc; } #verdict.fail { background: #fcc; } #verdict.info { background: #ffc; }
+  #log { background: #111; color: #ddd; padding: .6rem; height: 320px; overflow: auto; white-space: pre-wrap; font: 12px/1.4 ui-monospace, monospace; }
+  .rx { color: #6f6; } .tx { color: #6cf; } .atk { color: #f9c; } .note { color: #fc6; } .err { color: #f88; }
+  code { background: #eee; padding: 0 .2rem; }
+</style>
+</head>
+<body>
+<h2>PR #832 / W-23295925 sitecontext origin check</h2>
+<p>This page's origin, used as the legit <code>parent_domain</code>: <code id="self"></code></p>
+
+<label for="site">Site URL (serves <code>/assets/htdocs/sitecontext.min.html</code>)</label>
+<input id="site" value="https://godwin-sdb6.demo.test1.my.pc-rnd.site.com/ESWCWC61789582410458">
+
+<label for="org">Test orgId (a fake id, so a real chat session is never touched)</label>
+<input id="org" value="PR832_TEST_ORG">
+
+<label for="mode">Attack</label>
+<select id="mode">
+  <option value="spoof">A. Cross-origin attacker claims the legit parent_domain (must be blocked)</option>
+  <option value="own">B. Attacker claims its own origin (known gap, expected to still work)</option>
+</select>
+
+<button id="run">Run check</button>
+<button id="wipe">Clear log</button>
+
+<div id="verdict">Not run yet.</div>
+<div id="log"></div>
+
+<h3>How it works</h3>
+<ol>
+  <li><b>Control:</b> this page frames sitecontext with <code>parent_domain</code> set to its own origin. That is a legitimate embedder, so it must work. It writes a canary and reads it back to prove the plumbing.</li>
+  <li><b>Attacker:</b> a sandboxed iframe (<code>sandbox="allow-scripts"</code>, no <code>allow-same-origin</code>) has an opaque <code>null</code> origin, so it is a real cross-origin sender. It frames sitecontext and sends SET_ITEMS, CLEAR and SET_OBJECTS.</li>
+  <li><b>Verdict:</b> the control reads storage again. Third-party storage is partitioned by top-level site, and both frames share this page's top-level site, so they see the same storage. In mode A, canary intact and nothing poisoned means PASS. Anything else means the check is missing or ineffective on that deployment.</li>
+  <li>Mode B is the residual risk the fix does not close: an attacker that frames sitecontext with its own origin as <code>parent_domain</code>. Expect it to take effect until a CSP <code>frame-ancestors</code> header lands from Core.</li>
+</ol>
+<p>Also check the console of the attacker's sitecontext frame (DevTools console context dropdown). With the fix, mode A shows <code>Unexpected message source or origin</code> for each message.</p>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const logEl = $('log');
+  $('self').textContent = location.origin;
+
+  function log(cls, text) {
+    const line = document.createElement('div');
+    line.className = cls;
+    line.textContent = `${new Date().toISOString().slice(11, 23)} ${text}`;
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  function verdict(cls, text) { const v = $('verdict'); v.className = cls; v.textContent = text; }
+
+  const baseUrl = () => $('site').value.replace(/\/$/, '');
+  const siteOrigin = () => new URL($('site').value).origin;
+  const frameUrl = (parentDomain) => {
+    const u = new URL(`${baseUrl()}/assets/htdocs/sitecontext.min.html`);
+    u.searchParams.set('parent_domain', parentDomain);
+    return u.href;
+  };
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function waitFor(pred, ms) {
+    return new Promise((resolve) => {
+      const done = (v) => { clearTimeout(timer); removeEventListener('message', handler); resolve(v); };
+      const handler = (e) => { const v = pred(e); if (v) done(v); };
+      const timer = setTimeout(() => done(null), ms);
+      addEventListener('message', handler);
+    });
+  }
+
+  let control = null;
+  let attacker = null;
+
+  addEventListener('message', (e) => {
+    if (attacker && e.source === attacker.contentWindow) {
+      log('atk', `ATTACKER (${e.origin}): ${JSON.stringify(e.data)}`);
+    } else if (control && e.source === control.contentWindow) {
+      log('rx', `CONTROL RX from ${e.origin}: ${JSON.stringify(e.data)}`);
+    }
+  });
+
+  function loadControl() {
+    return new Promise((resolve) => {
+      if (control) control.remove();
+      control = document.createElement('iframe');
+      control.style.cssText = 'width:1px;height:1px;border:0;position:absolute;left:-9999px';
+      control.onload = resolve;
+      control.src = frameUrl(location.origin);
+      document.body.appendChild(control);
+      log('note', `control frame: ${control.src}`);
+    });
+  }
+
+  function controlSend(msg) {
+    control.contentWindow.postMessage(msg, siteOrigin());
+    log('tx', `CONTROL TX ${JSON.stringify(msg)}`);
+  }
+
+  async function readStorage() {
+    const pending = waitFor((e) => control && e.source === control.contentWindow && e.data && e.data.method === 'ESW_3RDPARTY_STORAGE_RESPONSE' && e.data, 4000);
+    controlSend({ method: 'ESW_3RDPARTY_STORAGE_REQUEST', data: { orgId: $('org').value } });
+    const res = await pending;
+    return res ? res.data : null;
+  }
+
+  function attackerSrcdoc(parentDomain) {
+    return `<script>
+      const SITE = ${JSON.stringify(siteOrigin())};
+      const FRAME_URL = ${JSON.stringify(frameUrl(parentDomain))};
+      let f;
+      const up = (m) => parent.postMessage(m, '*');
+      addEventListener('message', (e) => {
+        if (e.source === parent) {
+          if (e.data.cmd === 'load') {
+            f = document.createElement('iframe');
+            f.onload = () => up({ evt: 'loaded', frame: FRAME_URL });
+            f.src = FRAME_URL;
+            document.body.appendChild(f);
+          } else if (e.data.cmd === 'send') {
+            f.contentWindow.postMessage(e.data.msg, SITE);
+            up({ evt: 'sent', method: e.data.msg.method });
+          }
+        } else {
+          up({ evt: 'rx', origin: e.origin, data: e.data });
+        }
+      });
+      up({ evt: 'ready', origin: location.origin });
+    <\/script>`;
+  }
+
+  async function loadAttacker(parentDomain) {
+    if (attacker) attacker.remove();
+    attacker = document.createElement('iframe');
+    attacker.setAttribute('sandbox', 'allow-scripts');
+    attacker.style.cssText = 'width:1px;height:1px;border:0;position:absolute;left:-9999px';
+    const ready = waitFor((e) => e.source === attacker.contentWindow && e.data && e.data.evt === 'ready' && e.data, 4000);
+    attacker.srcdoc = attackerSrcdoc(parentDomain);
+    document.body.appendChild(attacker);
+    const r = await ready;
+    if (!r) return false;
+    const loaded = waitFor((e) => e.source === attacker.contentWindow && e.data && e.data.evt === 'loaded' && e.data, 8000);
+    attacker.contentWindow.postMessage({ cmd: 'load' }, '*');
+    return !!(await loaded);
+  }
+
+  function attackerSend(msg) { attacker.contentWindow.postMessage({ cmd: 'send', msg }, '*'); }
+
+  async function run() {
+    const orgId = $('org').value;
+    const mode = $('mode').value;
+    verdict('', 'Running...');
+    logEl.textContent = '';
+
+    await loadControl();
+    controlSend({ method: 'ESW_3RDPARTY_STORAGE_SET_ITEMS', data: { orgId, key: 'canary', value: 'alive', inLocalStorage: true } });
+    await sleep(300);
+    const pre = await readStorage();
+    if (!pre || !pre.localStorage || pre.localStorage.canary !== 'alive') {
+      verdict('info', 'INCONCLUSIVE: the control could not write and read its own canary. The site may block framing or storage here, so the attack result would mean nothing.');
+      return;
+    }
+    log('note', 'control plumbing OK: canary written and read back');
+
+    const parentDomain = mode === 'own' ? 'null' : location.origin;
+    if (!(await loadAttacker(parentDomain))) {
+      verdict('info', 'INCONCLUSIVE: the attacker frame did not load.');
+      return;
+    }
+    log('note', `attacker origin is opaque; its parent_domain claim is ${parentDomain}`);
+
+    attackerSend({ method: 'ESW_3RDPARTY_STORAGE_SET_ITEMS', data: { orgId, key: 'poisoned', value: 'by-hostile-embedder', inLocalStorage: true } });
+    await sleep(200);
+    attackerSend({ method: 'ESW_3RDPARTY_STORAGE_CLEAR', data: orgId });
+    await sleep(200);
+    attackerSend({ method: 'ESW_3RDPARTY_STORAGE_SET_OBJECTS', data: { orgId, localStorageObj: JSON.stringify({ poisoned: 'by-hostile-embedder' }), sessionStorageObj: null } });
+    await sleep(600);
+
+    const post = await readStorage();
+    const ls = (post && post.localStorage) || {};
+    const poisoned = 'poisoned' in ls;
+    const wiped = ls.canary !== 'alive';
+    const tookEffect = poisoned || wiped;
+    log('note', `after attack: poisoned=${poisoned} canaryLost=${wiped} storage=${JSON.stringify(ls)}`);
+
+    if (mode === 'spoof') {
+      verdict(tookEffect ? 'fail' : 'pass',
+        tookEffect
+          ? `FAIL: the cross-origin attacker changed storage (poisoned=${poisoned}, canaryLost=${wiped}). The origin check is missing or ineffective on this deployment.`
+          : 'PASS: the cross-origin attacker could not poison, wipe or overwrite storage.');
+    } else {
+      verdict('info', tookEffect
+        ? `KNOWN GAP: an attacker that claims its own origin changed storage (poisoned=${poisoned}, canaryLost=${wiped}). Expected until a frame-ancestors CSP lands.`
+        : 'Attack B was blocked. A framing control may have landed (CSP frame-ancestors or storage partitioning), which would be good news.');
+    }
+
+    controlSend({ method: 'ESW_3RDPARTY_STORAGE_CLEAR', data: orgId });
+    log('note', 'cleanup: cleared the test org storage');
+  }
+
+  $('run').onclick = () => run().catch((err) => { verdict('fail', `Error: ${err.message}`); log('err', String(err)); });
+  $('wipe').onclick = () => { logEl.textContent = ''; };
+</script>
+</body>
+</html>
