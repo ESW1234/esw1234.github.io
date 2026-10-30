@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>nudge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body>
+
+
+
+<input type="text" id="nudgeInput"><br><br>
+<button type="button" onclick="sendNudge()">send nudge</button>
+<script type='text/javascript'>
+    let oliveReadyPromise, oliveReadyPromiseResolve;
+    let isNewConversation = false;
+
+    window.addEventListener("onEmbeddedMessagingReady", () => {
+        oliveReadyPromise = new Promise((resolve) => {
+            oliveReadyPromiseResolve = resolve;
+        });
+    });
+
+    window.addEventListener("onEmbeddedMessagingConversationStarted", () => {
+        isNewConversation = true;
+    });
+
+    window.addEventListener("onEmbeddedMessagingConversationOpened", () => {
+        if (!isNewConversation) {
+            resolveOliveReadyPromise();
+        }
+    });
+
+    window.addEventListener("onEmbeddedMessagingFirstBotMessageSent", () => {
+        resolveOliveReadyPromise();
+    });
+
+    function resolveOliveReadyPromise() {
+        if (oliveReadyPromiseResolve) {
+            oliveReadyPromiseResolve();
+        }
+    }
+  
+  function sendNudge() {
+        const nudgeText = document.getElementById("nudgeInput").value;
+        embeddedservice_bootstrap.utilAPI.launchChat();
+        oliveReadyPromise.then(() => {
+            embeddedservice_bootstrap.utilAPI.sendTextMessage(nudgeText);
+        });
+  }
+  
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+      embeddedservice_bootstrap.settings.devMode = true;
+
+			embeddedservice_bootstrap.init(
+				'00DSB00000aGFJL',
+				'CWC_4',
+				'https://orgfarm-d585323017.demo.test1.my.pc-rnd.site.com/ESWCWC41760463095084',
+				{
+					scrt2URL: 'https://orgfarm-d585323017.demo.test1.my.pc-rnd.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-d585323017.demo.test1.my.pc-rnd.site.com/ESWCWC41760463095084/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>
