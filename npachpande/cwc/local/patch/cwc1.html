@@ -51,33 +51,20 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 			embeddedservice_bootstrap.settings.devMode = true;
 
-			// SDB3
 			embeddedservice_bootstrap.init(
-				'00DSB00000aGFJL',
-				'CWC_Auth_3',
-				'https://orgfarm-11a65fae0a.my.site-com.lvgq8v1o299201o26jfsoqrrn.wb.crm.dev:6101/ESWcwc11786408098353',
+				'00Dxx00xhykh3NI',
+				'Web_Chat_SCF',
+				'https://orgfarm-875a101844.my.site-com.69rh7fjfhn8202zhzwleaov781r.wc.crm.dev:6101/ESWWebChatSCF1794439327435',
 				{
-					scrt2URL: 'https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
+					scrt2URL: 'https://scrt2-i-04a342485752136c6.sfwproxy.c.cvw-dataplane-test.aws-dev2-uswest2.aws.sfdc.cl'
 				}
 			);
-
-			// SDB3 - Voice
-			/*
-			embeddedservice_bootstrap.init(
-				'00DSB00000zrTLk',
-				'cwc_1',
-				'https://orgfarm-11a65fae0a.my.site-com.lvgq8v1o299201o26jfsoqrrn.wb.crm.dev:6101/ESWcwc11786408098353',
-				{
-					scrt2URL: 'https://scrt01.unified-engagement.sfdc-ckzqgc.svc.sfdcfc.net'
-				}
-			);
-			*/
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
 </script>
-<script type='text/javascript' src='https://orgfarm-11a65fae0a.my.site-com.lvgq8v1o299201o26jfsoqrrn.wb.crm.dev:6101/ESWcwc11786408098353/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://orgfarm-875a101844.my.site-com.69rh7fjfhn8202zhzwleaov781r.wc.crm.dev:6101/ESWWebChatSCF1794439327435/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
