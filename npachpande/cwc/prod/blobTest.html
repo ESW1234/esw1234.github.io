@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="frame-src https://trailsignup-9d3ad5784c6304.demo.my.site.com">
+</head>
+<body>
+
+  
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00Dg800000DfF8T',
+				'cwc_3',
+				'https://trailsignup-9d3ad5784c6304.demo.my.site.com/ESWcwc31792511329352',
+				{
+					scrt2URL: 'https://trailsignup-9d3ad5784c6304.demo.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://trailsignup-9d3ad5784c6304.demo.my.site.com/ESWcwc31792511329352/assets/js/init.js' onload='initEmbeddedMessaging()'></script>
+
+
+</body>
+</html>
