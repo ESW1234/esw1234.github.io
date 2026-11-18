@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MIAW reCAPTCHA token page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<script>
+  // reCAPTCHA v3 site key (public). Registered for git.soma.salesforce.com and esw1234.github.io.
+  var SITE_KEY = '6LeIeiYuAAAAAMs9OwkzZjcrC0mDsv-mG9gxbANs';
+
+  function loadReCaptchaScript() {
+    var script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js?render=' + SITE_KEY;
+    script.onerror = function () { console.error('Error loading the reCAPTCHA script'); };
+    script.onload = function () { console.log('ReCaptcha script loaded successfully'); handleInvisibleReCaptcha(); };
+    document.head.appendChild(script);
+  }
+
+  function handleInvisibleReCaptcha() {
+    grecaptcha.ready(function () {
+      grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(function (token) {
+        console.log('ReCaptcha Token Generated :' + token.toString());
+        document.getElementById('captcha').innerHTML = token.toString();
+      });
+    });
+  }
+
+  loadReCaptchaScript();
+</script>
+</head>
+<body>
+  <h1>Test ReCaptcha on Different browsers</h1>
+  <h4 id="captcha"></h4>
+</body>
+</html>
